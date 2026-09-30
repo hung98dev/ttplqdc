@@ -1,6 +1,6 @@
 # ADR-0074: Localization Addressables Group Integration
 
-status: ACCEPTED (2026-09-27, BLK-011)
+status: ACCEPTED (2026-09-27)
 
 ## Context
 

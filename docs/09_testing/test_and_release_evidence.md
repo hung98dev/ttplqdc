@@ -82,6 +82,7 @@ Fixtures are immutable; changing one requires the spec change that justifies it.
 ## 4. Content Compile Report
 
 The compiler writes `content_compile_report.json` with `content_revision_hash`, `catalogs_evaluated`, `entity_counts` (counts come from the owning catalogs in `docs/07_content/`, never hard-coded here) and `validation_diagnostics` (0 errors, 0 warnings required).
+`content_revision_hash` is the same full 64-lowercase-hex `content_revision` defined in `../06_data/content_authoring_contract.md`, not a table-only, client-subset or asset hash.
 
 ## 5. Load & Scale Fingerprint
 

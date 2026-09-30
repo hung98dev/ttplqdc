@@ -189,7 +189,7 @@ PARTY/GUILD: up to recent 50 messages while the group context remains valid
 WHISPER: no offline history guarantee
 ```
 
-Moderation chat logs persist in `chat_messages` (`../06_data/data_model.md`) with 90-day retention (`../07_security/data_protection.md`).
+Moderation chat logs persist in `chat_messages` (`../06_data/data_model.md`); the retention/erasure schedule is canonical in `../07_security/personal_data_register.md` § 1.
 
 ## Moderation
 Canonical communication restriction:
@@ -205,6 +205,8 @@ Submitting a report never automatically mutes/bans/removes the target.
 Automated filtering may reject unsafe/spam content, but punitive sanctions require explicit moderation policy/action.
 
 ## Reports
+Report fields/constraints are owned by `../06_data/data_model.md` § player_reports, restricted purpose/retention by `../07_security/personal_data_register.md` § 1.1, and reporter-own export by `../07_security/data_protection.md` § Access and Portability Requests. Report ownership does not authorize disclosure of target/investigator/evidence data.
+
 Stable:
 ```text
 report_id

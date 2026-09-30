@@ -78,7 +78,7 @@ AGENTS.md -> docs/README.md -> 00_context/technology_versions.md
 
 ## Open blockers (check before claiming)
 
-Canonical live list: `docs/10_implementation/known_blockers.md` (currently empty). Implementers add entries there and stop the dependent task; the `spec-owner` agent resolves them.
+Canonical live list: `docs/10_implementation/known_blockers.md` § Open Blockers; read its current task and owning-spec coverage before planning, claiming or resuming. Implementers add entries there and stop the dependent task; the `spec-owner` agent resolves them. Do not infer that a docs-only baseline is blocker-free.
 
 ## DONE bar
 
@@ -99,8 +99,9 @@ Canonical live list: `docs/10_implementation/known_blockers.md` (currently empty
 
 | Skill | Use when |
 |---|---|
-| `/run-wave` | owner says "làm wave N": coordinate one wave from claims to report |
-| `/run-imp-task` | the default entry point: one IMP task from readiness to auto-merge |
+| `/run-wave` | owner says "làm wave N": `/plan-wave` → `wave-planner` → separate source audit → fresh DoR → claim → full audited task-plan handoff, then canonical report; no extra owner approval or silent next-wave dispatch |
+| `/plan-wave` | generate and independently source-audit a session plan on demand, using the canonical On-Demand Planning Contract; standalone planning is read-only on `main`, with no claim/status/spec write, branch/draft PR, codegen or implementation |
+| `/run-imp-task` | one claimed IMP task to auto-merge; a wave handoff requires the full wave plan, complete task plan and matching per-task `PASS` audit before branching/codegen/code |
 | `/repo-architecture` | before unfamiliar, multi-module, or contract work; produces a read-only change map |
 | `/implement-backend-feature` | implementing task-owned Go server behavior |
 | `/implement-unity-feature` | implementing task-owned client/presentation behavior without wire changes |
@@ -121,7 +122,11 @@ Canonical live list: `docs/10_implementation/known_blockers.md` (currently empty
 | `integration-engineer` | approved proto + both consumers + compatibility |
 | `debugger` | evidence-first root-cause analysis and regression fix |
 | `reviewer` | read-only conformance verdict; posts the `policy-review` check run via `.devin/scripts/policy_review.ps1` (`THINHTHAN_AGENT_ROLE=reviewer`) |
-| `verifier` | read-only diff-to-test-matrix execution |
+| `verifier` | diff-to-test-matrix execution; its Wave Plan Audit method runs in the separate, tool-restricted `wave-plan-auditor` profile, without credentials, exec or `policy-review` |
 | `spec-owner` | Contract Owner: resolves blockers, edits protected specs/ADRs via spec-change PRs (`THINHTHAN_AGENT_ROLE=spec-owner`) |
-| `coordinator` | claims ready tasks (status-only PRs), grants the merge slot, records/resolves OPS entries (`ops/` PRs), unclaims stale claims, keeps concurrency within the limit of 8 tasks (at most 4 with `client/`, ADR-0078) |
+| `coordinator` | orchestrates plan/audit before fresh DoR and claims; hands off whole audited task plans; grants the merge slot, records/resolves OPS entries and unclaims stale claims; max 8 tasks/4 `client/` (ADR-0078); no code/spec writes |
 | `asset-producer` | art/audio production within asset task owned paths; never gameplay/server/spec |
+| `wave-planner` | read-only, credential-free canonical on-demand planning; accounts for every task, details eligible new-ready or explicit same-claim resume only; never self-approves or implements |
+| `wave-plan-auditor` | tool-enforced `read/grep/glob` boundary for the verifier's independent Wave Plan Audit mode; no drafting, exec, edits, claims or PR approval |
+
+Planning format, dispositions, audit/revision and freshness rules are owned by `docs/10_implementation/wave_execution_prompts.md` § On-Demand Planning Contract and `agent_execution_protocol.md` §2a. Missing, failed or stale plans/audits block dispatch; relevant source/main, blocker or dependency-output changes require affected plans to be regenerated and re-audited. Waiting/blocked tasks stay represented without executable handoffs.

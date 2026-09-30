@@ -38,10 +38,7 @@ Applies to `.github/workflows/verify.yml`. Enforced by
   (`unity-library`: PackageCache/ScriptAssemblies = f(manifest, lock,
   ProjectSettings, compiler flags)) — restore on the exact key only and set
   no `restore-keys`: a prefix hit restores output built from different
-  inputs, a silent wrong-content restore (BLK-005: stale PackageCache/
-  ScriptAssemblies made Unity recompile `com.unity.ugui` under
-  `-nullable:enable` → CS86xx, and correlated with editor self-SIGKILL at
-  precompiled-dll registration). `restore-keys` remain legal on
+  inputs, a silent wrong-content restore. `restore-keys` remain legal on
   content-addressed stores whose entries stay valid under a partial restore
   (`go-build`) and on pure-pin payloads (`unity-editor`, `cli-tools`, `edb`).
 - `UNITY_WINDOWS_EDITOR_URL`/`_SHA256` must equal
@@ -92,4 +89,4 @@ risk. The Windows EDB binaries ARE cached (large download, sha-asserted).
 
 ## Main-scope warming (ADR-0073)
 
-Caches saved by a PR run are visible only to that PR. `.github/workflows/cache_warm.yml` saves the pure-pin caches (`unity-editor`, `cli-tools`, `edb`, `go-build`) on pushes to `main`; its cache steps must equal a `verify.yml` cache step byte-for-byte (key + path, `TestCacheWarmMirrorsVerifyCaches`). `unity-library` is warmed only by its `warm-library-windows` job: exact key (no `restore-keys`, BLK-005), `lookup-only` so a hit downloads nothing, materialization identical to `verify.yml` on a miss; it alone reads the Unity licence secrets, safe because the workflow never runs on `pull_request`. Repository Actions cache budget is 30 GB (owner configuration, ADR-0078); closed-PR caches are pruned hourly and on pushes to `main` by `cache_prune.yml`. Keep-alive: `cache_warm.yml` also runs every 5 days (`schedule`, default branch only) and fully restores every main-scope cache (Library included: `lookup-only` is false on schedule) so the 7-day unused-cache eviction never fires, and re-creates missing entries.
+Caches saved by a PR run are visible only to that PR. `.github/workflows/cache_warm.yml` saves the pure-pin caches (`unity-editor`, `cli-tools`, `edb`, `go-build`) on pushes to `main`; its cache steps must equal a `verify.yml` cache step byte-for-byte (key + path, `TestCacheWarmMirrorsVerifyCaches`). `unity-library` is warmed only by its `warm-library-windows` job: exact key (no `restore-keys`), `lookup-only` so a hit downloads nothing, materialization identical to `verify.yml` on a miss; it alone reads the Unity licence secrets, safe because the workflow never runs on `pull_request`. Repository Actions cache budget is 30 GB (owner configuration, ADR-0078); closed-PR caches are pruned hourly and on pushes to `main` by `cache_prune.yml`. Keep-alive: `cache_warm.yml` also runs every 5 days (`schedule`, default branch only) and fully restores every main-scope cache (Library included: `lookup-only` is false on schedule) so the 7-day unused-cache eviction never fires, and re-creates missing entries.

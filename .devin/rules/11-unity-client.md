@@ -17,7 +17,7 @@ Canonical: `engineering_conventions.md` §2, `04_architecture/client.md`, `04_ar
 ## Style
 
 - Allman braces, 4 spaces. PascalCase types/methods, camelCase locals/params, `_camelCase` private fields. C# 9.0 language level — do not use newer syntax.
-- The `csc.rsp` beside each `ThinhThan.*` asmdef makes every warning an error and enables nullable (scoped per-asmdef — no root `Assets/csc.rsp`, package sources in `Library/PackageCache` must not see these flags, BLK-007). Authored C# uses one top-level type per file and namespace = assembly + folder. Canonical generated `Assets/Scripts/Protocol/*.cs` is excluded only from authored-style Q4 checks, never CODE-004 header/Q2 byte-identical regeneration/CODE-001 warnings/wire parity checks; do not rename or split generated types (`engineering_conventions.md` §2.7).
+- The `csc.rsp` beside each `ThinhThan.*` asmdef makes every warning an error and enables nullable (scoped per-asmdef — no root `Assets/csc.rsp`, package sources in `Library/PackageCache` must not see these flags). Authored C# uses one top-level type per file and namespace = assembly + folder. Canonical generated `Assets/Scripts/Protocol/*.cs` is excluded only from authored-style Q4 checks, never CODE-004 header/Q2 byte-identical regeneration/CODE-001 warnings/wire parity checks; do not rename or split generated types (`engineering_conventions.md` §2.7).
 
 ## Assemblies (acyclic)
 

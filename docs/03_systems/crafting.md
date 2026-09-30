@@ -15,6 +15,8 @@ Validate all inputs/currency/requirements/locks/output capacity before consumpti
 
 Guaranteed batch size = `1..99`, all-or-nothing. Probabilistic batch crafting is disabled.
 
+Durable admission retains the original 404 request and freezes a separate typed craft snapshot (`../05_network/protobuf_conventions.md` §7): complete created item instances including assigned UUIDs, persistent rolls/binding/content provenance/creation time, exact consumed material instance IDs/item IDs/quantities, signed currency costs and expected aggregate revisions. Hearth COOK uses that same snapshot inside its original 103 request, including the authored extra output and LIFE_SKILL EXP. Craft remains capacity-prevalidated inventory creation, not a Reward Claim or new CRAFT reward source. Transactional ownership/material/currency/requirement/lock/capacity checks remain authoritative; retry returns the original committed snapshot/receipt and never chooses new input stacks, IDs or rolls.
+
 ## Probability
 Use integer basis points `0..10000`; RNG is server-owned.
 

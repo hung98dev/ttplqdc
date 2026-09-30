@@ -15,37 +15,40 @@ Soul presentation uses creatures already present in the Vietnamese-folklore enco
 - Percent damage values below are source additive modifiers unless written as an ATTACK coefficient.
 - `BURN`, `POISON`, `SLOW`, `ROOT`, `FREEZE`, and semantic status tags come from `../01_gameplay/status_effects.md`.
 - A Soul never changes the element of an equipment item.
+- Soul `element` is the required authored enum in Runtime Soul Roster, not the source creature's combat element or encounter region. `monster.rung_u_minh.ma_rung` may remain combat `NONE` while its Soul is `MOC`; source identity only determines acquisition/rank checks.
+
+**CAT-001 — Explicit Soul element binding:** all 25 roster rows must emit one non-NONE element from the closed five-element enum, preserve the rank-by-element distribution in Element Count Validation, and resolve the same source/effect IDs independently of source combat element. Missing/unknown element or a changed distribution rejects the candidate before activation.
 
 # Runtime Soul Roster
 `values` lists exact Lv1/Lv3/Lv5 fractions; Lv2=Lv1, Lv4=Lv3. `v` selects that row's value. All triggers observe committed authoritative events; damage requires connected `hp_damage>0` unless explicitly shield-break. One effect per target/root, trigger-depth3, no secondary self-retrigger. ICD starts on successful proc except `ARM` where stated consumption starts it. Refreshing a window does not bypass an active ICD; counters clear on proc/timeout/unload/death/transfer. Buffs refresh duration, never stack, instance `(owner,effect_id)`; target debuffs key `(target,effect_id,source_id)`. Threshold crossings compare pre/post committed HP; lethal commit never resurrects.
 
-| soul_id | display | source_id | effect_id | values | trigger | payload | icd_ms | icd_scope |
-|---|---|---|---|---|---|---|---:|---|
-| `soul.normal.coc_thanh_tinh` | Hồn Cóc Thành Tinh | `monster.lang_da.coc_thanh_tinh` | `effect.soul.coc_thanh_tinh.mo_dau` | `0.04,0.05,0.06` | `HP_DAMAGE;TARGET_PRE_HP_GE(0.80)` | `DAMAGE_ADD(v)` | 8000 | TARGET |
-| `soul.normal.ho_con_tinh` | Hồn Hổ Con Tinh | `monster.deo_may.ho_con_tinh` | `effect.soul.ho_con_tinh.vo_moi` | `0.06,0.08,0.10` | `ACCEPT_TAG(MOVEMENT)` | `ARM(NEXT_BASIC,4000,DAMAGE_ADD(v))` | 0 | OWNER |
-| `soul.normal.hon_binh` | Hồn Binh Cũ | `monster.thanh_co.hon_binh` | `effect.soul.hon_binh.nhip_danh` | `0.03,0.04,0.05` | `DISTINCT_ACTIONS_SAME_TARGET(3,5000)` | `BUFF(ATTACK_SPEED,FLAT_ADD,v,4000)` | 8000 | OWNER |
-| `soul.normal.tinh_cay` | Hồn Tinh Cây | `monster.rung_u_minh.tinh_cay` | `effect.soul.tinh_cay.re_non` | `0.01,0.015,0.02` | `APPLY_STATUS(ROOT,SLOW)` | `HEAL_SELF(v)` | 8000 | OWNER |
-| `soul.normal.ma_rung` | Hồn Ma Rừng | `monster.rung_u_minh.ma_rung` | `effect.soul.ma_rung.hoi_khi` | `0.02,0.03,0.04` | `REWARD_ELIGIBLE_KILL` | `RESTORE_SELF_MP(v)` | 4000 | OWNER |
-| `soul.normal.khi_nui` | Hồn Khỉ Núi | `monster.deo_may.khi_nui` | `effect.soul.khi_nui.chuyen_can` | `0.03,0.04,0.05` | `VOLUNTARY_LAND` | `BUFF(MOVE_SPEED,FLAT_ADD,v,3000)` | 5000 | OWNER |
-| `soul.normal.ma_da` | Hồn Ma Da | `monster.ben_nuoc_den.ma_da` | `effect.soul.ma_da.keo_khi` | `2,3,4` | `HP_DAMAGE;TARGET_TAG(SLOW)` | `RESTORE_SELF_MP_FLAT(v)` | 2000 | OWNER |
-| `soul.normal.ca_tinh` | Hồn Cá Tinh | `monster.ben_nuoc_den.ca_tinh` | `effect.soul.ca_tinh.luot_song` | `0.08,0.10,0.12` | `VOLUNTARY_TRAVEL_WIDTH` | `ARM(NEXT_PROJECTILE_HIT,4000,DAMAGE_TARGET(v,THUY))` | 6000 | OWNER |
-| `soul.normal.hon_chet_duoi` | Hồn Chết Đuối | `monster.ben_nuoc_den.hon_chet_duoi` | `effect.soul.hon_chet_duoi.lanh_nuoc` | `0.06,0.08,0.10` | `CROSS_HP_BELOW(0.40)` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,3000)` | 20000 | OWNER |
-| `soul.normal.dom_dom_ma` | Hồn Đom Đóm Ma | `monster.lang_da.dom_dom_ma` | `effect.soul.dom_dom_ma.tan_sang` | `0.02,0.03,0.04` | `ACTION_DISTINCT_HOSTILES(3)` | `RESTORE_SELF_MP(v)` | 8000 | OWNER |
-| `soul.normal.dom_lua` | Hồn Đốm Lửa Rừng | `monster.rung_u_minh.dom_lua` | `effect.soul.dom_lua.am_ia` | `250,500,750` | `APPLY_OWN_DOT(BURN,POISON)` | `RESIDUAL_EXTENSION_MS(v)` | 0 | OWNER |
-| `soul.normal.qua_tinh` | Hồn Quạ Tinh | `monster.thanh_co.qua_tinh` | `effect.soul.qua_tinh.vu_den` | `0.03,0.04,0.05` | `CRIT` | `BUFF(CAST_SPEED,FLAT_ADD,v,3000)` | 6000 | OWNER |
-| `soul.normal.bu_nhin_rom` | Hồn Bù Nhìn Rơm | `monster.lang_da.bu_nhin_rom` | `effect.soul.bu_nhin_rom.dung_gio` | `0.04,0.05,0.06` | `STATIONARY(1250)` | `PREDICATE_BUFF(DEFENSE,PERCENT_ADD,v,UNTIL_MOVEMENT)` | 0 | OWNER |
-| `soul.normal.vong_hon` | Hồn Vong | `monster.lang_da.vong_hon` | `effect.soul.vong_hon.lanh_gay` | `0.03,0.04,0.05` | `HOSTILE_HP_DAMAGE_TAKEN` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,2000)` | 8000 | OWNER |
-| `soul.normal.ma_co` | Hồn Ma Cổ | `monster.thanh_co.ma_co` | `effect.soul.ma_co.giu_menh` | `0.015,0.02,0.025` | `HOSTILE_SHIELD_BREAK` | `HEAL_SELF(v)` | 10000 | OWNER |
-| `soul.elite.ho_tinh_ve` | Hồn Hổ Tinh Vệ | `monster.deo_may.ho_tinh_ve` | `effect.soul.ho_tinh_ve.lay_da` | `0.08,0.10,0.12` | `ACCEPT_TAG(MOVEMENT)` | `ARM(NEXT_DAMAGING_ACTIVE,4000,ACTION_CRIT_ADD(v))` | 8000 | CONSUMPTION |
-| `soul.elite.thach_ve` | Hồn Thạch Vệ | `monster.thanh_co.thach_ve` | `effect.soul.thach_ve.pha_the` | `-0.08,-0.10,-0.12` | `HOSTILE_HP_DAMAGE_TAKEN` | `ARM(NEXT_DAMAGING_ACTIVE_HIT,5000,TARGET_DEBUFF(DEFENSE,PERCENT_ADD,v,3000))` | 10000 | OWNER |
-| `soul.elite.moc_tinh` | Hồn Mộc Tinh | `monster.rung_u_minh.moc_tinh` | `effect.soul.moc_tinh.re_song` | `0.03,0.04,0.05` | `APPLY_STATUS(ROOT)` | `HOT_SELF_TOTAL(v,3000,1000,3)` | 12000 | OWNER |
-| `soul.elite.ma_tranh` | Hồn Ma Trành | `monster.rung_u_minh.ma_tranh` | `effect.soul.ma_tranh.dau_rung` | `0.12,0.16,0.20` | `HP_DAMAGE;TARGET_CONTROL_OR_RECOVERY` | `DOT_TOTAL(effect.soul.ma_tranh.poison,v,MOC,POISON)` | 10000 | TARGET |
-| `soul.elite.ma_da_gia` | Hồn Ma Da Già | `monster.ben_nuoc_den.ma_da_gia` | `effect.soul.ma_da_gia.nuoc_niu` | `0.15,0.20,0.25` | `APPLY_DISPLACEMENT(PULL,KNOCKBACK)` | `TARGET_SLOW(v,2000);RESTORE_SELF_MP(0.02+0.01*level_step)` | 10000 | OWNER |
-| `soul.elite.ma_xo` | Hồn Ma Xó | `monster.lang_da.ma_xo` | `effect.soul.ma_xo.vung_cam` | `0.06,0.08,0.10` | `ACTIVE_TAGS(AREA,DAMAGING);TARGET_TAG(NEGATIVE)` | `DAMAGE_ADD(v)` | 0 | OWNER |
-| `soul.elite.ma_tranh_gia` | Hồn Ma Trành Già | `monster.deo_may.ma_tranh_gia` | `effect.soul.ma_tranh_gia.nep_duong` | `0.06,0.08,0.10` | `HOSTILE_HP_DAMAGE_TAKEN_GE(0.12)` | `SHIELD_SELF(v,4000)` | 20000 | OWNER |
-| `soul.boss.thuong_luong` | Hồn Thuồng Luồng | `boss.thuong_luong` | `effect.soul.thuong_luong.song_duoi` | `0.45,0.55,0.65` | `COMPLETE_TAG(MOVEMENT)` | `SPATIAL_DAMAGE(spatial.soul.song_duoi,v,THUY);TARGET_SLOW(0.20,2000)` | 24000 | OWNER |
-| `soul.boss.ho_tinh_chin_duoi` | Hồn Hồ Tinh Chín Đuôi | `boss.ho_tinh_chin_duoi` | `effect.soul.ho_tinh_chin_duoi.lua_anh` | `0.65,0.80,0.95` | `DISTINCT_DAMAGING_ACTIVE_IDS(3,6000)` | `ARM(NEXT_DAMAGING_ACTIVE_HIT,5000,SPATIAL_DAMAGE(spatial.soul.lua_anh,v,HOA)+DOT_TOTAL(effect.soul.lua_anh.burn,0.20,HOA,BURN))` | 25000 | CONSUMPTION |
-| `soul.boss.than_trung` | Hồn Thần Trùng | `boss.than_trung` | `effect.soul.than_trung.diem_bao` | `0.15,0.18,0.20` | `CROSS_HP_BELOW(0.25)` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,4000+500*level_step)` | 45000 | OWNER |
+| soul_id | display | element | source_id | effect_id | values | trigger | payload | icd_ms | icd_scope |
+|---|---|---|---|---|---|---|---|---:|---|
+| `soul.normal.coc_thanh_tinh` | Hồn Cóc Thành Tinh | KIM | `monster.lang_da.coc_thanh_tinh` | `effect.soul.coc_thanh_tinh.mo_dau` | `0.04,0.05,0.06` | `HP_DAMAGE;TARGET_PRE_HP_GE(0.80)` | `DAMAGE_ADD(v)` | 8000 | TARGET |
+| `soul.normal.ho_con_tinh` | Hồn Hổ Con Tinh | KIM | `monster.deo_may.ho_con_tinh` | `effect.soul.ho_con_tinh.vo_moi` | `0.06,0.08,0.10` | `ACCEPT_TAG(MOVEMENT)` | `ARM(NEXT_BASIC,4000,DAMAGE_ADD(v))` | 0 | OWNER |
+| `soul.normal.hon_binh` | Hồn Binh Cũ | KIM | `monster.thanh_co.hon_binh` | `effect.soul.hon_binh.nhip_danh` | `0.03,0.04,0.05` | `DISTINCT_ACTIONS_SAME_TARGET(3,5000)` | `BUFF(ATTACK_SPEED,FLAT_ADD,v,4000)` | 8000 | OWNER |
+| `soul.normal.tinh_cay` | Hồn Tinh Cây | MOC | `monster.rung_u_minh.tinh_cay` | `effect.soul.tinh_cay.re_non` | `0.01,0.015,0.02` | `APPLY_STATUS(ROOT,SLOW)` | `HEAL_SELF(v)` | 8000 | OWNER |
+| `soul.normal.ma_rung` | Hồn Ma Rừng | MOC | `monster.rung_u_minh.ma_rung` | `effect.soul.ma_rung.hoi_khi` | `0.02,0.03,0.04` | `REWARD_ELIGIBLE_KILL` | `RESTORE_SELF_MP(v)` | 4000 | OWNER |
+| `soul.normal.khi_nui` | Hồn Khỉ Núi | MOC | `monster.deo_may.khi_nui` | `effect.soul.khi_nui.chuyen_can` | `0.03,0.04,0.05` | `VOLUNTARY_LAND` | `BUFF(MOVE_SPEED,FLAT_ADD,v,3000)` | 5000 | OWNER |
+| `soul.normal.ma_da` | Hồn Ma Da | THUY | `monster.ben_nuoc_den.ma_da` | `effect.soul.ma_da.keo_khi` | `2,3,4` | `HP_DAMAGE;TARGET_TAG(SLOW)` | `RESTORE_SELF_MP_FLAT(v)` | 2000 | OWNER |
+| `soul.normal.ca_tinh` | Hồn Cá Tinh | THUY | `monster.ben_nuoc_den.ca_tinh` | `effect.soul.ca_tinh.luot_song` | `0.08,0.10,0.12` | `VOLUNTARY_TRAVEL_WIDTH` | `ARM(NEXT_PROJECTILE_HIT,4000,DAMAGE_TARGET(v,THUY))` | 6000 | OWNER |
+| `soul.normal.hon_chet_duoi` | Hồn Chết Đuối | THUY | `monster.ben_nuoc_den.hon_chet_duoi` | `effect.soul.hon_chet_duoi.lanh_nuoc` | `0.06,0.08,0.10` | `CROSS_HP_BELOW(0.40)` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,3000)` | 20000 | OWNER |
+| `soul.normal.dom_dom_ma` | Hồn Đom Đóm Ma | HOA | `monster.lang_da.dom_dom_ma` | `effect.soul.dom_dom_ma.tan_sang` | `0.02,0.03,0.04` | `ACTION_DISTINCT_HOSTILES(3)` | `RESTORE_SELF_MP(v)` | 8000 | OWNER |
+| `soul.normal.dom_lua` | Hồn Đốm Lửa Rừng | HOA | `monster.rung_u_minh.dom_lua` | `effect.soul.dom_lua.am_ia` | `250,500,750` | `APPLY_OWN_DOT(BURN,POISON)` | `RESIDUAL_EXTENSION_MS(v)` | 0 | OWNER |
+| `soul.normal.qua_tinh` | Hồn Quạ Tinh | HOA | `monster.thanh_co.qua_tinh` | `effect.soul.qua_tinh.vu_den` | `0.03,0.04,0.05` | `CRIT` | `BUFF(CAST_SPEED,FLAT_ADD,v,3000)` | 6000 | OWNER |
+| `soul.normal.bu_nhin_rom` | Hồn Bù Nhìn Rơm | THO | `monster.lang_da.bu_nhin_rom` | `effect.soul.bu_nhin_rom.dung_gio` | `0.04,0.05,0.06` | `STATIONARY(1250)` | `PREDICATE_BUFF(DEFENSE,PERCENT_ADD,v,UNTIL_MOVEMENT)` | 0 | OWNER |
+| `soul.normal.vong_hon` | Hồn Vong | THO | `monster.lang_da.vong_hon` | `effect.soul.vong_hon.lanh_gay` | `0.03,0.04,0.05` | `HOSTILE_HP_DAMAGE_TAKEN` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,2000)` | 8000 | OWNER |
+| `soul.normal.ma_co` | Hồn Ma Cổ | THO | `monster.thanh_co.ma_co` | `effect.soul.ma_co.giu_menh` | `0.015,0.02,0.025` | `HOSTILE_SHIELD_BREAK` | `HEAL_SELF(v)` | 10000 | OWNER |
+| `soul.elite.ho_tinh_ve` | Hồn Hổ Tinh Vệ | KIM | `monster.deo_may.ho_tinh_ve` | `effect.soul.ho_tinh_ve.lay_da` | `0.08,0.10,0.12` | `ACCEPT_TAG(MOVEMENT)` | `ARM(NEXT_DAMAGING_ACTIVE,4000,ACTION_CRIT_ADD(v))` | 8000 | CONSUMPTION |
+| `soul.elite.thach_ve` | Hồn Thạch Vệ | KIM | `monster.thanh_co.thach_ve` | `effect.soul.thach_ve.pha_the` | `-0.08,-0.10,-0.12` | `HOSTILE_HP_DAMAGE_TAKEN` | `ARM(NEXT_DAMAGING_ACTIVE_HIT,5000,TARGET_DEBUFF(DEFENSE,PERCENT_ADD,v,3000))` | 10000 | OWNER |
+| `soul.elite.moc_tinh` | Hồn Mộc Tinh | MOC | `monster.rung_u_minh.moc_tinh` | `effect.soul.moc_tinh.re_song` | `0.03,0.04,0.05` | `APPLY_STATUS(ROOT)` | `HOT_SELF_TOTAL(v,3000,1000,3)` | 12000 | OWNER |
+| `soul.elite.ma_tranh` | Hồn Ma Trành | MOC | `monster.rung_u_minh.ma_tranh` | `effect.soul.ma_tranh.dau_rung` | `0.12,0.16,0.20` | `HP_DAMAGE;TARGET_CONTROL_OR_RECOVERY` | `DOT_TOTAL(effect.soul.ma_tranh.poison,v,MOC,POISON)` | 10000 | TARGET |
+| `soul.elite.ma_da_gia` | Hồn Ma Da Già | THUY | `monster.ben_nuoc_den.ma_da_gia` | `effect.soul.ma_da_gia.nuoc_niu` | `0.15,0.20,0.25` | `APPLY_DISPLACEMENT(PULL,KNOCKBACK)` | `TARGET_SLOW(v,2000);RESTORE_SELF_MP(0.02+0.01*level_step)` | 10000 | OWNER |
+| `soul.elite.ma_xo` | Hồn Ma Xó | HOA | `monster.lang_da.ma_xo` | `effect.soul.ma_xo.vung_cam` | `0.06,0.08,0.10` | `ACTIVE_TAGS(AREA,DAMAGING);TARGET_TAG(NEGATIVE)` | `DAMAGE_ADD(v)` | 0 | OWNER |
+| `soul.elite.ma_tranh_gia` | Hồn Ma Trành Già | THO | `monster.deo_may.ma_tranh_gia` | `effect.soul.ma_tranh_gia.nep_duong` | `0.06,0.08,0.10` | `HOSTILE_HP_DAMAGE_TAKEN_GE(0.12)` | `SHIELD_SELF(v,4000)` | 20000 | OWNER |
+| `soul.boss.thuong_luong` | Hồn Thuồng Luồng | THUY | `boss.thuong_luong` | `effect.soul.thuong_luong.song_duoi` | `0.45,0.55,0.65` | `COMPLETE_TAG(MOVEMENT)` | `SPATIAL_DAMAGE(spatial.soul.song_duoi,v,THUY);TARGET_SLOW(0.20,2000)` | 24000 | OWNER |
+| `soul.boss.ho_tinh_chin_duoi` | Hồn Hồ Tinh Chín Đuôi | HOA | `boss.ho_tinh_chin_duoi` | `effect.soul.ho_tinh_chin_duoi.lua_anh` | `0.65,0.80,0.95` | `DISTINCT_DAMAGING_ACTIVE_IDS(3,6000)` | `ARM(NEXT_DAMAGING_ACTIVE_HIT,5000,SPATIAL_DAMAGE(spatial.soul.lua_anh,v,HOA)+DOT_TOTAL(effect.soul.lua_anh.burn,0.20,HOA,BURN))` | 25000 | CONSUMPTION |
+| `soul.boss.than_trung` | Hồn Thần Trùng | THO | `boss.than_trung` | `effect.soul.than_trung.diem_bao` | `0.15,0.18,0.20` | `CROSS_HP_BELOW(0.25)` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,4000+500*level_step)` | 45000 | OWNER |
 
 ## Spatial Payloads
 All dimensions use canonical geometry quantization/collision from `physics_geometry_contract.md`. Boundary intersection is inclusive. Snapshot origin/direction and offensive stats at proc commit. Instant queries, not traveling projectiles; no movement/extra iframe. Hostiles only; distance from origin then durable target-ID selection. `shared_action` caps count the union of triggering-action and proc targets; otherwise proc cap independent. No proc can trigger itself.
@@ -61,8 +64,10 @@ All dimensions use canonical geometry quantization/collision from `physics_geome
 # Compiler Source Schema
 | source_section | output / key | typed inputs | defaults / finite rule |
 |---|---|---|---|
-| `Runtime Soul Roster`; headers `soul_id,display,source_id,effect_id,values,trigger,payload,icd_ms,icd_scope` | souls / soul_id; effects / effect_id | ID refs; display UTF8; values exact decimal triple or integer triple; trigger/payload calls below; icd_ms uint32; scope OWNER,TARGET,CONSUMPTION | infer rank from ID and element from referenced encounter; level mapping1,1,3,3,5; no other defaults |
+| `Runtime Soul Roster`; headers `soul_id,display,element,source_id,effect_id,values,trigger,payload,icd_ms,icd_scope` | souls / soul_id; effects / (soul_id,effect_id) | ID refs; display:string; element:enum(KIM,MOC,THUY,HOA,THO) REQUIRED → Soul element; values exact decimal triple or integer triple; trigger/payload calls below; icd_ms uint32; scope OWNER,TARGET,CONSUMPTION | Rank is NORMAL/ELITE/BOSS from the exact soul.normal/soul.elite/soul.boss namespace; level mapping1,1,3,3,5; element has no default or encounter/monster derivation. |
 | `Spatial Payloads`; headers `spatial_id,geometry,origin,direction,timing,collision,monster_cap,player_cap,cap_scope` | spatial_effects / spatial_id | geometry closed calls DIRECTION_BOX(length:m,half_height:m),AREA_POSITION(radius:m); enums exactly table tokens; caps uint32 | cast_range=0; instantaneous; hostile-only; exact geometry quantization and stable selection above |
+
+The roster `element` emits the Soul definition's element field; payload damage elements are separately authored arguments and never inferred from it. Register `rule_versions.soul_element_bindings = 1` for this explicit-source contract. Validate exactly the rank-by-element counts below; neither row order nor display text supplies element. Source monster rank resolves in `monster_catalog.md`, boss source resolves in `boss_catalog.md`, and acquisition resolves in `drop_tables.md`.
 
 Call grammar: `NAME(arg,...)`, sequence `;`, ARM embedded payload combination `+`; tokens case-sensitive, no English interpretation. Numbers exact decimals→signed bp except MP/ms/count uint32. `v` row-selected value; `level_step`0,1,2; only expressions `0.02+0.01*level_step`, `4000+500*level_step` allowed. Exhaustive trigger dispatch: HP_DAMAGE,CRIT,REWARD_ELIGIBLE_KILL,VOLUNTARY_LAND,VOLUNTARY_TRAVEL_WIDTH,HOSTILE_HP_DAMAGE_TAKEN,HOSTILE_SHIELD_BREAK,TARGET_CONTROL_OR_RECOVERY take no args; TARGET_PRE_HP_GE,CROSS_HP_BELOW,HOSTILE_HP_DAMAGE_TAKEN_GE take ratio; ACCEPT_TAG,COMPLETE_TAG,TARGET_TAG take one stable tag; APPLY_STATUS/APPLY_DISPLACEMENT/APPLY_OWN_DOT/ACTIVE_TAGS take nonempty listed enum set; DISTINCT_ACTIONS_SAME_TARGET,DISTINCT_DAMAGING_ACTIVE_IDS take count+window_ms; ACTION_DISTINCT_HOSTILES count; STATIONARY duration_ms. TARGET_CONTROL_OR_RECOVERY is exactly ROOT,SLOW,FREEZE,STUN or active PULL/KNOCKBACK recovery. Travel threshold is physics character collider width, accumulated voluntary path since last arm; forced displacement neither counts nor preserves stationary buff.
 
@@ -98,11 +103,17 @@ Acquiring a Soul and progressing it are separate operations. A newly acquired So
 Reject:
 - source monster/elite/boss absent from owning catalog,
 - rank/source mismatch,
+- missing/unknown/NONE Soul element, a Soul element inferred from source combat element/region, or a rank-by-element count differing from Element Count Validation,
 - missing repeat acquisition table,
 - BOSS Soul without matching guaranteed first-clear source,
 - trade/auction-enabled Soul,
 - selector prose such as "area-type" or "movement-type" when the canonical `AREA`/`MOVEMENT` skill tag exists,
 - effect referencing unknown status/effect semantics.
+
+# Requirement IDs
+| ID | Requirement | Gate |
+|---|---|---|
+| `CAT-001` | Explicit element binding and fail-closed distribution validation (§ Shared Rules / Compiler Source Schema / Element Count Validation) | IMP-003, IMP-004, IMP-031 |
 
 # Invariants
 ```text
@@ -110,6 +121,7 @@ NORMAL = 15
 ELITE = 7
 BOSS = 3
 TOTAL = 25
+each Soul element = explicit KIM/MOC/THUY/HOA/THO; exactly 5 per element
 all 25 acquisition references resolve
 Boss Soul first eligible clear = guaranteed once per character
 Soul EXP owner = soul_contracts.md

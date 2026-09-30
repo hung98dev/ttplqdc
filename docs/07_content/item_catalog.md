@@ -23,7 +23,7 @@ The source below uses the registered Markdown grammar in `../06_data/content_aut
 
 ### Definition Families and Fields
 
-Registered level-1 families are exactly `Enhancement Support Items`, `Recovery Consumables`, `Engagement & Exploration Items`, `Cosmetic Redemption Material`, `Bonus Progression Books`, `Spirit Beast Materials (Linh Đan)`. Only `item.*` level-2 identities inside those families emit item records; fishing-table headings do not. Definition fields are exhaustive; unknown fields reject. Display and identity_note are presentation metadata excluded from gameplay hash, not identity.
+Registered level-1 families are exactly `Enhancement Support Items`, `Recovery Consumables`, `Engagement & Exploration Items`, `Cosmetic Redemption Material`, `Bonus Progression Books`, `Spirit Beast Materials (Linh Đan)`. Only `item.*` level-2 identities inside those families emit item records; fishing-table headings do not. Definition fields are exhaustive; unknown fields reject. `display` and `identity_note` are registered semantic string fields included in each canonical item definition and the full `content_revision`, although neither is stable identity or executable behavior. Apply the authoring contract's NFC string normalization and preserve interior string content. Unregistered explanation sentences remain excluded. Register `rule_versions.item_definition_strings = 1` for this field/hash contract.
 
 | field | type / range | absent default |
 |---|---|---|
@@ -39,6 +39,10 @@ Registered level-1 families are exactly `Enhancement Support Items`, `Recovery C
 | tier | enum(T1,T2,T3,T4,T5,T6), nullable | null outside the regional material table |
 | display | string | REQUIRED from Display source |
 | identity_note | string, nullable | null outside the regional material table |
+
+Changing an emitted `display` or non-null `identity_note` changes the canonical definition and full-bundle revision without renaming `item_id`; null `identity_note` is serialized explicitly. Reordering independent regional material rows or sibling item headings, varying table-cell margins or the optional scalar backtick pair permitted by the source grammar, or editing an unregistered `Use:` explanation does not change resolved fields or revision. The registered `Display: **<text>**` wrapper remains required. Unicode-equivalent NFC/NFD source spellings normalize to identical semantic strings; real interior text/whitespace changes remain semantic.
+
+**CAT-003 — Full-revision item strings:** emitted `display` and `identity_note` participate in the full canonical semantic revision. Mutating either normalized string changes the resolved item definition/revision while preserving `item_id`; independent source reordering, source formatting and Unicode-canonical-equivalent string spellings preserve output/revision. An invalid candidate never replaces the prior active revision.
 
 ### Use Payload Fields
 
@@ -595,6 +599,11 @@ Static/runtime validation must preserve the distinction between base item bindin
 - using a bound-shop Bùa is legal for its owning character,
 - bound-shop Bùa cannot enter trade, Auction, Guild Storage, or account storage,
 - ACCOUNT_BOUND items cannot be transferred between characters on the same account (ADR-0029).
+
+# Requirement IDs
+| ID | Requirement | Gate |
+|---|---|---|
+| `CAT-003` | Registered emitted definition strings participate in the full semantic revision (§ Definition Families and Fields) | IMP-003, IMP-004 |
 
 # Invariants
 ```text

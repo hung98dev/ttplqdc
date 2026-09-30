@@ -154,7 +154,7 @@ The following is identity guidance for content authors — designers building cl
 |---|---|---|
 | `HEAL_REDUCTION` | MOC | MOC already owns `HEAL_REDUCTION` as a core proc (see Combat Cadence table); HEAL_REDUCTION as a secondary-roll stat reinforces MOC as the anti-sustain class |
 | `LIFESTEAL` | KIM | KIM already owns conditional lifesteal (`kiem_y_bat_diet`); LIFESTEAL as an equipment stat is KIM-flavoured |
-| `ABSORB` | THO | THO already owns shields (`tho_giap`, `son_bich`, `hau_tho`); ABSORB shield creation sits in THO-space |
+| `ABSORB` | THO | THO already owns shields (`tho_giap`, `hau_tho`) and Sơn Bích's blocking barrier; ABSORB shield creation sits in THO-space |
 | `REFLECT` | THUY | THUY already has on-melee-hit retaliation via `bang_giap_tam` (CHILL reflect); REFLECT neighbours that mechanic |
 
 This alignment expresses the four-stat interlock from the design intent: MOC becomes the anti-sustain class (counters KIM lifesteal), THO's absorb shields are immune to MOC heal reduction, and THUY reflect punishes melee pressure. Content authors should lean on this alignment to reinforce class identity, but it is not a constraint on item generation or player choice.

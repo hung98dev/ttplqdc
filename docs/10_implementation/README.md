@@ -16,10 +16,11 @@ No task is `DONE`. Do not infer completed code from a planned path, test name, o
 | Role | Profile | Duty |
 |---|---|---|
 | Contract Owner | `spec-owner` | resolves blockers; only role that edits protected specs/ADRs (spec-change PRs) |
-| Coordinator | `coordinator` | selects and claims tasks, unclaims stale claims, keeps concurrency within the limit of 8 tasks, grants the merge slot, records/resolves `OPS-xxx` |
+| Coordinator | `coordinator` | orchestrates on-demand plan and separate source audit before fresh DoR/claims; dispatches complete audited task plans; unclaims stale claims, keeps limits of 8 tasks/4 client, grants the merge slot, records/resolves `OPS-xxx`; no code/spec writes |
 | Implementer | `backend-engineer`, `unity-engineer`, `integration-engineer`, `asset-producer`, `debugger` | implements one claimed task until its PR merges or it is blocked |
 | Conformance Reviewer | `reviewer` + App `thinhthan-policy-reviewer` | reviews every PR and posts the `policy-review` check run |
-| Verifier | `verifier` | read-only verification matrix |
+| Wave Planner | `wave-planner` | read-only, credential-free canonical session planning; accounts for all tasks, details eligible new-ready or explicit same-claim resumes only, never implements or self-approves |
+| Verifier | `verifier` (diff checks), `wave-plan-auditor` (plan checks) | execution verification matrix; separate plan-auditor session source-audits plans under §2a with read/grep/glob only, returning exact per-task verdicts and `dispatchable_task_ids` without credentials or `policy-review` |
 | Repository owner | human | Owner Setup and fixing the environment behind `OPS-xxx` (closes the `ops-blocked` issue; never edits files) |
 
 ## Read Order for an Implementation Agent
@@ -74,7 +75,11 @@ DONE        -> BLOCKED                a dependency was reverted (revert/, blocke
 
 ## Execution Entry Point
 
-The coordinator selects the lowest topological index (`task_queue.md` § Topological Execution Order) among ready tasks, up to the concurrency limit (8 tasks, ADR-0075). A task may run before `IMP-068` iff `IMP-068` is not in its transitive `depends_on`; such tasks run in bootstrap mode (`audit_gates.md`). Wave prompts in `wave_execution_prompts.md` group the same order.
+Owner wave commands invoke `/run-wave` → `/plan-wave` → read-only planner → different original-source auditor → fresh DoR → new claim or verified same-claim resume → complete handoff to `/run-imp-task`. No owner plan approval. Missing/incomplete/failed/stale plans or audits block dispatch. `wave_execution_prompts.md` § On-Demand Planning Contract and `agent_execution_protocol.md` §2a own the format/eligibility/freshness, including the precise resume status exception. Plans are session artifacts, not prewritten playbooks. Account for all wave rows; detail only new-ready or explicit eligible same-claim resumes. No dispatchable tasks means report reasons without claim/code or switching waves; planning Findings never allocate implementation BLKs.
+
+Before each claim/resume, compare fresh `main` and execution preconditions with audited inputs: relevant source/packet/API, dependency-output, blocker or setup changes require affected task plans to be regenerated and re-audited. Dispatch only exact `dispatchable_task_ids` with matching per-task `PASS` and fresh DoR, lowest topological index first (`task_queue.md` § Topological Execution Order), within 8 tasks/4 client and canonical path/resource constraints (ADR-0075, ADR-0078). Preserve IMP-000's in-implementation-PR claim exception; a task may run before `IMP-068` iff `IMP-068` is not in its transitive `depends_on`, in bootstrap mode (`audit_gates.md`). Planning never replaces existing PR review, CI/evidence, merge-slot or two-phase rules.
+
+Standalone "plan wave N" / "lập kế hoạch wave N" invokes `/plan-wave` only on a read-only `main` snapshot and returns a session plan plus separate source audit. It does not claim, write statuses/specs, branch/open a draft PR, run codegen or implement; both planning delegates are credential-free. Direct claimed-task execution retains its existing scope and readiness/claim rules.
 
 Open entries in `known_blockers.md` must be resolved before dependent tasks complete. `IMP-068` cannot pass Gate A while a contract-conflict blocker is open.
 

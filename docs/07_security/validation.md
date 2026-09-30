@@ -26,6 +26,8 @@ Every inbound operation applies applicable layers in this order:
 7. transaction/commit constraints, including repeated owner/precondition checks and unique operation insertion.
 
 An authenticated in-horizon retry with the same key and fingerprint returns/reconstructs its committed result before mutable predicates; depleted materials, changed enhancement level, moved range, changed target/state or later suspension must not turn that recorded outcome into a new failure. A different fingerprint returns `OPERATION_CONFLICT`. New operations still apply every current feature restriction and commit-time precondition. Sequence checks for ephemeral intents remain on their normal path. Failure stops before mutation. An ambiguous operation that has expired must not be automatically resubmitted with a new ID; the client reconciles authoritative state/history and asks for a deliberate new user action.
+Private local `TRUSTED_JOURNAL_REPLAY` is a separate validated composition-root capability, never a public handler flag. It follows `../06_data/ids.md` § Trusted Queued-Client Replay after protected-file codec/owner/source/fingerprint validation and erasure fencing: retained COMMITTED receipts reconstruct exact outcomes after the horizon; expired uncommitted ADMITTED receipts terminalize without value writes. Missing/ambiguous proof stops readiness. The live network/HTTPS pipeline above still rejects expired UUIDv7 at layer 4; Edge/client/admin cannot select private replay.
+
 
 ### HTTPS Size Boundary
 Limits are UTF-8/wire bytes, enforced before JSON/JWS/base64 parsing on both public and private listeners:

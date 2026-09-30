@@ -157,7 +157,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../00_context/technology_versions.md`, `../00_context/constraints.md`, `../00_context/glossary.md`, `../00_context/non_goals.md`, `../00_context/vision.md`, `../04_architecture/system_overview.md`, `../04_architecture/backend.md`, `repository_layout.md`, `architecture_conformance.md`, `../09_testing/test_and_release_evidence.md`, `audit_gates.md`, `agent_execution_protocol.md`, `engineering_conventions.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/capacity.md`]
-adrs: [`0006-unity-go-postgresql-stack.md`, `0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0075-parallel-unity-jobs-planned-modes-and-pro-concurrency.md`, `0077-ci-critical-path-cheap-unity-retries-and-two-phase-verifier.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
+adrs: [`0006-unity-go-postgresql-stack.md`, `0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0075-parallel-unity-jobs-planned-modes-and-pro-concurrency.md`, `0077-ci-critical-path-cheap-unity-retries-and-two-phase-verifier.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`, `0079-readiness-contract-closure.md`]
 depends_on: []
 owned_paths: [`.editorconfig`, `.gitignore`, `.gitattributes`, `.github/pull_request_template.md`, `.github/workflows/verify.yml`, `scripts/verify.ps1`, `server/go.mod`, `server/go.sum`, `server/cmd/verify/`, `server/internal/conformance/gates/`, `server/internal/stackpin/`, `client/Packages/`, `client/ProjectSettings/`, `client/Assets/Plugins/Google.Protobuf/`, `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/DefaultVolumeProfile.asset.meta`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset.meta`, `client/Assets/Scripts/Core/ThinhThan.Core.asmdef`, `client/Assets/Scripts/Net/ThinhThan.Net.asmdef`, `client/Assets/Scripts/Systems/ThinhThan.Systems.asmdef`, `client/Assets/Scripts/UI/ThinhThan.UI.asmdef`, `client/Assets/Scripts/App/ThinhThan.App.asmdef`, `client/Assets/Tests/EditMode/ThinhThan.Tests.EditMode.asmdef`, `client/Assets/Tests/PlayMode/ThinhThan.Tests.PlayMode.asmdef`, `client/Assets/Scripts/Protocol/ThinhThan.Protocol.asmdef`, `client/Assets/Scripts/Core/Assets/ThinhThan.Core.Assets.asmdef`, `client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef`, `client/Assets/Scripts/Core/Localization/ThinhThan.Core.Localization.asmdef`, `client/Assets/Scripts/Core/Localization/Editor/ThinhThan.Core.Localization.Editor.asmdef`, `client/Assets/Scripts/Core/Geometry/Editor/ThinhThan.Core.Geometry.Editor.asmdef`, `client/Assets/Tests/EditMode/AssemblyGraph/`, `client/Assets/Scripts/Protocol/csc.rsp`, `client/Assets/Scripts/Core/csc.rsp`, `client/Assets/Scripts/Core/Assets/csc.rsp`, `client/Assets/Scripts/Core/Assets/Editor/csc.rsp`, `client/Assets/Scripts/Core/Localization/csc.rsp`, `client/Assets/Scripts/Core/Localization/Editor/csc.rsp`, `client/Assets/Scripts/Core/Geometry/Editor/csc.rsp`, `client/Assets/Scripts/Net/csc.rsp`, `client/Assets/Scripts/Systems/csc.rsp`, `client/Assets/Scripts/UI/csc.rsp`, `client/Assets/Scripts/App/csc.rsp`, `client/Assets/Tests/EditMode/csc.rsp`, `client/Assets/Tests/PlayMode/csc.rsp`, `server/internal/conformance/style/`, `.devin/scripts/wait_job.sh`]
 forbidden_paths: [`server/cmd/server/`]
@@ -167,10 +167,10 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 
 ## Change
 Materialize the canonical versions from `../00_context/technology_versions.md` and the physical source tree from `repository_layout.md` into the native project lock points before dependent IMP tasks start.
-Materialize the ADR-0059 code-quality baseline: an asmdef-scoped `csc.rsp` (`-warnaserror+` + `-nullable:enable`) beside every `ThinhThan.*` asmdef with no root `client/Assets/csc.rsp` (BLK-007 — a global response file would reach `Library/PackageCache` package sources), root `.editorconfig`/`.gitattributes`, the verifier's C# style check and Go `gofmt`/`go vet`/`staticcheck` wiring, and the client player-settings baseline of `../04_architecture/client_performance.md` § Smoothness by Construction item 3.
+Materialize the ADR-0059 code-quality baseline: an asmdef-scoped `csc.rsp` (`-warnaserror+` + `-nullable:enable`) beside every `ThinhThan.*` asmdef with no root `client/Assets/csc.rsp` (a global response file would reach `Library/PackageCache` package sources), root `.editorconfig`/`.gitattributes`, the verifier's C# style check and Go `gofmt`/`go vet`/`staticcheck` wiring, and the client player-settings baseline of `../04_architecture/client_performance.md` § Smoothness by Construction item 3.
 
 ## Acceptance
-- materialized bootstrap paths strictly conform to `repository_layout.md`; `proto/`, migrations, generated outputs, and feature paths remain absent while every packet owning a path at or under them is `NOT_STARTED` or `BLOCKED`; once an owning packet is `IN_PROGRESS` or `DONE` the path exists legitimately and `Q0.control.diff` scopes further writes (BLK-002),
+- materialized bootstrap paths strictly conform to `repository_layout.md`; `proto/`, migrations, generated outputs, and feature paths remain absent while every packet owning a path at or under them is `NOT_STARTED` or `BLOCKED`; once an owning packet is `IN_PROGRESS` or `DONE` the path exists legitimately and `Q0.control.diff` scopes further writes,
 - Unity `client/ProjectSettings/ProjectVersion.txt` (6000.6.1f1) and `client/Packages/manifest.json` are hand-authored to the matrix (incl. Addressables `2.11.2`); `client/Packages/packages-lock.json`, `client/ProjectSettings/*.asset` and every `.meta` come from the editor's materialization and are committed byte-for-byte (`agent_execution_protocol.md` §4b, ADR-0072); the lock matches the matrix,
 - Go `server/go.mod` (module `thinhthan`, Go 1.27.1), `server/go.sum`, and CI use the pinned Go/direct-module versions,
 - `scripts/verify.ps1` is PowerShell 7 (`pwsh` 7.6.6), runs unchanged on Linux and Windows, calls `server/cmd/verify` and accepts `-UnityResultsDir` (CI) and `-LocalDeferMissing` (local only: a missing Unity editor, PostgreSQL, Windows-only binary or cgo C compiler becomes `DEFERRED(local-missing)` in `verify-report.json`; on Linux without `THINHTHAN_TEST_PG_DSN` it starts the pinned `postgres:18.6` digest with `docker run` when Docker exists); CI never passes `-LocalDeferMissing`; proto drift is owned by IMP-061,
@@ -178,7 +178,7 @@ Materialize the ADR-0059 code-quality baseline: an asmdef-scoped `csc.rsp` (`-wa
 - `client/ProjectSettings/` (materialized, then edited) carries the entries of `repository_layout.md` § ProjectSettings Baseline (Addressables and Localization config objects, URP asset slot, tag `ServerGeometry`, player/Physics2D settings); only those referenced assets use path-derived GUIDs, all other GUIDs are editor-generated; a second materialization run reports no change; later packets never edit ProjectSettings except `QualitySettings.asset` (IMP-095),
 - `.github/pull_request_template.md` carries the PR report fields of `agent_execution_protocol.md` §4,
 - `verify.yml` triggers on `on: pull_request` only (no `pull_request_target` until the IMP-068 cutover) and runs the Bootstrap Mode jobs `Q0-Q6 verify (Linux)` on `ubuntu-24.04` and `Q0-Q6 verify (Windows)` on `windows-2022` in parallel, the Windows required job joined with its parallel `Unity (Windows)` job; `Q0-Q6 verify (Windows)` fetches `verify-report-linux` with the pinned `actions/download-artifact` and uploads the merged `evidence` artifact (ADR-0058, ADR-0072, ADR-0075, ADR-0078); a gate whose owner task is not `DONE` on `main` or in the PR head reports `SKIP(owner-not-done)` (`audit_gates.md`, ADR-0068),
-- `audit_gates.md` § Job Preconditions in every job, in order: the fork guard (first step; on `pull_request`/`pull_request_target` it fails a fork PR with `external PRs not accepted` before checkout, cache or secrets; skipped on `push`; no job-level `if`), the freeze check (`vars.AUTO_MERGE_FROZEN == 'true'` fails with `AUTO_MERGE_FROZEN` unless the head branch starts with `revert/` or `ops/`), and Unity materialization (`Unity (Windows)` opens `client/` even when every Unity gate is `SKIP`, including in this task's own PR; licence activation retried up to 5 times, 60 s apart; every Unity editor invocation runs with network egress — no `--network=none` or equivalent isolation, the licensing token refresh needs it (BLK-008); invocations pass `-batchmode`; functional tests pass `-nographics` and write `-logFile` to `artifacts/unity-tests/<Mode>-editor.log`; the test verdict is the `Test run completed. Exiting with code 0` completion line in that log plus a `Passed` results XML (BLK-013); a results XML is final and not retried (ADR-0077); created/modified files under `client/` are uploaded as `unity-materialized-windows` and the job fails with `commit unity-materialized`); steps use `shell: pwsh`; Unity runs natively only on `windows-2022` (ADR-0073, ADR-0078), with the licence from secrets and `client/Library` cached for Windows; Unity steps are path-scoped on pull requests and report `SKIP(no-client-change)` when the diff touches no `gates.UnityRelevantPattern` path (ADR-0073),
+- `audit_gates.md` § Job Preconditions in every job, in order: the fork guard (first step; on `pull_request`/`pull_request_target` it fails a fork PR with `external PRs not accepted` before checkout, cache or secrets; skipped on `push`; no job-level `if`), the freeze check (`vars.AUTO_MERGE_FROZEN == 'true'` fails with `AUTO_MERGE_FROZEN` unless the head branch starts with `revert/` or `ops/`), and Unity materialization (`Unity (Windows)` opens `client/` even when every Unity gate is `SKIP`, including in this task's own PR; licence activation retried up to 5 times, 60 s apart; every Unity editor invocation runs with network egress — no `--network=none` or equivalent isolation, the licensing token refresh needs it; invocations pass `-batchmode`; functional tests pass `-nographics` and write `-logFile` to `artifacts/unity-tests/<Mode>-editor.log`; the test verdict is the `Test run completed. Exiting with code 0` completion line in that log plus a `Passed` results XML; a results XML is final and not retried (ADR-0077); created/modified files under `client/` are uploaded as `unity-materialized-windows` and the job fails with `commit unity-materialized`); steps use `shell: pwsh`; Unity runs natively only on `windows-2022` (ADR-0073, ADR-0078), with the licence from secrets and `client/Library` cached for Windows; Unity steps are path-scoped on pull requests and report `SKIP(no-client-change)` when the diff touches no `gates.UnityRelevantPattern` path (ADR-0073),
 - PostgreSQL 18.6: the Linux job uses the digest-pinned `postgres:18.6` service container, the Windows job the EDB binaries; both export `THINHTHAN_TEST_PG_DSN`; migrations and apply/down/apply remain owned by IMP-005/Q5,
 - unlisted/floating/prerelease core dependency fails CI,
 - each job first installs `pwsh`, `gh`, `jq` and Git LFS from the pinned release assets with SHA-256 verification and prepends them to `PATH` (`../00_context/technology_versions.md`); preinstalled runner copies are never invoked; all jobs checkout with `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`; only `Unity (Windows)` restores cached `.git/lfs` objects then runs `git lfs pull` for missing objects (ADR-0078),
@@ -196,7 +196,7 @@ Materialize the ADR-0059 code-quality baseline: an asmdef-scoped `csc.rsp` (`-wa
 - player settings: incremental GC on, Android Optimized Frame Pacing on, Physics2D `simulationMode = Script` (asserted by IMP-095 `PERF-019`).
 
 ## Tests
-- `server/internal/stackpin/versions_test.go`: exact toolchain/dependency/action pins (incl. staticcheck `v0.8.1`), image digests, runner labels (`ubuntu-24.04`, `windows-2022`; no `-latest`/self-hosted), forbidden floating/unlisted dependencies, TestCscRspScopedPerAsmdef (BLK-007).
+- `server/internal/stackpin/versions_test.go`: exact toolchain/dependency/action pins (incl. staticcheck `v0.8.1`), image digests, runner labels (`ubuntu-24.04`, `windows-2022`; no `-latest`/self-hosted), forbidden floating/unlisted dependencies, TestCscRspScopedPerAsmdef.
 - `server/internal/conformance/gates/workflow_test.go`: TestLinuxAndWindowsJobsRequired, TestForkGuardIsFirstStep, TestNoJobLevelIfOnRequiredJobs, TestSecretsOnlyAfterForkGuard.
 - `server/internal/conformance/gates/gates_test.go`: initial Q0/Q1 wrapper-to-verifier wiring, `SKIP(owner-not-done)` rules and fail-closed mutation fixtures.
 - `client/Assets/Tests/EditMode/AssemblyGraph/AssemblyGraphTests.cs`: TestAsmdefReferencesAcyclic, TestProtocolReferencesNoProjectAssembly, TestMandatoryAssembliesDeclared, TestReferenceGraphMatchesLayout.
@@ -211,9 +211,9 @@ Materialize the ADR-0059 code-quality baseline: an asmdef-scoped `csc.rsp` (`-wa
 - `server/internal/conformance/gates/unityplan_test.go` (ADR-0075): TestPlanUnityModes; `server/internal/conformance/gates/workflow_test.go` (ADR-0075, ADR-0078): TestWindowsRequiredJobJoinsUnityJob, TestUnityTestModesFromVerifierPlan, TestEvidenceBuiltInWindowsRequiredJob, TestLinuxJobIsUnityFree.
 - `server/internal/conformance/gates/gates_test.go` (ADR-0072): TestBlockAndOpsPrFastPath, TestDoneWithoutManifestAllowedOnHead, TestMergedHeadRequiresManifest, TestTwoPhaseListIncludesImp083, TestLocalDeferMissingNeverInCi.
 - `server/internal/stackpin/versions_test.go` (ADR-0072): TestGoogleProtobufNupkgSha256, TestEdbZipSha256, TestDownloadArtifactAndGitLfsPins.
-- `server/internal/conformance/gates/gates_test.go` (BLK-001): TestImp000OwnedPathsCoverMaterializedAssets — IMP-000 `owned_paths` cover `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset` and their `.meta`.
-- `server/internal/conformance/gates/gates_test.go` (BLK-003): TestGoModDeclaresProtobufRequire — `server/go.mod` declares `require google.golang.org/protobuf v1.36.12` (the `GoModulePins` pin) so generated protocol code compiles without implementers editing lockfiles. Amended by BLK-015: accepts both the single-line `require google.golang.org/protobuf v1.36.12` and a `require ( ... )` block entry, since `go mod tidy` may rewrite the file into block form.
-- `server/internal/conformance/gates/gates_test.go` (BLK-002, BLK-007, BLK-012, BLK-015): TestBootstrapAbsentPathsOwnerAware, TestBlocksLineCaseInsensitive, TestGeneratedBoundaryAllowsCscRsp, TestImp064OwnedPathsCoverLocalizationRegistry, TestImp005OwnedPathsCoverModuleLockfiles, TestSchemaSnapshotFileExemptFromNumberedMigrationGate.
+- `server/internal/conformance/gates/gates_test.go`: TestImp000OwnedPathsCoverMaterializedAssets — IMP-000 `owned_paths` cover `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset` and their `.meta`.
+- `server/internal/conformance/gates/gates_test.go`: TestGoModDeclaresProtobufRequire — `server/go.mod` declares `require google.golang.org/protobuf v1.36.12` (the `GoModulePins` pin) so generated protocol code compiles; both the single-line require and a `require ( ... )` block entry are valid because `go mod tidy` may rewrite the file into block form.
+- `server/internal/conformance/gates/gates_test.go`: TestBootstrapAbsentPathsOwnerAware, TestBlocksLineCaseInsensitive, TestGeneratedBoundaryAllowsCscRsp, TestImp064OwnedPathsCoverLocalizationRegistry, TestImp005OwnedPathsCoverModuleLockfiles, TestSchemaSnapshotFileExemptFromNumberedMigrationGate.
 - `server/internal/conformance/gates/workflow_test.go` (ADR-0077, ADR-0078): TestWindowsXmlFailureCannotBecomePassOnRetry (failed result XML remains final), TestMissingOrMalformedWindowsXmlFailsClosed, TestRequiredJobsRunPreUnityPhase, TestPrRunCancellationGroup.
 
 generated_artifacts: [editor-materialized `client/Packages/packages-lock.json`, `client/ProjectSettings/*.asset`, `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset`, `.meta` files (committed from `unity-materialized-windows`)]
@@ -228,19 +228,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../06_data/ids.md`, `../06_data/config.md`, `../00_context/technology_versions.md`]
-adrs: [`0001-content-revision-contract.md`, `0043-spirit-beast-instance-identity.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+specs: [`../06_data/ids.md`, `../06_data/config.md`, `../00_context/technology_versions.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
+adrs: [`0001-content-revision-contract.md`, `0043-spirit-beast-instance-identity.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-000]
 owned_paths: [`server/internal/core/id/`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [stable-ID grammar, UUID rules, immutable content-grant namespace]
 contract_outputs: [validated IDs, UUID v4/v5/v7 primitives, canonical SHA-256 content revision]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/ids.md, docs/06_data/data_model.md, docs/06_data/database.md, docs/05_network/protobuf_conventions.md, docs/06_data/save_rules.md, docs/08_scale_ops/deployment.md, docs/07_security/personal_data_register.md, docs/10_implementation/repository_layout.md, docs/10_implementation/spec_traceability.md]
 
 ## Change
 Implement stable entity/content/schema/operation IDs and content revision identity.
 
 ## Acceptance
+- JRN-004: queued/replayed source identities retain original incarnation/counter/tick and operation UUID; world-scoped commands use the reserved WORLD_OWNER_ID, not a partition-derived owner.
 - static IDs follow the canonical ASCII namespace rules from `../06_data/ids.md`,
 - durable entity IDs remain server-generated UUIDv4 using `crypto/rand`; client operation IDs are RFC 9562 UUIDv7 with 48-bit estimated authenticated server UTC milliseconds and 74 cryptographically random bits; nil/non-v7/malformed requests return `PROTOCOL_MALFORMED` (`../06_data/ids.md`, ADR-0079).
 - runtime entity IDs are owner/epoch-scoped uint64 values,
@@ -251,6 +252,7 @@ Implement stable entity/content/schema/operation IDs and content revision identi
 - content_revision is exactly 64 lowercase hexadecimal SHA-256 characters over the complete canonical semantic payload, never prefixed/numeric; owner activation creates a fresh crypto-v4 incarnation and source counter starts at 1 without reuse; source-event UUIDv5 identity retains incarnation, counter and tick through retry/journal replay.
 
 ## Tests
+- `server/internal/core/id/id_test.go`: TestJournalReplayRetainsSourceIdentity, TestWorldOwnerUsesReservedConstant (JRN-004).
 - `server/internal/core/id/id_test.go`: TestUUIDv4EntityIdentity, TestUUIDv7OperationTimestampAndCryptoRandomness, TestParseUUIDRejections, TestUUIDv5DeterministicContentGrant, TestValidateStaticContentID, TestRuntimeEntityID, TestContentRevisionDiagnosticContext, TestOperationPayloadConsistency, TestIncarnationRecreationSameCounterTickDifferentOperation, TestJournalReplayRetainsSourceIdentity.
 - `server/internal/core/id/job_id_test.go`: `TestServerJobIdDeterministic`, `TestServerJobNamespacePinned` (ADR-0070).
 
@@ -267,7 +269,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/concurrency.md`, `../06_data/config.md`, `../09_testing/gameplay.md`]
-adrs: [`0007-single-owner-fixed-step-simulation.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0053-durable-contract-reconciliation.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`]
+adrs: [`0007-single-owner-fixed-step-simulation.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0053-durable-contract-reconciliation.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001]
 owned_paths: [`server/internal/core/rng/`]
 forbidden_paths: [`server/cmd/server/`]
@@ -299,14 +301,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/skills.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/README.md`, `../07_content/item_catalog.md`, `../07_content/progression_route.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../07_content/class_skill_catalog.md`]
-adrs: [`0001-content-revision-contract.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../01_gameplay/skills.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/README.md`, `../07_content/item_catalog.md`, `../07_content/progression_route.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../07_content/class_skill_catalog.md`, `../07_content/soul_catalog.md`]
+adrs: [`0001-content-revision-contract.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001, IMP-002]
 owned_paths: [`server/cmd/compiler/`, `server/internal/config/`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [24 Markdown catalogs, authoring schema, stable IDs, deterministic RNG, 45 primary skill geometries, typed secondary geometries]
 contract_outputs: [CandidateSnapshot, content revision hash, compile diagnostics, compile report]
-consumers_checked: [docs/01_gameplay/skills.md, docs/02_world/maps_zones.md, docs/02_world/monsters.md, docs/02_world/bosses.md, docs/02_world/dungeons.md, docs/03_systems/pvp.md, docs/03_systems/guild_war.md, docs/04_architecture/physics_geometry_contract.md, docs/06_data/config.md, docs/06_data/content_authoring_contract.md, docs/07_content/class_skill_catalog.md, docs/07_content/integration_validation.md, docs/09_testing/gameplay.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/01_gameplay/skills.md, docs/02_world/maps_zones.md, docs/02_world/monsters.md, docs/02_world/bosses.md, docs/02_world/dungeons.md, docs/03_systems/pvp.md, docs/03_systems/guild_war.md, docs/04_architecture/physics_geometry_contract.md, docs/06_data/config.md, docs/06_data/content_authoring_contract.md, docs/07_content/class_skill_catalog.md, docs/07_content/integration_validation.md, docs/09_testing/gameplay.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/07_content/soul_catalog.md, docs/07_content/item_catalog.md, docs/03_systems/soul_contracts.md, docs/09_testing/backend.md, docs/09_testing/test_and_release_evidence.md, docs/10_implementation/spec_traceability.md]
 
 ## Change
 Compile static catalogs, finite expansions, references, enums, and shorthand.
@@ -318,10 +320,14 @@ Compile static catalogs, finite expansions, references, enums, and shorthand.
 - all 45 primary skill geometries and every secondary spatial effect compile from typed data,
 - skill geometry values, tags, and effect shapes satisfy ADR-0047 before a snapshot is emitted,
 - invalid reference rejects candidate.
+- CAT-001: all 25 Soul definitions emit the explicit owning element and exact rank distribution independently of source combat `NONE`; source/effect/acquisition references remain valid.
+- CAT-002: all 25 ACTIVE payloads resolve through the closed dispatch, including the sole barrier literal joined to its positive-lifetime primary geometry; invalid signatures/types reject before snapshot emission.
+- CAT-003: registered item display/identity-note mutations change the full revision without renaming IDs; independent source reorder and Unicode canonical equivalence preserve resolved output/revision.
 - two-phase gate task (`agent_execution_protocol.md` §5a): the implementation PR merges with status `IN_PROGRESS`; a follow-up status PR sets `DONE` with the `evidence` artifact of its own `verify.yml` run (ADR-0068).
 
 ## Tests
 - `server/cmd/compiler/compiler_test.go`: TestCompileAllCatalogs, TestEquipmentExpansion168, TestPortalExpansion52, TestEntitySizeProfileResolution, TestPlayableSpaceGeometryIndex, TestSkillGeometryRows45, TestSkillSecondaryGeometryCompile, TestSkillDisplacementTagConsistency, TestInvalidReferenceRejection.
+- `server/cmd/compiler/compiler_test.go`: TestSoulElementBindings25, TestSoulElementDoesNotInheritMonsterNone (CAT-001); TestAllActivePayloadConstructorsResolve, TestBarrierPayloadSignatureAndGeometry (CAT-002); TestRegisteredItemStringMutationChangesRevision, TestItemSourceReorderAndUnicodeCanonicalEquivalence (CAT-003).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -335,29 +341,33 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md`, `../07_content/integration_validation.md`, `../07_content/balance_validation.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/progression_route.md`, `../04_architecture/physics_geometry_contract.md`]
-adrs: [`0001-content-revision-contract.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md`, `../07_content/integration_validation.md`, `../07_content/balance_validation.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/progression_route.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/soul_catalog.md`, `../07_content/item_catalog.md`]
+adrs: [`0001-content-revision-contract.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003]
 owned_paths: [`server/internal/config/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
 contract_inputs: [CandidateSnapshot, integration rules, balance gates, prior active snapshot]
 contract_outputs: [atomic activation decision, immutable active snapshot, rejection diagnostics]
-consumers_checked: [docs/01_gameplay/skills.md, docs/02_world/maps_zones.md, docs/02_world/monsters.md, docs/02_world/bosses.md, docs/02_world/dungeons.md, docs/03_systems/pvp.md, docs/03_systems/guild_war.md, docs/04_architecture/physics_geometry_contract.md, docs/06_data/config.md, docs/06_data/content_authoring_contract.md, docs/07_content/class_skill_catalog.md, docs/07_content/integration_validation.md, docs/07_content/balance_validation.md, docs/09_testing/gameplay.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/01_gameplay/skills.md, docs/02_world/maps_zones.md, docs/02_world/monsters.md, docs/02_world/bosses.md, docs/02_world/dungeons.md, docs/03_systems/pvp.md, docs/03_systems/guild_war.md, docs/04_architecture/physics_geometry_contract.md, docs/06_data/config.md, docs/06_data/content_authoring_contract.md, docs/07_content/class_skill_catalog.md, docs/07_content/integration_validation.md, docs/07_content/balance_validation.md, docs/09_testing/gameplay.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/07_content/soul_catalog.md, docs/07_content/item_catalog.md, docs/03_systems/soul_contracts.md, docs/09_testing/backend.md, docs/10_implementation/spec_traceability.md]
 
 ## Change
 Execute `../07_content/integration_validation.md` + `balance_validation.md` before activation.
 
 ## Acceptance
+- Activation/rollback preserves every immutable revision pinned by queued/in-flight/journal commands or unsettled boss reward slots, even if neither active nor previous; release only after terminal disposition.
 - candidate activation is atomic,
 - invalid revision leaves previous valid revision active,
 - missing/mismatched size profile, bounds, topology, scene key or geometry export rejects activation,
 - out-of-band skill reach, viewport envelope overflow, prose-only secondary geometry, or displacement tag/effect mismatch rejects activation,
-- `class_skill_catalog.md` validation assertions 4 and 19-21 (cooldown bands and phase sums, status template completeness, class damage element, tag/payload and target-group consistency) reject activation,
+- `class_skill_catalog.md` validation assertions 4 and 19–23 (cooldown bands and phase sums, status templates, class damage element, tag/target consistency and closed barrier payload) reject activation,
 - hard balance failure rejects activation.
+- CAT-001/CAT-002/CAT-003: invalid explicit Soul element/distribution, barrier binding or incomplete registered item string payload rejects the whole candidate and preserves the exact prior immutable snapshot/revision.
 - two-phase gate task (`agent_execution_protocol.md` §5a): the implementation PR merges with status `IN_PROGRESS`; a follow-up status PR sets `DONE` with the `evidence` artifact of its own `verify.yml` run (ADR-0068).
 
 ## Tests
+- `server/internal/config/activation_test.go`: TestActivationRetainsNonPreviousPinnedRevision, TestRollbackRetainsOriginalBossRewardRevision, TestRevisionReleasedOnlyAfterLastRecoveryReferenceDisposed.
 - `server/internal/config/activation_test.go`: TestAtomicActivationLifecycle, TestInvalidRevisionPreservesPrevious, TestSpatialGeometryIntegrationRejection, TestSkillReachActivationRejection, TestSkillSecondaryGeometryRejection, TestSkillDisplacementTagRejection, TestSkillCooldownBandAndPhaseSumRejection, TestSkillStatusTemplateCompletenessRejection, TestSkillDamageElementRejection, TestSkillTagTargetGroupRejection, TestHardBalanceFailureRejection.
+- `server/internal/config/activation_test.go`: TestSoulElementCandidateRejectionPreservesPrevious (CAT-001), TestBarrierPayloadCandidateRejectionPreservesPrevious (CAT-002), TestIncompleteRegisteredItemStringPayloadRejectsActivation (CAT-003).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -371,14 +381,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../05_network/protocol.md`, `../05_network/messages.md`, `../05_network/errors.md`, `../05_network/protobuf_conventions.md`, `../05_network/synchronization.md`, `../05_network/versioning.md`, `repository_layout.md`]
-adrs: [`0008-client-network-transport-protocol.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0050-windows-only-ci-and-auto-merge.md`, `0054-wire-message-completion.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+specs: [`../05_network/protocol.md`, `../05_network/messages.md`, `../05_network/errors.md`, `../05_network/protobuf_conventions.md`, `../05_network/synchronization.md`, `../05_network/versioning.md`, `repository_layout.md`, `../06_data/ids.md`, `../06_data/save_rules.md`, `../08_scale_ops/deployment.md`, `../03_systems/soul_contracts.md`]
+adrs: [`0008-client-network-transport-protocol.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0050-windows-only-ci-and-auto-merge.md`, `0054-wire-message-completion.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-000]
-owned_paths: [`proto/thinhthan/v1/`, `proto/testdata/golden/`, `scripts/codegen.ps1`, `server/internal/protocol/v1/`, `server/internal/testing/protocol/`, `client/Assets/Scripts/Protocol/`, `client/Assets/Tests/EditMode/ProtocolParity/`]
+owned_paths: [`proto/thinhthan/v1/`, `proto/testdata/golden/`, `scripts/codegen.ps1`, `server/internal/protocol/v1/`, `server/internal/testing/protocol/`, `client/Assets/Scripts/Protocol/`, `client/Assets/Tests/EditMode/ProtocolParity/`, `proto/thinhthan/internal/v1/durable_journal.proto`, `server/internal/durable/journal/v1/`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [message registry, protocol/framing/version/error contracts, generator pins]
-contract_outputs: [nine proto schemas, one canonical Go generated package, C# generated registry, binary parity fixtures, drift result]
-consumers_checked: [AGENTS.md, docs/05_network/messages.md, docs/05_network/protobuf_conventions.md, docs/11_decisions/0008-client-network-transport-protocol.md, docs/10_implementation/repository_layout.md, docs/10_implementation/architecture_conformance.md, docs/10_implementation/engineering_conventions.md, server/internal/conformance/fences.go, server/internal/conformance/gates_test.go]
+contract_outputs: [nine network proto schemas, canonical Go/C# network outputs, Go-only internal typed journal schema/output, binary parity fixtures, drift result]
+consumers_checked: [AGENTS.md, docs/05_network/messages.md, docs/05_network/protobuf_conventions.md, docs/11_decisions/0008-client-network-transport-protocol.md, docs/10_implementation/repository_layout.md, docs/10_implementation/architecture_conformance.md, docs/10_implementation/engineering_conventions.md, server/internal/conformance/fences.go, server/internal/conformance/gates_test.go, docs/06_data/ids.md, docs/06_data/data_model.md, docs/06_data/database.md, docs/06_data/save_rules.md, docs/08_scale_ops/deployment.md, docs/07_security/personal_data_register.md, docs/10_implementation/spec_traceability.md, docs/03_systems/soul_contracts.md]
 
 ## Change
 - Author canonical .proto definitions in proto/thinhthan/v1/ adhering to docs/05_network/messages.md and protocol conventions.
@@ -389,6 +399,10 @@ consumers_checked: [AGENTS.md, docs/05_network/messages.md, docs/05_network/prot
 - Author the ADR-0060 additions: IDs 111..117, 208, 426..438, 507..515, 650..652, 814..818 and the completed field lists for 103, 200..207, 304, 400..409, 504/505, 700..709, 730..744, 802, 808, 628, 632; every new `errors.md` code in the generated error enum.
 
 ## Acceptance
+- JRN-001/JRN-002: 13-kind codec keeps new-Soul UUID/initial state/duplicate+Atlas+resonance/sheens snapshots distinct from existing-Soul EXP; craft/COOK snapshots preserve actual material IDs/costs/complete created items and exact LIFE_SKILL outcomes without invented claim sources; trade remains only CLIENT708 with its original receipt/auth/source fingerprint.
+- JRN-011: typed acquisition batches preserve whole-recipient ordering and chained before/after snapshots across reward slots, shared original revision and one fixed sheen timestamp; repeated soul_id is valid, repeated new instance UUID or inconsistent virtual prefix is not.
+- Typed snapshot completeness includes competitive admission, per-recipient Guild War results/weekly progression, checkpoint source counter, sampled public reschedule delay, original public chest reward revision and asynchronous chat-log text/time/subject without fanout replay (JRN-001/JRN-002).
+- JRN-001/JRN-002/JRN-010: generate the complete closed internal Go-only journal schema/CLIENT and result expansions from protobuf_conventions.md §7, including all finalized item/RNG/source/checkpoint outputs and required typed bounds. Every registered network ID has exactly one owner in the unchanged nine network files; internal schema has no network IDs or C# output.
 - ADR-0064 wire types: every UUID is 16-byte `bytes`, timestamps int64 Unix ms, `ErrorCode` enum numbered from `errors.md` order (`ERROR_CODE_UNSPECIFIED = 0` = NONE) and append-only, `common.proto` shared messages and every `*_RESULT` embedding `OperationResult` as field 1 (`../05_network/protobuf_conventions.md` § 6); session IDs 1..15, 439..441, 653..655, 710 and 819 exist with the `messages.md` fields.
 - Every message ID registered in `../05_network/messages.md` compiles deterministically across Go and C# targets,
 - Regenerating protobuf output creates zero uncommitted git drift,
@@ -399,13 +413,18 @@ consumers_checked: [AGENTS.md, docs/05_network/messages.md, docs/05_network/prot
 - ADR-0069: generates `S2C_RESUME_CREDENTIAL` (16), `SelfAck` in 303, `StatusList` / `CosmeticList` wrappers (no `optional repeated`), `CharacterSummary.is_attached`, 107 `reason`, and the renames `S2C_SPARRING_OUTCOME` (813) / `S2C_DUEL_OUTCOME` (818); `ErrorCode` numbered from fenced blocks of `errors.md` only, row-major; `*_OUTCOME` messages carry no `OperationResult`.
 
 ## Tests
+- `server/internal/testing/protocol/durable_journal_test.go`: TestNewAndDuplicateSoulAcquisitionRoundtrip, TestMasteredBossSoulResonanceNineToTenAndExistingSheen, TestNewSoulExcludedFromSameSettlementExp, TestInvalidSoulAcquisitionQualificationOrRevisionRejected, TestCraftEquipmentAndConsumedMaterialSnapshotRoundtrip, TestCookFoodKindlingLifeSkillSnapshotRoundtrip, TestStandaloneTradeCannotReplayClientReceipt (JRN-001/JRN-002).
+- `server/internal/testing/protocol/durable_journal_test.go`: TestSameSoulBatchChainAcrossRewardSlotsRoundtrip, TestSameSoulBatchRejectsRepeatedInstanceUuidAndBrokenPrefix (JRN-011).
+- `server/internal/testing/protocol/durable_journal_test.go`: TestCompetitiveAdmissionSnapshotRoundtrip, TestGuildWarPerRecipientResultsAndWeeklyProgressionRoundtrip, TestCheckpointRetainsSourceCounter, TestChatLogReplayDoesNotRedeliverOrReviveErasedSubject, TestPublicScheduleReplayRetainsSampledDelay, TestPublicChestFallbackUsesOriginalRewardRevision (JRN-001/JRN-002).
+- `server/internal/testing/protocol/registry_test.go`: TestEveryRegisteredNetworkIdHasOneFileOwner (JRN-010).
+- `server/internal/testing/protocol/durable_journal_test.go`: TestJournalTypedProducerRoundtrip, TestJournalUuidNetworkOrder, TestJournalFinalizedItemAndSourceRoundtrip, TestJournalUnknownOneofOrEnumRejected, TestJournalOwnerFamilyMismatchRejected (JRN-001/JRN-002).
 - `server/internal/testing/protocol/wire_types_test.go`: TestUuidFieldsAreBytes16, TestErrorCodeEnumCoversErrorsMdInOrder, TestErrorCodeNumbersAppendOnly, TestResultsEmbedOperationResult, TestAdr0064MessagesRegistered.
 - `server/internal/testing/protocol/registry_test.go`: TestMessageRegistryMapping, TestBinaryEncodingParity, TestCodegenDriftCheck, TestGeneratedCSharpHeader (CODE-004).
 - `client/Assets/Tests/EditMode/ProtocolParity/ProtocolParityTests.cs`: generated registry coverage and shared binary golden decode/encode parity.
 - `server/internal/testing/protocol/registry_test.go`: TestAdr0060MessagesRegistered, TestErrorEnumMatchesErrorsMd (ADR-0060), TestCodegenPreservesProtocolAsmdef, TestCodegenNeverWritesMeta (ADR-0072).
 - `server/internal/testing/protocol/wire_types_test.go`: TestNoOptionalRepeatedFields, TestErrorCodeFencedRowMajorOrder, TestOutcomeMessagesHaveNoOperationResult, TestAdr0069MessagesRegistered (ADR-0069).
 
-generated_artifacts: [`server/internal/protocol/v1/*.pb.go`, `client/Assets/Scripts/Protocol/*.cs`]
+generated_artifacts: [`server/internal/protocol/v1/*.pb.go`, `client/Assets/Scripts/Protocol/*.cs`, `server/internal/durable/journal/v1/durable_journal.pb.go`]
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
 evidence_location: "docs/10_implementation/evidence/IMP-061/"
 
@@ -418,7 +437,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/physics_geometry_contract.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../09_testing/network.md`]
-adrs: [`0005-skill-action-timing-geometry.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0005-skill-action-timing-geometry.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-078, IMP-079]
 owned_paths: [`client/Assets/Scripts/Core/Geometry/`, `client/Assets/Scenes/Collision/`, `client/Assets/Tests/EditMode/GeometryExporter/`, `server/internal/sim/spatial/maps/`, `server/internal/sim/spatial/parity/`]
 forbidden_paths: [`server/cmd/server/`, `server/internal/durable/`, `server/migrations/`]
@@ -456,7 +475,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client_assets.md`, `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/presentation_asset_manifest.md`, `../02_world/world_rules.md`, `repository_layout.md`, `../04_architecture/client_performance.md`]
-adrs: [`0014-unity-addressables-asset-delivery.md`, `0035-spawn-density-increase.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0050-windows-only-ci-and-auto-merge.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0074-localization-addressables-group-integration.md`]
+adrs: [`0014-unity-addressables-asset-delivery.md`, `0035-spawn-density-increase.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0050-windows-only-ci-and-auto-merge.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0074-localization-addressables-group-integration.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-000]
 owned_paths: [`client/Assets/AddressableAssetsData/`, `client/Assets/Scripts/Core/Assets/`, `client/Assets/Tests/EditMode/AddressablesValidation/`]
 forbidden_paths: [`server/`]
@@ -481,7 +500,7 @@ consumers_checked: [docs/04_architecture/client_assets.md, docs/04_architecture/
 ## Tests
 - `client/Assets/Tests/EditMode/AddressablesValidation/AddressablesValidationTests.cs`: TestCatalogAssetKeyResolution, TestAddressableGroupBudgets, TestCanonicalSpriteImportProfiles, TestPlayableSceneKeyCoverage, TestSettingsAssetMatchesBaselineGuid.
 - `client/Assets/Tests/EditMode/AddressablesValidation/AssetKeyGroupTests.cs`: TestKeyDerivationRule, TestCanonicalGroupSetAndSingleMembership, TestPresentationAliasSingleHop, TestDeterministicGroupRamBudgets, TestResidentSteadyAndTransferPeak, TestMeshTypeRule, TestParallaxFarPpu50 (ADR-0071).
-- `client/Assets/Tests/EditMode/AddressablesValidation/AssetKeyGroupTests.cs` (BLK-011): TestCanonicalGroupSetAndSingleMembership (29 groups incl. `localization.*`; package-managed entries exempt from `asset.*` grammar).
+- `client/Assets/Tests/EditMode/AddressablesValidation/AssetKeyGroupTests.cs`: TestCanonicalGroupSetAndSingleMembership (29 groups incl. `localization.*`; package-managed entries exempt from `asset.*` grammar).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -496,7 +515,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client.md`, `../04_architecture/client_assets.md`, `../04_architecture/client_performance.md`, `../07_content/presentation_asset_manifest.md`, `../02_world/world_rules.md`, `repository_layout.md`]
-adrs: [`0035-spawn-density-increase.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0035-spawn-density-increase.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-000]
 owned_paths: [`client/Assets/Settings/Rendering/`, `client/Assets/Scripts/Core/Rendering/`, `client/Assets/Tests/EditMode/RenderingSetup/`]
 forbidden_paths: [`server/`, `proto/`]
@@ -531,7 +550,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client_localization.md`, `../06_data/text.md`, `repository_layout.md`]
-adrs: [`0015-unity-localization.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0074-localization-addressables-group-integration.md`]
+adrs: [`0015-unity-localization.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0074-localization-addressables-group-integration.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-000, IMP-063]
 owned_paths: [`client/Assets/Localization/Settings/`, `client/Assets/Localization/Tables/Core/`, `client/Assets/Scripts/Core/Localization/`, `client/Assets/Tests/EditMode/LocalizationValidation/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/localization.locales.asset`, `client/Assets/AddressableAssetsData/AssetGroups/localization.shared.asset`, `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.vi_vn.asset`, `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.en_us.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.locales_BundledAssetGroupSchema.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.locales_ContentUpdateGroupSchema.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.shared_BundledAssetGroupSchema.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.shared_ContentUpdateGroupSchema.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.vi_vn_BundledAssetGroupSchema.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.vi_vn_ContentUpdateGroupSchema.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.en_us_BundledAssetGroupSchema.asset`, `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.en_us_ContentUpdateGroupSchema.asset`]
 forbidden_paths: [`server/`]
@@ -566,7 +585,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`architecture_conformance.md`, `repository_layout.md`, `audit_gates.md`, `task_queue.md`, `../templates/task.md`, `README.md`, `dependency_graph.md`, `spec_traceability.md`, `wave_execution_prompts.md`, `../README.md`, `../templates/adr.md`, `../templates/spec.md`, `engineering_conventions.md`, `../04_architecture/client_performance.md`]
-adrs: [`0044-launch-topology-single-binary-role-modes.md`, `0050-windows-only-ci-and-auto-merge.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0044-launch-topology-single-binary-role-modes.md`, `0050-windows-only-ci-and-auto-merge.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-000, IMP-061]
 owned_paths: [`server/internal/conformance/taskgraph/`, `server/internal/conformance/architecture/`]
 forbidden_paths: [`server/cmd/server/`, `server/internal/sim/`]
@@ -607,7 +626,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`audit_gates.md`, `agent_execution_protocol.md`, `known_blockers.md`, `../00_context/technology_versions.md`, `../07_security/external_integrations.md`, `../08_scale_ops/deployment.md`, `../09_testing/test_and_release_evidence.md`]
-adrs: [`0010-exact-technology-version-pinning.md`, `0045-ci-evidence-without-self-referential-sha.md`, `0050-windows-only-ci-and-auto-merge.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0010-exact-technology-version-pinning.md`, `0045-ci-evidence-without-self-referential-sha.md`, `0050-windows-only-ci-and-auto-merge.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106]
 owned_paths: [`.github/workflows/verify.yml`, `.github/workflows/post_merge_guard.yml`, `server/internal/conformance/ratchet/`, `server/internal/conformance/trusted/`]
 forbidden_paths: [`server/cmd/server/`, `server/internal/sim/`, `server/internal/global/`, `server/internal/edge/`]
@@ -653,7 +672,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`audit_gates.md`, `agent_execution_protocol.md`, `engineering_conventions.md`, `../00_context/technology_versions.md`, `../09_testing/test_and_release_evidence.md`]
-adrs: [`0010-exact-technology-version-pinning.md`, `0050-windows-only-ci-and-auto-merge.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0068-implementation-packet-readiness-corrections.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
+adrs: [`0010-exact-technology-version-pinning.md`, `0050-windows-only-ci-and-auto-merge.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0068-implementation-packet-readiness-corrections.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-000]
 owned_paths: [`.github/workflows/verify.yml`, `.github/workflows/cache_warm.yml`, `.github/workflows/cache_prune.yml`, `scripts/verify.ps1`, `.devin/scripts/cache_telemetry.sh`, `.devin/scripts/cache_telemetry.ps1`, `.devin/scripts/cache-policy.md`, `server/internal/conformance/caching/`]
 forbidden_paths: [`server/cmd/server/`, `.github/workflows/post_merge_guard.yml`, `client/`]
@@ -665,7 +684,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - Add pinned `actions/cache` steps to `verify.yml` and extend `scripts/verify.ps1` so a warm PR run is measurably faster than a cold run without weakening any gate (`engineering_conventions.md` §6):
   - Go module and build caches (`~/go/pkg/mod`, `~/.cache/go-build`; Windows `%LOCALAPPDATA%\go-build`) keyed on OS + Go pin + `server/go.sum` hash (`actions/setup-go` stays `cache: false`; explicit `actions/cache` is the mechanism);
   - no Unity image cache: Unity runs natively on Windows only; docker image caching is eliminated entirely (ADR-0073, ADR-0078); the Linux `services:` postgres image is pulled directly and cannot be cached;
-  - Unity `client/Library/` build cache via `actions/cache` on Windows only, keyed on `client/Packages/manifest.json` + `client/Packages/packages-lock.json` + `client/ProjectSettings/` hash + `client/Assets/**/csc.rsp` + the pinned Windows installer SHA: `Library/` is gitignored build output, not §4b evidence, so it may be cached; the editor still opens the project and runs the full materialization + compile on every run, and every materialized file outside `Library/` is still uploaded via `unity-materialized-windows` and committed byte-for-byte — a Library hit only skips regenerate work, never a check. The step restores on the exact key only — no `restore-keys` fallback (BLK-005);
+  - Unity `client/Library/` build cache via `actions/cache` on Windows only, keyed on `client/Packages/manifest.json` + `client/Packages/packages-lock.json` + `client/ProjectSettings/` hash + `client/Assets/**/csc.rsp` + the pinned Windows installer SHA: `Library/` is gitignored build output, not §4b evidence, so it may be cached; the editor still opens the project and runs the full materialization + compile on every run, and every materialized file outside `Library/` is still uploaded via `unity-materialized-windows` and committed byte-for-byte — a Library hit only skips regenerate work, never a check. The step restores on the exact key only — no `restore-keys` fallback;
   - Git LFS object cache on Windows: caches `.git/lfs` keyed on the SHA-256 of sorted LFS object OIDs with restore-keys fallback; `Unity (Windows)` checks out with `lfs: false`, restores cached LFS objects, then runs `git lfs pull` to fetch only missing objects, preventing exhaustion of the 10 GiB monthly LFS bandwidth quota (ADR-0078);
   - Unity Windows Android module cache: caches `${{ runner.temp }}/unity-editor/Editor/Data/PlaybackEngines/AndroidPlayer` keyed on the pinned Android installer and submodule SHA-256 hashes (ADR-0078); restored only by player-build jobs (IMP-067, IMP-096), never by standard PR verify;
   - Windows PostgreSQL EDB binaries keyed on version + download SHA-256 — the extracted directory may be cached; the hash is still asserted before use on a hit;
@@ -679,7 +698,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - CI-004: cold and warm runs on the same tested source have equal stable evidence projections (source identity, executed gate result/error identities, codegen zero-drift), not byte-identical manifests; run identity, timings and cache telemetry are excluded (`../09_testing/test_and_release_evidence.md` §2a). No new secrets, runners or services.
 
 ## Tests
-- `server/internal/conformance/caching/caching_test.go` (CI-001): TestCacheActionPinnedSha, TestCacheKeysCoverPinInputs, TestRestoreKeysNeverCrossPinOrOs, TestLibraryCacheExactKeyOnly (BLK-005).
+- `server/internal/conformance/caching/caching_test.go` (CI-001): TestCacheActionPinnedSha, TestCacheKeysCoverPinInputs, TestRestoreKeysNeverCrossPinOrOs, TestLibraryCacheExactKeyOnly.
 - `server/internal/conformance/caching/caching_test.go` (CI-002): TestNoGateSkippedOnCacheHit, TestMaterializeCommitStillRequiredOnHit, TestLicenceStateNeverCached.
 - `server/internal/conformance/caching/caching_test.go` (CI-003, CI-004): TestWallTimeFieldsRecorded, TestEvidenceIdentityIndependentOfCache.
 - `server/internal/conformance/caching/caching_test.go`: TestStableProjectionIgnoresRunTimingCacheFields, TestStableProjectionDetectsGateErrorChange, TestCodegenDriftFailsWithWarmCache.
@@ -701,7 +720,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../08_scale_ops/observability.md`, `../04_architecture/backend.md`, `../00_context/technology_versions.md`]
-adrs: [`0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001, IMP-068]
 owned_paths: [`server/internal/observability/core/`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/cmd/server/`]
@@ -734,25 +753,29 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../04_architecture/concurrency.md`, `../08_scale_ops/capacity.md`]
-adrs: [`0011-postgresql-relational-persistence.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../04_architecture/concurrency.md`, `../08_scale_ops/capacity.md`, `../06_data/ids.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`, `../07_security/personal_data_register.md`, `../07_security/data_protection.md`, `../08_scale_ops/backup_recovery.md`]
+adrs: [`0011-postgresql-relational-persistence.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-068, IMP-098]
 owned_paths: [`server/internal/durable/queue/`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/sim/`]
 contract_inputs: [typed durable commands with operation ID and aggregate key]
 contract_outputs: [ordered commit results, backpressure errors]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/ids.md, docs/06_data/data_model.md, docs/06_data/database.md, docs/05_network/protobuf_conventions.md, docs/06_data/save_rules.md, docs/08_scale_ops/deployment.md, docs/07_security/personal_data_register.md, docs/10_implementation/repository_layout.md]
 
 ## Change
 Implement the bounded durable command queue between Sim/Global/Edge and PostgreSQL: per-aggregate ordering, ack after commit, typed backpressure, retry with the same operation ID (IMP-005).
 
 ## Acceptance
+- JRN-008: normal ERASURE_RESUME queue acknowledgement means only verified durable continuation ownership, not erasure completion; all subject references must disappear before the actual destructive worker can commit. Other mutation-result acknowledgements still require exact commit/reconstruction.
+- JRN-001/JRN-006/JRN-008 and PRIV-008/PRIV-009: every registry producer is typed/encodable before admission; reserve capacity before CLIENT receipt admission, enqueue nothing on DB outage, preserve complete queued/in-flight immutable source inventory with single-flight retries and acknowledge only after every reference is disposed. Erasure fences/cancels uncommitted subject commands; asynchronous CHAT_LOG is not a CLIENT receipt and never blocks chat delivery.
 - commands for one aggregate key commit in submission order,
 - a full queue returns a typed backpressure error; callers never block the simulation tick,
 - ack is sent only after commit; a crash retry reuses the operation ID and settles once,
 - queue/pool limits come from `capacity.md`.
 
 ## Tests
+- `server/internal/durable/queue/queue_test.go`: TestErasureResumeQueueDispositionUsesDurableContinuation (JRN-008).
+- `server/internal/durable/queue/queue_test.go`: TestClosedProducerAdmission, TestAdmissionReservedBeforeReceipt, TestNoEnqueueWithoutClientReceipt, TestFrozenInventoryIncludesInflight, TestAckWaitsForAllJournalReferences (JRN-001/JRN-006/JRN-008); TestTerminalReceiptAckWaitsForEveryQueueReference, TestPendingReceiptRetainedPastReplayHorizon (PRIV-008); TestErasureAdmissionFenceCancelsUncommittedPersonalCommand, TestChatLogEnqueueNeverBlocksDeliveryOrRequiresClientReceipt (PRIV-009).
 - `server/internal/durable/queue/queue_test.go`: TestPerAggregateOrdering, TestBackpressureWhenFull, TestAckAfterCommit, TestCrashRetrySettlesOnce.
 
 generated_artifacts: []
@@ -768,7 +791,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../06_data/database.md`, `../06_data/data_model.md`]
-adrs: [`0040-world-consequence-durable-aggregate.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0040-world-consequence-durable-aggregate.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-068, IMP-098]
 owned_paths: [`server/internal/durable/lockorder/`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/sim/`]
@@ -779,15 +802,17 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 ## Change
 Implement the helper every multi-aggregate transaction uses to lock rows in the canonical aggregate order of `../06_data/database.md`.
 
-- Encode the ADR-0060 lock-order table (20 priorities, `database.md` § Lock Order).
+- Encode the ADR-0060 lock-order table (canonical priorities including the receipt tier, `database.md` § Lock Order).
 
 ## Acceptance
+- Receipt locks precede value aggregates at priority 2.5; multiowner sets and owner/family/operation key ordering follow database.md before any mutation.
 - multi-aggregate transactions lock in `database.md` order with a deterministic key sort inside one aggregate type,
 - out-of-order acquisition fails with a typed error in test builds,
 - concurrent transfer fixture runs 1,000 iterations on PostgreSQL 18.6 without deadlock.
 - ADR-0060: helper priorities equal `database.md` § Lock Order exactly (incl. beasts, souls, character cosmetics, friends/blocks, guild progression, PvP/Guild War settlements).
 
 ## Tests
+- `server/internal/durable/lockorder/lockorder_test.go`: TestReceiptBeforeValueAggregates, TestMultiownerReceiptKeysSortedBeforeMutation.
 - `server/internal/durable/lockorder/lockorder_test.go`: TestCanonicalOrder, TestOutOfOrderRejected, TestNoDeadlockConcurrentTransfers.
 - `server/internal/durable/lockorder/lockorder_test.go`: TestLockOrderMatchesDatabaseMd (ADR-0060).
 
@@ -804,7 +829,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../05_network/protocol.md`, `../05_network/versioning.md`, `../05_network/errors.md`, `../07_security/rate_limits.md`, `../04_architecture/service_boundaries.md`, `../00_context/technology_versions.md`, `../08_scale_ops/capacity.md`, `engineering_conventions.md`]
-adrs: [`0008-client-network-transport-protocol.md`, `0038-discrete-movement-edge-input-message.md`, `0044-launch-topology-single-binary-role-modes.md`, `0051-first-party-username-password-login.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0008-client-network-transport-protocol.md`, `0038-discrete-movement-edge-input-message.md`, `0044-launch-topology-single-binary-role-modes.md`, `0051-first-party-username-password-login.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-061, IMP-068, IMP-098]
 owned_paths: [`server/internal/edge/listener/`, `server/internal/edge/heartbeat/`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/sim/`, `server/internal/durable/`]
@@ -842,7 +867,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md`, `../04_architecture/system_overview.md`, `../04_architecture/backend.md`]
-adrs: [`0040-world-consequence-durable-aggregate.md`, `0044-launch-topology-single-binary-role-modes.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0040-world-consequence-durable-aggregate.md`, `0044-launch-topology-single-binary-role-modes.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-068, IMP-082, IMP-098]
 owned_paths: [`server/internal/global/runtime/`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/sim/`]
@@ -874,7 +899,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md`, `../04_architecture/authority.md`, `../05_network/synchronization.md`, `../08_scale_ops/capacity.md`, `engineering_conventions.md`, `../09_testing/test_and_release_evidence.md`, `../05_network/messages.md`]
-adrs: [`0007-single-owner-fixed-step-simulation.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0007-single-owner-fixed-step-simulation.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-002, IMP-061, IMP-068, IMP-098]
 owned_paths: [`server/internal/sim/runtime/`, `server/internal/sim/aoi/`, `server/internal/sim/replication/`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/durable/`, `server/internal/edge/`]
@@ -917,7 +942,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../06_data/config.md`, `../05_network/synchronization.md`, `../05_network/messages.md`]
-adrs: [`0005-skill-action-timing-geometry.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0005-skill-action-timing-geometry.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003, IMP-068, IMP-098]
 owned_paths: [`server/internal/sim/spatial/geometry/`, `server/internal/sim/spatial/collision/`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/durable/`]
@@ -954,14 +979,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../06_data/data_model.md`, `../06_data/migrations.md`, `../06_data/physical_schema_contract.md`]
-adrs: [`0011-postgresql-relational-persistence.md`, `0040-world-consequence-durable-aggregate.md`, `0048-character-update-timestamp.md`, `0053-durable-contract-reconciliation.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../06_data/data_model.md`, `../06_data/migrations.md`, `../06_data/physical_schema_contract.md`, `../07_security/personal_data_register.md`, `../06_data/ids.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
+adrs: [`0011-postgresql-relational-persistence.md`, `0040-world-consequence-durable-aggregate.md`, `0048-character-update-timestamp.md`, `0053-durable-contract-reconciliation.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001]
 owned_paths: [`server/internal/durable/idempotency/`, `server/internal/durable/db/`, `server/internal/durable/schema/`, `server/migrations/`, `server/cmd/migrate/`, `server/internal/testing/pgtest/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/internal/sim/`, `client/Assets/Scripts/`]
 contract_inputs: [operation ID, canonical payload hash, transaction callback, schema contract]
 contract_outputs: [single committed operation record, replayable result, baseline migrations]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/data_model.md, docs/06_data/database.md, docs/06_data/physical_schema_contract.md, docs/06_data/ids.md, docs/07_security/personal_data_register.md, docs/07_security/data_protection.md, docs/08_scale_ops/deployment.md, docs/08_scale_ops/backup_recovery.md, docs/09_testing/backend.md, docs/10_implementation/spec_traceability.md, docs/05_network/protobuf_conventions.md, docs/06_data/save_rules.md, docs/10_implementation/repository_layout.md]
 
 ## Change
 Implement PostgreSQL-backed stable operation dedupe/result replay under `../06_data/database.md` and `save_rules.md`, the baseline migration `server/migrations/000001_baseline.{up,down}.sql` with the complete launch schema of `../06_data/physical_schema_contract.md` (ADR-0048, ADR-0053), and the PostgreSQL 18.6 test harness (`server/internal/testing/pgtest/`) that uses `THINHTHAN_TEST_PG_DSN` when set (Linux CI `postgres:18.6` service container) and otherwise starts the EDB Windows binaries and exports it (ADR-0058).
@@ -971,6 +996,8 @@ IMP-005 is the only migration owner. No other packet adds a migration; a later s
 - Baseline also creates the ADR-0060 tables/columns: `character_cosmetic_entitlements`, `character_cosmetic_equips`, `character_souls`, `character_beast_food_daily`; `account_iap_entitlements.grant_state` incl. `REJECTED` + `reject_reason` + `platform`; `account_cosmetic_entitlements.first_equipped_at`; no `accounts.iap_refund_consumed_score` column.
 
 ## Acceptance
+- Boss eligibility CHECK rejects defeated rows without the exact lowercase-hex original reward revision and undefeated rows with one; same-copy DEFEATED writes pin that revision atomically.
+- JRN-004/JRN-005/JRN-006/JRN-007/JRN-008 and PRIV-008: baseline creates all receipt fields/NULL-safe constraints/indexes in data_model.md; reserve queue capacity before DB admission, atomic receipt/value/operation commit, exact private trusted reconstruction and expired nonexecution, orphan reconciliation and every-reference retention hold use the same canonical lock. Public expired UUIDv7 requests remain OPERATION_EXPIRED.
 - duplicate/retry/restart settlement commits at most once,
 - commit-before-response retry reconstructs the same outcome,
 - same operation ID with conflicting payload is rejected,
@@ -981,16 +1008,21 @@ IMP-005 is the only migration owner. No other packet adds a migration; a later s
 - ADR-0060: baseline schema contains the ADR-0060 tables, columns and CHECKs; `accounts` has no refund-score column.
 - ADR-0061: the baseline creates `public_boss_schedules` with its CHECK constraints (`../06_data/data_model.md`); no other packet migrates that table.
 - ADR-0065: `operations` is keyed `(operation_family, owner_id, operation_id)`; the same `operation_id` under two owners commits twice, under one owner once; the baseline seeds `TOMBSTONE_ACCOUNT_ID`, creates every ADR-0065 table (auth, `account_login_history`, IAP dedup/cursors, reward claim tables, `auction_listings`, guild tables, `audit_events`), `name_key VARCHAR(256)`, the tombstone-excluding season-track partial index and the two `DEFERRABLE` composite FKs of `account_entitlement_claims`.
+- PRIV-004/PRIV-005/PRIV-006: baseline report/operator/erasure-intent constraints and retention indexes match the canonical registered fields; report/account and operator/evidence relationships permit their independent purges.
 - Baseline schema includes ADR-0070/0079 changes: `erasure_intents` and `accounts.erasure_started_at` with the constraints and indexes in `data_model.md` § Account Erasure; `world_consequence_relics.spawned_at` + typed columns + `(relic_id, expires_at)` and `(expires_at)` partial indexes; typed `region_di_tich_markers`; `reward_claim_lines` line-kind CHECK; `auction_listings` `(state = 'ACTIVE') = (ended_at IS NULL)` CHECK; typed `guild_storage_audit` with action/section CHECKs.
 - ADR-0079: baseline stores content_revision as CHAR(64) with lowercase-hex CHECK; client operation records have `replay_until` and purge index. Authenticate owner and compare fingerprint before mutable preconditions on a retained replay; UUID time + 180 days expiry rejects `OPERATION_EXPIRED` before execution, including after payload purge; future skew over 60 seconds rejects malformed. Retain payload through its immutable expiry; server UUIDv5 operations use durable natural-key business dedup where retention ends.
 
 ## Tests
+- `server/internal/durable/schema/adr0079_schema_test.go`: TestBossDefeatedRevisionRequiredAndUndefeatedRevisionNull.
+- `server/internal/durable/idempotency/replay_horizon_test.go`: TestTrustedCommittedReceiptAfterHorizonAndOperationPurge, TestTrustedExpiredAdmittedTerminalZeroWrites, TestMissingReceiptBlocksTrustedReplay, TestReceiptCommitAtomicWithOperation, TestOrphanAdmittedReconcilesWithoutExecution, TestClientAdmissionDatabaseOutageEnqueuesNothing, TestReceiptErasureRetainsRestrictedOwnerKey, TestUnackedReceiptPreventsPurge (JRN-004/JRN-005/JRN-006/JRN-007/JRN-008, PRIV-008).
+- `server/internal/durable/schema/adr0079_schema_test.go`: TestDurableCommandReceiptConstraintsAndIndexes, TestTerminalReceiptNullOutcomeVersionRejected (JRN-006).
 - `server/internal/durable/idempotency/idempotency_test.go`: TestOperationDeduplication, TestCommitBeforeResponseRetry, TestConflictingPayloadRejection, TestPostgresUniqueConstraint, TestOperationKeyScopedByOwner (ADR-0065).
 - `server/internal/durable/schema/schema_snapshot_test.go`: TestBaselineAdr0065Tables, TestTombstoneAccountSeeded, TestSeasonTrackIndexExcludesTombstone, TestEntitlementClaimFksDeferrable (ADR-0065).
 - `server/internal/durable/schema/schema_snapshot_test.go`: TestBaselineApplyDownApply, TestPerConstraintSnapshot, TestMigrationsImmutable.
 - `server/internal/testing/pgtest/pgtest_test.go`: TestUsesPresetDsn, TestStartsEdbBinariesWhenDsnUnset.
 - `server/internal/durable/schema/schema_snapshot_test.go`: TestBaselineAdr0060Tables, TestNoStoredRefundScore (ADR-0060), TestBaselinePublicBossSchedules (ADR-0061).
-- `server/internal/durable/schema/adr0070_schema_test.go`: `TestPendingErasureLedgerTable`, `TestRelicTypedColumnsAndIndexes`, `TestRewardClaimLineKindCheck`, `TestAuctionEndedAtCheck`, `TestGuildStorageAuditChecks` (ADR-0070).
+- `server/internal/durable/schema/adr0070_schema_test.go`: `TestErasureIntentStagingFence`, `TestRelicTypedColumnsAndIndexes`, `TestRewardClaimLineKindCheck`, `TestAuctionEndedAtCheck`, `TestGuildStorageAuditChecks` (ADR-0070).
+- `server/internal/durable/schema/privacy_schema_test.go`: TestReportEvidenceSchemaAndIndependentPurge (PRIV-004), TestDisabledOperatorCredentialAndRetentionConstraints (PRIV-005), TestErasureIntentCompletionConstraintAndPurgeIndex (PRIV-006).
 - `server/internal/durable/idempotency/replay_horizon_test.go`: TestReplayBeforeMutablePreconditions, TestOwnerFingerprintMismatchCannotReplay, TestRetryAt180DayBoundaryExpired, TestPurgedUuidCannotExecuteAgain, TestFutureTimestampOver60SecondsMalformed, TestPurgeNeverBeforeReplayUntil, TestServerNaturalKeyDedupAfterOperationPurge.
 - `server/internal/durable/schema/adr0079_schema_test.go`: TestContentRevisionHex64Check, TestOperationReplayUntilAndPurgeIndex.
 
@@ -1007,7 +1039,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/authority.md`, `../06_data/data_model.md`, `../07_security/auth.md`, `../07_security/session.md`, `../07_security/external_integrations.md`, `../07_security/rate_limits.md`, `../05_network/errors.md`, `../06_data/physical_schema_contract.md`, `../05_network/protocol.md`]
-adrs: [`0009-account-session-credentials.md`, `0030-one-account-one-live-session.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0009-account-session-credentials.md`, `0030-one-account-one-live-session.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-068, IMP-081, IMP-082, IMP-097]
 owned_paths: [`server/cmd/server/`, `server/internal/durable/account/`, `server/internal/edge/auth/`, `server/internal/edge/session/`, `server/internal/edge/router/`]
 forbidden_paths: [`server/internal/sim/`]
@@ -1052,19 +1084,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/character.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../06_data/text.md`, `../05_network/errors.md`, `../05_network/messages.md`]
-adrs: [`0013-canonical-unicode-text-normalization.md`, `0029-character-resource-isolation.md`, `0030-one-account-one-live-session.md`, `0048-character-update-timestamp.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0062-world-and-systems-regression-fixes.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../01_gameplay/character.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../06_data/text.md`, `../05_network/errors.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0013-canonical-unicode-text-normalization.md`, `0029-character-resource-isolation.md`, `0030-one-account-one-live-session.md`, `0048-character-update-timestamp.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0062-world-and-systems-regression-fixes.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-006]
 owned_paths: [`server/internal/durable/character/`, `server/internal/edge/character/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
 contract_inputs: [authenticated account, create/select intents, account status]
 contract_outputs: [canonical character rows, character list/select result]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement character create/list/select: max three, class permanence, no deletion, normalized display-name uniqueness and `characters.updated_at` (ADR-0048). Creation is rejected while the account is `SUSPENDED_PAYMENT_RECONCILIATION` (`../03_systems/monetization.md`).
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064 wire: `C2S_CHARACTER_CREATE` (12) only while unattached, result 13 with `CHARACTER_NAME_INVALID` / `CHARACTER_NAME_TAKEN` / `CHARACTER_SLOTS_FULL`, `S2C_CHARACTER_LIST` (14) after HELLO_OK, detach and create; select = `C2S_CHARACTER_ATTACH` (6).
 - account cannot exceed three live characters; a 4th create is rejected and no slot product exists,
 - characters are permanent; normalized display-name uniqueness never replaces immutable `character_id`,
@@ -1091,7 +1124,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/README.md`, `../03_systems/economy.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`]
-adrs: [`0029-character-resource-isolation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0029-character-resource-isolation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-068, IMP-082, IMP-097]
 owned_paths: [`server/internal/durable/currency/`]
 forbidden_paths: [`server/internal/sim/`, `client/Assets/Scripts/`]
@@ -1121,7 +1154,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/items.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`]
-adrs: [`0029-character-resource-isolation.md`, `0043-spirit-beast-instance-identity.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0029-character-resource-isolation.md`, `0043-spirit-beast-instance-identity.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-068, IMP-082, IMP-097]
 owned_paths: [`server/internal/durable/items/`]
 forbidden_paths: [`server/internal/sim/`, `client/Assets/Scripts/`]
@@ -1156,7 +1189,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/inventory.md`, `../03_systems/account_storage.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`]
-adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-007, IMP-008, IMP-066]
 owned_paths: [`server/internal/durable/inventory/`, `client/Assets/Scripts/Systems/Inventory/`, `client/Assets/Scripts/UI/Inventory/`, `client/Assets/Tests/PlayMode/InventoryPanel/`]
 forbidden_paths: [`server/internal/sim/`]
@@ -1192,14 +1225,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/reward_claims.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`]
-adrs: [`0012-reward-claim-item-materialization.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/reward_claims.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0012-reward-claim-item-materialization.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-007, IMP-008, IMP-009, IMP-011]
 owned_paths: [`server/internal/durable/reward/`, `client/Assets/Scripts/Systems/Rewards/`, `client/Assets/Scripts/UI/Rewards/`, `client/Assets/Tests/PlayMode/RewardClaimUi/`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [committed reward choice, source identity, independent reward slots, operation ID]
 contract_outputs: [materialized item/currency delivery or persistent Reward Claim with replayable result]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement persistent overflow/recovery claims and compatible currency aggregation.
@@ -1207,6 +1240,7 @@ Implement persistent overflow/recovery claims and compatible currency aggregatio
 - Persist `source_type` (enum in `reward_claims.md`, incl. `LEVEL_MILESTONE`) and `source_reference`; implement 408/409 field lists and the `S2C_REWARD_CLAIMS_STATE` (434) push.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064 reward-claim paging: 434 sends `total_count` and the 50 oldest PENDING claims only after attach; `C2S_REWARD_CLAIM_LIST_REQUEST` (439, offset, limit 1..50) returns 440 in the same order; every committed change emits `S2C_REWARD_CLAIM_DELTA` (441) with `claims_revision` + 1; no frame exceeds the outbound limit at any claim count.
 - independent reward slots settle without sibling rollback/reroll.
 - at the 100-claim cap an item claim consolidates per `owner_character_id + item_id + effective_binding` (never per-instance state); preventable sources reject with `CLAIM_CAP_REACHED` and consume nothing; non-preventable sources exceed the cap; no reward is deleted (ADR-0063).
@@ -1236,7 +1270,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/progression.md`, `../01_gameplay/stats.md`]
-adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`]
+adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-007, IMP-066, IMP-100]
 owned_paths: [`server/internal/sim/progression/`, `server/internal/durable/progression/`, `client/Assets/Scripts/Systems/Progression/`, `client/Assets/Scripts/UI/Progression/`, `client/Assets/Tests/EditMode/ProgressionPresentation/`]
 forbidden_paths: [`server/migrations/`]
@@ -1272,7 +1306,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/equipment.md`, `../07_content/equipment_catalog.md`]
-adrs: [`0021-hardcore-enhancement-rate-curve.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0060-wire-and-durable-contract-completion.md`, `0063-economy-contract-reconciliation.md`]
+adrs: [`0021-hardcore-enhancement-rate-curve.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0060-wire-and-durable-contract-completion.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-008, IMP-009, IMP-011]
 owned_paths: [`server/internal/sim/equipment/`, `server/internal/durable/equipment/`, `client/Assets/Scripts/Systems/Equipment/`, `client/Assets/Scripts/UI/Equipment/`, `client/Assets/Tests/PlayMode/EquipmentUi/`]
 forbidden_paths: [`server/migrations/`]
@@ -1307,7 +1341,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client.md`, `../04_architecture/client_experience_contract.md`, `../05_network/protocol.md`, `../05_network/errors.md`, `../05_network/reconnect.md`, `../05_network/synchronization.md`, `../05_network/versioning.md`, `../07_security/auth.md`, `../07_security/session.md`, `../04_architecture/client_performance.md`, `engineering_conventions.md`, `../09_testing/test_and_release_evidence.md`]
-adrs: [`0008-client-network-transport-protocol.md`, `0030-one-account-one-live-session.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0008-client-network-transport-protocol.md`, `0030-one-account-one-live-session.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-061, IMP-100]
 owned_paths: [`client/Assets/Scripts/Net/`, `client/Assets/Scripts/Core/Session/`, `client/Assets/Scripts/Systems/Character/`, `client/Assets/Scripts/UI/Character/`, `client/Assets/Tests/PlayMode/Harness/`, `client/Assets/Tests/PlayMode/SessionTransport/`, `client/Assets/Tests/PlayMode/CharacterLifecycleClient/`, `client/Assets/Scripts/Core/Runtime/`, `client/Assets/Scripts/Systems/Replication/`, `client/Assets/Tests/EditMode/FrameRuntime/`, `client/Assets/Tests/PlayMode/NetReceive/`]
 forbidden_paths: [`server/internal/`, `server/migrations/`, `server/cmd/compiler/`, `server/cmd/migrate/`, `server/cmd/server/`]
@@ -1356,7 +1390,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/physics_geometry_contract.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../09_testing/network.md`]
-adrs: [`0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-065, IMP-078, IMP-079, IMP-100]
 owned_paths: [`server/internal/sim/movement/`, `client/Assets/Scripts/Systems/Movement/`, `client/Assets/Tests/PlayMode/MovementPrediction/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/Assets/Scripts/UI/`]
@@ -1400,7 +1434,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/combat.md`, `../01_gameplay/skills.md`, `../04_architecture/realtime_loop.md`, `../09_testing/gameplay.md`, `../05_network/protocol.md`, `../05_network/messages.md`]
-adrs: [`0018-combat-target-caps-and-skill-scaling.md`, `0026-just-guard-and-ma-am-status.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0018-combat-target-caps-and-skill-scaling.md`, `0026-just-guard-and-ma-am-status.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-011, IMP-013, IMP-081]
 owned_paths: [`server/internal/sim/combat/`, `client/Assets/Scripts/Systems/Combat/`, `client/Assets/Tests/PlayMode/CombatPresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/Assets/Scripts/UI/`]
@@ -1440,13 +1474,13 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/class_skill_catalog.md`]
-adrs: [`0005-skill-action-timing-geometry.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+adrs: [`0005-skill-action-timing-geometry.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003, IMP-014]
 owned_paths: [`server/internal/sim/skills/`, `client/Assets/Scripts/Systems/Skills/`, `client/Assets/Scripts/UI/Skills/`, `client/Assets/Tests/PlayMode/SkillUi/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`]
 contract_inputs: [compiled skill definition, action context, typed primary/secondary geometry, authoritative collider profiles, targets]
 contract_outputs: [cost/cooldown/projectile/hit/effect requests and client skill presentation]
-consumers_checked: [docs/01_gameplay/combat.md, docs/01_gameplay/skills.md, docs/04_architecture/physics_geometry_contract.md, docs/07_content/class_skill_catalog.md, docs/07_content/integration_validation.md, docs/07_content/balance_validation.md, docs/07_content/presentation_asset_manifest.md, docs/09_testing/gameplay.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/01_gameplay/combat.md, docs/01_gameplay/skills.md, docs/04_architecture/physics_geometry_contract.md, docs/07_content/class_skill_catalog.md, docs/07_content/integration_validation.md, docs/07_content/balance_validation.md, docs/07_content/presentation_asset_manifest.md, docs/09_testing/gameplay.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/01_gameplay/classes.md, docs/06_data/config.md, docs/06_data/content_authoring_contract.md]
 
 ## Change
 Implement execution/targeting/tags/timing-speed/typed geometry/cost/cooldown from skill data.
@@ -1458,12 +1492,14 @@ Implement execution/targeting/tags/timing-speed/typed geometry/cost/cooldown fro
 - every authoritative shape starts from `caster_anchor_y + 0.9m`, never an animation socket,
 - ADR-0047 role/envelope and exact-hurtbox boundary regressions pass for all collider profiles,
 - `MOVE_CONTACT_LINE`, `BARRIER_POSITION`, every secondary spatial effect, and displacement tag/effect parity resolve exactly as catalogued,
+- CAT-002: one grounded stationary barrier AABB blocks enemy movement/projectiles from ACTIVE creation until the authored expiry tick; invalid placement rejects and no damage, shield or additional zone/query is created.
 - Bộc Bộ ember trail remains presentation-only and cannot create a second zone/hit/status result,
 - accepted ON_START interruption consumes once,
 - combat rolls use Go `math/rand/v2` PCG-64.
 
 ## Tests
 - `server/internal/sim/skills/skills_test.go`: TestSkillTargetingGeometry, TestSkillOriginY, TestSkillReachRoleBands45, TestColliderBoundaryIntersectionProfiles, TestMoveContactLineCollisionSweep, TestBarrierPositionPlacementAndLifetime, TestSecondarySpatialEffects, TestDisplacementTagEffectParity, TestBocBoTrailPresentationOnly, TestSkillCooldownSpeedScaling, TestSkillResourceDeduction, TestProjectileResolution.
+- `server/internal/sim/skills/skills_test.go`: TestBarrierPositionPlacementAndLifetime, TestBarrierBlocksEnemyMovementAndProjectilesWithoutDamage (CAT-002).
 - `client/Assets/Tests/PlayMode/SkillUi/SkillUiTests.cs`: cooldown/cost/targeting presentation from server events; TestSkillTelegraphsUseResolvedGeometry verifies all 45 telegraphs plus Lưu Bộ sweep/Sơn Bích barrier while never changing authoritative reach.
 
 generated_artifacts: []
@@ -1479,7 +1515,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/status_effects.md`, `../01_gameplay/combat.md`, `../07_content/class_skill_catalog.md`, `../09_testing/gameplay.md`]
-adrs: [`0002-effect-value-shield-contract.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0054-wire-message-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`]
+adrs: [`0002-effect-value-shield-contract.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0054-wire-message-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-014, IMP-015]
 owned_paths: [`server/internal/sim/effects/`, `client/Assets/Scripts/Systems/Effects/`, `client/Assets/Tests/PlayMode/EffectPresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/Assets/Scripts/UI/`]
@@ -1513,7 +1549,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md`, `../01_gameplay/skills.md`]
-adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0033-skill-unlock-schedule-remap.md`, `0060-wire-and-durable-contract-completion.md`]
+adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0033-skill-unlock-schedule-remap.md`, `0060-wire-and-durable-contract-completion.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-015, IMP-016]
 owned_paths: [`server/internal/sim/classes/`, `client/Assets/Scripts/Systems/Classes/`, `client/Assets/Tests/EditMode/ClassPresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/Assets/Scripts/UI/`]
@@ -1555,19 +1591,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/death_respawn.md`, `../01_gameplay/combat.md`, `../01_gameplay/status_effects.md`, `../02_world/maps_zones.md`]
-adrs: [`0007-single-owner-fixed-step-simulation.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0054-wire-message-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`]
+specs: [`../01_gameplay/death_respawn.md`, `../01_gameplay/combat.md`, `../01_gameplay/status_effects.md`, `../02_world/maps_zones.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0007-single-owner-fixed-step-simulation.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0054-wire-message-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-014, IMP-016, IMP-018]
 owned_paths: [`server/internal/sim/death/`, `client/Assets/Scripts/Systems/Death/`, `client/Assets/Tests/PlayMode/DeathPresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`]
 contract_inputs: [HP <= 0 combat result, checkpoint, status state]
 contract_outputs: [DEAD/RESPAWNING/ACTIVE transitions, respawn placement, invulnerability window]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement `death_respawn.md`: atomic death steps, dead-state restrictions, status/cooldown/summon cleanup, `RESPAWN_DELAY` 3 s, checkpoint respawn at 40% HP/MP, checkpoint fallback and 3 s respawn invulnerability.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - death processing is atomic and idempotent,
 - dead characters cannot move, attack, interact or be healed; UI/chat and respawn request stay available,
 - normal-world respawn happens only on `C2S_RESPAWN_REQUEST` at least 3 s after death (earlier or non-dead requests reject with `INVALID_STATE`; without a request the character stays `DEAD`, including across reconnect), at the marked checkpoint with `floor(MAX * 0.40)` HP/MP; an invalid checkpoint falls back to `checkpoint.lang_da.dinh_lang`; client coordinates are never accepted,
@@ -1590,7 +1627,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client.md`, `../04_architecture/client_experience_contract.md`, `../01_gameplay/movement.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../04_architecture/client_performance.md`, `engineering_conventions.md`, `../04_architecture/physics_geometry_contract.md`]
-adrs: [`0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-013, IMP-065]
 owned_paths: [`client/Assets/Scripts/UI/CoreHud/`, `client/Assets/Scripts/UI/StateMachine/`, `client/Assets/Scripts/Core/Input/`, `client/Assets/Tests/PlayMode/InputHudStateMachine/`, `client/Assets/Scripts/Systems/Camera/`, `client/Assets/Tests/PlayMode/CameraFollow/`]
 forbidden_paths: [`server/`]
@@ -1635,7 +1672,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client_performance.md`, `../04_architecture/client.md`, `../07_content/presentation_asset_manifest.md`, `../09_testing/load.md`, `engineering_conventions.md`, `audit_gates.md`]
-adrs: [`0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
+adrs: [`0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-063, IMP-065, IMP-066, IMP-101]
 owned_paths: [`client/Assets/Scripts/Core/Performance/`, `client/ProjectSettings/QualitySettings.asset`, `client/Assets/Scenes/Perf/`, `client/Assets/Tests/PlayMode/Performance/`, `client/Assets/Tests/EditMode/PerformanceBudgets/`, `client/Assets/Settings/Performance/`]
 forbidden_paths: [`server/`]
@@ -1692,7 +1729,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client_experience_contract.md`, `../04_architecture/client.md`, `../04_architecture/client_performance.md`, `../04_architecture/client_localization.md`, `../07_security/auth.md`, `../07_security/session.md`]
-adrs: [`0015-unity-localization.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`]
+adrs: [`0015-unity-localization.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-064, IMP-065, IMP-066, IMP-095]
 owned_paths: [`client/Assets/Scripts/UI/Screens/`, `client/Assets/Tests/PlayMode/Screens/`]
 forbidden_paths: [`server/`]
@@ -1726,7 +1763,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client_performance.md`, `audit_gates.md`, `../00_context/technology_versions.md`, `../09_testing/test_and_release_evidence.md`]
-adrs: [`0050-windows-only-ci-and-auto-merge.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
+adrs: [`0050-windows-only-ci-and-auto-merge.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-067, IMP-095]
 owned_paths: [`.github/workflows/device_perf.yml`, `scripts/device_perf.ps1`, `client/Assets/Scripts/Core/PerformanceDevice/`, `server/internal/conformance/deviceperf/`]
 forbidden_paths: [`server/internal/sim/`, `server/internal/durable/`, `proto/`]
@@ -1763,14 +1800,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/README.md`, `../02_world/maps_zones.md`, `../02_world/world_rules.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/world_route_catalog.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/sharding.md`, `../05_network/messages.md`]
-adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../02_world/README.md`, `../02_world/maps_zones.md`, `../02_world/world_rules.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/world_route_catalog.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/sharding.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-013, IMP-062, IMP-066, IMP-100]
 owned_paths: [`server/internal/sim/world/`, `server/internal/durable/world/`, `client/Assets/Scripts/Systems/World/`, `client/Assets/Tests/PlayMode/WorldTransferPresentation/`]
 forbidden_paths: [`server/migrations/`, `client/Assets/Scripts/UI/`]
 contract_inputs: [map/portal graph, geometry, channel state, transfer/checkpoint intent]
 contract_outputs: [authoritative map/channel placement, checkpoint persistence, transfer/recovery result]
-consumers_checked: [docs/02_world/maps_zones.md, docs/04_architecture/client_experience_contract.md, docs/04_architecture/physics_geometry_contract.md, docs/06_data/config.md, docs/07_content/world_route_catalog.md, docs/07_content/map_spawn_catalog.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/02_world/maps_zones.md, docs/04_architecture/client_experience_contract.md, docs/04_architecture/physics_geometry_contract.md, docs/06_data/config.md, docs/07_content/world_route_catalog.md, docs/07_content/map_spawn_catalog.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement normal-world map instances, entry spawns, portals, checkpoints, transfer failure/reconnect fallback.
@@ -1778,6 +1815,7 @@ Implement normal-world map instances, entry spawns, portals, checkpoints, transf
 - Implement the `C2S_INTERACT` `NPC_SERVICE` dispatcher (handlers registered by `service_id`; an unregistered id is rejected), the `set_checkpoint` service, and `S2C_INTERACT_RESULT` (116) for every interact; `travel` is registered by IMP-020 (ADR-0068).
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064: a forced placement that must wait answers the triggering 6 / 208 / server transfer with `S2C_PLACEMENT_PENDING` (15: `request_message_id`, `reason`, `retry_after_ms` 5000) and later sends 7 / 207 / 105; it is never an error.
 - 24-map/52-portal route compile and anti-softlock tests pass,
 - all 24 maps load exact, mutually distinct width-height spans and distinct topology profiles; camera scrolls inside map bounds instead of treating `1280x720` as map size,
@@ -1813,7 +1851,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../02_world/spawning.md`, `../02_world/monsters.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/monster_catalog.md`, `../07_content/map_spawn_catalog.md`]
-adrs: [`0003-spawn-selector-anchor-contract.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0035-spawn-density-increase.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+adrs: [`0003-spawn-selector-anchor-contract.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0035-spawn-density-increase.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003, IMP-016, IMP-018]
 owned_paths: [`server/internal/sim/spawning/`, `client/Assets/Scripts/Systems/Monsters/`, `client/Assets/Tests/PlayMode/MonsterPresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/Assets/Scripts/UI/`]
@@ -1848,14 +1886,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/README.md`, `../01_gameplay/core_loop.md`, `../07_content/world_route_catalog.md`, `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md`, `../05_network/messages.md`]
-adrs: [`0025-peak-moments-and-progression-books.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+specs: [`../01_gameplay/README.md`, `../01_gameplay/core_loop.md`, `../07_content/world_route_catalog.md`, `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0025-peak-moments-and-progression-books.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-011, IMP-018]
 owned_paths: [`server/internal/sim/discovery/`, `server/internal/sim/travel/`, `server/internal/durable/discovery/`, `client/Assets/Scripts/UI/Discovery/`, `client/Assets/Tests/PlayMode/DiscoveryPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [first-discovery/progression source event, character state, operation ID]
 contract_outputs: [once-only durable progress/reward result and client discovery event]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement 24 character first-discovery rewards and progression-source operation identities.
@@ -1863,6 +1901,7 @@ Implement 24 character first-discovery rewards and progression-source operation 
 - Register the `NPC_SERVICE` `travel` handler in the IMP-018 dispatcher (ADR-0060, ADR-0068): validate discovery (`NOT_DISCOVERED`), charge the tier fee once per `operation_id` through the IMP-007 currency primitive, then start the IMP-018 transfer flow.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - 0.8% discovery budget/act (safe-anchor 0.2% + three FIELD 0.2% each) and retry tests pass.
 - travel to an undiscovered destination returns `NOT_DISCOVERED` and charges nothing; the tier fee is charged exactly once per `operation_id`; a successful travel starts the transfer flow and yields one 116.
 
@@ -1883,14 +1922,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/quests.md`, `../07_content/quest_catalog.md`, `../07_content/integration_validation.md`]
-adrs: [`0025-peak-moments-and-progression-books.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../02_world/quests.md`, `../07_content/quest_catalog.md`, `../07_content/integration_validation.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0025-peak-moments-and-progression-books.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-011, IMP-018, IMP-019]
 owned_paths: [`server/internal/sim/quests/`, `server/internal/durable/quests/`, `client/Assets/Scripts/Systems/Quests/`, `client/Assets/Scripts/UI/Quests/`, `client/Assets/Tests/PlayMode/QuestUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [typed world/combat/interaction events, quest definitions, character quest state]
 contract_outputs: [durable objective transitions, completion/reward result, quest UI projection]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement MAIN/SIDE/Daily/Event objective state/prerequisites/rewards.
@@ -1898,6 +1937,7 @@ Implement MAIN/SIDE/Daily/Event objective state/prerequisites/rewards.
 - Implement `C2S_QUEST_ABANDON` (507/508) and `C2S_STORY_BRANCH_CHOOSE` (509/510).
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - 24 MAIN chain,12 SIDE, Daily board and no-public-boss-gate tests pass.
 - ADR-0060: MAIN abandon rejects `INVALID_STATE`; abandon removes quest items and grants nothing; a branch choice is permanent (`ALREADY_OWNED` on repeat) and only while the owning MAIN quest is active.
 - daily board is generated from the `quest_catalog.md` § Board Generation seed, weight tables and target rules (ADR-0061); same `character_id` + UTC date always yields the same six templates and targets; daily anchors resolve per FIELD map,
@@ -1924,19 +1964,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/quests.md`, `../07_content/quest_catalog.md`]
-adrs: [`0027-world-liveliness-mystery-bounty-capacity.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../02_world/quests.md`, `../07_content/quest_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0027-world-liveliness-mystery-bounty-capacity.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-021]
 owned_paths: [`server/internal/sim/quests/bounty/`, `client/Assets/Scripts/UI/Quests/Bounty/`, `client/Assets/Tests/PlayMode/BountyUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [DAILY bounty set, character position/NPC interaction]
 contract_outputs: [mystery reveal, settlement with EXP bonus and bound currency]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement `quests.md` § Mystery Bounty: 1 of the 6 DAILY choices hidden until area/NPC reveal, variable-ratio selection, +15% EXP and the MYSTERY `currency.bound` grant.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - exactly one of six DAILY choices is MYSTERY and stays `???` until the character reaches its area or starter NPC,
 - completion grants `floor(floor(bounty_set_exp / 3) * 1.15)` EXP and the `quest_catalog.md` MYSTERY bound amount,
 - settlement is per bounty and order-independent; retries settle once.
@@ -1958,7 +1999,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/progression.md`, `../03_systems/items.md`, `../07_content/item_catalog.md`, `../02_world/quests.md`]
-adrs: [`0025-peak-moments-and-progression-books.md`, `0033-skill-unlock-schedule-remap.md`, `0043-spirit-beast-instance-identity.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`]
+adrs: [`0025-peak-moments-and-progression-books.md`, `0033-skill-unlock-schedule-remap.md`, `0043-spirit-beast-instance-identity.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-009, IMP-011, IMP-021, IMP-023]
 owned_paths: [`server/internal/sim/books/`, `client/Assets/Scripts/UI/Books/`, `client/Assets/Tests/PlayMode/BooksUi/`]
 forbidden_paths: [`server/migrations/`]
@@ -1990,19 +2031,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/world_rules.md`, `../07_content/world_event_catalog.md`, `../04_architecture/service_boundaries.md`]
-adrs: [`0027-world-liveliness-mystery-bounty-capacity.md`, `0035-spawn-density-increase.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../02_world/world_rules.md`, `../07_content/world_event_catalog.md`, `../04_architecture/service_boundaries.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0027-world-liveliness-mystery-bounty-capacity.md`, `0035-spawn-density-increase.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-019, IMP-021, IMP-080]
 owned_paths: [`server/internal/global/spirit_surge/`, `server/internal/sim/world/surge/`, `client/Assets/Scripts/Systems/WorldEvents/`, `client/Assets/Scripts/UI/WorldEvents/`, `client/Assets/Tests/PlayMode/SpiritSurgePresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`]
 contract_inputs: [UTC hour, world-event catalog, content revision, live partition list]
 contract_outputs: [single-writer Spirit Surge selection and typed activate/deactivate commands]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement deterministic hourly event selection/waves/contribution/rewards.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - world-event regression suite passes.
 - chain identity = UUID v4 `chain_id` (ADR-0062); completion drop and EXP settle at most once per character per UTC hour, daily-first once per UTC day; up to 2 temporary groups are added and persistent groups are unchanged (ADR-0061).
 - ADR-0062: each Surge chain gets a server-generated UUID v4 `chain_id` at start (no per-hour sequence); a restart never reuses a `chain_id`.
@@ -2028,7 +2070,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../02_world/maps_zones.md`, `../02_world/world_rules.md`, `../04_architecture/realtime_loop.md`, `../05_network/synchronization.md`, `../08_scale_ops/capacity.md`]
-adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0052-single-launch-world.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0062-world-and-systems-regression-fixes.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0052-single-launch-world.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0062-world-and-systems-regression-fixes.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-018, IMP-019, IMP-035]
 owned_paths: [`server/internal/sim/spatial/capacity/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/Assets/Scripts/UI/`]
@@ -2072,14 +2114,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/world_rules.md`, `../07_content/economy_catalog.md`]
-adrs: [`0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0035-spawn-density-increase.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../02_world/world_rules.md`, `../07_content/economy_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0035-spawn-density-increase.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-002, IMP-008, IMP-010, IMP-018]
 owned_paths: [`server/internal/sim/fishing/`, `server/internal/durable/fishing/`, `client/Assets/Scripts/Systems/LifeSkills/Fishing/`, `client/Assets/Scripts/UI/LifeSkills/Fishing/`, `client/Assets/Tests/PlayMode/FishingPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [CAST/HOOK intent, fishing table, character/day/cast identity, RNG]
 contract_outputs: [authoritative fishing state/result, durable counters/reward, client presentation]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 - Implement folk fishing state machine `IDLE -> CASTING -> HOOK_WINDOW -> RESOLVING -> IDLE`.
@@ -2087,6 +2129,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - Catch rolls use Go `math/rand/v2` PCG-64 with key `fishing.<character_id>.<utc_date>.<cast_sequence>`.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - CAST/HOOK only via `C2S_INTERACT` `interact_kind`; HOOK outside `HOOK_WINDOW` is rejected.
 - Catch IDs = `COMMON_CATCH ∪ RARE_CATCH ∪` IDs of the active seasonal table (at most one extra `SEASONAL_CATCH`); default table remains closed to `COMMON_CATCH ∪ RARE_CATCH`.
 - RNG is PCG-64; client cannot supply the roll.
@@ -2110,26 +2153,29 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/world_rules.md`, `../07_content/crafting_catalog.md`]
-adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0035-spawn-density-increase.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../02_world/world_rules.md`, `../07_content/crafting_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0035-spawn-density-increase.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003, IMP-007, IMP-008, IMP-018]
 owned_paths: [`server/internal/sim/cooking/`, `server/internal/durable/cooking/`, `client/Assets/Scripts/Systems/LifeSkills/Cooking/`, `client/Assets/Scripts/UI/LifeSkills/Cooking/`, `client/Assets/Tests/PlayMode/CookingBonfirePresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [KINDLE/COOK/BONFIRE_REST intent, hearth recipes, inventory/state]
 contract_outputs: [atomic cooking/rest result, durable counters/items, timed buff presentation]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 - Implement `KINDLE`, `COOK`, and `BONFIRE_REST` via `C2S_INTERACT` `interact_kind`.
 - Each `recipe.food.*` hearth recipe (all 5 rows) grants `extra_output = 1 item.material.cui_lua_trai`. Cooking is the kindling faucet; do not add shop rows or prices.
 
 ## Acceptance
+- COOK typed snapshot preserves original hearth recipe, guaranteed food/extra-kindling outputs and authored per-act LIFE_SKILL EXP with original item IDs/provenance; recovery never rerolls, substitutes a CRAFT/COOK claim source or grants its EXP twice.
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - `KINDLE` consumes one `item.material.cui_lua_trai` at an inactive bonfire per `world_rules.md`.
 - `COOK` of any `recipe.food.*` yields the dish plus 1 `item.material.cui_lua_trai`.
 - `BONFIRE_REST` ticks rest EXP and Linh Thú bond per `world_rules.md`.
 - No shop faucet for kindling.
 
 ## Tests
+- `server/internal/sim/cooking/cooking_test.go`: TestCookReplayPreservesFoodKindlingAndLifeSkillExp.
 - `server/internal/sim/cooking/cooking_test.go`: Unit: all 5 food recipes emit `extra_output` `cui_lua_trai`.
 - `server/internal/sim/cooking/cooking_test.go`: Integration: `KINDLE`/`COOK`/`BONFIRE_REST` `interact_kind`; full inventory routes extra_output to Reward Claims.
 - `server/internal/sim/cooking/cooking_test.go`: Regression: kindling cannot be purchased from an NPC shop.
@@ -2149,14 +2195,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/bosses.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../06_data/data_model.md`, `../04_architecture/service_boundaries.md`, `../08_scale_ops/sharding.md`, `../06_data/database.md`]
-adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0053-durable-contract-reconciliation.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../02_world/bosses.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../06_data/data_model.md`, `../04_architecture/service_boundaries.md`, `../08_scale_ops/sharding.md`, `../06_data/database.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../06_data/config.md`]
+adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0053-durable-contract-reconciliation.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-010, IMP-016, IMP-019, IMP-080]
 owned_paths: [`server/internal/sim/bosses/`, `server/internal/global/bosses/`, `server/internal/durable/worldconsequence/`, `client/Assets/Scripts/Systems/Bosses/`, `client/Assets/Scripts/UI/Bosses/`, `client/Assets/Tests/PlayMode/BossPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [boss generation/combat events, eligibility, world key, operation ID]
 contract_outputs: [boss lifecycle, WorldConsequence mutation, chest/reward result, client events]
-consumers_checked: [docs/02_world/bosses.md, docs/04_architecture/physics_geometry_contract.md, docs/07_content/boss_catalog.md, docs/07_content/world_route_catalog.md, docs/07_content/dungeon_catalog.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/02_world/bosses.md, docs/04_architecture/physics_geometry_contract.md, docs/07_content/boss_catalog.md, docs/07_content/world_route_catalog.md, docs/07_content/dungeon_catalog.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement INSTANCED/PUBLIC lifecycle, PARTY/PUBLIC scaling, participation, boss mechanics/add ownership, and the `WriteWorldConsequence` durable command (ADR-0040).
@@ -2171,6 +2217,8 @@ Additional scope:
 - no boss relic or world-state row may use `map_instance_id` as a durable foreign key (`map_instance_id` is a runtime identity per `02_world/world_rules.md` and is invalid after partition restart).
 
 ## Acceptance
+- PUBLIC defeated-copy transaction fixes/pins the original reward revision; activation/restart/timeout use that revision and original generation/character/slot grant key, never the active catalog or a new roll. Missing original snapshot refuses recovery.
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - eight bosses compile,
 - every boss resolves the exact declared space and `BOSS_LARGE|WORLD_BOSS` profile,
 - HP formula/scaling tests pass,
@@ -2184,6 +2232,7 @@ Additional scope:
 - Relic "active" = `relic_active AND expires_at > now()` in every spawn check, buff grant and marker guard; the Durable relic expiry sweep (every 60 s, marker-first lock order, batch <= 256) expires relics of stopped channels; a partition loads only its own map/channel rows and quarantines only itself on an unknown content ID (`../06_data/data_model.md` § world_consequence_relics, ADR-0070).
 
 ## Tests
+- `server/internal/durable/worldconsequence/recovery_test.go`: TestDefeatedCopyRevisionPinnedAtCommit, TestPublicChestFallbackUsesOriginalRewardRevisionAfterActivation, TestMissingOriginalBossRewardRevisionStopsRecovery, TestCommittedGenerationSlotNeverRerollsAcrossCopyFallback.
 - `server/internal/sim/bosses/bosses_test.go`: TestInstancedPublicBossLifecycle, TestBossSpaceAndSizeProfiles, TestPartyPublicScalingResolution, TestWriteWorldConsequenceDurableCommand.
 - `client/Assets/Tests/PlayMode/BossPresentation/BossPresentationTests.cs`: telegraph, generation ID, chest, and world-consequence rendering.
 - `server/internal/durable/worldconsequence/recovery_test.go`: TestRestartAfterKillBeforeAckRecovers, TestRecoveryReadinessFalseUntilResolved, TestNoMapInstanceIdDurableKey.
@@ -2203,19 +2252,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/bosses.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../07_security/validation.md`]
-adrs: [`0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0040-world-consequence-durable-aggregate.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0053-durable-contract-reconciliation.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0060-wire-and-durable-contract-completion.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../02_world/bosses.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../07_security/validation.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0040-world-consequence-durable-aggregate.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0053-durable-contract-reconciliation.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0060-wire-and-durable-contract-completion.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-022, IMP-023]
 owned_paths: [`server/internal/sim/bosses/relics/`, `server/internal/sim/bosses/chest/`, `client/Assets/Scripts/Systems/Bosses/Relics/`, `client/Assets/Tests/PlayMode/RelicChestPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [DEFEATED boss transitions, generation-scoped contribution records]
 contract_outputs: [relic/marker state, buff, personal chest settlements]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement launch Di Tích relics and markers and the Gilded Chest ceremony of `bosses.md`: 60-minute channel relic with `buff.di_tich.<boss_id>`, restart restore, region marker, 3-minute chest with generation-scoped eligibility and personal loot, unclaimed rewards to Reward Claims.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - `DEFEATED -> COOLDOWN` spawns `relic.boss.<boss_id>` for 60 min in that map instance; the channel buff is non-stacking and ends on despawn or map exit,
 - an active relic is restored after restart with remaining duration (>= 1 s); the marker records last defeat time, participants and active state,
 - the chest stays interactable 3 min; eligibility requires a non-expired contribution with the chest generation ID; one claim never depletes another; unclaimed rewards go to Reward Claims.
@@ -2242,7 +2292,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/status_effects.md`, `../01_gameplay/combat.md`, `../03_systems/spirit_beasts.md`, `../07_content/boss_catalog.md`]
-adrs: [`0026-just-guard-and-ma-am-status.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0043-spirit-beast-instance-identity.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0054-wire-message-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0026-just-guard-and-ma-am-status.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0043-spirit-beast-instance-identity.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0054-wire-message-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-016, IMP-022, IMP-057]
 owned_paths: [`server/internal/sim/effects/maam/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/`]
@@ -2273,14 +2323,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../02_world/dungeons.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/dungeon_catalog.md`, `../07_content/encounter_catalog.md`, `../02_world/world_rules.md`, `../07_content/world_route_catalog.md`]
-adrs: [`0004-party-dungeon-scaling-reward-slots.md`, `0036-seasons-as-launch-infrastructure.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../02_world/dungeons.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/dungeon_catalog.md`, `../07_content/encounter_catalog.md`, `../02_world/world_rules.md`, `../07_content/world_route_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0004-party-dungeon-scaling-reward-slots.md`, `0036-seasons-as-launch-infrastructure.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-018, IMP-019, IMP-021, IMP-022]
 owned_paths: [`server/internal/sim/dungeons/`, `server/internal/durable/dungeons/`, `client/Assets/Scripts/Systems/Dungeons/`, `client/Assets/Scripts/UI/Dungeons/`, `client/Assets/Tests/PlayMode/DungeonPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [entry request, party snapshot, dungeon/encounter definitions, operation IDs]
 contract_outputs: [owned instance/stage state, scaling, clear settlement, reconnect/client result]
-consumers_checked: [docs/02_world/dungeons.md, docs/04_architecture/physics_geometry_contract.md, docs/07_content/dungeon_catalog.md, docs/07_content/encounter_catalog.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/02_world/dungeons.md, docs/04_architecture/physics_geometry_contract.md, docs/07_content/dungeon_catalog.md, docs/07_content/encounter_catalog.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement five NORMAL dungeons/stages/checkpoints/scaling/repeat+first-clear settlement.
@@ -2288,6 +2338,7 @@ Implement five NORMAL dungeons/stages/checkpoints/scaling/repeat+first-clear set
 - Implement dungeon entry/exit messages 111..115 and 117 (`messages.md` § Dungeon Entry and Exit): pending party entry (30 s), member responses, re-entry of an existing snapshot membership, `EXIT`/`ABANDON`.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - 1p/5p tests and five first-progression-clear EXP values pass,
 - five exact dungeon bounds/layout profiles load; mandatory stages, checkpoints, branches and boss areas remain legally connected.
 - dungeon bound currency is granted once per character per UTC day across all dungeons under `dungeon.bound.daily.<utc_date>.<character_id>`; the first completion of the day fixes the amount (T1..T5 5..25, `ENDGAME_L60` 30); later runs grant none (ADR-0063).
@@ -2316,7 +2367,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../02_world/dungeons.md`, `../07_content/dungeon_catalog.md`, `../04_architecture/physics_geometry_contract.md`]
-adrs: [`0004-party-dungeon-scaling-reward-slots.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+adrs: [`0004-party-dungeon-scaling-reward-slots.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-023]
 owned_paths: [`server/internal/sim/dungeons/endgame/`, `client/Assets/Scripts/Systems/Dungeons/Endgame/`, `client/Assets/Tests/PlayMode/EndgameDungeonPresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`, `client/Assets/Scripts/UI/`]
@@ -2347,14 +2398,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md`, `../07_content/item_catalog.md`]
-adrs: [`0019-spirit-beast-companion-system.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0043-spirit-beast-instance-identity.md`, `0060-wire-and-durable-contract-completion.md`]
+specs: [`../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md`, `../07_content/item_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0019-spirit-beast-companion-system.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0043-spirit-beast-instance-identity.md`, `0060-wire-and-durable-contract-completion.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-008, IMP-010, IMP-016, IMP-019, IMP-100]
 owned_paths: [`server/internal/sim/beasts/`, `server/internal/durable/beasts/`, `client/Assets/Scripts/Systems/Beasts/`, `client/Assets/Scripts/UI/Beasts/`, `client/Assets/Tests/PlayMode/SpiritBeastPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [beast instances, active selection, combat event, passive definitions]
 contract_outputs: [durable beast state, bounded passive proc result, companion presentation]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 - Implement Linh Thú companion runtime for all 10 launch beasts. Identity is composite `(character_id, beast_id)` with no new UUID (ADR-0043). `character_beasts` PK = `(character_id, beast_id)`; `beast_equipment_locations` PK = `(character_id, beast_id, slot_id)` FK → `character_beasts`.
@@ -2364,6 +2415,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - Implement `C2S_BEAST_LEVEL_UP` (430/431), the deactivate form of 410 (empty `beast_id`), `character_beast_food_daily` and `S2C_BEAST_STATE` (436).
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - 10 launch beasts persist and reconstruct on reconnect; PK is `(character_id, beast_id)`.
 - Active beast swap during a PvP match is rejected; PREPARING snapshot includes active `beast_id`.
 - Messages 410–417 parse and settle once per `operation_id`.
@@ -2391,14 +2443,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/atlas.md`, `../07_content/atlas_catalog.md`]
-adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0042-atlas-roster-expansion-104-pages.md`]
+specs: [`../03_systems/atlas.md`, `../07_content/atlas_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0042-atlas-roster-expansion-104-pages.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-010, IMP-011, IMP-018]
 owned_paths: [`server/internal/sim/atlas/`, `server/internal/durable/atlas/`, `client/Assets/Scripts/Systems/Atlas/`, `client/Assets/Scripts/UI/Atlas/`, `client/Assets/Tests/PlayMode/AtlasUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [Atlas source event, page definition, character page state, operation ID]
 contract_outputs: [Seen/Studied/Mastered transition, tier grant result, Atlas UI projection]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 - Implement Atlas journal runtime (Seen/Studied/Mastered) on `character_atlas`. Distinct from IMP-050 (beast compile) and IMP-052 (seasons infrastructure).
@@ -2406,6 +2458,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - `S2C_PROGRESSION_EVENT` (506) for atlas tier-up.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - Launch atlas pages follow `../03_systems/atlas.md` and `../07_content/atlas_catalog.md`; no world-domain duplicate may be introduced.
 - Claim is idempotent; auto-settled returns existing.
 - Atlas tier-up grants LIFE_SKILL EXP per the character's current act from the progression-route table.
@@ -2433,7 +2486,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/equipment.md`, `../07_content/equipment_catalog.md`]
-adrs: [`0021-hardcore-enhancement-rate-curve.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0063-economy-contract-reconciliation.md`]
+adrs: [`0021-hardcore-enhancement-rate-curve.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003, IMP-012]
 owned_paths: [`server/internal/config/equipment/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
@@ -2463,7 +2516,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/crafting.md`, `../04_architecture/client_assets.md`, `../04_architecture/client_performance.md`, `../07_content/presentation_asset_manifest.md`]
-adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-027, IMP-101]
 owned_paths: [`client/Assets/Scripts/Systems/WeaponGlow/`, `client/Assets/Tests/EditMode/WeaponGlow/`]
 forbidden_paths: [`server/`]
@@ -2494,14 +2547,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/crafting.md`, `../07_content/crafting_catalog.md`]
-adrs: [`0022-four-tier-lucky-charm-system.md`, `0060-wire-and-durable-contract-completion.md`, `0063-economy-contract-reconciliation.md`]
+specs: [`../03_systems/crafting.md`, `../07_content/crafting_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0022-four-tier-lucky-charm-system.md`, `0060-wire-and-durable-contract-completion.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-007, IMP-008, IMP-009, IMP-026]
 owned_paths: [`server/internal/sim/crafting/`, `server/internal/durable/crafting/`, `client/Assets/Scripts/Systems/Crafting/`, `client/Assets/Scripts/UI/Crafting/`, `client/Assets/Tests/PlayMode/CraftingUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [recipe/enhancement intent, owned inputs, currency, protection item, RNG]
 contract_outputs: [atomic craft/enhancement state, committed roll, authoritative UI outcome]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement 168 guaranteed recipes, Lucky/Insurance, +0..+16 transition/cost tables.
@@ -2509,10 +2562,13 @@ Implement 168 guaranteed recipes, Lucky/Insurance, +0..+16 transition/cost table
 - Implement the 404..407 field lists (`npc_id`, `batch_quantity`, `target_level`, optional charm instances).
 
 ## Acceptance
+- Frozen typed craft snapshot preserves original recipe/batch, selected material instance IDs/quantities, signed wallet costs, assigned output IDs/full stat rolls/binding/creation revision/time; retry produces the original result. Stale ownership/revision/requirements/locks/capacity reject atomically with zero consumption/creation, not replacement stacks or a fake CRAFT reward claim.
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - exact transition and expected-cost regression vectors pass.
 - ADR-0060: stacked or level-ineligible charms reject `CHARM_INELIGIBLE` and consume nothing; `target_level != current + 1` is `STATE_CONFLICT`.
 
 ## Tests
+- `server/internal/sim/crafting/crafting_test.go`: TestFrozenCraftSnapshotRetainsRollsIdsMaterialsAndCosts, TestStaleCraftSnapshotConsumesAndCreatesNothing, TestCraftCreatesInventoryNotSyntheticRewardClaim.
 - `server/internal/sim/crafting/crafting_test.go`: TestOneHundredSixtyEightRecipes, TestGuaranteedCraftingSettlement, TestEnhancementPlusZeroToSixteen.
 - `client/Assets/Tests/PlayMode/CraftingUi/CraftingUiTests.cs`: recipe/enhancement/charm authoritative outcomes.
 - `server/internal/sim/crafting/crafting_test.go`: TestEnhanceCharmIneligible, TestEnhanceTargetLevelMismatch (ADR-0060).
@@ -2530,7 +2586,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../02_world/npcs.md`, `../07_content/npc_shop_catalog.md`]
-adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`]
+adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-007, IMP-009, IMP-018, IMP-027]
 owned_paths: [`server/internal/sim/shops/`, `server/internal/durable/shops/`, `client/Assets/Scripts/Systems/NpcServices/`, `client/Assets/Scripts/UI/Shops/`, `client/Assets/Tests/PlayMode/ShopUi/`]
 forbidden_paths: [`server/migrations/`]
@@ -2568,14 +2624,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/trading_auction.md`, `../06_data/data_model.md`, `../05_network/messages.md`]
-adrs: [`0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/trading_auction.md`, `../06_data/data_model.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-007, IMP-008, IMP-009, IMP-011]
 owned_paths: [`server/internal/sim/trade/`, `server/internal/durable/trade/`, `client/Assets/Scripts/Systems/Trade/`, `client/Assets/Scripts/UI/Trade/`, `client/Assets/Tests/PlayMode/TradeUi/`]
 forbidden_paths: [`server/migrations/`, `proto/`, `server/internal/protocol/v1/`, `client/Assets/Scripts/Protocol/`]
 contract_inputs: [two participants, proximity/eligibility, offers, locks, operation ID]
 contract_outputs: [atomic trade settlement or whole-trade rejection, client trade FSM]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement same-map/range two-player atomic trade.
@@ -2583,6 +2639,8 @@ Implement same-map/range two-player atomic trade.
 - Direct trade sessions are runtime-only in the owning map-instance simulation; offered items stay in `CHARACTER_INVENTORY` under a session lock; settlement is one transaction (ADR-0060). Implement the 700..709 field lists.
 
 ## Acceptance
+- Every admitted COMMITTING finalization remains concrete CLIENT708 with original actor-scoped receipt/request/epochs/spatial source/fingerprint and embedded two-sided JournalTrade; no requestless TRADE replay or replacement operation ID.
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064: trade requests 700, 702, 703, 705, 707 get exactly one `S2C_TRADE_REQUEST_RESULT` (710); `S2C_TRADE_RESULT` (709) carries the committing 708 `operation_id`; inventory slots expose `locked_quantity` (433) for partial-stack locks.
 - disconnect/cap/ownership/concurrent mutation rejects whole trade safely.
 - same-account trade rejects with `SAME_ACCOUNT_FORBIDDEN`; at most 12 item entries per side; offered items stay trade-locked in `CHARACTER_INVENTORY`, and cancel/timeout/disconnect/restart before `COMPLETED` releases every lock without moving items (ADR-0063).
@@ -2590,6 +2648,7 @@ Implement same-map/range two-player atomic trade.
 - ADR-0062: offering quantity `q` of a stack locks exactly `q` (`locked_quantity`); the remainder can be used/sold/discarded/split off but no operation reduces the stack below `q` or merges into it (`INVALID_STATE`); a participant's map transfer, respawn, instance entry or death cancels the session with no item movement.
 
 ## Tests
+- `server/internal/durable/trade/trade_wire_test.go`: TestAdmittedFinalizationKeepsOriginalClientEvidenceAcrossRestart.
 - `server/internal/durable/trade/trade_wire_test.go`: TestTradeRequestResultPerRequest, TestTradeResultOperationId, TestLockedQuantityPartialStack.
 - `server/internal/sim/trade/trade_test.go`: TestSameMapDistanceFourMetersCheck, TestTwoPlayerAtomicExchange, TestTradeLockInPlaceSettlement.
 - `client/Assets/Tests/PlayMode/TradeUi/TradeUiTests.cs`: offer/lock/confirm/cancel/disconnect state machine.
@@ -2610,14 +2669,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/trading_auction.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`]
-adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+specs: [`../03_systems/trading_auction.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-007, IMP-008, IMP-009]
 owned_paths: [`server/internal/durable/auction/`, `client/Assets/Scripts/Systems/Auction/`, `client/Assets/Scripts/UI/Auction/`, `client/Assets/Tests/PlayMode/AuctionUi/`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [listing/buy/cancel intent, escrow item, buyer/seller balances, operation ID]
 contract_outputs: [fixed-price listing state, atomic sale/proceeds result, Auction UI projection]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement listing escrow, fixed-price purchase, fee/tax, pending seller proceeds.
@@ -2625,6 +2684,7 @@ Implement listing escrow, fixed-price purchase, fee/tax, pending seller proceeds
 - Implement the 730..744 field lists (total lot price, expected price on buy).
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - buyer debit+tax+item transfer+SOLD+seller credit/proceeds is duplication-safe.
 - every auction operation requires level 15 (`AH_ELIGIBILITY_LEVEL_REQUIRED`) and listing also age >= 24 h; the listing floor is `max(100, npc_base_buy_price) × quantity` (`AH_PRICE_FLOOR_NOT_MET`); same-account purchase returns `SAME_ACCOUNT_FORBIDDEN` (ADR-0063).
 - ADR-0060: floor violations reject `AH_PRICE_FLOOR_NOT_MET`; same-account purchase rejects `SAME_ACCOUNT_FORBIDDEN`; expected-price mismatch is `STATE_CONFLICT`.
@@ -2654,14 +2714,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/soul_contracts.md`, `../07_content/soul_catalog.md`]
-adrs: [`0012-reward-claim-item-materialization.md`, `0060-wire-and-durable-contract-completion.md`]
+specs: [`../03_systems/soul_contracts.md`, `../07_content/soul_catalog.md`, `../05_network/protobuf_conventions.md`, `../06_data/data_model.md`]
+adrs: [`0012-reward-claim-item-materialization.md`, `0060-wire-and-durable-contract-completion.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-012, IMP-016]
 owned_paths: [`server/internal/sim/souls/`, `server/internal/durable/souls/`, `client/Assets/Scripts/Systems/Souls/`, `client/Assets/Scripts/UI/Souls/`, `client/Assets/Tests/PlayMode/SoulUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [Soul instances/EXP intent, active/support selection, build state]
 contract_outputs: [durable Soul progression/selection and combat contribution projection]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/03_systems/soul_contracts.md, docs/03_systems/equipment.md, docs/07_content/soul_catalog.md, docs/07_content/monster_catalog.md, docs/07_content/drop_tables.md, docs/07_content/integration_validation.md, docs/06_data/config.md, docs/09_testing/gameplay.md, docs/05_network/protobuf_conventions.md, docs/06_data/data_model.md, docs/06_data/ids.md, docs/06_data/save_rules.md]
 
 ## Change
 Implement collection/contract limits/Soul EXP/level effects.
@@ -2669,15 +2729,21 @@ Implement collection/contract limits/Soul EXP/level effects.
 - Persist `character_souls` (`contracted_item_instance_id` UNIQUE); implement `C2S_LOADOUT_CHANGE kind=SOUL_CONTRACT` CREATE/REMOVE/MOVE/REPLACE and `S2C_SOUL_STATE` (437).
 
 ## Acceptance
+- Source settlement retains each new Soul UUID/Lv1 EXP0/uncontracted instance, including duplicates and original Atlas/resonance/sheens qualification/revision; newly acquired Souls never gain same-settlement contracted Soul EXP and retry never creates/recounts them.
+- JRN-011: a same-definition batch freezes duplicate decisions against virtual prior ownership, keeps original Mastered qualification, chains resonance 9→10→11 with one sheen time, checks the original collection revision once and commits one revision increment; overflow or inconsistent snapshots earns nothing.
 - 25-Soul, duplicate-instance, transfer-lock and EXP-source tests pass.
 - Soul effect values are a step function (Lv2 = Lv1 value, Lv4 = Lv3 value); `memory_resonance_count` persists per `(character_id, soul_id)` in `character_soul_resonance` and unlocks the BOSS sheen once at 10.
 - ADR-0060: every soul contract limit rejects `SOUL_CONTRACT_LIMIT_REACHED`; REPLACE returns the displaced soul to Collection in the same transaction.
+- CAT-001: Soul consumers use the compiled authored element, never source combat element; `ma_rung` contributes MOC to existing explicit support-signature matching while its source is NONE, without automatic element bonuses.
 
 ## Tests
+- `server/internal/durable/souls/souls_test.go`: TestFrozenNewSoulAndDuplicateAcquisitionSettlesOnce, TestNewSoulNeverReceivesSameSettlementExp, TestMasteredDuplicateKeepsOriginalResonanceAndSheenOutcome.
+- `server/internal/durable/souls/souls_test.go`: TestSameSoulBatchAcrossSlotsChainsNineTenElevenAndSingleSheen, TestSameSoulBatchKeepsPreSettlementMasteredQualification, TestSameSoulBatchOverflowOrBrokenChainCommitsNothing, TestSameSoulBatchChecksOriginalRevisionOnce (JRN-011).
 - `server/internal/sim/souls/souls_test.go`: TestSoulCollectionLimits, TestSoulContractEquipEffects, TestSoulEXPGrowthPipeline.
 - `client/Assets/Tests/PlayMode/SoulUi/SoulUiTests.cs`: contract/EXP/active-support projection.
 - `server/internal/sim/souls/souls_test.go`: TestSoulEffectStepLevels, TestMemoryResonancePersistsAndSheenOnce.
 - `server/internal/sim/souls/souls_test.go`: TestSoulContractActions, TestSoulContractLimits (ADR-0060).
+- `server/internal/sim/souls/souls_test.go`: TestSoulElementIndependentOfAcquisitionSourceCombatElement (CAT-001).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -2692,7 +2758,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/spirit_meridian.md`, `../07_content/build_catalog.md`]
-adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0071-client-presentation-contract-reconciliation.md`]
+adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-016, IMP-026]
 owned_paths: [`server/internal/sim/meridian/`, `server/internal/durable/meridian/`, `client/Assets/Scripts/Systems/Meridian/`, `client/Assets/Scripts/UI/Meridian/`, `client/Assets/Tests/EditMode/MeridianUi/`]
 forbidden_paths: [`server/migrations/`]
@@ -2724,7 +2790,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/formations.md`, `../07_content/build_catalog.md`]
-adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0071-client-presentation-contract-reconciliation.md`]
+adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-016, IMP-026]
 owned_paths: [`server/internal/sim/formations/`, `server/internal/durable/formations/`, `client/Assets/Scripts/Systems/Formations/`, `client/Assets/Scripts/UI/Formations/`, `client/Assets/Tests/EditMode/FormationUi/`]
 forbidden_paths: [`server/migrations/`]
@@ -2756,14 +2822,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/social.md`, `../05_network/messages.md`, `../06_data/data_model.md`]
-adrs: [`0013-canonical-unicode-text-normalization.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+specs: [`../03_systems/social.md`, `../05_network/messages.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0013-canonical-unicode-text-normalization.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-018, IMP-080, IMP-100]
 owned_paths: [`server/internal/global/social/`, `server/internal/durable/social/`, `client/Assets/Scripts/Systems/Social/`, `client/Assets/Scripts/UI/Social/`, `client/Assets/Tests/PlayMode/SocialChatUi/`]
 forbidden_paths: [`server/internal/sim/combat/`, `server/migrations/`]
 contract_inputs: [authenticated social/chat intent, text policy, block/mute/friend state]
 contract_outputs: [durable social graph mutation or in-process chat fanout/rejection]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement social graph and LOCAL/WORLD/GUILD/party-compatible messaging gates.
@@ -2771,6 +2837,7 @@ Implement social graph and LOCAL/WORLD/GUILD/party-compatible messaging gates.
 - Chat wire carries `chat_message_id`; `C2S_REPORT_PLAYER` uses the `social.md` reason list, optional `chat_message_id` and notes, limit 10 per 24 h per account.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064 social wire: `C2S_CHAT_SEND` carries `operation_id` and gets exactly one `S2C_CHAT_SEND_RESULT` (655, `CHAT_TEXT_INVALID`); friend/block requests get `S2C_SOCIAL_RESULT` (654); `S2C_FRIEND_STATE` (616) is an AUTHORITATIVE_EVENT (full snapshot on attach, then changed entries); `S2C_BLOCK_STATE` (619) is a full snapshot; `S2C_REPORT_PLAYER_RESULT` (633) carries `operation_id`, `status`, `error_code`, `report_id`.
 - block/direct-interaction/range/level tests pass.
 - ADR-0060: 600 accepts 1..240 graphemes; reports reference `chat_message_id`; the 11th report within 24 h per account is `RATE_LIMITED`.
@@ -2795,26 +2862,29 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/social.md`, `../06_data/data_model.md`, `../07_security/data_protection.md`, `../07_security/personal_data_register.md`]
-adrs: [`0013-canonical-unicode-text-normalization.md`, `0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/social.md`, `../06_data/data_model.md`, `../07_security/data_protection.md`, `../07_security/personal_data_register.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0013-canonical-unicode-text-normalization.md`, `0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-034, IMP-080]
 owned_paths: [`server/internal/durable/chat/`, `server/internal/global/moderation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/sim/`, `client/`]
 contract_inputs: [accepted chat messages, reports, moderation actions]
 contract_outputs: [chat_messages rows, mute/restriction state, report cases]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/07_security/personal_data_register.md, docs/07_security/data_protection.md, docs/03_systems/social.md, docs/06_data/data_model.md, docs/09_testing/backend.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement `social.md` § Moderation: `chat_messages` persistence with 90-day retention markers, automated unsafe/spam rejection without punitive sanctions, reports, and operator-issued restrictions enforced on send.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - accepted messages persist to `chat_messages` with the retention deadline consumed by IMP-056,
 - automated filtering may reject but never sanctions; sanctions come only from explicit moderation actions,
 - a restricted character cannot send in the restricted channels; reports create a case record.
+- PRIV-004: report persistence preserves every registered evidence field and original reporter ownership; no account FK, chat/operator join or OPEN-case extension prevents independent canonical retention/erasure.
 
 ## Tests
 - `server/internal/durable/chat/chat_test.go`: TestChatPersistedToChatMessages, TestNinetyDayRetentionDeadline.
 - `server/internal/global/moderation/moderation_test.go`: TestAutomatedFilterRejectsNoSanction, TestRestrictionEnforcedOnSend, TestReportCreatesCase.
+- `server/internal/global/moderation/moderation_test.go`: TestReportEvidenceSurvivesReporterErasureWithoutBroadDisclosure (PRIV-004).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -2829,7 +2899,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/party.md`, `../05_network/messages.md`]
-adrs: [`0004-party-dungeon-scaling-reward-slots.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+adrs: [`0004-party-dungeon-scaling-reward-slots.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-018, IMP-080, IMP-100]
 owned_paths: [`server/internal/global/party/`, `client/Assets/Scripts/Systems/Party/`, `client/Assets/Scripts/UI/Party/`, `client/Assets/Tests/PlayMode/PartyUi/`]
 forbidden_paths: [`server/internal/sim/combat/`, `server/migrations/`]
@@ -2869,14 +2939,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/guild.md`, `../03_systems/guild_progression.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/data_model.md`]
-adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0063-economy-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/guild.md`, `../03_systems/guild_progression.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0063-economy-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-007, IMP-034, IMP-100]
 owned_paths: [`server/internal/durable/guild/`, `server/internal/global/guild/`, `client/Assets/Scripts/Systems/Guild/`, `client/Assets/Scripts/UI/Guild/`, `client/Assets/Tests/PlayMode/GuildUi/`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [guild intent, actor permissions, currency/progression state]
 contract_outputs: [durable guild aggregate mutation, in-process guild fanout, UI result]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement roles/lifecycle/create/join/capacity/Guild EXP/Ritual/Blessing.
@@ -2884,6 +2954,7 @@ Implement roles/lifecycle/create/join/capacity/Guild EXP/Ritual/Blessing.
 - Implement 650..652 (`C2S_GUILD_SETTINGS_SET`, `C2S_GUILD_INVITE_CANCEL`, `C2S_GUILD_APPLICATION_CANCEL`), the `S2C_GUILD_STATE` roster fields and `GUILD_NAME_TAKEN`/`GUILD_NAME_INVALID`.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064: every guild C2S request (608, 610, 623..627, 629, 630, 637..640, 642..646, 648, 650..652) gets exactly one `S2C_GUILD_RESULT` (649) with `operation_id`, `status`, `error_code`, `guild_id`.
 - permission, one-guild, Ritual and disband guards pass.
 - event intake (ADR-0068): Guild EXP/Ritual/Gathering input enters only through the typed interface `guild.EventSink` (source kind, idempotency source key, credited character IDs, element, `occurred_at`); this packet's tests drive every source kind (PUBLIC/INSTANCED boss, dungeon completion, Spirit Surge chain, bonfire rest slot) with synthetic events; the producers (IMP-022, IMP-023, IMP-025, IMP-059) emit their own typed completion events and IMP-069 wires them to the sink; disband consults the interface `guild.WarRegistrationGuard`, implemented by IMP-042 and wired by IMP-069 (tests use synthetic registration states).
@@ -2914,14 +2985,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/guild_storage.md`, `../06_data/data_model.md`, `../07_security/anti_cheat.md`, `../05_network/messages.md`]
-adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0049-guild-storage-same-account-transfer-prohibition.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/guild_storage.md`, `../06_data/data_model.md`, `../07_security/anti_cheat.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0049-guild-storage-same-account-transfer-prohibition.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-008, IMP-009, IMP-036]
 owned_paths: [`server/internal/durable/guild_storage/`, `client/Assets/Scripts/Systems/GuildStorage/`, `client/Assets/Scripts/UI/GuildStorage/`, `client/Assets/Tests/PlayMode/GuildStorageUi/`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [guild storage intent, permission, item state, operation ID]
 contract_outputs: [reservation/claim/deposit/withdraw settlement or durable rejection]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement COMMON/RESERVE storage and pending/approved/expired claims.
@@ -2929,6 +3000,7 @@ Implement COMMON/RESERVE storage and pending/approved/expired claims.
 - Enforce `C2S_GUILD_STORAGE_CLAIM_DECIDE` actors: APPROVE/REJECT = LEADER/VICE_LEADER; CANCEL = requester/LEADER/VICE_LEADER; DELIVER = requester only.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - reservation/expiry/full-inventory/restart tests pass,
 - withdraw or Reserve delivery of an item deposited by a different character of the same account is rejected with `GUILD_STORAGE_SAME_ACCOUNT`; same-character withdrawal is allowed,
 - withdrawing another character's deposit before 72h membership is rejected with `GUILD_MEMBERSHIP_TOO_NEW`,
@@ -2952,14 +3024,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md`]
-adrs: [`0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`]
+specs: [`../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-007, IMP-008, IMP-036, IMP-100]
 owned_paths: [`server/internal/durable/cosmetics/`, `client/Assets/Scripts/Systems/Cosmetics/`, `client/Assets/Scripts/UI/Cosmetics/`, `client/Assets/Tests/PlayMode/CosmeticsUi/`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [cosmetic entitlement/equip intent, account/character scope, catalog]
 contract_outputs: [durable entitlement/equip state and no-power client projection]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement play-earned CHARACTER-scoped cosmetics, GUILD crest/banner/shrine, IAP account-entitled store cosmetics, and seasonal free/paid/atlas-title cosmetics. Equip and material/special redemption. Launch stable ID counts: `TITLE_PLAY=127`, `PROFILE_FRAME_PLAY=9`, `APPEARANCE_PLAY=4`, `GUILD=5`, `PLAY_PLUS_GUILD=145`, `COMMON_SINKS=20`, `SPECIAL_CURRENCY_SINKS=20`, `SEASONAL_ATLAS_TITLES=60`, `SEASON_FREE=18`, `SEASON_PAID=18`, `IAP_STORE_IDS=13`, `TOTAL_STABLE_COSMETIC_IDS=294`.
@@ -2967,6 +3039,7 @@ Implement play-earned CHARACTER-scoped cosmetics, GUILD crest/banner/shrine, IAP
 - Persist `character_cosmetic_entitlements` and `character_cosmetic_equips`; implement `S2C_COSMETIC_STATE` (438) and the `GUILD_STONE_INSCRIPTION` slot; set `first_equipped_at` on first equip of an account IAP cosmetic.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - `TOTAL_STABLE_COSMETIC_IDS = 294` with the breakdown above; play cosmetics are CHARACTER-scoped; IAP store cosmetics are account-entitled (`account_cosmetic_entitlements`) and equippable on any character of the account; no-power and duplicate/no-double-consume tests pass. Do not treat 20 or 145 as an unexplained launch total.
 - `character_cosmetic_entitlements` keeps one row per grant source and ownership holds while any row exists; `cosmetic.guild_stone.inscription.*` equip into slot `guild_stone_inscription`; the first equip of an IAP cosmetic sets `first_equipped_at` once (ADR-0063).
 - Launch cosmetic counts are `TITLE_PLAY=127`, `PROFILE_FRAME_PLAY=9`, `GUILD=5`, `PLAY_PLUS_GUILD=145`, `TOTAL_STABLE_COSMETIC_IDS=294` (competitive season frames/titles/guild shrine and banner included).
@@ -2991,19 +3064,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/social.md`, `../06_data/data_model.md`, `../07_content/cosmetic_catalog.md`]
-adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0029-character-resource-isolation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/social.md`, `../06_data/data_model.md`, `../07_content/cosmetic_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0029-character-resource-isolation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-023, IMP-034, IMP-038]
 owned_paths: [`server/internal/durable/chivalry/`, `client/Assets/Scripts/UI/Chivalry/`, `client/Assets/Tests/PlayMode/ChivalryUi/`]
 forbidden_paths: [`server/migrations/`, `server/internal/sim/`]
 contract_inputs: [qualifying dungeon completion settlements]
 contract_outputs: [chivalry UTC-day and lifetime counters, milestone title grants]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement `social.md` § Chivalry System: 15 points per qualifying completion, clamped daily cap 100, lifetime total, milestone titles at 500/2,000/5,000; non-spendable score.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - grants clamp to the 100/day cap exactly (e.g. 90 -> +10),
 - duplicate completion settlement never increments either counter twice,
 - milestones grant their title cosmetic once and nothing else; points cannot be debited, exchanged or transferred.
@@ -3025,19 +3099,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md`]
-adrs: [`0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`]
+specs: [`../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0024-fishing-cooking-feats-titles-boss-chest-ceremony.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-019, IMP-022, IMP-027, IMP-038, IMP-040, IMP-042, IMP-058]
 owned_paths: [`server/internal/durable/feats/`, `client/Assets/Scripts/UI/Feats/`, `client/Assets/Tests/PlayMode/FeatsUi/`]
 forbidden_paths: [`server/migrations/`, `server/internal/sim/`]
 contract_inputs: [MONSTER_KILLED, BOSS_DEFEATED, FISH_CAUGHT, ENHANCEMENT_COMPLETED, PVP_SEASON_SETTLED, GUILD_WAR_SEASON_SETTLED events]
 contract_outputs: [feat counters, title entitlements]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement `cosmetics.md` § Folklore Feats Tracking for every feat in `cosmetic_catalog.md`: counter models, persistence, idempotent milestone grants of title cosmetics.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - every catalog feat counts only its listed event filter and grants its title once,
 - grants are idempotent per the `cosmetics.md` key; counters survive restart and season boundaries,
 - titles grant zero stats, multipliers or hidden perks.
@@ -3060,14 +3135,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/seasons.md`, `../03_systems/atlas.md`, `../02_world/bosses.md`]
-adrs: [`0036-seasons-as-launch-infrastructure.md`, `0040-world-consequence-durable-aggregate.md`, `0042-atlas-roster-expansion-104-pages.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0053-durable-contract-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/seasons.md`, `../03_systems/atlas.md`, `../02_world/bosses.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0036-seasons-as-launch-infrastructure.md`, `0040-world-consequence-durable-aggregate.md`, `0042-atlas-roster-expansion-104-pages.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0053-durable-contract-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-021, IMP-036, IMP-038, IMP-040, IMP-060, IMP-091, IMP-102]
 owned_paths: [`server/internal/durable/seasons/`, `server/internal/global/seasons/`, `client/Assets/Scripts/Systems/Seasons/`, `client/Assets/Scripts/UI/Seasons/`, `client/Assets/Tests/PlayMode/SeasonsUi/`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [UTC season, season config, Atlas/guild/cosmetic/IAP state]
 contract_outputs: [season availability/progression/grants and free/paid client track]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 - Implement restart-safe `season_number` derivation: `floor((server_utc_seconds - 1799020800) / 4838400)` using `SEASON_EPOCH_UTC_SECONDS` from `seasons.md`. No season-state row is stored; a restart within a season period must produce the same `season_number`.
@@ -3078,6 +3153,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - Implement per-character seasonal progression record survival across reconnect and restart (backed by existing `character_atlas` and cosmetic entitlement tables).
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - `season_number` derivation is stateless and restart-safe: service restart within a season returns the same value.
 - Seasonal Atlas pages activate only when the character is in or visiting the featured region; they are inaccessible from non-featured regions in the same season.
 - Atlas page progress is permanent: reconnect and restart tests confirm no seasonal page record is removed at or after a season boundary.
@@ -3113,19 +3189,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/guild.md`, `../03_systems/seasons.md`]
-adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0036-seasons-as-launch-infrastructure.md`, `0063-economy-contract-reconciliation.md`]
+specs: [`../03_systems/guild.md`, `../03_systems/seasons.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0028-atlas-soft-pity-guild-stone-morning-market.md`, `0036-seasons-as-launch-infrastructure.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-036, IMP-052, IMP-060]
 owned_paths: [`server/internal/durable/guild/stone/`, `client/Assets/Scripts/UI/GuildStone/`, `client/Assets/Tests/PlayMode/GuildStoneUi/`]
 forbidden_paths: [`server/migrations/`, `server/internal/sim/`]
 contract_inputs: [guild membership history, seasonal Atlas T3 masteries]
 contract_outputs: [permanent Guild Stone inscriptions and counts]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement `guild.md` § Guild Stone: one stone per Safe Anchor, category completion (including the seasonal category, `>= 30` member T3 masteries in the season), permanent inscriptions and counts; no currency, stats or character cosmetic.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - every Safe Anchor exposes `object.guild_stone.<map_id>`,
 - a seasonal category completes at >= 30 distinct character-page T3 masteries by members at mastery time and adds +1 once per cycle,
 - inscriptions are permanent and grant nothing else; repeat cycles add another line.
@@ -3147,14 +3224,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/monetization.md`, `../03_systems/account_storage.md`, `../03_systems/cosmetics.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../07_security/external_integrations.md`, `../07_security/validation.md`]
-adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0051-first-party-username-password-login.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../03_systems/monetization.md`, `../03_systems/account_storage.md`, `../03_systems/cosmetics.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../07_security/external_integrations.md`, `../07_security/validation.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0051-first-party-username-password-login.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-038, IMP-100]
 owned_paths: [`server/internal/durable/monetization/`, `server/internal/edge/iap/`]
 forbidden_paths: [`server/internal/sim/`, `client/`, `server/migrations/`]
 contract_inputs: [platform receipt/webhook, provider response, account/product, operation ID]
 contract_outputs: [verified entitlement state, deduped notification, refund/suspension result]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 - Store catalog from `monetization.md` § Store Structure: 13 `cosmetic.iap.*` `DIRECT_ACCOUNT_COSMETIC` products, bundle `product.cosmetic.bundle.nguoi_hung_lang_da` (three grants) and `product.service.season_track.<season_number>` (`ACCOUNT_SCOPED_ACCESS`). No mounts, no character-slot product.
@@ -3165,6 +3242,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - Implement `POST /api/v1/iap/verify` and `POST /api/v1/iap/steam/init`, Steam Microtransactions (InitTxn/FinalizeTxn/QueryTxn, GetReport refund polling), Google acknowledge, terminal `REJECTED` with `reject_reason`, and the derived refund score (no stored column).
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064 Steam: `/steam/init` returns the existing pending order for the same season; `QueryTxn` status is the only authority (`Succeeded` grant, `Approved` re-finalize, `Failed`/not found reject, `Init` rejected after 24 h, refund statuses refund); finalize failure alone never rejects; 15-minute requery worker; Google `PENDING -> REFUNDED` from RTDN.
 - no entitlement row exists without platform confirmation; a forged receipt is rejected first,
 - the same receipt from another account returns `IAP_RECEIPT_ACCOUNT_MISMATCH`, creates nothing and emits the anomaly signal,
@@ -3201,19 +3279,20 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/account_storage.md`, `../03_systems/monetization.md`, `../03_systems/seasons.md`, `../03_systems/cosmetics.md`]
-adrs: [`0029-character-resource-isolation.md`, `0036-seasons-as-launch-infrastructure.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`]
+specs: [`../03_systems/account_storage.md`, `../03_systems/monetization.md`, `../03_systems/seasons.md`, `../03_systems/cosmetics.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0029-character-resource-isolation.md`, `0036-seasons-as-launch-infrastructure.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-053, IMP-066]
 owned_paths: [`server/internal/durable/monetization/claims/`, `client/Assets/Scripts/Systems/Store/`, `client/Assets/Scripts/UI/Store/`, `client/Assets/Tests/PlayMode/StoreUi/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
 contract_inputs: [GRANTED entitlements, selected character, reward tiers]
 contract_outputs: [per-character claims, store/panel UI states]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement the entitlement claim path: `ONE_SHOT` materialization through Reward Claims and `ACCOUNT_SCOPED_ACCESS` per-character tier claims keyed `account_entitlement_id.character_id.reward_tier_id` until `claim_deadline_at` (season end + 14 days); implement the store/entitlement panel UI showing per-character ownership before purchase and never trusting receipts.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - the composite key prevents a second claim by the same character; another character claims its own instance; the access entitlement is never depleted,
 - claims after `claim_deadline_at` are rejected; a tier already owned from an earlier cycle is a no-op,
 - a `ONE_SHOT` claim materializes once to the selected character,
@@ -3238,7 +3317,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/pvp.md`, `../01_gameplay/combat.md`]
-adrs: [`0017-percentage-dodge-stat-no-active-dodge.md`, `0034-just-guard-edge-trigger-streak.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0054-wire-message-completion.md`]
+adrs: [`0017-percentage-dodge-stat-no-active-dodge.md`, `0034-just-guard-edge-trigger-streak.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0054-wire-message-completion.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-012, IMP-017, IMP-031, IMP-032, IMP-033, IMP-057, IMP-058, IMP-059, IMP-060]
 owned_paths: [`server/internal/sim/pvp/`, `server/internal/durable/pvp/`, `client/Assets/Scripts/Systems/Pvp/`, `client/Assets/Scripts/UI/Pvp/`, `client/Assets/Tests/PlayMode/PvpBuildUi/`]
 forbidden_paths: [`server/migrations/`]
@@ -3270,14 +3349,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/pvp.md`, `../05_network/messages.md`, `../04_architecture/physics_geometry_contract.md`, `../06_data/data_model.md`]
-adrs: [`0008-client-network-transport-protocol.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../03_systems/pvp.md`, `../05_network/messages.md`, `../04_architecture/physics_geometry_contract.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0008-client-network-transport-protocol.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-034, IMP-039]
 owned_paths: [`server/internal/sim/pvp/duel/`, `server/internal/durable/pvp/duel/`, `server/internal/global/matchmaking/duel/`, `client/Assets/Scripts/Systems/Pvp/Duel/`, `client/Assets/Scripts/UI/Pvp/Duel/`, `client/Assets/Tests/PlayMode/DuelUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [queue/duel intent, snapshot, opponent/result, season/rating state]
 contract_outputs: [duel instance/result, idempotent rating/reward settlement, UI FSM]
-consumers_checked: [docs/03_systems/pvp.md, docs/04_architecture/physics_geometry_contract.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/03_systems/pvp.md, docs/04_architecture/physics_geometry_contract.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement duel/Bo3 lifecycle/MMR/season/reconnect/surrender/reward eligibility.
@@ -3285,6 +3364,7 @@ Implement duel/Bo3 lifecycle/MMR/season/reconnect/surrender/reward eligibility.
 - Implement duel messages 814..818 and the `C2S_RANKED_QUEUE_JOIN` (802) payload.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064: every PvP / Guild War C2S request of this mode gets exactly one `S2C_PVP_RESULT` (819) with `operation_id`, `request_message_id`, `status`, `error_code`, `reference_id`; 804 / 806 / 810 / 818 remain the resulting state events with the `messages.md` fields.
 - rating/reward/VOID/abandon/first5-bound-per-day tests pass,
 - `map.pvp.duel_court` bounds/topology and `0.001m` mirror parity pass.
@@ -3313,7 +3393,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/pvp.md`, `../02_world/world_rules.md`, `../05_network/messages.md`]
-adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0035-spawn-density-increase.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0023-engagement-loops-weapon-glow-bonfire-chivalry-chests-sparring.md`, `0035-spawn-density-increase.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-018, IMP-039]
 owned_paths: [`server/internal/sim/pvp/sparring/`, `client/Assets/Scripts/Systems/Pvp/Sparring/`, `client/Assets/Tests/PlayMode/SparringPresentation/`]
 forbidden_paths: [`server/migrations/`, `server/internal/durable/`]
@@ -3347,14 +3427,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/pvp.md`, `../05_network/messages.md`, `../04_architecture/physics_geometry_contract.md`, `../06_data/data_model.md`]
-adrs: [`0008-client-network-transport-protocol.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../03_systems/pvp.md`, `../05_network/messages.md`, `../04_architecture/physics_geometry_contract.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0008-client-network-transport-protocol.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-035, IMP-039, IMP-040]
 owned_paths: [`server/internal/sim/pvp/arena/`, `server/internal/durable/pvp/arena/`, `server/internal/global/matchmaking/arena/`, `client/Assets/Scripts/Systems/Pvp/Arena/`, `client/Assets/Scripts/UI/Pvp/Arena/`, `client/Assets/Tests/PlayMode/ArenaUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [party queue, build snapshots, arena rules/objectives]
 contract_outputs: [arena instance/score/result settlement and client match states]
-consumers_checked: [docs/03_systems/pvp.md, docs/04_architecture/physics_geometry_contract.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/03_systems/pvp.md, docs/04_architecture/physics_geometry_contract.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement5v5 altars/attunements/Harmony Pulse/overtime/score.
@@ -3362,6 +3442,7 @@ Implement5v5 altars/attunements/Harmony Pulse/overtime/score.
 - Implement `C2S_RANKED_QUEUE_JOIN with_party` for Five Element Arena.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064: every PvP / Guild War C2S request of this mode gets exactly one `S2C_PVP_RESULT` (819) with `operation_id`, `request_message_id`, `status`, `error_code`, `reference_id`; 804 / 806 / 810 / 818 remain the resulting state events with the `messages.md` fields.
 - objective-first scoring and team/friendly-fire tests pass,
 - `map.pvp.five_element_arena` bounds, tri-altar topology and `0.001m` mirror parity pass.
@@ -3389,14 +3470,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/guild_war.md`, `../05_network/messages.md`, `../04_architecture/physics_geometry_contract.md`, `../06_data/data_model.md`]
-adrs: [`0008-client-network-transport-protocol.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../03_systems/guild_war.md`, `../05_network/messages.md`, `../04_architecture/physics_geometry_contract.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0008-client-network-transport-protocol.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-036, IMP-039]
 owned_paths: [`server/internal/sim/guild_war/`, `server/internal/durable/guild_war/`, `server/internal/global/matchmaking/guild_war/`, `client/Assets/Scripts/Systems/GuildWar/`, `client/Assets/Scripts/UI/GuildWar/`, `client/Assets/Tests/PlayMode/GuildWarUi/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [guild roster/queue, build snapshots, war objectives, weekly state]
 contract_outputs: [Guild War instance/result/rating/reward settlement and client states]
-consumers_checked: [docs/03_systems/guild_war.md, docs/04_architecture/physics_geometry_contract.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/03_systems/guild_war.md, docs/04_architecture/physics_geometry_contract.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 Implement 10v10 roster/matchmaking/five seals/rating/weekly progression/reward caps.
@@ -3404,6 +3485,7 @@ Implement 10v10 roster/matchmaking/five seals/rating/weekly progression/reward c
 - Implement the `C2S_GUILD_WAR_QUEUE_JOIN` roster payload (exactly 10 distinct eligible members) and 810 fields.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064: every PvP / Guild War C2S request of this mode gets exactly one `S2C_PVP_RESULT` (819) with `operation_id`, `request_message_id`, `status`, `error_code`, `reference_id`; 804 / 806 / 810 / 818 remain the resulting state events with the `messages.md` fields.
 - no Blessing advantage, no territory, and the bound cap survives guild change,
 - `map.guild_war.five_seal_conflict` bounds, braided-front topology and `0.001m` mirror parity pass.
@@ -3433,14 +3515,14 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../08_scale_ops/observability.md`, `../08_scale_ops/caching.md`, `../09_testing/backend.md`]
-adrs: [`0010-exact-technology-version-pinning.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+specs: [`../08_scale_ops/observability.md`, `../08_scale_ops/caching.md`, `../09_testing/backend.md`, `../07_security/personal_data_register.md`]
+adrs: [`0010-exact-technology-version-pinning.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-007, IMP-008, IMP-010, IMP-011, IMP-012, IMP-026, IMP-027, IMP-029, IMP-030, IMP-036, IMP-037, IMP-038, IMP-052, IMP-053, IMP-057, IMP-098, IMP-100]
 owned_paths: [`server/internal/observability/audit/`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [typed runtime/durable/security events with operation/source/revision context]
 contract_outputs: [bounded metrics, structured logs, traces, audit records, dashboards]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/07_security/personal_data_register.md, docs/07_security/data_protection.md, docs/08_scale_ops/deployment.md, docs/08_scale_ops/observability.md, docs/06_data/data_model.md]
 
 ## Change
 Build audit events, the required metric/alert registry and the seven mandatory launch dashboards on the IMP-098 core. Instrument realtime, network, PostgreSQL, economy/integrity, AOI shedding, WorldConsequence load, Spirit Surge coordination, anti-RMT queries, and movement-edge delivery without changing gameplay authority.
@@ -3450,9 +3532,11 @@ Build audit events, the required metric/alert registry and the seven mandatory l
 - the canonical correlation context propagates across Edge, Sim, Global, and Durable boundaries when applicable,
 - every mandatory metric, threshold, dashboard, and alert class in `observability.md` has an executable registration test,
 - telemetry failure never changes gameplay outcome or blocks the fixed-step loop.
+- receipt observability records only canonical operation/state/reconciliation context, never request text, typed outcome contents, credentials or extra personal attribution.
 
 ## Tests
 - `server/internal/observability/audit/audit_test.go`: TestCrossBoundaryTraceContext, TestErrorInvariantReasonLogging, TestRequiredMetricAndAlertRegistry, TestSevenDashboardCoverage, TestTelemetryFailureDoesNotChangeAuthority.
+- `server/internal/observability/audit/audit_test.go`: TestReceiptRecoveryLoggingDoesNotDisclosePayloadOrCredentials.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -3466,19 +3550,22 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../04_architecture/backend.md`, `../04_architecture/service_boundaries.md`, `../04_architecture/system_overview.md`, `../04_architecture/authority.md`, `../04_architecture/realtime_loop.md`, `../05_network/reconnect.md`, `../08_scale_ops/deployment.md`, `architecture_conformance.md`]
-adrs: [`0007-single-owner-fixed-step-simulation.md`, `0030-one-account-one-live-session.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0044-launch-topology-single-binary-role-modes.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+specs: [`../04_architecture/backend.md`, `../04_architecture/service_boundaries.md`, `../04_architecture/system_overview.md`, `../04_architecture/authority.md`, `../04_architecture/realtime_loop.md`, `../05_network/reconnect.md`, `../08_scale_ops/deployment.md`, `architecture_conformance.md`, `../06_data/ids.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../07_security/personal_data_register.md`, `../07_security/data_protection.md`, `../08_scale_ops/backup_recovery.md`, `../06_data/config.md`]
+adrs: [`0007-single-owner-fixed-step-simulation.md`, `0030-one-account-one-live-session.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0044-launch-topology-single-binary-role-modes.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-049, IMP-050, IMP-051, IMP-054, IMP-055, IMP-062, IMP-077, IMP-084, IMP-085, IMP-086, IMP-087, IMP-089, IMP-090, IMP-092, IMP-093, IMP-103]
 owned_paths: [`server/cmd/server/`, `server/internal/app/`]
 forbidden_paths: [`server/cmd/edge/`, `server/cmd/sim/`, `server/cmd/durable/`, `server/cmd/global/`]
 contract_inputs: [typed Edge/Sim/Durable/Global packages, validated config/content/schema compatibility, lifecycle signals]
 contract_outputs: [one thinhthan-server composition root, startup readiness, graceful drain/shutdown, checkpoint-backed restart]
-consumers_checked: [docs/04_architecture/backend.md, docs/04_architecture/service_boundaries.md, docs/08_scale_ops/deployment.md, docs/10_implementation/architecture_conformance.md]
+consumers_checked: [docs/04_architecture/backend.md, docs/04_architecture/service_boundaries.md, docs/08_scale_ops/deployment.md, docs/10_implementation/architecture_conformance.md, docs/06_data/ids.md, docs/06_data/data_model.md, docs/06_data/database.md, docs/05_network/protobuf_conventions.md, docs/06_data/save_rules.md, docs/07_security/personal_data_register.md, docs/10_implementation/repository_layout.md, docs/10_implementation/spec_traceability.md]
 
 ## Change
 Wire Edge, Sim, Durable, and Global into one production Go process through explicit dependency injection. Start Durable/config validation before Global/Sim and accept sessions only after readiness succeeds. On termination, stop accepting new sessions, drain in-flight work within canonical budgets, persist required durable work, and restore simulation state from the latest valid checkpoint after process restart.
 
 ## Acceptance
+- JRN-008/JRN-009: ERASURE_RESUME sharing a mixed-subject journal reaches source-backed continuation disposition without destruction; unlink+directory fsync and every-reference disposal precede startup step6 actual erasure. Crash before/after disposal preserves the same discoverable pending intent/object, never false completion.
+- Activation proves the complete configured durable inventory fits record/count/disk bounds and the existing 120-second publication margin; PITR external erasure fences precede local callbacks and every queued server outcome/content reference stays held until all references are disposed (JRN-003/JRN-008/JRN-009).
+- JRN-003/JRN-004/JRN-005/JRN-007/JRN-008/JRN-009 and PRIV-008/PRIV-009: exact bounded little-endian framing/count/length/CRC and file+directory fsync publication cover every queued/in-flight producer. Validate all files before executing; promote valid interrupted .journal publication, block torn/unknown input, reconstruct exact committed/terminal client outcomes without expired value writes, and dispose all terminal mixed-subject files before erasure completion. External erasure pre-fences precede journal mutations; final erasure/competitive/boss/chest/world recovery obeys deployment.md order.
 - the build produces exactly one production binary named `thinhthan-server`; there is no production `--role` or `SERVER_ROLE` split,
 - every registered handler, simulation system, durable repository, and Global coordinator required by completed dependencies is reachable from the composition root,
 - startup fails closed on database, schema, protocol, or content-revision incompatibility and never reports ready early,
@@ -3490,9 +3577,12 @@ Wire Edge, Sim, Durable, and Global into one production Go process through expli
 - Durable outbox journal (`../08_scale_ops/deployment.md` § Durable Outbox Journal, ADR-0070): on `SHUTDOWN_FLUSH_MAX` expiry every queued or unacknowledged durable command is written to `DURABLE_OUTBOX_DIR/<boot_id>.journal` (length + protobuf `DurableCommandRecord` + CRC32C), fsync, rename to `.ready`, exit 1; at start the `.ready` files replay through the normal idempotent handlers before PUBLIC boss schedule load, chest settlement, WorldConsequence loads and readiness; a bad CRC or unknown command type stops startup.
 
 ## Tests
-- `server/internal/app/app_test.go`: TestCompositionGraphComplete, TestStartupOrderAndReadiness, TestFailClosedCompatibility, TestGracefulDrain, TestDrainRefusesNewWorkAndAnnounces, TestDrainDeadlineStopsPartitions, TestShutdownFlushTimeoutExitCode, TestSecondSignalIgnored, TestCheckpointRestartAndPartyDrop, TestAdmissionBlockedUntilWorldConsequenceRecovery, TestGuildEventSinkWiring, TestWarRegistrationGuardWiring.
+- `server/internal/app/outbox_test.go`: TestErasureResumeJournalHandoffBreaksDisposalCycle, TestErasureResumeCrashBeforeAndAfterJournalDisposal, TestPitrErasureContinuationStagedBeforeCallbacks (JRN-008/JRN-009).
+- `server/internal/app/outbox_test.go`: TestMaximumConfiguredInventoryFitsPublicationBound (JRN-003), TestPitrErasureFenceBeforeLocalReplay (JRN-009/PRIV-009), TestEveryQueuedServerOutcomeHeldUntilDisposition (JRN-008/PRIV-008).
+- `server/internal/app/outbox_test.go`: TestLittleEndianHeaderAndRecordCrcScope, TestMissingTrailingRecordRejectedByCountAndLength, TestOversizeAndOverflowRejectedBeforeAllocation, TestJournalTypeOwnerFingerprintMismatchStopsStartup, TestDirectoryFsyncPublicationAndDisposition, TestAllQueuedProducerFamiliesJournaled (JRN-003/JRN-004); TestCommittedClientAfterHorizonReconstructsOutcome, TestExpiredUncommittedClientTerminalWithoutWrites (JRN-005/JRN-007); TestReplayErasureCompetitiveBossChestWorldOrder (JRN-009); TestJournalReferenceHoldsReceiptPastReplayHorizon, TestReceiptDispositionReleasedOnlyAfterFsyncJournalUnlink (JRN-008/PRIV-008); TestJournalWithPersonalTextDisposedOnlyAfterAllTerminalOutcomes, TestMixedSubjectJournalErasureDispositionDoesNotResurrectPayload, TestExpiredOrErasedChatLogReplayDoesNotResurrectText (PRIV-009).
+- `server/internal/app/app_test.go`: TestStartupOrderAndReadiness, TestFailClosedCompatibility, TestGracefulDrain, TestDrainRefusesNewWorkAndAnnounces, TestDrainDeadlineStopsPartitions, TestShutdownFlushTimeoutExitCode, TestSecondSignalIgnored, TestCheckpointRestartAndPartyDrop, TestAdmissionBlockedUntilWorldConsequenceRecovery, TestGuildEventSettlementRetriesWithoutDuplicateReward, TestWarRegistrationRejectsCutoffOrErasedRoster.
 - `server/cmd/server/main_test.go`: TestSingleProductionBinary, TestNoRoleSplit, TestSignalDrivenShutdown.
-- `server/internal/app/outbox_test.go`: `TestFlushTimeoutJournalsQueuedCommands`, `TestJournalReplayBeforeReadiness`, `TestReplayOfCommittedCommandIsNoop`, `TestLastTickChestSettlesAfterReplay`, `TestBadCrcStopsStartup`, `TestUnrenamedJournalIgnored` (ADR-0070).
+- `server/internal/app/outbox_test.go`: `TestFlushTimeoutJournalsQueuedCommands`, `TestJournalReplayBeforeReadiness`, `TestReplayOfCommittedCommandIsNoop`, `TestLastTickChestSettlesAfterReplay`, `TestBadCrcStopsStartup`, `TestValidUnrenamedJournalPromoted`, `TestTornJournalBlocksStartup` (ADR-0070).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned composition registrations, role-specific entry points, or lifecycle fixtures.]
@@ -3507,7 +3597,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../09_testing/backend.md`, `../09_testing/strategy.md`]
-adrs: [`0011-postgresql-relational-persistence.md`, `0060-wire-and-durable-contract-completion.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0011-postgresql-relational-persistence.md`, `0060-wire-and-durable-contract-completion.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-010, IMP-018, IMP-022, IMP-023, IMP-029, IMP-030, IMP-035, IMP-040, IMP-042, IMP-043, IMP-069]
 owned_paths: [`server/internal/testing/fault/`]
 forbidden_paths: [`server/cmd/server/`]
@@ -3537,7 +3627,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_security/validation.md`, `../07_security/anti_cheat.md`, `../07_security/rate_limits.md`, `../07_security/auth.md`, `../07_security/session.md`, `../07_security/external_integrations.md`, `../09_testing/network.md`]
-adrs: [`0008-client-network-transport-protocol.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+adrs: [`0008-client-network-transport-protocol.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-013, IMP-014, IMP-018, IMP-028, IMP-029, IMP-030, IMP-034, IMP-035, IMP-036, IMP-040, IMP-053, IMP-069, IMP-100]
 owned_paths: [`server/internal/edge/security/`]
 forbidden_paths: [`server/cmd/server/`]
@@ -3571,7 +3661,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../08_scale_ops/capacity.md`, `../09_testing/load.md`, `../08_scale_ops/deployment.md`]
-adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0052-single-launch-world.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0052-single-launch-world.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-018, IMP-019, IMP-034, IMP-035, IMP-041, IMP-042, IMP-055, IMP-069]
 owned_paths: [`deploy/load/`, `server/internal/testing/load/`]
 forbidden_paths: [`server/cmd/server/`]
@@ -3610,7 +3700,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../08_scale_ops/backup_recovery.md`, `../08_scale_ops/deployment.md`, `../06_data/migrations.md`]
-adrs: [`0011-postgresql-relational-persistence.md`, `0048-character-update-timestamp.md`, `0052-single-launch-world.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0011-postgresql-relational-persistence.md`, `0048-character-update-timestamp.md`, `0052-single-launch-world.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-043]
 owned_paths: [`server/internal/testing/migration/`]
 forbidden_paths: [`server/cmd/server/`]
@@ -3648,7 +3738,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`definition_of_done.md`, `milestones.md`, `audit_gates.md`, `../08_scale_ops/deployment.md`, `../08_scale_ops/sharding.md`, `../09_testing/strategy.md`, `../09_testing/test_and_release_evidence.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/observability.md`, `../00_context/technology_versions.md`]
-adrs: [`0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`]
+adrs: [`0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-044, IMP-045, IMP-046, IMP-047, IMP-096]
 owned_paths: [`docs/10_implementation/release/`, `server/internal/testing/release/`, `deploy/prod/`]
 forbidden_paths: [`server/cmd/server/`]
@@ -3686,7 +3776,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/balance_validation.md`, `../07_content/class_skill_catalog.md`, `../01_gameplay/combat.md`, `../01_gameplay/skills.md`]
-adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0054-wire-message-completion.md`]
+adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0054-wire-message-completion.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-004, IMP-026]
 owned_paths: [`server/internal/config/validation/balance/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
@@ -3724,7 +3814,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md`]
-adrs: [`0019-spirit-beast-companion-system.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0043-spirit-beast-instance-identity.md`]
+adrs: [`0019-spirit-beast-companion-system.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0043-spirit-beast-instance-identity.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003, IMP-004]
 owned_paths: [`server/internal/config/validation/beast/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
@@ -3761,7 +3851,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/drop_tables.md`, `../07_content/monster_catalog.md`]
-adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0035-spawn-density-increase.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`]
+adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0035-spawn-density-increase.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-003, IMP-019]
 owned_paths: [`server/internal/config/validation/drop/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
@@ -3794,7 +3884,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_security/anti_cheat.md`, `../03_systems/trading_auction.md`, `../06_data/data_model.md`]
-adrs: [`0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`]
+adrs: [`0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001, IMP-007, IMP-029, IMP-030]
 owned_paths: [`server/internal/durable/anti_rmt/`]
 forbidden_paths: [`server/migrations/`, `server/internal/sim/`, `client/Assets/Scripts/UI/`]
@@ -3837,34 +3927,46 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../07_security/data_protection.md`, `../07_security/personal_data_register.md`, `../06_data/data_model.md`, `../08_scale_ops/backup_recovery.md`, `../06_data/database.md`]
-adrs: [`0011-postgresql-relational-persistence.md`, `0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+specs: [`../07_security/data_protection.md`, `../07_security/personal_data_register.md`, `../06_data/data_model.md`, `../08_scale_ops/backup_recovery.md`, `../06_data/database.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
+adrs: [`0011-postgresql-relational-persistence.md`, `0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-043, IMP-094, IMP-100]
 owned_paths: [`server/internal/durable/privacy/`]
 forbidden_paths: [`server/internal/sim/`, `client/`, `server/migrations/`]
 contract_inputs: [account request, personal-data register, retention/legal-hold policy]
 contract_outputs: [schema-valid export or safe deletion/anonymization with no orphaned value]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/07_security/personal_data_register.md, docs/07_security/data_protection.md, docs/07_security/auth.md, docs/06_data/data_model.md, docs/06_data/database.md, docs/08_scale_ops/backup_recovery.md, docs/08_scale_ops/deployment.md, docs/09_testing/backend.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md]
 
 ## Change
 - Implement per-table retention purge jobs from the single schedule in `../07_security/personal_data_register.md` § 1 (ADR-0065), daily, bounded batches.
 - Implement the staged erasure protocol exactly as `../06_data/data_model.md` § Account Erasure (ADR-0079): prepare the intent/fence, release database locks, publish and verify the immutable ledger object, then run the destructive transaction. Implement the 1-year purge of residual `accounts` rows from the canonical retention schedule.
-- Implement in-app account deletion (`POST /api/v1/account/delete`, re-auth, 7-day `PENDING_DELETION` cancel window, erasure within 15 days) and its client screen.
+- Supply the durable deletion lifecycle and export engine to IMP-103's owning HTTPS/UI adapter; no client or Edge files are owned by this packet.
 - Implement the erasure ledger in backup storage and the restore-time replay (`../08_scale_ops/backup_recovery.md`).
-- Implement data-subject export for categories A, B, D summary, E summary and F (`../07_security/data_protection.md` § Access and Portability); game-state export is optional courtesy data.
+- Implement the single canonical player-export projection and separate verified operator-own DPO projection in `../07_security/data_protection.md` § Access and Portability Requests / Operator-Own Data-Subject Requests; do not copy category lists into this packet or introduce an operator HTTP route.
 
 ## Acceptance
+- JRN-008/PRIV-008/PRIV-009: ERASURE_RESUME verifies the exact pending durable intent/PREPARED/fence and terminally hands off only the queue/journal reference; no destructive callback, completion time, generic erasure-success outcome or client completion ack until every reference is disposed and the actual canonical-lock worker commits. Compare full prepared_at microseconds, not only its ms projection.
+- JRN-008 and PRIV-009: fence new subject admissions, cancel uncommitted personal commands, terminally reconcile mixed-subject journal files and prove durable reference disposal before erasure completes; do not execute stale chat logs or resurrect original F/H/G text. Preserve receipt natural keys, not tombstone reassignment.
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - Retention jobs execute on schedule and delete or anonymize rows past their retention deadline; a test verifies rows are absent after the deadline elapses.
-- Data-subject deletion removes all PII fields from tables listed in `data_protection.md`; preserved audit records do not contain PII beyond what is required by legal hold.
+- Erasure removes credentials/provider/chat attribution and anonymizes ordinary gameplay state; retained report/audit/payment/recovery data remains restricted personal/pseudonymous evidence under the register, not falsely anonymous or subject to an undocumented retention extension.
 - Deletion of an account does not orphan escrow, pending rewards, guild storage, or auction listings — all owned assets are resolved or cancelled before deletion is finalized; test verifies no orphaned rows remain.
 - Data-subject export contains exactly the categories listed in `data_protection.md` and passes schema validation.
 - ADR-0065: erasure commits for an account holding a claimed season-tier entitlement, a live season track while the tombstone already holds the same season, guild leadership, a sole-member guild with storage items and settled trades/auction proceeds; afterwards no FK references the erased `accounts` row and its 1-year purge deletes it; two erased characters never collide on `name_key`.
 - Erasure (ADR-0079): stage the immutable intent and cancellation fence, release all database locks, then publish and GET-verify the format-v2 PREPARED object before destruction. Storage failure preserves personal rows; retry/startup resumes the same operation, key and bytes. The destructive transaction takes its whole lock set in `database.md` priority order before mutation; `LEDGER_REPLAY` skips the pending/fence precondition and applies every retained matching object regardless of its preparation time relative to PITR. Leadership transfer excludes the erased account's characters, else disband; `created_at` is overwritten and guard/review columns cleared. Completion sets `completed_at` and clears the intent's `account_id`; pending intents never expire, and completed cleanup follows `personal_data_register.md` and `../08_scale_ops/backup_recovery.md` § Erasure Ledger. Auction-listing purge follows register row G.
+- PRIV-001/PRIV-002: export uses verified exact subject ownership and the canonical allowlist, includes only reporter-own H submission projection, excludes shared-tombstone, investigator/operator/evidence/secret fields and redacts third-party free text before release.
+- PRIV-004/PRIV-005: retain report evidence through player erasure and purge at its deadline even if OPEN; wipe operator credentials on disable, retain identity to its fixed deadline, and never mutate operator rows through player erasure.
+- PRIV-006/PRIV-007: pending erasure metadata never expires; completed cleanup requires independent exact completion, the canonical UTC calendar deadline and complete restore coverage; keep intent completion proof until corresponding object deletion is confirmed. Every row-family purge respects its anchor, equality boundary and reference/value holds.
+- PRIV-008: under the canonical receipt lock, cancel pending uncommitted intents before subject erasure and scrub retained outcomes; hold pending/unacknowledged recovery references beyond the replay horizon and purge only acknowledged terminal expired receipts without shared-tombstone key reassignment.
 
 ## Tests
-- `server/internal/durable/privacy/privacy_test.go`: TestRetentionDeadlineSelection, TestDeletionRemovesPiiAllTables, TestAssetsResolvedBeforeErasure, TestAuctionListingCancelledBeforeErasure, TestExportSchemaCategories, TestLegalHoldPreserved, TestErasureLedgerReplayOnRestore.
+- `server/internal/durable/privacy/erasure_test.go`: TestErasureResumeContinuationRequiresExactIntentObjectFence, TestErasureCompletionOnlyAfterReferenceDisposal (JRN-008/PRIV-008/PRIV-009); same-ms/different-microsecond preparation metadata must reject.
+- `server/internal/durable/privacy/receipt_retention_test.go`: TestRecoveryReferencesPreventReceiptPurge (JRN-008); TestErasureWaitsForMixedSubjectJournalDisposal, TestLocalJournalTextCannotResurrectErasedSubject (PRIV-009).
+- `server/internal/durable/privacy/privacy_test.go`: TestRetentionDeadlineSelection, TestDeletionRemovesPiiAllTables, TestAssetsResolvedBeforeErasure, TestAuctionListingCancelledBeforeErasure, TestExportSchemaCategories, TestUndocumentedLegalHoldCannotExtendRetention, TestErasureLedgerReplayOnRestore.
 - `server/internal/durable/privacy/erasure_test.go`: TestErasureWithSeasonTierClaims, TestErasureSeasonTrackNoTombstoneCollision, TestErasureLeaderTransferAndSoleGuildDisband, TestErasureAnonymizedNamesUnique, TestResidualAccountPurgedAfterOneYear (ADR-0065); TestErasureStorageFailurePreservesPersonalRows, TestErasureCrashAfterPreparationResumes, TestErasurePreparedLedgerReplayBeforeRestorePoint, TestErasureLedgerCleanupRequiresCompletionAndRestoreCoverage (ADR-0079).
 - `server/internal/durable/privacy/erasure_adr0070_test.go`: `TestErasureLockSetPriorityOrder`, `TestLedgerReplayErasesActiveRestoredAccount`, `TestSuccessorExcludesSameAccount`, `TestSoleAccountGuildDisbands`, `TestCreatedAtOverwritten`, `TestSoldListingWithPendingProceedsNotPurged` (ADR-0070; publication cases are covered by the ADR-0079 tests above).
+- `server/internal/durable/privacy/export_test.go`: TestReporterOwnSubmissionProjection, TestTargetCannotExportOthersReports (PRIV-001); TestExportAllowlistExcludesSecretsAndSharedTombstone, TestThirdPartyFreeTextRedactedBeforeRelease (PRIV-002).
+- `server/internal/durable/privacy/retention_test.go`: TestReportRetainedAtErasurePurgedAtDeadlineIncludingOpen (PRIV-004), TestOperatorIdentityRetentionIndependentOfPlayerErasure (PRIV-005), TestPendingLedgerNeverExpiresAndCompletionProofSurvivesObjectDeleteFailure (PRIV-006), TestCalendarDeadlineClampsLeapDayAndMonthEnd, TestPurgeBoundaryAndReferenceHolds (PRIV-007).
+- `server/internal/durable/privacy/receipt_retention_test.go`: TestPendingAndUnacknowledgedReceiptHeldBeyondReplayHorizon, TestErasureCancelsPendingAndScrubsTerminalReceipt, TestAcknowledgedTerminalReceiptPurgedOnlyAtHorizon (PRIV-008).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -3878,27 +3980,30 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../07_security/data_protection.md`, `../07_security/auth.md`, `../08_scale_ops/backup_recovery.md`, `../04_architecture/client_experience_contract.md`, `../05_network/messages.md`]
-adrs: [`0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`]
+specs: [`../07_security/data_protection.md`, `../07_security/auth.md`, `../08_scale_ops/backup_recovery.md`, `../04_architecture/client_experience_contract.md`, `../05_network/messages.md`, `../07_security/personal_data_register.md`]
+adrs: [`0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-056, IMP-066]
 owned_paths: [`server/internal/edge/account/`, `client/Assets/Scripts/UI/Account/`, `client/Assets/Tests/PlayMode/AccountUi/`, `deploy/prod/runbooks/data_subject_requests.md`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
 contract_inputs: [authenticated account request, re-auth proof]
 contract_outputs: [PENDING_DELETION state, export package, account UI states]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/10_implementation/spec_traceability.md, docs/07_security/personal_data_register.md, docs/07_security/data_protection.md, docs/07_security/auth.md, docs/06_data/data_model.md]
 
 ## Change
 Implement `POST /api/v1/account/delete` (re-auth, 7-day `PENDING_DELETION`, erasure within 15 days through IMP-056) and `POST /api/v1/account/delete/cancel` (ADR-0069; login never cancels by itself), the data-subject export request endpoint, the client account screen and the operator runbook for data-subject requests.
 
 ## Acceptance
 - deletion requires re-auth and revokes sessions; only `POST /api/v1/account/delete/cancel` (Bearer, 204, idempotent, `INVALID_STATE` once erasure started, rate limit `account.delete_cancel`) cancels during the window, a login alone does not; erasure runs by day 7 and never after day 15 (ADR-0069),
-- export returns exactly the `data_protection.md` categories,
+- PRIV-001/PRIV-002: export endpoints/runbook consume only the canonical verified-subject projections and DPO free-text release procedure; reporter-owned submissions cannot expose target/operator/evidence/secret data or shared-tombstone purchases.
 - the runbook covers receipt, acknowledgement and fulfilment windows and is reviewed before M10.
 - ADR-0069: `POST /api/v1/account/delete/cancel` returns the account to `ACTIVE` (204, idempotent, `INVALID_STATE` once erasure started); a login alone never cancels; the client shows only cancel deletion / log out while `pending_deletion = true`.
+- PRIV-003: the existing DPO runbook covers independently verified operator-own access/closure separately from player identity, without a new export route or credential disclosure.
 
 ## Tests
 - `server/internal/edge/account/account_test.go`: TestDeleteRequiresReauth, TestPendingDeletionCancelEndpoint, TestLoginDoesNotCancelDeletion, TestErasureWithin15Days, TestExportRequest.
 - `client/Assets/Tests/PlayMode/AccountUi/AccountUiTests.cs`: delete/cancel/export request states.
+- `server/internal/edge/account/account_test.go`: TestExportUsesVerifiedReporterOwnership (PRIV-001), TestExportRejectsForeignAndSharedTombstoneDataAndSecrets (PRIV-002).
+- `server/internal/edge/account/account_test.go`: TestOperatorOwnDpoIntakeCannotUsePlayerIdentityOrReturnCredentials (PRIV-003).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -3912,30 +4017,34 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../07_security/auth.md`, `../04_architecture/authority.md`, `../07_security/validation.md`, `../06_data/data_model.md`, `../08_scale_ops/observability.md`]
-adrs: [`0009-account-session-credentials.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`]
+specs: [`../07_security/auth.md`, `../04_architecture/authority.md`, `../07_security/validation.md`, `../06_data/data_model.md`, `../08_scale_ops/observability.md`, `../07_security/data_protection.md`, `../07_security/personal_data_register.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
+adrs: [`0009-account-session-credentials.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0051-first-party-username-password-login.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-006, IMP-043, IMP-094]
 owned_paths: [`server/internal/edge/admin/`, `server/internal/durable/operator/`]
 forbidden_paths: [`server/internal/sim/`, `client/`]
 contract_inputs: [operator credentials + TOTP, typed admin requests with reason/ticket]
 contract_outputs: [audited moderation/economy operations, account status changes, operator management]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md, docs/07_security/personal_data_register.md, docs/07_security/data_protection.md, docs/07_security/auth.md, docs/06_data/data_model.md, docs/08_scale_ops/observability.md, docs/09_testing/backend.md, docs/06_data/save_rules.md, docs/05_network/protobuf_conventions.md, docs/08_scale_ops/deployment.md]
 
 ## Change
 - Implement `operators` storage, password + TOTP login, 8 h / 30 min operator sessions, and the private-network admin HTTPS listener.
 - Implement roles SUPPORT / MODERATOR / ECONOMY / ADMIN, account status changes (mute, suspend, BANNED with session revocation), economy grant/rollback with the two-person rule, and audit writes.
 
 ## Acceptance
+- Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - the admin API is not reachable on the public listener,
 - every call without a valid operator session and TOTP-verified login is rejected,
 - each role can call only its operations; ECONOMY grants above the threshold stay pending until a second operator approves,
 - every operation is idempotent by `operation_id` and writes `audit_events` with operator, reason and ticket,
 - setting BANNED revokes all player session families of the account.
 - The private admin listener accepts the Alertmanager `security-queue` webhook and inserts one `audit_events` row (`actor_kind = SYSTEM`) per firing/resolved alert (`../08_scale_ops/observability.md` § Launch Telemetry Stack, ADR-0070).
+- PRIV-003: verified operator-own DPO access constructs only the canonical own identity projection, never credentials or report/audit rows; no new public/operator export route.
+- PRIV-005: disable immediately clears password/TOTP, fixes the first disabled-at anchor and revokes access; repeating disable does not reset retention, and player erasure leaves operator identity unchanged.
 
 ## Tests
 - `server/internal/edge/admin/admin_test.go`: TestPublicListenerRejectsAdmin, TestTotpRequired, TestRolePermissions, TestTwoPersonRule, TestBanRevokesSessions, TestAuditWritten.
 - `server/internal/edge/admin/alert_audit_test.go`: `TestSecurityAlertWebhookWritesAuditEvent`, `TestAlertWebhookOnlyOnPrivateListener` (ADR-0070).
+- `server/internal/durable/operator/privacy_test.go`: TestOperatorOwnProjectionRequiresVerifiedIdentityAndExcludesSecrets (PRIV-003), TestDisableWipesCredentialsAndKeepsOriginalDeadline, TestPlayerErasureCannotDisableOperator (PRIV-005).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -3950,7 +4059,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../04_architecture/client.md`, `../04_architecture/client_assets.md`, `../04_architecture/client_localization.md`, `../04_architecture/client_experience_contract.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../05_network/versioning.md`, `../08_scale_ops/deployment.md`, `../00_context/technology_versions.md`, `../04_architecture/client_performance.md`]
-adrs: [`0006-unity-go-postgresql-stack.md`, `0010-exact-technology-version-pinning.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
+adrs: [`0006-unity-go-postgresql-stack.md`, `0010-exact-technology-version-pinning.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-076, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-093, IMP-099, IMP-103]
 owned_paths: [`client/BuildProfiles/`, `client/Assets/Scenes/Bootstrap/`, `client/Assets/Scripts/App/`, `client/Assets/Tests/PlayMode/AppComposition/`, `scripts/verify_client_build.ps1`]
 forbidden_paths: [`server/`]
@@ -3997,7 +4106,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md`, `../04_architecture/physics_geometry_contract.md`, `repository_layout.md`]
-adrs: [`0014-unity-addressables-asset-delivery.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0050-windows-only-ci-and-auto-merge.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0068-implementation-packet-readiness-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
+adrs: [`0014-unity-addressables-asset-delivery.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0050-windows-only-ci-and-auto-merge.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0068-implementation-packet-readiness-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-063, IMP-101]
 owned_paths: [`client/Assets/Art/Provenance/asset_source_register.json`, `client/Assets/Art/Provenance/register.schema.json`, `client/Assets/Scripts/Core/Assets/Editor/AssetProduction/`, `client/Assets/Scenes/Review/`, `client/Assets/Tests/EditMode/AssetProvenance/`, `client/Assets/Tests/EditMode/CutoutQualityGate/`, `client/Assets/Tests/EditMode/VolumeDepthGate/`]
 forbidden_paths: [`server/`, `proto/`]
@@ -4040,7 +4149,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md`, `../04_architecture/physics_geometry_contract.md`]
-adrs: [`0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-063, IMP-070]
 owned_paths: [`client/Assets/Art/Actors/Players/`, `client/Assets/Tests/EditMode/PlayerArtCoverage/`, `client/Assets/Art/Provenance/fragments/actors_players.json`, `client/Assets/Art/StyleRef/actors_players/`, `client/Assets/Art/Provenance/terms/actors_players/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`]
 forbidden_paths: [`server/`, `proto/`]
@@ -4078,7 +4187,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/spirit_beast_catalog.md`, `../04_architecture/physics_geometry_contract.md`]
-adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-063, IMP-070]
 owned_paths: [`client/Assets/Art/Actors/Creatures/`, `client/Assets/Tests/EditMode/CreatureArtCoverage/`, `client/Assets/Art/Provenance/fragments/actors_creatures.json`, `client/Assets/Art/StyleRef/actors_creatures/`, `client/Assets/Art/Provenance/terms/actors_creatures/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/beast.shared.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.lang_da.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.rung_u_minh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.ben_nuoc_den.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.deo_may.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.thanh_co.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.nui_thieng.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.dinh_lang_bo_hoang.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.mieu_ba_trong_rung.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.xom_chim.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.hang_ma_tranh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.den_tran.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.finale.asset`, `client/Assets/Art/Actors/Npcs/`]
 forbidden_paths: [`server/`, `proto/`]
@@ -4116,7 +4225,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md`, `../02_world/maps_zones.md`, `../04_architecture/physics_geometry_contract.md`]
-adrs: [`0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-062, IMP-063, IMP-070]
 owned_paths: [`client/Assets/Art/World/`, `client/Assets/Scenes/World/`, `client/Assets/Tests/EditMode/WorldArtCoverage/`, `client/Assets/Art/Provenance/fragments/world.json`, `client/Assets/Art/StyleRef/world/`, `client/Assets/Art/Provenance/terms/world/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.lang_da.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.rung_u_minh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.ben_nuoc_den.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.deo_may.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.thanh_co.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.nui_thieng.asset`]
 forbidden_paths: [`server/internal/sim/spatial/maps/`, `client/Assets/Scenes/Collision/`, `proto/`]
@@ -4156,7 +4265,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../04_architecture/physics_geometry_contract.md`]
-adrs: [`0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-062, IMP-063, IMP-070]
 owned_paths: [`client/Assets/Art/Instances/`, `client/Assets/Scenes/Dungeons/`, `client/Assets/Scenes/Finale/`, `client/Assets/Scenes/Competitive/`, `client/Assets/Tests/EditMode/InstanceArtCoverage/`, `client/Assets/Art/Provenance/fragments/instances.json`, `client/Assets/Art/StyleRef/instances/`, `client/Assets/Art/Provenance/terms/instances/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.dinh_lang_bo_hoang.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.mieu_ba_trong_rung.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.xom_chim.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.hang_ma_tranh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.den_tran.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.finale.asset`, `client/Assets/AddressableAssetsData/AssetGroups/pvp.shared.asset`]
 forbidden_paths: [`server/internal/sim/spatial/maps/`, `client/Assets/Scenes/Collision/`, `proto/`]
@@ -4195,7 +4304,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md`, `../07_content/item_catalog.md`, `../07_content/equipment_catalog.md`, `../04_architecture/client_localization.md`]
-adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-063, IMP-070]
 owned_paths: [`client/Assets/Art/UI/`, `client/Assets/Art/Items/`, `client/Assets/Art/VFX/`, `client/Assets/Tests/EditMode/InterfaceArtCoverage/`, `client/Assets/Art/Provenance/fragments/interface.json`, `client/Assets/Art/StyleRef/interface/`, `client/Assets/Art/Provenance/terms/interface/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/bootstrap.local.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`, `client/Assets/AddressableAssetsData/AssetGroups/icons.shared.asset`]
 forbidden_paths: [`server/`, `proto/`]
@@ -4233,7 +4342,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md`, `../03_systems/cosmetics.md`]
-adrs: [`0053-durable-contract-reconciliation.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0053-durable-contract-reconciliation.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-063, IMP-070]
 owned_paths: [`client/Assets/Art/Cosmetics/`, `client/Assets/Tests/EditMode/CosmeticArtCoverage/`, `client/Assets/Art/Provenance/fragments/cosmetics.json`, `client/Assets/Art/Provenance/cultural_review.md`, `client/Assets/Art/StyleRef/cosmetics/`, `client/Assets/Art/Provenance/terms/cosmetics/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/cosmetic.shared.asset`, `client/Assets/AddressableAssetsData/AssetGroups/icons.shared.asset`]
 forbidden_paths: [`server/`, `proto/`]
@@ -4271,7 +4380,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md`, `../00_context/constraints.md`]
-adrs: [`0014-unity-addressables-asset-delivery.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0014-unity-addressables-asset-delivery.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-063, IMP-070]
 owned_paths: [`client/Assets/Audio/`, `client/Assets/Tests/EditMode/AudioAssetCoverage/`, `client/Assets/Art/Provenance/fragments/audio.json`, `client/Assets/Art/Provenance/terms/audio/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.lang_da.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.rung_u_minh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.ben_nuoc_den.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.deo_may.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.thanh_co.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.nui_thieng.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.shared.asset`]
 forbidden_paths: [`server/`, `proto/`]
@@ -4307,7 +4416,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md`, `definition_of_done.md`]
-adrs: [`0014-unity-addressables-asset-delivery.md`, `0045-ci-evidence-without-self-referential-sha.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
+adrs: [`0014-unity-addressables-asset-delivery.md`, `0045-ci-evidence-without-self-referential-sha.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105]
 owned_paths: [`client/Assets/Scripts/Core/Assets/Editor/AssetProduction/ReleaseAssetAudit.cs`, `client/Assets/Tests/EditMode/ReleaseAssetAudit/`, `client/Assets/Notices/THIRD_PARTY_ASSETS.txt`, `client/Assets/Art/Provenance/asset_source_register.json`, `client/Assets/Art/Provenance/asset_rights_review.md`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`]
 forbidden_paths: [`server/`, `proto/`]

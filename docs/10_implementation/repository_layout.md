@@ -39,7 +39,10 @@ thinhthan/
 │   ├── prod/                                       # IMP-048 (systemd unit, pinned cacert.pem, runbooks; DSR runbook IMP-103)
 │   └── load/                                       # IMP-046
 ├── docs/
-├── proto/thinhthan/v1/  proto/testdata/golden/     # IMP-061
+├── proto/
+│   ├── thinhthan/v1/                               # IMP-061: nine network schemas
+│   ├── thinhthan/internal/v1/durable_journal.proto  # IMP-061: Go-only internal schema
+│   └── testdata/golden/                            # IMP-061
 ├── scripts/
 │   ├── verify.ps1                                  # IMP-000
 │   ├── codegen.ps1                                 # IMP-061
@@ -68,7 +71,7 @@ server/
     ├── config/            # IMP-003/004; equipment IMP-026; validation/{balance,beast,drop} IMP-049/050/051
     ├── core/id/  core/rng/  # IMP-001, IMP-002
     ├── observability/     # core IMP-098, audit IMP-043
-    ├── durable/           # db, idempotency, schema IMP-005; queue IMP-082; lockorder IMP-097; feature subpackages
+    ├── durable/           # db, idempotency, schema IMP-005; queue IMP-082; journal/v1 generated Go IMP-061; lockorder IMP-097; feature subpackages
     ├── edge/              # listener, heartbeat IMP-081; auth, session, router IMP-006; feature subpackages
     ├── global/            # runtime IMP-080 (in-process single writer); feature subpackages
     ├── protocol/v1/       # IMP-061 generated .pb.go; never hand-edit
@@ -107,7 +110,7 @@ client/
 │   ├── Localization/                  # Settings/ + Tables/Core/ IMP-064; Tables/<Feature>/ per feature packet
 │   ├── Notices/                       # IMP-076
 │   ├── Plugins/Google.Protobuf/       # IMP-000 exact 3.36.2 runtime
-│   ├── {Scripts,Tests}/**/csc.rsp     # IMP-000 — scoped per-asmdef (-warnaserror+ -nullable:enable); no root csc.rsp (BLK-007, ADR-0059)
+│   ├── {Scripts,Tests}/**/csc.rsp     # IMP-000 — scoped per-asmdef (-warnaserror+ -nullable:enable); no root csc.rsp (ADR-0059)
 │   ├── Scenes/
 │   │   ├── Bootstrap/                 # IMP-067
 │   │   ├── Collision/                 # IMP-062 collision-only authoring scenes (ServerGeometry)
@@ -135,7 +138,7 @@ client/
 
 ## Mandatory Assemblies
 
-All 13 `.asmdef` files are authored by IMP-000 with exactly these references (name references, `autoReferenced: false`, `overrideReferences: true` where precompiled DLLs are listed); no later packet edits an asmdef (ADR-0068). An assembly whose folder has no script yet is valid by name. Folder paths are under `client/Assets/`. Each assembly's folder also carries an IMP-000-authored `csc.rsp` containing exactly `-warnaserror+` and `-nullable:enable` — compiler flags are scoped per-asmdef so they never reach `Library/PackageCache` package sources; there is no root `client/Assets/csc.rsp` (BLK-007, ADR-0059).
+All 13 `.asmdef` files are authored by IMP-000 with exactly these references (name references, `autoReferenced: false`, `overrideReferences: true` where precompiled DLLs are listed); no later packet edits an asmdef (ADR-0068). An assembly whose folder has no script yet is valid by name. Folder paths are under `client/Assets/`. Each assembly's folder also carries an IMP-000-authored `csc.rsp` containing exactly `-warnaserror+` and `-nullable:enable` — compiler flags are scoped per-asmdef so they never reach `Library/PackageCache` package sources; there is no root `client/Assets/csc.rsp` (ADR-0059).
 
 | Assembly | Folder | Platforms / constraints | References |
 |---|---|---|---|
@@ -192,6 +195,8 @@ C#: client/Assets/Scripts/Protocol/
 ```
 
 Only `scripts/codegen.ps1` may regenerate them.
+The Go-only journal source `proto/thinhthan/internal/v1/durable_journal.proto` and generated-only `server/internal/durable/journal/v1/durable_journal.pb.go` are owned by IMP-061. Package/options/closed field schema are in `../05_network/protobuf_conventions.md` §7. It imports network contracts one-way, has no C# output or network IDs, and is not a tenth network schema.
+
 
 ## Git Attributes
 
@@ -223,7 +228,7 @@ Do not put `*.prefab`, `*.asset`, `*.meta`, or `*.unity` in LFS.
 - Go tests live in the package they test (`<package>/<name>_test.go`) and therefore inside the packet's owned directory.
 - Unity tests live in `client/Assets/Tests/{EditMode|PlayMode}/<Feature>/`, one folder per packet, listed in its `owned_paths`. The root test asmdefs belong to IMP-000; `PlayMode/Harness/` belongs to IMP-065 and is read-only for other packets.
 - Shared registries: `client/Assets/AddressableAssetsData/` is owned by IMP-063; a packet that depends on IMP-063 may append groups/entries only for keys it owns (append-only, key-owner checked by the IMP-063 validator). The append surface is granted by naming the exact registry files in the packet's `owned_paths` (Q0 `ownedFile` matches exact paths or `dir/` prefixes and implies `.meta`) together with a `depends_on` edge to the registry owner, which `paths.ownership_overlap` requires for any shared path; e.g. IMP-064 owns `AddressableAssetSettings.asset` plus the `AssetGroups/localization.*(.asset)` group and schema assets (ADR-0074). Localization string tables are per feature: the packet owning `client/Assets/Scripts/{Systems|UI}/<Feature>/` implicitly owns `client/Assets/Localization/Tables/<Feature>/`; `Tables/Core/` belongs to IMP-064.
-- Module lockfiles: `server/go.mod`/`server/go.sum` are owned by IMP-000 and co-ownable — a packet whose code imports a module already pinned in `../00_context/technology_versions.md` may list both in `owned_paths` (every packet transitively depends on IMP-000, so `paths.ownership_overlap` ordering holds) and then lands its own `require`/`go.sum` lines; until a packet lists them, the spec-owner lands pinned `require` lines for blocked tasks directly (BLK-003).
+- Module lockfiles: `server/go.mod`/`server/go.sum` are owned by IMP-000 and co-ownable — a packet whose code imports a module already pinned in `../00_context/technology_versions.md` lists both in `owned_paths` before landing its `require`/`go.sum` lines (every packet transitively depends on IMP-000, so `paths.ownership_overlap` ordering holds). Missing ownership is corrected in the packet and this index before implementation; a spec-change does not create runtime lockfiles in the docs-only baseline.
 - Provenance: `client/Assets/Art/Provenance/asset_source_register.json` is created empty by IMP-070 and merged by IMP-076 from `fragments/<name>.json`, each fragment owned by exactly one art packet.
 - Evidence directories are implied by `evidence_location` only; no packet lists `docs/10_implementation/evidence/` in `owned_paths`.
 - Unity `.meta` files are implied by ownership (ADR-0072): a packet owning `client/**` path P also owns `P.meta`, and the `.meta` of every folder it is the first to create; they are editor-materialized in CI (artifact `unity-materialized-windows`, ADR-0078) and committed byte-for-byte, never hand-written, except the path-derived GUIDs of § ProjectSettings Baseline.
@@ -571,6 +576,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `deploy/prod/runbooks/data_subject_requests.md` | IMP-103 |
 | `docs/10_implementation/release/` | IMP-048 |
 | `proto/testdata/golden/` | IMP-061 |
+| `proto/thinhthan/internal/v1/durable_journal.proto` | IMP-061 |
 | `proto/thinhthan/v1/` | IMP-061 |
 | `scripts/codegen.ps1` | IMP-061 |
 | `scripts/device_perf.ps1` | IMP-096 |
@@ -623,6 +629,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `server/internal/durable/guild_war/` | IMP-042 |
 | `server/internal/durable/idempotency/` | IMP-005 |
 | `server/internal/durable/inventory/` | IMP-009 |
+| `server/internal/durable/journal/v1/` | IMP-061 |
 | `server/internal/durable/items/` | IMP-008 |
 | `server/internal/durable/lockorder/` | IMP-097 |
 | `server/internal/durable/meridian/` | IMP-032 |

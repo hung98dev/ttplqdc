@@ -17,12 +17,14 @@ scripts/              hook + verification scripts (Bash 5; Git Bash on Windows; 
 ## Conventions
 
 - Rules use `trigger: always_on`, or `trigger: glob` with `globs:` as a YAML sequence. Keep always-on rules short because they consume context every session.
-- Skills trigger on `user` + `model` by default. Add `allowed-tools` when a skill must be read-only.
+- Skills trigger on `user` + `model` by default. Skill `allowed-tools` auto-approves tools; it does not restrict them. Custom profile `allowed-tools` is a real tool restriction; use `wave-planner` and `wave-plan-auditor` for read-only planning/audit.
 - Agents are plain `*.md` profiles; `name:` must not collide with built-in profiles. `model:` is intentionally unset so profiles inherit Devin's default subagent model.
 - Hook scripts must be deterministic and fast (<5s except the Stop gate). Safety guards block explicit policy violations; heavy verification runs only at Stop/checkpoints.
 - Scripts parse hook JSON with `jq` when present and use a minimal fallback otherwise.
 - `docs/**` is readable by all. Implementer sessions may not edit protected docs, `.devin/`, `AGENTS.md` or `README.md`; sessions started with `THINHTHAN_AGENT_ROLE=spec-owner` may edit protected specs/ADRs (spec-change PRs, `policy-review`). The rule is enforced by `pre_write_guard.sh` and `pre_exec_guard.sh` because `config.json` deny rules cannot depend on the role.
 - Secret material stays unreadable to every agent tool (`config.json` denies `*.pem`/`*.key`). The only exception is role-scoped in `pre_exec_guard.sh`: a session with `THINHTHAN_AGENT_ROLE=reviewer` may run exactly `pwsh -NoProfile -File .devin/scripts/policy_review.ps1 ...`, which reads the App key named by `THINHTHAN_POLICY_APP_KEY_FILE` in-process and posts the `policy-review` check run (ADR-0072).
+
+Agent onboarding: read `HANDBOOK.md` § Skill entry points / Subagent profiles, then `docs/10_implementation/agent_execution_protocol.md` §2a and `wave_execution_prompts.md` § On-Demand Planning Contract. Owner wave commands use `/run-wave` → `/plan-wave` → read-only, credential-free `wave-planner` → source audit by a different `verifier` session → fresh DoR → claim → complete audited task-plan handoff. Standalone `/plan-wave` inspects `main` and returns only the session plan/audit: no claim, status/spec write, branch/draft PR, codegen or implementation. Missing, failed or stale plans/audits block dispatch; keep every waiting/blocked wave task represented and replan/re-audit affected tasks after relevant source/main, blocker or dependency-output changes. These profiles inherit the default model; no model choice promises completeness or replaces the source-based audit and execution gates.
 
 ## Adding a new agent / skill / rule
 

@@ -25,6 +25,10 @@ Owns transactional mutations that must survive restart. Canonical aggregates are
 
 This layer accepts authenticated server-side commands, validates durable preconditions, uses PostgreSQL transactions/constraints, requires stable operation IDs where retry is possible, and returns committed outcomes. It never runs per-frame simulation.
 
+The Durable queue accepts only the exhaustive producer/family/owner registry in `../06_data/save_rules.md` § Closed Durable Queue Producer Registry and typed codec in `../05_network/protobuf_conventions.md` §7 (JRN-001). This includes every queued client mutation and server-origin reward/standalone Quest/Discovery/WorldConsequence/checkpoint/PUBLIC schedule+copy eligibility+chest/PvP+Guild War/Guild EventSink/activity/job family; no five-kind representative enum or opaque bytes escape hatch exists. Synchronous credential/provider/admin source staging remains synchronous; subsequent queued work is a typed JOB referencing the persisted source, never a credential or untyped instruction.
+
+Client queue admission is PostgreSQL-backed before enqueue (`durable_command_receipts`, `../06_data/ids.md`): DB outage admits no client durable work. Simulation UUIDv5 holding queues retain their existing bounded outage semantics without requiring a pre-admission DB write. Domain owns receipt/operation/source outcome holds and normal transaction callbacks; the composition root alone owns the non-client-selectable trusted replay capability, disk publication/disposition and startup ordering. Public admission still rejects expired UUIDv7 at 180 days. Trusted replay returns a held COMMITTED outcome or a conclusively recorded terminal nonexecution for an expired uncommitted client; it never rerolls, silently drops a journal record or changes owner/operation identity (JRN-005..008).
+
 
 ## Content Runtime
 Owns compiled static catalogs, schema/content revision compatibility, immutable lookup data, and atomic validated activation. Simulation/application components read immutable content snapshots by revision and do not mutate static content.
@@ -94,6 +98,8 @@ Crossing an ownership boundary uses a typed command/message, never a shared muta
 
 Typical durable flow: Simulation -> GrantReward(operation_id, character_id, source, committed_reward_choice) -> Durable Domain -> PostgreSQL transaction -> committed outcome -> Simulation/Session replication.
 
+A command's canonical frozen input contains all finalized values and provenance needed to apply its owning transaction; it never depends on a despawned entity, a new partition incarnation, current membership instead of the historical snapshot, newly sampled PUBLIC respawn delay or the currently active content revision. Kill/dungeon/event suboutputs remain atomic; independent owner/slot settlement is not permission to split an atomic invariant. Every queue/in-flight executor participates in the shutdown inventory freeze, including Global's durable schedule transitions and background callbacks (JRN-002..004).
+
 Typical realtime flow: Edge -> PlayerIntent(session_epoch, input_seq, payload) -> owning Simulation queue.
 
 ## Kill Settlement Transaction Scope
@@ -143,7 +149,7 @@ Do not shard durable data merely because simulation is partitioned. PostgreSQL s
 - No synchronous DB work per simulation entity per tick.
 - Cross-boundary communication is typed and bounded.
 - WorldConsequence is a named durable aggregate owned by Application/Durable Domain.
-- Durable Domain owns the world-scoped relic expiry sweep (60 s), the staged erasure worker (`../06_data/data_model.md` § Account Erasure; ADR-0079) and the durable outbox journal replay at start (ADR-0070); running partitions still expire their own relics.
+- Durable Domain owns the world-scoped relic expiry sweep (60 s), staged erasure worker (`../06_data/data_model.md` § Account Erasure; ADR-0079), complete typed producer outcome holds and durable outbox replay at start (ADR-0070). The composition root gates startup on journal validation/reconciliation, erasure/competitive recovery, PUBLIC schedule and defeated-copy chest settlement, then partition WorldConsequence loads; a supported PITR restore first establishes the external erasure fence before local replay. No owner accepts players or starts a purge that can invalidate unresolved recovery proof (JRN-008..009).
 - Spirit Surge region scheduling is owned by Ephemeral Global Runtime; simulation partitions never self-select.
 - Spirit Surge maximum 3 concurrent regions is enforced by the single-writer scheduler, not by individual partitions.
 - One kill settlement = one PostgreSQL transaction covering all output aggregates; idempotency record stores all granted outputs.

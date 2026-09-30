@@ -26,6 +26,12 @@ Acquiring duplicates of a `soul_id` whose Atlas page is already Mastered accumul
 - Reaching `memory_resonance_count >= 10` for a BOSS Soul unlocks an ambient cosmetic spirit sheen in Safe Anchors.
 - Preserves the emotional reward of rare boss drops without inflating character power.
 
+### Atomic Acquisition Batch
+For each recipient, order all new Soul acquisitions across the whole atomic settlement by `(reward_slot UTF-8 bytes, soul_id UTF-8 bytes, soul_instance_id raw UUID bytes)`. UUIDs are unique across the batch; repeated `soul_id` is valid. Check the shared captured collection revision once against the original locked collection, not after each insert.
+
+Freeze and validate a virtual prefix state per Soul definition: initialize owned-instance membership and resonance/sheens from that locked state, classify each duplicate against initial ownership plus prior batch acquisitions, and carry each eligible resonance after-state into the next acquisition's before-state. Atlas Mastered qualification is the same pre-settlement value for that page, not a tier reached inside the batch; every acquisition contributes its own counter delta once. For an already-owned Mastered BOSS Soul at 9, two acquisitions encode `9→10→11`: the first fixes one unlock timestamp, the second preserves it. Reject overflow, duplicate instance UUIDs or inconsistent chains before earning; commit all instances, Atlas/resonance/sheens and one collection-revision increment atomically. No split transaction or repeated revision check may discard a valid second acquisition.
+
+
 ## Contract
 One soul instance binds to one equipment instance currently assigned to a loadout.
 ```text
@@ -89,10 +95,14 @@ All triggers follow global effect ordering/depth rules in `../01_gameplay/stats.
 BOSS souls provide a distinctive signature mechanic, not merely larger stats. Only one BOSS soul per loadout. Strong signature trigger default minimum cooldown = `20s` unless proportionally weaker content explicitly uses less.
 
 ## Element
+Soul definition element is the required explicit `KIM/MOC/THUY/HOA/THO` field in `../07_content/soul_catalog.md` (CAT-001), independently of source creature combat element. The launch roster preserves five Souls per element and its authored rank distribution; source `NONE` does not make its Soul `NONE`.
+
 Soul element/tags create no automatic universal class/equipment/Meridian/Formation bonus. Interaction must be explicit.
 
 ## Acquisition
 Authorized configured monster/elite/boss/dungeon/event/quest sources create one `soul_instance_id` exactly once via idempotent reward operation. A specific boss soul must not be mandatory for baseline class viability.
+Every newly acquired instance starts in Collection (`contracted_item_instance_id = NULL`), at level 1 with `current_soul_exp = 0`, including duplicate instances. Acquisition never inherits another copy's progress or contracts the new copy automatically. Its UUID, definition and initial state are finalized once; the duplicate/Atlas/Mastered-page qualification and applicable resonance/sheens outputs are frozen with that acquisition before its first durable settlement attempt (`../05_network/protobuf_conventions.md` §7). Under the character lock, the transaction verifies the captured Soul collection revision and commits the new instance, acquisition Atlas progress, applicable resonance mutation and revision together; replay first resolves the original operation receipt and never reclassifies a duplicate or substitutes another UUID.
+
 
 ## Trading
 Soul instances are `CHARACTER_BOUND`; no trade/auction/Guild Storage.
@@ -102,6 +112,12 @@ Contracted equipment cannot enter trade, auction, guild storage, or normal craft
 
 ## Persistence
 Persist `soul_instance_id`, `soul_id`, owner, level, current_soul_exp, contracted item or null. Persist per `(character_id, soul_id)` the vanity counter `memory_resonance_count` (int, default 0; incremented in the same transaction as the duplicate acquisition, idempotent on the acquisition operation) and `sheen_unlocked_at` NULL (set once when a BOSS soul reaches 10).
+
+## Requirement IDs
+| ID | Requirement (section) | Gate |
+|---|---|---|
+| JRN-011 | Whole-recipient Soul acquisition order, instance-UUID uniqueness, virtual duplicate/resonance/sheens chain, pre-settlement Mastered qualification, one original revision check and atomic batch commit (§ Atomic Acquisition Batch) | IMP-031, IMP-061 |
+
 
 ## Invariants
 ```text

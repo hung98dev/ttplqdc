@@ -150,6 +150,7 @@ Reject:
 - geometry inferred from animation/VFX instead of data,
 - `MOVE_CONTACT_LINE` without a swept contact effect or `BARRIER_POSITION` without valid grounded blocking geometry,
 - `skill.hoa.active.boc_bo` producing a persistent ember-trail zone or any second target/damage/status resolution.
+- CAT-002: unknown Active Payloads constructor, missing/duplicate ACTIVE row, or `BARRIER` with a signature/primary geometry other than the owning catalog's closed variant; Sơn Bích must retain grounded placement, enemy-movement/projectile blocking and expiry without damage, shield, zone or secondary geometry.
 
 Cross-system skill selectors in equipment, Souls, Meridian, and Formation must use stable tags such as:
 ```text
@@ -168,6 +169,12 @@ Reject selectors based on prose/localized categories such as `movement-type`, `a
 Reject a `PENETRATE` damage component unless `defense_penetration_ratio` is present and in `0.00..0.50`; reject that field on a component without `PENETRATE`.
 
 For every launch basic reference to BLEED, BURN, POISON, or AREA_SPLASH, reject prose-only effect data. It must resolve to a `class_skill_catalog.md` canonical effect template with stable `effect_id`; DOT templates require element, total/per-tick coefficient, snapshot rule, duration, tick interval, reapply/stack rule, and dispellable flag. AREA_SPLASH requires radius, coefficient, primary-target rule, deterministic selection order, and target-cap interaction. `effect.basic.burn_true_3s` is the only launch basic BURN template with `dispellable=false`.
+
+# Soul Graph
+CAT-001: resolve every explicit Soul element and rank-by-element count from `soul_catalog.md` § Runtime Soul Roster / Element Count Validation. Reject absent, unknown or `NONE` element and distribution mismatch. Source rank, acquisition and effect IDs resolve independently of source combat element; never require the Soul element to equal its monster's combat element.
+
+# Registered Definition Strings
+CAT-003: canonical definitions retain every registered emitted string, including item `display` and nullable `identity_note`. Mutating either normalized value changes the full revision without renaming the item; independent source reordering and NFC-equivalent string spellings preserve it. Missing registered fields reject the whole candidate; the previous immutable snapshot remains active.
 
 # World Route Graph
 For every map row in `world_route_catalog.md`:

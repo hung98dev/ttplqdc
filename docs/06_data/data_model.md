@@ -49,7 +49,7 @@ economy_review_flagged_at  TIMESTAMPTZ NULL      -- ECONOMY_REVIEW queue entry (
                                                  --   blocks nothing; set NULL when the signal clears
 created_at                 TIMESTAMPTZ NOT NULL
 ```
-`PENDING_DELETION` = player requested deletion; login is allowed; only `POST /api/v1/account/delete/cancel` cancels it (ADR-0069); erasure runs after 7 days (`../07_security/data_protection.md`). `deletion_requested_at TIMESTAMPTZ NULL` records the request. After erasure the row keeps only `account_id`, `status = 'TOMBSTONE_ERASED'`, `created_at` (overwritten with the erasure day), `deletion_requested_at` and `erased_at`; every other column is NULL (no personal column remains); nothing references it by FK (§ Account Erasure), so the 1-year purge is a plain `DELETE`.
+`PENDING_DELETION` = player requested deletion; login is allowed; only `POST /api/v1/account/delete/cancel` cancels it (ADR-0069); erasure runs after the full 7-day window (`../07_security/data_protection.md`). `deletion_requested_at TIMESTAMPTZ NULL` records the request. After erasure the row keeps only `account_id`, `status = 'TOMBSTONE_ERASED'`, `created_at` (overwritten with the erasure day), `deletion_requested_at` and `erased_at`; every other column is NULL. No credential/name/provider attribution remains, but UUID/times are restricted pseudonymous metadata where retained evidence or receipt keys permit matching. No FK references this residual account (§ Account Erasure), so its 1-year purge is a plain `DELETE`; that independent purge does not certify retained evidence anonymous.
 
 `TOMBSTONE_ACCOUNT_ID = '00000000-0000-0000-0000-000000000001'` is the reserved non-personal owner of anonymized characters and of financial records whose account link was severed. The baseline migration inserts it (`status = 'TOMBSTONE_ERASED'`, `created_at` = migration time); it can never log in, own a provider/password credential, or be erased or purged. `WORLD_OWNER_ID = '00000000-0000-0000-0000-000000000002'` is the reserved `operations.owner_id` for world-scoped operations; it is not an account row.
 
@@ -386,7 +386,7 @@ character_soul_collection
   character_id UUID PRIMARY KEY REFERENCES characters(character_id)
   revision BIGINT NOT NULL DEFAULT 0 CHECK (revision >= 0)
 ```
-Acquisition, EXP/level, contract/uncontract and resonance mutations increment this revision in the same transaction under the character lock; pages in `../05_network/messages.md` represent one revision and reject mixed-revision continuation. No maximum owned-Soul count is introduced to fit a wire frame.
+Acquisition, EXP/level, contract/uncontract and resonance mutations increment this revision in the same transaction under the character lock; a whole acquisition batch uses one original revision check and one increment (`../03_systems/soul_contracts.md` § Atomic Acquisition Batch), not one per instance. Pages in `../05_network/messages.md` represent one revision and reject mixed-revision continuation. No maximum owned-Soul count is introduced to fit a wire frame.
 
 ```text
 character_soul_resonance PK (character_id, soul_id) plus memory_resonance_count int default 0, sheen_unlocked_at NULL
@@ -626,10 +626,14 @@ Canonical erasure protocol (ADR-0079); retention is in `../07_security/personal_
 
 **Prepare before destruction:** short transaction locks the account and requires `PENDING_DELETION` with elapsed window. Insert/reuse `erasure_intents` with fixed operation ID, hash and `prepared_at`; set `accounts.erasure_started_at` once. The fence makes cancellation irreversible (`INVALID_STATE`), including while storage is unavailable. Commit and release all locks. Outside any database transaction, PUT immutable format-v2 `PREPARED` object with `If-None-Match:*` and GET-verify the exact bytes/hash (`../08_scale_ops/backup_recovery.md` § Erasure Ledger). An existing mismatching object fails closed; an ambiguous PUT retries/re-reads the same key/bytes. Object publication and verification are prerequisites for the destructive transaction and completion acknowledgement; no postcommit-only queue protects PITR.
 
-**Destructive transaction:** `SET CONSTRAINTS ALL DEFERRED`. Modes NORMAL and LEDGER_REPLAY. Both require the verified immutable object. NORMAL additionally verifies the staged intent/fence under the account lock; LEDGER_REPLAY may erase a restored `ACTIVE`, `BANNED`, suspended or pending account and does not require the pending/fence state. A retry finding `TOMBSTONE_ERASED` returns the committed outcome; a retained PREPARED object never restores personal state.
-1. Lock the account and `erasure_intents` row (insert from the verified object when absent during replay); verify hash and immutable preparation metadata.
-2. Acquire the complete lock set in `database.md` priority order before mutation: all affected account/auth rows; characters/activity; item ownership; payment/cosmetic claims; social edges; guilds, current/history membership and cosmetic/Stone rows in guild UUID order; ritual snapshots/votes; storage claims/items; settlements/Auction rows; reward claims required for guild disband; Atlas attribution; economy raw/rollup rows. Deferred FKs are checked at commit. Later steps mutate locked rows or insert new rows only; erasure takes no network RPC while locks are held.
-3. Delete personal rows: credentials/identities/session families (refresh cascades), revocations, login history, chat sent by the account, its account economy rollups, social edges naming its characters, its guild votes and account snapshots in ritual cycle membership. Anonymize retained gameplay histories per the register; immutable Guild Stone attribution keeps only the anonymized character/guild identity.
+**ERASURE_RESUME continuation handoff:** the queued/journal job is a reference to the already durable erasure, not its destructive transaction. Before terminally disposing that reference, GET-verify the exact immutable PREPARED object outside database locks; under short canonical account/intent locks, verify the committed pending `erasure_intents` row (`completed_at IS NULL`, original account UUID, operation UUID, salted hash and full fixed `prepared_at`) and the established account admission fence against that object. The typed job's `operation_id` and `account_id_hash` must match exactly, and `prepared_at_ms` must equal the canonical Unix-millisecond projection of that same timestamp; its truncated timestamp never replaces the full UTC-microsecond intent/object metadata. During supported LEDGER_REPLAY, create/reuse the pending intent from the verified object and commit the account fence before any local journal/domain callback, even for a restored ACTIVE account; conflicting identity/preparation metadata fails closed. Release all locks before further storage/filesystem I/O. This existing intent plus verified object/fence is the durable continuation proof: both normal queue processing and trusted journal replay may terminally dispose only their ERASURE_RESUME reference without invoking destruction, setting `completed_at`/`erased_at`, inserting a generic erasure-success outcome or sending a client erasure-completion acknowledgement. It creates no new table, ledger or replay flag. Missing/ambiguous/conflicting proof leaves the reference unresolved. Actual prior destruction is reconciled only from its committed completion proof, never inferred from a handoff.
+
+**Dispose personal recovery references before destruction:** establish the same account admission fence for NORMAL and externally verified LEDGER_REPLAY (even if restored ACTIVE). Outside the destructive transaction and without database locks across filesystem/storage calls, freeze new subject work, cancel uncommitted subject commands, reconcile other records in mixed-subject files and durably unlink/fsync every referring journal; dispose live queue/in-flight references through their canonical terminal acknowledgement. ERASURE_RESUME uses the continuation handoff above, so its own reference never waits for the destruction that requires its disposal. Reconcile committed receipt results before scrubbing them. Unknown commit/reference history blocks completion. `deployment.md` owns disposition order; a prepared object or terminal handoff is not proof that disposal or erasure completed.
+
+**Destructive transaction:** `SET CONSTRAINTS ALL DEFERRED`. Modes NORMAL and LEDGER_REPLAY. Both require the verified immutable object, newly established admission fence and complete personal-reference disposition. NORMAL additionally verifies the staged pending intent; LEDGER_REPLAY may erase a restored ACTIVE/BANNED/suspended/pending account without a pre-existing restored pending/fence state, but establishes its fence before callbacks. A retry finding `TOMBSTONE_ERASED` returns the committed outcome; retained PREPARED evidence never restores personal state.
+1. Lock the account and the already staged `erasure_intents` row; verify hash and immutable preparation metadata against the externally verified object. LEDGER_REPLAY staged any absent pending intent and account fence before callbacks as specified above, not for the first time inside destruction.
+2. Acquire the complete lock set in `database.md` priority order before mutation: all affected account/auth rows; characters/activity; priority-2.5 `durable_command_receipts`; item ownership; payment/cosmetic claims; social edges; guilds, current/history membership and cosmetic/Stone rows in guild UUID order; ritual snapshots/votes; storage claims/items; settlements/Auction rows; reward claims required for guild disband; Atlas attribution; economy raw/rollup rows. Recheck the admission fence and absence of subject queue/in-flight/journal references under the canonical account/character/receipt locks; if any reference remains, abort destruction and resume disposal outside locks. Deferred FKs are checked at commit. Later steps mutate locked rows or insert new rows only; erasure takes no network/storage/filesystem I/O while locks are held.
+3. Delete personal rows: credentials/identities/session families (refresh cascades), revocations, login history, chat sent by the account, its account economy rollups, social edges naming its characters, its guild votes and account snapshots in ritual cycle membership. After reference disposal, scrub personal text/name/provider/security attribution and extra account joins from retained typed terminal receipt outcomes, preserving exact no-FK natural keys and bounded value/assigned-ID history. Anonymize retained gameplay histories per the register; immutable Guild Stone attribution keeps only the anonymized character/guild identity.
 4. Re-point to `TOMBSTONE_ACCOUNT_ID` (financial and relational history; no row is copied): `account_iap_entitlements.account_id`, `account_entitlement_claims.account_id`, `account_cosmetic_entitlements.account_id`, `account_refund_consumed_events.account_id`, `auction_listings.seller_account_id`, `auction_proceeds.seller_account_id` / `buyer_account_id`, `trade_settlement_records.initiator_account_id` / `counterpart_account_id`, `item_locations.depositor_account_id`, `characters.account_id`. The tombstone is excluded from the season-track unique index and from the 3-characters-per-account limit, so re-pointed rows never collide.
 5. Anonymize every re-pointed character: `name = 'Anonymized_' || replace(character_id::text, '-', '')`, `name_key = 'anonymized_' || replace(character_id::text, '-', '')` (full 32-hex UUID: collision-free; the `anonymized_` key prefix is reserved and rejected for player names by `text.md`), releasing the original `name_key`.
 6. Detach each character from its guild (guilds in `guild_id` order): a non-leader membership is removed under the normal leave rules (storage claims cancelled). A `LEADER` transfers leadership to the successor chosen **only among members whose character belongs to another account** (highest role, then earliest `joined_at`, then lowest `character_id`); when no such member exists, every remaining membership of the erased account's characters is removed, every `GUILD_STORAGE` item moves into Reward Claims (`source_type = GUILD`) of the erased leader's character, and the guild becomes `DISBANDED`. The guild `leader_character_id` CHECK therefore holds at commit.
@@ -644,10 +648,12 @@ account_id_hash  BYTEA NOT NULL CHECK (octet_length(account_id_hash) = 32)
 prepared_at      TIMESTAMPTZ NOT NULL       -- fixed at first preparation
 completed_at     TIMESTAMPTZ NULL
 CHECK ((completed_at IS NULL) = (account_id IS NOT NULL))
+CHECK (completed_at IS NULL OR completed_at >= prepared_at)
 UNIQUE (account_id) WHERE completed_at IS NULL
 INDEX (prepared_at) WHERE completed_at IS NULL
+INDEX (completed_at) WHERE completed_at IS NOT NULL
 ```
-The world-owned erasure worker resumes pending intents at startup and every 60 s using the same external object and account fence. A pending intent older than 24 h raises `erasure_ledger_backlog`. Uncompleted intents/objects never expire. Completed intent and object deletion requires independently verified completion, six calendar months plus 30 days after completion, and no retained restore point preceding completion; no blanket age lifecycle can delete PREPARED intent while the primary commit is missing. Restore replays **every** matching PREPARED object, not only those prepared after the restore point (`backup_recovery.md`); a snapshot may contain the preparation but precede erasure.
+The world-owned erasure worker resumes pending intents at startup (after journal/reference disposal, `../08_scale_ops/deployment.md` step 6) and every 60 s using the same external object and account fence. A continuation handoff releases only its referring queue/journal entry; retries re-verify the same intent/object/fence, and a crash before durable journal unlink repeats the handoff without destruction. A crash after unlink or queue acknowledgement but before destruction still leaves the pending intent/object discoverable by this worker, with no false completion. Only the destructive commit sets completion and permits an erasure-completion acknowledgement. A pending intent older than 24 h raises `erasure_ledger_backlog`. All five fields and the immutable external object are registered as restricted Category H erasure-compliance metadata in `../07_security/personal_data_register.md` § 1.1; the hash remains pseudonymous. Pending intents/objects never expire. Completed cleanup follows only that register's § 1.2 gate, including independently verified completion, calendar deadline and complete restore-point coverage; keep the intent's completion proof until the corresponding external object deletion is confirmed. Restore replays **every** matching PREPARED object, not only those prepared after PITR; an absent account stays absent.
 
 Progression, quests, Reward Claims, items and settled economy records stay attached to the anonymized characters or the tombstone. `audit_events.subject_account_id` keeps the erased UUID without an FK (Category H). One year after `erased_at` the residual `accounts` row is deleted; no FK references it by then.
 
@@ -848,15 +854,19 @@ copy_map_id                      VARCHAR(64) NOT NULL   -- the channel copy the 
 copy_channel_id                  SMALLINT NOT NULL
 copy_defeated                    BOOLEAN NOT NULL DEFAULT FALSE  -- set true in the copy's DEFEATED transaction
 eligible_until                   TIMESTAMPTZ NULL       -- chest despawn time; set with copy_defeated
+reward_content_revision          CHAR(64) NULL          -- fixed original reward revision in the DEFEATED transaction
 claim_operation_id               UUID NULL              -- set when the chest or the fallback Reward Claim settles
 PRIMARY KEY (character_id, public_boss_spawn_generation_id, copy_map_id, copy_channel_id)
 INDEX (public_boss_spawn_generation_id, copy_map_id, copy_channel_id)
 CHECK (copy_defeated = (eligible_until IS NOT NULL))
+CHECK ((copy_defeated AND reward_content_revision IS NOT NULL AND reward_content_revision ~ '^[0-9a-f]{64}$')
+    OR (NOT copy_defeated AND reward_content_revision IS NULL))
 ```
 Written when a character first meets the contribution threshold; character-scoped (ADR-0029). Settlement (`../02_world/bosses.md`):
 - chest despawn: rows of that copy with `copy_defeated` and no `claim_operation_id` settle into Reward Claims (`source_type = BOSS_CHEST`);
 - timeout despawn of an undefeated copy: that copy's rows are deleted (no kill, no reward);
 - process start (before partitions accept players): every row with `copy_defeated` and no `claim_operation_id` settles into Reward Claims; every row with `copy_defeated = false` is deleted (the copy did not survive the restart).
+The defeated copy fixes and pins `reward_content_revision` through every generation/slot fallback's terminal disposition. Chest/fallback serialization uses that immutable revision and deterministic content-grant scope `boss.chest.<generation UUID>.<character UUID>.<reward_slot>` (`ids.md`), never the current catalog after restart. Missing original revision blocks recovery; recorded finalized rolls replay unchanged.
 
 ### public_boss_reward_settlements
 ```text
@@ -977,8 +987,9 @@ UNIQUE (reporter_account_id, operation_id)
 INDEX (status, created_at)
 INDEX (reporter_account_id, created_at)
 INDEX (target_character_id, created_at)
+INDEX (created_at)                            -- canonical report-retention purge
 ```
-Category H legal/moderation evidence; retained for 3 years from `created_at`. Preserved on player erasure (exempt from personal deletion); subject access export includes reporter's own reports without third-party investigative notes.
+Restricted Category H moderation/evidence processing, not a blanket legal exemption or anonymized data. Every field, purpose/basis, three-year `created_at` deadline and at-erasure action is canonical in `../07_security/personal_data_register.md` § 1. Reports retain their original reporter UUID without an account FK, and character FKs remain valid because characters persist after player erasure; operator/chat references have no FK and do not block their independent purge. Export follows only `../07_security/data_protection.md` § Access and Portability Requests: reporter-own projection, never target-owned, investigator/audit-wide data or joined evidence.
 
 # PvP / Guild War
 Persist only durable rating/season/result/reward/sanction state. Do not persist every simulation tick/combat event into primary gameplay tables. `season_id` is the `season_number` of `../03_systems/seasons.md` (INTEGER, same boundary for PvP and Guild War). Queues, ready checks and ready-check miss counters are ephemeral Global runtime and are not persisted (`../04_architecture/service_boundaries.md`).
@@ -1168,6 +1179,39 @@ INDEX (replay_until)                        -- purge only at/after replay_until
 ```
 A row is inserted last in the committing transaction (`database.md`), so only committed outcomes exist. Authenticated owner-scoped lookup and fingerprint comparison precede mutable preconditions: identical in-horizon retry reconstructs `outcome`, different fingerprint returns `OPERATION_CONFLICT`. Purge uses `replay_until`; an expired client UUIDv7 returns `OPERATION_EXPIRED` before new execution even after purge (`ids.md`), never replays as new. Server/content UUIDv5 handlers retain their natural-key business deduplication in value/grant tables after generic outcomes expire. `owner_id` has no FK; no ownership is inferred from an untrusted operation ID.
 
+### durable_command_receipts (ADR-0079; JRN-004..008)
+Private admission/reconciliation proof for queued CLIENT UUIDv7 commands; not a second server-job ledger. Closed owner/family/request mapping and typed outcome are in `../05_network/protobuf_conventions.md` §7; trusted replay is in `ids.md` § Trusted Queued-Client Replay.
+```text
+operation_family       VARCHAR(48) NOT NULL
+owner_kind             VARCHAR(16) NOT NULL CHECK (owner_kind IN ('ACCOUNT','CHARACTER'))
+owner_id               UUID NOT NULL          -- no accounts/characters FK; never tombstone-repoint
+operation_id           UUID NOT NULL          -- Go admission proves UUIDv7, nonnil
+request_fingerprint    BYTEA NOT NULL CHECK (octet_length(request_fingerprint) = 32)
+admitted_at            TIMESTAMPTZ NOT NULL
+issued_at              TIMESTAMPTZ NOT NULL   -- exact UUIDv7 millisecond timestamp
+replay_until           TIMESTAMPTZ NOT NULL
+state                  VARCHAR(24) NOT NULL CHECK (state IN ('ADMITTED','COMMITTED','EXPIRED_UNCOMMITTED','REJECTED'))
+outcome_schema_version INTEGER NULL
+outcome                BYTEA NULL             -- schema-v1 JournalOutcome, never command bytes
+completed_at           TIMESTAMPTZ NULL
+disposition_ack_at     TIMESTAMPTZ NULL
+PRIMARY KEY (operation_family, owner_id, operation_id)
+CHECK (replay_until = issued_at + INTERVAL '180 days')
+CHECK (issued_at <= admitted_at + INTERVAL '60 seconds' AND admitted_at < replay_until)
+CHECK ((state = 'ADMITTED' AND outcome_schema_version IS NULL AND outcome IS NULL AND completed_at IS NULL)
+    OR (state <> 'ADMITTED' AND outcome_schema_version IS NOT NULL AND outcome_schema_version = 1
+        AND outcome IS NOT NULL AND completed_at IS NOT NULL))
+CHECK (outcome IS NULL OR octet_length(outcome) BETWEEN 1 AND 1048576)
+CHECK (disposition_ack_at IS NULL OR (state <> 'ADMITTED' AND disposition_ack_at >= completed_at))
+INDEX (replay_until, operation_family, owner_id, operation_id) WHERE disposition_ack_at IS NOT NULL
+INDEX (state, admitted_at) WHERE disposition_ack_at IS NULL
+```
+Go validates owner kind/family, exact typed outcome/UUID timestamp and original request fingerprint. Reserve queue capacity before admission; database outage enqueues nothing. Failed enqueue terminalizes the same admitted request as `REJECTED/SERVER_OVERLOADED`. Domain value mutation, `COMMITTED` typed outcome and last `operations` insertion commit atomically under the receipt lock (`database.md`).
+
+On quiescent startup an orphan `ADMITTED` with no validated journal/live-queue/in-flight reference first reconciles any generic commit under the same lock: recover its exact `COMMITTED` outcome, otherwise terminalize without executing as `REJECTED/TEMPORARY_DEPENDENCY_FAILURE` (or `EXPIRED_UNCOMMITTED/OPERATION_EXPIRED` at the horizon). A trusted referenced `ADMITTED` before expiry applies its original frozen command/current durable constraints; at/after expiry it terminalizes with the original UUID and zero value writes. A retained `COMMITTED` reconstructs its exact outcome even after the horizon/generic purge. Missing/conflicting receipt or ambiguous commit proof holds the file and readiness; never reroll/drop/reissue.
+
+Generic outcome purge excludes any unacknowledged receipt/recovery reference. `ADMITTED` and terminal rows with NULL `disposition_ack_at` never purge. Normal acknowledgements require no remaining queue/in-flight/journal reference; journal acknowledgements follow terminal reconciliation of every referring file, unlink and directory fsync (`../08_scale_ops/deployment.md`). Daily bounded purge deletes only terminal acknowledged rows at/after `replay_until`. Erasure fences admission and disposes every personal recovery reference before scrubbing terminal outcomes; preserve exact restricted pseudonymous keys and bounded assigned-ID/value history under `../07_security/personal_data_register.md` (PRIV-008/PRIV-009). Keys are not proof of anonymization and never enter subject export.
+
 ### audit_events (ADR-0065)
 ```text
 audit_event_id        UUID PRIMARY KEY
@@ -1202,8 +1246,9 @@ last_login_at          TIMESTAMPTZ NULL
 disabled_at            TIMESTAMPTZ NULL
 CHECK ((status = 'ACTIVE' AND password_hash IS NOT NULL AND totp_secret_encrypted IS NOT NULL AND disabled_at IS NULL)
     OR (status = 'DISABLED' AND password_hash IS NULL AND totp_secret_encrypted IS NULL AND disabled_at IS NOT NULL))
+INDEX (disabled_at) WHERE status = 'DISABLED'  -- canonical operator-identity purge
 ```
-When an operator is disabled, credentials are wiped immediately; identity is retained 3 years for Category H audit continuity.
+The disable transaction wipes credentials immediately and fixes `disabled_at`; repeated disable requests do not restart retention. Identity is retained for Category H administrative audit continuity from that anchor under `../07_security/personal_data_register.md` § 1; ACTIVE identity and A credentials have separate registered purposes. Operator identity is not a player account. Player erasure leaves these rows unchanged; operator-own access/erasure uses `../07_security/data_protection.md` § Operator-Own Data-Subject Requests, never credentials/TOTP export. Retained report/audit operator UUIDs have no FK, so deleting the disabled operator row at its deadline preserves those records without blocking purge.
 
 ### chat_messages
 ```text
@@ -1272,6 +1317,6 @@ access credentials, gameplay tickets and resume credentials are process memory o
 relic/marker transactions lock region_di_tich_markers before world_consequence_relics
 relic active = relic_active AND expires_at > now(); stopped-channel relics are expired by the Durable relic expiry sweep (60 s)
 erasure PREPARED object is published/GET-verified before destructive commit; pending intents never expire
-server-originated durable commands left at a shutdown flush timeout are journaled to DURABLE_OUTBOX_DIR and replayed before readiness
+every queued/in-flight durable producer, including admitted CLIENT operations and async moderation CHAT_LOG, is journaled on flush timeout and terminally reconciled before readiness
 boss_chest_eligibility of a defeated copy settles into Reward Claims at chest despawn or process start; undefeated-copy rows are deleted
 ~~~

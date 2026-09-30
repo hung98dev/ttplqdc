@@ -25,6 +25,8 @@ created_at
 
 Compilation consumes registered Markdown headings, inherited assignment fences, typed tables and finite rules in all 24 owning files, not table cells alone or unrestricted prose. Every emitted runtime field has a named typed source/default/derivation in its catalog's `Compiler Source Schema`; an absent mapping is an activation error. Canonical hashing includes the resolved semantic definitions, named rule versions, validation parameters and geometry as specified by the authoring contract.
 
+Registered emitted presentation-safe strings, including item `display` and `identity_note` (CAT-003), remain part of that full revision; display is not identity. Soul element resolves from the explicit owning roster (CAT-001), and barrier payloads resolve through the owning closed dispatch (CAT-002).
+
 Stable runtime IDs use ASCII machine-readable identifiers. Localized Vietnamese diacritics belong in display/localization data, not identity.
 
 ## Validation
@@ -143,6 +145,7 @@ Compile output is an immutable snapshot keyed by `content_revision + space_id`. 
 Validate one content revision as a dependency graph, then activate atomically.
 
 Runtime encounters/transactions may pin the revision they started with. New sessions/encounters use the active revision after cutover according to owning-system rules.
+All queued/in-flight/journal commands and unsettled defeated-copy boss reward slots pin their exact immutable compiled revision (`save_rules.md`, `../02_world/bosses.md`). Activation/rollback must retain every referenced revision, not just active/previous; release only after all references reach canonical terminal disposition. Startup cannot reinterpret an old command with current content. A missing/incompatible referenced revision refuses readiness.
 
 ## Rollback
 Keep the previous validated revision available.

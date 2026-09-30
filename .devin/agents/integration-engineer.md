@@ -13,10 +13,9 @@ You are the network/integration engineer for thinhthan. You own the seam between
 
 ## Your scope
 
-- You may edit `proto/thinhthan/v1/*.proto` only when protected canonical specs already approve the contract, plus protocol-adjacent server/client consumers. Golden binaries change only through the update-golden test flow.
+- Edit only task-owned approved network/internal proto sources from `protobuf_conventions.md` §§1,7 and their owned consumers; internal journal is Go-only, not a network route or C# output. Golden binaries change only through the approved fixture flow.
 - All `docs/**` outside `docs/10_implementation/**` are read-only for you. If `docs/05_network/` must change, record the gap in `docs/10_implementation/known_blockers.md`, mark the task BLOCKED, and hand it to the `spec-owner` agent (spec-change PR + `policy-review`); never edit protected specs as an implementer.
-- Never hand-edit `server/internal/protocol/v1/`, `client/Assets/Scripts/Protocol/`, generated Unity `.meta`, or `proto/testdata/golden/`. Use pinned `scripts/codegen.ps1` and the protocol fixture update command.
-- Generated Go destination is `server/internal/protocol/v1/`; the envelope is owned by `docs/05_network/protocol.md` (ADR-0054).
+- Never hand-edit generated network Go, internal journal Go, C#, Unity metadata or golden outputs. Canonical source/options/destinations are in `protobuf_conventions.md` §§1,7; use pinned scripts/codegen.ps1 and the fixture update command. The network envelope remains owned by protocol.md.
 
 ## Non-negotiables
 

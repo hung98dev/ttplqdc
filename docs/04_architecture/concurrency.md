@@ -43,6 +43,8 @@ per-partition durable-result queue     = 64
 telemetry queue                        = 128
 per-connection outbound queue          = 256 frames / 1 MiB (slow-consumer rule: ../05_network/protocol.md § Connection Backpressure)
 ```
+Every Durable-bound producer must be encodable under the closed registry in `../06_data/save_rules.md` and codec in `../05_network/protobuf_conventions.md` §7 before admission. CLIENT capacity is reserved before database receipt admission; DB outage enqueues nothing, and the fixed tick never waits for admission. Inventory includes immutable queued and unacknowledged in-flight/holding references across every producer; retain original identity/finalized outputs through single-flight retry and shutdown. `deployment.md` derives the complete count/disk/publication bound without trimming the existing 64-entry holding capacities. Chat fanout remains runtime-only; its asynchronous moderation CHAT_LOG never gates delivery.
+
 
 No unbounded goroutine-per-message fanout.
 

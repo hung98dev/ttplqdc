@@ -45,8 +45,10 @@ Code is read by other engineers and agents. Boring, obvious code beats clever co
 
 ## If the spec is silent or contradictory
 
-Do not guess. Record a `BLK-xxx` in `docs/10_implementation/known_blockers.md`, set the task BLOCKED per `agent_execution_protocol.md` §6 and stop; the spec-owner resolves it. A later task may not "pick a side" in a contract contradiction.
+Never guess or pick a side. Before any claim/implementation, keep the evidenced gap in session Findings for spec-owner with affected tasks and sources; no BLK allocation/register write or NOT_STARTED status change. During claimed implementation, follow `agent_execution_protocol.md` §6: record the BLK and BLOCKED transition through the status-only block PR, then stop for spec-owner.
 
 ## Owner commands
 
-"Làm wave N" / "chạy wave N" / "do wave N" means: coordinate wave N with `/run-wave` (Wave Prompt in `docs/10_implementation/wave_execution_prompts.md`). No confirmation questions.
+"Làm wave N" / "chạy wave N" / "do wave N" means `/run-wave`: `/plan-wave` → read-only `wave-planner` → source audit by a different `verifier` session → fresh DoR → claim → complete audited task-plan handoff. No confirmation questions. Missing, failed or stale plan/audit blocks dispatch; account for every wave task and never silently skip a dependency wait or run another wave. Replan/re-audit affected tasks after relevant source/main, blocker or dependency-output changes. Canonical format and gates: `docs/10_implementation/wave_execution_prompts.md` § On-Demand Planning Contract and `agent_execution_protocol.md` §2a.
+
+"Plan wave N" / "lập kế hoạch wave N" invokes `/plan-wave` only on a read-only `main` snapshot: session plan and separate source audit, no claim, branch/draft PR, status/spec write, codegen or implementation; planning delegates are credential-free.

@@ -56,6 +56,7 @@ Aggregate-type priority (canonical; lock lower number first; ADR-0053, ADR-0060,
 1  accounts, account_password_credentials, account_identities, auth_session_families,
    auth_refresh_credentials, auth_revocations, account_login_history, erasure_intents
 2  characters, character_activity, character_attach_events, character_chivalry, character_chat_restrictions
+2.5 durable_command_receipts (closed owner/family/operation key order)
 3  character_currencies
 4  character_inventories
 5  item_instances / item_locations
@@ -81,6 +82,7 @@ Aggregate-type priority (canonical; lock lower number first; ADR-0053, ADR-0060,
 Direct trade has no session row; its settlement locks the two characters' rows in priorities 2..5 (UUID order), then inserts priority 14 and 20 rows.
 Within one priority, tables are locked in the order listed on that line; exceptions: priority 18 locks `region_di_tich_markers` before `world_consequence_relics` (`data_model.md` § Boss Aftermath Relic), and `public_boss_schedules` is only written in single-row transactions. The account-erasure transaction (`data_model.md` § Account Erasure step 2) acquires its whole lock set in this priority order before any mutation (account and `erasure_intents` in priority 1, characters in UUID order in priority 2, then each listed priority; guilds in `guild_id` order), with FK checks deferred to commit. The relic expiry sweep (ADR-0070) uses the priority-18 marker-first order.
 `operations` rows are inserted last in the same transaction.
+Queued CLIENT admission/replay locks the complete account/character set, then priority-2.5 receipt keys before value aggregates. Collect multiowner receipt/aggregate keys before mutation; within receipts sort by owner UUID bytes, operation_family ASCII bytes, operation UUID bytes. This is a private durable admission proof, not an `operations` commit row. Value mutation + terminal COMMITTED receipt/outcome + last operations insert share one transaction; erasure, replay, orphan repair, acknowledgement and purge use the same receipt lock. `ADMITTED` and any unacknowledged receipt/recovery reference pin the generic outcome past its horizon (`data_model.md`, `ids.md`).
 
 An owning feature may define a stricter deterministic order.
 

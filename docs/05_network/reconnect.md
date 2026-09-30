@@ -79,10 +79,10 @@ If the simulation process failed:
 
 ## Durable Operation Ambiguity
 If the client disconnected after sending a value-affecting operation:
-- retry uses the same `operation_id`,
-- committed outcome is returned/reconstructed,
-- uncommitted operation may execute once,
-- RNG/reward/enhancement is never rerolled merely because response was lost.
+- an in-horizon retry uses the same `operation_id` and authenticated owner/fingerprint lookup before mutable preconditions,
+- a committed in-horizon outcome is returned/reconstructed; a genuinely new in-horizon operation may execute once,
+- a public expired UUIDv7 returns `OPERATION_EXPIRED` even if recovery retains a receipt; never automatically substitute a new ID,
+- RNG/reward/enhancement never rerolls merely because response was lost. Protected local journal reconciliation is private (`../06_data/ids.md` § Trusted Queued-Client Replay), not a client/reconnect capability.
 
 ## Transfer Interruption
 Reconnect during map/instance transfer resolves by transfer ownership epoch/record.

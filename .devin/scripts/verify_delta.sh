@@ -433,11 +433,16 @@ if in_scope DEVIN; then
     fail "Devin CLI unavailable; cannot validate rules/skills/agents"
   else
     doctor_out="$(devin doctor --json 2>&1)"
-    if printf '%s' "$doctor_out" | jq -e '.ok == true and ([.checks[]? | select(.check == "custom subagent profiles") | .detail | contains("9 profile(s) loaded")] | any)' >/dev/null 2>&1; then
-      pass "Devin doctor (9 custom agents loaded)"
+    if printf '%s' "$doctor_out" | jq -e '.ok == true and ([.checks[]? | select(.check == "custom subagent profiles")] | length == 1)' >/dev/null 2>&1; then
+      pass "Devin doctor (custom agent profiles load)"
     else
       fail "devin doctor: $doctor_out"
     fi
+    missing_profiles=""
+    for profile in coordinator spec-owner verifier backend-engineer unity-engineer integration-engineer asset-producer reviewer debugger wave-planner wave-plan-auditor; do
+      [ -f ".devin/agents/$profile.md" ] || missing_profiles="$missing_profiles $profile"
+    done
+    [ -n "$missing_profiles" ] && fail "required custom agent profiles missing:$missing_profiles" || pass "required custom agent profiles exist"
 
     rules_out="$(devin rules list 2>&1)"
     if printf '%s' "$rules_out" | grep -q '^Errors:'; then
@@ -452,10 +457,10 @@ if in_scope DEVIN; then
 
     skills_out="$(devin skills list 2>&1)"
     missing_skills=""
-    for skill in run-wave run-imp-task repo-architecture implement-backend-feature implement-unity-feature client-server-feature fix-backend-bug fix-unity-bug network-debugging database-change code-review produce-art-asset; do
+    for skill in plan-wave run-wave run-imp-task repo-architecture implement-backend-feature implement-unity-feature client-server-feature fix-backend-bug fix-unity-bug network-debugging database-change code-review produce-art-asset; do
       printf '%s\n' "$skills_out" | grep -q "^  /$skill " || missing_skills="$missing_skills $skill"
     done
-    [ -n "$missing_skills" ] && fail "project skills not loaded:$missing_skills" || pass "all 12 project skills load"
+    [ -n "$missing_skills" ] && fail "project skills not loaded:$missing_skills" || pass "all required project skills load"
   fi
 fi
 

@@ -117,7 +117,7 @@ Critical examples:
 - reward/economy reconciliation mismatch,
 - backup/PITR failure,
 - `world_consequence_load_failed`: WorldConsequence rows of a partition unreadable, quarantined (unknown content ID) or over `WORLD_CONSEQUENCE_LOAD_TIMEOUT` at partition start (zero rows is valid; only that partition stays closed),
-- `shutdown_flush_timeout` (durable outbox journal written) and `durable_outbox_corrupt` (startup stopped; `deployment.md` § Durable Outbox Journal),
+- `shutdown_flush_timeout` (log publication only after durable success), `durable_outbox_write_failed` (complete inventory not published), `durable_outbox_corrupt` (invalid startup inventory) and `durable_outbox_reconciliation_failed` (missing/ambiguous receipt/source/revision proof; readiness stopped), under `deployment.md` § Durable Outbox Journal; never log request/typed outcome text,
 - `erasure_ledger_backlog`: an `erasure_intents` row with `completed_at IS NULL` and `prepared_at` older than 24 h (`../06_data/data_model.md` § Account Erasure),
 - Spirit Surge coordination failure for 2+ consecutive hours,
 - error budget burn rate > 10x over 1 hour for any SLO below,
@@ -175,8 +175,9 @@ Launch retention:
 operational logs/metrics with IP or account_id : 90 days (data_protection.md Category D)
 traces                                          : 14 days
 gameplay event logs                             : 180 days (Category G)
-audit/security logs                             : 3 years (Category H)
+audit_events                                    : 3 years from occurred_at (Category H)
 ```
+Personal row-family retention is canonical in `../07_security/personal_data_register.md`, including separate report/operator anchors, pending/completed erasure metadata and held receipt/journal recovery state. The `audit_events` period above is not a blanket Category H deadline; salted hashes/UUID links remain pseudonymous where matching is possible.
 Deletion must be intentional and testable.
 
 ## Invariants

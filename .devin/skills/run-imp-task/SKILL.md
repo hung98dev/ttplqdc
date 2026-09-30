@@ -5,9 +5,11 @@ description: Execute one claimed IMP-* task end to end — readiness, implement,
 
 # Run an IMP Task
 
-Canonical: `docs/10_implementation/agent_execution_protocol.md` (§4 implementation, §4b Unity materialization, §5 evidence, §5a merge sequence, §5b retries, §6 blockers), `definition_of_done.md`, `audit_gates.md`, ADR-0057, ADR-0072. This skill is a checklist; if it differs, the protocol wins. Stay alive until your PR merges or the task is `BLOCKED`.
+Canonical: `docs/10_implementation/agent_execution_protocol.md` (§2a wave planning gate, §4 implementation, §4b Unity materialization, §5 evidence, §5a merge sequence, §5b retries, §6 blockers), `wave_execution_prompts.md` § On-Demand Planning Contract, `definition_of_done.md`, `audit_gates.md`, ADR-0057, ADR-0072. This skill is a checklist; if it differs, the protocol wins. Stay alive until your PR merges or the task is `BLOCKED`.
 
 ## Workflow
+
+For a wave-dispatched task, **before branching, opening a draft PR, codegen or code**, require the full wave plan, your complete task plan and matching audit from a different `verifier` session. The audit must identify the exact immutable plan artifact, wave N, `planning_main_sha` and `plan_revision`; your exact task ID must be in `dispatchable_task_ids` with per-task `PASS`. A bare PASS or empty handoff is insufficient. Verify the canonical Handoff assignments and fresh DoR against `main`, including blockers naming owning specs; preserve `planning_main_sha` and use the assigned post-claim base SHA. Missing/incomplete, failed or stale inputs return to the coordinator/planner without implementation; never substitute an ID-only prompt or your own passing audit. Relevant source/packet/API, dependency-output, blocker or setup changes require affected plans to be regenerated and re-audited before dispatch/resume (§2a); unchanged claim-field transitions still need a recorded readiness/ownership recheck. This gate does not authorize direct task execution to select a wave, self-claim, widen packet scope or bypass existing readiness/claim rules; non-wave handoffs retain the existing claimed-task workflow.
 
 1. **Sync.** Clean tree; `git fetch && git merge origin/main`. Never rebase.
 2. **Readiness.** The task is `IN_PROGRESS` with you as `claimed_by` (claims come only from the coordinator). Re-check DoR (§2); if a box fails, block (step 6).

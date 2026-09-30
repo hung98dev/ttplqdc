@@ -15,6 +15,7 @@
       "Write(.git/**)",
       "Write(**/*.pb.go)",
       "Write(server/internal/protocol/**)",
+      "Write(server/internal/durable/journal/v1/**)",
       "Write(client/Assets.meta)",
       "Write(client/Assets/Scripts.meta)",
       "Write(client/Assets/Scripts/Protocol.meta)",

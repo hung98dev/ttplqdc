@@ -62,6 +62,9 @@ Mọi package trong `server/internal/` phải tuân thủ nghiêm ngặt ma tr�
    - Mã sinh tự động từ `proto/thinhthan/v1/`.
    - CẤM: Không được sửa tay bất kỳ dòng code nào. Mọi package khác chỉ import để đọc/ghi protobuf message.
 
+5. **Internal Durable Journal (`server/internal/durable/journal/v1/`):**
+   - Generated-only Go from `proto/thinhthan/internal/v1/durable_journal.proto` via `scripts/codegen.ps1` (IMP-061); no handwritten files or C# output.
+   - Imports network protobuf contracts one-way; no network contract imports this package, no RPC/listener/domain/simulation code. Domain serializers/validators and tests stay outside the generated-only tree.
 ## 3. Quy tắc Độc tôn Sở hữu (Single-Owner Invariants)
 
 Để tránh việc các agent viết code trùng lặp hoặc tạo ra hai hệ thống cạnh tranh nhau trong cùng một repo:

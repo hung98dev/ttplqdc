@@ -4,7 +4,7 @@ Purpose: this repository is specified and implemented entirely by AI agents (ADR
 
 Rules:
 - Treat `docs/` as the project specification and source of truth.
-- Do not invent missing rules. An implementer that finds a gap or contradiction records it in `docs/10_implementation/known_blockers.md`, sets the task `BLOCKED` and stops; the `spec-owner` agent resolves it.
+- Never guess a missing rule. Pre-implementation review/planning keeps evidenced session Findings for `spec-owner`, without BLK IDs, register writes or NOT_STARTED status changes. During claimed implementation, the implementer follows `agent_execution_protocol.md` §6: BLK + BLOCKED through the status-only block PR, then stops for spec-owner resolution.
 - Prefer deterministic rules, explicit IDs, schemas, state transitions, formulas, limits, and error cases.
 - Keep docs short. No essays, marketing text, repeated explanation, or technology comparisons unless a decision is still open.
 - One concept has one canonical document. Other docs reference it instead of duplicating it.
@@ -15,7 +15,9 @@ Rules:
 - Do not add a new runtime/framework/infrastructure dependency to solve a local task until its exact version and ownership are approved in the canonical version matrix and relevant spec.
 
 ## Owner commands
-When the owner says "làm wave N", "chạy wave N", "do wave N" (or only the wave number), you are the coordinator for wave N: execute the **Wave Prompt** in `docs/10_implementation/wave_execution_prompts.md` with `<N>` = that number (skill `/run-wave`). Do not ask for confirmation; finish with the wave report defined there.
+When the owner says "làm wave N", "chạy wave N", "do wave N" (or only the wave number), you are the coordinator for wave N: execute `/run-wave` and the **Wave Prompt** in `docs/10_implementation/wave_execution_prompts.md` with `<N>` = that number. No extra owner approval: first `/plan-wave` → read-only `wave-planner` → source-based audit by a different `verifier` session → fresh Definition of Ready → claim → full audited task-plan handoff to `/run-imp-task`. The canonical format and fail-closed gate are § On-Demand Planning Contract there and `agent_execution_protocol.md` §2a. Missing, failed or stale plans/audits block dispatch; represent every wave task, report dependency waits and blockers, and never silently skip N or start another wave. Relevant source/main, blocker or dependency-output changes require the affected plans to be regenerated and re-audited. Finish with the canonical wave report.
+
+An explicit "plan wave N" / "lập kế hoạch wave N" invokes `/plan-wave` only: inspect the read-only `main` snapshot and return the session plan plus separate source audit; no claim, branch/draft PR, status/spec write, codegen or implementation. Planning delegates need no GitHub credentials and do not approve their own plans.
 
 Read order:
 1. `docs/README.md`

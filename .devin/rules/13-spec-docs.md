@@ -27,4 +27,4 @@ globs:
 
 ## Conflict handling
 
-Found a contradiction between specs? Record it in `known_blockers.md` and mark dependents BLOCKED. Implementers never pick a side; the `spec-owner` agent decides, updates the owning spec/ADR and every consumer in one spec-change PR, then clears the blocker.
+Never choose a side in a contradiction. Pre-implementation review/planning records session Findings and spec-owner intake, not a BLK or packet-status change. A claimed implementer follows `agent_execution_protocol.md` §6's block PR; spec-owner resolves the owning spec/ADR and every consumer first. Independent review/CI/merge policy is unchanged.

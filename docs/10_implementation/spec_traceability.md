@@ -58,7 +58,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `03_systems/reward_claims.md` | IMP-010 |
 | `03_systems/seasons.md` | IMP-052, IMP-093, IMP-102 |
 | `03_systems/social.md` | IMP-034, IMP-086, IMP-094 |
-| `03_systems/soul_contracts.md` | IMP-031 |
+| `03_systems/soul_contracts.md` | IMP-031, IMP-061 |
 | `03_systems/spirit_beasts.md` | IMP-050, IMP-057, IMP-092 |
 | `03_systems/spirit_meridian.md` | IMP-032 |
 | `03_systems/trading_auction.md` | IMP-029, IMP-030, IMP-054 |
@@ -76,19 +76,19 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `04_architecture/system_overview.md` | IMP-000, IMP-069, IMP-080 |
 | `05_network/errors.md` | IMP-006, IMP-061, IMP-065, IMP-081, IMP-100 |
 | `05_network/messages.md` | IMP-009, IMP-010, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-087, IMP-100, IMP-103 |
-| `05_network/protobuf_conventions.md` | IMP-061 |
+| `05_network/protobuf_conventions.md` | IMP-001, IMP-005, IMP-010, IMP-018, IMP-020, IMP-021, IMP-022, IMP-023, IMP-025, IMP-027, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-038, IMP-040, IMP-041, IMP-042, IMP-052, IMP-053, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-069, IMP-077, IMP-082, IMP-084, IMP-085, IMP-086, IMP-089, IMP-091, IMP-093, IMP-094, IMP-100, IMP-102 |
 | `05_network/protocol.md` | IMP-006, IMP-014, IMP-061, IMP-065, IMP-081 |
 | `05_network/reconnect.md` | IMP-065, IMP-069 |
 | `05_network/synchronization.md` | IMP-013, IMP-055, IMP-061, IMP-062, IMP-065, IMP-066, IMP-078, IMP-079 |
 | `05_network/versioning.md` | IMP-061, IMP-065, IMP-067, IMP-081 |
-| `06_data/config.md` | IMP-001, IMP-002, IMP-003, IMP-004, IMP-078 |
+| `06_data/config.md` | IMP-001, IMP-002, IMP-003, IMP-004, IMP-022, IMP-069, IMP-078 |
 | `06_data/content_authoring_contract.md` | IMP-003, IMP-004 |
-| `06_data/data_model.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-010, IMP-022, IMP-029, IMP-030, IMP-034, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-053, IMP-054, IMP-056, IMP-077, IMP-086, IMP-091, IMP-094, IMP-097, IMP-100 |
+| `06_data/data_model.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-010, IMP-022, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-053, IMP-054, IMP-056, IMP-077, IMP-086, IMP-091, IMP-094, IMP-097, IMP-100 |
 | `06_data/database.md` | IMP-005, IMP-022, IMP-056, IMP-082, IMP-097 |
-| `06_data/ids.md` | IMP-001 |
+| `06_data/ids.md` | IMP-001, IMP-005, IMP-061, IMP-069, IMP-082 |
 | `06_data/migrations.md` | IMP-005, IMP-047 |
 | `06_data/physical_schema_contract.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-030, IMP-036, IMP-053, IMP-100 |
-| `06_data/save_rules.md` | IMP-005, IMP-082, IMP-091 |
+| `06_data/save_rules.md` | IMP-001, IMP-005, IMP-010, IMP-018, IMP-020, IMP-021, IMP-022, IMP-023, IMP-025, IMP-027, IMP-029, IMP-030, IMP-034, IMP-036, IMP-037, IMP-038, IMP-040, IMP-041, IMP-042, IMP-052, IMP-053, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-069, IMP-077, IMP-082, IMP-084, IMP-085, IMP-086, IMP-089, IMP-091, IMP-093, IMP-094, IMP-100, IMP-102 |
 | `06_data/text.md` | IMP-064, IMP-100 |
 | `07_content/README.md` | IMP-003 |
 | `07_content/atlas_catalog.md` | IMP-060 |
@@ -104,29 +104,29 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `07_content/encounter_catalog.md` | IMP-023 |
 | `07_content/equipment_catalog.md` | IMP-012, IMP-026, IMP-073 |
 | `07_content/integration_validation.md` | IMP-004, IMP-021 |
-| `07_content/item_catalog.md` | IMP-003, IMP-057, IMP-073, IMP-090 |
+| `07_content/item_catalog.md` | IMP-003, IMP-004, IMP-057, IMP-073, IMP-090 |
 | `07_content/map_spawn_catalog.md` | IMP-019 |
 | `07_content/monster_catalog.md` | IMP-003, IMP-019, IMP-051, IMP-104 |
 | `07_content/npc_shop_catalog.md` | IMP-020, IMP-028 |
 | `07_content/presentation_asset_manifest.md` | IMP-063, IMP-067, IMP-070, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-076, IMP-088, IMP-095, IMP-101, IMP-104, IMP-105 |
 | `07_content/progression_route.md` | IMP-003, IMP-004 |
 | `07_content/quest_catalog.md` | IMP-021, IMP-089 |
-| `07_content/soul_catalog.md` | IMP-031 |
+| `07_content/soul_catalog.md` | IMP-003, IMP-004, IMP-031 |
 | `07_content/spirit_beast_catalog.md` | IMP-050, IMP-057, IMP-104 |
 | `07_content/world_event_catalog.md` | IMP-025 |
 | `07_content/world_route_catalog.md` | IMP-003, IMP-018, IMP-020, IMP-022, IMP-023, IMP-062, IMP-067, IMP-072 |
 | `07_security/anti_cheat.md` | IMP-037, IMP-045, IMP-054 |
 | `07_security/auth.md` | IMP-006, IMP-045, IMP-065, IMP-077, IMP-099, IMP-103 |
-| `07_security/data_protection.md` | IMP-056, IMP-094, IMP-103 |
+| `07_security/data_protection.md` | IMP-056, IMP-069, IMP-077, IMP-082, IMP-094, IMP-103 |
 | `07_security/external_integrations.md` | IMP-006, IMP-045, IMP-053, IMP-068 |
-| `07_security/personal_data_register.md` | IMP-056, IMP-094 |
+| `07_security/personal_data_register.md` | IMP-005, IMP-043, IMP-056, IMP-069, IMP-077, IMP-082, IMP-094, IMP-103 |
 | `07_security/rate_limits.md` | IMP-006, IMP-045, IMP-081 |
 | `07_security/session.md` | IMP-006, IMP-045, IMP-065, IMP-099 |
 | `07_security/validation.md` | IMP-045, IMP-053, IMP-077, IMP-091 |
-| `08_scale_ops/backup_recovery.md` | IMP-047, IMP-056, IMP-103 |
+| `08_scale_ops/backup_recovery.md` | IMP-047, IMP-056, IMP-069, IMP-082, IMP-103 |
 | `08_scale_ops/caching.md` | IMP-043 |
 | `08_scale_ops/capacity.md` | IMP-000, IMP-046, IMP-055, IMP-079, IMP-081, IMP-082 |
-| `08_scale_ops/deployment.md` | IMP-046, IMP-047, IMP-048, IMP-067, IMP-068, IMP-069 |
+| `08_scale_ops/deployment.md` | IMP-001, IMP-005, IMP-046, IMP-047, IMP-048, IMP-056, IMP-061, IMP-067, IMP-068, IMP-069, IMP-082 |
 | `08_scale_ops/observability.md` | IMP-043, IMP-048, IMP-077, IMP-098 |
 | `08_scale_ops/sharding.md` | IMP-018, IMP-022, IMP-048 |
 | `09_testing/backend.md` | IMP-043, IMP-044 |
@@ -234,7 +234,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md` | IMP-067, IMP-070, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-076, IMP-104, IMP-105 |
 | `0077-ci-critical-path-cheap-unity-retries-and-two-phase-verifier.md` | IMP-000 |
 | `0078-unity-windows-native-and-linux-go-only-ci.md` | IMP-000, IMP-067, IMP-070, IMP-095, IMP-096, IMP-106 |
-
+| `0079-readiness-contract-closure.md` | IMP-000, IMP-001, IMP-002, IMP-003, IMP-004, IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-011, IMP-012, IMP-013, IMP-014, IMP-015, IMP-016, IMP-017, IMP-018, IMP-019, IMP-020, IMP-021, IMP-022, IMP-023, IMP-024, IMP-025, IMP-026, IMP-027, IMP-028, IMP-029, IMP-030, IMP-031, IMP-032, IMP-033, IMP-034, IMP-035, IMP-036, IMP-037, IMP-038, IMP-039, IMP-040, IMP-041, IMP-042, IMP-043, IMP-044, IMP-045, IMP-046, IMP-047, IMP-048, IMP-049, IMP-050, IMP-051, IMP-052, IMP-053, IMP-054, IMP-055, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-062, IMP-063, IMP-064, IMP-065, IMP-066, IMP-067, IMP-068, IMP-069, IMP-070, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-076, IMP-077, IMP-078, IMP-079, IMP-080, IMP-081, IMP-082, IMP-083, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-091, IMP-092, IMP-093, IMP-094, IMP-095, IMP-096, IMP-097, IMP-098, IMP-099, IMP-100, IMP-101, IMP-102, IMP-103, IMP-104, IMP-105, IMP-106 |
 
 ## Requirement ID → Task
 
@@ -289,6 +289,29 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `ART-010` | `07_content/presentation_asset_manifest.md` | IMP-070 |
 | `ART-011` | `07_content/presentation_asset_manifest.md` | IMP-070 |
 | `ART-012` | `07_content/presentation_asset_manifest.md` | IMP-070 |
+| `CAT-001` | `07_content/soul_catalog.md` | IMP-003, IMP-004, IMP-031 |
+| `CAT-002` | `07_content/class_skill_catalog.md` | IMP-003, IMP-004, IMP-015 |
+| `CAT-003` | `07_content/item_catalog.md` | IMP-003, IMP-004 |
+| `PRIV-001` | `07_security/data_protection.md` | IMP-056, IMP-103 |
+| `PRIV-002` | `07_security/data_protection.md` | IMP-056, IMP-103 |
+| `PRIV-003` | `07_security/data_protection.md` | IMP-077, IMP-103 |
+| `PRIV-004` | `07_security/personal_data_register.md` | IMP-005, IMP-056, IMP-094 |
+| `PRIV-005` | `07_security/personal_data_register.md` | IMP-005, IMP-056, IMP-077 |
+| `PRIV-006` | `07_security/personal_data_register.md` | IMP-005, IMP-056 |
+| `PRIV-007` | `07_security/personal_data_register.md` | IMP-056 |
+| `PRIV-008` | `07_security/personal_data_register.md` | IMP-005, IMP-056, IMP-069, IMP-082 |
+| `PRIV-009` | `07_security/personal_data_register.md` | IMP-056, IMP-069, IMP-082 |
+| `JRN-001` | `08_scale_ops/deployment.md` | IMP-061, IMP-082 |
+| `JRN-002` | `08_scale_ops/deployment.md` | IMP-061 |
+| `JRN-003` | `08_scale_ops/deployment.md` | IMP-069 |
+| `JRN-004` | `08_scale_ops/deployment.md` | IMP-001, IMP-005, IMP-069 |
+| `JRN-005` | `08_scale_ops/deployment.md` | IMP-005, IMP-069 |
+| `JRN-006` | `08_scale_ops/deployment.md` | IMP-005, IMP-082 |
+| `JRN-007` | `08_scale_ops/deployment.md` | IMP-005, IMP-069 |
+| `JRN-008` | `08_scale_ops/deployment.md` | IMP-005, IMP-056, IMP-069, IMP-082 |
+| `JRN-009` | `08_scale_ops/deployment.md` | IMP-069 |
+| `JRN-010` | `08_scale_ops/deployment.md` | IMP-061 |
+| `JRN-011` | `03_systems/soul_contracts.md` | IMP-031, IMP-061 |
 
 ## Coverage Gate
 Q0 must fail when:

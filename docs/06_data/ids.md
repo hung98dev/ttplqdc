@@ -100,6 +100,66 @@ Do not use a timestamp alone as operation identity; UUID v7 random bits distingu
 
 Simulation event identity is defined in `save_rules.md` § Database Outage: each partition incarnation has a fresh server-generated UUID v4, each finalized source event a strictly increasing uint64 counter, and all retries/journal replays reuse the original incarnation, counter, tick and derived operation ID.
 
+## Trusted Queued-Client Replay and Admission Receipts (JRN-005..008)
+
+The public UUIDv7 time check above is unchanged: an expired network/HTTPS request is `OPERATION_EXPIRED` even if a retained receipt exists. `TRUSTED_JOURNAL_REPLAY` is a private composition-root capability after verified local-file decoding, never a wire field, client flag, HTTP parameter or handler option reachable from Edge. Replay retains the admission-authenticated owner, family, original UUID, revision and source evidence; it does not authenticate a new session or reject because the old session/ownership epoch is no longer live. Current account-erasure/ban fences and durable transaction constraints still apply to genuinely uncommitted work. It never rerolls, allocates a replacement operation ID or reports success for an unknown outcome.
+
+Only queued **client UUIDv7** commands use `durable_command_receipts`; server/content UUIDv5 sources keep their existing natural-key dedup and no second generic ledger. Before enqueue, authenticate/authorize and perform the public timestamp check; reserve queue capacity; freeze typed command/source/RNG outputs; under the owner lock, create the ADMITTED receipt (or resolve the same key/fingerprint). Database outage/admission failure rejects the client with `TEMPORARY_DEPENDENCY_FAILURE`/backpressure and enqueues nothing. Admission commit is not gameplay success. Enqueue uses the reservation; a failed enqueue terminalizes REJECTED with the original typed `SERVER_OVERLOADED` result, not an unbounded memory promise.
+
+Baseline receipt schema (no account/character FK; keys remain restricted pseudonymous identity after erasure):
+
+```text
+operation_family       VARCHAR(48) NOT NULL
+owner_kind             VARCHAR(16) NOT NULL CHECK IN ('ACCOUNT','CHARACTER')
+owner_id               UUID NOT NULL
+operation_id           UUID NOT NULL                      -- RFC9562 UUIDv7, nonnil
+request_fingerprint    BYTEA NOT NULL CHECK length = 32
+admitted_at            TIMESTAMPTZ NOT NULL
+issued_at              TIMESTAMPTZ NOT NULL                 -- exact immutable UUID ms timestamp
+replay_until           TIMESTAMPTZ NOT NULL                 -- issued_at + 180 days
+state                  VARCHAR(24) NOT NULL                 -- ADMITTED | COMMITTED | EXPIRED_UNCOMMITTED | REJECTED
+outcome_schema_version INTEGER NULL                        -- 1 for every terminal row
+outcome                BYTEA NULL                          -- bounded typed JournalOutcome, protobuf_conventions.md §7
+completed_at           TIMESTAMPTZ NULL
+disposition_ack_at     TIMESTAMPTZ NULL
+PRIMARY KEY (operation_family, owner_id, operation_id)
+CHECK replay_until = issued_at + INTERVAL '180 days'
+CHECK issued_at <= admitted_at + INTERVAL '60 seconds' AND admitted_at < replay_until
+CHECK (state = 'ADMITTED') = (outcome_schema_version IS NULL AND outcome IS NULL AND completed_at IS NULL)
+CHECK state = 'ADMITTED' OR (outcome_schema_version IS NOT NULL AND outcome_schema_version = 1 AND outcome IS NOT NULL AND completed_at IS NOT NULL)
+CHECK outcome IS NULL OR octet_length(outcome) BETWEEN 1 AND 1048576
+CHECK disposition_ack_at IS NULL OR (state <> 'ADMITTED' AND disposition_ack_at >= completed_at)
+INDEX (replay_until, operation_family, owner_id, operation_id) WHERE disposition_ack_at IS NOT NULL
+INDEX (state, admitted_at) WHERE disposition_ack_at IS NULL
+```
+
+SQL CHECK expressions must explicitly reject NULL terminal versions (SQL UNKNOWN is not a rejection); receipt locks use canonical priority **2.5**, after existing account/character/activity priorities and before value locks, without renumbering any existing priority.
+
+`owner_kind/owner_id` come from §7's closed client map: ACCOUNT for character create (12), CHARACTER for every other durable client command, including guild mutations (the actor, never a shared guild key). Operation-family and owner/type mapping are checked before admission. Request fingerprint is SHA-256 of deterministic protobuf of the exact typed original request plus family, owner kind/UUID, operation UUID and command discriminator, with no envelope/session/correlation/time-of-retry fields. Server snapshots/finalized outputs are immutable admission evidence, not client-selectable intent; the verified record keeps them, CRC covers them, and in-process retries reuse the same captured command. A duplicate input is compared to the original intent, never to a newly rolled result or current content revision. Receipt transitions lock after account/character locks and before value aggregate locks in `database.md`; generic operation insertion remains last. Every mutation and its COMMITTED receipt/typed outcome plus `operations` insert commit atomically. Terminal rejection/expiry performs no value writes.
+
+Startup first validates **all** ready-file records and indexes all references, then under normal owner/receipt/value lock order resolves each key:
+1. Receipt COMMITTED: compare owner/type/fingerprint and return the exact retained JournalOutcome even beyond 180 days and even if generic `operations.outcome` was purged; never call the mutation callback. If an existing generic outcome disagrees, fail closed.
+2. Receipt REJECTED or EXPIRED_UNCOMMITTED: return its exact typed terminal error, no execution.
+3. Receipt ADMITTED: first reconcile any committed generic operation under the same locks; if found, atomically recover COMMITTED with that exact outcome. If no commit exists and `now >= replay_until`, atomically record EXPIRED_UNCOMMITTED (`OPERATION_EXPIRED`, original ID), zero value writes. Before expiry execute the original captured command with current durable constraints and frozen source/RNG; stale durable revisions/resources or erasure fences yield a retained typed REJECTED outcome, never an infinite startup retry. Dependency failure stays unresolved/not-ready.
+4. Missing receipt, conflicting owner/fingerprint/type, malformed terminal outcome or ambiguous database history: stop startup; do not drop the record, execute it as new or infer expiry from absence. A supported PITR recovery must restore/reconcile the receipt and source history as well as gameplay tables.
+
+An ADMITTED receipt with **no** validated ready-file/in-flight/live-queue reference after quiescence is the admission-commit-before-enqueue crash window. Under the same owner/receipt lock, verify no generic commit exists; if one exists recover COMMITTED, otherwise terminalize REJECTED (`TEMPORARY_DEPENDENCY_FAILURE`, original typed response; EXPIRED_UNCOMMITTED if already expired). This is conclusive nonexecution, not an unresolved hang or a claim that uncommitted gameplay was saved. Normal same-key retries while ADMITTED are single-flight and cannot start a second callback.
+
+Retention is a bounded recovery hold: ADMITTED and terminal rows with NULL disposition_ack_at cannot purge; generic operation rows for an unacknowledged receipt also cannot purge. At normal committed-result queue acknowledgement, release only when no queued/in-flight/journal reference remains. During journal recovery, release only **after every referencing ready file is terminally disposed, unlinked and its directory fsync completes** (`deployment.md`). A crash before release leaves a safe extra hold; next startup proves no references and releases it. Daily bounded purge may delete only terminal, disposition-acked receipts at/after replay_until, never pending work. Outcomes reconstruct beyond the public horizon solely for the outstanding trusted reference, not indefinite routine public replay.
+ERASURE_RESUME is server-originated and uses only the canonical verified intent/PREPARED/fence continuation in data_model.md; no CLIENT receipt or generic erasure-success outcome is created. Its queue/journal acknowledgement closes that reference, not the pending erasure metadata or client completion. Actual destruction remains after every subject reference is durably disposed.
+
+Erasure fences new admissions, resolves/cancels every outstanding client reference under the receipt lock before deleting personal projections, and never repoints the receipt PK to TOMBSTONE_ACCOUNT_ID. ACCOUNT-owner UUID remains restricted pseudonymous identity with no FK; CHARACTER owner keeps the anonymized-label character identity. After recovery references are disposed, scrub personal names/text/provider/IP/extra account attribution from retained outcomes, preserving only the bounded typed assigned-ID/value history allowed by the personal-data register; public retrieval is already fenced. Receipt internals are never subject-export fields. Scrubbing does not alter an unresolved journal command or claim exact old personal text remains reconstructable after erasure.
+
+## Closed Server Producer Families (JRN-001, JRN-004)
+
+`WORLD_OWNER_ID = 00000000-0000-0000-0000-000000000002` is the existing reserved world-scoped owner from `data_model.md`, not a map-instance UUID or a newly derived namespace UUID. Server command families/owner mappings are enumerated in `save_rules.md`. Simulation reward/world/checkpoint/eligibility commands derive UUIDv5 from the original source_event_name (including incarnation/counter/tick), not the replay boot. Other jobs use `UUIDv5(SERVER_JOB_NAMESPACE_UUID, "<family>:<job_key>")`; job_key is canonical ASCII `KIND:<typed target components>:<window>`, UUID components lowercase canonical, integers decimal without leading zeroes, UTC windows Unix milliseconds, content IDs unchanged. `:` is forbidden inside components; maintenance cursor_key is lowercase hex of the canonical typed primary-key bytes, never unescaped free text.
+
+Typed targets: auction listing_id plus escrow_asset_id for fallback; quest character_id/cycle_id plus quest_id for expiry; guild guild_id/cycle_id plus claim_id for storage expiry; season scope/season_id/cutoff plus match_id for drain or owner_id/cosmetic_id/membership_id for delivery; erasure uses original prepared operation UUID (never rederived); payment entitlement_id/provider/notification_key (notification_key encoded as lowercase SHA-256 hex of provider key, raw key remains in its durable source); maintenance row_family/target UUID/window bounds/cursor; compensation approved audit UUID/character. Existing authored content-grant scope strings still govern grants and are not replaced by this job grammar. Schedule job_key is `boss_id:expected_revision:transition`; activity key `character_id:session_epoch:transition`. Source-derived trades retain the initiating 708 client UUID and CHARACTER owner; they are not a new server intent.
+For ERASURE_RESUME the original prepared operation UUID is immutable; prepared_at_ms is only a projection. Validate the full fixed UTC-microsecond timestamp against the durable intent and exact external object before canonical continuation handoff, never reconstruct it from milliseconds.
+
+Non-simulation recovery identities never invent a partition tuple. Relic expiry/despawn `job_key = map_id:channel_id:relic_id:spawned_at_ms:transition`; copy cleanup `job_key = generation_id:copy_map_id:copy_channel_id:character_id:UNDEFEATED_DESPAWN`. PUBLIC personal source reward scope is ASCII `boss.chest.<generation UUID>.<character UUID>.<reward_slot>` under CONTENT_GRANT_NAMESPACE_UUID, persisted/reused across interaction/timeout/restart; generation/slot uniqueness remains the business guard. Defeated-copy eligibility also pins the original reward content_revision until every fallback/slot is terminal. The recorded simulation source is required only for source-derived commands; authored content/job natural keys retain their existing identities.
+
+
 ## Deterministic Content-Grant Idempotency Keys
 Certain content grants — seasonal cosmetics, Atlas reward tiers, Guild Stone completions, and any future one-time content delivery — require a stable idempotency key that is derivable from structured inputs such as `(season_number, cosmetic_id, character_id)`. These keys must be stored in a PostgreSQL `uuid` column and satisfy all operation ID requirements, but must also be deterministically reproducible from the same inputs across retries and server restarts without persisting the key before the first attempt.
 

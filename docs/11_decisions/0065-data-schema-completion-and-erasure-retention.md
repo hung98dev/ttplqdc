@@ -24,3 +24,6 @@ Erasure uses the staged intent, external publication/verification and destructiv
 
 ## Amendment (schema completion: social and competitive tables)
 Typed schemas for `friends`, `friend_requests`, `blocks`, `character_chivalry`, `pvp_ratings`, `pvp_match_settlements`, `pvp_sanctions`, `guild_war_ratings` and `guild_war_settlements` (`../06_data/data_model.md` § Social / Party, § PvP / Guild War); caps of 100 outgoing pending friend requests and 500 blocks (`../03_systems/social.md`, `CAPACITY_FULL` on messages 611/617/654); retention in `../07_security/personal_data_register.md` Category G; `character_chivalry` locks at priority 2 (`../06_data/database.md`). Packets: IMP-034, IMP-040, IMP-041, IMP-042, IMP-086.
+
+## Amendment (ADR-0079)
+Reports, operator disable/own-subject access, pending/completed erasure metadata and private queued-client receipts follow the exact canonical inventory/schedule in `personal_data_register.md` and projections in `data_protection.md`. UUID/hash links remain restricted pseudonymous metadata, not proof of global anonymization. Receipt keys never re-point to the shared tombstone; every personal recovery reference is terminally disposed outside the destructive transaction before its locked fenced recheck and outcome scrubbing. The residual account's independent 1-year purge remains unchanged.

@@ -138,6 +138,8 @@ secondary_geometries[]
 effects[]
 ```
 
+The typed `effects[]` union includes the `BARRIER(primary_geometry)` constructor owned by `../07_content/class_skill_catalog.md` (CAT-002). It references that skill's `BARRIER_POSITION`, creates one stationary grounded enemy-movement/projectile-blocking AABB at ACTIVE creation, and removes it at the authored expiry tick. Invalid signature, geometry or placement rejects; it grants no damage, shield or secondary geometry.
+
 `secondary_geometries[]` is an empty list unless an effect creates a spatial result distinct from the primary geometry. Every non-empty entry declares its origin, shape/distance, collision rule, selection order, and target-cap interaction; prose cannot create extra reach.
 
 Passive skills instead define stable trigger/effect data and do not require execution/targeting/action-geometry fields.

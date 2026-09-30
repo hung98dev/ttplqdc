@@ -12,9 +12,8 @@ Canonical: `docs/05_network/protobuf_conventions.md`, `versioning.md`, `messages
 
 ## File rules
 
-- `syntax = "proto3"`, `package thinhthan.v1`, 2-space indent.
-- Required options: `go_package = "thinhthan/internal/protocol/v1;protocolv1"`, `csharp_namespace = "ThinhThan.Protocol.V1"`.
-- Nine baseline files own fixed message-ID ranges (`common`, `session` 1–11, `movement` 100–108, `combat` 200–207/304, `durable` 400–409, `content` 500–506, `social` 600–636, `market` 700–736, `pvp` 800–810). New messages go in the owning file's range.
+- Network schemas use proto3, package/options and the nine-file message ownership table from `protobuf_conventions.md` §1, including all registered additions; indent 2 spaces. Do not copy stale numeric ranges here.
+- Internal journal is the separate Go-only source/generated package in §7: one-way network imports, no network ID/RPC/C# output, no handwritten generated files.
 
 ## Immutability (wire compatibility)
 

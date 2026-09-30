@@ -30,7 +30,7 @@ case "$plc" in
   docs|docs/*)
     # Protected specs/ADRs change only in spec-change PRs from the spec-owner role (AGENTS.md, ADR-0050).
     [ "${THINHTHAN_AGENT_ROLE:-}" = "spec-owner" ] \
-      || deny "protected spec — only the spec-owner role (THINHTHAN_AGENT_ROLE=spec-owner) may edit docs outside docs/10_implementation/; record the gap in known_blockers.md" ;;
+      || deny "protected spec — only spec-owner may edit docs outside docs/10_implementation/; pre-implementation gaps stay in session Findings, claimed implementation gaps follow known_blockers.md" ;;
   .devin/*|agents.md|readme.md)
     [ "${THINHTHAN_AGENT_ROLE:-}" = "spec-owner" ] \
       || deny "protected governance file — only the spec-owner role may edit .devin/, AGENTS.md, README.md (spec-change PR + policy-review)" ;;
@@ -45,8 +45,8 @@ case "$plc" in
 esac
 
 case "$plc" in
-  *.pb.go|server/internal/protocol/*)
-    deny "generated protobuf Go — edit proto/thinhthan/v1/*.proto and run scripts/codegen.ps1" ;;
+  *.pb.go|server/internal/protocol/*|server/internal/durable/journal/v1/*)
+    deny "generated protobuf Go — edit the owning network/internal proto source and run scripts/codegen.ps1" ;;
   client/assets/scripts/protocol/*|client/assets.meta|client/assets/scripts.meta|client/assets/scripts/protocol.meta)
     deny "generated protobuf C#/Unity metadata — edit proto source and run scripts/codegen.ps1" ;;
   proto/testdata/golden/*)

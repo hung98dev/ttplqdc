@@ -10,11 +10,13 @@ The single operating manual for AI agents: claim, implement, review, merge, bloc
 | Role | Does | Never |
 |---|---|---|
 | `spec-owner` (Contract Owner) | resolves `BLK-xxx`; changes protected specs/ADRs and task packets in spec-change PRs; grep-derived consumer list | implementation code in the same PR |
-| `coordinator` | selects, claims and unclaims tasks; keeps concurrency ≤ the concurrency limit (8, at most 4 client); grants the merge slot (§5a); records and resolves `OPS-xxx` entries (`ops/` PRs) | implementation or spec changes |
+| `coordinator` | commissions and checks wave plans; selects, claims and unclaims tasks; keeps concurrency ≤ the concurrency limit (8, at most 4 client); grants the merge slot (§5a); records and resolves `OPS-xxx` entries (`ops/` PRs) | implementation or spec changes |
 | implementer | one claimed task inside its `owned_paths`; tests; evidence; stays alive until its PR merges or it is `BLOCKED` | edit protected specs/ADRs/control content outside § Protected Paths of `audit_gates.md`; add unpinned dependencies; unrelated refactors |
 | `reviewer` (Conformance Reviewer) | reviews every PR in its own session and OS account; posts the `policy-review` check run through the App (`.devin/scripts/policy_review.ps1`) | review its own work; approve without executed checks |
+| `wave-planner` | read-only, on-demand wave planning under §2a; derives implementer handoffs from canonical packets, specs and existing code | claims, repository edits, resolving product/spec decisions, implementation or PR approval |
+| `verifier` | read-only plan audit under §2a; existing verification duties remain unchanged | drafting the plan it audits, repository edits or posting `policy-review` |
 
-Each role session uses its own fine-grained token with the Owner Setup permissions (`audit_gates.md`); the reviewer session additionally holds the App key.
+Each privileged role session uses its own fine-grained token with the Owner Setup permissions (`audit_gates.md`); the reviewer session additionally holds the App key. Read-only wave planning/audit delegates use the coordinator-supplied snapshot without GitHub credentials (§2a).
 
 Self-review is forbidden: the reviewer session is never the implementer session or one of its subagents.
 
@@ -32,20 +34,34 @@ A task is ready when all hold:
 [ ] toolchain/dependencies are pinned in technology_versions.md
 [ ] recovery behavior is defined when durable state changes
 ```
+For an explicitly selected same-claim IN_PROGRESS resume (§2a / canonical planning inputs), replace only the status-NOT_STARTED checkbox with verified live IN_PROGRESS ownership by the existing implementer. Every other checkbox remains mandatory; missing/stale claim/resources block resume, never create a second claim. This exception does not make a new claim ready.
+
 
 If a box fails, the task stays `NOT_STARTED` or becomes `BLOCKED` (§6). Agents never "decide while implementing".
 
+## 2a. Plan Before Wave Execution
+
+Every owner wave command runs `/plan-wave` before any wave task is claimed, any implementation branch/draft PR is created, or any implementation/codegen command runs. The coordinator delegates planning to `wave-planner`, then delegates a source-based audit to a different `verifier` session. Planning is not implementation, task readiness, PR review, CI evidence or permission to change a spec.
+
+The canonical plan/handoff format and acceptance checks are in `wave_execution_prompts.md` § On-Demand Planning Contract. A task can be dispatched only when its readiness is proven, its complete task plan has a `PASS` audit for that exact plan revision, and the coordinator has rechecked §2 on fresh `main`. A failed/missing audit returns the plan to the planner; it never becomes a weaker implementation prompt.
+
+Plans are session artifacts, not committed per-wave playbooks or a second task register. Waiting/blocked dispositions receive no executable handoff and never change packet status. No new ready or eligible same-claim resume tasks → report dependencies/findings without claiming or code. Explicit same-claim IN_PROGRESS replans follow `wave_execution_prompts.md` § Inputs and authority, preserving ownership and never assigning a second implementer. Pre-implementation contract gaps stay in Findings for spec-owner without BLK allocation/register writes; §6 records claimed implementation blockers. Environment failures follow OPS; unclaimed packets stay NOT_STARTED.
+
+After a relevant source, dependency output, blocker, packet or environment change, regenerate and re-audit affected task plans before dispatch/resume. A claim-only status transition does not invalidate an unchanged task design, but readiness and claim ownership must still be checked; preserve the planning snapshot SHA and add the actual post-claim base SHA to the handoff.
+
 ## 3. Claiming (coordinator)
 
-1. Select the lowest topological index (`task_queue.md` § Topological Execution Order) among ready tasks; keep the number of `IN_PROGRESS` tasks ≤ 8 (ADR-0075: GitHub Pro allows 40 concurrent hosted jobs; a PR run uses 3 — two required verify jobs and one parallel Unity (Windows) job, ADR-0078), of which at most 4 have `client/` in `owned_paths` (bounds concurrent Unity licence activations on Windows, ADR-0078). Final-art tasks use the Direct AI Generation tool recorded in `../00_context/technology_versions.md` § Content production tools and are ready without `OPS-xxx` (ADR-0078).
+1. Select the lowest topological index (`task_queue.md` § Topological Execution Order) among ready tasks; wave-dispatched tasks additionally require the audited plan in §2a. Keep the number of `IN_PROGRESS` tasks ≤ 8 (ADR-0075: GitHub Pro allows 40 concurrent hosted jobs; a PR run uses 3 — two required verify jobs and one parallel Unity (Windows) job, ADR-0078), of which at most 4 have `client/` in `owned_paths` (bounds concurrent Unity licence activations on Windows, ADR-0078). Final-art tasks use the Direct AI Generation tool recorded in `../00_context/technology_versions.md` § Content production tools and are ready without `OPS-xxx` (ADR-0078).
 2. Open a status-only claim PR on branch `claim/<yyyymmdd>-<n>` setting `status: IN_PROGRESS`, `claimed_by`, `branch: imp/IMP-XXX-<slug>`, `claimed_at` in the packet and the summary-row status. Status-only diffs take the Q0-only fast path (`audit_gates.md` § Protected Paths); the reviewer still posts `policy-review`; the claim PR merges through the merge slot (§5a).
-3. After the claim merges, hand the task to exactly one implementer (one task per implementer, its own worktree/clone and isolated DB port, Unity cache and temp dirs).
+3. After the claim merges, hand the task to exactly one implementer (one task per implementer, its own worktree/clone and isolated DB port, Unity cache and temp dirs). For wave tasks include the complete audited task plan and its audit, not just the task ID; use the handoff fields in `wave_execution_prompts.md` § On-Demand Planning Contract.
 4. A claim with no PR activity for 24 h is returned to `NOT_STARTED` by a new claim PR (clear claim fields).
 5. Merge conflicts in `task_queue.md` status cells keep both edits.
 6. Bootstrap exception: before `IMP-000` is on `main` no required check exists, so a claim PR cannot merge. `IMP-000` is therefore claimed inside its own PR (first commit sets its claim fields); every later task uses the claim PR above.
 7. `IN_PROGRESS -> BLOCKED` reaches `main` only through the implementer's `block/` PR (§6); `BLOCKED -> NOT_STARTED` only through the spec-owner's `spec/` PR (BLK) or the coordinator's `ops/` PR (OPS).
 
 ## 4. Implementation (implementer)
+
+For a wave handoff, read the full task plan and its matching `PASS` audit before creating an implementation branch/draft PR, running codegen or editing code. Missing, stale, partial or contradictory handoff → return to the coordinator, do not improvise. Unclaimed planning gaps remain session `Findings`; a claimed implementation task encountering a new spec gap follows §6.
 
 1. `git fetch && git merge origin/main` (never rebase); create `imp/IMP-XXX-<slug>` from the claim commit; open a **draft PR** immediately.
 2. Read `AGENTS.md`, `technology_versions.md`, the packet's specs/ADRs and every ADR whose Consequences names them.
@@ -134,6 +150,7 @@ The ruleset requires branches to be up to date and GitHub's merge queue is unava
 
 ```text
 explicit DoR before every claim; only the coordinator claims
+wave command -> on-demand plan -> separate source audit -> fresh readiness -> claim -> implement
 one implementer = one task; no self-review
 >2 numbered directories => complete consumer list + policy-review
 protected specs change only in spec-owner spec-change PRs

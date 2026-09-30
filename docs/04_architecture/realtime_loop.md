@@ -83,7 +83,7 @@ Do not write PostgreSQL every tick.
 
 Tick-originated durable mutation is emitted as a command with stable operation identity. Examples include boss/reward settlement, quest completion, discovery/first-clear, and durable result state where an owning spec requires it.
 
-Boss death emits a `WriteWorldConsequence` durable command during `EMIT_DURABLE_COMMANDS`. The command carries a stable `operation_id` derived from the boss instance identity and death tick, the map/channel key, the consequence expiry, the active buff identity, and relic/marker state as required by `../02_world/bosses.md`. This is subject to the standard idempotency guarantee: a retry with the same `operation_id` reconstructs the committed outcome rather than writing a new record.
+Boss death emits a `WriteWorldConsequence` durable command during `EMIT_DURABLE_COMMANDS`. Operation UUIDv5 retains the original source-event name (map/channel/instance, partition incarnation, monotonic source counter and tick) from `../06_data/ids.md`, never a replay-boot identity or death tick alone. Map/channel, consequence expiry, buff and relic/marker state are immutable typed outputs under `../06_data/save_rules.md` § Closed Durable Queue Producer Registry and `../05_network/protobuf_conventions.md` §7. Identical retry reconstructs the committed result without a new roll or record.
 
 The realtime loop may continue unrelated simulation while a durable operation is pending when game semantics allow it. It may not show a durable value as final before commit.
 
@@ -166,6 +166,8 @@ After failure:
 - no client-submitted snapshot reconstructs truth.
 
 World Simulation partition start must load active `world_consequence` rows for the partition's own map/channel before accepting players (a bad row quarantines only that partition; `../06_data/data_model.md` § world_consequence_relics). Relic buff state derived from those rows is restored from PostgreSQL, not reconstructed from memory. Players are not accepted into the partition until this recovery read completes. After a shutdown whose durable flush timed out, the durable outbox journal is replayed before any partition starts (`../08_scale_ops/deployment.md` § Durable Outbox Journal, ADR-0070).
+The full startup order, all-producer inventory and terminal disposition are canonical in `deployment.md` § Durable Outbox Journal: external/known erasure fences before local mutation callbacks, complete typed journal reconciliation/disposal, then final erasure/competitive/boss/chest/world recovery before ordinary workers/Global/Sim/readiness. A bad or unresolved journal stops process readiness, not only one partition.
+
 
 ## Determinism Requirements
 Tests control content revision, RNG seed/stream, input sequence, and fixed tick count.

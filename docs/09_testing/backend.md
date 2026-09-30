@@ -107,6 +107,21 @@ Candidate revision tests:
 - one invalid catalog -> whole revision rejected,
 - previous revision remains visible,
 - concurrent readers see old or new immutable snapshot, never partial mixture.
+- CAT-001/CAT-002/CAT-003: missing/invalid Soul element, barrier payload binding or registered item string rejects the candidate and preserves the exact prior immutable snapshot and full revision; no partially repaired catalog becomes visible.
+
+## Privacy Contracts
+- PRIV-001/PRIV-002: exact verified-subject allowlists include only reporter-own submissions and exclude foreign/target/investigator/secret/receipt/audit/recovery data; third-party free text is redacted before release.
+- PRIV-003/PRIV-005: operator-own DPO identity is separate from player login; disable wipes credentials immediately and preserves the first retention anchor, while player erasure leaves operator identity untouched.
+- PRIV-004/PRIV-007: OPEN reports purge at the same created-at deadline; UTC calendar month/year clamps, exact equality and reference/value holds follow the owning register.
+- PRIV-006: pending ledger metadata never expires; completed cleanup requires independently verified completion, elapsed calendar deadline and complete restore coverage, retaining intent proof until external object deletion is confirmed.
+- PRIV-008/PRIV-009: pending/unacknowledged receipt/journal references hold beyond the replay horizon; terminal reconciliation and durable personal-reference disposal precede receipt purge/subject erasure, including mixed-subject files and original F/H/G request text.
+
+## Durable Journal Contracts
+- JRN-001/JRN-002: each closed producer round-trips exact typed original request/source/owner/UUID/revision and complete finalized values; unknown oneof/enum, mismatched owner/family or missing required field rejects before execution. Async CHAT_LOG replay never redelivers or revives erased/expired chat.
+- JRN-003/JRN-004: exercise exact header/record CRC scope, missing final record, overflow/oversize bounds, valid interrupted publication, torn files, file+directory fsync and immutable original source identity.
+- JRN-005/JRN-006/JRN-007: public 180-day expiry remains unchanged; DB outage enqueues nothing; private admitted committed reconstruction works after generic purge, expired uncommitted intents terminalize with zero value writes, orphan proof reconciles and missing/ambiguous proof stops readiness.
+- JRN-008/JRN-009: hold all producer outcome/content references until every terminal acknowledgement/durable file unlink; erasure pre-fence precedes callbacks, mixed-subject disposal precedes scrubbing, then erasure/competitive/boss/chest/world recovery completes before ready.
+- JRN-010: every registered ID dispatches through exactly one existing network file's generated message; no renumbered/missing IDs or network journal route.
 
 ## Migration
 Migration fixtures also reject reused migration sequence numbers and modification of a previously-applied migration checksum/history.

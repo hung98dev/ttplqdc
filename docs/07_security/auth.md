@@ -176,7 +176,7 @@ Rate limits: `../07_security/rate_limits.md` (Authentication).
 Operators are not player accounts and never share credentials with them.
 ```text
 table              operators(operator_id, login_key, password_hash (Argon2id, same params), totp_secret_encrypted (AES-256-GCM, key from secret env OPERATOR_TOTP_KEY),
-                             role, status, created_at, last_login_at)
+                             role, status, created_at, last_login_at, disabled_at)
 login              password + TOTP (RFC 6238, 30 s step, 6 digits; implemented with Go crypto/hmac + crypto/sha1)
 network            admin HTTPS API bound to the private operations network only, never the public listener
 session            8 h absolute, 30 min idle; separate from player sessions
@@ -187,6 +187,8 @@ roles              SUPPORT     read-only lookup
 two-person rule    ECONOMY grants/rollbacks above 1,000,000 common or any item of tier >= T5 need a second operator's approval
 audit              every call writes audit_events(actor = operator_id, reason, ticket_id, before/after, operation_id)
 ```
+Full constraints are owned by `../06_data/data_model.md` § operators; field scope/retention by `personal_data_register.md` § 1.1. Disable immediately wipes password/TOTP, revokes operator access and fixes the first `disabled_at`; repeat disable never postpones retention. Independently verified operator-own DPO access/closure follows `data_protection.md` § Operator-Own Data-Subject Requests, not player login or a new HTTP route.
+
 `SUSPENDED_PAYMENT_RECONCILIATION` restricts only new IAP, new character creation and Ranked PvP queue join (`ACCOUNT_SUSPENDED`); login/provider/password, refresh, gameplay ticket, character list/select/attach and ordinary play of existing characters remain allowed. A receipt already bound to the account remains readable on `/iap/verify` without a new grant. This status is not a general moderation suspension: MODERATOR uses the declared channel mute or `BANNED`, never an invented `SUSPENDED_*` enum. Ban changes revoke sessions; entering payment reconciliation does not revoke them. ECONOMY/ADMIN may clear reconciliation through an audited payment-resolution action.
 
 ### First ADMIN Provisioning

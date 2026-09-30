@@ -13,14 +13,14 @@ You are the Contract Owner for thinhthan (`docs/10_implementation/agent_executio
 
 ## Scope
 - You may edit `docs/**`, `AGENTS.md`, `README.md` and `.devin/**`. You never edit `server/`, `client/`, `proto/`, `scripts/`, `.github/` or generated output, and never mix implementation into a spec-change PR.
-- Inputs: entries in `docs/10_implementation/known_blockers.md`, BLOCKED task packets, reviewer findings.
+- Inputs: pre-implementation session-plan `Findings`, reviewer findings, and implementation BLK entries/BLOCKED task packets. Planning intake needs no BLK ID or task claim.
 
 ## Procedure
 1. Read `AGENTS.md`, the owning spec (concept-to-owner index), and every ADR whose Consequences name it.
 2. Decide the best option consistent with existing specs, `00_context/` constraints and pinned technology. Prefer the smallest change that removes the conflict; do not invent new systems.
 3. Grep all of `docs/` for every changed symbol/constant/ID and update every consumer in the same PR (AGENTS.md contract-change rule).
 4. Every measurable requirement you write gets a requirement ID (`[A-Z]{2,6}-\d{3}`) in the spec's "Requirement IDs" table and is added to the owning packet's `## Acceptance` and `## Tests` (Q0 coverage). Architecture or data-contract changes get a new ADR (next number; update `docs/11_decisions/README.md`) or an amendment notice on the ADR they change.
-5. Remove the resolved entry from `known_blockers.md` open list, add it under Resolved, and return affected tasks from BLOCKED to NOT_STARTED.
+5. For planning intake, fix the owning docs and consumers; do not append `known_blockers.md`, allocate a BLK ID or change an unclaimed `NOT_STARTED` task. For an implementation BLK, move the resolved entry from Open to Resolved and return affected `BLOCKED` tasks to `NOT_STARTED`. The coordinator regenerates/re-audits affected plans after the source change.
 6. Open a spec-change PR (draft → ready). It always needs `policy-review` from the independent reviewer App; it merges automatically when checks are green.
 
 ## Never

@@ -97,6 +97,7 @@ For all 20 basics and 25 ACTIVE skills (45 combat actions total):
 - projectile range/speed/radius are server-owned,
 - movement distance/duration stops at authoritative collision,
 - `luu_bo` sweeps contact only along its collision-resolved `MOVE_CONTACT_LINE`; `son_bich` validates and creates its grounded `BARRIER_POSITION` AABB,
+- CAT-002: wrong barrier literal/arity/type or invalid grounded/cast/bounds/solid placement rejects; the accepted stationary AABB blocks enemy movement and projectiles until the authored expiry tick, with no damage, shield or extra zone/query.
 - every secondary spatial effect resolves from typed data with deterministic selection/collision/cap rules,
 - `DISPLACEMENT` is present if and only if the skill can force target position or apply canonical `AIRBORNE`,
 - `boc_bo` ember trail creates no persistent zone or second hit/status query,
@@ -167,6 +168,7 @@ Required regressions:
 
 # Soul Tests
 - 25 definitions and `15 NORMAL + 7 ELITE + 3 BOSS` count.
+- CAT-001: exact authored rank-by-element distribution, including `ma_rung` Soul `MOC` while its source monster remains `NONE`; absent/unknown/NONE elements and count mutations reject, without creating an automatic element bonus.
 - collection unlimited; same Soul ID max one contract per loadout.
 - one item max one Soul; loadout max 3 Souls/1 BOSS Soul.
 - ACTIVE Soul EXP only; thresholds `0,100,300,700,1500`.
@@ -385,6 +387,8 @@ invalid revision -> rejected as a whole
 previous revision remains active
 no partial catalog becomes visible
 ```
+- CAT-003: mutate actual registered material display and identity note independently; each changes canonical definition bytes/full revision without changing ID. Reorder independent rows/headings, vary nonsemantic source margins and use NFC/NFD-equivalent spellings: resolved definitions/revision stay identical.
+- CAT-001/CAT-002: invalid explicit Soul binding or barrier payload/geometry rejects the entire candidate and preserves the exact prior active snapshot/revision.
 
 # Regression Seeds
 Maintain fixed server-RNG seeds for:
