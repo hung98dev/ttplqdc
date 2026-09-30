@@ -224,9 +224,11 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
-          $log = "artifacts\unity-tests\materialize-editor.log"
           $compileFails = 0
           for ($i = 1; $i -le 5; $i++) {
+            Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+            Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
+            $log = "artifacts\unity-tests\materialize-editor-$i.log"
             & $editor -batchmode -quit -projectPath "$PWD\client" -logFile $log
             if ($LASTEXITCODE -eq 0) { exit 0 }
             $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
@@ -247,6 +249,8 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
           & $editor -batchmode -nographics -runTests -testPlatform EditMode `
             -projectPath "$PWD\client" `
             -testResults "$PWD\artifacts\unity-tests\editmode-results.xml" `
@@ -259,6 +263,8 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
           & $editor -batchmode -nographics -runTests -testPlatform PlayMode `
             -projectPath "$PWD\client" `
             -testResults "$PWD\artifacts\unity-tests\playmode-results.xml" `
@@ -271,6 +277,8 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
           & $editor -batchmode -force-d3d11 -runTests -testPlatform EditMode -testCategory Performance `
             -projectPath "$PWD\client" `
             -testResults "$PWD\artifacts\unity-tests\performance-results.xml" `
@@ -283,6 +291,8 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
           & $editor -batchmode -force-d3d11 -runTests -testPlatform EditMode -testCategory VisualReview `
             -projectPath "$PWD\client" `
             -testResults "$PWD\artifacts\unity-tests\visualreview-results.xml" `
