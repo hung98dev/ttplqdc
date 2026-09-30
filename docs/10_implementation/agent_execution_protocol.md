@@ -56,7 +56,7 @@ After a relevant source, dependency output, blocker, packet or environment chang
 3. After the claim merges, hand the task to exactly one implementer (one task per implementer, its own worktree/clone and isolated DB port, Unity cache and temp dirs). For wave tasks include the complete audited task plan and its audit, not just the task ID; use the handoff fields in `wave_execution_prompts.md` § On-Demand Planning Contract.
 4. A claim with no PR activity for 24 h is returned to `NOT_STARTED` by a new claim PR (clear claim fields).
 5. Merge conflicts in `task_queue.md` status cells keep both edits.
-6. Bootstrap exception: before `IMP-000` is on `main` no required check exists, so a claim PR cannot merge. `IMP-000` is therefore claimed inside its own PR (first commit sets its claim fields); every later task uses the claim PR above.
+6. Bootstrap exception: before `IMP-000` is on `main` no required check exists, so a claim PR cannot merge. `IMP-000` is therefore claimed inside its own PR (first commit sets its claim fields); every later task uses the claim PR above. Pre-implementation spec gaps discovered before `IMP-000` are resolved in a bootstrap spec-change PR (branch `spec/bootstrap-*`) with `policy-review` or co-landed in `IMP-000`'s initial PR.
 7. `IN_PROGRESS -> BLOCKED` reaches `main` only through the implementer's `block/` PR (§6); `BLOCKED -> NOT_STARTED` only through the spec-owner's `spec/` PR (BLK) or the coordinator's `ops/` PR (OPS).
 
 ## 4. Implementation (implementer)

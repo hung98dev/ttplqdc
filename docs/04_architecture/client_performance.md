@@ -98,7 +98,7 @@ Canonical runtime architecture that keeps frames smooth without GPU timing in CI
    ```text
    Input -> NetReceive -> Prediction -> Interpolation -> Presentation -> UI -> Camera
    ```
-   - Presentation covers animation, VFX and audio triggers; Camera runs from `LateUpdate`.
+   - Presentation covers animation, VFX, audio triggers, and lighting evaluation (day/night cycle); Camera runs from `LateUpdate`. Core/Rendering components provide pure calculation and light-binding APIs and must not define independent MonoBehaviour `Update`/`LateUpdate` loops.
    - Systems implement `IFrameSystem.Tick(in FrameTime)`; registration happens only at composition or map load, never mid-frame.
    - Replicated entity views live in contiguous index-based arrays (struct state + cached component references) updated by one system per concern. There is no per-entity `MonoBehaviour` logic and no per-frame `GetComponent`.
 2. **Timing** (`PERF-014`, `PERF-023`):

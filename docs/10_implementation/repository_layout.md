@@ -262,7 +262,6 @@ Generated from `task_queue.md` `owned_paths`.
 | `.devin/scripts/cache-policy.md` | IMP-106 |
 | `.devin/scripts/cache_telemetry.ps1` | IMP-106 |
 | `.devin/scripts/cache_telemetry.sh` | IMP-106 |
-| `.devin/scripts/wait_job.sh` | IMP-000 |
 | `.editorconfig` | IMP-000 |
 | `.gitattributes` | IMP-000 |
 | `.github/pull_request_template.md` | IMP-000 |
@@ -365,6 +364,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Scripts/Core/Assets/` | IMP-063 |
 | `client/Assets/Scripts/Core/Assets/Editor/AssetProduction/` | IMP-070 |
 | `client/Assets/Scripts/Core/Assets/Editor/AssetProduction/ReleaseAssetAudit.cs` | IMP-076 |
+| `client/Assets/Scripts/Core/Assets/Editor/GraphicsCapabilityProbe.cs` | IMP-000 |
 | `client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef` | IMP-000 |
 | `client/Assets/Scripts/Core/Assets/Editor/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Core/Assets/ThinhThan.Core.Assets.asmdef` | IMP-000 |

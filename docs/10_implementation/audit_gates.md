@@ -24,8 +24,9 @@ android devices    Google Cloud project on the free Firebase Spark plan with Tes
                    (Pixel 5) @ Android 12. Android performance = Unity game-loop tests via
                    `gcloud firebase test android run --type game-loop` in the scheduled `device-perf` workflow
                    (../04_architecture/client_performance.md § Measurement and Gates)
-ruleset on main    PR required; required checks `Q0-Q6 verify (Linux)` and `Q0-Q6 verify (Windows)` (workflow verify.yml
-                   from main) and the check run `policy-review` (source = App thinhthan-policy-reviewer); branches must
+ruleset on main    PR required; required check run `policy-review` (source = App thinhthan-policy-reviewer); required CI
+                   checks `Q0-Q6 verify (Linux)` and `Q0-Q6 verify (Windows)` (workflow verify.yml, evaluated from the PR
+                   head during Bootstrap Mode per § Bootstrap Mode, and from main after the IMP-068 cutover); branches must
                    be up to date (no merge queue: unavailable for user-owned repos; merges are serialized by the merge
                    slot, agent_execution_protocol.md §5a); approvals 0; no bypass actors; force-push and deletion blocked
 App                thinhthan-policy-reviewer installed on the repo (checks:write, metadata:read); private key held only
@@ -59,7 +60,8 @@ backup storage     one S3-compatible bucket for the pgBackRest 2.59.1 repo1 and 
 
 ## Bootstrap Mode (until IMP-068 is DONE)
 
-- `IMP-000` is the first pull request; no other PR merges before it.
+- `IMP-000` is the first implementation pull request; no other implementation or claim PR merges before it.
+- Pre-implementation spec changes before `IMP-000`: if Wave 0 planning or baseline review identifies pre-implementation spec gaps before `IMP-000`, the `spec-owner` lands a bootstrap spec-change PR (branch `spec/bootstrap-*`) requiring App `policy-review` before `IMP-000` merges, or `IMP-000` co-lands the bootstrap spec alignment within its initial PR; ruleset required CI checks `Q0-Q6 verify` are satisfied by `IMP-000`'s head workflow (`verify.yml` triggers on `pull_request`).
 - `verify.yml` triggers on `pull_request` (GitHub runs the PR head's own workflow file, so `IMP-000`'s PR reports the required checks it creates); both required jobs (`Q0-Q6 verify (Linux)`, `Q0-Q6 verify (Windows)`) run the verifier from the PR head; the gate ratchet is treated as empty.
 - Trusted cutover (ADR-0072): the `IMP-068` implementation PR adds `pull_request_target` alongside `pull_request` (its own run still comes from `pull_request`); its `imp/IMP-068-done` follow-up PR removes `pull_request` (its run comes from `pull_request_target` on `main`). The coordinator gives no other PR the merge slot between these two merges.
 - Gate activation (§ Gate Activation) applies unchanged before and after `IMP-068`.

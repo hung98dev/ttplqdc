@@ -62,8 +62,8 @@ NOT_STARTED -> IN_PROGRESS            coordinator claim PR (claim/)
 IN_PROGRESS -> DONE                   task PR (two-phase tasks: follow-up status PR imp/IMP-XXX-done)
 IN_PROGRESS -> BLOCKED                implementer block PR (block/) appending the BLK/OPS entry
 IN_PROGRESS -> NOT_STARTED            coordinator unclaims a stale claim (claim/, 24 h no PR activity)
-BLOCKED     -> NOT_STARTED            spec-owner spec-change PR (spec/, BLK) or coordinator ops/ PR after the owner
-                                      closed the ops-blocked issue (OPS)
+BLOCKED     -> NOT_STARTED            spec-owner spec-change PR (spec/, BLK), coordinator ops/ PR after the owner
+                                      closed the ops-blocked issue (OPS), or coordinator claim/ PR (REVERT-<sha>)
 DONE        -> IN_PROGRESS            post-merge guard revert of this task's squash commit (revert/)
 DONE        -> BLOCKED                a dependency was reverted (revert/, blocked_by: REVERT-<sha>)
 ```
