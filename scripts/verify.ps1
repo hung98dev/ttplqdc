@@ -53,7 +53,7 @@ function Resolve-TestPgDsn {
         if (-not $url -or -not $sha) { throw 'EDB pin unavailable via -print-pin' }
         $zip = Join-Path ([IO.Path]::GetTempPath()) 'edb-pg.zip'
         Write-Host "verify: fetching pinned EDB postgres binaries"
-        Invoke-WebRequest -Uri $url -OutFile $zip
+        Invoke-WebRequest -Uri $url -OutFile $zip -TimeoutSec 300
         $got = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
         if ($got -ne $sha.ToLowerInvariant()) {
             Remove-Item $zip -Force -ErrorAction SilentlyContinue

@@ -30,28 +30,57 @@ var taskQueueAllowedKeys = []string{
 	"status:", "claimed_by:", "claimed_at:", "branch:", "blocked_by:",
 }
 
+// claimKeys are the task_queue packet fields a claim/ PR may touch (never
+// blocked_by: — blocker linkage belongs to block/ and ops/).
+var claimKeys = []string{"status:", "claimed_by:", "claimed_at:", "branch:"}
+
+// statusPolicy returns the task_queue field allowlist and known_blockers.md
+// edit rights for the branch prefix; ok=false means the prefix has no
+// status-only fast path (spec/, revert/, unknown prefixes).
+//
+//	claim/  — claim fields only; no known_blockers.md at all
+//	ops/    — all fields; known_blockers.md edits incl. removals
+//	block/  — all fields incl. blocked_by:; known_blockers.md additions only
+//	imp/    — all fields; no known_blockers.md (status PRs only)
+func statusPolicy(branch string) (keys []string, blockersEdit, blockersAdd, ok bool) {
+	switch {
+	case strings.HasPrefix(branch, "claim/"):
+		return claimKeys, false, false, true
+	case strings.HasPrefix(branch, "ops/"):
+		return taskQueueAllowedKeys, true, true, true
+	case strings.HasPrefix(branch, "block/"):
+		return taskQueueAllowedKeys, false, true, true
+	case strings.HasPrefix(branch, "imp/"):
+		return taskQueueAllowedKeys, false, false, true
+	default:
+		return nil, false, false, false
+	}
+}
+
 // ClassifyControlDiff decides whether the diff is a status-only control-file
-// change for the branch role (claim/, ops/, block/ fast path; never a DONE
-// status, never an evidence file, never code). Detection only — the
-// role-scoped ownership rule is Q0.control.diff (IMP-083).
-func ClassifyControlDiff(role Role, changes []FileChange) ControlDiff {
+// change for the head branch's prefix (claim/, ops/, block/, imp/ fast path;
+// never a DONE status, never an evidence file, never code). Detection only —
+// the role-scoped ownership rule is Q0.control.diff (IMP-083).
+func ClassifyControlDiff(branch string, changes []FileChange) ControlDiff {
 	if len(changes) == 0 {
 		return ControlDiff{StatusOnly: false, Reason: "empty diff"}
 	}
-	switch role {
-	case RoleCoordinator, RoleImplementer:
-	default:
-		return ControlDiff{StatusOnly: false, Reason: "role has no status-only fast path"}
+	keys, blockersEdit, blockersAdd, ok := statusPolicy(branch)
+	if !ok {
+		return ControlDiff{StatusOnly: false, Reason: "branch prefix has no status-only fast path"}
 	}
 	for _, ch := range changes {
 		switch ch.Path {
 		case taskQueueFile:
-			if !allLinesTaskQueue(ch) {
+			if !allLinesTaskQueue(ch, keys) {
 				return ControlDiff{StatusOnly: false, Reason: "task_queue.md changes outside claim/status fields"}
 			}
 		case knownBlockersFile:
-			if len(ch.Removed) > 0 && role != RoleCoordinator {
-				return ControlDiff{StatusOnly: false, Reason: "known_blockers.md removals are coordinator-only"}
+			if len(ch.Removed) > 0 && !blockersEdit {
+				return ControlDiff{StatusOnly: false, Reason: "known_blockers.md removals are ops/-only"}
+			}
+			if len(ch.Added) > 0 && !blockersAdd && !blockersEdit {
+				return ControlDiff{StatusOnly: false, Reason: "known_blockers.md additions are block/- or ops/-only"}
 			}
 		default:
 			if strings.HasPrefix(ch.Path, evidenceDirPrefix) {
@@ -73,18 +102,18 @@ func ClassifyControlDiff(role Role, changes []FileChange) ControlDiff {
 	return ControlDiff{StatusOnly: true}
 }
 
-// allLinesTaskReportQueue reports whether every touched line is an allowed
-// packet field line or a summary-table row.
-func allLinesTaskQueue(ch FileChange) bool {
+// allLinesTaskQueue reports whether every touched line is an allowed packet
+// field line (per the branch prefix's allowlist) or a summary-table row.
+func allLinesTaskQueue(ch FileChange, keys []string) bool {
 	for _, l := range append(append([]string{}, ch.Added...), ch.Removed...) {
-		if !isAllowedTaskQueueLine(l) {
+		if !isAllowedTaskQueueLine(l, keys) {
 			return false
 		}
 	}
 	return true
 }
 
-func isAllowedTaskQueueLine(line string) bool {
+func isAllowedTaskQueueLine(line string, keys []string) bool {
 	t := strings.TrimSpace(line)
 	if t == "" {
 		return true
@@ -93,7 +122,7 @@ func isAllowedTaskQueueLine(line string) bool {
 	if strings.HasPrefix(t, "|") && strings.Contains(t, "IMP-") {
 		return true
 	}
-	for _, k := range taskQueueAllowedKeys {
+	for _, k := range keys {
 		if strings.HasPrefix(t, k) {
 			return true
 		}

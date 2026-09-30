@@ -131,7 +131,12 @@ var ForbiddenImportPrefixes = []string{
 	"github.com/nats-io/",
 	"google.golang.org/grpc",
 	"golang.org/x/time/rate",
-	"math/rand", // v1; math/rand/v2 is the approved RNG
+}
+
+// ForbiddenImportExact are forbidden only on an exact import-path match
+// (math/rand has no subpackages; math/rand/v2 is the approved RNG).
+var ForbiddenImportExact = []string{
+	"math/rand",
 }
 
 // UnityWindowsInstallers are the pinned native Windows editor installers
@@ -223,6 +228,19 @@ var EDBPostgresZip = AssetPin{
 var GoogleProtobufNupkg = AssetPin{
 	URL:    "https://api.nuget.org/v3-flatcontainer/google.protobuf/3.36.2/google.protobuf.3.36.2.nupkg",
 	SHA256: "1182590db175f9057707857a1df48b217226d0732716cd353fa4aa4683d38dcb",
+}
+
+// ProtocZips are the pinned protoc 36.2 release-asset zips; CI downloads and
+// SHA-256-verifies them before any codegen gate may run.
+var ProtocZips = map[string]InstallerPin{
+	"linux": {
+		URL:    "https://github.com/protocolbuffers/protobuf/releases/download/v36.2/protoc-36.2-linux-x86_64.zip",
+		SHA256: "121f6c7afe1d4d0e3ea6aab9432038599250134cbf4474cb1167d2c7decd4278",
+	},
+	"windows": {
+		URL:    "https://github.com/protocolbuffers/protobuf/releases/download/v36.2/protoc-36.2-win64.zip",
+		SHA256: "f0c128dc0d8492eceece83bb459a4c0e316764b929ffbf1aa416357fd644edd3",
+	},
 }
 
 // GoogleProtobufNupkgVersion is the package version string (manifest parity).

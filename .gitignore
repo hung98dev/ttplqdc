@@ -16,3 +16,4 @@ verify-pre-unity*.json
 .DS_Store
 Thumbs.db
 server/bin/
+server/verify

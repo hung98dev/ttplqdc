@@ -165,6 +165,37 @@ func TestGoogleProtobufNupkgSha256(t *testing.T) {
 	}
 }
 
+// TestProtocReleaseAssetSha256: both protoc 36.2 release-asset zips carry
+// URL + SHA-256 pins and verify.yml SHA-verifies each download before the
+// codegen gates may consume them.
+func TestProtocReleaseAssetSha256(t *testing.T) {
+	for _, plat := range []string{"linux", "windows"} {
+		pin, ok := ProtocZips[plat]
+		if !ok {
+			t.Fatalf("ProtocZips missing %q", plat)
+		}
+		if len(pin.SHA256) != 64 {
+			t.Fatalf("protoc %s SHA256 malformed: %q", plat, pin.SHA256)
+		}
+		if !strings.Contains(pin.URL, "/v"+ProtocVersion+"/") {
+			t.Errorf("protoc %s URL %q does not carry version %s", plat, pin.URL, ProtocVersion)
+		}
+	}
+	wf, err := os.ReadFile(filepath.Join(repoRoot(t), ".github", "workflows", "verify.yml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	s := string(wf)
+	for _, pin := range ProtocZips {
+		if !strings.Contains(s, pin.SHA256) {
+			t.Errorf("verify.yml does not SHA-verify %s", filepath.Base(pin.URL))
+		}
+		if !strings.Contains(s, filepath.Base(pin.URL)) {
+			t.Errorf("verify.yml does not download %s", filepath.Base(pin.URL))
+		}
+	}
+}
+
 func TestEdbZipSha256(t *testing.T) {
 	matrix := readMatrix(t)
 	if len(EDBPostgresZip.SHA256) != 64 || !strings.Contains(matrix, EDBPostgresZip.SHA256) {

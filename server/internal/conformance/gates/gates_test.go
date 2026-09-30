@@ -139,19 +139,32 @@ func TestBlockAndOpsPrFastPath(t *testing.T) {
 		Added:   []string{"status: BLOCKED", "claimed_by: devin-x"},
 		Removed: []string{"status: IN_PROGRESS"},
 	}}
-	for _, role := range []Role{RoleCoordinator, RoleImplementer} {
-		d := ClassifyControlDiff(role, changes)
+	for _, branch := range []string{"ops/fix-runner", "block/IMP-001-2"} {
+		d := ClassifyControlDiff(branch, changes)
 		if !d.StatusOnly {
-			t.Fatalf("role %s status diff must be status-only: %s", role, d.Reason)
+			t.Fatalf("branch %s status diff must be status-only: %s", branch, d.Reason)
 		}
 	}
-	// Implementer may not remove lines from known_blockers.md.
-	d := ClassifyControlDiff(RoleImplementer, []FileChange{{
+	// Non-ops branches may not remove lines from known_blockers.md.
+	d := ClassifyControlDiff("block/IMP-001-2", []FileChange{{
 		Path:    "docs/10_implementation/known_blockers.md",
 		Removed: []string{"- BLK-001: old blocker"},
 	}})
 	if d.StatusOnly {
-		t.Fatal("blocker removals by implementer must not be status-only")
+		t.Fatal("blocker removals by non-ops branch must not be status-only")
+	}
+	// claim/ may not touch blocked_by or known_blockers.md.
+	if d := ClassifyControlDiff("claim/IMP-001", []FileChange{{
+		Path:  "docs/10_implementation/task_queue.md",
+		Added: []string{"blocked_by: BLK-007"},
+	}}); d.StatusOnly {
+		t.Fatal("claim/ writing blocked_by must not be status-only")
+	}
+	if d := ClassifyControlDiff("claim/IMP-001", []FileChange{{
+		Path:  "docs/10_implementation/known_blockers.md",
+		Added: []string{"- BLK-007: new"},
+	}}); d.StatusOnly {
+		t.Fatal("claim/ writing known_blockers must not be status-only")
 	}
 }
 

@@ -146,7 +146,7 @@ var (
 	shaRe    = regexp.MustCompile(`^[0-9a-f]{40}$`)
 )
 
-// checkWorkflowPins: every actions/* `uses:` must be a full 40-hex SHA in the
+// checkWorkflowPins: every `uses:` must be a full 40-hex SHA in the
 // stackpin.Actions allowlist; every runs-on must be a pinned runner label.
 func checkWorkflowPins(root string) []string {
 	b, err := os.ReadFile(filepath.Join(root, ".github", "workflows", "verify.yml"))
@@ -157,14 +157,12 @@ func checkWorkflowPins(root string) []string {
 	for i, line := range strings.Split(string(b), "\n") {
 		if m := usesRe.FindStringSubmatch(line); m != nil {
 			action, ref := m[1], m[2]
-			if strings.HasPrefix(action, "actions/") {
-				if !shaRe.MatchString(ref) {
-					errs = append(errs, fmt.Sprintf("verify.yml:%d %s not pinned to a 40-hex SHA (%q)", i+1, action, ref))
-					continue
-				}
-				if want, ok := stackpin.Actions[action]; !ok || want != ref {
-					errs = append(errs, fmt.Sprintf("verify.yml:%d %s@%s not in pin registry", i+1, action, ref))
-				}
+			if !shaRe.MatchString(ref) {
+				errs = append(errs, fmt.Sprintf("verify.yml:%d %s not pinned to a 40-hex SHA (%q)", i+1, action, ref))
+				continue
+			}
+			if want, ok := stackpin.Actions[action]; !ok || want != ref {
+				errs = append(errs, fmt.Sprintf("verify.yml:%d %s@%s not in pin registry", i+1, action, ref))
 			}
 		}
 		if m := runsOnRe.FindStringSubmatch(line); m != nil {
@@ -270,6 +268,11 @@ func CheckForbiddenImports(root string) []string {
 					match = imp == fp || strings.HasPrefix(imp, fp+"/")
 				}
 				if match {
+					errs = append(errs, fmt.Sprintf("%s imports forbidden %q", filepath.ToSlash(rel), imp))
+				}
+			}
+			for _, fx := range stackpin.ForbiddenImportExact {
+				if imp == fx {
 					errs = append(errs, fmt.Sprintf("%s imports forbidden %q", filepath.ToSlash(rel), imp))
 				}
 			}

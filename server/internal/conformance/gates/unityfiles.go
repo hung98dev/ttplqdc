@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
 	"thinhthan/internal/stackpin"
 )
@@ -206,7 +207,7 @@ func sha256File(path string) (string, error) {
 // lib/netstandard2.0/Google.Protobuf.dll. The package itself is already
 // pin-verified by CI; here we only compare member bytes.
 func fetchNupkgDLLHash(url string) (string, error) {
-	resp, err := http.Get(url) //nolint:noctx // one-shot CLI fetch
+	resp, err := (&http.Client{Timeout: 120 * time.Second}).Get(url)
 	if err != nil {
 		return "", err
 	}

@@ -5,7 +5,6 @@
 package main
 
 import (
-	"context"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -14,7 +13,6 @@ import (
 	"path/filepath"
 	"regexp"
 	"runtime"
-	"sort"
 	"strconv"
 	"strings"
 
@@ -62,10 +60,15 @@ func main() {
 		return filepath.Join(r, p)
 	}
 	if *merge {
-		code := runMerge(resolve(*linux), resolve(*windows), resolve(*out))
+		outPath := *out
+		if outPath == "" {
+			outPath = "artifacts/evidence/manifest.json"
+		}
+		code := runMerge(resolve(*linux), resolve(*windows), resolve(outPath))
 		os.Exit(code)
 	}
-	ctx := buildContext(r, *localDefer)
+	ctx, err := buildContext(r, *localDefer)
+	fatal(err)
 
 	if *planUnity != "" {
 		plan := gates.PlanUnityModes(ctx)
@@ -201,8 +204,11 @@ func ghAPICheck(root string) gates.APICheckFunc {
 	}
 }
 
-// buildContext resolves the RunContext from the environment + git state.
-func buildContext(root string, localDefer bool) gates.RunContext {
+// buildContext resolves the RunContext from the environment + git state. A
+// malformed head task_queue.md aborts the run — silently emptying the packet
+// index would let every owner gate SKIP(owner-not-done) and fake a PASSED
+// conclusion on the governance ledger.
+func buildContext(root string, localDefer bool) (gates.RunContext, error) {
 	ctx := gates.RunContext{InCI: os.Getenv("CI") != "", LocalDeferMissing: localDefer}
 	switch runtime.GOOS {
 	case "windows":
@@ -225,12 +231,18 @@ func buildContext(root string, localDefer bool) gates.RunContext {
 	// Task queue: head parse always; main parse best-effort (empty = unknown,
 	// which fails closed for owner-done checks).
 	headSrc, err := os.ReadFile(filepath.Join(root, "docs", "10_implementation", "task_queue.md"))
-	if err == nil {
-		ctx.HeadIdx, _ = gates.ParseQueue(string(headSrc))
+	if err != nil {
+		return ctx, fmt.Errorf("read task_queue.md: %w", err)
+	}
+	ctx.HeadIdx, err = gates.ParseQueue(string(headSrc))
+	if err != nil {
+		return ctx, fmt.Errorf("task_queue.md malformed: %w", err)
 	}
 	mainSrc, err := gates.GitShowMain(root, "docs/10_implementation/task_queue.md", "origin/main")
 	if err == nil {
-		ctx.MainIdx, _ = gates.ParseQueue(mainSrc)
+		if mi, merr := gates.ParseQueue(mainSrc); merr == nil {
+			ctx.MainIdx = mi
+		}
 	}
 	if ctx.HeadIdx == nil {
 		ctx.HeadIdx = gates.PacketIndex{}
@@ -246,15 +258,12 @@ func buildContext(root string, localDefer bool) gates.RunContext {
 	if ctx.EventName == "pull_request" || ctx.EventName == "pull_request_target" {
 		changes, paths, diffErr = prDiff(root)
 		if diffErr == nil {
-			role, rerr := gates.RoleForBranch(ctx.HeadBranch)
-			if rerr == nil {
-				cd := gates.ClassifyControlDiff(role, changes)
-				ctx.StatusOnly = cd.StatusOnly
-			}
+			cd := gates.ClassifyControlDiff(ctx.HeadBranch, changes)
+			ctx.StatusOnly = cd.StatusOnly
 		}
 	}
 	ctx.UnityScope = gates.ResolveUnityScope(ctx.EventName, ctx.HeadBranch, paths, diffErr)
-	return ctx
+	return ctx, nil
 }
 
 // prDiff returns per-file added/removed lines for origin/main...HEAD.
@@ -384,6 +393,7 @@ func runMerge(linuxPath, windowsPath, outPath string) int {
 	if outPath == "" {
 		outPath = "artifacts/evidence/manifest.json"
 	}
+	outPath, _ = filepath.Abs(outPath)
 	if err := os.MkdirAll(filepath.Dir(outPath), 0o755); err != nil {
 		fmt.Fprintln(os.Stderr, "verify merge:", err)
 		return 1
@@ -413,6 +423,3 @@ func taskIDFromBranch() string {
 	}
 	return "none"
 }
-
-var _ = sort.Strings       // keep import
-var _ = context.Background // keep import

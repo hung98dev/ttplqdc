@@ -73,6 +73,7 @@ type Runner struct {
 	PreReport  *Report
 	AddedPaths []string     // files added by the PR diff (Q6.evidence)
 	APICheck   APICheckFunc // nil = skip API validation (local runs)
+	benchDone  bool         // Q3.go.alloc and Q3.go.bench share one benchmark run
 }
 
 // Run evaluates the registry and returns a populated Report (not yet written).
@@ -181,6 +182,11 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 			break
 		}
 		details = CheckEvidenceGate(r.Root, gitHeadSHA(r.Root), treeHash, r.AddedPaths, r.APICheck)
+		if r.Ctx.EventName == "push" {
+			// Merged-head invariant: every DONE packet on main must carry its
+			// evidence manifest (post-merge guard; IMP-068 owns the ratchet).
+			details = append(details, CheckMergedHeadManifests(r.Root, r.Ctx.HeadIdx)...)
+		}
 	default:
 		evalErr = fmt.Errorf("gate %s has no evaluator", spec.ID)
 	}
@@ -329,13 +335,12 @@ func (r *Runner) goBench() []string {
 	if len(dirs) == 0 {
 		return nil
 	}
-	argv := append([]string{"go", "-C", "server", "test", "-run", "^$", "-bench", ".", "-benchmem"}, dirs...)
+	argv := append([]string{"go", "-C", "server", "test", "-run", "^$", "-bench", ".", "-benchmem", "-benchtime=200x"}, dirs...)
 	out, code := r.runCmd(context.Background(), r.Root, argv...)
+	r.benchDone = true
 	if code != 0 {
 		return []string{"go bench: " + tail(out)}
 	}
-	var pkg string
-	_ = pkg
 	for _, l := range strings.Split(out, "\n") {
 		if strings.HasPrefix(l, "ok \t") || strings.HasPrefix(l, "ok ") {
 			continue
@@ -353,7 +358,7 @@ func (r *Runner) goBench() []string {
 // goAlloc: hot-path benchmarks must report 0 allocs/op (capacity.md exact
 // gates). Vacuous when no such benchmarks exist yet.
 func (r *Runner) goAlloc() []string {
-	if len(r.Bench) == 0 {
+	if !r.benchDone {
 		r.goBench() // reuse one benchmark run for both gates
 	}
 	var errs []string
@@ -469,17 +474,40 @@ type nunitRun struct {
 }
 
 // unityEditMode parses editmode-results.xml (NUnit3) from the Unity results
-// dir; any failure/error is FAIL, absent file is fail-closed.
+// dir and requires the editor's completion line; any failure/error is FAIL,
+// absent file is fail-closed. The spec contract is the "Test run completed.
+// Exiting with code 0" log line **plus** a Passed XML — XML alone is not
+// enough because a killed editor can leave a stale passing file behind.
 func (r *Runner) unityEditMode() (errs []string, missing bool) {
 	var files []string
+	var logs []string
 	_ = filepath.Walk(r.UnityDir, func(p string, fi os.FileInfo, err error) error {
-		if err == nil && !fi.IsDir() && strings.HasSuffix(fi.Name(), ".xml") && strings.Contains(fi.Name(), "editmode") {
+		if err != nil || fi.IsDir() {
+			return err
+		}
+		if strings.HasSuffix(fi.Name(), ".xml") && strings.Contains(fi.Name(), "editmode") {
 			files = append(files, p)
+		}
+		if strings.Contains(fi.Name(), "editmode") && strings.HasSuffix(fi.Name(), ".log") {
+			logs = append(logs, p)
 		}
 		return nil
 	})
 	if len(files) == 0 {
 		return nil, true
+	}
+	completed := false
+	for _, lp := range logs {
+		b, err := os.ReadFile(lp)
+		if err != nil {
+			continue
+		}
+		if strings.Contains(string(b), "Test run completed. Exiting with code 0") {
+			completed = true
+		}
+	}
+	if !completed {
+		errs = append(errs, "no editmode log carries the 'Test run completed. Exiting with code 0' completion line")
 	}
 	for _, f := range files {
 		b, err := os.ReadFile(f)
