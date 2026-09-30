@@ -55,7 +55,9 @@ No `path`/`key`/`restore-keys` may cover licence or credential state:
 `ProgramData\Unity`, `.ulf` files. These are `$RUNNER_TEMP` dirs —
 fresh every run, only bind-mounted into the Unity containers. Licence activation runs every attempt. A cache hit must never
 skip a Q0-Q6 gate, the fork/freeze guards, the materialization retry loop,
-the `commit unity-materialized` drift check, or the licence activation.
+the `commit unity-materialized` drift check, or the licence activation. The
+ADR-0077 materialization snapshot `$RUNNER_TEMP/unity-lib-restored` is a
+per-run retry copy, never a cache path.
 
 ## Telemetry (CI-003)
 
@@ -64,7 +66,8 @@ the `commit unity-materialized` drift check, or the licence activation.
   (`{step, result: hit|miss, wall_seconds}`). `RUNNER_TEMP` is outside the
   workspace so telemetry never dirties the tree (Q6 clean_tree).
 - `scripts/verify.ps1` measures its own `go run` wall time, appends a `verify`
-  entry (hit = `THINHTHAN_CACHE_HIT_GO`, set from the Go cache step output),
+  entry (the ADR-0077 pre-Unity phase appends `verify-pre-unity` and never
+  merges; the final phase does) (hit = `THINHTHAN_CACHE_HIT_GO`, set from the Go cache step output),
   then runs `server/internal/conformance/caching/cmd/cachemerge` to fold all
   entries into `verify-report.json` as `cached_steps[]`. The merge is
   best-effort — it can never fail verification.
