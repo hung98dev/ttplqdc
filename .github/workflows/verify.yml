@@ -535,10 +535,26 @@ jobs:
             go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
 
       - name: Cache EDB Postgres
+        id: edb-cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: tools/pgsql
           key: edb-${{ runner.os }}-${{ env.EDB_ZIP_SHA256 }}
+
+      - name: Provision EDB Postgres binaries
+        if: steps.edb-cache.outputs.cache-hit != 'true'
+        shell: bash
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          curl -fSL --retry 4 --retry-all-errors --connect-timeout 30 \
+            -o "$RUNNER_TEMP/edb.zip" "$EDB_URL"
+          echo "$EDB_ZIP_SHA256  $RUNNER_TEMP/edb.zip" | sha256sum -c -
+          mkdir -p tools/pgsql && 7z x -y -otools/pgsql "$RUNNER_TEMP/edb.zip" > /dev/null
+          if [ -d tools/pgsql/pgsql ]; then
+            mv tools/pgsql/pgsql/* tools/pgsql/ && rmdir tools/pgsql/pgsql
+          fi
+          [ -f tools/pgsql/bin/pg_isready.exe ]
 
       - name: Install protoc
         shell: bash
