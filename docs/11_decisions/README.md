@@ -77,16 +77,17 @@ Use `docs/templates/adr.md`.
 | 0063 | Economy Contract Reconciliation | ACCEPTED |
 | 0064 | Session Handshake, Wire Scalar Types and Result Contract | ACCEPTED |
 | 0065 | Data Schema Completion, Erasure and Retention _(amended by ADR-0070)_ | ACCEPTED |
-| 0066 | Measurable Client Gates, Forced-Cap Worst Case, Drain and Operations Stack _(amended by ADR-0070)_ | ACCEPTED |
+| 0066 | Measurable Client Gates, Forced-Cap Worst Case, Drain and Operations Stack _(amended by ADR-0070, ADR-0078)_ | ACCEPTED |
 | 0067 | _Number not used; never assign_ | — |
 | 0068 | Implementation Packet Readiness Corrections _(amended by ADR-0072, ADR-0075)_ | ACCEPTED |
 | 0069 | Session Continuity, Auth Hardening and Wire Corrections | ACCEPTED |
-| 0070 | Durable Restart Safety, Relic Expiry, Erasure Ledger and Entity Class Budgets | ACCEPTED |
+| 0070 | Durable Restart Safety, Relic Expiry, Erasure Ledger and Entity Class Budgets _(amended by ADR-0078)_ | ACCEPTED |
 | 0071 | Client Presentation Contract Reconciliation | ACCEPTED |
-| 0072 | Executable Merge Pipeline for AI Agents _(amended by ADR-0073, ADR-0075)_ | ACCEPTED |
-| 0073 | CI Speed — Native Unity on Windows and Path-Scoped Unity Gates _(amended by ADR-0077)_ | ACCEPTED |
+| 0072 | Executable Merge Pipeline for AI Agents _(amended by ADR-0073, ADR-0075, ADR-0078)_ | ACCEPTED |
+| 0073 | CI Speed — Native Unity on Windows and Path-Scoped Unity Gates _(amended by ADR-0077, ADR-0078)_ | ACCEPTED |
 | 0074 | Localization Addressables Group Integration | ACCEPTED |
-| 0075 | Parallel Unity Jobs, Planned Unity Modes, In-Job Evidence and Pro Concurrency _(amended by ADR-0077)_ | ACCEPTED |
+| 0075 | Parallel Unity Jobs, Planned Unity Modes, In-Job Evidence and Pro Concurrency _(amended by ADR-0077, ADR-0078)_ | ACCEPTED |
 | 0076 | AI Art Pipeline — Consistency, Animation and Gate Corrections | ACCEPTED |
-| 0077 | CI Critical Path — Cheap Unity Retries, Fail-Fast Verdicts, Overlapped Image Pull and Two-Phase Verifier | ACCEPTED |
+| 0077 | CI Critical Path — Cheap Unity Retries, Fail-Fast Verdicts, Overlapped Image Pull and Two-Phase Verifier _(amended by ADR-0078)_ | ACCEPTED |
+| 0078 | Unity-on-Windows-Only CI and Go-Only Linux Runner Topology | ACCEPTED |
 

@@ -60,7 +60,7 @@ NO: routers, ORMs, zap/logrus/zerolog, Redis/Kafka/NATS, gRPC, math/rand v1
 | Go suite | `go -C server test ./...` / affected sim/edge/durable/global with `-race` (needs cgo + C compiler; CI runs `-race` on Linux only) |
 | Unity EditMode | `"$UNITY_EDITOR_PATH" -batchmode -projectPath client -runTests -testPlatform EditMode -quit` |
 
-`.devin` auto-discovers the pinned Unity Hub editor path on Windows or Linux; a machine without it gets `WARN` and defers Unity to CI, which also materializes editor-generated files into artifact `unity-materialized-<os>` for you to commit (`agent_execution_protocol.md` §4b). Set `UNITY_EDITOR_PATH` only to another binary whose path contains `6000.6.1f1`. Codegen manages protoc under ignored `tools/`; global `protoc` is optional.
+`.devin` auto-discovers the pinned Unity Hub editor path on Windows or Linux; a machine without it gets `WARN` and defers Unity to CI, which also materializes editor-generated files into artifact `unity-materialized-windows` for you to commit (`agent_execution_protocol.md` §4b). Set `UNITY_EDITOR_PATH` only to another binary whose path contains `6000.6.1f1`. Codegen manages protoc under ignored `tools/`; global `protoc` is optional.
 
 ## Read order for any task
 
@@ -121,5 +121,5 @@ Canonical live list: `docs/10_implementation/known_blockers.md` (currently empty
 | `reviewer` | read-only conformance verdict; posts the `policy-review` check run via `.devin/scripts/policy_review.ps1` (`THINHTHAN_AGENT_ROLE=reviewer`) |
 | `verifier` | read-only diff-to-test-matrix execution |
 | `spec-owner` | Contract Owner: resolves blockers, edits protected specs/ADRs via spec-change PRs (`THINHTHAN_AGENT_ROLE=spec-owner`) |
-| `coordinator` | claims ready tasks (status-only PRs), grants the merge slot, records/resolves OPS entries (`ops/` PRs), unclaims stale claims, keeps concurrency within the limit of 8 tasks (2 with `client/`) |
+| `coordinator` | claims ready tasks (status-only PRs), grants the merge slot, records/resolves OPS entries (`ops/` PRs), unclaims stale claims, keeps concurrency within the limit of 8 tasks (at most 4 with `client/`, ADR-0078) |
 | `asset-producer` | art/audio production within asset task owned paths; never gameplay/server/spec |

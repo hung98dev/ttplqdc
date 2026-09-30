@@ -22,3 +22,6 @@ The round-2 architecture/ops/testing review found gates that could not be measur
 
 ## Amendment (ADR-0070)
 The entity cap is 100 with per-class budgets (was 80/58); `PERF-002` excludes every rendering marker (`-job-worker-count 2`, `LP_NUM_THREADS=1`); a shutdown flush timeout journals the remaining queue to the durable outbox (`../08_scale_ops/deployment.md`).
+
+## Amendment (ADR-0078)
+`PERF-002` renders on the `Unity (Windows)` job under D3D11 WARP (`renderer=warp`); `LP_NUM_THREADS=1` is dropped.

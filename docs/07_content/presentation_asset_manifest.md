@@ -132,8 +132,8 @@ Mask translucent: file `<texture>.translucent.png` cùng kích thước, 1-bit (
 Validator ghi số đo từng file vào báo cáo; một vi phạm là fail. Ngưỡng chỉ được nới bằng ADR (gate ratchet, ADR-0050).
 
 ### 3.3 Duyệt hiển thị trong game (Visual Review Gate)
-Ảnh review được render trên job Linux của CI (GitHub-hosted, không GPU) bằng Mesa llvmpipe dưới xvfb (ADR-0058); metadata ảnh ghi `renderer=llvmpipe`. Ảnh chỉ dùng để soi hình ảnh, không dùng cho số liệu hiệu năng GPU.
-Mỗi entity/UI được chụp trong các scene review `client/Assets/Scenes/Review/` (IMP-070), dựng từ các lớp map thật của vùng/instance mà entity xuất hiện, ở `1280x720`, `1920x1080` và profile điện thoại `2400x1080`, cả ngày và đêm, ở zoom 100% và 200%. Job Linux render và upload artifact `visual-review`; ảnh là review artifact được manifest evidence tham chiếu, không commit và không phải evidence. Agent `reviewer` (khác người tạo) ghi kết luận vào PR review comment và đặt `review_state` của bản ghi nguồn:
+Ảnh review được render trên job `Unity (Windows)` của CI (GitHub-hosted, không GPU) bằng Direct3D 11 WARP (Microsoft Basic Render Driver, ADR-0050, ADR-0078); metadata ảnh ghi `renderer=warp`. Ảnh chỉ dùng để soi hình ảnh, không dùng cho số liệu hiệu năng GPU.
+Mỗi entity/UI được chụp trong các scene review `client/Assets/Scenes/Review/` (IMP-070), dựng từ các lớp map thật của vùng/instance mà entity xuất hiện, ở `1280x720`, `1920x1080` và profile điện thoại `2400x1080`, cả ngày và đêm, ở zoom 100% và 200%. Job `Unity (Windows)` render và upload artifact `visual-review`; ảnh là review artifact được manifest evidence tham chiếu, không commit và không phải evidence. Agent `reviewer` (khác người tạo) ghi kết luận vào PR review comment và đặt `review_state` của bản ghi nguồn:
 - không thấy viền lem, quầng màu, răng cưa hay đốm rác ở cả hai mức zoom;
 - silhouette đọc rõ trên nền: `ΔL*` trung bình giữa dải biên actor và nền cục bộ ≥ 20 (cùng phép đo "Actor trên nền" §3.6), hoặc asset có outline;
 - telegraph/VFX đọc được mà không phụ thuộc chỉ vào màu (`../00_context/constraints.md`);

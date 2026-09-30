@@ -20,3 +20,6 @@ The round-3 data/ops review of ADR-0065/0066 found: relics in stopped channels w
 - Specs changed: `../06_data/data_model.md`, `../06_data/database.md`, `../06_data/ids.md`, `../07_security/personal_data_register.md`, `../07_security/data_protection.md`, `../08_scale_ops/deployment.md`, `../08_scale_ops/backup_recovery.md`, `../08_scale_ops/observability.md`, `../08_scale_ops/sharding.md`, `../08_scale_ops/capacity.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/client_performance.md`, `../09_testing/load.md`, `../09_testing/backend.md`, `../02_world/world_rules.md`, `../02_world/bosses.md`, `../00_context/technology_versions.md`, `../04_architecture/service_boundaries.md`, `../07_content/boss_catalog.md`, `../09_testing/test_and_release_evidence.md`, `../11_decisions/0039-entity-capacity-model-and-ai-budget-classes.md`.
 - Packets: IMP-001, IMP-005, IMP-018, IMP-022, IMP-030, IMP-046, IMP-047, IMP-053, IMP-055, IMP-056, IMP-069, IMP-077, IMP-095.
 - Amends ADR-0039 and ADR-0066 (entity cap 80 → 100 with class budgets; PERF-002 metric) and ADR-0065 (erasure ledger mechanics).
+
+## Amendment (ADR-0078)
+`PERF-002` environment moves to the `Unity (Windows)` job under D3D11 WARP (`renderer=warp`); `LP_NUM_THREADS=1` is dropped.

@@ -29,3 +29,6 @@ The Windows job runs the Unity editor natively from the pinned official installe
 
 ## Amendment (ADR-0075)
 Item 2: there is no third `evidence manifest` job; each required job is joined with a parallel `Unity (<os>)` job and `Q0-Q6 verify (Linux)` merges both reports into the `evidence` artifact. Item 11: on GitHub Pro (40 concurrent hosted jobs) the coordinator limit is 8 `IN_PROGRESS` tasks (4 jobs per PR run).
+
+## Amendment (ADR-0078)
+Unity runs natively on `windows-2022` only; `ubuntu-24.04` runs Go/PostgreSQL only and never invokes Unity, GameCI images or containerized editors. Visual Review screenshots, client performance tests, and Android IL2CPP player builds move to the Windows Unity job; software rendering uses D3D11 WARP on Windows.

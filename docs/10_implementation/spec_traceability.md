@@ -233,6 +233,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `0075-parallel-unity-jobs-planned-modes-and-pro-concurrency.md` | IMP-000 |
 | `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md` | IMP-067, IMP-070, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-076, IMP-104, IMP-105 |
 | `0077-ci-critical-path-cheap-unity-retries-and-two-phase-verifier.md` | IMP-000 |
+| `0078-unity-windows-native-and-linux-go-only-ci.md` | IMP-000, IMP-067, IMP-070, IMP-095, IMP-096, IMP-106 |
 
 
 ## Requirement ID → Task

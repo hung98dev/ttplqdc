@@ -22,7 +22,7 @@ A task's layer is never lower than the layer of any task in its `depends_on` (no
 
 | Layer | Name | Tasks |
 |---|---|---|
-| 0 | Contracts / Tooling / Gates | IMP-000, IMP-001, IMP-002, IMP-003, IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-068, IMP-070, IMP-083, IMP-101 |
+| 0 | Contracts / Tooling / Gates | IMP-000, IMP-001, IMP-002, IMP-003, IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-068, IMP-070, IMP-083, IMP-101, IMP-106 |
 | 1 | Runtime Cores | IMP-078, IMP-079, IMP-080, IMP-081, IMP-082, IMP-097, IMP-098 |
 | 2 | Account / Character / Economy Primitives | IMP-006, IMP-007, IMP-008, IMP-065, IMP-100 |
 | 3 | Realtime Simulation & Client Foundation | IMP-009, IMP-010, IMP-011, IMP-012, IMP-013, IMP-014, IMP-015, IMP-016, IMP-017, IMP-062, IMP-066, IMP-095, IMP-099 |
@@ -145,6 +145,7 @@ A task's layer is never lower than the layer of any task in its `depends_on` (no
 | IMP-103 | 11 |
 | IMP-104 | 10 |
 | IMP-105 | 10 |
+| IMP-106 | 0 |
 
 # Critical Ordering Constraints
 The following prerequisites have caused defects when missed. They are explicit `depends_on` edges.

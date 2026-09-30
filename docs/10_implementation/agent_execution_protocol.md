@@ -10,7 +10,7 @@ The single operating manual for AI agents: claim, implement, review, merge, bloc
 | Role | Does | Never |
 |---|---|---|
 | `spec-owner` (Contract Owner) | resolves `BLK-xxx`; changes protected specs/ADRs and task packets in spec-change PRs; grep-derived consumer list | implementation code in the same PR |
-| `coordinator` | selects, claims and unclaims tasks; keeps concurrency ≤ the concurrency limit (5); grants the merge slot (§5a); records and resolves `OPS-xxx` entries (`ops/` PRs) | implementation or spec changes |
+| `coordinator` | selects, claims and unclaims tasks; keeps concurrency ≤ the concurrency limit (8, at most 4 client); grants the merge slot (§5a); records and resolves `OPS-xxx` entries (`ops/` PRs) | implementation or spec changes |
 | implementer | one claimed task inside its `owned_paths`; tests; evidence; stays alive until its PR merges or it is `BLOCKED` | edit protected specs/ADRs/control content outside § Protected Paths of `audit_gates.md`; add unpinned dependencies; unrelated refactors |
 | `reviewer` (Conformance Reviewer) | reviews every PR in its own session and OS account; posts the `policy-review` check run through the App (`.devin/scripts/policy_review.ps1`) | review its own work; approve without executed checks |
 
@@ -37,7 +37,7 @@ If a box fails, the task stays `NOT_STARTED` or becomes `BLOCKED` (§6). Agents 
 
 ## 3. Claiming (coordinator)
 
-1. Select the lowest topological index (`task_queue.md` § Topological Execution Order) among ready tasks; keep the number of `IN_PROGRESS` tasks ≤ 5 (ADR-0058: 20 concurrent hosted jobs, 2 verify jobs + 1 evidence job per PR), of which at most 2 have `client/` in `owned_paths` (bounds concurrent Unity licence activations, ADR-0072). A final-art task (`../00_context/technology_versions.md` § Content production tools) is not ready while no art tool is recorded; the first such claim attempt instead opens a scoped `OPS-xxx` (`blocks:` the final-art tasks) through an `ops/` PR.
+1. Select the lowest topological index (`task_queue.md` § Topological Execution Order) among ready tasks; keep the number of `IN_PROGRESS` tasks ≤ 8 (ADR-0075: GitHub Pro allows 40 concurrent hosted jobs; a PR run uses 3 — two required verify jobs and one parallel Unity (Windows) job, ADR-0078), of which at most 4 have `client/` in `owned_paths` (bounds concurrent Unity licence activations on Windows, ADR-0078). Final-art tasks use the Direct AI Generation tool recorded in `../00_context/technology_versions.md` § Content production tools and are ready without `OPS-xxx` (ADR-0078).
 2. Open a status-only claim PR on branch `claim/<yyyymmdd>-<n>` setting `status: IN_PROGRESS`, `claimed_by`, `branch: imp/IMP-XXX-<slug>`, `claimed_at` in the packet and the summary-row status. Status-only diffs take the Q0-only fast path (`audit_gates.md` § Protected Paths); the reviewer still posts `policy-review`; the claim PR merges through the merge slot (§5a).
 3. After the claim merges, hand the task to exactly one implementer (one task per implementer, its own worktree/clone and isolated DB port, Unity cache and temp dirs).
 4. A claim with no PR activity for 24 h is returned to `NOT_STARTED` by a new claim PR (clear claim fields).
@@ -58,8 +58,8 @@ If a box fails, the task stays `NOT_STARTED` or becomes `BLOCKED` (§6). Agents 
 
 No agent machine needs a Unity editor. Every `verify.yml` job opens `client/` in the pinned editor first (`audit_gates.md` § Job Preconditions):
 
-1. If the job fails with `commit unity-materialized`, run `gh run download <run_id> -n unity-materialized-linux -D .` (then `-windows` if that job also reported), review that the files are editor output inside your `owned_paths` (plus `.meta` of new folders you own), commit them byte-for-byte and push.
-2. Repeat until no job reports materialized files. Files that still differ between the two OS after two cycles, or materialized files outside `owned_paths`, are a `BLK-xxx` (§6).
+1. If the job fails with `commit unity-materialized`, run `gh run download <run_id> -n unity-materialized-windows -D .`, review that the files are editor output inside your `owned_paths` (plus `.meta` of new folders you own), commit them byte-for-byte and push.
+2. Repeat until the job reports no materialized files. Materialized files outside `owned_paths` are a `BLK-xxx` (§6).
 3. `IMP-000` writes only hand-authorable inputs (`ProjectVersion.txt`, `manifest.json`, asmdefs, `csc.rsp`, `Google.Protobuf.dll`) and commits `packages-lock.json`, `ProjectSettings/*.asset` and `.meta` files from its first materialization, then adds the § ProjectSettings Baseline entries of `repository_layout.md`.
 
 ## 4a. Change Packet (PR body)
@@ -82,7 +82,7 @@ Cleanup verification
 
 Canonical schema: `../09_testing/test_and_release_evidence.md`; identity rules: ADR-0057.
 
-- CI (`verify.yml`) checks out the PR head SHA, computes `source_tree_hash`, runs Q0-Q6 in the Linux and Windows jobs, and the `evidence manifest` job downloads both reports (`actions/download-artifact`), merges them and uploads the manifest as artifact `evidence`.
+- CI (`verify.yml`) checks out the PR head SHA, computes `source_tree_hash`, runs Q0-Q6 in the Linux and Windows jobs (the Windows job joined with its parallel `Unity (Windows)` job), and `Q0-Q6 verify (Windows)` downloads the Linux report (`actions/download-artifact`), merges both and uploads the manifest as artifact `evidence` (ADR-0075, ADR-0078).
 - The implementer runs `gh run download <run_id> -n evidence -D docs/10_implementation/evidence/IMP-XXX/` and commits it byte-for-byte. It never edits manifest content.
 - Q6 re-verifies only manifests added in the PR: hash equals the head tree hash; `ci_run_id` + `run_attempt` exist, belong to `verify.yml` and concluded `success`.
 - FAILED runs are never committed. Chat logs, local runs and screenshots are not evidence; screenshots may be attached as review artifacts referenced by the manifest.

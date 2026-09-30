@@ -21,3 +21,6 @@ Measured Unity-scope PR runs #266–#285 (2026-09-28, after ADR-0075): a clean r
 - `../10_implementation/audit_gates.md` (§ Job Preconditions job layout + item 3) and `../10_implementation/task_queue.md` (`IMP-000` adrs, acceptance, tests) are updated.
 - Amends ADR-0073 item 5 (repeated compile errors stop materialization) and ADR-0075 item 1 (the required job runs the Unity-independent gates before joining its Unity job). `cache_warm.yml` is unchanged: its Library jobs run only on an exact-key miss, so there is no restored Library to snapshot.
 - Unchanged: retry bounds, licence activation per attempt, network egress, licensing mounts, `-batchmode`/`-nographics`/`setsid`, BLK-013 PASS verdict, drift gate, cache keys, required check names, gate activation.
+
+## Amendment (ADR-0078)
+Linux-specific retry items (warm Library snapshot, test watchdog completion verdict, kill-probe opt-in, overlapped image pull) are retired as Unity runs on Windows only. Two-phase verifier runs on `Q0-Q6 verify (Windows)`; compiler-error stop rule applies to the Windows Unity job.

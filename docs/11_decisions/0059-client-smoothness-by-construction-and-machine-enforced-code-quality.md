@@ -39,3 +39,6 @@ ADR-0058 removed every GPU from CI, so desktop GPU frame pacing is never measure
 - Requirement coverage (Q0) also scans `../10_implementation/engineering_conventions.md`.
 - Desktop GPU frame pacing is still not timed in CI; the mitigations are item 6, the governor and `PERF-003`.
 - No new Unity package and no .NET SDK are added (the uGUI row records the editor-bound package the Canvas UI already uses); staticcheck is the only new tool.
+
+## Amendment (ADR-0078)
+Overdraw measurement in CI moves from Linux llvmpipe to the `Unity (Windows)` job using D3D11 WARP (`renderer=warp`).

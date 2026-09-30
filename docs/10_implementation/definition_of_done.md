@@ -45,7 +45,7 @@ Any change whose effect crosses a layer boundary as defined in `dependency_graph
 - dependency/toolchain upgrade is an explicit reviewed change with regeneration/compatibility tests rather than an incidental package-manager resolution.
 
 ## Code Quality / Smoothness (ADR-0059)
-- the machine gates are green: 0 C# compiler warnings with nullable enabled, C# style, `gofmt`/`go vet`/`staticcheck`, client API fence and canonical-implementation checks (`engineering_conventions.md` § Requirement IDs),
+- the machine gates are green: 0 first-party C# compiler warnings with nullable enabled, C# style, `gofmt`/`go vet`/`staticcheck`, client API fence and canonical-implementation checks (`engineering_conventions.md` § Requirement IDs),
 - client frame work follows `../04_architecture/client_performance.md` § Smoothness by Construction: `IFrameSystem` in its `FrameLoop` phase, 0-alloc frame code, `FrameBudget` for non-urgent work, pooled and pre-warmed transient visuals,
 - every new per-tick or encode path on the server has a `TestAllocs_*` budget test (`../08_scale_ops/capacity.md` § Hot-Path Allocation Budgets),
 - new code follows the one canonical way per concern (`engineering_conventions.md` §2.6) and the surrounding naming/structure; no second helper, pool, scheduler or logger.

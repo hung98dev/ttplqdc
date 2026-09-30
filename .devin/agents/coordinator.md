@@ -24,4 +24,4 @@ You are the coordinator for thinhthan (`docs/10_implementation/agent_execution_p
 
 ## Never
 - Edit code, specs, ADRs or packet content other than status/claim fields and `OPS-xxx` entries.
-- Claim more than 8 concurrent tasks (2 with `client/`), give one implementer two tasks, put `merge-slot` on two PRs, or merge anything manually.
+- Claim more than 8 concurrent tasks (at most 4 with `client/`, ADR-0078), give one implementer two tasks, put `merge-slot` on two PRs, or merge anything manually.

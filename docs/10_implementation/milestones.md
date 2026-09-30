@@ -12,7 +12,7 @@ Canonical membership. A task's milestone is never lower than the milestone of an
 
 | Milestone | Tasks |
 |---|---|
-| M0 | IMP-000, IMP-001, IMP-002, IMP-003, IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-068, IMP-070, IMP-083, IMP-101 |
+| M0 | IMP-000, IMP-001, IMP-002, IMP-003, IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-068, IMP-070, IMP-083, IMP-101, IMP-106 |
 | M1 | IMP-006, IMP-007, IMP-008, IMP-065, IMP-079, IMP-080, IMP-081, IMP-082, IMP-097, IMP-098, IMP-100 |
 | M2 | IMP-009, IMP-010, IMP-011, IMP-012, IMP-013, IMP-014, IMP-015, IMP-016, IMP-017, IMP-018, IMP-019, IMP-062, IMP-066, IMP-078, IMP-084, IMP-095, IMP-099 |
 | M3 | IMP-020, IMP-021, IMP-022, IMP-023, IMP-050, IMP-057, IMP-058, IMP-059, IMP-060, IMP-089, IMP-090 |
@@ -40,7 +40,8 @@ Deliver:
 - PostgreSQL baseline migration/idempotency rehearsal,
 - CI entry point for Q0-Q6,
 - Q0/Q4 task-graph and architecture conformance (IMP-083), URP 2D rendering setup (IMP-101), asset provenance validator (IMP-070),
-- Gate A-D exit through IMP-068 (trusted CI, post-merge guard, derived gate ratchet).
+- Gate A-D exit through IMP-068 (trusted CI, post-merge guard, derived gate ratchet),
+- verify CI wall-time reduction via caching (IMP-106).
 
 Acceptance:
 ```text
@@ -291,13 +292,13 @@ Do not start a higher milestone by bypassing unfinished lower-milestone contract
 A milestone may ship internally with presentation placeholders, but never with placeholder authoritative IDs, rewards, state transitions, ownership semantics, or security checks.
 
 # Critical-Path Note
-The queue contains 106 IMP tasks (IMP-000 through IMP-105) in 28 dependency waves (`wave_execution_prompts.md`). The longest dependency chain is:
+The queue contains 107 IMP tasks (IMP-000 through IMP-106) in 28 dependency waves (`wave_execution_prompts.md`). The longest dependency chain is:
 
 ```text
 IMP-000 -> IMP-001 -> IMP-002 -> IMP-003 -> IMP-004 -> IMP-068 -> IMP-098 -> IMP-097 -> IMP-006 -> IMP-100 -> IMP-065 -> IMP-013 -> IMP-066 -> IMP-011 -> IMP-014 -> IMP-015 -> IMP-016 -> IMP-019 -> IMP-022 -> IMP-023 -> IMP-091 -> IMP-052 -> IMP-043 -> IMP-056 -> IMP-103 -> IMP-067 -> IMP-096 -> IMP-048
 ```
 
-Implementation is performed by AI agents (`agent_execution_protocol.md`); throughput is bounded by the concurrency limit (5 tasks on GitHub-hosted runners) and this chain, not by team size. Art/audio production (IMP-070..076, IMP-104, IMP-105) runs in parallel from wave 3 and is re-audited by IMP-076 before IMP-067. Do not promise an M10 date until measured task throughput and device-perf results exist.
+Implementation is performed by AI agents (`agent_execution_protocol.md`); throughput is bounded by the concurrency limit (8 tasks on GitHub-hosted runners, GitHub Pro; ADR-0075) and this chain, not by team size. Art/audio production (IMP-070..076, IMP-104, IMP-105) runs in parallel from wave 3 and is re-audited by IMP-076 before IMP-067. Do not promise an M10 date until measured task throughput and device-perf results exist.
 
 Known bottlenecks:
 - IMP-013 -> IMP-014: `C2S_MOVEMENT_EDGE` and the Just Guard latency model are the most integration-sensitive contract (ADR-0034, ADR-0038).

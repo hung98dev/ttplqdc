@@ -126,8 +126,8 @@ hot-path allocations are exact gates; timing on hosted CI = median of 3; ns/op r
 Done:
 - `DONE` is defined only by `docs/10_implementation/definition_of_done.md`; the merge sequence only by `docs/10_implementation/agent_execution_protocol.md` §5a
 - spec changes land first in a spec-change PR; code + tests + status + CI-produced evidence land in the task PR
-- verify: `pwsh -NoProfile -File scripts/verify.ps1` (locally with `-LocalDeferMissing`; CI without it on GitHub-hosted Linux + Windows jobs on every PR); Go: `go -C server ...`; `-race` runs on the Linux job only
-- CI materializes Unity editor output as artifact `unity-materialized-<os>`; commit it byte-for-byte (`agent_execution_protocol.md` §4b); no local Unity editor is required
+- verify: `pwsh -NoProfile -File scripts/verify.ps1` (locally with `-LocalDeferMissing`; CI without it on GitHub-hosted Linux + Windows jobs on every PR); Go: `go -C server ...`; `-race` runs on the Linux job only; Unity runs natively on Windows only (ADR-0078)
+- CI materializes Unity editor output as artifact `unity-materialized-windows`; commit it byte-for-byte (`agent_execution_protocol.md` §4b); no local Unity editor is required
 - merges are serialized by the coordinator's merge slot (label `merge-slot`); only the slot holder updates from `main`, adds evidence and enables auto-merge; the PR merges (squash) when `Q0-Q6 verify (Linux)`, `Q0-Q6 verify (Windows)` and the App check run `policy-review` are green (ADR-0072)
 - blockers reach `main` through status-only `block/` (implementer) or `ops/` (coordinator) PRs; the owner only fixes the environment and closes `ops-blocked` issues
 - each role session uses its own agent token with the permissions listed in `docs/10_implementation/audit_gates.md` § Owner Setup; the reviewer posts `policy-review` only via `.devin/scripts/policy_review.ps1`

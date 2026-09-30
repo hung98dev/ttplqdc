@@ -16,7 +16,7 @@ Canonical: `docs/10_implementation/agent_execution_protocol.md` (§4 implementat
 5. **Implement + test.** `/implement-backend-feature`, `/implement-unity-feature`, `/client-server-feature`, `/database-change` or `/produce-art-asset`. Every `## Tests` entry exists, runs, and asserts the numbers of any requirement IDs named in `## Acceptance`.
 6. **Spec gap or environment failure?** Open status-only PR `block/IMP-XXX-<n>` from `main`: append the `BLK-xxx`/`OPS-xxx` entry to `known_blockers.md`, set `status: BLOCKED` + `blocked_by` + summary row. Wait until it merges through the merge slot, close your draft PR with a comment naming the entry, stop. Never edit protected docs.
 7. **Verify locally.** `bash .devin/scripts/verify_delta.sh --full` until PASS (`DEFERRED(local-missing)` and `-race` deferral are WARN; CI is authoritative).
-8. **Unity materialization.** If a verify job fails with `commit unity-materialized`: `gh run download <run_id> -n unity-materialized-linux -D .` (then `-windows`), check the files are editor output inside `owned_paths`, commit byte-for-byte, push (§4b).
+8. **Unity materialization.** If a verify job fails with `commit unity-materialized`: `gh run download <run_id> -n unity-materialized-windows -D .`, check the files are editor output inside `owned_paths`, commit byte-for-byte, push (§4b, ADR-0078).
 9. **Review.** Request the `reviewer` (separate session). Fix findings; any later push needs a new review.
 10. **CI.** Wait for `Q0-Q6 verify (Linux)` and `Q0-Q6 verify (Windows)` green on the head; tell the coordinator the PR is ready.
 11. **Merge slot.** Wait until your PR carries label `merge-slot`. Then: `git merge origin/main`; push; wait for green CI.

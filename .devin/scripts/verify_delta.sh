@@ -356,7 +356,7 @@ if in_scope CLIENT_CS || in_scope CLIENT_ASSETS; then
       fi
       unity_after_status="$(git status --porcelain=v1 --untracked-files=all 2>/dev/null)"
       if [ "$unity_before_status" != "$unity_after_status" ]; then
-        fail "Unity editor materialized files under client/ — review and commit them (same rule as CI artifact unity-materialized-<os>, ADR-0072): $(printf '%s\n' "$unity_after_status" | tail -20)"
+        fail "Unity editor materialized files under client/ — review and commit them (same rule as CI artifact unity-materialized-windows, ADR-0072, ADR-0078): $(printf '%s\n' "$unity_after_status" | tail -20)"
       else
         pass "Unity verification created no worktree drift"
       fi

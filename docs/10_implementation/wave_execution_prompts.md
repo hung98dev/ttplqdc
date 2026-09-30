@@ -17,7 +17,7 @@ Thực hiện Wave <N> của repo thinhthan. Bạn là coordinator cho wave này
    Với mỗi task của Wave <N>: nếu một depends_on chưa DONE trên main (bị BLOCKED hoặc chưa xong), ghi task đó vào báo cáo là "chờ <dep>" và bỏ qua.
 2. Với từng task sẵn sàng: claim theo §3 (IMP-000 tự claim trong PR của nó), rồi giao cho một agent con riêng
    (worktree, branch imp/IMP-XXX-<slug>, DB port và Unity cache riêng) chạy Implementer Prompt bên dưới; agent con sống tới khi PR merge hoặc task BLOCKED.
-   Tối đa 5 task song song, trong đó tối đa 2 task có client/ trong owned_paths (ADR-0058, ADR-0072); task còn lại chờ.
+   Tối đa 8 task song song, trong đó tối đa 4 task có client/ trong owned_paths (ADR-0075, ADR-0078); task còn lại chờ.
    Final-art task khi chưa có art tool trong Owner Setup: không claim, mở OPS có phạm vi qua PR ops/ (§3).
 3. Merge slot (§5a): mỗi lúc chỉ một PR mang label `merge-slot`; trao cho PR sẵn sàng (reviewer APPROVE + CI xanh) có chỉ số topo nhỏ nhất
    (PR claim/block/ops trước). Sau khi PR đó merge thì trao tiếp. Không trao slot cho PR khác giữa merge IMP-068 và merge imp/IMP-068-done.
@@ -37,7 +37,7 @@ Bạn là coordinator của repo thinhthan. Đọc AGENTS.md, docs/10_implementa
 Lặp liên tục cho tới khi IMP-048 DONE:
 1. Pull main. Nếu biến repo AUTO_MERGE_FROZEN=true hoặc có OPS-xxx mở với `blocks: ALL` thì dừng và chờ (ghi OPS cho issue ops-blocked do merge guard mở qua PR ops/).
 2. Tính các task sẵn sàng (mọi depends_on DONE trên main, không BLK/OPS mở nêu tên task, tuân Bootstrap Mode trước IMP-068).
-3. Claim theo §3 (IMP-000: claim trong chính PR của nó), tối đa 5 task IN_PROGRESS cùng lúc (tối đa 2 task có client/), ưu tiên thứ tự topo nhỏ nhất.
+3. Claim theo §3 (IMP-000: claim trong chính PR của nó), tối đa 8 task IN_PROGRESS cùng lúc (tối đa 4 task có client/), ưu tiên thứ tự topo nhỏ nhất.
 4. Giao mỗi task cho đúng một implementer bằng Implementer Prompt (task, branch, worktree, base SHA).
 5. Quản lý merge slot theo §5a (label `merge-slot`, một PR mỗi lúc).
 6. Task BLOCKED vì BLK -> giao cho spec-owner; OPS đã được chủ repo đóng issue -> PR ops/ đánh dấu Resolved; claim quá 24h không hoạt động -> trả về NOT_STARTED.
@@ -49,7 +49,7 @@ Không tự viết code, không sửa spec, không hỏi con người.
 Thực hiện <IMP-XXX> trên branch <branch>, worktree <path>, base <sha>.
 Chạy /run-imp-task (hoặc làm đúng checklist .devin/skills/run-imp-task/SKILL.md) theo docs/10_implementation/agent_execution_protocol.md §4–§5b.
 Chỉ sửa owned_paths và path test/evidence của packet. Không hỏi con người. Không push thẳng main, không workflow_dispatch, không rebase/force-push.
-CI báo `commit unity-materialized`: tải artifact unity-materialized-<os>, commit nguyên văn, push (§4b).
+CI báo `commit unity-materialized`: tải artifact unity-materialized-windows, commit nguyên văn, push (§4b).
 Thiếu hoặc mâu thuẫn spec: mở PR block/IMP-XXX-<n> (thêm BLK-xxx, đặt task BLOCKED), chờ nó merge, đóng draft PR và dừng (§6).
 Khi PR sẵn sàng (reviewer APPROVE + CI xanh): báo coordinator, chờ label `merge-slot`, rồi làm bước 6–9 của §5a.
 Xong khi PR đã merge (two-phase task: cả PR imp/IMP-XXX-done).
@@ -107,4 +107,4 @@ thêm regression test vào ## Tests của task liên quan, đóng BLK và trả 
 Before `IMP-068 = DONE`, only tasks without `IMP-068` in their transitive `depends_on` run (Bootstrap Mode, `audit_gates.md`). Two-phase tasks merge `IN_PROGRESS` and get `DONE` from a follow-up status PR. Serialized integration tasks run alone on their owned paths (`server/cmd/server/`, `server/internal/app/`, `client/Assets/Scripts/App/`, release artifacts).
 
 ## Parallel Execution
-The coordinator claims a batch of ready tasks in one claim PR, then gives each implementer only the Implementer Prompt with its own `IMP-*`, branch, worktree path and base SHA. Concurrent tasks never share a worktree, database, port or Unity project/cache directory. The concurrency limit (5 tasks, at most 2 with `client/` paths; ADR-0058, ADR-0072) bounds parallelism. Work and CI run in parallel; merges are serialized by the merge slot (§5a), because the ruleset requires up-to-date branches and no merge queue exists.
+The coordinator claims a batch of ready tasks in one claim PR, then gives each implementer only the Implementer Prompt with its own `IMP-*`, branch, worktree path and base SHA. Concurrent tasks never share a worktree, database, port or Unity project/cache directory. The concurrency limit (8 tasks, at most 4 with `client/` paths; ADR-0075, ADR-0078) bounds parallelism. Work and CI run in parallel; merges are serialized by the merge slot (§5a), because the ruleset requires up-to-date branches and no merge queue exists.

@@ -162,7 +162,7 @@ IMP-000 commits the `client/ProjectSettings/*.asset` files produced by the edito
 The `com.unity.addressableassets` config-object slot is pinned to the canonical settings asset: if a
 package import hook creates `client/Assets/AddressableAssetsData/DefaultObject.asset` and repoints the slot,
 the IMP-063 provisioner restores the slot to the canonical settings object and deletes the rogue asset
-before materialization commits (ADR-0074); `unity-materialized-*` must never contain `DefaultObject.asset`.
+before materialization commits (ADR-0074); `unity-materialized-windows` must never contain `DefaultObject.asset`.
 
 ```text
 EditorBuildSettings.asset  m_configObjects com.unity.addressableassets     -> client/Assets/AddressableAssetsData/AddressableAssetSettings.asset (IMP-063)
@@ -226,7 +226,7 @@ Do not put `*.prefab`, `*.asset`, `*.meta`, or `*.unity` in LFS.
 - Module lockfiles: `server/go.mod`/`server/go.sum` are owned by IMP-000 and co-ownable — a packet whose code imports a module already pinned in `../00_context/technology_versions.md` may list both in `owned_paths` (every packet transitively depends on IMP-000, so `paths.ownership_overlap` ordering holds) and then lands its own `require`/`go.sum` lines; until a packet lists them, the spec-owner lands pinned `require` lines for blocked tasks directly (BLK-003).
 - Provenance: `client/Assets/Art/Provenance/asset_source_register.json` is created empty by IMP-070 and merged by IMP-076 from `fragments/<name>.json`, each fragment owned by exactly one art packet.
 - Evidence directories are implied by `evidence_location` only; no packet lists `docs/10_implementation/evidence/` in `owned_paths`.
-- Unity `.meta` files are implied by ownership (ADR-0072): a packet owning `client/**` path P also owns `P.meta`, and the `.meta` of every folder it is the first to create; they are editor-materialized in CI (artifact `unity-materialized-<os>`) and committed byte-for-byte, never hand-written, except the path-derived GUIDs of § ProjectSettings Baseline.
+- Unity `.meta` files are implied by ownership (ADR-0072): a packet owning `client/**` path P also owns `P.meta`, and the `.meta` of every folder it is the first to create; they are editor-materialized in CI (artifact `unity-materialized-windows`, ADR-0078) and committed byte-for-byte, never hand-written, except the path-derived GUIDs of § ProjectSettings Baseline.
 - Only IMP-005 writes `server/migrations/`.
 - Path ownership changes require updating this file and the owning task packet in the same change; Q0 checks parity.
 

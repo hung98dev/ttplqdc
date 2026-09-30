@@ -16,7 +16,7 @@ No task is `DONE`. Do not infer completed code from a planned path, test name, o
 | Role | Profile | Duty |
 |---|---|---|
 | Contract Owner | `spec-owner` | resolves blockers; only role that edits protected specs/ADRs (spec-change PRs) |
-| Coordinator | `coordinator` | selects and claims tasks, unclaims stale claims, keeps concurrency within the limit of 5 tasks, grants the merge slot, records/resolves `OPS-xxx` |
+| Coordinator | `coordinator` | selects and claims tasks, unclaims stale claims, keeps concurrency within the limit of 8 tasks, grants the merge slot, records/resolves `OPS-xxx` |
 | Implementer | `backend-engineer`, `unity-engineer`, `integration-engineer`, `asset-producer`, `debugger` | implements one claimed task until its PR merges or it is blocked |
 | Conformance Reviewer | `reviewer` + App `thinhthan-policy-reviewer` | reviews every PR and posts the `policy-review` check run |
 | Verifier | `verifier` | read-only verification matrix |
@@ -74,7 +74,7 @@ DONE        -> BLOCKED                a dependency was reverted (revert/, blocke
 
 ## Execution Entry Point
 
-The coordinator selects the lowest topological index (`task_queue.md` § Topological Execution Order) among ready tasks, up to the concurrency limit (5 tasks, ADR-0058). A task may run before `IMP-068` iff `IMP-068` is not in its transitive `depends_on`; such tasks run in bootstrap mode (`audit_gates.md`). Wave prompts in `wave_execution_prompts.md` group the same order.
+The coordinator selects the lowest topological index (`task_queue.md` § Topological Execution Order) among ready tasks, up to the concurrency limit (8 tasks, ADR-0075). A task may run before `IMP-068` iff `IMP-068` is not in its transitive `depends_on`; such tasks run in bootstrap mode (`audit_gates.md`). Wave prompts in `wave_execution_prompts.md` group the same order.
 
 Open entries in `known_blockers.md` must be resolved before dependent tasks complete. `IMP-068` cannot pass Gate A while a contract-conflict blocker is open.
 
