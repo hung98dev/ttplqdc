@@ -180,17 +180,25 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
-          $uargs = @('-batchmode','-quit','-logFile','artifacts\unity-tests\licence-activation.log')
+          $licClient = "$env:RUNNER_TEMP\unity-editor\Editor\Data\Resources\Licensing\Client\Unity.Licensing.Client.exe"
+          $uargs = @('-batchmode','-nographics','-quit','-logFile','artifacts\unity-tests\licence-activation.log')
+          $useLicClient = $false
           if ($env:UNITY_LICENSE) {
-            $lic = "$env:ProgramData\Unity\Unity_lic.ulf"
-            New-Item -ItemType Directory -Force (Split-Path $lic) | Out-Null
-            [IO.File]::WriteAllText($lic, $env:UNITY_LICENSE)
+            $ulf = "$env:RUNNER_TEMP\Unity_lic.ulf"
+            [IO.File]::WriteAllText($ulf, $env:UNITY_LICENSE)
+            $uargs += @('-manualLicenseFile', $ulf)
+          } elseif ($env:UNITY_SERIAL) {
+            $uargs += @('-username', $env:UNITY_EMAIL, '-password', $env:UNITY_PASSWORD, '-serial', $env:UNITY_SERIAL)
           } else {
-            $uargs += @('-username', $env:UNITY_EMAIL, '-password', $env:UNITY_PASSWORD)
-            if ($env:UNITY_SERIAL) { $uargs += @('-serial', $env:UNITY_SERIAL) }
+            $useLicClient = $true
           }
           New-Item -ItemType Directory -Force artifacts\unity-tests | Out-Null
           for ($i = 1; $i -le 5; $i++) {
+            if ($useLicClient) {
+              # assigns a Personal seat; exit may be 1 on VMs without a BIOS
+              # serial, so the Unity run below is the real verdict
+              & $licClient --activate-all --include-personal --username $env:UNITY_EMAIL --password $env:UNITY_PASSWORD 2>&1 | Out-Host
+            }
             & $editor @uargs
             if ($LASTEXITCODE -eq 0) { Write-Host "licence activated (attempt $i)"; exit 0 }
             Write-Host "activation attempt $i failed; retry in 60s"
@@ -330,6 +338,12 @@ jobs:
         shell: pwsh
         run: |
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          $licClient = "$env:RUNNER_TEMP\unity-editor\Editor\Data\Resources\Licensing\Client\Unity.Licensing.Client.exe"
+          if (Test-Path $licClient) {
+            $j = Start-Job { & $using:licClient --return-entitlement; if ($LASTEXITCODE -ne 0) { & $using:licClient --deactivate } }
+            if (-not ($j | Wait-Job -Timeout 90)) { $j | Stop-Job }
+          }
+          Remove-Item "$env:LOCALAPPDATA\Unity\licenses\*.xml" -Force -ErrorAction SilentlyContinue
           Remove-Item "$env:ProgramData\Unity\Unity_lic.ulf" -Force -ErrorAction SilentlyContinue
           if (Test-Path $editor) {
             $j = Start-Job { & $using:editor -batchmode -quit -returnlicense }
