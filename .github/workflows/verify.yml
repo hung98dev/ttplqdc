@@ -56,12 +56,12 @@ jobs:
           curl -fsSL -o "$RUNNER_TEMP/pwsh.zip" \
             "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip"
           echo "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860  $RUNNER_TEMP/pwsh.zip" | sha256sum -c -
-          mkdir -p "$RUNNER_TEMP/tools/pwsh" && tar -xf "$RUNNER_TEMP/pwsh.zip" -C "$RUNNER_TEMP/tools/pwsh"
+          mkdir -p "$RUNNER_TEMP/tools/pwsh" && tar --force-local -xf "$RUNNER_TEMP/pwsh.zip" -C "$RUNNER_TEMP/tools/pwsh"
           # gh 2.101.0
           curl -fsSL -o "$RUNNER_TEMP/gh.zip" \
             "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_windows_amd64.zip"
           echo "bc6c814367b193cd8e713611d61e36013c0ef843b8f516458fe3eda039192794  $RUNNER_TEMP/gh.zip" | sha256sum -c -
-          mkdir -p "$RUNNER_TEMP/tools/gh" && tar -xf "$RUNNER_TEMP/gh.zip" -C "$RUNNER_TEMP/tools/gh"
+          mkdir -p "$RUNNER_TEMP/tools/gh" && tar --force-local -xf "$RUNNER_TEMP/gh.zip" -C "$RUNNER_TEMP/tools/gh"
           cp "$RUNNER_TEMP/tools/gh/gh_2.101.0_windows_amd64/bin/gh.exe" "$RUNNER_TEMP/tools/bin/gh.exe"
           # jq 1.8.2
           curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq.exe" \
@@ -71,7 +71,7 @@ jobs:
           curl -fsSL -o "$RUNNER_TEMP/lfs.zip" \
             "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-windows-amd64-v3.8.0.zip"
           echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
-          mkdir -p "$RUNNER_TEMP/tools/lfs" && tar -xf "$RUNNER_TEMP/lfs.zip" -C "$RUNNER_TEMP/tools/lfs"
+          mkdir -p "$RUNNER_TEMP/tools/lfs" && tar --force-local -xf "$RUNNER_TEMP/lfs.zip" -C "$RUNNER_TEMP/tools/lfs"
           cp "$RUNNER_TEMP/tools/lfs/git-lfs-3.8.0/git-lfs.exe" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
           echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
           echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
@@ -369,11 +369,11 @@ jobs:
           curl -fsSL -o "$RUNNER_TEMP/pwsh.zip" \
             "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip"
           echo "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860  $RUNNER_TEMP/pwsh.zip" | sha256sum -c -
-          mkdir -p "$RUNNER_TEMP/tools/pwsh" && tar -xf "$RUNNER_TEMP/pwsh.zip" -C "$RUNNER_TEMP/tools/pwsh"
+          mkdir -p "$RUNNER_TEMP/tools/pwsh" && tar --force-local -xf "$RUNNER_TEMP/pwsh.zip" -C "$RUNNER_TEMP/tools/pwsh"
           curl -fsSL -o "$RUNNER_TEMP/gh.zip" \
             "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_windows_amd64.zip"
           echo "bc6c814367b193cd8e713611d61e36013c0ef843b8f516458fe3eda039192794  $RUNNER_TEMP/gh.zip" | sha256sum -c -
-          mkdir -p "$RUNNER_TEMP/tools/gh" && tar -xf "$RUNNER_TEMP/gh.zip" -C "$RUNNER_TEMP/tools/gh"
+          mkdir -p "$RUNNER_TEMP/tools/gh" && tar --force-local -xf "$RUNNER_TEMP/gh.zip" -C "$RUNNER_TEMP/tools/gh"
           cp "$RUNNER_TEMP/tools/gh/gh_2.101.0_windows_amd64/bin/gh.exe" "$RUNNER_TEMP/tools/bin/gh.exe"
           curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq.exe" \
             "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-windows-amd64.exe"
@@ -381,7 +381,7 @@ jobs:
           curl -fsSL -o "$RUNNER_TEMP/lfs.zip" \
             "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-windows-amd64-v3.8.0.zip"
           echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
-          mkdir -p "$RUNNER_TEMP/tools/lfs" && tar -xf "$RUNNER_TEMP/lfs.zip" -C "$RUNNER_TEMP/tools/lfs"
+          mkdir -p "$RUNNER_TEMP/tools/lfs" && tar --force-local -xf "$RUNNER_TEMP/lfs.zip" -C "$RUNNER_TEMP/tools/lfs"
           cp "$RUNNER_TEMP/tools/lfs/git-lfs-3.8.0/git-lfs.exe" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
           echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
           echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
@@ -426,7 +426,7 @@ jobs:
           set -euo pipefail
           curl -fsSL -o "$RUNNER_TEMP/protoc.zip" \
             "https://github.com/protocolbuffers/protobuf/releases/download/v36.2/protoc-36.2-win64.zip"
-          mkdir -p "$RUNNER_TEMP/protoc" && tar -xf "$RUNNER_TEMP/protoc.zip" -C "$RUNNER_TEMP/protoc"
+          mkdir -p "$RUNNER_TEMP/protoc" && tar --force-local -xf "$RUNNER_TEMP/protoc.zip" -C "$RUNNER_TEMP/protoc"
           echo "$RUNNER_TEMP/protoc/bin" >> "$GITHUB_PATH"
           protoc --version | grep -F "libprotoc 36.2"
 
