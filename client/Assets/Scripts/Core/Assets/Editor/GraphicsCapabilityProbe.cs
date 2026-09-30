@@ -294,10 +294,10 @@ namespace ThinhThan.Core.Assets.Editor
             var camGo = new GameObject("ProbeCam");
             var lightGo = new GameObject("ProbeLight");
             var quadGo = new GameObject("ProbeQuad");
+            var cam = camGo.AddComponent<Camera>();
             try
             {
                 rt.Create();
-                var cam = camGo.AddComponent<Camera>();
                 cam.orthographic = true;
                 cam.orthographicSize = 1f;
                 cam.transform.position = new Vector3(0f, 0f, -10f);
@@ -346,10 +346,10 @@ namespace ThinhThan.Core.Assets.Editor
             var camGo = new GameObject("ProbeCamR");
             var full = new GameObject("ProbeFull");
             var half = new GameObject("ProbeHalf");
+            var cam = camGo.AddComponent<Camera>();
             try
             {
                 rt.Create();
-                var cam = camGo.AddComponent<Camera>();
                 cam.orthographic = true;
                 cam.orthographicSize = 1f;
                 cam.transform.position = new Vector3(0f, 0f, -10f);
