@@ -1,0 +1,24 @@
+# ADR-0066: Measurable Client Gates, Forced-Cap Worst Case, Drain and Operations Stack
+status: ACCEPTED
+
+## Context
+The round-2 architecture/ops/testing review found gates that could not be measured or were sized wrong: desktop `PERF-005`/`PERF-007` measured resident memory and cold start inside the Unity Editor; `PERF-002` used `-nographics` (no render loop) with `FrameTimingManager`; the `PERF-024` fixture exceeded the AOI cap and had no producer; ADR-0061's 22-player forced-placement cap was missing from capacity, entity, load and allocation-fixture specs; Spirit Surge deactivation and restart contradicted its 15-minute window; graceful drain had no numbers; telemetry, alerting, backup tooling and the host OS were unpinned; the client UI state machine lacked password login and the login queue and mapped gamepad `X` twice; the bandwidth figure was a placeholder in one file and a gate in another; the partition-count gate assumed perfectly packed channels; multi-process wording survived ADR-0052.
+
+## Decision
+- **Client gates:** the client hotspot scene is the worst visible set at the AOI cap (local player + 21 remote players + 19 named-mechanic monsters). `PERF-002` renders under xvfb/llvmpipe and gates main-thread CPU = `PlayerLoop` minus the `Gfx.WaitForPresentOnGfxThread`, `Gfx.WaitForRenderThread` and `WaitForTargetFPS` markers (`ProfilerRecorder`). Desktop `PERF-005` gates tracked-memory growth over an empty-scene baseline (`Total Used Memory` <= 1.5 GB, `Gfx Used Memory` <= 1.0 GB); resident memory is gated only on Android. Desktop `PERF-007` gates login, transfer and reconnect with defined markers; cold start is Android-only. The `PERF-024` fixture is 60 s at 10 Hz for 40 entities + local player, produced by a seeded generator in IMP-065 and registered.
+- **Forced-cap worst case:** per-channel worst cases use 22 players; 18 stays the admission cap. `MAX_ENTITIES_PER_CHANNEL = 80` reserves 22 player slots (player placement is never refused by the entity cap) and allows at most 58 non-player entities. Hotspot benchmark, entity-cap scenario, Spirit Surge worst case and the HOT allocation fixture (64 actors) use 22 players. Amends ADR-0039's entity budget split.
+- **Spirit Surge window:** active `HH:00:00 <= UTC < HH:15:00`; activation carries `ends_at_utc`; restart activates only the remainder at minute < 15; partitions started inside the window receive it.
+- **Drain and shutdown:** SIGTERM runs one sequence: refuse new work and announce at `t0`, `DRAIN_LEAD = 600 s`, stop partitions, flush durable queue within `SHUTDOWN_FLUSH_MAX = 60 s`, exit 0 at depth 0; systemd `TimeoutStopSec = 780`.
+- **Operations stack:** Ubuntu Server 24.04 LTS hosts; OTel SDK + OTLP/HTTP exporters v1.46.0 to a local OpenTelemetry Collector contrib 0.161.0; Prometheus 3.14.0, Alertmanager 0.34.1 (receivers `ops-critical`, `ops-warning`, `security-queue`), Grafana OSS 13.2.2, node_exporter 1.12.1, postgres_exporter 0.20.1; pgBackRest 2.59.1 and PostgreSQL 18.6 from PGDG; logs `slog` JSON to journald. Pins and SHA-256 live in `technology_versions.md`.
+- **Channel partitions:** normal-map channel partitions start on first placement and stop after 600 s empty; the partition gate is `MAX_PARTITIONS_PER_PROCESS >= 720 + peak instances`.
+- **Client UI FSM:** states `BOOT, PATCHING_UPDATE, AUTH_TITLE, LOGIN_QUEUED, CHARACTER_SELECT, TRANSFERRING_MAP, IN_WORLD, DISCONNECTED`; password login/register on `AUTH_TITLE`; gamepad interact = `LT`.
+- **Bandwidth:** load scenario 13's measured p95 + 20% replaces the 25 KiB/s placeholder by spec change before the 10k gate; until then it is reported, not gated.
+- **Single-process wording:** constraints, capacity, load, deployment, network tests and service boundaries describe one world process; Global's PUBLIC boss schedule writes go through Durable Domain and reload on start.
+
+## Consequences
+- Specs changed: `../04_architecture/client_performance.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/service_boundaries.md`, `../04_architecture/client_experience_contract.md`, `../08_scale_ops/capacity.md`, `../08_scale_ops/deployment.md`, `../08_scale_ops/observability.md`, `../08_scale_ops/sharding.md`, `../09_testing/load.md`, `../09_testing/test_and_release_evidence.md`, `../09_testing/gameplay.md`, `../09_testing/network.md`, `../00_context/constraints.md`, `../00_context/technology_versions.md`.
+- Packets: IMP-018, IMP-022, IMP-025, IMP-046, IMP-048, IMP-055, IMP-065, IMP-066, IMP-067, IMP-069, IMP-079, IMP-095, IMP-098, IMP-099.
+- ADR-0039 is amended (22 reserved player slots, 58 non-player entities).
+
+## Amendment (ADR-0070)
+The entity cap is 100 with per-class budgets (was 80/58); `PERF-002` excludes every rendering marker (`-job-worker-count 2`, `LP_NUM_THREADS=1`); a shutdown flush timeout journals the remaining queue to the durable outbox (`../08_scale_ops/deployment.md`).

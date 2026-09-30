@@ -1,0 +1,60 @@
+{
+  "SessionStart": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .devin/scripts/session_context.sh",
+          "timeout": 15
+        }
+      ]
+    }
+  ],
+  "PreToolUse": [
+    {
+      "matcher": "^(exec|write_to_process)$",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .devin/scripts/pre_exec_guard.sh",
+          "timeout": 10
+        }
+      ]
+    },
+    {
+      "matcher": "^(edit|write|apply_patch|notebook_edit)$",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .devin/scripts/pre_write_guard.sh",
+          "timeout": 10
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "^(edit|write|apply_patch)$",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .devin/scripts/post_edit_check.sh",
+          "timeout": 15
+        }
+      ]
+    }
+  ],
+  "Stop": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash .devin/scripts/stop_verify_gate.sh",
+          "timeout": 2400
+        }
+      ]
+    }
+  ]
+}

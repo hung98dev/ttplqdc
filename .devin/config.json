@@ -1,0 +1,51 @@
+{
+  "permissions": {
+    "allow": [
+      "read",
+      "edit",
+      "grep",
+      "glob",
+      "exec",
+      "webfetch",
+      "mcp__*",
+      "Read(**)",
+      "Write(**)"
+    ],
+    "deny": [
+      "Write(.git/**)",
+      "Write(**/*.pb.go)",
+      "Write(server/internal/protocol/**)",
+      "Write(client/Assets/Scripts/Protocol/**)",
+      "Write(client/Assets.meta)",
+      "Write(client/Assets/Scripts.meta)",
+      "Write(client/Assets/Scripts/Protocol.meta)",
+      "Write(proto/testdata/golden/**)",
+      "Write(tools/**)",
+      "Write(client/Library/**)",
+      "Write(client/Temp/**)",
+      "Write(client/Logs/**)",
+      "Write(client/obj/**)",
+      "Write(client/Build/**)",
+      "Write(client/Builds/**)",
+      "Write(server/vendor/**)",
+      "Read(**/.env)",
+      "Read(**/.env.local)",
+      "Read(**/.env.production)",
+      "Read(**/.env.development)",
+      "Read(**/id_rsa*)",
+      "Read(**/id_ed25519*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.pfx)",
+      "Read(**/*.p12)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Write(**/id_rsa*)",
+      "Write(**/id_ed25519*)",
+      "Write(**/*.pem)",
+      "Write(**/*.key)",
+      "Write(**/*.pfx)",
+      "Write(**/*.p12)"
+    ]
+  }
+}
