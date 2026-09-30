@@ -25,7 +25,57 @@ issue: <ops-blocked issue URL>                       (OPS only)
 
 ## Open Blockers
 
-None. IDs start at `BLK-001` and `OPS-001`.
+Focused readiness audit; not an exhaustive closure of F01–F84. No compiler/runtime or Q0–Q6 pass is claimed. Tasks not yet claimed remain `NOT_STARTED`; §2 of `agent_execution_protocol.md` forbids claiming a task blocked by these entries.
+
+### `BLK-020` — Catalog source bindings cannot emit a conforming launch bundle
+opened_by: spec-owner/readiness-review   opened_at: 2026-09-30T08:31:45Z
+evidence: `docs/07_content/soul_catalog.md:28,64,71-79` derives Soul element from an encounter with no element field (`encounter_catalog.md:126-135`); the representative monster is `NONE` (`monster_catalog.md:188`). `class_skill_catalog.md:450` emits `BARRIER(primary_geometry)` outside its closed dispatch at `:423`. `item_catalog.md:15-16,26,40-41` emits definition strings but excludes them from the hash, contrary to `docs/06_data/content_authoring_contract.md:92-98`.
+owning spec / system: `docs/06_data/content_authoring_contract.md`; `docs/07_content/soul_catalog.md`, `class_skill_catalog.md`, `item_catalog.md`.
+options:
+  1. complete typed Soul element bindings, the BARRIER signature/output binding and one full semantic hash policy in the owning catalogs — preserves the intended launch mechanics;
+  2. change the canonical authoring/definition contracts and every consumer through an accepted spec decision — larger cutover; no prose inference, hidden defaults or separate gameplay-only revision.
+blocks: IMP-003, IMP-004, IMP-015, IMP-031
+closure: conforming real-source compilation and source mutations must resolve every required field, reject unknown constructors and produce the canonical revision; heading/table counts alone do not close this entry.
+
+### `BLK-021` — Durable journal lacks complete producer, codec and replay contracts
+opened_by: spec-owner/readiness-review   opened_at: 2026-09-30T08:31:45Z
+evidence: `docs/08_scale_ops/deployment.md:72,78-86` journals every queued/in-flight command but defines only five discriminators and opaque typed payload bytes. PUBLIC schedule transitions (`docs/04_architecture/service_boundaries.md:43`) and standalone quest/discovery settlements (`docs/06_data/save_rules.md:119-137`) have no explicit discriminator/payload/handler mapping. Internal payload schemas/source ownership and fixed-width framing byte order are unspecified; `docs/05_network/protobuf_conventions.md:24-35` defines the client wire files, not these payloads. `docs/06_data/ids.md:90-92` expires client UUIDv7 before outcome lookup, while journal replay at `deployment.md:85` has no terminal/reconciliation rule for an admitted record crossing that boundary.
+owning spec / system: `docs/08_scale_ops/deployment.md`; `docs/05_network/protobuf_conventions.md`; `docs/06_data/save_rules.md`, `ids.md`; IMP-061 schema, IMP-082 queue, IMP-069 replay.
+options:
+  1. specify exhaustive producer→discriminator→typed payload→handler bindings, replay-complete provenance/identity, byte-level framing and trusted replay disposition — preserves the shutdown recovery promise and public client expiry;
+  2. explicitly restrict/redesign the queued command and shutdown recovery contract and migrate every producer/consumer — changes recovery guarantees; cannot silently discard a record or mint a replacement operation ID.
+blocks: IMP-005, IMP-010, IMP-021, IMP-022, IMP-061, IMP-069, IMP-082
+closure: every declared producer and the expiry-boundary scenario have one specified representation and deterministic replay outcome before implementing the journal.
+
+### `BLK-022` — Privacy inventory and access export disagree with new durable metadata
+opened_by: spec-owner/readiness-review   opened_at: 2026-09-30T08:31:45Z
+evidence: `docs/06_data/data_model.md:981` requires reporter-owned Category H reports in subject access export, but `docs/07_security/personal_data_register.md:27`, `data_protection.md:63` and `docs/10_implementation/task_queue.md:3854,3860` restrict export to A/B/D/E/F. The canonical register at `personal_data_register.md:12-21` does not name `player_reports`, `operators` or `erasure_intents`, despite their personal/pseudonymous fields and retention rules in `data_model.md:639-650,960-981,1191-1206`; `docs/08_scale_ops/backup_recovery.md:79` claims the ledger metadata is enumerated there.
+owning spec / system: `docs/07_security/personal_data_register.md`, `data_protection.md`; `docs/06_data/data_model.md`; `docs/08_scale_ops/backup_recovery.md`; IMP-056.
+options:
+  1. complete the canonical per-field inventory, retention/erasure/legal-basis mappings and bounded export exceptions, then align schema and IMP-056 — retains the declared features;
+  2. remove unsupported collection/export promises from all owning specs before implementation — reduces the declared feature scope and requires an explicit spec decision.
+blocks: IMP-005, IMP-056
+closure: one subject-export schema and one per-table lifecycle satisfy every listed consumer without inventing a category, retention deadline or disclosure exception.
+
+### `BLK-023` — Proposed readiness decisions are consumed without accepted ADR/task coverage
+opened_by: spec-owner/readiness-review   opened_at: 2026-09-30T08:31:45Z
+evidence: `docs/11_decisions/0079-readiness-contract-closure.md:2` is `PROPOSED`, while `docs/10_implementation/task_queue.md:245,984-985,3862` consumes its identity/schema/erasure decisions. Parsing all 107 packets found zero explicit `adrs:` consumers of ADR-0079; `spec_traceability.md:228-236` has no ADR-0079 row. `definition_of_done.md:13` requires an ACCEPTED ADR for architecture/data contracts; the normative coverage gate at `spec_traceability.md:296-299` remains unsatisfied. This is not an observed Q0 execution.
+owning spec / system: `docs/11_decisions/0079-readiness-contract-closure.md`; `docs/10_implementation/task_queue.md`, `spec_traceability.md`, `definition_of_done.md`.
+options:
+  1. finish and review the proposed contract cutover, then accept the decision and regenerate complete packet/traceability consumers — never flip status merely to bypass a gate;
+  2. separate resolved accepted decisions from unresolved proposals and remove unaccepted implementation dependencies — more bookkeeping, but explicit readiness boundaries.
+blocks: IMP-001, IMP-005, IMP-056, IMP-061, IMP-083
+closure: every adopted contract has its accepted decision and complete grep-derived consumers; independent policy approval and runtime evidence remain separate prerequisites.
+
+### `BLK-024` — Registered wire IDs fall outside the declared baseline proto-file ranges
+opened_by: spec-owner/readiness-review   opened_at: 2026-09-30T08:31:45Z
+evidence: `docs/05_network/messages.md:45,292-293,444-445,544-546,749` registers IDs 16, 307, 308, 442, 443, 516, 517, 518 and 656. None belongs to a file range in `docs/05_network/protobuf_conventions.md:27-35`. The manifest-driven file-routing check rejects these nine IDs; generated proto absence is planned work, not this conflict.
+owning spec / system: `docs/05_network/messages.md`, `protobuf_conventions.md`; IMP-061.
+options:
+  1. align the existing nine-file baseline ranges and message rosters with the complete registry — retains every registered message and the current layout;
+  2. revise/remove the added messages and migrate Soul paging, baseline recovery, Daily/Atlas projections and guild cosmetics — larger behavior change requiring a spec decision.
+blocks: IMP-061
+closure: every registered launch message has exactly one declared baseline source-file owner and a complete typed payload contract.
 
 ## Resolved Blockers
 

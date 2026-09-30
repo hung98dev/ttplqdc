@@ -3848,7 +3848,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 
 ## Change
 - Implement per-table retention purge jobs from the single schedule in `../07_security/personal_data_register.md` § 1 (ADR-0065), daily, bounded batches.
-- Implement the erasure transaction exactly as `../06_data/data_model.md` § Account Erasure (ADR-0065): deletes, tombstone re-points with deferred composite FKs, `Anonymized_` + 32-hex rename, guild detach/leadership transfer/sole-member disband, auction cancel, `TOMBSTONE_ERASED` + `erased_at`, then the erasure-ledger append; and the 1-year purge of residual `accounts` rows.
+- Implement the staged erasure protocol exactly as `../06_data/data_model.md` § Account Erasure (ADR-0079): prepare the intent/fence, release database locks, publish and verify the immutable ledger object, then run the destructive transaction. Implement the 1-year purge of residual `accounts` rows from the canonical retention schedule.
 - Implement in-app account deletion (`POST /api/v1/account/delete`, re-auth, 7-day `PENDING_DELETION` cancel window, erasure within 15 days) and its client screen.
 - Implement the erasure ledger in backup storage and the restore-time replay (`../08_scale_ops/backup_recovery.md`).
 - Implement data-subject export for categories A, B, D summary, E summary and F (`../07_security/data_protection.md` § Access and Portability); game-state export is optional courtesy data.

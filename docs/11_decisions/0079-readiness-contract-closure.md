@@ -5,7 +5,7 @@ status: PROPOSED
 The pre-implementation readiness review identified 84 findings (F01–F84). This ADR records the proposed contract decisions for that repair effort; it does not certify that all owning specs, consumers, task packets or checks implement those decisions. The baseline remains docs-only. The earlier claim that all 84 findings were resolved was unsupported and is withdrawn.
 
 ### Verification status
-- Full readiness is not established. Source registries remain missing from manifest inputs; the complete privacy inventory and other F01–F84 consumers still require review. Aligning the legacy erasure consumers below is not proof that every finding is closed.
+- Full readiness is not established. Confirmed open defects are recorded as BLK-020..BLK-024 in `../10_implementation/known_blockers.md`; that focused audit is not an exhaustive closure of F01–F84. Structural heading/table counts cannot substitute for executable source bindings or consistent consumers.
 - `scripts/verify.ps1` and the required CI workflow do not exist in this docs-only baseline. The attempted canonical verification did not execute a verifier; it is not a passing or deferred Q0–Q6 result.
 - No independent contract review or Q0–Q6 pass has been established for this repair set. Owner-authorized docs-only publication is not implementation evidence or a `policy-review` approval.
 - Do not use this ADR or the previous chat/PR completion claims as permission to begin dependent gameplay implementation.
