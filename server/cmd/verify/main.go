@@ -46,10 +46,6 @@ func main() {
 		fmt.Fprintln(os.Stderr, "unknown pin:", *printPin)
 		os.Exit(2)
 	}
-	if *merge {
-		code := runMerge(*linux, *windows, *out)
-		os.Exit(code)
-	}
 	if *localDefer && os.Getenv("CI") != "" {
 		fmt.Fprintln(os.Stderr, "-local-defer-missing is forbidden under CI")
 		os.Exit(2)
@@ -57,6 +53,18 @@ func main() {
 
 	r, err := absRoot(*root)
 	fatal(err)
+	// `go -C server run` makes server/ the process CWD; repo-relative file
+	// arguments are always resolved against the repo root.
+	resolve := func(p string) string {
+		if p == "" || p == "-" || filepath.IsAbs(p) {
+			return p
+		}
+		return filepath.Join(r, p)
+	}
+	if *merge {
+		code := runMerge(resolve(*linux), resolve(*windows), resolve(*out))
+		os.Exit(code)
+	}
 	ctx := buildContext(r, *localDefer)
 
 	if *planUnity != "" {
@@ -64,13 +72,13 @@ func main() {
 		b, _ := json.Marshal(plan)
 		if *planUnity == "-" {
 			fmt.Println(string(b))
-		} else if err := os.WriteFile(*planUnity, append(b, '\n'), 0o644); err != nil {
+		} else if err := writeFileParents(resolve(*planUnity), append(b, '\n')); err != nil {
 			fatal(err)
 		}
 		return
 	}
 
-	runner := &gates.Runner{Root: r, Ctx: ctx, UnityDir: *unityDir, APICheck: ghAPICheck(r)}
+	runner := &gates.Runner{Root: r, Ctx: ctx, UnityDir: resolve(*unityDir), APICheck: ghAPICheck(r)}
 	if added, err := addedFiles(r); err == nil {
 		runner.AddedPaths = added
 	}
@@ -81,7 +89,7 @@ func main() {
 		rep, err = runner.Run("")
 	case "pre-unity", "unity":
 		if *phase == "unity" {
-			pr, perr := gates.LoadPreReport(*preReport, gitHead(r))
+			pr, perr := gates.LoadPreReport(resolve(*preReport), gitHead(r))
 			if perr != nil {
 				fmt.Fprintf(os.Stderr, "pre-report unusable (%v); running all gates\n", perr)
 				runner.PreReport = nil
@@ -101,7 +109,9 @@ func main() {
 	fatal(err)
 
 	if *reportOut != "" {
-		fatal(gates.WriteReport(*reportOut, rep))
+		p := resolve(*reportOut)
+		fatal(os.MkdirAll(filepath.Dir(p), 0o755))
+		fatal(gates.WriteReport(p, rep))
 	}
 	enc := json.NewEncoder(os.Stdout)
 	enc.SetIndent("", "  ")
@@ -359,12 +369,24 @@ func cliPin(key, plat string) (string, bool) {
 	return "", false
 }
 
+// writeFileParents writes b to path, creating parent dirs.
+func writeFileParents(path string, b []byte) error {
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		return err
+	}
+	return os.WriteFile(path, b, 0o644)
+}
+
 // runMerge executes -merge: read both reports, write the evidence manifest.
 func runMerge(linuxPath, windowsPath, outPath string) int {
 	m, errs := gates.MergeReports(linuxPath, windowsPath)
 	m.TaskID = taskIDFromBranch()
 	if outPath == "" {
 		outPath = "artifacts/evidence/manifest.json"
+	}
+	if err := os.MkdirAll(filepath.Dir(outPath), 0o755); err != nil {
+		fmt.Fprintln(os.Stderr, "verify merge:", err)
+		return 1
 	}
 	if err := gates.WriteManifest(outPath, m); err != nil {
 		fmt.Fprintln(os.Stderr, "verify merge:", err)

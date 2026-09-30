@@ -42,6 +42,32 @@ function Resolve-TestPgDsn {
     if ($env:THINHTHAN_TEST_PG_DSN) { return $env:THINHTHAN_TEST_PG_DSN }
     $toolsPg = Join-Path $RepoRoot 'tools/pgsql'
     $pgIsReady = Join-Path $toolsPg 'bin/pg_isready.exe'
+    if (-not (Test-Path $pgIsReady) -and $IsWindows) {
+        # EDB pinned binaries (URL + sha256 resolve through stackpin so the
+        # hash lives in exactly one place).
+        Push-Location $serverDir
+        try {
+            $url = (& go run ./cmd/verify -repo-root $RepoRoot -print-pin edb-url)
+            $sha = (& go run ./cmd/verify -repo-root $RepoRoot -print-pin edb-sha256)
+        } finally { Pop-Location }
+        if (-not $url -or -not $sha) { throw 'EDB pin unavailable via -print-pin' }
+        $zip = Join-Path ([IO.Path]::GetTempPath()) 'edb-pg.zip'
+        Write-Host "verify: fetching pinned EDB postgres binaries"
+        Invoke-WebRequest -Uri $url -OutFile $zip
+        $got = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+        if ($got -ne $sha.ToLowerInvariant()) {
+            Remove-Item $zip -Force -ErrorAction SilentlyContinue
+            throw "EDB zip sha256 mismatch: got $got expected $($sha.ToLowerInvariant())"
+        }
+        Expand-Archive -Path $zip -DestinationPath $toolsPg -Force
+        Remove-Item $zip -Force -ErrorAction SilentlyContinue
+        # The EDB zip nests everything under pgsql/; flatten to tools/pgsql.
+        $nested = Join-Path $toolsPg 'pgsql'
+        if (Test-Path $nested) {
+            Get-ChildItem -Force $nested | Move-Item -Destination $toolsPg -Force
+            Remove-Item $nested -Recurse -Force
+        }
+    }
     if (Test-Path $toolsPg) {
         # EDB binaries unpacked to ignored tools/pgsql; start on a random port.
         if (-not (Test-Path $pgIsReady)) {
