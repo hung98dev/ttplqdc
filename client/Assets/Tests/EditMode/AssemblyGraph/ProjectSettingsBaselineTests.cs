@@ -89,8 +89,8 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
             var physics2d = ReadAsset("Physics2DSettings.asset");
             AssertContains(
                 physics2d,
-                "m_SimulationMode: " + (int)UnityEditor.SimulationMode2D.Script,
-                "Physics2D simulationMode = Script");
+                "m_SimulationMode: 2",
+                "Physics2D simulationMode = Script (SimulationMode2D.Script)");
         }
     }
 }
