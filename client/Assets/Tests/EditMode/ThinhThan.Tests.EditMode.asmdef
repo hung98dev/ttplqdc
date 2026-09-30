@@ -1,0 +1,47 @@
+{
+    "name": "ThinhThan.Tests.EditMode",
+    "rootNamespace": "ThinhThan.Tests.EditMode",
+    "references": [
+        "ThinhThan.Protocol",
+        "ThinhThan.Core",
+        "ThinhThan.Core.Assets",
+        "ThinhThan.Core.Assets.Editor",
+        "ThinhThan.Core.Localization",
+        "ThinhThan.Core.Localization.Editor",
+        "ThinhThan.Core.Geometry.Editor",
+        "ThinhThan.Net",
+        "ThinhThan.Systems",
+        "ThinhThan.UI",
+        "Unity.InputSystem",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Universal.2D.Runtime",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor",
+        "Unity.ResourceManager",
+        "Unity.Localization",
+        "Unity.Localization.Editor",
+        "Unity.2D.Animation.Runtime",
+        "UnityEngine.UI",
+        "Unity.TextMeshPro",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Unity.PerformanceTesting"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Google.Protobuf.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

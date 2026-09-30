@@ -1,0 +1,295 @@
+package stackpin
+
+import (
+	"os"
+	"path/filepath"
+	"regexp"
+	"strings"
+	"testing"
+)
+
+func repoRoot(t *testing.T) string {
+	t.Helper()
+	root, err := filepath.Abs(filepath.Join("..", "..", ".."))
+	if err != nil {
+		t.Fatalf("repo root: %v", err)
+	}
+	if _, err := os.Stat(filepath.Join(root, "docs", "00_context", "technology_versions.md")); err != nil {
+		t.Fatalf("technology_versions.md not found under %s: %v", root, err)
+	}
+	return root
+}
+
+func readMatrix(t *testing.T) string {
+	t.Helper()
+	b, err := os.ReadFile(filepath.Join(repoRoot(t), "docs", "00_context", "technology_versions.md"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	return string(b)
+}
+
+// Every pin carried by the typed registry must appear verbatim in the
+// canonical version matrix; a pin absent from the matrix is unlisted.
+func TestPinsMatchVersionMatrix(t *testing.T) {
+	matrix := readMatrix(t)
+	wants := []string{
+		GoVersion, ProtocVersion, ProtocGenGoVersion,
+		PostgresVersion,
+		"postgres:18.6@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722",
+		StaticcheckVersion, StaticcheckDistLabel,
+		UnityEditorVersion, UnityEditorChangeset,
+		UnityWindowsInstallers["editor"].SHA256, UnityWindowsInstallers["il2cpp"].SHA256,
+		EDBPostgresZip.SHA256, "343,808,005",
+		GoogleProtobufNupkg.SHA256, GoogleProtobufNupkgVersion,
+		CacertSHA256, GcloudVersion, GcloudPin.SHA256, GitForWindowsVersion,
+	}
+	for _, pin := range AndroidModules {
+		wants = append(wants, pin.SHA256, filepath.Base(pin.URL))
+	}
+	for _, tool := range CliTools {
+		wants = append(wants, tool.Version, tool.LinuxSHA256, tool.WindowsSHA256, tool.LinuxAsset, tool.WindowsAsset)
+	}
+	for _, sha := range Actions {
+		wants = append(wants, sha)
+	}
+	for _, modVer := range GoModulePins {
+		wants = append(wants, modVer)
+	}
+	for _, w := range wants {
+		if w == "" {
+			t.Fatal("empty pin value in registry")
+		}
+		if !strings.Contains(matrix, w) {
+			t.Errorf("pin %q not found in technology_versions.md", w)
+		}
+	}
+	for mod := range GoModulePins {
+		if !strings.Contains(matrix, mod) {
+			t.Errorf("module %q not found in technology_versions.md", mod)
+		}
+	}
+}
+
+func TestStaticcheckVersionAndInstall(t *testing.T) {
+	matrix := readMatrix(t)
+	for _, want := range []string{
+		"honnef.co/go/tools/cmd/staticcheck@" + StaticcheckVersion,
+		StaticcheckDistLabel,
+	} {
+		if !strings.Contains(matrix, want) {
+			t.Errorf("matrix missing %q", want)
+		}
+	}
+	// staticcheck is a CI-installed tool, never a module dependency.
+	gomod, err := os.ReadFile(filepath.Join(repoRoot(t), "server", "go.mod"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(string(gomod), "honnef.co") {
+		t.Error("go.mod must not contain staticcheck")
+	}
+}
+
+func TestRunnerLabelsPinned(t *testing.T) {
+	matrix := readMatrix(t)
+	if len(RunnerLabels) != 2 {
+		t.Fatalf("RunnerLabels = %v, want exactly ubuntu-24.04 + windows-2022", RunnerLabels)
+	}
+	for _, label := range []string{"ubuntu-24.04", "windows-2022"} {
+		if RunnerLabels[label] == "" {
+			t.Errorf("missing runner label %q", label)
+		}
+		if !strings.Contains(matrix, label) {
+			t.Errorf("matrix missing runner label %q", label)
+		}
+	}
+	for label := range RunnerLabels {
+		if strings.Contains(label, "latest") || strings.Contains(label, "self-hosted") {
+			t.Errorf("forbidden runner label %q", label)
+		}
+	}
+}
+
+// TestCscRspScopedPerAsmdef: a csc.rsp sits beside every asmdef with the exact
+// pinned contents and no root client/Assets/csc.rsp exists (CODE-001).
+func TestCscRspScopedPerAsmdef(t *testing.T) {
+	root := repoRoot(t)
+	if _, err := os.Stat(filepath.Join(root, "client", "Assets", "csc.rsp")); !os.IsNotExist(err) {
+		t.Fatal("root client/Assets/csc.rsp must not exist")
+	}
+	want := "-warnaserror+\n-nullable:enable\n"
+	found := 0
+	err := filepath.WalkDir(filepath.Join(root, "client", "Assets"), func(path string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() || !strings.HasSuffix(d.Name(), ".asmdef") {
+			return nil
+		}
+		rsp := filepath.Join(filepath.Dir(path), "csc.rsp")
+		b, err := os.ReadFile(rsp)
+		if err != nil {
+			t.Errorf("csc.rsp missing beside %s", path)
+			return nil
+		}
+		if string(b) != want {
+			t.Errorf("%s: got %q, want %q", rsp, string(b), want)
+		}
+		found++
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if found != 13 {
+		t.Fatalf("found %d asmdef csc.rsp pairs, want 13", found)
+	}
+}
+
+func TestGoogleProtobufNupkgSha256(t *testing.T) {
+	matrix := readMatrix(t)
+	if !strings.Contains(GoogleProtobufNupkg.URL, "/"+GoogleProtobufNupkgVersion+"/") {
+		t.Errorf("nupkg URL %q does not carry version %s", GoogleProtobufNupkg.URL, GoogleProtobufNupkgVersion)
+	}
+	if len(GoogleProtobufNupkg.SHA256) != 64 {
+		t.Fatalf("nupkg SHA256 malformed: %q", GoogleProtobufNupkg.SHA256)
+	}
+	if !strings.Contains(matrix, GoogleProtobufNupkg.SHA256) {
+		t.Error("nupkg SHA256 not in matrix")
+	}
+	// The committed dll under Assets/Plugins must come from this nupkg.
+	dll := filepath.Join(repoRoot(t), "client", "Assets", "Plugins", "Google.Protobuf", "Google.Protobuf.dll")
+	if _, err := os.Stat(dll); err != nil {
+		t.Fatalf("Google.Protobuf.dll missing: %v", err)
+	}
+}
+
+func TestEdbZipSha256(t *testing.T) {
+	matrix := readMatrix(t)
+	if len(EDBPostgresZip.SHA256) != 64 || !strings.Contains(matrix, EDBPostgresZip.SHA256) {
+		t.Error("EDB zip SHA256 missing/mismatched vs matrix")
+	}
+	if EDBPostgresZip.Size != 343808005 {
+		t.Errorf("EDB zip size = %d, want 343808005", EDBPostgresZip.Size)
+	}
+	if !strings.Contains(matrix, EDBPostgresZip.URL) {
+		t.Error("EDB zip URL not in matrix")
+	}
+}
+
+// TestDownloadArtifactAndGitLfsPins: download-artifact is pinned by SHA and
+// git-lfs 3.8.0 release-asset SHAs match the matrix (ADR-0072 item 8).
+func TestDownloadArtifactAndGitLfsPins(t *testing.T) {
+	matrix := readMatrix(t)
+	sha, ok := Actions["actions/download-artifact"]
+	if !ok {
+		t.Fatal("actions/download-artifact missing from Actions")
+	}
+	if matched, _ := regexp.MatchString(`^[0-9a-f]{40}$`, sha); !matched {
+		t.Fatalf("download-artifact pin %q is not a full commit SHA", sha)
+	}
+	if !strings.Contains(matrix, sha) {
+		t.Error("download-artifact SHA not in matrix")
+	}
+	var lfs *CliTool
+	for i := range CliTools {
+		if CliTools[i].Name == "git-lfs" {
+			lfs = &CliTools[i]
+		}
+	}
+	if lfs == nil {
+		t.Fatal("git-lfs missing from CliTools")
+	}
+	if lfs.Version != "3.8.0" {
+		t.Errorf("git-lfs version %q, want 3.8.0", lfs.Version)
+	}
+}
+
+// TestNoFloatingOrUnlistedDeps: go.mod direct requires must be GoModulePins at
+// exact versions; no floating tag, range, prerelease or unlisted module.
+func TestNoFloatingOrUnlistedDeps(t *testing.T) {
+	b, err := os.ReadFile(filepath.Join(repoRoot(t), "server", "go.mod"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	requires := parseGoModRequires(string(b))
+	if len(requires) == 0 {
+		t.Fatal("go.mod declares no requires")
+	}
+	for mod, ver := range requires {
+		if ver == "latest" || strings.Contains(ver, "*") || strings.Contains(ver, "-") ||
+			strings.ContainsAny(ver, "<>^~") {
+			t.Errorf("floating/prerelease dep %s@%s", mod, ver)
+		}
+		pin, ok := GoModulePins[mod]
+		if !ok {
+			t.Errorf("unlisted direct dependency %s@%s", mod, ver)
+			continue
+		}
+		if pin != ver {
+			t.Errorf("dependency %s@%s, want pinned %s", mod, ver, pin)
+		}
+	}
+}
+
+// TestGoModuleAndToolchain: module name and `go` directive match the layout
+// and matrix pins.
+func TestGoModuleAndToolchain(t *testing.T) {
+	b, err := os.ReadFile(filepath.Join(repoRoot(t), "server", "go.mod"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var mod, gover string
+	for _, line := range strings.Split(string(b), "\n") {
+		line = strings.TrimSpace(line)
+		if strings.HasPrefix(line, "module ") {
+			mod = strings.TrimPrefix(line, "module ")
+		}
+		if strings.HasPrefix(line, "go ") {
+			gover = strings.TrimPrefix(line, "go ")
+		}
+	}
+	if mod != GoModuleName {
+		t.Errorf("module %q, want %q", mod, GoModuleName)
+	}
+	if gover != GoVersion {
+		t.Errorf("go directive %q, want %q", gover, GoVersion)
+	}
+	layout, err := os.ReadFile(filepath.Join(repoRoot(t), "docs", "10_implementation", "repository_layout.md"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(layout), "module "+GoModuleName) {
+		t.Error("module name not declared in repository_layout.md")
+	}
+}
+
+// parseGoModRequires returns module -> version for every require entry, both
+// the single-line form and require-block form.
+func parseGoModRequires(gomod string) map[string]string {
+	out := map[string]string{}
+	var inBlock bool
+	for _, line := range strings.Split(gomod, "\n") {
+		line = strings.TrimSpace(line)
+		switch {
+		case strings.HasPrefix(line, "require ("):
+			inBlock = true
+			continue
+		case inBlock && line == ")":
+			inBlock = false
+			continue
+		case strings.HasPrefix(line, "require "):
+			fields := strings.Fields(strings.TrimPrefix(line, "require "))
+			if len(fields) >= 2 {
+				out[fields[0]] = fields[1]
+			}
+		case inBlock:
+			fields := strings.Fields(line)
+			if len(fields) >= 2 && !strings.HasPrefix(fields[0], "//") {
+				out[fields[0]] = fields[1]
+			}
+		}
+	}
+	return out
+}

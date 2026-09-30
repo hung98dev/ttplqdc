@@ -1,0 +1,635 @@
+name: verify
+
+on:
+  pull_request:
+
+concurrency:
+  group: verify-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  GIT_LFS_SKIP_SMUDGE: '1'
+
+jobs:
+  unity-windows:
+    name: Unity (Windows)
+    runs-on: windows-2022
+    timeout-minutes: 120
+    steps:
+      - name: Fork guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "${{ github.event_name }}" in
+            pull_request|pull_request_target)
+              if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+                echo "external PRs not accepted" >&2
+                exit 1
+              fi
+              ;;
+          esac
+
+      - name: Freeze check
+        shell: bash
+        env:
+          FROZEN: ${{ vars.AUTO_MERGE_FROZEN }}
+        run: |
+          set -euo pipefail
+          if [ "${FROZEN:-false}" = "true" ]; then
+            case "${{ github.head_ref || github.ref_name }}" in
+              revert/*|ops/*) exit 0 ;;
+            esac
+            echo "AUTO_MERGE_FROZEN is set" >&2
+            exit 1
+          fi
+
+      - name: Install pinned CLI tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/tools/bin"
+          # pwsh 7.6.6
+          curl -fsSL -o "$RUNNER_TEMP/pwsh.zip" \
+            "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip"
+          echo "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860  $RUNNER_TEMP/pwsh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/pwsh" && tar -xf "$RUNNER_TEMP/pwsh.zip" -C "$RUNNER_TEMP/tools/pwsh"
+          # gh 2.101.0
+          curl -fsSL -o "$RUNNER_TEMP/gh.zip" \
+            "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_windows_amd64.zip"
+          echo "bc6c814367b193cd8e713611d61e36013c0ef843b8f516458fe3eda039192794  $RUNNER_TEMP/gh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/gh" && tar -xf "$RUNNER_TEMP/gh.zip" -C "$RUNNER_TEMP/tools/gh"
+          cp "$RUNNER_TEMP/tools/gh/gh_2.101.0_windows_amd64/bin/gh.exe" "$RUNNER_TEMP/tools/bin/gh.exe"
+          # jq 1.8.2
+          curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq.exe" \
+            "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-windows-amd64.exe"
+          echo "a6fc67fedaf9128a3309a1e2ebb8b986aeccf70122ee46d2cb4849e423f0c627  $RUNNER_TEMP/tools/bin/jq.exe" | sha256sum -c -
+          # git-lfs 3.8.0
+          curl -fsSL -o "$RUNNER_TEMP/lfs.zip" \
+            "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-windows-amd64-v3.8.0.zip"
+          echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/lfs" && tar -xf "$RUNNER_TEMP/lfs.zip" -C "$RUNNER_TEMP/tools/lfs"
+          cp "$RUNNER_TEMP/tools/lfs/git-lfs-3.8.0/git-lfs.exe" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          lfs: false
+          fetch-depth: 0
+
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: '1.27.1'
+          cache: false
+
+      - name: Resolve pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root . -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_URL=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-installer-url)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_SHA256=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-installer-sha256)" >> "$GITHUB_ENV"
+          echo "UNITY_EDITOR_VERSION_PIN=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-editor-version)" >> "$GITHUB_ENV"
+          echo "UNITY_EDITOR_CHANGESET=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-editor-changeset)" >> "$GITHUB_ENV"
+
+      - name: Unity scope + mode plan
+        id: plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          go -C server run ./cmd/verify -repo-root . -plan-unity artifacts/unity-plan.json
+          cat artifacts/unity-plan.json
+          for k in scope editmode playmode visual_review performance graphical_load; do
+            echo "$k=$(jq -r ".$k" artifacts/unity-plan.json)" >> "$GITHUB_OUTPUT"
+          done
+
+      - name: Cache Go build
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            ~\AppData\Local\go-build
+            ~\go\pkg\mod
+          key: go-build-${{ runner.os }}-${{ env.GO_VERSION }}-${{ hashFiles('server/go.sum') }}
+          restore-keys: |
+            go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
+
+      - name: Compute LFS objects key
+        id: lfskey
+        shell: bash
+        run: |
+          set -euo pipefail
+          oids=$(git lfs ls-files --long 2>/dev/null | awk '{print $1}' | sort | sha256sum | cut -d' ' -f1)
+          echo "key=${oids:-empty}" >> "$GITHUB_OUTPUT"
+
+      - name: Cache LFS objects
+        if: steps.plan.outputs.scope == 'full'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: .git/lfs/objects
+          key: lfs-objects-${{ runner.os }}-${{ steps.lfskey.outputs.key }}
+          restore-keys: |
+            lfs-objects-${{ runner.os }}-
+
+      - name: LFS pull
+        if: steps.plan.outputs.scope == 'full'
+        shell: bash
+        run: git lfs pull
+
+      - name: Cache Unity editor
+        id: cache-editor
+        if: steps.plan.outputs.scope == 'full'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/unity-editor
+          key: unity-editor-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}
+
+      - name: Install Unity editor
+        if: steps.plan.outputs.scope == 'full' && steps.cache-editor.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dir = "$env:RUNNER_TEMP\unity-editor"
+          $installer = "$env:RUNNER_TEMP\UnitySetup64.exe"
+          Invoke-WebRequest -Uri $env:UNITY_WINDOWS_EDITOR_URL -OutFile $installer
+          $sha = (Get-FileHash $installer -Algorithm SHA256).Hash.ToLower()
+          if ($sha -ne $env:UNITY_WINDOWS_EDITOR_SHA256) { throw "installer sha256 mismatch: $sha" }
+          & $installer /S /D=$dir | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw "installer exit $LASTEXITCODE" }
+
+      - name: Cache client Library
+        if: steps.plan.outputs.scope == 'full'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: client/Library
+          key: unity-library-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}-${{ hashFiles('client/Packages/manifest.json', 'client/Packages/packages-lock.json', 'client/ProjectSettings/**', 'client/Assets/**/csc.rsp') }}
+
+      - name: Activate Unity licence
+        if: steps.plan.outputs.scope == 'full'
+        shell: pwsh
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          $ulf = "$env:RUNNER_TEMP\Unity_lic.ulf"
+          $uargs = @('-batchmode','-quit','-logFile','artifacts\unity-tests\licence-activation.log')
+          if ($env:UNITY_LICENSE) {
+            [IO.File]::WriteAllText($ulf, $env:UNITY_LICENSE)
+            $uargs += @('-manualLicenseFile', $ulf)
+          } else {
+            $uargs += @('-username', $env:UNITY_EMAIL, '-password', $env:UNITY_PASSWORD)
+            if ($env:UNITY_SERIAL) { $uargs += @('-serial', $env:UNITY_SERIAL) }
+          }
+          New-Item -ItemType Directory -Force artifacts\unity-tests | Out-Null
+          for ($i = 1; $i -le 5; $i++) {
+            & $editor @uargs
+            if ($LASTEXITCODE -eq 0) { Write-Host "licence activated (attempt $i)"; exit 0 }
+            Write-Host "activation attempt $i failed; retry in 60s"
+            Start-Sleep -Seconds 60
+          }
+          throw "licence activation failed after 5 attempts"
+
+      - name: Record editor version
+        if: steps.plan.outputs.scope == 'full'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $pv = Select-String -Path client\ProjectSettings\ProjectVersion.txt -Pattern 'm_EditorVersion: (.+)' | ForEach-Object { $_.Matches[0].Groups[1].Value.Trim() }
+          New-Item -ItemType Directory -Force artifacts\unity-tests | Out-Null
+          "$env:UNITY_EDITOR_VERSION_PIN ($env:UNITY_EDITOR_CHANGESET) project=$pv installer_sha256=$env:UNITY_WINDOWS_EDITOR_SHA256" |
+            Out-File -Encoding ascii artifacts\unity-tests\editor-version.txt
+          if ($pv -ne $env:UNITY_EDITOR_VERSION_PIN) { throw "ProjectVersion $pv != pin $env:UNITY_EDITOR_VERSION_PIN" }
+
+      - name: Materialize client
+        if: steps.plan.outputs.scope == 'full'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          $log = "artifacts\unity-tests\materialize-editor.log"
+          $compileFails = 0
+          for ($i = 1; $i -le 5; $i++) {
+            & $editor -batchmode -quit -projectPath "$PWD\client" -logFile $log
+            if ($LASTEXITCODE -eq 0) { exit 0 }
+            $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+            if ($txt -match 'Scripts have compiler errors|error CS\d+') {
+              $compileFails++
+              if ($compileFails -ge 2) { throw "two consecutive compile-error attempts" }
+              Remove-Item -Recurse -Force client\Library -ErrorAction SilentlyContinue
+              continue  # compile-error retry: immediately, on a clean Library
+            }
+            Start-Sleep -Seconds 60  # licence/infra failure: wait then retry
+          }
+          throw "materialization failed after 5 attempts"
+
+      - name: Run EditMode tests
+        if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.editmode == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          & $editor -batchmode -nographics -runTests -testPlatform EditMode `
+            -projectPath "$PWD\client" `
+            -testResults "$PWD\artifacts\unity-tests\editmode-results.xml" `
+            -logFile "$PWD\artifacts\unity-tests\editmode-editor.log"
+
+      - name: Run PlayMode tests
+        if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.playmode == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          & $editor -batchmode -nographics -runTests -testPlatform PlayMode `
+            -projectPath "$PWD\client" `
+            -testResults "$PWD\artifacts\unity-tests\playmode-results.xml" `
+            -logFile "$PWD\artifacts\unity-tests\playmode-editor.log"
+
+      - name: Run Performance tests (D3D11 WARP)
+        if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.performance == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          & $editor -batchmode -force-d3d11 -runTests -testPlatform EditMode -testCategory Performance `
+            -projectPath "$PWD\client" `
+            -testResults "$PWD\artifacts\unity-tests\performance-results.xml" `
+            -logFile "$PWD\artifacts\unity-tests\performance-editor.log"
+
+      - name: Run Visual Review (D3D11 WARP)
+        if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.visual_review == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          & $editor -batchmode -force-d3d11 -runTests -testPlatform EditMode -testCategory VisualReview `
+            -projectPath "$PWD\client" `
+            -testResults "$PWD\artifacts\unity-tests\visualreview-results.xml" `
+            -logFile "$PWD\artifacts\unity-tests\visualreview-editor.log"
+
+      - name: Drift check (unity-materialized)
+        id: drift
+        if: steps.plan.outputs.scope == 'full'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          # m_currentHash.Hash sole-diff exemption on AddressableAssetSettings.asset
+          $f = 'client/Assets/AddressableAssetsData/AddressableAssetSettings.asset'
+          if (Test-Path $f) {
+            $d = git diff -- $f
+            $changed = ($d | Select-String '^[+-]').Line | Where-Object { $_ -notmatch '^(\+\+\+|---)' }
+            if ($changed -and ($changed | Where-Object { $_ -notmatch 'm_currentHash' }).Count -eq 0) {
+              git checkout -- $f
+            }
+          }
+          $dirty = git status --porcelain -- client/
+          if ($dirty) {
+            $dirty | Out-Host
+            Write-Host "::error::commit unity-materialized"
+            echo "changed=true" >> "$env:GITHUB_OUTPUT"
+            exit 1
+          }
+          echo "changed=false" >> "$env:GITHUB_OUTPUT"
+
+      - name: Upload unity-materialized-windows
+        if: failure() && steps.drift.outputs.changed == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: unity-materialized-windows
+          path: client/
+
+      - name: Upload unity-test-results-windows
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: unity-test-results-windows
+          path: artifacts/unity-tests/
+
+      - name: Upload visual-review
+        if: always() && hashFiles('artifacts/visual-review/**') != ''
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: visual-review
+          path: artifacts/visual-review/
+
+      - name: Return Unity licence
+        if: always()
+        shell: pwsh
+        run: |
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          if (Test-Path $editor) {
+            $j = Start-Job { & $using:editor -batchmode -quit -returnlicense }
+            if (-not ($j | Wait-Job -Timeout 90)) { $j | Stop-Job }
+          }
+
+  verify-windows:
+    name: Q0-Q6 verify (Windows)
+    runs-on: windows-2022
+    timeout-minutes: 120
+    steps:
+      - name: Fork guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "${{ github.event_name }}" in
+            pull_request|pull_request_target)
+              if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+                echo "external PRs not accepted" >&2
+                exit 1
+              fi
+              ;;
+          esac
+
+      - name: Freeze check
+        shell: bash
+        env:
+          FROZEN: ${{ vars.AUTO_MERGE_FROZEN }}
+        run: |
+          set -euo pipefail
+          if [ "${FROZEN:-false}" = "true" ]; then
+            case "${{ github.head_ref || github.ref_name }}" in
+              revert/*|ops/*) exit 0 ;;
+            esac
+            echo "AUTO_MERGE_FROZEN is set" >&2
+            exit 1
+          fi
+
+      - name: Install pinned CLI tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/tools/bin"
+          curl -fsSL -o "$RUNNER_TEMP/pwsh.zip" \
+            "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip"
+          echo "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860  $RUNNER_TEMP/pwsh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/pwsh" && tar -xf "$RUNNER_TEMP/pwsh.zip" -C "$RUNNER_TEMP/tools/pwsh"
+          curl -fsSL -o "$RUNNER_TEMP/gh.zip" \
+            "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_windows_amd64.zip"
+          echo "bc6c814367b193cd8e713611d61e36013c0ef843b8f516458fe3eda039192794  $RUNNER_TEMP/gh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/gh" && tar -xf "$RUNNER_TEMP/gh.zip" -C "$RUNNER_TEMP/tools/gh"
+          cp "$RUNNER_TEMP/tools/gh/gh_2.101.0_windows_amd64/bin/gh.exe" "$RUNNER_TEMP/tools/bin/gh.exe"
+          curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq.exe" \
+            "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-windows-amd64.exe"
+          echo "a6fc67fedaf9128a3309a1e2ebb8b986aeccf70122ee46d2cb4849e423f0c627  $RUNNER_TEMP/tools/bin/jq.exe" | sha256sum -c -
+          curl -fsSL -o "$RUNNER_TEMP/lfs.zip" \
+            "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-windows-amd64-v3.8.0.zip"
+          echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/lfs" && tar -xf "$RUNNER_TEMP/lfs.zip" -C "$RUNNER_TEMP/tools/lfs"
+          cp "$RUNNER_TEMP/tools/lfs/git-lfs-3.8.0/git-lfs.exe" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          lfs: false
+          fetch-depth: 0
+
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: '1.27.1'
+          cache: false
+
+      - name: Resolve pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root . -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "EDB_ZIP_SHA256=$(go -C server run ./cmd/verify -repo-root . -print-pin edb-sha256)" >> "$GITHUB_ENV"
+          echo "EDB_URL=$(go -C server run ./cmd/verify -repo-root . -print-pin edb-url)" >> "$GITHUB_ENV"
+
+      - name: Cache Go build
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            ~\AppData\Local\go-build
+            ~\go\pkg\mod
+          key: go-build-${{ runner.os }}-${{ env.GO_VERSION }}-${{ hashFiles('server/go.sum') }}
+          restore-keys: |
+            go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
+
+      - name: Cache EDB Postgres
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: tools/pgsql
+          key: edb-${{ runner.os }}-${{ env.EDB_ZIP_SHA256 }}
+
+      - name: Install protoc
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL -o "$RUNNER_TEMP/protoc.zip" \
+            "https://github.com/protocolbuffers/protobuf/releases/download/v36.2/protoc-36.2-win64.zip"
+          mkdir -p "$RUNNER_TEMP/protoc" && tar -xf "$RUNNER_TEMP/protoc.zip" -C "$RUNNER_TEMP/protoc"
+          echo "$RUNNER_TEMP/protoc/bin" >> "$GITHUB_PATH"
+          protoc --version | grep -F "libprotoc 36.2"
+
+      - name: Install staticcheck
+        shell: bash
+        run: go install honnef.co/go/tools/cmd/staticcheck@v0.8.1
+
+      - name: Pre-Unity verify
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          pwsh -NoProfile -File scripts/verify.ps1 -Phase pre-unity -ReportOut "$env:RUNNER_TEMP\verify-pre-unity.json"
+
+      - name: Wait for Unity (Windows)
+        id: wait-unity
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WAIT_JOB: Unity (Windows)
+        run: bash .devin/scripts/wait_job.sh
+
+      - name: Check Unity (Windows) conclusion
+        shell: bash
+        run: |
+          set -euo pipefail
+          [ "${{ steps.wait-unity.outputs.conclusion }}" = "success" ]
+
+      - name: Download unity-test-results-windows
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: unity-test-results-windows
+          path: unity-results/
+
+      - name: Unity phase verify
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -File scripts/verify.ps1 -Phase unity `
+            -PreReport "$env:RUNNER_TEMP\verify-pre-unity.json" `
+            -UnityResultsDir unity-results `
+            -ReportOut artifacts/verify-report-windows.json
+
+      - name: Upload verify-report-windows
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: verify-report-windows
+          path: artifacts/verify-report-windows.json
+
+      - name: Wait for Q0-Q6 verify (Linux)
+        id: wait-linux
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WAIT_JOB: Q0-Q6 verify (Linux)
+        run: bash .devin/scripts/wait_job.sh
+
+      - name: Check Q0-Q6 verify (Linux) conclusion
+        shell: bash
+        run: |
+          set -euo pipefail
+          [ "${{ steps.wait-linux.outputs.conclusion }}" = "success" ]
+
+      - name: Download verify-report-linux
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: verify-report-linux
+          path: linux-report/
+
+      - name: Merge evidence
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -File scripts/verify.ps1 -MergeReports `
+            -LinuxReport linux-report/verify-report-linux.json `
+            -WindowsReport artifacts/verify-report-windows.json `
+            -OutManifest artifacts/evidence/manifest.json
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: evidence
+          path: artifacts/evidence/
+
+  verify-linux:
+    name: Q0-Q6 verify (Linux)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    services:
+      postgres:
+        image: postgres:18.6@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      THINHTHAN_TEST_PG_DSN: postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
+    steps:
+      - name: Fork guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "${{ github.event_name }}" in
+            pull_request|pull_request_target)
+              if [ "${{ github.event.pull_request.head.repo.full_name }}" != "${{ github.repository }}" ]; then
+                echo "external PRs not accepted" >&2
+                exit 1
+              fi
+              ;;
+          esac
+
+      - name: Freeze check
+        shell: bash
+        env:
+          FROZEN: ${{ vars.AUTO_MERGE_FROZEN }}
+        run: |
+          set -euo pipefail
+          if [ "${FROZEN:-false}" = "true" ]; then
+            case "${{ github.head_ref || github.ref_name }}" in
+              revert/*|ops/*) exit 0 ;;
+            esac
+            echo "AUTO_MERGE_FROZEN is set" >&2
+            exit 1
+          fi
+
+      - name: Install pinned CLI tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/tools/bin"
+          curl -fsSL -o "$RUNNER_TEMP/pwsh.tgz" \
+            "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/powershell-7.6.6-linux-x64.tar.gz"
+          echo "ddbc4a2d113bbd46d283cfedcbcd117a70caefd7673f41f2b4e0000badf103bc  $RUNNER_TEMP/pwsh.tgz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/pwsh" && tar -xzf "$RUNNER_TEMP/pwsh.tgz" -C "$RUNNER_TEMP/tools/pwsh"
+          curl -fsSL -o "$RUNNER_TEMP/gh.tgz" \
+            "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_linux_amd64.tar.gz"
+          echo "9bca2d1c16825f109907a23307628a2f0698fbf99662b73a5cf0b020293072b8  $RUNNER_TEMP/gh.tgz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/gh" && tar -xzf "$RUNNER_TEMP/gh.tgz" -C "$RUNNER_TEMP/tools/gh"
+          cp "$RUNNER_TEMP/tools/gh/gh_2.101.0_linux_amd64/bin/gh" "$RUNNER_TEMP/tools/bin/gh"
+          curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq" \
+            "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-linux-amd64"
+          echo "b1c22172dd303f3be49e935aa56aa48a8b7a46e0bc838b4997d3bb451495870f  $RUNNER_TEMP/tools/bin/jq" | sha256sum -c -
+          chmod +x "$RUNNER_TEMP/tools/bin/jq"
+          curl -fsSL -o "$RUNNER_TEMP/lfs.tgz" \
+            "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-linux-amd64-v3.8.0.tar.gz"
+          echo "e455e00f15d9b95661b8d53498ffb0c3367962cf1ec73c31ab7369516cd6ab8d  $RUNNER_TEMP/lfs.tgz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/lfs" && tar -xzf "$RUNNER_TEMP/lfs.tgz" -C "$RUNNER_TEMP/tools/lfs"
+          cp "$RUNNER_TEMP/tools/lfs/git-lfs-3.8.0/git-lfs" "$RUNNER_TEMP/tools/bin/git-lfs"
+          chmod +x "$RUNNER_TEMP/tools/bin/"*
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          lfs: false
+          fetch-depth: 0
+
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: '1.27.1'
+          cache: false
+
+      - name: Resolve pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root . -print-pin go-version)" >> "$GITHUB_ENV"
+
+      - name: Cache Go build
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: go-build-${{ runner.os }}-${{ env.GO_VERSION }}-${{ hashFiles('server/go.sum') }}
+          restore-keys: |
+            go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
+
+      - name: Install protoc
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL -o "$RUNNER_TEMP/protoc.zip" \
+            "https://github.com/protocolbuffers/protobuf/releases/download/v36.2/protoc-36.2-linux-x86_64.zip"
+          mkdir -p "$RUNNER_TEMP/protoc" && unzip -q "$RUNNER_TEMP/protoc.zip" -d "$RUNNER_TEMP/protoc"
+          echo "$RUNNER_TEMP/protoc/bin" >> "$GITHUB_PATH"
+          protoc --version | grep -F "libprotoc 36.2"
+
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@v0.8.1
+
+      - name: Verify
+        shell: pwsh
+        run: pwsh -NoProfile -File scripts/verify.ps1 -ReportOut artifacts/verify-report-linux.json
+
+      - name: Upload verify-report-linux
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: verify-report-linux
+          path: artifacts/verify-report-linux.json
