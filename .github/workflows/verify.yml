@@ -180,11 +180,11 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
-          $ulf = "$env:RUNNER_TEMP\Unity_lic.ulf"
           $uargs = @('-batchmode','-quit','-logFile','artifacts\unity-tests\licence-activation.log')
           if ($env:UNITY_LICENSE) {
-            [IO.File]::WriteAllText($ulf, $env:UNITY_LICENSE)
-            $uargs += @('-manualLicenseFile', $ulf)
+            $lic = "$env:ProgramData\Unity\Unity_lic.ulf"
+            New-Item -ItemType Directory -Force (Split-Path $lic) | Out-Null
+            [IO.File]::WriteAllText($lic, $env:UNITY_LICENSE)
           } else {
             $uargs += @('-username', $env:UNITY_EMAIL, '-password', $env:UNITY_PASSWORD)
             if ($env:UNITY_SERIAL) { $uargs += @('-serial', $env:UNITY_SERIAL) }
@@ -330,6 +330,7 @@ jobs:
         shell: pwsh
         run: |
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          Remove-Item "$env:ProgramData\Unity\Unity_lic.ulf" -Force -ErrorAction SilentlyContinue
           if (Test-Path $editor) {
             $j = Start-Job { & $using:editor -batchmode -quit -returnlicense }
             if (-not ($j | Wait-Job -Timeout 90)) { $j | Stop-Job }
