@@ -82,11 +82,14 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
         {
             var player = ReadAsset("ProjectSettings.asset");
             AssertContains(player, "gcIncremental: 1", "incremental GC");
-            AssertContains(player, "optimizeFramePacing: 1", "Android Optimized Frame Pacing");
+            AssertContains(
+                player,
+                "androidUseSwappy: 1",
+                "Android Optimized Frame Pacing (androidUseSwappy serialization)");
             var physics2d = ReadAsset("Physics2DSettings.asset");
-            StringAssert.IsMatch(
-                @"simulationMode: 2",
+            AssertContains(
                 physics2d,
+                "m_SimulationMode: " + (int)UnityEditor.SimulationMode2D.Script,
                 "Physics2D simulationMode = Script");
         }
     }
