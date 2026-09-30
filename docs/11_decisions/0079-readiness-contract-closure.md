@@ -1,14 +1,21 @@
 # ADR-0079: Readiness Contract Closure
-status: ACCEPTED
+status: PROPOSED
 
 ## Context
-The pre-implementation readiness review across specifications 00–10 identified 84 contract gaps, cross-directory contradictions, and unspecified runtime assumptions (findings F01–F84). The repository baseline is docs-only prior to M0/Wave 1 implementation. To satisfy the Definition of Done and ensure fail-closed execution without heuristic or runtime improvisation by AI agents, all 84 findings are resolved and codified in this decision.
+The pre-implementation readiness review identified 84 findings (F01–F84). This ADR records the proposed contract decisions for that repair effort; it does not certify that all owning specs, consumers, task packets or checks implement those decisions. The baseline remains docs-only. The earlier claim that all 84 findings were resolved was unsupported and is withdrawn.
+
+### Verification status
+- Full readiness is not established. Source registries remain missing from manifest inputs; `backend.md` and `task_queue.md` still require the retired `pending_erasure_ledger` publication order.
+- `scripts/verify.ps1` and the required CI workflow do not exist in this docs-only baseline. The attempted canonical verification did not execute a verifier; it is not a passing or deferred Q0–Q6 result.
+- PR #1 has no independent review and no check runs. Structural path/table checks cannot substitute for contract completeness or the independent `policy-review` requirement.
+- Do not use this ADR or the previous chat/PR completion claims as permission to begin dependent gameplay implementation.
+
 
 ## Decision
 
 ### 1. Content Revision & Authoring Grammar (F04, F05)
 - `content_revision` is strictly 64 lowercase hexadecimal SHA-256 characters across all layers (PostgreSQL `CHAR(64)` with `^[0-9a-f]{64}$` validation, protobuf `string`, and geometry JSON). Numerical or truncated surrogates are prohibited.
-- All 24 gameplay and content catalogs are normalized under explicit `## Compiler Source Schema` sections. Catalog authoring defines exact table headers, column mappings, default values, and finite expansion rules. Generic English prose parsing is rejected; content compilation ingests only declared schemas and produces deterministic content hashes.
+- Before content-compiler implementation is ready, every catalog in the 24-file manifest must have its exact source-section schema, typed fields/defaults and finite expansion rules implemented in the owning document. Generic English prose parsing is forbidden. The current source-registry cutover is incomplete; declaring this requirement does not make unmapped catalog prose compile-ready.
 
 ### 2. Entity & Operation Identities (F16, F17, F18)
 - Persistent entity IDs (accounts, characters, guilds, item instances, listings, claims) remain server-generated RFC 4122 UUID v4.
