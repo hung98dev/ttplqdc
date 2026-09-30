@@ -34,7 +34,7 @@ Tài liệu này đảm bảo hai AI agent triển khai các task persistence đ
 Chưa có migration nào tồn tại. IMP-005 tạo baseline `server/migrations/000001_baseline_schema.up.sql` và snapshot `server/migrations/schema_snapshot.sql`; baseline tạo **mọi bảng khai báo trong `data_model.md`** (kể cả `characters.updated_at`); danh sách dưới đây là các bảng cần lưu ý đặc biệt về kiểu dữ liệu/ràng buộc, không phải danh sách giới hạn:
 
 1. `accounts` — Tài khoản người chơi, trạng thái `ACTIVE`, `SUSPENDED_PAYMENT_RECONCILIATION`, `BANNED`, `PENDING_DELETION`, `TOMBSTONE_ERASED`; không có cột điểm hoàn tiền IAP (điểm được suy ra từ `account_refund_consumed_events` trong 180 ngày, ADR-0060). Baseline chèn sẵn hàng `TOMBSTONE_ACCOUNT_ID` (`data_model.md`, ADR-0065); cột `erased_at`, `erasure_started_at`, `credential_guard_until`, `economy_review_flagged_at`.
-   `erasure_intents` — Khởi tạo ý định xóa tài khoản (ADR-0079; thay thế `pending_erasure_ledger`), PK `operation_id UUID`, `account_id UUID NULL`, `account_id_hash BYTEA NOT NULL`, `prepared_at TIMESTAMPTZ`, `completed_at TIMESTAMPTZ NULL`.
+   `erasure_intents` — Khởi tạo ý định xóa tài khoản (ADR-0079), PK `operation_id UUID`, `account_id UUID NULL`, `account_id_hash BYTEA NOT NULL`, `prepared_at TIMESTAMPTZ`, `completed_at TIMESTAMPTZ NULL`; constraints và indexes theo `data_model.md` § Account Erasure.
 2. `account_identities` — Liên kết OAuth bên thứ ba (Apple, Google, Steam), PK `(provider_id, provider_subject)`, ràng buộc `ON DELETE RESTRICT`; `account_login_history` — tín hiệu đăng nhập 90 ngày (ADR-0065).
    `account_password_credentials` — Username/email/Argon2id hash cho provider `password` (ADR-0051); `UNIQUE(username_key)`, `UNIQUE(email_key)`.
 3. `characters` — Nhân vật người chơi (tối đa 3 nhân vật, cấp 1..60, tên định danh duy nhất `name_key`); `current_exp INTEGER`, `created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()` và `updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()`. `updated_at` chỉ ghi lần sửa gần nhất của chính hàng `characters`, theo `data_model.md`.
@@ -44,7 +44,7 @@ Chưa có migration nào tồn tại. IMP-005 tạo baseline `server/migrations/
 6. `item_instances` & `item_locations` — Thực thể vật phẩm, cấp cường hóa 0..16, và vị trí duy nhất.
 7. `account_iap_entitlements` & `account_refund_consumed_events` — Quyền sở hữu IAP (`grant_state` gồm `REJECTED` kèm `reject_reason`, cột `platform`) và nhật ký sự kiện hoàn tiền trong cửa sổ 180 ngày.
 8. `economy_account_daily_rollups` & `economy_character_daily_rollups` — Bảng tổng hợp luồng tiền và khối lượng giao dịch đối tác (`trade_partner_volumes`).
-9. `world_consequence_relics` & `region_di_tich_markers` — Trạng thái thế giới sau khi diệt boss Di Tích (khóa `(map_id, channel_id, relic_id)`; partial index `(relic_id) WHERE relic_active`).
+9. `world_consequence_relics` & `region_di_tich_markers` — Trạng thái thế giới sau khi diệt boss Di Tích (khóa `(map_id, channel_id, relic_id)`; partial indexes `(relic_id, expires_at) WHERE relic_active = true` và `(expires_at) WHERE relic_active = true`, theo `data_model.md`).
 10. `rate_limit_counters` & `auth_failure_backoff` — Bộ đếm giới hạn tần suất L2 (cửa sổ trượt 2 cửa sổ) và backoff lũy tiến đăng nhập sai trên PostgreSQL (không dùng Redis; schema: `../07_security/external_integrations.md` § 3, ADR-0064).
 11. `iap_notification_dedup` — Chống xử lý trùng lặp thông báo Apple/Google/Steam, PK `(provider, notification_key)`; `iap_provider_cursors` — con trỏ GetReport của Steam.
 12. `audit_events` — Nhật ký kiểm toán an ninh và truy vết thao tác.

@@ -19,8 +19,8 @@ The round-2 network/data/security review found that the erasure transaction coul
 - Env vars required in `../07_security/external_integrations.md`: `ERASURE_LEDGER_SALT`, `ACCOUNT_SIGNAL_SALT`, `BACKUP_STORAGE_URL`, `BACKUP_STORAGE_CREDENTIALS_FILE`.
 - Packets: IMP-005 (baseline), IMP-006, IMP-010, IMP-022, IMP-030, IMP-036, IMP-053, IMP-054, IMP-056, IMP-100.
 
-## Amendment (ADR-0070)
-Erasure ledger entries are written as `pending_erasure_ledger` rows inside the erasure transaction and PUT by a sweeper as `erasure-ledger/<operation_id>.json`; erasure takes its lock set in priority order and has a `LEDGER_REPLAY` mode; the refund score suspends only `ACTIVE` accounts (`../06_data/data_model.md` § Account Erasure).
+## Amendment (ADR-0070; publication order superseded by ADR-0079)
+Erasure uses the staged intent, external publication/verification and destructive transaction defined in `../06_data/data_model.md` § Account Erasure; object representation and restore coverage are canonical in `../08_scale_ops/backup_recovery.md` § Erasure Ledger. The whole destructive lock set follows priority order; `LEDGER_REPLAY` and the ACTIVE-only refund-score rule remain as amended.
 
 ## Amendment (schema completion: social and competitive tables)
 Typed schemas for `friends`, `friend_requests`, `blocks`, `character_chivalry`, `pvp_ratings`, `pvp_match_settlements`, `pvp_sanctions`, `guild_war_ratings` and `guild_war_settlements` (`../06_data/data_model.md` § Social / Party, § PvP / Guild War); caps of 100 outgoing pending friend requests and 500 blocks (`../03_systems/social.md`, `CAPACITY_FULL` on messages 611/617/654); retention in `../07_security/personal_data_register.md` Category G; `character_chivalry` locks at priority 2 (`../06_data/database.md`). Packets: IMP-034, IMP-040, IMP-041, IMP-042, IMP-086.

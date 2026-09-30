@@ -118,7 +118,7 @@ Critical examples:
 - backup/PITR failure,
 - `world_consequence_load_failed`: WorldConsequence rows of a partition unreadable, quarantined (unknown content ID) or over `WORLD_CONSEQUENCE_LOAD_TIMEOUT` at partition start (zero rows is valid; only that partition stays closed),
 - `shutdown_flush_timeout` (durable outbox journal written) and `durable_outbox_corrupt` (startup stopped; `deployment.md` § Durable Outbox Journal),
-- `erasure_ledger_backlog`: a `pending_erasure_ledger` row older than 24 h (`../06_data/data_model.md` § Account Erasure),
+- `erasure_ledger_backlog`: an `erasure_intents` row with `completed_at IS NULL` and `prepared_at` older than 24 h (`../06_data/data_model.md` § Account Erasure),
 - Spirit Surge coordination failure for 2+ consecutive hours,
 - error budget burn rate > 10x over 1 hour for any SLO below,
 - `DURABLE_BACKPRESSURE` active on any partition > 60s.

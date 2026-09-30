@@ -5,9 +5,9 @@ status: PROPOSED
 The pre-implementation readiness review identified 84 findings (F01–F84). This ADR records the proposed contract decisions for that repair effort; it does not certify that all owning specs, consumers, task packets or checks implement those decisions. The baseline remains docs-only. The earlier claim that all 84 findings were resolved was unsupported and is withdrawn.
 
 ### Verification status
-- Full readiness is not established. Source registries remain missing from manifest inputs; `backend.md` and `task_queue.md` still require the retired `pending_erasure_ledger` publication order.
+- Full readiness is not established. Source registries remain missing from manifest inputs; the complete privacy inventory and other F01–F84 consumers still require review. Aligning the legacy erasure consumers below is not proof that every finding is closed.
 - `scripts/verify.ps1` and the required CI workflow do not exist in this docs-only baseline. The attempted canonical verification did not execute a verifier; it is not a passing or deferred Q0–Q6 result.
-- PR #1 has no independent review and no check runs. Structural path/table checks cannot substitute for contract completeness or the independent `policy-review` requirement.
+- No independent contract review or Q0–Q6 pass has been established for this repair set. Owner-authorized docs-only publication is not implementation evidence or a `policy-review` approval.
 - Do not use this ADR or the previous chat/PR completion claims as permission to begin dependent gameplay implementation.
 
 
@@ -91,6 +91,16 @@ The pre-implementation readiness review identified 84 findings (F01–F84). This
   - ADR-0050, ADR-0058, ADR-0072, ADR-0078: CI cancellation rules for PR targets; gRPC transitive exception for OTel HTTP exporters; elimination of Linux kill-probe.
   - ADR-0065, ADR-0070: Format v2 PREPARED erasure ledger publication order; client UUID v7 operation IDs with 180-day replay horizon and 60s future skew.
 
+
+- **Erasure consumer search**: `pending_erasure_ledger|erasure_intents|PREPARED|erasure-ledger|erasure ledger|erasure_ledger` across `docs/`, plus owning privacy specs. Exact consumer set:
+  - `docs/04_architecture/service_boundaries.md`
+  - `docs/06_data/data_model.md`, `docs/06_data/database.md`, `docs/06_data/physical_schema_contract.md`
+  - `docs/07_security/auth.md`, `docs/07_security/external_integrations.md`, `docs/07_security/personal_data_register.md`, `docs/07_security/data_protection.md`
+  - `docs/08_scale_ops/backup_recovery.md`, `docs/08_scale_ops/observability.md`
+  - `docs/09_testing/backend.md`
+  - `docs/10_implementation/audit_gates.md`, `docs/10_implementation/spec_traceability.md`, `docs/10_implementation/task_queue.md`
+  - `docs/11_decisions/0065-data-schema-completion-and-erasure-retention.md`, `docs/11_decisions/0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `docs/11_decisions/0079-readiness-contract-closure.md`, `docs/11_decisions/README.md`
+
 - **Specs updated**:
   - `AGENTS.md`
   - `docs/00_context/glossary.md`
@@ -98,12 +108,12 @@ The pre-implementation readiness review identified 84 findings (F01–F84). This
   - `docs/01_gameplay/classes.md`, `skills.md`, `stats.md`
   - `docs/02_world/bosses.md`, `spawning.md`, `world_rules.md`
   - `docs/03_systems/atlas.md`, `cosmetics.md`, `crafting.md`, `equipment.md`, `guild.md`, `guild_progression.md`, `monetization.md`, `reward_claims.md`, `seasons.md`, `soul_contracts.md`, `trading_auction.md`
-  - `docs/04_architecture/client.md`, `client_assets.md`, `client_experience_contract.md`, `client_performance.md`, `physics_geometry_contract.md`
+  - `docs/04_architecture/client.md`, `client_assets.md`, `client_experience_contract.md`, `client_performance.md`, `physics_geometry_contract.md`, `service_boundaries.md`
   - `docs/05_network/errors.md`, `messages.md`, `protocol.md`, `synchronization.md`
   - `docs/06_data/config.md`, `content_authoring_contract.md`, `data_model.md`, `database.md`, `ids.md`, `physical_schema_contract.md`, `save_rules.md`
   - `docs/07_content/README.md`, `balance_validation.md`, `class_skill_catalog.md`, `drop_tables.md`, `equipment_catalog.md`, `item_catalog.md`, `map_spawn_catalog.md`, `monster_catalog.md`, `presentation_asset_manifest.md`, `progression_route.md`, `quest_catalog.md`, `soul_catalog.md`, `world_event_catalog.md`
   - `docs/07_security/anti_cheat.md`, `auth.md`, `external_integrations.md`, `rate_limits.md`, `session.md`, `validation.md`
-  - `docs/08_scale_ops/backup_recovery.md`, `deployment.md`
-  - `docs/09_testing/gameplay.md`, `test_and_release_evidence.md`
+  - `docs/08_scale_ops/backup_recovery.md`, `deployment.md`, `observability.md`
+  - `docs/09_testing/backend.md`, `gameplay.md`, `test_and_release_evidence.md`
   - `docs/10_implementation/architecture_conformance.md`, `audit_gates.md`, `engineering_conventions.md`, `milestones.md`, `repository_layout.md`, `task_queue.md`
   - `.devin/HANDBOOK.md`, `config.json`, `agents/*`, `rules/*`, `scripts/*`, `skills/*`

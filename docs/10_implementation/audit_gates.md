@@ -49,7 +49,8 @@ art tool           Direct AI Generation is the owner-approved route, not proof o
 backup storage     one S3-compatible bucket for the pgBackRest 2.59.1 repo1 and the `erasure-ledger/` prefix, configured
                    exactly per ../08_scale_ops/backup_recovery.md § Backup Storage Configuration: world host
                    `BACKUP_STORAGE_URL` (s3://bucket/prefix?region=&endpoint=) + `BACKUP_STORAGE_CREDENTIALS_FILE` (two lines
-                   access_key_id / secret_access_key, key limited to PUT under <prefix>/erasure-ledger/); PostgreSQL host
+                   access_key_id / secret_access_key, key limited to conditional PUT + GET + LIST under <prefix>/erasure-ledger/,
+                   no overwrite or DELETE; PostgreSQL host
                    `PGBACKREST_REPO1_S3_KEY`, `PGBACKREST_REPO1_S3_KEY_SECRET`, `PGBACKREST_REPO1_CIPHER_PASS`; production
                    host environment only, never GitHub secrets; required before IMP-047 (ADR-0066, ADR-0070)
 ```

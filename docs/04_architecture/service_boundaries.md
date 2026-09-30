@@ -143,7 +143,7 @@ Do not shard durable data merely because simulation is partitioned. PostgreSQL s
 - No synchronous DB work per simulation entity per tick.
 - Cross-boundary communication is typed and bounded.
 - WorldConsequence is a named durable aggregate owned by Application/Durable Domain.
-- Durable Domain owns the world-scoped relic expiry sweep (60 s), the erasure ledger sweeper and the durable outbox journal replay at start (ADR-0070); running partitions still expire their own relics.
+- Durable Domain owns the world-scoped relic expiry sweep (60 s), the staged erasure worker (`../06_data/data_model.md` § Account Erasure; ADR-0079) and the durable outbox journal replay at start (ADR-0070); running partitions still expire their own relics.
 - Spirit Surge region scheduling is owned by Ephemeral Global Runtime; simulation partitions never self-select.
 - Spirit Surge maximum 3 concurrent regions is enforced by the single-writer scheduler, not by individual partitions.
 - One kill settlement = one PostgreSQL transaction covering all output aggregates; idempotency record stores all granted outputs.

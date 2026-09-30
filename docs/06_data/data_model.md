@@ -570,6 +570,7 @@ common_sent_by_counterpart             BIGINT NOT NULL       -- CHECK (>= 0)
 trade_id                               UUID NOT NULL UNIQUE  -- wire trade_id of the runtime session (no FK; not persisted)
 settlement_operation_id                UUID NOT NULL         -- operations key of the settlement
 item_transfers                         JSONB NOT NULL DEFAULT '[]'::jsonb  -- array of {source_character_id, receiver_character_id, item_id, quantity}
+```
 
 ### Indexing Requirements
 Raw settled records must support bounded rolling-window lookups without full table scans. Required indexes:
