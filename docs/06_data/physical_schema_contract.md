@@ -102,7 +102,7 @@ Chưa có migration nào tồn tại. IMP-005 tạo baseline `server/migrations/
    - Tuyệt đối không sửa đổi nội dung của một file migration đã merge vào nhánh chính.
    - Mọi thay đổi schema mới (thêm cột, đổi index) bắt buộc phải là một cặp file migration mới có số thứ tự tăng dần tiếp theo.
 5. **Schema Snapshot & Drift Test:**
-   - File snapshot toàn bộ cấu trúc DB: `server/migrations/schema_snapshot.sql`.
+   - File snapshot toàn bộ cấu trúc DB: `server/migrations/schema_snapshot.sql` — snapshot hợp đồng, không phải numbered migration (exempt khỏi quy ước `NNNNNN_*.{up,down}.sql`).
    - Trong CI, lệnh verify sẽ áp dụng toàn bộ migration vào PostgreSQL test rỗng, chạy `pg_dump --schema-only` và so sánh diff với `schema_snapshot.sql`. Lệch diff = fail CI.
 
 ## Invariants

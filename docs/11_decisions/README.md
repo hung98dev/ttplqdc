@@ -66,10 +66,10 @@ Use `docs/templates/adr.md`.
 | 0052 | Single Launch World | ACCEPTED |
 | 0053 | Durable Data Contract Reconciliation | ACCEPTED |
 | 0054 | Wire Message Completion | ACCEPTED |
-| 0055 | 2x Texture Authoring and Cutout Quality Gate _(amended by ADR-0071)_ | ACCEPTED |
-| 0056 | Volumetric Art Direction and URP 2D Lighting _(amended by ADR-0071)_ | ACCEPTED |
+| 0055 | 2x Texture Authoring and Cutout Quality Gate _(amended by ADR-0071, ADR-0076)_ | ACCEPTED |
+| 0056 | Volumetric Art Direction and URP 2D Lighting _(amended by ADR-0071, ADR-0076)_ | ACCEPTED |
 | 0057 | Bootstrap, Trusted CI, Evidence Identity and Merge Mechanics _(amended by ADR-0058, ADR-0068, ADR-0072)_ | ACCEPTED |
-| 0058 | Public Repository on GitHub-Hosted Linux and Windows Runners _(amended by ADR-0072)_ | ACCEPTED |
+| 0058 | Public Repository on GitHub-Hosted Linux and Windows Runners _(amended by ADR-0072, ADR-0073, ADR-0075)_ | ACCEPTED |
 | 0059 | Client Smoothness by Construction and Machine-Enforced Code Quality | ACCEPTED |
 | 0060 | Wire and Durable Contract Completion for Gameplay, World and Systems _(amended by ADR-0062)_ | ACCEPTED |
 | 0061 | World Lifecycle and Content Reconciliation _(amended by ADR-0062)_ | ACCEPTED |
@@ -79,8 +79,14 @@ Use `docs/templates/adr.md`.
 | 0065 | Data Schema Completion, Erasure and Retention _(amended by ADR-0070)_ | ACCEPTED |
 | 0066 | Measurable Client Gates, Forced-Cap Worst Case, Drain and Operations Stack _(amended by ADR-0070)_ | ACCEPTED |
 | 0067 | _Number not used; never assign_ | — |
-| 0068 | Implementation Packet Readiness Corrections _(amended by ADR-0072)_ | ACCEPTED |
+| 0068 | Implementation Packet Readiness Corrections _(amended by ADR-0072, ADR-0075)_ | ACCEPTED |
 | 0069 | Session Continuity, Auth Hardening and Wire Corrections | ACCEPTED |
 | 0070 | Durable Restart Safety, Relic Expiry, Erasure Ledger and Entity Class Budgets | ACCEPTED |
 | 0071 | Client Presentation Contract Reconciliation | ACCEPTED |
-| 0072 | Executable Merge Pipeline for AI Agents | ACCEPTED |
+| 0072 | Executable Merge Pipeline for AI Agents _(amended by ADR-0073, ADR-0075)_ | ACCEPTED |
+| 0073 | CI Speed — Native Unity on Windows and Path-Scoped Unity Gates _(amended by ADR-0077)_ | ACCEPTED |
+| 0074 | Localization Addressables Group Integration | ACCEPTED |
+| 0075 | Parallel Unity Jobs, Planned Unity Modes, In-Job Evidence and Pro Concurrency _(amended by ADR-0077)_ | ACCEPTED |
+| 0076 | AI Art Pipeline — Consistency, Animation and Gate Corrections | ACCEPTED |
+| 0077 | CI Critical Path — Cheap Unity Retries, Fail-Fast Verdicts, Overlapped Image Pull and Two-Phase Verifier | ACCEPTED |
+

@@ -15,6 +15,7 @@ Canonical: `docs/06_data/migrations.md`, `database.md`, `physical_schema_contrac
 - Layout: `NNNNNN_snake_case.up.sql` + `.down.sql` pairs; six-digit, monotonic, each number used once.
 - Immutable once applied/committed — corrections are new migrations, never edits.
 - Directory: `server/migrations/`; `000001_baseline_schema` (owned by IMP-005) contains every table in `docs/06_data/data_model.md`.
+- `server/migrations/schema_snapshot.sql` is the contract pg_dump snapshot (`physical_schema_contract.md` § Schema Snapshot), not a numbered migration — the only exempt file in that directory.
 
 ## Change discipline
 

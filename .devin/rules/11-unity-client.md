@@ -17,7 +17,7 @@ Canonical: `engineering_conventions.md` §2, `04_architecture/client.md`, `04_ar
 ## Style
 
 - Allman braces, 4 spaces. PascalCase types/methods, camelCase locals/params, `_camelCase` private fields. C# 9.0 language level — do not use newer syntax.
-- `csc.rsp` makes every warning an error and enables nullable; one top-level type per file, namespace = assembly + folder. The verifier's style check (Q4) enforces this — see `engineering_conventions.md` §2.7.
+- The `csc.rsp` beside each `ThinhThan.*` asmdef makes every warning an error and enables nullable (scoped per-asmdef — no root `Assets/csc.rsp`, package sources in `Library/PackageCache` must not see these flags, BLK-007); one top-level type per file, namespace = assembly + folder. The verifier's style check (Q4) enforces this — see `engineering_conventions.md` §2.7.
 
 ## Assemblies (acyclic)
 

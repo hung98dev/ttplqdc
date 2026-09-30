@@ -48,6 +48,7 @@ Mục tiêu: Đảm bảo mọi AI agent khi sinh code đều tuân thủ cùng 
 - **Migrations:**
   - Sử dụng `golang-migrate/migrate/v4 v4.20.1`.
   - Planned repository path is `server/migrations/` with `000001_baseline_schema.up.sql` / `000001_baseline_schema.down.sql`; `IMP-005` owns materializing it.
+  - Snapshot hợp đồng `server/migrations/schema_snapshot.sql` không phải numbered migration — file duy nhất exempt khỏi quy ước tên trong thư mục đó.
   - Không sửa file migration cũ đã merge; mọi sửa đổi schema phải là migration mới tăng dần.
 
 ### 1.7 Hot-Path Allocation & Benchmarks
@@ -124,7 +125,7 @@ services            constructor injection from ThinhThan.App       constructor i
 ```
 
 ### 2.7 Compiler, Style & Line Endings (`CODE-001`, `CODE-002`, `CODE-004`)
-- `client/Assets/csc.rsp` contains exactly `-warnaserror+` and `-nullable:enable`. It applies to every assembly under `Assets/`, tests included. Nullable annotations are mandatory; `!` (null-forgiving) needs an adjacent comment that names the invariant.
+- A `csc.rsp` beside every `ThinhThan.*` asmdef (all 13 mandatory assemblies, tests included) contains exactly `-warnaserror+` and `-nullable:enable`. There is no root `client/Assets/csc.rsp`: a global response file also applies to `Library/PackageCache` package sources, which are not nullable-clean and must not be compiled with first-party flags (BLK-007). Nullable annotations are mandatory; `!` (null-forgiving) needs an adjacent comment that names the invariant.
 - Generated C# (`client/Assets/Scripts/Protocol/`) starts with `#nullable disable` and `#pragma warning disable` for the protobuf-generated warning set; `scripts/codegen.ps1` prepends the header deterministically (Q2 byte-identical).
 - Root `.editorconfig` is canonical for formatting:
   - C#: 4 spaces, Allman, `_camelCase` private instance fields, PascalCase types/methods/properties/constants, camelCase locals/parameters, block-scoped namespaces (C# 9).
@@ -147,7 +148,7 @@ services            constructor injection from ThinhThan.App       constructor i
   - `option go_package = "thinhthan/internal/protocol/v1;protocolv1";`
   - `option csharp_namespace = "ThinhThan.Protocol.V1";`
 - **Tên field:** snake_case cho field names, PascalCase cho message và enum names, SCREAMING_SNAKE_CASE cho enum values (với tiền tố enum name).
-- **Generated Code:** Cấm sửa tay code sinh ra trong `server/internal/protocol/v1/` và `client/Assets/Scripts/Protocol/`. Mọi thay đổi phải sinh qua `scripts/codegen.ps1`; Go parity tests nằm ngoài generated-only tree tại `server/internal/testing/protocol/`.
+- **Generated Code:** Cấm sửa tay code sinh ra trong `server/internal/protocol/v1/` và `client/Assets/Scripts/Protocol/`. Mọi thay đổi phải sinh qua `scripts/codegen.ps1`; Go parity tests nằm ngoài generated-only tree tại `server/internal/testing/protocol/`. The only non-generated files allowed in `client/Assets/Scripts/Protocol/` are the IMP-000-owned skeleton: `ThinhThan.Protocol.asmdef`, its CODE-001 `csc.rsp`, and `.meta` companions (BLK-007).
 
 ## 4. Testing & Verification Conventions
 
@@ -174,17 +175,28 @@ merge      squash via auto-merge enabled by the merge-slot holder after the §5a
   - Xóa bỏ hoàn toàn code cũ, không để lại alias, shim, deprecated stub hay commented code.
   - Đảm bảo git status hoàn toàn sạch sau khi chạy codegen và test verify.
 
+## 6. CI Caching Conventions
+
+- **Pin:** every `actions/cache` step uses the exact action SHA pinned in `../00_context/technology_versions.md`; no floating version tags.
+- **Keys:** a cache `key` hashes every input that changes output — lockfiles (`server/go.sum`, `client/Packages/packages-lock.json`), compiler-flag files (`client/Assets/**/csc.rsp`), version pins (Go/Unity/protobuf/EDB SHA-256) and image digests. `restore-keys` may shorten the lookup but never substitute a different pinned version or OS, and are forbidden on caches whose payload is derived from the hashed inputs — a prefix hit there is a silent wrong-content restore (BLK-005). Content-derived caches (e.g. `unity-library`) restore on the exact `key` only; `restore-keys` remain legal only on content-addressed stores whose entries stay valid under a partial restore (e.g. `go-build`) and on pure-pin payloads (`unity-image`, `edb`).
+- **Gate integrity:** a cache hit never skips or weakens a Q gate, the fork guard, job preconditions, the §4b materialization-commit requirement or licence activation (licence state is never cached); cold and warm runs produce identical `source_tree_hash`, codegen drift and evidence manifests.
+- **Measurement:** `verify-report.json` records `hit|miss` and `wall_seconds` per cached step so the warm-run speedup is checkable (CI-003).
+
 ## Requirement IDs
 Covered by Q0 requirement coverage like spec tables (`audit_gates.md` Gate B).
 
 | ID | Requirement | Gate |
 |---|---|---|
-| `CODE-001` | `client/Assets/csc.rsp` = `-warnaserror+ -nullable:enable`; every first-party assembly compiles with 0 warnings (§2.7) | every PR (Q3 Unity compile, Q4) |
+| `CODE-001` | a `csc.rsp` beside every `ThinhThan.*` asmdef = `-warnaserror+ -nullable:enable`; no root `client/Assets/csc.rsp`; every first-party assembly compiles with 0 warnings (§2.7) | every PR (Q3 Unity compile, Q4) |
 | `CODE-002` | `.editorconfig` + `.gitattributes` present with the §2.7 keys; C# style check passes on every first-party `.cs` (§2.7) | every PR (Q4) |
 | `CODE-003` | `gofmt -l` empty, `go vet ./...` and pinned `staticcheck ./...` clean; no `//lint:file-ignore` (§1.1) | every PR (Q4) |
 | `CODE-004` | generated C# begins with the `#nullable disable` + pragma header, byte-deterministic (§2.7) | every PR (Q2) |
 | `CODE-005` | client API fence with justified allowlist entries only (§2.5) | every PR (Q4) |
 | `CODE-006` | one canonical implementation per concern; duplicates detected by name/base-type patterns (§2.6) | every PR (Q4) |
+| `CI-001` | every `actions/cache` step uses the pinned action SHA; its `key` hashes every lockfile/pin/digest input; `restore-keys` never substitute a different pinned version or OS and content-derived caches (`unity-library`) restore on exact `key` only (§6) | every PR (Q0) |
+| `CI-002` | a cache hit never skips or weakens a Q gate, the fork guard, job preconditions, the §4b materialization commit or licence activation — licence state is never cached (§6) | every PR (Q0) |
+| `CI-003` | `verify-report.json` records `hit|miss` and `wall_seconds` per cached step (§6) | every PR (Q6) |
+| `CI-004` | cold and warm runs produce identical `source_tree_hash`, codegen drift and evidence manifests (§6) | every PR (Q6) |
 
 ## Invariants
 
@@ -194,7 +206,7 @@ slog cho Go logging; pgx/v5 raw SQL cho database
 math/rand/v2 cho gameplay RNG; crypto/rand cho security/UUID
 proto/ là wire SoT; không sửa tay generated code
 zero commented-out code, zero fake stubs, zero unapproved packages
-C# warnings are errors; nullable enabled; LF everywhere; style checked by the verifier
+C# warnings are errors and nullable enabled via asmdef-scoped csc.rsp (no root csc.rsp); LF everywhere; style checked by the verifier
 gofmt + go vet + staticcheck clean; hot-path allocs/op are exact gates, ns/op is report-only
 one FrameLoop, one FrameBudget, one Pool<T>, one Log facade on the client
 ```

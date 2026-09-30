@@ -19,10 +19,12 @@ server/migrations/
   000001_baseline_schema.down.sql
   000002_<short_name>.up.sql
   000002_<short_name>.down.sql
+  schema_snapshot.sql          (contract pg_dump snapshot — not a numbered migration)
 ~~~
 
 Rules:
 - six-digit monotonically increasing sequence,
+- `schema_snapshot.sql` is the only non-numbered file allowed in `server/migrations/` (see `physical_schema_contract.md` § Schema Snapshot);
 - one sequence number used once,
 - descriptive lowercase snake_case name,
 - migration files are immutable after any environment applies them,

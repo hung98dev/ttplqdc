@@ -18,3 +18,6 @@ The round-2 AI-readiness review of `../10_implementation/task_queue.md` found pa
 ## Consequences
 - `../10_implementation/audit_gates.md`, `agent_execution_protocol.md`, `definition_of_done.md`, `repository_layout.md`, `architecture_conformance.md`, `engineering_conventions.md`, `task_queue.md`, `wave_execution_prompts.md`, `dependency_graph.md`, `milestones.md`, `spec_traceability.md`, `../09_testing/test_and_release_evidence.md`, `../00_context/technology_versions.md`, `../04_architecture/physics_geometry_contract.md`, root `AGENTS.md` and `.devin/**` implement these rules.
 - Amends ADR-0057 items 2 and 6, and ADR-0046 item 6 (geometry exported from collision-only scenes).
+
+## Amendment (ADR-0075)
+Item 6: the evidence manifest is merged and uploaded by `Q0-Q6 verify (Linux)`, not by a separate `evidence manifest` job.

@@ -23,3 +23,9 @@ ADR-0050 and ADR-0057 required a self-hosted cloud Windows VM (with a hardware G
 - Supersedes in ADR-0050: self-hosted Windows runner, "Windows-only CI", the single required job and the Windows-only command matrix. Supersedes in ADR-0057: runner/GPU/WARP items of Owner Setup (item 1), concurrency = runner slots (item 8), cloud execution runner rules (item 13) and the "PostgreSQL 18.6 Windows binaries only" pin note. All other rules of ADR-0050/0057 stand.
 - `../10_implementation/audit_gates.md` (Owner Setup, Gates C/D, invariants), `agent_execution_protocol.md`, `wave_execution_prompts.md`, `README.md`, `repository_layout.md`, `spec_traceability.md`, `task_queue.md` (IMP-000, IMP-005, IMP-048, IMP-067, IMP-068, IMP-070, IMP-095, IMP-096), `../09_testing/test_and_release_evidence.md`, `../04_architecture/client_performance.md`, `../07_content/presentation_asset_manifest.md` §3.3, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`, `../00_context/technology_versions.md`, root `AGENTS.md`, `README.md` and `.devin/**` implement these rules.
 - Tooling pins added: PowerShell 7.6.6, runner images `ubuntu-24.04`/`windows-2022`, GameCI actions and editor images, `actions/cache`, `postgres:18.6` container (tests only).
+
+## Amendment (ADR-0073)
+The Windows job runs the Unity editor natively from the pinned official installer (cached per installer SHA-256); no GameCI Windows image is used. Unity steps are path-scoped on pull requests (`SKIP(no-client-change)`).
+
+## Amendment (ADR-0075)
+Item 2: there is no third `evidence manifest` job; each required job is joined with a parallel `Unity (<os>)` job and `Q0-Q6 verify (Linux)` merges both reports into the `evidence` artifact. Item 11: on GitHub Pro (40 concurrent hosted jobs) the coordinator limit is 8 `IN_PROGRESS` tasks (4 jobs per PR run).

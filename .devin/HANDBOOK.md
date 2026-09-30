@@ -121,5 +121,5 @@ Canonical live list: `docs/10_implementation/known_blockers.md` (currently empty
 | `reviewer` | read-only conformance verdict; posts the `policy-review` check run via `.devin/scripts/policy_review.ps1` (`THINHTHAN_AGENT_ROLE=reviewer`) |
 | `verifier` | read-only diff-to-test-matrix execution |
 | `spec-owner` | Contract Owner: resolves blockers, edits protected specs/ADRs via spec-change PRs (`THINHTHAN_AGENT_ROLE=spec-owner`) |
-| `coordinator` | claims ready tasks (status-only PRs), grants the merge slot, records/resolves OPS entries (`ops/` PRs), unclaims stale claims, keeps concurrency within the limit of 5 tasks (2 with `client/`) |
+| `coordinator` | claims ready tasks (status-only PRs), grants the merge slot, records/resolves OPS entries (`ops/` PRs), unclaims stale claims, keeps concurrency within the limit of 8 tasks (2 with `client/`) |
 | `asset-producer` | art/audio production within asset task owned paths; never gameplay/server/spec |

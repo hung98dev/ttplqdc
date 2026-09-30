@@ -15,15 +15,15 @@ Evidence, verification commands and release acceptance for thinhthan. Every `DON
 | Backend tests | `go -C server test ./...` on both OSes; `-race` for `sim|edge|durable|global` on the Linux job only (ADR-0072) | unit and architecture tests |
 | Go static checks | `gofmt -l server`, `go -C server vet ./...`, `staticcheck ./...` (pinned `v0.8.1`, run in `server/`) | Q4 `CODE-003`; empty output (ADR-0059) |
 | Go allocation budgets / benchmarks | `go -C server test -run TestAllocs_ ./...` (non-race build); `go -C server test -run "^$" -bench . -benchmem -benchtime=200x -count=1 <hot packages>` | allocs/op exact (`../08_scale_ops/capacity.md` § Hot-Path Allocation Budgets); ns/op report-only in `verify-report.json` |
-| Unity EditMode | local: `"$UNITY_EDITOR_PATH" -batchmode -projectPath client -runTests -testPlatform EditMode -testResults <tmp>/editmode.xml -logFile <tmp>/editmode.log`; CI: `game-ci/unity-test-runner` (`testMode: editmode`) into `-UnityResultsDir` | always required |
-| Unity PlayMode | same with `-testPlatform PlayMode` / `testMode: playmode`; category `Performance` runs only on the Linux job | required after `IMP-065` is DONE |
+| Unity EditMode | local: `"$UNITY_EDITOR_PATH" -batchmode -projectPath client -runTests -testPlatform EditMode -testResults <tmp>/editmode.xml -logFile <tmp>/editmode.log`; CI: the same `-runTests` invocation (Linux: in the pinned GameCI image; Windows: native pinned install, ADR-0073) writing `artifacts/unity-tests/<Mode>-results.xml` into `-UnityResultsDir`; `SKIP(no-client-change)` on a PR without Unity-relevant changes | always required |
+| Unity PlayMode | same with `-testPlatform PlayMode`; category `Performance` runs only on the Linux job | required after `IMP-065` is DONE |
 | Android performance | `gcloud firebase test android run --type game-loop` on the Owner Setup device models | scheduled `device-perf` workflow on `main` (not a PR check); `DEFERRED(quota)` on exhausted quota (`../04_architecture/client_performance.md`) |
 
-`scripts/verify.ps1` resolves the Unity editor from `UNITY_EDITOR_PATH` (must contain `6000.6.1f1`) and fails if the version differs; with `-UnityResultsDir` it gates on the GameCI result XML instead (missing or failed results = FAIL). Library cache and temp directories are per worktree (CI: `actions/cache` per OS). CI has no GPU: rendering uses Mesa llvmpipe on Linux (ADR-0058). Before any gate each CI job opens `client/` in the editor and uploads editor-created or -modified files as artifact `unity-materialized-<os>`, failing with `commit unity-materialized` (`../10_implementation/audit_gates.md` § Job Preconditions). A missing tool, image or licence on CI (after 5 in-job licence-activation attempts) is an `OPS-xxx` failure; `SKIP(owner-not-done)` is allowed only while the gate's owner task is not `DONE` (`../10_implementation/audit_gates.md` § Gate Activation, ADR-0068).
+`scripts/verify.ps1` resolves the Unity editor from `UNITY_EDITOR_PATH` (must contain `6000.6.1f1`) and fails if the version differs; with `-UnityResultsDir` it gates on the Unity result XML instead (missing or failed results = FAIL). CI: Linux runs the editor in the pinned GameCI image, Windows runs the pinned native install (ADR-0073). Library cache and temp directories are per worktree (CI: `actions/cache` per OS). CI has no GPU: rendering uses Mesa llvmpipe on Linux (ADR-0058). Before any gate each CI job opens `client/` in the editor and uploads editor-created or -modified files as artifact `unity-materialized-<os>`, failing with `commit unity-materialized` (`../10_implementation/audit_gates.md` § Job Preconditions). A missing tool, image or licence on CI (after 5 in-job licence-activation attempts) is an `OPS-xxx` failure; `SKIP(owner-not-done)` is allowed only while the gate's owner task is not `DONE` (`../10_implementation/audit_gates.md` § Gate Activation, ADR-0068), and `SKIP(no-client-change)` only for the Unity checks of a pull request touching no Unity-relevant path (ADR-0073).
 
 ## 2. Evidence Manifest
 
-CI is the enforcement source. `verify.yml` checks out the PR head SHA, computes `source_tree_hash` and runs Q0-Q6 in the jobs `Q0-Q6 verify (Linux)` and `Q0-Q6 verify (Windows)`; the `evidence manifest` job downloads both reports of the same run (`actions/download-artifact`), merges them and uploads `manifest.json` as artifact `evidence`. The agent downloads it (`gh run download <id> -n evidence`) into `docs/10_implementation/evidence/<ID>/` and commits it unchanged. FAILED manifests are never committed.
+CI is the enforcement source. `verify.yml` checks out the PR head SHA, computes `source_tree_hash` and runs Q0-Q6 in the jobs `Q0-Q6 verify (Linux)` and `Q0-Q6 verify (Windows)`; `Q0-Q6 verify (Linux)` waits for the Windows job, downloads its report of the same run (`actions/download-artifact`), merges both and uploads `manifest.json` as artifact `evidence` (ADR-0075; no separate evidence job). The agent downloads it (`gh run download <id> -n evidence`) into `docs/10_implementation/evidence/<ID>/` and commits it unchanged. FAILED manifests are never committed.
 
 ```text
 source_tree_hash = SHA-256 over sorted lines "path NUL git-blob-sha LF" from `git ls-files`, excluding
@@ -44,7 +44,7 @@ toolchain.protoc = 36.2
 toolchain.protoc_gen_go = v1.36.12
 commands[]
 test_summary.total / passed / failed / skipped
-skipped_reasons[] (id, reason, allowed)        -- SKIP(owner-not-done) entries name the gate and its owner task; SKIP(status-only) only on the Q0 fast path
+skipped_reasons[] (id, reason, allowed)        -- SKIP(owner-not-done) entries name the gate and its owner task; SKIP(status-only) only on the Q0 fast path; SKIP(no-client-change) only for Unity checks on a PR without Unity-relevant changes (ADR-0073)
 content_revision                               -- "none" while no content compiler exists at the tested source
 ci_run_id, run_attempt
 jobs[] (name, os = linux|windows, result = PASSED)   -- both verify jobs of the same run
@@ -100,5 +100,5 @@ chat logs and screenshots never replace evidence (screenshots are review artifac
 worktree_clean = true after verify
 CI = GitHub-hosted jobs `Q0-Q6 verify (Linux)` + `Q0-Q6 verify (Windows)`; `policy-review` is the App check run; post-merge guard (ADR-0050, ADR-0057, ADR-0058, ADR-0072)
 DEFERRED(local-missing) exists only locally; CI never passes -LocalDeferMissing
-missing Unity/image/licence/tool on CI = OPS failure, never a skip (except SKIP(owner-not-done) / SKIP(status-only)); Test Lab quota = DEFERRED(quota)
+missing Unity/image/licence/tool on CI = OPS failure, never a skip (except SKIP(owner-not-done) / SKIP(status-only) / SKIP(no-client-change)); Test Lab quota = DEFERRED(quota)
 ```

@@ -16,3 +16,6 @@ The only art rule was "stylized 2D chibi". AI-generated sprites and backgrounds 
 
 ## Amendment — Light budget per quality preset (ADR-0071)
 The active point Light2D budget is set only by the quality preset (`LOW` 4, `MEDIUM` 8, `HIGH` 16; `../04_architecture/client_performance.md` § Platforms and Device Tiers), not by platform. The "8 on mobile, 16 on desktop" wording above is superseded.
+
+## Amendment — style locking and animation (ADR-0076)
+Style is locked by per-packet Style Packs and a palette gate; animation is skeletal (PSB) for CHARACTER, MONSTER_MEDIUM+ and bosses and frame-by-frame for small actors, Spirit Beasts and VFX; normal/mask maps remain out of launch scope. Canonical: `../07_content/presentation_asset_manifest.md` §3.7, §3.8.

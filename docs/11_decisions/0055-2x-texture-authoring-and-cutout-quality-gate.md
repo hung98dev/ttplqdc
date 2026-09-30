@@ -18,3 +18,6 @@ ADR-0046 fixes presentation at `ART_PIXELS_PER_METER = 50` reference pixels for 
 
 ## Amendment — UI and far-parallax PPU (ADR-0071)
 UI sprites are 2x textures imported at **PPU 200** (Canvas Reference PPU 100) so they render at reference size; `PARALLAX_FAR` layers authored at 1x import at **PPU 50**. All other gameplay rasters stay 2x at PPU 100. Canonical: `../07_content/presentation_asset_manifest.md` §3.
+
+## Amendment — gate scope and metrics (ADR-0076)
+The 4-corner alpha rule applies only to cell-based classes (TILE, UI_ART, PARALLAX_FAR, VFX_SOFT exempt); flat regions use Lab bins; top light is measured per hue cluster; atlas padding >= 4 px with a post-compression fringe check. Canonical: `../07_content/presentation_asset_manifest.md` §3.2, §3.6, §3.11.

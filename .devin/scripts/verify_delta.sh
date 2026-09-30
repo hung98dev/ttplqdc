@@ -162,8 +162,12 @@ else
 fi
 
 if in_scope MIGRATIONS; then
+  # schema_snapshot.sql is the contract-mandated pg_dump snapshot
+  # (docs/06_data/physical_schema_contract.md § Baseline), not a numbered
+  # migration — exempt the exact path; every other non-numbered file fails.
   invalid_mig="$(printf '%s\n' "$files" | grep -E 'server/migrations/' \
-    | grep -vE '/[0-9]{6}_[a-z0-9_]+\.(up|down)\.sql$' || true)"
+    | grep -vE '/[0-9]{6}_[a-z0-9_]+\.(up|down)\.sql$' \
+    | grep -vxF 'server/migrations/schema_snapshot.sql' || true)"
   [ -n "$invalid_mig" ] && fail "invalid migration filename(s): $invalid_mig" || pass "migration filenames valid"
 
   missing_pair="$(printf '%s\n' "$files" | grep -E 'server/migrations/[0-9]{6}_[a-z0-9_]+\.(up|down)\.sql$' \
@@ -392,21 +396,24 @@ if in_scope DEVIN; then
   [ -n "$script_syntax_errors" ] && fail "hook script syntax: $script_syntax_errors" \
     || pass "all governance scripts are Bash-syntax clean"
 
+  # Smoke tests assert the default-deny posture; an elevated
+  # THINHTHAN_AGENT_ROLE (e.g. spec-owner running its own spec-change diff)
+  # legitimately widens the docs/ write guard, so they run with it unset.
   write_block_rc=0
   printf '%s' '{"tool_input":{"file_path":"docs/05_network/messages.md"}}' \
-    | bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || write_block_rc=$?
+    | env -u THINHTHAN_AGENT_ROLE bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || write_block_rc=$?
   write_allow_rc=0
   printf '%s' '{"tool_input":{"file_path":"docs/10_implementation/task_queue.md"}}' \
-    | bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || write_allow_rc=$?
+    | env -u THINHTHAN_AGENT_ROLE bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || write_allow_rc=$?
   generated_block_rc=0
   printf '%s' '{"tool_input":{"file_path":"client/Assets/Scripts/Protocol/Combat.cs.meta"}}' \
-    | bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || generated_block_rc=$?
+    | env -u THINHTHAN_AGENT_ROLE bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || generated_block_rc=$?
   tools_block_rc=0
   printf '%s' '{"tool_input":{"file_path":"tools/protobuf/protoc/bin/protoc.exe"}}' \
-    | bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || tools_block_rc=$?
+    | env -u THINHTHAN_AGENT_ROLE bash .devin/scripts/pre_write_guard.sh >/dev/null 2>&1 || tools_block_rc=$?
   exec_block_rc=0
   printf '%s' '{"tool_input":{"command":"git push --force"}}' \
-    | bash .devin/scripts/pre_exec_guard.sh >/dev/null 2>&1 || exec_block_rc=$?
+    | env -u THINHTHAN_AGENT_ROLE bash .devin/scripts/pre_exec_guard.sh >/dev/null 2>&1 || exec_block_rc=$?
   if [ "$write_block_rc" -eq 2 ] && [ "$write_allow_rc" -eq 0 ] \
      && [ "$generated_block_rc" -eq 2 ] && [ "$tools_block_rc" -eq 2 ] && [ "$exec_block_rc" -eq 2 ]; then
     pass "core hook allow/block smoke tests"

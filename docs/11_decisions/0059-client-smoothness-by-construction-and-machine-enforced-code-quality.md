@@ -14,7 +14,7 @@ ADR-0058 removed every GPU from CI, so desktop GPU frame pacing is never measure
 7. **Network receive path.** The Unity client uses the BCL `System.Net.WebSockets.ClientWebSocket` (no package). Receive and protobuf decode run on one background task into pooled buffers and a bounded queue; the main thread applies messages in `NetReceive`. `Task` is allowed only in `ThinhThan.Net`; everything else uses Unity `Awaitable`. Decode allocation is budgeted (`PERF-024`); main-thread frame code stays at 0 bytes (`PERF-004`).
 8. **Timing gates on hosted runners** use the median of 3 repetitions inside one job; allocation, counter and overdraw gates are exact.
 9. **Machine-enforced code quality** (`../10_implementation/engineering_conventions.md` § Requirement IDs):
-   - C#: `client/Assets/csc.rsp` = `-warnaserror+` + `-nullable:enable`; the generated C# header is `#nullable disable` + protobuf pragmas.
+   - C#: a `csc.rsp` beside every `ThinhThan.*` asmdef = `-warnaserror+` + `-nullable:enable`; no root `Assets/csc.rsp` — a global response file would apply the flags to `Library/PackageCache` package sources (BLK-007). The generated C# header is `#nullable disable` + protobuf pragmas.
    - Formatting: root `.editorconfig` and `.gitattributes` (`* text=auto eol=lf`), plus a deterministic C# style check in the Go verifier (no .NET SDK, no Roslyn tooling).
    - Go: `gofmt`, `go vet`, and `staticcheck` 2026.2.1 (`honnef.co/go/tools v0.8.1`).
    - Client API fence and single-canonical-implementation checks in Q4 (IMP-083).

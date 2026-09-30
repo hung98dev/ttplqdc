@@ -95,7 +95,8 @@ client/
 ├── Assets/
 │   ├── AddressableAssetsData/         # IMP-063 (shared registry, see Ownership Rules)
 │   ├── Art/
-│   │   ├── Provenance/                # register + schema IMP-070, merged by IMP-076; fragments/<name>.json one per art packet; cultural_review.md IMP-074
+│   │   ├── Provenance/                # register + schema IMP-070, merged by IMP-076; fragments/<name>.json one per art packet; cultural_review.md IMP-074; terms/<fragment>/ per art packet (ADR-0076)
+│   │   ├── StyleRef/<fragment>/        # Style Packs, LFS, not in build; one dir per art packet (ADR-0076)
 │   │   ├── Actors/Players/            # IMP-071
 │   │   ├── Actors/Creatures/          # IMP-104
 │   │   ├── World/                     # IMP-072
@@ -106,7 +107,7 @@ client/
 │   ├── Localization/                  # Settings/ + Tables/Core/ IMP-064; Tables/<Feature>/ per feature packet
 │   ├── Notices/                       # IMP-076
 │   ├── Plugins/Google.Protobuf/       # IMP-000 exact 3.36.2 runtime
-│   ├── csc.rsp                        # IMP-000 -warnaserror+ -nullable:enable (ADR-0059)
+│   ├── {Scripts,Tests}/**/csc.rsp     # IMP-000 — scoped per-asmdef (-warnaserror+ -nullable:enable); no root csc.rsp (BLK-007, ADR-0059)
 │   ├── Scenes/
 │   │   ├── Bootstrap/                 # IMP-067
 │   │   ├── Collision/                 # IMP-062 collision-only authoring scenes (ServerGeometry)
@@ -122,7 +123,7 @@ client/
 │   │   │                              # Rendering IMP-101, Geometry (+ Editor exporter) IMP-062, Session + Runtime IMP-065, Input IMP-066,
 │   │   │                              # Performance IMP-095, PerformanceDevice IMP-096
 │   │   ├── Net/                       # IMP-065 (asmdef IMP-000)
-│   │   ├── Protocol/                  # IMP-061 generated C# (asmdef IMP-000); never hand-edit
+│   │   ├── Protocol/                  # IMP-061 generated C# (asmdef + csc.rsp IMP-000); never hand-edit
 │   │   ├── Systems/<Feature>/         # feature packets (asmdef IMP-000); Replication IMP-065, Camera IMP-066
 │   │   └── UI/<Feature>/              # feature packets (asmdef IMP-000)
 │   └── Tests/
@@ -134,12 +135,12 @@ client/
 
 ## Mandatory Assemblies
 
-All 13 `.asmdef` files are authored by IMP-000 with exactly these references (name references, `autoReferenced: false`, `overrideReferences: true` where precompiled DLLs are listed); no later packet edits an asmdef (ADR-0068). An assembly whose folder has no script yet is valid by name. Folder paths are under `client/Assets/`.
+All 13 `.asmdef` files are authored by IMP-000 with exactly these references (name references, `autoReferenced: false`, `overrideReferences: true` where precompiled DLLs are listed); no later packet edits an asmdef (ADR-0068). An assembly whose folder has no script yet is valid by name. Folder paths are under `client/Assets/`. Each assembly's folder also carries an IMP-000-authored `csc.rsp` containing exactly `-warnaserror+` and `-nullable:enable` — compiler flags are scoped per-asmdef so they never reach `Library/PackageCache` package sources; there is no root `client/Assets/csc.rsp` (BLK-007, ADR-0059).
 
 | Assembly | Folder | Platforms / constraints | References |
 |---|---|---|---|
 | `ThinhThan.Protocol` | `Scripts/Protocol/` | any | precompiled `Google.Protobuf.dll` only |
-| `ThinhThan.Core` | `Scripts/Core/` | any | `Unity.InputSystem`, `Unity.RenderPipelines.Core.Runtime`, `Unity.RenderPipelines.Universal.Runtime` |
+| `ThinhThan.Core` | `Scripts/Core/` | any | `Unity.InputSystem`, `Unity.RenderPipelines.Core.Runtime`, `Unity.RenderPipelines.Universal.Runtime`, `Unity.RenderPipelines.Universal.2D.Runtime` |
 | `ThinhThan.Core.Assets` | `Scripts/Core/Assets/` | any | `ThinhThan.Core`, `Unity.Addressables`, `Unity.ResourceManager` |
 | `ThinhThan.Core.Assets.Editor` | `Scripts/Core/Assets/Editor/` | Editor | `ThinhThan.Core`, `ThinhThan.Core.Assets`, `Unity.Addressables`, `Unity.Addressables.Editor`, `Unity.ResourceManager` |
 | `ThinhThan.Core.Localization` | `Scripts/Core/Localization/` | any | `ThinhThan.Core`, `Unity.Localization`, `Unity.Addressables`, `Unity.ResourceManager` |
@@ -157,6 +158,11 @@ All 13 `.asmdef` files are authored by IMP-000 with exactly these references (na
 ## ProjectSettings Baseline
 
 IMP-000 commits the `client/ProjectSettings/*.asset` files produced by the editor's first materialization in CI (`agent_execution_protocol.md` §4b, ADR-0072), then pre-declares every entry a later packet needs (ADR-0068). Only the assets referenced below use a path-derived GUID: the first 32 lowercase hex characters of SHA-256 over the asset's repository-relative path (UTF-8, `/` separators); the owning packet creates the asset with that GUID in its `.meta`. Every other GUID is editor-generated and committed as materialized. Only `QualitySettings.asset` (IMP-095) is edited later.
+
+The `com.unity.addressableassets` config-object slot is pinned to the canonical settings asset: if a
+package import hook creates `client/Assets/AddressableAssetsData/DefaultObject.asset` and repoints the slot,
+the IMP-063 provisioner restores the slot to the canonical settings object and deletes the rogue asset
+before materialization commits (ADR-0074); `unity-materialized-*` must never contain `DefaultObject.asset`.
 
 ```text
 EditorBuildSettings.asset  m_configObjects com.unity.addressableassets     -> client/Assets/AddressableAssetsData/AddressableAssetSettings.asset (IMP-063)
@@ -216,7 +222,8 @@ Do not put `*.prefab`, `*.asset`, `*.meta`, or `*.unity` in LFS.
 - Every owned path has the owner(s) listed in § Path Ownership Index. Nested or equal ownership by two packets is allowed only when one transitively depends on the other; the earlier task creates the path.
 - Go tests live in the package they test (`<package>/<name>_test.go`) and therefore inside the packet's owned directory.
 - Unity tests live in `client/Assets/Tests/{EditMode|PlayMode}/<Feature>/`, one folder per packet, listed in its `owned_paths`. The root test asmdefs belong to IMP-000; `PlayMode/Harness/` belongs to IMP-065 and is read-only for other packets.
-- Shared registries: `client/Assets/AddressableAssetsData/` is owned by IMP-063; a packet that depends on IMP-063 may append groups/entries only for keys it owns (append-only, key-owner checked by the IMP-063 validator). Localization string tables are per feature: the packet owning `client/Assets/Scripts/{Systems|UI}/<Feature>/` implicitly owns `client/Assets/Localization/Tables/<Feature>/`; `Tables/Core/` belongs to IMP-064.
+- Shared registries: `client/Assets/AddressableAssetsData/` is owned by IMP-063; a packet that depends on IMP-063 may append groups/entries only for keys it owns (append-only, key-owner checked by the IMP-063 validator). The append surface is granted by naming the exact registry files in the packet's `owned_paths` (Q0 `ownedFile` matches exact paths or `dir/` prefixes and implies `.meta`) together with a `depends_on` edge to the registry owner, which `paths.ownership_overlap` requires for any shared path; e.g. IMP-064 owns `AddressableAssetSettings.asset` plus the `AssetGroups/localization.*(.asset)` group and schema assets (ADR-0074). Localization string tables are per feature: the packet owning `client/Assets/Scripts/{Systems|UI}/<Feature>/` implicitly owns `client/Assets/Localization/Tables/<Feature>/`; `Tables/Core/` belongs to IMP-064.
+- Module lockfiles: `server/go.mod`/`server/go.sum` are owned by IMP-000 and co-ownable — a packet whose code imports a module already pinned in `../00_context/technology_versions.md` may list both in `owned_paths` (every packet transitively depends on IMP-000, so `paths.ownership_overlap` ordering holds) and then lands its own `require`/`go.sum` lines; until a packet lists them, the spec-owner lands pinned `require` lines for blocked tasks directly (BLK-003).
 - Provenance: `client/Assets/Art/Provenance/asset_source_register.json` is created empty by IMP-070 and merged by IMP-076 from `fragments/<name>.json`, each fragment owned by exactly one art packet.
 - Evidence directories are implied by `evidence_location` only; no packet lists `docs/10_implementation/evidence/` in `owned_paths`.
 - Unity `.meta` files are implied by ownership (ADR-0072): a packet owning `client/**` path P also owns `P.meta`, and the `.meta` of every folder it is the first to create; they are editor-materialized in CI (artifact `unity-materialized-<os>`) and committed byte-for-byte, never hand-written, except the path-derived GUIDs of § ProjectSettings Baseline.
@@ -229,12 +236,15 @@ Generated from `task_queue.md` `owned_paths`.
 
 | Path | Owner |
 |---|---|
+| `.devin/scripts/` | IMP-106 |
 | `.editorconfig` | IMP-000 |
 | `.gitattributes` | IMP-000 |
 | `.github/pull_request_template.md` | IMP-000 |
+| `.github/workflows/cache_warm.yml` | IMP-106 |
+| `.github/workflows/cache_prune.yml` | IMP-106 |
 | `.github/workflows/device_perf.yml` | IMP-096 |
 | `.github/workflows/post_merge_guard.yml` | IMP-068 |
-| `.github/workflows/verify.yml` | IMP-000, IMP-068 |
+| `.github/workflows/verify.yml` | IMP-000, IMP-068, IMP-106 |
 | `.gitignore` | IMP-000 |
 | `client/Assets/AddressableAssetsData/` | IMP-063 |
 | `client/Assets/Art/Actors/Creatures/` | IMP-104 |
@@ -253,10 +263,25 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Art/Provenance/fragments/interface.json` | IMP-073 |
 | `client/Assets/Art/Provenance/fragments/world.json` | IMP-072 |
 | `client/Assets/Art/Provenance/register.schema.json` | IMP-070 |
+| `client/Assets/Art/Provenance/terms/actors_creatures/` | IMP-104 |
+| `client/Assets/Art/Provenance/terms/actors_players/` | IMP-071 |
+| `client/Assets/Art/Provenance/terms/audio/` | IMP-075 |
+| `client/Assets/Art/Provenance/terms/cosmetics/` | IMP-074 |
+| `client/Assets/Art/Provenance/terms/instances/` | IMP-105 |
+| `client/Assets/Art/Provenance/terms/interface/` | IMP-073 |
+| `client/Assets/Art/Provenance/terms/world/` | IMP-072 |
+| `client/Assets/Art/StyleRef/actors_creatures/` | IMP-104 |
+| `client/Assets/Art/StyleRef/actors_players/` | IMP-071 |
+| `client/Assets/Art/StyleRef/cosmetics/` | IMP-074 |
+| `client/Assets/Art/StyleRef/instances/` | IMP-105 |
+| `client/Assets/Art/StyleRef/interface/` | IMP-073 |
+| `client/Assets/Art/StyleRef/world/` | IMP-072 |
 | `client/Assets/Art/UI/` | IMP-073 |
 | `client/Assets/Art/VFX/` | IMP-073 |
 | `client/Assets/Art/World/` | IMP-072 |
 | `client/Assets/Audio/` | IMP-075 |
+| `client/Assets/DefaultVolumeProfile.asset` | IMP-000 |
+| `client/Assets/DefaultVolumeProfile.asset.meta` | IMP-000 |
 | `client/Assets/Localization/Settings/` | IMP-064 |
 | `client/Assets/Localization/Tables/Core/` | IMP-064 |
 | `client/Assets/Notices/THIRD_PARTY_ASSETS.txt` | IMP-076 |
@@ -462,7 +487,21 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Tests/PlayMode/ThinhThan.Tests.PlayMode.asmdef` | IMP-000 |
 | `client/Assets/Tests/PlayMode/TradeUi/` | IMP-029 |
 | `client/Assets/Tests/PlayMode/WorldTransferPresentation/` | IMP-018 |
-| `client/Assets/csc.rsp` | IMP-000 |
+| `client/Assets/UniversalRenderPipelineGlobalSettings.asset` | IMP-000 |
+| `client/Assets/UniversalRenderPipelineGlobalSettings.asset.meta` | IMP-000 |
+| `client/Assets/Scripts/Protocol/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Core/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Core/Assets/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Core/Assets/Editor/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Core/Localization/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Core/Localization/Editor/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Core/Geometry/Editor/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Net/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/Systems/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/UI/csc.rsp` | IMP-000 |
+| `client/Assets/Scripts/App/csc.rsp` | IMP-000 |
+| `client/Assets/Tests/EditMode/csc.rsp` | IMP-000 |
+| `client/Assets/Tests/PlayMode/csc.rsp` | IMP-000 |
 | `client/BuildProfiles/` | IMP-067 |
 | `client/Packages/` | IMP-000 |
 | `client/ProjectSettings/` | IMP-000 |
@@ -475,14 +514,14 @@ Generated from `task_queue.md` `owned_paths`.
 | `proto/thinhthan/v1/` | IMP-061 |
 | `scripts/codegen.ps1` | IMP-061 |
 | `scripts/device_perf.ps1` | IMP-096 |
-| `scripts/verify.ps1` | IMP-000 |
+| `scripts/verify.ps1` | IMP-000, IMP-106 |
 | `scripts/verify_client_build.ps1` | IMP-067 |
 | `server/cmd/compiler/` | IMP-003 |
 | `server/cmd/migrate/` | IMP-005 |
 | `server/cmd/server/` | IMP-006, IMP-069 |
 | `server/cmd/verify/` | IMP-000 |
-| `server/go.mod` | IMP-000 |
-| `server/go.sum` | IMP-000 |
+| `server/go.mod` | IMP-000, IMP-005 |
+| `server/go.sum` | IMP-000, IMP-005 |
 | `server/internal/app/` | IMP-069 |
 | `server/internal/config/` | IMP-003, IMP-004 |
 | `server/internal/config/equipment/` | IMP-026 |
@@ -490,6 +529,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `server/internal/config/validation/beast/` | IMP-050 |
 | `server/internal/config/validation/drop/` | IMP-051 |
 | `server/internal/conformance/architecture/` | IMP-083 |
+| `server/internal/conformance/caching/` | IMP-106 |
 | `server/internal/conformance/deviceperf/` | IMP-096 |
 | `server/internal/conformance/gates/` | IMP-000 |
 | `server/internal/conformance/ratchet/` | IMP-068 |

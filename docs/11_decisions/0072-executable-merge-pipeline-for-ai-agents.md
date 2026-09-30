@@ -22,3 +22,9 @@ A round-3 dry run of waves 0–5 on an empty public repository found that the pi
 ## Consequences
 - `../10_implementation/audit_gates.md`, `agent_execution_protocol.md`, `README.md`, `known_blockers.md`, `wave_execution_prompts.md`, `definition_of_done.md`, `repository_layout.md`, `task_queue.md` (IMP-000, IMP-061, IMP-068, IMP-083, final-art packets), `../09_testing/test_and_release_evidence.md`, `../00_context/technology_versions.md`, `../07_content/presentation_asset_manifest.md` (AI tool rule), root `AGENTS.md`, `README.md` and `.devin/**` implement these rules.
 - Amends ADR-0057 (branch roles, freeze and trigger cutover), ADR-0058 (`policy-review` is a check run; merge-guard App permissions; fork guard event scope) and ADR-0068 item 5 (GUIDs are editor-generated except the ProjectSettings baseline references) and item 1 (two-phase list includes `IMP-083`).
+
+## Amendment (ADR-0073)
+Item 3: Unity materialization runs on every job whose PR diff touches `gates.UnityRelevantPattern`, and always on `push`, `imp/IMP-068-*` and `*-done` runs; otherwise the Unity steps are skipped and the Unity checks report `SKIP(no-client-change)`. On Windows the editor is the native pinned install, not a GameCI image.
+
+## Amendment (ADR-0075)
+Item 13: the concurrency limit is 8 tasks (GitHub Pro), still at most 2 with `client/` owned paths.

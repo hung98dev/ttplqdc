@@ -71,7 +71,16 @@ dungeon.<dungeon_key>  one per dungeon.<dungeon_key>: scene, instanced boss, dun
                        the finale instance (instance.finale.than_trung) uses dungeon.finale
 pvp.shared             arena and Guild War scenes, props, VFX
 audio.bgm.<zone_key>   streamed BGM of that region (6); audio.bgm.shared for BGM reused across regions
+localization.locales            built into the player: Locale assets
+localization.shared             built into the player: shared localization assets / non-string tables
+localization.strings.<locale_key>  built into the player: string tables of one locale
+                                (<locale_key> = lowercase locale code, '-' -> '_': vi_vn, en_us)
 ```
+`com.unity.localization` auto-creates `Localization-*` groups during asset import (ADR-0074);
+the IMP-063 provisioner re-homes their entries into the canonical `localization.*` groups —
+package-assigned addresses and labels are preserved because they are the runtime's
+resolution contract — and removes the empty package groups before materialization commits.
+A committed `AddressableAssetSettings` never contains a non-canonical group.
 An asset belongs to exactly one group. An asset used by more than one region/dungeon moves to `shared.local` or the matching `*.shared` group; duplicate bundle copies fail validation.
 
 Rules:
@@ -107,6 +116,10 @@ asset.ui.hud.skill_bar.prefab            asset.sfx.just_guard_success.clip    as
 A catalog ID that reuses a shared asset still has its own key: the key addresses a `PresentationAlias` asset whose `target_key` names the shared key; resolution follows exactly one alias hop and an alias to an alias fails validation.
 
 They are presentation IDs only.
+
+Entries inside `localization.*` groups are package-managed: their addresses and labels
+(`Locale`, `Locale-<code>`, `<TableCollection>_<code>`) are the Unity Localization
+resolution contract and are exempt from the `asset.*` grammar (ADR-0074).
 
 Rules:
 - do not use localized names as keys,

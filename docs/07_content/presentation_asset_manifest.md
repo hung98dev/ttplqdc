@@ -21,16 +21,19 @@ Tên nhóm, nội dung nhóm và quy tắc khóa là canonical tại `../04_arch
 | `region.<zone_key>` (6) | ≤ 60 MB mỗi vùng | ≤ 120 MB | nạp khi đích chuyển map thuộc vùng; giải phóng khi rời vùng (kể cả khi vào instance) |
 | `dungeon.<dungeon_key>`, `dungeon.finale`, `pvp.shared` | ≤ 25 MB mỗi nhóm | ≤ 60 MB | nạp khi vào instance/trận; giải phóng khi rời |
 | `audio.bgm.<zone_key>` (6), `audio.bgm.shared` | ≤ 15 MB mỗi nhóm | ≤ 4 MB (bộ đệm streaming) | stream khi vào map dùng BGM đó; không nạp cả file vào RAM |
+| `localization.locales` | ≤ 1 MB (trong player) | ≤ 2 MB | nạp ở `BOOT`; giữ suốt phiên |
+| `localization.shared` | ≤ 1 MB (trong player) | ≤ 4 MB | nạp ở `BOOT`; giữ suốt phiên |
+| `localization.strings.<locale_key>` (2: `vi_vn`, `en_us`) | ≤ 4 MB mỗi nhóm (trong player) | ≤ 8 MB | nạp ở `BOOT`; giữ suốt phiên |
 
 ```text
 RAM runtime            = bộ nhớ texture tính từ định dạng x kích thước x số mip đã import + mesh + audio đã giải nén,
                          tính tất định từ import settings (validator IMP-063), không đo từ process
-resident steady        tổng RAM các nhóm đang nạp <= 450 MB   (tối đa: bootstrap + shared + icons + beast + cosmetic + 1 region
-                         hoặc 1 dungeon/pvp)
+resident steady        tổng RAM các nhóm đang nạp <= 450 MB   (tối đa: bootstrap + shared + icons + beast + cosmetic +
+                         localization.* + 1 region hoặc 1 dungeon/pvp)
 resident transfer peak <= 570 MB (nhóm đích nạp trước khi nhóm nguồn giải phóng)
 ràng buộc              resident transfer peak + engine/managed/native <= 1.3 GB resident của ANDROID_MIN
                          (../04_architecture/client_performance.md § Memory and GC)
-base install           bootstrap.local + shared.local <= 82 MB nén
+base install           bootstrap.local + shared.local + localization.* <= 92 MB nén
 ```
 
 ## 2. Quy chuẩn Định danh Khóa Tài nguyên (Asset Key Namespace)
@@ -83,8 +86,9 @@ Cell được phép có transparent padding; silhouette không được tự co 
 - AI hoặc họa sĩ có thể tạo ở kích thước lớn hơn, nhưng bước hoàn thiện cuối (thu nhỏ bằng bộ lọc area/Lanczos theo tỉ lệ nguyên hoặc hữu tỉ, rồi làm sạch nét/viền và sharpen) phải làm ở đúng kích thước 2x. Cấm để Unity resize (`Max Size` phải ≥ kích thước thật; không `Non-Power-of-2` scaling).
 - Nét viền/chi tiết quan trọng dày tối thiểu `2` texture px (= 1 ref px) để còn đọc được ở 720p.
 - Parallax xa (lớp `L3`/`L4`, `asset_class = PARALLAX_FAR`) được phép `TEXTURE_SCALE = 1` để tiết kiệm bộ nhớ, khi đó import `50 PPU` để kích thước thế giới không đổi; mọi lớp gameplay, nhân vật, quái, boss, Linh Thú, vật phẩm, UI, icon, VFX gameplay và telegraph là 2x.
-- Nén: nhân vật/quái/boss/Linh Thú/UI/icon/font = ASTC 4x4 (mobile), BC7 (desktop); nền/parallax = ASTC 6x6 / BC7. Sprite gameplay tắt mipmap.
-- Frame animation: chiều cao silhouette giữa các frame idle lệch ≤ `4` texture px; pivot không trôi.
+- Nén: nhân vật/quái/boss/Linh Thú/UI/icon/font = ASTC 4x4 (mobile), BC7 (desktop); nền/parallax = ASTC 6x6 / BC7. Sprite gameplay tắt mipmap ở launch. Quy tắc mip (`ART-006`, ADR-0076): nếu Visual Review 960x540 (§3.3) phát hiện nhấp nháy khi di chuyển trên actor sprite, bật đúng 1 mức mip cho `ACTOR` và tính lại RAM §1 (×1.25 cho texture đó) trong cùng spec-change; không bật mip cho loại khác.
+- Frame animation: chiều cao silhouette giữa các frame idle lệch ≤ `4` texture px; pivot không trôi. Hợp đồng clip/frame/fps: §3.7.
+- Upscale (`ART-012`): ảnh AI được upscale > 2x so với độ phân giải sinh gốc không được làm nguồn cuối nếu không qua bước thu nhỏ về đúng 2x ở trên; mọi bước upscale ghi trong `changes` của sổ nguồn (§6).
 
 ### 3.1a Phạm vi gate theo loại asset
 | asset_class | Cutout Gate §3.2 | Volume Gate §3.6 | Ghi chú |
@@ -103,8 +107,10 @@ Mỗi file khai báo `asset_class` trong metadata import; validator áp đúng c
 Nền phải được tạo sẵn trong suốt (native alpha) hoặc trên nền phẳng màu khóa `#FF00FF` không có trong bảng màu asset, rồi mới tách nền. Cấm đưa thẳng kết quả "remove background" tự động vào build mà không qua gate này. Đo trên texture 2x cuối cùng:
 
 ```text
-Định dạng          PNG RGBA 8-bit/kênh, sRGB, có kênh alpha thật; 4 góc 4x4 px của mỗi cell phải alpha = 0
-                   (bắt lỗi nền ca-rô giả hoặc nền đặc bị nướng vào ảnh)
+Định dạng          PNG RGBA 8-bit/kênh, sRGB, có kênh alpha thật (mọi asset_class trong §3.1a);
+                   thêm cho ACTOR, COSMETIC_APPEARANCE, PROP, ITEM_ICON, EQUIPMENT_ICON, PARALLAX_NEAR:
+                   4 góc 4x4 px của mỗi cell phải alpha = 0 (bắt lỗi nền ca-rô giả hoặc nền đặc bị nướng vào ảnh);
+                   TILE, UI_ART, PARALLAX_FAR, VFX_SOFT không áp quy tắc 4 góc (cạnh đặc hợp lệ) (ART-001)
 Dải bán trong suốt pixel có 1 <= a <= 254 phải nằm trong 2 px (Chebyshev) quanh một pixel a = 255,
                    trừ pixel nằm trong mask translucent đã khai báo
                    -> chặn vệt lem, bóng mờ, khói nền còn sót
@@ -133,6 +139,10 @@ Mỗi entity/UI được chụp trong các scene review `client/Assets/Scenes/Re
 - telegraph/VFX đọc được mà không phụ thuộc chỉ vào màu (`../00_context/constraints.md`);
 - nét sắc ở 1920x1080 (không mờ do phóng to) và không nhiễu/nhấp nháy khi di chuyển ở 1280x720;
 - trông có khối, không phẳng như tranh: hướng sáng thống nhất với cảnh, đọc được 3 mặt phẳng độ sâu (foreground / gameplay / background), actor nổi rõ hơn nền cả ngày lẫn đêm dưới ánh sáng runtime.
+
+Bổ sung (ADR-0076):
+- Profile LOW (`ART-006`): thêm render `960x540` (tương đương 1280x720 × render scale 0.75 của preset `LOW`) gồm một clip di chuyển ngang 2 s của mỗi actor; reviewer ghi `shimmer = none | visible`. `visible` kích hoạt quy tắc mip §3.1.
+- Rubric (`ART-011`): mỗi tiêu chí ở trên chấm 0 / 1 / 2 (0 = lỗi, 2 = đạt rõ); asset đạt khi không tiêu chí nào 0 và tổng ≥ 80% điểm tối đa. Artifact `visual-review` có thêm contact sheet đặt asset cạnh các ảnh neo của Style Pack (§3.8); điểm và contact sheet ghi vào PR review comment.
 Task sản xuất (IMP-071..075, IMP-104, IMP-105) tham chiếu artifact `visual-review` của lần chạy CI trong manifest evidence; IMP-076 kiểm lại.
 
 ### 3.5 Art Direction — Painted-Volume 2D Chibi (ADR-0056)
@@ -169,11 +179,16 @@ Môi trường dùng 5 lớp độ sâu:
 Định nghĩa       dải biên B   = pixel của S có khoảng cách Chebyshev <= 3 px tới một pixel ngoài S
                  lõi kề K(p)  = pixel của S có khoảng cách Chebyshev 5..8 px tới ngoài S; với mỗi p ∈ B lấy pixel K gần nhất
                                 (Euclid; hòa -> thứ tự quét hàng)
-                 vùng liền màu = thành phần liên thông 8-connectivity của đồ thị trên S, cạnh nối hai pixel kề có ΔE00 < 2
+                 bin Lab      = (floor(L*/3), floor(a*/6), floor(b*/6))
+                 vùng liền màu = thành phần liên thông 8-connectivity của các pixel S cùng bin Lab (ART-002; một gradient
+                                mịn trải qua nhiều bin nên không gộp thành một vùng)
+                 cụm sắc độ   = k-means 2 chiều trên (a*, b*) của S, k = 4, tâm khởi tạo = (a*, b*) của pixel S tại hạng
+                                L* p12.5/p37.5/p62.5/p87.5, lặp Lloyd tới khi không đổi hoặc 100 vòng (tất định, không seed)
 Dải giá trị      L*(p95) - L*(p5) >= 40
 Tầng giá trị     k-means 1 chiều k=5 trên L*, tâm khởi tạo = L* tại p10, p30, p50, p70, p90, lặp Lloyd tới khi phân cụm
                  không đổi hoặc 100 vòng (tất định, không seed): >= 3 cụm, mỗi cụm >= 5% diện tích S
-Sáng từ trên     mean L* của 1/3 trên bbox(S) - mean L* của 1/3 dưới >= 6
+Sáng từ trên     với mỗi cụm sắc độ C chiếm >= 5% S: d(C) = mean L* của 1/3 trên bbox(C) - mean L* của 1/3 dưới bbox(C);
+                 trung vị có trọng số (trọng số = diện tích C) của d(C) >= 4 (ART-003; tóc/mũ tối không làm fail)
 Tách viền        >= 60% pixel p ∈ B có |L*(p) - L*(K(p))| >= 12 (rim light hoặc outline)
 Không mảng phẳng không vùng liền màu nào > 20% diện tích S
 Môi trường       đo trên render review 1280x720 ban ngày của từng lớp riêng (các lớp khác ẩn), pixel a >= 128 của lớp đó:
@@ -181,6 +196,53 @@ Môi trường       đo trên render review 1280x720 ban ngày của từng l�
 Actor trên nền   trên render review (§3.3): mean L* của B - mean L* của nền trong vành 4..12 px ngoài S, |chênh| >= 20
 ```
 Vi phạm là fail; ngưỡng chỉ nới bằng ADR (gate ratchet).
+
+Fixtures bắt buộc của validator (IMP-070, `client/Assets/Tests/EditMode/` của packet đó): `gradient_smooth_pass.png` (khối trụ tô gradient mịn, phải PASS "Không mảng phẳng"), `flat_fill_fail.png` (mảng một màu > 20% S, phải FAIL), `dark_hair_toplit_pass.png` (chibi tóc đen, sáng từ trên đúng, phải PASS "Sáng từ trên"), `bottom_lit_fail.png` (sáng từ dưới, phải FAIL), `tile_solid_edge_pass.png` (`TILE` cạnh đặc, phải PASS "Định dạng").
+
+### 3.7 Animation Contract (ADR-0076, `ART-004`)
+Kỹ thuật theo `size_profile`:
+
+| `size_profile` | Kỹ thuật | Clip bắt buộc | Frame tối thiểu / fps |
+|---|---|---|---|
+| `CHARACTER` | skeletal (PSB layer → PSD Importer 15.0.0 + 2D Animation 16.0.0); một skeleton dùng chung cho 5 class; cosmetic/trang bị đổi bằng Sprite Library/Resolver | `idle, run, jump_up, fall, land, attack_basic, cast, hit, guard, defeat` | skeletal: key ≥ 4 mỗi clip, sample 30 fps |
+| `MONSTER_MEDIUM`, `MONSTER_ELITE`, `BOSS_LARGE`, `WORLD_BOSS` | skeletal (skeleton riêng mỗi rig) | `idle, move, attack_<n>` (mỗi skill của catalog), `hit, defeat`; boss thêm `phase_transition` mỗi phase | key ≥ 4, 30 fps |
+| `MONSTER_SMALL`, `SPIRIT_BEAST` | frame-by-frame | `idle, move, attack_basic, hit, defeat` (Linh Thú: `idle, move, cast`) | ≥ 4 frame, 12 fps |
+| VFX gameplay | flipbook (§3.9) | theo skill | ≤ 16 frame, 12 hoặc 24 fps |
+
+Layer PSB tối thiểu cho skeletal: `head, hair, torso, arm_front, arm_back, leg_front, leg_back, weapon` (+ `accessory_*` tùy chọn); tên layer cố định để Sprite Library ánh xạ cosmetic.
+
+```text
+Nhất quán frame   với mỗi frame f của mọi clip frame-by-frame: mọi cụm sắc độ (§3.6) có |mean Lab(f) - mean Lab(idle_0)|
+                  ΔE00 <= 3; độ rộng bbox(S) lệch <= 8 texture px so với idle_0 trừ clip attack/hit/defeat (được lệch <= 32)
+Pivot             pivot Bottom Center giữ nguyên mọi frame/clip; chân chạm y = 0 ở idle/run/land
+```
+Ngưỡng ΔE00 3 / 8 px là đề xuất: hiệu chỉnh trên lô asset đầu tiên bằng gate-ratchet ADR.
+
+### 3.8 Style Pack (ADR-0076, `ART-005`)
+Style được khóa bằng ảnh tham chiếu/adapter, không train LoRA ở launch (chỉ train nếu lô đầu fail gate bảng màu, qua ADR):
+- Đường dẫn: `client/Assets/Art/StyleRef/<fragment>/<pack_id>/` (LFS, ngoài Addressables, không vào build; `<fragment>` = tên fragment §6 của packet sở hữu, ví dụ `actors_players`); mỗi vùng (`region.<zone_key>`) và mỗi nhóm actor (class, quái vùng, boss) có một pack.
+- Nội dung pack: 6–10 ảnh neo đã APPROVED; `palette.json` (danh sách màu Lab theo vùng/nhóm); turnaround 4 góc (trước 3/4, sau 3/4, nghiêng, chính diện) cho mỗi class và mỗi boss; `style.md` ghi prompt khung ánh sáng/khối của §3.5.
+- Turnaround được reviewer duyệt trước khi sản xuất sprite của entity đó.
+
+```text
+Gate bảng màu    >= 85% pixel S (a >= 128, ngoài mask translucent) có ΔE00 <= 8 tới màu gần nhất trong palette.json của pack
+                 khai báo (style_pack_id trong §6); ngưỡng đề xuất, hiệu chỉnh trên lô đầu bằng gate-ratchet ADR
+```
+
+### 3.9 Tile, 9-slice và VFX (ADR-0076, `ART-007`)
+```text
+TILE        |ΔE00 trung bình| giữa cột pixel trái và phải, và giữa hàng trên và dưới <= 2; ghép 3x3 không lộ lưới (reviewer)
+UI_ART      9-slice khai báo border (Sprite Editor) bắt buộc; dải giữa theo trục kéo giãn có độ lệch chuẩn L* <= 2,
+            nếu không thì Draw Mode = Tiled
+VFX         flipbook <= 16 frame, sheet <= 1024x1024 texture px, 12 hoặc 24 fps; khai báo blend = ADDITIVE (ánh sáng/lửa/
+            phép) | ALPHA (khói/bụi/nước) và max_instances; hotspot scene vẫn đạt PERF-016 (overdraw <= 2.5)
+```
+
+### 3.10 Hitbox khớp hình (`ART-008`)
+Ở frame `idle_0`: tâm ngang collider canonical (`physics_geometry_contract.md`) nằm trong ±4 ref px so với tâm ngang silhouette (a ≥ 128); tỉ lệ độ rộng collider / độ rộng silhouette trong `0.5..0.9`. Ngưỡng đề xuất, hiệu chỉnh trên lô đầu bằng gate-ratchet ADR. Collider vẫn không suy ra từ sprite.
+
+### 3.11 Atlas và sau nén (`ART-009`)
+SpriteAtlas `Padding ≥ 4` texture px (khớp mức dilate §3.2). Validator giải nén texture đã import (ASTC 4x4 / 6x6, BC7) và chạy lại dòng "Viền màu" của §3.2 trên kết quả; vi phạm là fail.
 
 ### 3.4 File gốc
 File làm việc lớn (PSD/PSB/ảnh AI gốc) lưu qua LFS ngoài thư mục Addressables và không vào build; sổ nguồn gốc ghi hash cả file gốc và file cuối.
@@ -212,6 +274,12 @@ AI agent chịu trách nhiệm tạo hoặc tìm, chỉnh sửa, tích hợp và
 
 Điều kiện công cụ AI và giấy phép nguồn phải được kiểm tra **ở thời điểm lấy/tạo asset**; “tải miễn phí”, “royalty-free” hoặc một trang tổng hợp không ghi chủ sở hữu/giấy phép không đủ bằng chứng. Không dùng `NC`, `ND`, `SA`, editorial-only, trial, nguồn bị nghi lấy cắp, hay giấy phép riêng chưa được chấp thuận. Nếu không chứng minh được quyền sử dụng thương mại, **dừng asset đó**, tự tạo asset khác hoặc chọn nguồn hợp lệ khác; không âm thầm thay bằng placeholder. `CC0`/`CC BY` không tự giải quyết quyền hình ảnh cá nhân, nhãn hiệu hay hình tượng văn hóa nhạy cảm. Quy tắc cultural review của `cosmetic_catalog.md` vẫn áp dụng. Tham chiếu giấy phép chính thức: [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/), [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/), [OFL-1.1](https://openfontlicense.org/open-font-license-official-text/).
 
+Tiêu chí chọn công cụ AI (chủ repo ghi lựa chọn tại `../00_context/technology_versions.md` § Content production tools): hỗ trợ ảnh tham chiếu/style adapter, seed tái lập được, xuất PNG có alpha, điều khoản cho phép phân phối thương mại, ghi được model/phiên bản chính xác.
+
+Rủi ro bản quyền (ADR-0076): art thuần AI có thể không được bảo hộ bản quyền ở một số thị trường (ví dụ Mỹ); dự án chấp nhận rủi ro này. Nền tảng phát hành yêu cầu khai báo nội dung AI (Steam) được xử lý trong checklist phát hành của `IMP-067`.
+
+Thẻ dân gian (`ART-010`): mọi quái, boss, Linh Thú, NPC, map và cosmetic có nguồn gốc văn hóa mang `folklore_card` trong bản ghi nguồn (§6): `{source_tales[], regional_variants, motifs_checked[]}`. Motif cấm (danh sách khởi đầu, spec-owner mở rộng qua spec-change): cổng torii, trang phục/mũ quan triều Thanh kiểu cương thi, kimono, hanbok, cờ/biểu tượng tôn giáo hoặc chính trị hiện đại, chữ Hán/Nôm vô nghĩa làm hoa văn. Reviewer đối chiếu thẻ trước khi `APPROVED`.
+
 Nét vẽ final phải thống nhất stylized 2D chibi và bản sắc dân gian Việt trong `../00_context/constraints.md`; đúng profile/cell ở Mục 3, silhouette và telegraph đọc được trên mobile. Tài nguyên tìm được có thể là nguyên liệu để agent biên tập thành sản phẩm cuối, không được sao chép nhận diện game tham khảo. Asset đưa vào repo/LFS và Addressables; không hotlink tới URL của bên thứ ba lúc chạy game.
 
 ## 6. Sổ nguồn gốc asset
@@ -232,7 +300,11 @@ source_sha256      hash file đầu vào; bằng final_sha256 nếu không sửa
 final_sha256       hash file được đưa vào build
 changes            mô tả biến đổi; "none" nếu không có
 attribution        dòng credit phát hành; null nếu không bắt buộc
-generation_record  {tool, version, terms_uri, prompt, reference_uris} nếu dùng AI tạo/chỉnh; null nếu không
+generation_record  {tool, version, model_id, model_sha256, terms_uri, terms_snapshot_sha256, prompt, seed, parameters,
+                    workflow_sha256, style_pack_id, reference_uris, reference_sha256[], c2pa_present} nếu dùng AI tạo/chỉnh;
+                    null nếu không. terms_snapshot_sha256 = hash bản sao điều khoản tại thời điểm tạo, lưu LFS tại
+                    client/Assets/Art/Provenance/terms/<fragment>/<sha256>.txt; model_sha256/workflow_sha256 null nếu công cụ không lộ ra
+folklore_card      {source_tales[], regional_variants, motifs_checked[]} cho entity văn hóa (§5); null cho asset chung
 inputs             [] hoặc danh sách {creator, source_uri, license_id, license_uri, acquired_at_utc, sha256} cho nguồn ngoài dùng tạo/ghép
 review_state       PENDING | APPROVED | REJECTED
 ```
@@ -256,6 +328,7 @@ Script kiểm tra tự động `scripts/verify_assets.ps1` (hoặc test EditMode
    - Bất kỳ texture có alpha nào vi phạm Cutout Quality Gate (Mục 3.2) hoặc Volume & Depth Gate (Mục 3.6), hoặc thiếu ảnh trong artifact `visual-review` của lần chạy CI (Mục 3.3).
    - Key sai quy tắc `../04_architecture/client_assets.md` § Stable Asset Keys, asset ngoài nhóm canonical, hoặc tổng RAM tính tất định vượt ngân sách resident Mục 1.
    - Mesh Type sai quy tắc Mục 3 hoặc `PARALLAX_FAR` 1x không import `50 PPU`.
+   - Vi phạm §3.7 (clip thiếu, frame/fps, nhất quán frame, pivot), §3.8 (thiếu `style_pack_id` hoặc gate bảng màu), §3.9 (tile seam, 9-slice border, VFX), §3.10 (hitbox–hình), §3.11 (atlas padding, viền sau nén).
    - Scene map thiếu Addressable key, geometry export, hoặc extent không khớp bounds catalog.
    - Asset final không có bản ghi nguồn, hash sai, `review_state != APPROVED`, giấy phép/điều khoản không hợp lệ, attribution/notice bắt buộc vắng mặt, hoặc còn placeholder.
 
@@ -265,7 +338,7 @@ Script kiểm tra tự động `scripts/verify_assets.ps1` (hoặc test EditMode
 
 ```text
 Addressable Key = asset.<catalog_id>.<facet> | asset.<kind>.<name>.<facet> (../04_architecture/client_assets.md)
-base install (bootstrap.local + shared.local) <= 82 MB nén; resident steady <= 450 MB, transfer peak <= 570 MB
+base install (bootstrap.local + shared.local + localization.*) <= 92 MB nén; resident steady <= 450 MB, transfer peak <= 570 MB
 BGM streaming trực tiếp, không nạp toàn bộ vào RAM
 100% asset references trong 24 catalogs phải phân giải được sang Addressable Key
 gameplay sprite = texture 2x, import 100 PPU (reference 50 px/m; UI 200; PARALLAX_FAR 1x = 50); Bottom Center pivot; prefab Transform scale = (1,1,1)
@@ -279,4 +352,23 @@ map extent là tile/scene coverage, không phải một bitmap hay một màn h�
 release asset source = AI_CREATED | FREE_LICENSED; giá sử dụng = 0; quyền thương mại/phái sinh/phân phối được xác minh
 mọi file media phát hành có provenance APPROVED và hash đúng; CC-BY-4.0 có credit, OFL-1.1 có notice đóng gói
 M10 không có placeholder, nguồn không rõ quyền, hay key catalog thiếu presentation
+style khóa bằng Style Pack + ảnh tham chiếu; animation skeletal cho CHARACTER/MONSTER_MEDIUM+/boss, frame-by-frame cho actor nhỏ/Linh Thú/VFX
+không dùng normal map/mask map ở launch (ADR-0056)
 ```
+
+## Requirement IDs
+
+| ID | Requirement (section) | Gate |
+|---|---|---|
+| `ART-001` | quy tắc 4 góc alpha = 0 chỉ áp đúng asset_class (§3.2) | every PR (validator) |
+| `ART-002` | "Không mảng phẳng" đo bằng bin Lab; fixture gradient PASS (§3.6) | every PR |
+| `ART-003` | "Sáng từ trên" theo cụm sắc độ; fixture tóc tối PASS (§3.6) | every PR |
+| `ART-004` | hợp đồng animation: kỹ thuật, clip, frame/fps, nhất quán frame, pivot (§3.7) | every PR |
+| `ART-005` | Style Pack tồn tại cho mỗi pack khai báo; gate bảng màu (§3.8) | every PR |
+| `ART-006` | review 960x540 LOW có chuyển động; quy tắc mip khi nhấp nháy (§3.1, §3.3) | review |
+| `ART-007` | tile seam, 9-slice border, VFX flipbook/blend/max_instances (§3.9) | every PR |
+| `ART-008` | hitbox khớp silhouette ở idle_0 (§3.10) | every PR |
+| `ART-009` | atlas padding ≥ 4 px và viền sau nén ASTC/BC7 (§3.11) | every PR |
+| `ART-010` | folklore_card cho entity văn hóa; motif cấm (§5) | review |
+| `ART-011` | rubric Visual Review 0/1/2 và contact sheet với ảnh neo (§3.3) | review |
+| `ART-012` | quy tắc upscale và trường provenance mở rộng (§3.1, §6) | every PR (validator) |

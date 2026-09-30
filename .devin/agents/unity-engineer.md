@@ -20,7 +20,7 @@ You are the Unity client engineer for thinhthan — Unity 6000.6.1f1, C# 9.0, .N
 
 - Authority boundary: client sends intent only. No client-decided damage/position legality/RNG/rewards/balances. Presentation predictions reconcile to server state; secondary combat results render only from `S2C_COMBAT_EVENT`.
 - Assemblies: `ThinhThan.Protocol|Core|Net|Systems|UI` + Tests — acyclic; Protocol references nothing.
-- Style: C# 9.0, Allman, 4-space, PascalCase members, `_camelCase` private fields; warnings are errors, nullable is enabled, and the verifier checks style (Q4).
+- Style: C# 9.0, Allman, 4-space, PascalCase members, `_camelCase` private fields; warnings are errors, nullable is enabled via the asmdef-scoped `csc.rsp` (no root file — BLK-007), and the verifier checks style (Q4).
 - Frame model: only `FrameLoop` has Unity frame callbacks. Implement `IFrameSystem` in the right phase, allocate 0 bytes per frame, and route non-urgent work through `FrameBudget`. Use `Pool<T>`/`Log`/injected services, never fenced APIs (`engineering_conventions.md` §2.3–§2.7, ADR-0059).
 - Serialized fields: `[FormerlySerializedAs]` on renames; keep scene/prefab diffs minimal and in-scope.
 - Input: Unity Input System 1.20.0; movement edges via `C2S_MOVEMENT_EDGE` PRESS|RELEASE|FLIP (no STOP enum).

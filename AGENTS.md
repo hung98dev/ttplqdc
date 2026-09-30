@@ -119,7 +119,7 @@ Go toolchain = 1.27.1
 textures authored at 2x, imported at 100 PPU (UI 200) (ADR-0055)
 public repo; CI = GitHub-hosted ubuntu-24.04 + windows-2022 only, no GPU (ADR-0058)
 client: one FrameLoop (Input -> NetReceive -> Prediction -> Interpolation -> Presentation -> UI -> Camera); FrameBudget <= 2 ms/frame (ADR-0059)
-csc.rsp -warnaserror+ -nullable:enable; LF line endings; gofmt + go vet + staticcheck 2026.2.1 clean
+per-asmdef csc.rsp -warnaserror+ -nullable:enable (no root Assets/csc.rsp); LF line endings; gofmt + go vet + staticcheck 2026.2.1 clean
 hot-path allocations are exact gates; timing on hosted CI = median of 3; ns/op report-only
 ```
 
