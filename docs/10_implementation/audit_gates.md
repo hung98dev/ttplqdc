@@ -40,9 +40,9 @@ secrets/vars       UNITY_LICENSE, UNITY_EMAIL, UNITY_PASSWORD (or UNITY_SERIAL),
 agent tokens       fine-grained, this repository only: Contents RW, Pull requests RW, Workflows RW, Actions RW,
                    Issues RW, Variables R, Administration R, Secrets R (names only), Metadata R; one token per role
                    session (coordinator, implementers, spec-owner, reviewer); never an Actions secret
-art tool           owner-provided art/audio generation tool (name, exact version/model, access, commercial terms),
-                   recorded here and in ../00_context/technology_versions.md § Content production tools; needed only
-                   before the first final-art task is claimed (ADR-0072)
+art tool           Direct AI Generation: recorded in ../00_context/technology_versions.md § Content production
+                   tools (approved by Owner 2026-09-30); AI agents generate assets directly in the session;
+                   no external desktop GUI tool required; tasks IMP-071..075, IMP-104, IMP-105 are unblocked
 backup storage     one S3-compatible bucket for the pgBackRest 2.59.1 repo1 and the `erasure-ledger/` prefix, configured
                    exactly per ../08_scale_ops/backup_recovery.md § Backup Storage Configuration: world host
                    `BACKUP_STORAGE_URL` (s3://bucket/prefix?region=&endpoint=) + `BACKUP_STORAGE_CREDENTIALS_FILE` (two lines

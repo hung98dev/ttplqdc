@@ -16,7 +16,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 
 - Bootstrap: a task may run before `IMP-068 = DONE` iff `IMP-068` is not in its transitive `depends_on` (`audit_gates.md` § Bootstrap Mode).
 - Two-phase gate tasks: `IMP-000`, `IMP-061`, `IMP-003`, `IMP-004`, `IMP-005`, `IMP-083`, `IMP-065`, `IMP-068`.
-- Final-art tasks (need the owner-provided art tool, `../00_context/technology_versions.md` § Content production tools): `IMP-071`, `IMP-072`, `IMP-073`, `IMP-074`, `IMP-075`, `IMP-104`, `IMP-105`.
+- Final-art tasks (use Direct AI Generation recorded in `../00_context/technology_versions.md` § Content production tools; no external tool needed): `IMP-071`, `IMP-072`, `IMP-073`, `IMP-074`, `IMP-075`, `IMP-104`, `IMP-105`.
 - Path rules (owned paths, Unity test folders, shared registries, provenance fragments): `repository_layout.md` § Ownership Rules.
 - Milestones: `milestones.md`; layers: `dependency_graph.md`; spec/ADR coverage: `spec_traceability.md`; execution waves: `wave_execution_prompts.md`. Packets below are grouped by domain only.
 
