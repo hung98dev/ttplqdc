@@ -247,6 +247,19 @@ Generated from `task_queue.md` `owned_paths`.
 | `.github/workflows/verify.yml` | IMP-000, IMP-068, IMP-106 |
 | `.gitignore` | IMP-000 |
 | `client/Assets/AddressableAssetsData/` | IMP-063 |
+| `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.locales_BundledAssetGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.locales_ContentUpdateGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.shared_BundledAssetGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.shared_ContentUpdateGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.en_us_BundledAssetGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.en_us_ContentUpdateGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.vi_vn_BundledAssetGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.vi_vn_ContentUpdateGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/localization.locales.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/localization.shared.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.en_us.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.vi_vn.asset` | IMP-064 |
 | `client/Assets/Art/Actors/Creatures/` | IMP-104 |
 | `client/Assets/Art/Actors/Players/` | IMP-071 |
 | `client/Assets/Art/Cosmetics/` | IMP-074 |
