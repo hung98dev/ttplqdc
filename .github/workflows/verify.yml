@@ -300,7 +300,7 @@ jobs:
 
       - name: Drift check (unity-materialized)
         id: drift
-        if: steps.plan.outputs.scope == 'full'
+        if: always() && steps.plan.outputs.scope == 'full'
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'

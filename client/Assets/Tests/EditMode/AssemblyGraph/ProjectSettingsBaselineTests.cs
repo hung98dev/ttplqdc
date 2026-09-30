@@ -2,6 +2,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace ThinhThan.Tests.EditMode.AssemblyGraph
 {
@@ -13,7 +14,8 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
     /// </summary>
     public class ProjectSettingsBaselineTests
     {
-        private const string ProjectSettingsDir = "ProjectSettings";
+        private static readonly string ProjectSettingsDir =
+            Path.GetFullPath(Path.Combine(Application.dataPath, "..", "ProjectSettings"));
 
         private static string DerivedGuid(string repoRelativePath)
         {

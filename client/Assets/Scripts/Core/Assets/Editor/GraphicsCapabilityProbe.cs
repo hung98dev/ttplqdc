@@ -23,10 +23,10 @@ namespace ThinhThan.Core.Assets.Editor
         /// diagnostics).</summary>
         public struct GraphicsAdapterInfo
         {
-            public string Name;
+            public string? Name;
             public int VendorId;
             public int DeviceId;
-            public string PnpDeviceId;
+            public string? PnpDeviceId;
             public bool SoftwareFlag;
         }
 
@@ -41,17 +41,17 @@ namespace ThinhThan.Core.Assets.Editor
         /// <summary>JSON-serializable probe report written to reportPath.</summary>
         public sealed class Report
         {
-            public string EditorVersion;
-            public string GraphicsDeviceType;
-            public string DeviceName;
-            public string DeviceVendor;
+            public string EditorVersion = string.Empty;
+            public string GraphicsDeviceType = string.Empty;
+            public string DeviceName = string.Empty;
+            public string DeviceVendor = string.Empty;
             public int VendorId;
             public int DeviceId;
-            public string AdapterPnpId;
+            public string AdapterPnpId = string.Empty;
             public bool Warp;
             public bool LitFixtureOk;
             public bool RFloatReadbackOk;
-            public string Failure;
+            public string Failure = string.Empty;
         }
 
         private const float LitDeltaMin = 5f;
@@ -144,7 +144,7 @@ namespace ThinhThan.Core.Assets.Editor
                     throw new GraphicsProbeException("null graphics device");
                 }
                 var adapter = ObserveAdapter();
-                report.AdapterPnpId = adapter.PnpDeviceId;
+                report.AdapterPnpId = adapter.PnpDeviceId ?? string.Empty;
                 report.Warp = IsSoftwareAdapter(adapter);
                 if (!report.Warp)
                 {
@@ -165,7 +165,7 @@ namespace ThinhThan.Core.Assets.Editor
                 throw new GraphicsProbeException(ex.Message);
             }
             WriteReport(reportPath, report);
-            if (report.Failure != null)
+            if (report.Failure.Length != 0)
             {
                 throw new GraphicsProbeException(report.Failure);
             }
@@ -240,7 +240,8 @@ namespace ThinhThan.Core.Assets.Editor
                 UseShellExecute = false,
                 CreateNoWindow = true,
             };
-            using (var p = Process.Start(psi))
+            using (var p = Process.Start(psi)
+                ?? throw new GraphicsProbeException("failed to start platform diagnostics"))
             {
                 string outp = p.StandardOutput.ReadToEnd();
                 if (!p.WaitForExit(30000))
@@ -368,19 +369,24 @@ namespace ThinhThan.Core.Assets.Editor
             return mat;
         }
 
-        private static Mesh _quad;
+        private static Mesh? _quad;
         private static Mesh MeshQuad()
         {
             if (_quad == null)
             {
                 var go = GameObject.CreatePrimitive(PrimitiveType.Quad);
-                _quad = go.GetComponent<MeshFilter>().sharedMesh;
+                var mesh = go.GetComponent<MeshFilter>()?.sharedMesh;
                 UnityEngine.Object.DestroyImmediate(go);
+                if (mesh == null)
+                {
+                    throw new GraphicsProbeException("quad mesh unavailable");
+                }
+                _quad = mesh;
             }
             return _quad;
         }
 
-        private static Sprite _whiteSprite;
+        private static Sprite? _whiteSprite;
         private static Sprite WhiteSprite()
         {
             if (_whiteSprite == null)
@@ -459,7 +465,7 @@ namespace ThinhThan.Core.Assets.Editor
             File.WriteAllText(path, sb.ToString() + "\n");
         }
 
-        private static string Json(string s)
+        private static string Json(string? s)
         {
             if (s == null)
             {

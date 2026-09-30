@@ -1,5 +1,6 @@
 using System.IO;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace ThinhThan.Tests.EditMode.AssemblyGraph
 {
@@ -9,7 +10,7 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
     /// </summary>
     public class CompilerSettingsTests
     {
-        private const string AssetsRoot = "Assets";
+        private static readonly string AssetsRoot = Application.dataPath;
 
         [Test]
         public void TestCscRspWarnAsErrorNullable()

@@ -8,160 +8,183 @@ using UnityEngine;
 namespace ThinhThan.Tests.EditMode.AssemblyGraph
 {
     /// <summary>
-    /// Assembly-definition contract tests (repository_layout.md): the
-    /// ThinhThan.* reference graph is acyclic, Protocol stays a leaf, all 13
-    /// mandatory assemblies are declared, and the live graph matches the
-    /// canonical layout table.
+    /// Assembly-definition contract tests (repository_layout.md § Mandatory
+    /// Assemblies): the ThinhThan.* reference graph is acyclic, Protocol stays
+    /// a leaf, all 13 mandatory assemblies are declared, and the live graph
+    /// matches the canonical layout table — parsed from the spec itself,
+    /// including its "every …" shorthand rows.
     /// </summary>
     public class AssemblyGraphTests
     {
-        private const string AssetsRoot = "Assets";
-
-        private static readonly Dictionary<string, string[]> ExpectedReferences =
-            new Dictionary<string, string[]>
-            {
-                ["ThinhThan.Protocol"] = new string[] { },
-                ["ThinhThan.Core"] = new[]
-                {
-                    "Unity.InputSystem",
-                    "Unity.RenderPipelines.Core.Runtime",
-                    "Unity.RenderPipelines.Universal.Runtime",
-                    "Unity.RenderPipelines.Universal.2D.Runtime",
-                },
-                ["ThinhThan.Core.Assets"] = new[]
-                {
-                    "ThinhThan.Core",
-                    "Unity.Addressables",
-                    "Unity.ResourceManager",
-                },
-                ["ThinhThan.Core.Assets.Editor"] = new[]
-                {
-                    "ThinhThan.Core",
-                    "ThinhThan.Core.Assets",
-                    "Unity.Addressables",
-                    "Unity.Addressables.Editor",
-                    "Unity.ResourceManager",
-                },
-                ["ThinhThan.Core.Localization"] = new[]
-                {
-                    "ThinhThan.Core",
-                    "Unity.Localization",
-                    "Unity.Addressables",
-                    "Unity.ResourceManager",
-                },
-                ["ThinhThan.Core.Localization.Editor"] = new[]
-                {
-                    "ThinhThan.Core",
-                    "ThinhThan.Core.Localization",
-                    "Unity.Localization",
-                    "Unity.Localization.Editor",
-                },
-                ["ThinhThan.Core.Geometry.Editor"] = new[]
-                {
-                    "ThinhThan.Core",
-                },
-                ["ThinhThan.Net"] = new[]
-                {
-                    "ThinhThan.Core",
-                    "ThinhThan.Protocol",
-                },
-                ["ThinhThan.Systems"] = new[]
-                {
-                    "ThinhThan.Core",
-                    "ThinhThan.Core.Assets",
-                    "ThinhThan.Core.Localization",
-                    "ThinhThan.Net",
-                    "ThinhThan.Protocol",
-                    "Unity.InputSystem",
-                    "Unity.RenderPipelines.Core.Runtime",
-                    "Unity.RenderPipelines.Universal.Runtime",
-                    "Unity.2D.Animation.Runtime",
-                },
-                ["ThinhThan.UI"] = new[]
-                {
-                    "ThinhThan.Core",
-                    "ThinhThan.Core.Assets",
-                    "ThinhThan.Core.Localization",
-                    "ThinhThan.Net",
-                    "ThinhThan.Protocol",
-                    "ThinhThan.Systems",
-                    "Unity.InputSystem",
-                    "UnityEngine.UI",
-                    "Unity.TextMeshPro",
-                },
-                ["ThinhThan.App"] = new[]
-                {
-                    "ThinhThan.Protocol",
-                    "ThinhThan.Core",
-                    "ThinhThan.Core.Assets",
-                    "ThinhThan.Core.Localization",
-                    "ThinhThan.Net",
-                    "ThinhThan.Systems",
-                    "ThinhThan.UI",
-                    "Unity.InputSystem",
-                    "Unity.RenderPipelines.Universal.Runtime",
-                    "Unity.Addressables",
-                    "Unity.ResourceManager",
-                    "Unity.Localization",
-                },
-                ["ThinhThan.Tests.EditMode"] = new[]
-                {
-                    "ThinhThan.Protocol",
-                    "ThinhThan.Core",
-                    "ThinhThan.Core.Assets",
-                    "ThinhThan.Core.Assets.Editor",
-                    "ThinhThan.Core.Localization",
-                    "ThinhThan.Core.Localization.Editor",
-                    "ThinhThan.Core.Geometry.Editor",
-                    "ThinhThan.Net",
-                    "ThinhThan.Systems",
-                    "ThinhThan.UI",
-                    "Unity.InputSystem",
-                    "Unity.RenderPipelines.Core.Runtime",
-                    "Unity.RenderPipelines.Universal.Runtime",
-                    "Unity.RenderPipelines.Universal.2D.Runtime",
-                    "Unity.Addressables",
-                    "Unity.Addressables.Editor",
-                    "Unity.ResourceManager",
-                    "Unity.Localization",
-                    "Unity.Localization.Editor",
-                    "Unity.2D.Animation.Runtime",
-                    "UnityEngine.UI",
-                    "Unity.TextMeshPro",
-                    "UnityEngine.TestRunner",
-                    "UnityEditor.TestRunner",
-                    "Unity.PerformanceTesting",
-                },
-                ["ThinhThan.Tests.PlayMode"] = new[]
-                {
-                    "ThinhThan.Protocol",
-                    "ThinhThan.Core",
-                    "ThinhThan.Core.Assets",
-                    "ThinhThan.Core.Localization",
-                    "ThinhThan.Net",
-                    "ThinhThan.Systems",
-                    "ThinhThan.UI",
-                    "ThinhThan.App",
-                    "Unity.InputSystem",
-                    "Unity.RenderPipelines.Core.Runtime",
-                    "Unity.RenderPipelines.Universal.Runtime",
-                    "Unity.RenderPipelines.Universal.2D.Runtime",
-                    "Unity.Addressables",
-                    "Unity.ResourceManager",
-                    "Unity.Localization",
-                    "Unity.2D.Animation.Runtime",
-                    "UnityEngine.UI",
-                    "Unity.TextMeshPro",
-                    "UnityEngine.TestRunner",
-                    "Unity.PerformanceTesting",
-                },
-            };
+        private static readonly string AssetsRoot = Application.dataPath;
 
         [Serializable]
         private sealed class AsmDefData
         {
-            public string name;
-            public string[] references = new string[0];
+            public string name = string.Empty;
+            public string[]? references;
+        }
+
+        private sealed class LayoutRow
+        {
+            public string Name = string.Empty;
+            public bool Editor;
+            public string RefsCell = string.Empty;
+        }
+
+        private static string RepoRoot()
+        {
+            var dir = new DirectoryInfo(Application.dataPath);
+            while (dir != null && !Directory.Exists(Path.Combine(dir.FullName, "docs")))
+            {
+                dir = dir.Parent;
+            }
+            Assert.IsNotNull(dir, "repository root (dir containing docs/) not found above " + Application.dataPath);
+            return dir!.FullName;
+        }
+
+        /// <summary>
+        /// Parse the § Mandatory Assemblies table of repository_layout.md into
+        /// ordered rows: `| `Name` | `Folder/` | platform | refs |`.
+        /// </summary>
+        private static List<LayoutRow> ParseLayoutTable()
+        {
+            var path = Path.Combine(RepoRoot(), "docs", "10_implementation", "repository_layout.md");
+            Assert.IsTrue(File.Exists(path), "missing " + path);
+            var text = File.ReadAllText(path);
+            var start = text.IndexOf("## Mandatory Assemblies", StringComparison.Ordinal);
+            Assert.GreaterOrEqual(start, 0, "Mandatory Assemblies section not found");
+            var end = text.IndexOf("\n## ", start + 1, StringComparison.Ordinal);
+            var section = end < 0 ? text.Substring(start) : text.Substring(start, end - start);
+            var rows = new List<LayoutRow>();
+            foreach (var line in section.Split('\n'))
+            {
+                var t = line.Trim();
+                if (!t.StartsWith("| `ThinhThan.", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+                var cells = t.Split('|').Select(c => c.Trim()).Where(c => c.Length > 0).ToArray();
+                Assert.GreaterOrEqual(cells.Length, 4, "malformed layout row: " + t);
+                rows.Add(new LayoutRow
+                {
+                    Name = StripTicks(cells[0]),
+                    Editor = cells[2].IndexOf("Editor", StringComparison.Ordinal) >= 0,
+                    RefsCell = cells[3],
+                });
+            }
+            Assert.AreEqual(13, rows.Count, "layout must declare exactly 13 mandatory assemblies");
+            return rows;
+        }
+
+        private static string StripTicks(string s)
+        {
+            return s.Replace("`", "").Trim();
+        }
+
+        private static bool IsThinhThan(string name)
+        {
+            return name.StartsWith("ThinhThan.", StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// Literal assembly names in a refs cell: backticked tokens that are
+        /// not "precompiled" DLL entries and not an "every …" shorthand.
+        /// </summary>
+        private static IEnumerable<string> LiteralRefs(string refsCell)
+        {
+            foreach (var raw in refsCell.Split(',', ';'))
+            {
+                var tok = StripTicks(raw);
+                if (tok.Length == 0
+                    || tok.StartsWith("precompiled", StringComparison.Ordinal)
+                    || tok.EndsWith(".dll", StringComparison.Ordinal)
+                    || tok.StartsWith("every", StringComparison.Ordinal)
+                    || tok == "only")
+                {
+                    continue;
+                }
+                yield return tok;
+            }
+        }
+
+        /// <summary>
+        /// Expand a refs cell: literal names plus the "every …" shorthand rows
+        /// (except-clauses, "assembly above" scopes, Editor filtering), with
+        /// self-reference always excluded.
+        /// </summary>
+        private static List<string> ExpandRefs(
+            LayoutRow row,
+            List<LayoutRow> allRows,
+            List<LayoutRow> rowsAbove,
+            HashSet<string> pkgsAbove)
+        {
+            var outp = new List<string>();
+            var cell = row.RefsCell;
+            var norm = StripTicks(cell);
+            var thin = allRows.Where(r => IsThinhThan(r.Name));
+            var thinAbove = rowsAbove.Where(r => IsThinhThan(r.Name));
+
+            if (norm.IndexOf("every non-Editor ThinhThan.* assembly", StringComparison.Ordinal) >= 0)
+            {
+                var scope = norm.IndexOf("assembly above", StringComparison.Ordinal) >= 0 ? thinAbove : thin;
+                outp.AddRange(scope.Where(r => !r.Editor).Select(r => r.Name));
+            }
+            else if (norm.IndexOf("every ThinhThan.* assembly", StringComparison.Ordinal) >= 0)
+            {
+                var excl = new HashSet<string>();
+                var idx = norm.IndexOf("except ", StringComparison.Ordinal);
+                if (idx >= 0)
+                {
+                    var tail = norm.Substring(idx + "except ".Length);
+                    var cut = tail.IndexOf(',');
+                    if (cut >= 0)
+                    {
+                        tail = tail.Substring(0, cut);
+                    }
+                    foreach (var ex in tail.Split(new[] { " and " }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        excl.Add(ex.Trim());
+                    }
+                }
+                outp.AddRange(thin.Where(r => !excl.Contains(r.Name)).Select(r => r.Name));
+            }
+            if (norm.IndexOf("Unity package assembly listed above", StringComparison.Ordinal) >= 0)
+            {
+                var nonEditor = norm.IndexOf("every non-Editor Unity package assembly", StringComparison.Ordinal) >= 0;
+                outp.AddRange(pkgsAbove.Where(p => !nonEditor
+                    || (!p.EndsWith(".Editor", StringComparison.Ordinal)
+                        && !p.StartsWith("UnityEditor.", StringComparison.Ordinal))));
+            }
+            outp.AddRange(LiteralRefs(cell));
+            return outp.Where(r => r != row.Name).Distinct().ToList();
+        }
+
+        /// <summary>
+        /// The canonical reference map derived from repository_layout.md:
+        /// literals plus expanded "every …" rows; Unity package names are
+        /// collected row-by-row as they first appear.
+        /// </summary>
+        private static Dictionary<string, string[]> ExpectedReferences()
+        {
+            var rows = ParseLayoutTable();
+            var map = new Dictionary<string, string[]>();
+            var rowsAbove = new List<LayoutRow>();
+            var pkgsAbove = new HashSet<string>();
+            foreach (var row in rows)
+            {
+                map[row.Name] = ExpandRefs(row, rows, rowsAbove, pkgsAbove)
+                    .OrderBy(r => r, StringComparer.Ordinal).ToArray();
+                foreach (var lit in LiteralRefs(row.RefsCell))
+                {
+                    if (!IsThinhThan(lit))
+                    {
+                        pkgsAbove.Add(lit);
+                    }
+                }
+                rowsAbove.Add(row);
+            }
+            return map;
         }
 
         private static Dictionary<string, AsmDefData> LoadAll()
@@ -189,7 +212,7 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
             }
         }
 
-        private static string FindCycle(
+        private static string? FindCycle(
             string name,
             Dictionary<string, AsmDefData> map,
             HashSet<string> visiting,
@@ -222,7 +245,7 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
             return null;
         }
 
-        private static void AssertIsNull(object o)
+        private static void AssertIsNull(object? o)
         {
             Assert.IsNull(o);
         }
@@ -243,28 +266,13 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
         [Test]
         public void TestMandatoryAssembliesDeclared()
         {
-            string[] expected =
+            foreach (var row in ParseLayoutTable())
             {
-                "Assets/Scripts/Protocol/ThinhThan.Protocol.asmdef",
-                "Assets/Scripts/Core/ThinhThan.Core.asmdef",
-                "Assets/Scripts/Core/Assets/ThinhThan.Core.Assets.asmdef",
-                "Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef",
-                "Assets/Scripts/Core/Localization/ThinhThan.Core.Localization.asmdef",
-                "Assets/Scripts/Core/Localization/Editor/ThinhThan.Core.Localization.Editor.asmdef",
-                "Assets/Scripts/Core/Geometry/Editor/ThinhThan.Core.Geometry.Editor.asmdef",
-                "Assets/Scripts/Net/ThinhThan.Net.asmdef",
-                "Assets/Scripts/Systems/ThinhThan.Systems.asmdef",
-                "Assets/Scripts/UI/ThinhThan.UI.asmdef",
-                "Assets/Scripts/App/ThinhThan.App.asmdef",
-                "Assets/Tests/EditMode/ThinhThan.Tests.EditMode.asmdef",
-                "Assets/Tests/PlayMode/ThinhThan.Tests.PlayMode.asmdef",
-            };
-            foreach (var rel in expected)
-            {
-                Assert.IsTrue(File.Exists(rel), "missing asmdef " + rel);
-                var data = JsonUtility.FromJson<AsmDefData>(File.ReadAllText(rel));
-                var want = Path.GetFileNameWithoutExtension(rel);
-                Assert.AreEqual(want, data.name, rel + ": name mismatch");
+                var rel = row.Name + ".asmdef";
+                var hits = Directory.GetFiles(AssetsRoot, rel, SearchOption.AllDirectories);
+                Assert.AreEqual(1, hits.Length, "expected exactly one " + rel + " under Assets/");
+                var data = JsonUtility.FromJson<AsmDefData>(File.ReadAllText(hits[0]));
+                Assert.AreEqual(row.Name, data.name, hits[0] + ": name mismatch");
             }
         }
 
@@ -272,15 +280,15 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
         public void TestReferenceGraphMatchesLayout()
         {
             var map = LoadAll();
-            var extra = map.Keys.Where(k => !ExpectedReferences.ContainsKey(k)).ToList();
+            var expected = ExpectedReferences();
+            var extra = map.Keys.Where(k => !expected.ContainsKey(k)).ToList();
             Assert.IsEmpty(extra, "unlisted asmdefs: " + string.Join(",", extra));
-            foreach (var kv in ExpectedReferences.OrderBy(k => k.Key, StringComparer.Ordinal))
+            foreach (var kv in expected.OrderBy(k => k.Key, StringComparer.Ordinal))
             {
                 Assert.IsTrue(map.ContainsKey(kv.Key), "missing asmdef " + kv.Key);
                 var got = (map[kv.Key].references ?? new string[0]).OrderBy(r => r, StringComparer.Ordinal).ToArray();
-                var want = kv.Value.OrderBy(r => r, StringComparer.Ordinal).ToArray();
                 Assert.AreEqual(
-                    string.Join(",", want),
+                    string.Join(",", kv.Value),
                     string.Join(",", got),
                     kv.Key + ": reference list differs from layout");
             }
