@@ -144,11 +144,11 @@ direct trade fee = floor(offered_common * 0.05), sink
 direct trade equipment price floor = tier-based per piece, same schedule as Auction House
 direct trade cannot exceed either common-currency cap
 direct trade cap failure -> no commit / no Reward Claim
-auction listing eligibility = character.level >= 10 AND character.age_hours >= 24 (lister only)
+auction all operations = character.level >= 15; listing additionally character.age_hours >= 24
 auction = FIXED_PRICE
 listing duration = 24h
 max ACTIVE = 20
-min_listing_price = max(100, npc_base_buy_price)
+min_listing_price = quantity * max(100, npc_base_buy_price), additionally authored equipment tier floor per piece
 listing fee = 1% min 10
 sale tax = 5% (3% during 06:00-08:00 Asia/Ho_Chi_Minh Cho Phien Sang)
 proceeds over seller balance capacity -> PENDING proceeds escrow

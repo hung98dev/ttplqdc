@@ -18,6 +18,7 @@ A character may own multiple instances of the same `soul_id`, but within one loa
 same soul_id -> max 1 contracted instance
 ```
 Duplicate acquisition never auto-destroys, fuses, or converts a soul into currency. Extra instances of an already-owned `soul_id` grant **no Soul EXP** and increment Atlas `hon_giam` counters. No recycle/fusion system at launch.
+Collection synchronization uses `messages.md` § Soul Collection Paging: 437 carries the first bounded UUID-sorted page, revision/count and contracted summaries; 442/443 browse pages of at most 50 instances. Every collection mutation changes `soul_revision`; a stale page revision returns `STATE_CONFLICT` and restarts from page one. No partial page is treated as a full replacement or deletes unseen instances. Attach/reconnect never serializes an unlimited collection into one 256 KiB frame, and no product collection cap is introduced.
 
 ### Memory Resonance (Hào Quang Ký Ức)
 Acquiring duplicates of a `soul_id` whose Atlas page is already Mastered accumulates an authoritative vanity counter `memory_resonance_count` per `(character_id, soul_id)` (§ Persistence):

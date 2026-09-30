@@ -45,13 +45,13 @@ Pixel chỉ dùng cho trình bày/import asset. Mọi mô phỏng, collision, sp
 
 ## 2. Mô hình Số học & Lượng tử hóa (Quantization)
 
-Để triệt tiêu sai số dấu phẩy động (floating-point divergence) giữa Go (x86_64) và Unity C# (IL2CPP / ARM / x86):
-1. **Lượng tử hóa Milimet:**
-   - Tọa độ và vận tốc nội bộ được chuẩn hóa với độ phân giải milimet: $1\text{ mm} = 0.001\text{ m}$.
-   - Trong replication snapshot, tọa độ được lượng tử hóa thành số nguyên milimet (`x_mm`, `y_mm`). `C2S_MOVEMENT_EDGE` (108) chỉ mang `edge_type`, `direction`, `client_seq`, và `client_mono_ms` — không mang tọa độ (xem `../05_network/messages.md`).
-2. **Ngưỡng Epsilon tiếp xúc:**
-   - $\epsilon = 0.001\text{ m}$ ($1\text{ mm}$).
-   - Hai bề mặt cách nhau $\le \epsilon$ được coi là đang tiếp xúc (Grounded / Wall Contact).
+Go/C# prediction and geometry use only signed integer arithmetic:
+1. State coordinates/velocities/accelerations are integer `mm`, `mm/s`, `mm/s²`; published state/wire fits sint32. All intermediates are checked signed64. Content rejects any vector/product outside signed64 or wire range; no overflow wrapping, saturating fallback or floating-point simulation.
+2. Define `RoundDiv(n,d)` for signed n, positive d: quotient magnitude `abs(n)/d`, increment iff `2*(abs(n)%d) >= d`, then restore sign (nearest integer, exact halves **away from zero**). Use overflow-safe remainder comparison `r >= d-r`; reject INT64_MIN numerator. Examples `RoundDiv(1,2)=1`, `RoundDiv(-1,2)=-1`, `RoundDiv(3,2)=2`, `RoundDiv(-3,2)=-2`, `RoundDiv(-1,3)=0`.
+3. Effective parameter conversion multiplies exact authored rational/basis-point factors in their canonical stat order and rounds once to integer parameter at the parameter boundary. Run velocity `intent * run_speed_mm_s`, airborne velocity `RoundDiv(intent * run_speed_mm_s * air_control_bp,10000)`; gravity update `vy += RoundDiv(gravity_mm_s2,20)` then max-fall clamp. Each axis requested displacement is `RoundDiv(v_axis_mm_s,20)` per executed tick, no fractional remainder accumulator; AIR_CONTROL=8500bp. Never round to mm only at replication.
+4. X sweep precedes Y sweep. AABB endpoints, step height, contact checks and platform surfaces use integer mm. Slope height at integer x is `y1 + RoundDiv((x-x1)*(y2-y1),x2-x1)`; sweep times compared as exact rational cross-products (no float division), earliest contact wins, equal times lowest segment.id. Quantize contact coordinate once via RoundDiv, then place on the nonpenetrating side; if rounding would penetrate, move one mm outward. Recompute both grounded/platform state after the resolved Y sweep. Slopes <=45 degrees use `abs(dy)<=abs(dx)`; <=5 degrees use the fixed rational test `abs(dy)*1000000 <= abs(dx)*87489` (no runtime trig). No extra rounding of candidate sweep state.
+5. Exporter reads Unity coordinates as their exact finite IEEE-754 binary32 rational (decode sign/exponent/mantissa), converts the world-to-map origin offset in that rational domain, multiplies by1000, then applies the same RoundDiv once per endpoint/anchor/region coordinate. Negative half-mm follows the same rule; NaN/Infinity/range overflow fail export. Exported integer JSON is the sole gameplay geometry; Go never repeats conversion from a float. Decimal content arithmetic uses the compiler's exact rational parser, not locale/double parsing.
+6. Contact epsilon =1mm. Two surfaces with integer gap<=1mm are touching; gap>=2mm is separated. Collider dimensions in §3 convert exactly to mm. Epsilon is never used to choose an arithmetic rounding mode.
 
 ## 3. Kích thước Thực thể (Entity Size Profiles)
 
@@ -129,9 +129,9 @@ ONE_WAY_DROP_IGNORE_MS  = 300 ms (cửa sổ bỏ qua va chạm khi drop through
 2. **Server Authority:** Server tính toán vị trí thực tế hợp lệ tại mỗi tick 20 Hz. Mọi hitbox chiến đấu, tương tác portal và nhặt đồ chỉ sử dụng tọa độ thẩm quyền của server.
 3. **Dung sai Sửa sai (Reconciliation Threshold) — client tự tính (ADR-0069):**
    - Client không gửi tọa độ. Mỗi `S2C_STATE_DELTA` mang `self_ack` gồm `last_processed_client_seq` và trạng thái self thẩm quyền tại tick đó (`../05_network/messages.md`; quy trình client: `../05_network/synchronization.md` § Local Reconciliation).
-   - Client giữ lịch sử dự đoán theo `client_seq`; khi nhận `self`: $\Delta r = \lVert p_{\text{pred}}(\text{last\_processed\_client\_seq}) - p_{\text{server}} \rVert$ (mm, lượng tử hóa).
-   - Nếu $\Delta r \le 0.50\text{ m}$: bỏ input đã xác nhận, replay input còn chờ từ trạng thái server, và làm mượt phần lệch hiển thị trong `100 ms`.
-   - Nếu $\Delta r > 0.50\text{ m}$: snap về trạng thái server rồi replay input còn chờ, không làm mượt.
+   - Client drops acknowledged inputs, restores the full `MovementCheckpoint`, then replays remaining inputs. The sole error is $\Delta r = \lVert p_{\text{replayed,current}} - p_{\text{displayed,current}} \rVert$, not historical predicted-at-ACK error.
+   - Compare squared integer-mm distance to `500*500` using checked64 (no sqrt required). If <=250000: authoritative replayed physics state takes effect immediately; smooth visual offset over100ms.
+   - If >250000: display snaps to the replayed current state without smoothing. Any prior smoothing offset is included in current displayed position.
    - Tọa độ server luôn là chân lý duy nhất; client không bao giờ báo lệch cho server.
 4. **`S2C_MOVEMENT_CORRECTION` (107)** chỉ dùng khi server bác bỏ hoặc ghi đè đường đi dự đoán (ADR-0069): `ILLEGAL_MOVE` (input di chuyển bị từ chối/bỏ qua do khống chế, chết, trạng thái cấm, hoặc tốc độ đổi do status áp giữa lúc chạy), `KNOCKBACK` (displacement), `PORTAL`, `RESPAWN`, `FORCED` (chuyển map/instance, forced placement, kéo). Sai số dự đoán thông thường không bao giờ sinh 107. Client nhận 107 luôn snap về trạng thái trong 107 rồi replay input có `client_seq` > `last_processed_client_seq`.
 ## 6. Hợp đồng Kích thước và Hình dạng Map
@@ -180,7 +180,7 @@ Mỗi FIELD/dungeon phải có một main route liên tục từ entry đến ex
      "space_id": "map.lang_da.bo_ruong",
      "space_kind": "WORLD",
      "layout_profile": "IRRIGATION_BRAID",
-     "content_revision": "sha256_hash",
+     "content_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
      "bounds_mm": { "max_x": 76800, "max_y": 18000 },
      "segments": [
        { "id": 1, "kind": "SOLID_GROUND", "x1": 0, "y1": 2000, "x2": 24000, "y2": 2000 },
@@ -220,7 +220,7 @@ reference camera = 25.6m x 14.4m; orthographic size = 7.2m
 normal-world map width = 2.0..5.0 reference screens, never one screen by default
 fixed tick = 50ms (20 Hz); trọng lực g = -28.0 m/s²
 character silhouette <= 64x96px; collider = AABB 0.8m x 1.8m; điểm neo ở chân giữa
-dung sai sửa sai vị trí = 0.50m, do client tự tính từ last_processed_client_seq; 107 chỉ cho dịch chuyển không dự đoán được
+dung sai sửa sai vị trí =0.50m from post-ACK replayed current vs displayed current;107 only illegal/forced movement
 server geometry là file json tĩnh theo space_id, tọa độ số nguyên mm, có camera_regions[] và anchors[]; cấm suy ra từ sprite hay animation
 map bounds là envelope; layout_profile + exported geometry mới quyết định vùng đi được
 ```

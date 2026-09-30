@@ -44,9 +44,10 @@ state
 `source_type` (ADR-0060) is one of:
 ```text
 MONSTER  BOSS  BOSS_CHEST  DUNGEON  QUEST  WORLD_EVENT  ATLAS  FEAT  LEVEL_MILESTONE
-PVP  GUILD_WAR  GUILD  AUCTION_ESCROW_EXPIRY  ADMIN_COMPENSATION
+PVP  GUILD_WAR  GUILD  FISHING  HIDDEN_CHEST  AUCTION_ESCROW_EXPIRY  ADMIN_COMPENSATION
 ```
 `source_reference` is the source's stable identity (e.g. `boss_id + public_boss_spawn_generation_id`, `dungeon_instance_id`, `quest_id`, `progression.book.<type>.<level>`, `listing_id`). A flow not covered by this list adds a value here in the same spec change.
+Fishing uses `fishing_spot_id + character_id + utc_date + cast_sequence`; its earned roll identity remains `fishing.<character_id>.<utc_date>.<cast_sequence>`. Hidden chests use `character_id + chest_id + availability_start_utc`. These are the durable source identities in `../07_content/drop_tables.md`, not runtime entity handles.
 
 For an item/equipment reward, the pending claim stores the complete immutable item-creation payload rather than a normal owned `item_instance_id`. The payload contains every finalized value needed for exact later delivery, including item ID, quantity, effective binding/source override, generated roll/enhancement/provenance state when applicable, and required content revision. See ADR-0012.
 States:
@@ -60,29 +61,29 @@ Initial gameplay reward claims do not expire.
 Monster, boss, dungeon, quest, world event, PvP/Guild reward, administrative compensation, and other explicit reward flows may create claims. A source may instead prevalidate capacity and avoid claim creation when nothing has yet been earned.
 
 ## Delivery
-Claiming revalidates ownership and complete destination capacity for that claim/slot. Delivery is atomic:
-```text
-PENDING + capacity -> exact delivery/materialization + CLAIMED
-failure -> no destination mutation + remains PENDING
-```
+`SINGLE` claims revalidate ownership and complete destination capacity. Their finalized payload is immutable and indivisible: exact delivery/materialization and `CLAIMED` commit together; failure mutates no destination and leaves `PENDING`. Sibling slots remain independent only where authored.
 
-For item/equipment claims, successful delivery creates or merges the exact finalized value into the character inventory in the same transaction that marks the claim CLAIMED. Claim failure creates no materialized item.
-One claim is never partially delivered. Sibling reward slots may settle independently only when the source definition explicitly authored them as independent slots.
+`CURRENCY_AGGREGATE` and `ITEM_CONSOLIDATED` claims instead deliver one deterministic bounded batch per `reward_claim_operation_id`. Lock the claim and destination wallet/inventory rows in canonical transaction order; compute available capacity from that locked state. Currency batch = `min(total_amount - delivered_amount, currency_cap - current_balance)`. Item batch = the largest quantity fitting compatible existing stacks followed by empty slots in ascending slot index, bounded additionally by the ordinary per-operation quantity representation. The quantity belongs to the exact same `item_id + effective_binding`; per-instance equipment/Soul state never consolidates. No batch rerolls or changes binding.
+
+If the batch is zero, return `CURRENCY_CAP_REACHED` or `INVENTORY_FULL` without mutation. Otherwise atomically materialize/credit that batch, increase persisted `delivered_amount` or `delivered_quantity`, and persist the operation receipt containing delivered lines, `remaining_after`, and resulting state. Remain `PENDING` while remainder is positive; become `CLAIMED` only at zero. Totals and delivered counters are exact `NUMERIC(38,0)` nonnegative integers, with `0 <= delivered <= total`; remainder is derived, not a second mutable balance. Original contribution payloads remain immutable.
+
+An authenticated retry of the same operation returns its committed batch receipt before current capacity/state checks, even if new contributions arrived afterward. A new operation can deliver another batch after the player makes space. A claim panel uses `S2C_REWARD_CLAIM_RESULT` 409 and paged claim state in `../05_network/messages.md`; one batch fits wire integer limits, while an aggregate total/remainder uses the registered exact-decimal representation. Disconnect/restart cannot repeat a batch or discard the remainder.
 
 ## Currency Overflow
-A reward claim may hold an earned currency credit that would exceed a canonical balance cap. Claim succeeds only when the resulting balance is within cap. Currency is never silently clamped.
+A reward claim may hold an earned currency credit that would exceed a canonical balance cap. `SINGLE` currency slots remain all-or-nothing; currency aggregates use the bounded batches above. Currency is never silently clamped.
 
 High-frequency repeatable rewards must not create one PENDING row per capped currency tick. Compatible currency-only overflow may consolidate into one aggregate pending claim per:
 ```text
 owner_character_id + currency_id + source_family
 ```
+`source_family` is exactly the uppercase `source_type` enum above; no inferred grouping or free-form alias is permitted. `consolidation_key = currency_id + ":" + source_family` (both tokens contain no colon). The partial unique identity is `(owner_character_id, claim_kind, consolidation_key)` while `PENDING`; `ITEM_CONSOLIDATED` uses `item_id + ":" + effective_binding` and has no source-family subdivision.
 
 Aggregate currency claim requirements:
 - every contributed credit keeps its original `source_reward_operation_id + reward_slot` idempotency key in an append-only contribution ledger,
 - retrying a contributed operation adds zero additional amount,
 - the aggregate amount is not spendable and is not a fourth currency,
 - item/Soul/equipment sibling slots continue settling independently,
-- claiming the aggregate credit remains all-or-nothing against the canonical currency cap.
+- claiming an aggregate delivers the bounded batch above and preserves its exact remainder; newly committed compatible contributions increase total only.
 
 Claim-cap handling is defined in § Capacity / Abuse; an already-earned reward is never deleted.
 
@@ -113,6 +114,7 @@ pending_count >= 500       -> the character earns no new loot or completion item
                               and compensation still create claims; the client shows the claims-full notice
 ```
 Consolidated contributions keep their own `source_reward_operation_id + reward_slot` keys in the contribution ledger, as for aggregate currency, so retries add nothing. Never delete oldest rewards automatically.
+Before any source grants a contribution, lock its aggregate and validate that adding the finalized amount/quantity keeps its total within `0..10^38-1`. An unrepresentable contribution fails closed **before** rolling/earning/consuming the source; it never wraps, clamps, deletes a prior contribution, or converts value. Mandatory time/system settlements retain their source settlement as undelivered/retryable until capacity in this exact accumulation representation is available; the source is not marked settled or lost. This exceptional representation boundary is separate from normal inventory/currency capacity and the pending-row policy.
 
 ## Idempotency
 Canonical creation/delivery key:

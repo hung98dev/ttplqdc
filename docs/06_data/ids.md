@@ -11,7 +11,7 @@ Persistence rationale: ../11_decisions/0011-postgresql-relational-persistence.md
 |---|---|---|
 | static content ID | skill.kim.kiem_quang | ASCII lowercase string |
 | durable entity ID | account/character/guild/item/listing/claim | UUID v4 |
-| operation ID | retriable value mutation | UUID v4 |
+| operation ID | retriable value mutation | client UUID v7; server/content UUID v5 |
 | runtime entity ID | monster/projectile/entity inside one owner lifetime | unsigned 64-bit integer scoped by owner/epoch |
 | revision/counter | inventory_revision/session_epoch/ownership_epoch | unsigned monotonic integer |
 | protocol message ID | message enum | stable numeric enum |
@@ -75,8 +75,8 @@ Every retriable value-changing operation has one stable UUID generated once and 
 
 Generator (ADR-0065):
 ```text
-client-initiated request (C2S message / HTTPS mutation)  client generates UUID v4 once per user intent and reuses it on retry;
-                                                          server rejects nil, non-v4 or malformed IDs (`PROTOCOL_MALFORMED`)
+client-initiated request (C2S message / HTTPS mutation)  client generates RFC 9562 UUID v7 once per user intent and reuses it on retry;
+                                                          server rejects nil, non-v7 or malformed IDs (`PROTOCOL_MALFORMED`)
 server-initiated job / admin / webhook                    deterministic UUID v5 over SERVER_JOB_NAMESPACE_UUID and "<operation_family>:<job_key>"
                                                           (ADR-0070); job_key = the stable natural key of the job: account_id (erasure),
                                                           utc_date + scope (scheduled rollups/settlements), provider notification ID
@@ -87,12 +87,18 @@ content grant                                             deterministic UUID v5 
 ```
 Uniqueness scope is `(operation_family, owner_id, operation_id)` (`data_model.md` § operations), so a client-chosen ID can never match another owner's operation.
 
+Client UUID v7 encoding: first 48 bits = Unix UTC milliseconds estimated from authenticated server time; version/variant per RFC 9562; remaining 74 bits from the platform cryptographic RNG. Durable entity IDs remain UUID v4. No UUID library is added. `OPERATION_REPLAY_HORIZON = 180 days`; `OPERATION_FUTURE_SKEW = 60 s`. Let `issued_at` be the immutable UUID timestamp and `now` the server UTC instant: `issued_at > now + 60 s` is `PROTOCOL_MALFORMED`; `now >= issued_at + 180 days` is `OPERATION_EXPIRED`, even when the old outcome has been purged. Never reinterpret an expired ID as a new operation. A changed timestamp changes the UUID and denotes a different user intent, not a retry.
+
+After schema/authentication/owner validation and this time check, lookup the owner-scoped committed key and fingerprint **before** mutable range/state/resource preconditions (`../07_security/validation.md`). In-horizon identical retries reconstruct the commit; conflicting fingerprints return `OPERATION_CONFLICT`; genuinely new keys run all current preconditions and transactional validation. Outcomes remain until `replay_until = issued_at + 180 days` for client operations. Server/content UUID v5 handlers continue to enforce their durable natural-key/grant identity after generic outcome retention expires; replay never creates a new grant.
+
 Same operation ID + same operation family:
-- same committed request -> return/reconstruct prior outcome,
+- same committed request within the replay horizon -> return/reconstruct prior outcome,
 - conflicting payload -> reject OPERATION_CONFLICT,
 - never reroll/re-execute as a second logical mutation.
 
-Do not use request timestamp as operation identity.
+Do not use a timestamp alone as operation identity; UUID v7 random bits distinguish concurrent intents in the same millisecond.
+
+Simulation event identity is defined in `save_rules.md` § Database Outage: each partition incarnation has a fresh server-generated UUID v4, each finalized source event a strictly increasing uint64 counter, and all retries/journal replays reuse the original incarnation, counter, tick and derived operation ID.
 
 ## Deterministic Content-Grant Idempotency Keys
 Certain content grants — seasonal cosmetics, Atlas reward tiers, Guild Stone completions, and any future one-time content delivery — require a stable idempotency key that is derivable from structured inputs such as `(season_number, cosmetic_id, character_id)`. These keys must be stored in a PostgreSQL `uuid` column and satisfy all operation ID requirements, but must also be deterministically reproducible from the same inputs across retries and server restarts without persisting the key before the first attempt.

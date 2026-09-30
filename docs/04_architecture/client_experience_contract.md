@@ -36,8 +36,8 @@ Chuyển trạng thái (tên trạng thái dùng thống nhất trong toàn bộ
 ```text
 BOOT -> PATCHING_UPDATE (catalog mới) | AUTH_TITLE
 PATCHING_UPDATE -> AUTH_TITLE
-AUTH_TITLE -> CHARACTER_SELECT (đăng nhập thành công) | LOGIN_QUEUED (SERVER_OVERLOADED có queue_position)
-LOGIN_QUEUED -> CHARACTER_SELECT (được nhận) | AUTH_TITLE (Hủy, hoặc mất chỗ sau 60 s không attach)
+AUTH_TITLE -> CHARACTER_SELECT (S2C_HELLO_OK, slot đã được giữ) | LOGIN_QUEUED (SERVER_OVERLOADED có queue_position)
+LOGIN_QUEUED -> CHARACTER_SELECT (ticket -> S2C_HELLO_OK) | AUTH_TITLE (Hủy, hết hạn yêu cầu ticket, hoặc ticket -> HELLO hết hạn)
 CHARACTER_SELECT -> TRANSFERRING_MAP (attach) -> IN_WORLD
 CHARACTER_SELECT -> AUTH_TITLE (đăng xuất)
 IN_WORLD -> TRANSFERRING_MAP (chuyển map/instance) | DISCONNECTED (mất kết nối) | AUTH_TITLE (SESSION_REPLACED, đăng xuất)
@@ -49,6 +49,8 @@ IN_WORLD (nhân vật DEAD) + S2C_PLACEMENT_PENDING reason RESPAWN: ở lại IN
 DISCONNECTED -> IN_WORLD (resume) | TRANSFERRING_MAP (resume vào map khác) | AUTH_TITLE (hết lượt thử hoặc SERVER_DRAINING sau hạn)
 bất kỳ -> AUTH_TITLE khi CLIENT_UPDATE_REQUIRED / PROTOCOL_UNSUPPORTED (kèm hướng dẫn cập nhật)
 ```
+
+Deadline hàng chờ canonical ở `../07_security/session.md` § Login Queue: khi lên vị trí 1 phải yêu cầu ticket trong 60 s; sau cấp ticket phải đạt `S2C_HELLO_OK` trong 60 s. UI hiển thị các deadline theo mốc admission server, không suy từ thời điểm attach hay tự tạo deadline mới. Sau HELLO, `CHARACTER_SELECT` giữ reservation **không timeout**: chọn nhân vật quá 60 s vẫn attach bình thường; attach không trả `SERVER_OVERLOADED`. Hủy/hết hạn admission trở về title và giải phóng hàng chờ/reservation theo contract server.
 
 ## 2. Bố cục Giao diện In-World (HUD Layout)
 

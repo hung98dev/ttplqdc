@@ -90,7 +90,7 @@ Forbidden — do not add, do not invent:
 ```text
 Redis / Kafka / NATS / distributed cache / extra server binaries / microservices
 second world / Kubernetes / container runtime in production (ADR-0052)
-Gin Chi Echo Fiber gorilla/mux gorilla/websocket gRPC
+Gin Chi Echo Fiber gorilla/mux gorilla/websocket gRPC (direct first-party imports forbidden; transitive OTLP HTTP exporter types exempt per technology_versions.md)
 GORM sqlx zap logrus zerolog
 math/rand          -> math/rand/v2 or crypto/rand
 account item vault -> account_storage.md is IAP panel only (ADR-0029)

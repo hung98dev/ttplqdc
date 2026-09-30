@@ -19,7 +19,7 @@ trigger: always_on
 - Stay in scope. No unrelated refactors, no "while I'm here" cleanups, no drive-by renames.
 - No workarounds that hide a fixable root cause. No commented-out code, `panic("TODO")`, placeholder stubs, or fake mocks.
 - No new dependency unless it is already pinned in `docs/00_context/technology_versions.md` or explicitly approved through the matrix update process. Stdlib first.
-- Never hand-edit generated protocol outputs: `server/internal/protocol/**`, `client/Assets/Scripts/Protocol/**`, deterministic parent `.meta`, or golden binaries. Change proto/test fixture sources and regenerate through approved commands.
+- Never hand-edit generated Protocol Go/C#, deterministic parent `.meta`, or golden binaries. Change proto/test fixture sources and regenerate through approved commands. Only IMP-000 on `imp/IMP-000[-suffix]` may author `client/Assets/Scripts/Protocol/{ThinhThan.Protocol.asmdef,csc.rsp}` and their `.meta`; they are authored skeleton files, not generated C#. Only IMP-106 on its task branch may edit `.devin/scripts/{cache_telemetry.sh,cache_telemetry.ps1,cache-policy.md}`. Both exact exceptions retain protected-path review (`audit_gates.md` § Protected Paths).
 - Implementers treat `docs/**` as read-only except `docs/10_implementation/**`. If implementation requires a protected spec/ADR change, record the gap in `docs/10_implementation/known_blockers.md`, mark the task BLOCKED, and hand it to the `spec-owner` agent (spec-change PR + `policy-review`); never edit protected specs as an implementer.
 - Never commit secrets. Never log secrets, tokens, or credentials.
 
@@ -39,7 +39,7 @@ Code is read by other engineers and agents. Boring, obvious code beats clever co
 | `sim/` | Never imports SQL/pgx/`edge/` |
 | `durable/` | Never imports `sim/`; only owner of SQL gameplay mutation |
 | `edge/` | Routes intent; never owns combat/value mutation |
-| `protocol/` generated | Imports no domain package; never hand-edited |
+| `protocol/` generated | Imports no domain package; generated Go/C# never hand-edited; exact IMP-000 skeleton exception above |
 | Contract changes | Must already exist in the protected canonical spec (changed only by `spec-owner`); start wire edits at `proto/`, grep every consumer, and check client AND server |
 | Migrations | Immutable once committed; corrections are new numbered pairs |
 

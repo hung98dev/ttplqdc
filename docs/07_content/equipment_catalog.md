@@ -170,44 +170,9 @@ Expected power per item:
 E[power] = K × (1/N) × Σ power(X)  =  K × avg_power_per_type
 ```
 
-For budget neutrality: avg_power_per_type must be equal before and after expansion.
+Budget neutrality means no inflation above the old8 common-unit baseline by >1% without an approved balance note, not equality of unrelated raw ratios. The accepted expansion may reduce expected power. `balance_validation.md` § Roll-Magnitude Budget Rule owns the exact normalized budget-unit denominators, rational enumeration and comparison. All12 types, including dimensioned flat rolls, participate.
 
-Condition: each new type carries the same design-budget weight as existing utility types.
-
-## Design-Budget-Weight Calibration
-
-The four new stats are fraction-valued, capped, non-potential-derived utility stats. Ranges are set so:
-- Their T6 midpoints are within the CRIT_CHANCE / COOLDOWN_REDUCTION band (the existing low-tier utility class).
-- A full 14-item theoretical stack slightly exceeds each cap, confirming the cap does design work.
-- No new type has a midpoint above the existing utility-type average.
-
-T6 midpoint comparison:
-```
-Existing utility types:
-  CRIT_CHANCE         midpoint  0.0135
-  ATTACK_SPEED        midpoint  0.0190
-  CAST_SPEED          midpoint  0.0190
-  COOLDOWN_REDUCTION  midpoint  0.0110
-  Average = 0.0156
-
-New types:
-  LIFESTEAL           midpoint  0.0060
-  REFLECT             midpoint  0.0100
-  ABSORB              midpoint  0.0070
-  HEAL_REDUCTION      midpoint  0.0185
-  Average = 0.0104
-
-8-utility-type average = (4×0.0156 + 4×0.0104) / 8 = 0.0130
-Old-4-utility-type average = 0.0156
-```
-
-Note: the denominator 8 covers the 4 existing utility types plus the 4 new utility types only. Flat-stat types (ATTACK/DEFENSE/HP/MP) are excluded from this midpoint comparison because they are dimensioned in different units (tier-scaled integers, not fractions). The label "All-12-type average" that previously appeared here was incorrect; the computation covers 8 utility types, not 12.
-
-The new types' average (0.0104) is below the old utility average (0.0156). Adding them REDUCES avg_power_per_type for the utility portion of the pool.
-
-**Flat-stat draw-probability note**: Expanding the pool from 8 to 12 types reduces the per-item expected count of any flat-stat roll from K/8 to K/12 — a 33% reduction in expected flat-stat contribution per item. This is a real negative power change: players will see fewer expected ATTACK/DEFENSE/HP/MP rolls per item on average. This trade is accepted under the TTK and Survivability Window Preservation Rule in `balance_validation.md`: if the reduced flat-stat contribution drives the synthetic reference build's TTK or survivability outside the NORMAL/ELITE/boss guardrail windows, roll ranges must be recalibrated. The guardrail windows may not be widened to accommodate the shortfall.
-
-**Conclusion: total expected secondary-roll power per item is not inflated on the utility dimension. The flat-stat draw reduction is a deliberate design trade accepted under the TTK preservation rule in `balance_validation.md`. ✓**
+The old8 baseline is the first8 roll IDs/ranges in this catalog; the current12 adds the last4, with unchanged K1/2. A comparison report includes exact per-tier expected power before/after. Runtime-sensitive fixture B, not the no-roll reference A, detects the flat draw reduction K/8→K/12 and actual utility effects. A content change that fails existing combat/sustain guardrails must retune its own magnitudes; guardrails never widen. No raw-midpoint calculation is a power proof.
 
 ## Cap Reachability at Lv60
 
@@ -359,7 +324,7 @@ source identity: regional crafting/world drops
 Bonuses:
 ```text
 2pc -> ATTACK_SPEED +0.03 FLAT_ADD
-4pc -> owner-applied BURN/POISON duration +0.50s without extra ticks/stacks
+4pc -> owner-applied BURN/POISON residual_extension_ms=500; damage_expires_at unchanged, no extra ticks/stacks (class_skill_catalog.md DOT schedule)
 6pc -> damaging >=3 hostile targets in one action restores target_max_mp_ratio=0.03, cooldown 8s
 ```
 Support signature:

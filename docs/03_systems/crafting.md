@@ -179,21 +179,23 @@ common_cost   = base_enhancement_common * common_currency_multiplier[L]
 Attempt costs scale aggressively at higher tiers to create a durable, healthy economic sink for materials and currency without making early-game progression prohibitive.
 
 ### Expected-Cost Reference
-With Insurance applied for attempts +8..+11 **and the canonical per-target soft-pity state machine applied for +13..+16**, expected cumulative multiplier units from +0 are approximately:
+With zero Lucky Charm/Guild Blessing, the unconditional 9500 bp final clamp (including L=0 and L=1), Insurance at current levels L=8..11, and the canonical per-target soft-pity state machine at L=12..15, expected cumulative multiplier units from +0 are:
 
 | Target | material units | common-base units | Notes |
 |---:|---:|---:|---|
-| +6 | 27.26 | 56.28 | no Insurance assumed |
-| +8 | 192.02 | 488.53 | Insurance for +8..+11 assumed |
-| +10 | 275.35 | 798.53 | Insurance for +8..+11 assumed |
-| **+11** | **375.35** | **1,198.53** | Insurance; 10 expected attempts at L=10 |
-| +12 | 525.35 | 1,886.03 | Insurance for +8..+11 assumed |
-| **+13** | **701.15** | **2,765.03** | no Insurance; pity applied (+12 floor); ~11.72 expected attempts |
-| +16 | 785,781.85 | 3,979,515.15 | pity applied to +13..+16; **TERMINAL GOLD DESTINATION** |
+| +6 | 27.45 | 56.53 | no Insurance assumed |
+| +8 | 192.21 | 488.79 | no Insurance before L=8 |
+| +10 | 275.54 | 798.79 | Insurance at L=8..11 |
+| **+11** | **375.54** | **1,198.79** | Insurance; 10 expected attempts at L=10 |
+| +12 | 525.54 | 1,886.29 | Insurance at L=8..11 |
+| **+13** | **701.43** | **2,765.73** | no Insurance; pity applied (+12 floor) |
+| +16 | 785,782.04 | 3,979,515.40 | full pity/downgrade model; **TERMINAL GOLD DESTINATION** |
 
-These values are validation references, not persisted runtime state. Tooling computes expectation in full precision and compares each displayed value after rounding to two decimal places; a displayed reference differs only when absolute full-precision drift exceeds `0.005` multiplier units.
+These values are validation references, not persisted runtime state. Compute with exact rational arithmetic, never rounded intermediate attempts/costs; round the final multiplier once to two decimal places, half up, and require exact equality to this table. Tier costs use the full-precision result before final integer half-up rounding, not the displayed multiplier table.
 
-The **+16 enhancement of a T6 item is the official terminal destination for `currency.common`**. At `REFERENCE_ENDGAME_COMMON_PER_HOUR` (76,500, canonical in `../07_content/economy_catalog.md`) the expected full T6+16 cost (994,878,788 common, approximately 0.995B; derived as 3,979,515.15 common-base units × T6 base 250 = 994,878,787.5, rounded) represents approximately 13,000 hours of field income (994,878,788 / 76,500 = 13,005) — a genuine lifetime goal, not a casual target. Its role is to act as a permanent, deep, unambiguous gold sink that removes excess currency without creating a pay-to-win advantage.
+The **+16 enhancement of a T6 item is the official terminal destination for `currency.common`**. Full-precision expected common-base units `3979515.400652772747...` × T6 base 250, rounded once, give **994,878,850 common** (approximately 0.995B). At `REFERENCE_ENDGAME_COMMON_PER_HOUR` 76,500 this is approximately 13,005 hours: a lifetime goal, never a baseline content requirement.
+
+Exact renewal derivation: let `d_L(f)` be cost to first reach L+1 from L with this target's pity counter f and all lower-target counters reset by their latest successful restoration. Let `r_L=0` at a milestone floor or insured L, otherwise `r_L=d_(L-1)(0)`. For L<12, `d_L=(cost_L+(1-p_L)*r_L)/p_L`. For L>=12, `p_L(f)=min(base_bp[L]+max(0,f-4)*100,9500)/10000`, `d_L(9)=(cost_L+(1-p_L(9))*r_L)/p_L(9)`, then `d_L(f)=cost_L+(1-p_L(f))*(r_L+d_L(f+1))` for f=8 down to 0. Sum `d_L(0)` through target-1. Lower-level restoration may reset only its own target counter, never the still-failing higher target. This renewal is equivalent to the reachable full-state Markov solver.
 
 Derivation arithmetic (T6, +12→+13 with pity):
 ```text
@@ -209,7 +211,7 @@ E[attempts from pity=0]:
   E_2 = 1 + 0.94 * E_3         = 11.07
   E_1 = 1 + 0.94 * E_2         = 11.41
   E_0 = 1 + 0.94 * E_1         = 11.72 expected attempts
-Expected cost +12->+13: 11.72 * 75 = 879.00 common-base units (material: 11.72 * 15 = 175.80)
+Expected attempts +12->+13 = 11.725922219222857...; additional cost = 879.444166441714... common-base units and 175.888833288343... material units. The rounded explanatory recurrence above is not an input to validation.
 ```
 
 ### Pacing Guardrail
@@ -259,6 +261,6 @@ equipment never destroyed
 attempt-cost multipliers are explicit tables
 cost review includes failure probability, not just per-attempt price
 +13..+16 never required for baseline content
-+16 T6 = official terminal gold destination (~13,000 hours at REFERENCE_ENDGAME_COMMON_PER_HOUR; ~994,878,788 common)
++16 T6 = official terminal gold destination (~13,005 hours at REFERENCE_ENDGAME_COMMON_PER_HOUR; ~994,878,850 common)
 one operation -> one RNG result
 ```

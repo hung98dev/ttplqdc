@@ -74,20 +74,29 @@ activation = NIGHT
 max_alive = 1
 respawn_seconds = 300
 ```
-| spawn_group_id | map_id | monster |
-|---|---|---|
-| `spawn.rare.lang_da.ma_xo_dem` | `map.lang_da.go_ma` | `monster.lang_da.hon_do_trang` |
-| `spawn.rare.u_minh.ma_tranh_dem` | `map.rung_u_minh.rung_sau` | `monster.rung_u_minh.ma_tranh` |
-| `spawn.rare.ben_nuoc.ma_da_dem` | `map.ben_nuoc_den.bai_lau` | `monster.ben_nuoc_den.quy_song_dem` |
-| `spawn.rare.deo_may.ma_tranh_dem` | `map.deo_may.duong_rung` | `monster.deo_may.ma_van_dem` |
-| `spawn.rare.thanh_co.ma_co_dem` | `map.thanh_co.hao_can` | `monster.thanh_co.oan_hon_dem` |
-| `spawn.rare.nui_thieng.vong_linh_dem` | `map.nui_thieng.rung_may` | `monster.nui_thieng.than_rung_dem` |
+| spawn_group_id | map_id | anchor_id | monster |
+|---|---|---|---|
+| `spawn.rare.lang_da.ma_xo_dem` | `map.lang_da.go_ma` | `anchor.spawn.rare.lang_da.ma_xo_dem` | `monster.lang_da.hon_do_trang` |
+| `spawn.rare.u_minh.ma_tranh_dem` | `map.rung_u_minh.rung_sau` | `anchor.spawn.rare.u_minh.ma_tranh_dem` | `monster.rung_u_minh.ma_tranh` |
+| `spawn.rare.ben_nuoc.ma_da_dem` | `map.ben_nuoc_den.bai_lau` | `anchor.spawn.rare.ben_nuoc.ma_da_dem` | `monster.ben_nuoc_den.quy_song_dem` |
+| `spawn.rare.deo_may.ma_tranh_dem` | `map.deo_may.duong_rung` | `anchor.spawn.rare.deo_may.ma_tranh_dem` | `monster.deo_may.ma_van_dem` |
+| `spawn.rare.thanh_co.ma_co_dem` | `map.thanh_co.hao_can` | `anchor.spawn.rare.thanh_co.ma_co_dem` | `monster.thanh_co.oan_hon_dem` |
+| `spawn.rare.nui_thieng.vong_linh_dem` | `map.nui_thieng.rung_may` | `anchor.spawn.rare.nui_thieng.vong_linh_dem` | `monster.nui_thieng.than_rung_dem` |
 
 `spawn.rare.u_minh.ma_tranh_dem` is genuine night-exclusive: `ma_tranh` is absent from `map.rung_u_minh.rung_sau`'s 24/7 pool.
 The other five reference night-exclusive monster IDs introduced during catalog reconciliation; each ID is defined in the monsters catalog and is absent from its map's 24/7 spawn pool.
 Spawn_group_ids with abbreviated region tokens (`u_minh`, `ben_nuoc`) are stable and cannot be renamed; see canonical namespace rules in `../06_data/ids.md`.
 
 Clue is environmental (đèn đất / sương). No key. Personal loot. MAIN never requires these.
+
+All six anchors are required `FIXED_POINT` locators exported by the owning map geometry, outside portal/checkpoint and PUBLIC-boss safety envelopes; they use the same visible-player 6m suppression as ordinary spawns. The single-entry `monster` cell expands to `monster_id`, not an implicit pool.
+
+## Saturated Night Availability Fixture
+The six night maps each author 40 NORMAL + 2 ELITE + 1 NIGHT_RARE targets, not 43 simultaneous actors. All use `SPAWN_GROUP_SLOTS = 42`; EVENT/BOSS/TRANSIENT quotas cannot be borrowed.
+
+At night activation with an untouched persistent population of 42, the rare admission is rejected (no rare actor, no reward) and retries 300s later under `spawning.md`. At a retry with 41 persistent actors and no competing due admissions, the rare may occupy slot42; a due ordinary replacement is then rejected and uses its own authored respawn delay. An untouched cap does not prove permanent starvation: availability depends on vacancies, suppression, and deterministic due-admission order. There is no night reservation and the persistent group targets/caps remain unchanged.
+
+Required saturated balance fixture records both cases and a controlled vacancy trace: start with 40 NORMAL/2 ELITE, phase4799 then4800, observe rejected rare and retry deadline; remove one NORMAL at phase5099, hold its replacement in 6m proximity suppression, advance to rare deadline phase5100, admit rare at its legal distant anchor, then release suppression and observe the ordinary replacement rejected while total=42. Run all six maps with 18 and forced22 players; record realized NORMAL/ELITE/rare populations, rare wait time, kill throughput and target deficits. Acceptance requires total<=42, exact deadlines, no borrowed quotas, and balance reporting based on realized population rather than claiming all43 targets; uninterrupted42 occupancy is explicitly zero rare availability for that interval. MAIN/Bounty never depends on this optional admission.
 
 # Safe / Social Maps — 6
 ```text

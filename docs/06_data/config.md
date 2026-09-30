@@ -21,6 +21,10 @@ content_revision
 created_at
 ```
 
+`content_revision` is the full SHA-256 semantic revision from `content_authoring_contract.md`: exactly 64 lowercase hexadecimal characters (`^[0-9a-f]{64}$`), no prefix, numeric surrogate or truncation. The same string is used by durable `CHAR(64)` provenance, protobuf, compiled geometry JSON, client/server bundle metadata and diagnostics. Asset catalog revisions remain separately identified.
+
+Compilation consumes registered Markdown headings, inherited assignment fences, typed tables and finite rules in all 24 owning files, not table cells alone or unrestricted prose. Every emitted runtime field has a named typed source/default/derivation in its catalog's `Compiler Source Schema`; an absent mapping is an activation error. Canonical hashing includes the resolved semantic definitions, named rule versions, validation parameters and geometry as specified by the authoring contract.
+
 Stable runtime IDs use ASCII machine-readable identifiers. Localized Vietnamese diacritics belong in display/localization data, not identity.
 
 ## Validation

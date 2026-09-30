@@ -3,6 +3,12 @@ status: LOCKED
 
 This directory turns canonical gameplay/world/system rules into shippable content data.
 
+## Compiler Source Schema
+
+The finite input manifest is exactly the 24 filenames in `../06_data/content_authoring_contract.md` §3, keyed by `catalog_file`; each required input has `status=LOCKED`. `presentation_asset_manifest.md` is a separate client release manifest, not an extra server gameplay catalog. This index has no runtime entity expansion and its presentation budget fences are cross-checks, not English-parser inputs.
+
+Authoring is registered Markdown headings, inherited assignment fences, typed tables and named finite rules, as declared by each owning `Compiler Source Schema`. Every runtime field requires a formal typed source/default/derivation; executable prose is normalized in the owning catalog, not guessed by a scraper. Compile preserves the locked finite roster counts, checks the source-field coverage report and hashes the complete semantic output into one 64-lowercase-hex SHA-256 `content_revision` (ADR-0079). Presentation reordering does not change it; an authoritative value mutation does. `LOCKED` describes documentation scope, not observed compiler/runtime/release readiness.
+
 ## Launch Content Budget
 ```text
 5 classes

@@ -36,7 +36,7 @@ A gameplay command is accepted only when:
 
 ## Login Queue (ADR-0052)
 ```text
-trigger        attached sessions >= WORLD_CCU_CAP (runtime config, ../08_scale_ops/capacity.md)
+trigger        capacity_used >= WORLD_CCU_CAP (runtime config, ../08_scale_ops/capacity.md)
 order          FIFO by first gameplay-ticket request time; one queue entry per account
 response       SERVER_OVERLOADED with retry_after_ms and queue_position (ticket endpoint only)
 admission      when a slot frees, the oldest entry's next ticket request succeeds; it must request it within 60 s of
@@ -50,6 +50,8 @@ retry          retry_after_ms = 5000 when queue_position <= 10, else min(30000, 
 attach         C2S_CHARACTER_ATTACH never returns SERVER_OVERLOADED; the ticket is the only admission gate
 ```
 The queue lives in memory in the single world process; a restart clears it and clients simply retry.
+
+`capacity_used` is the number of distinct accounts holding one admission slot in any of `TICKET_RESERVED`, `CHARACTER_SELECT`, `ATTACHED`, or `RECONNECT_GRACE`. Queued accounts hold none. The single Edge admission owner atomically checks/acquires/releases/transitions slots together with ticket and account-session replacement; `0 <= capacity_used <= WORLD_CCU_CAP` always. Ticket issue acquires only if the account has no slot; replacing an unconsumed ticket invalidates its predecessor but transfers the same reservation. HELLO, character attach/detach-to-select, transfer and reconnect change slot state without incrementing. Resume/superseding ticket bypass only reuses the account's existing live/grace slot, never adds a second slot. Expired unused tickets release at their 60 s deadline; character-select disconnect without an attached grace state releases immediately; grace expiry, logout and detach-to-logout release exactly once. Late expiry/disconnect callbacks must match the current reservation/session epoch so they cannot release a replacement's slot. All slot transitions and FIFO eligibility checks are serialized by that owner. Restart clears both reservations and runtime sessions; admission then starts from zero.
 
 ## Duplicate Login
 A newer successful **account** gameplay login, attach, or resume supersedes the older account session epoch. When a character of the account is live (in the world or inside reconnect grace) the new session re-attaches that same character exactly like a resume, whether the HELLO carried a ticket or a resume credential (`../05_network/messages.md` § Connection / Session, ADR-0069).

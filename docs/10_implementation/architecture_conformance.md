@@ -11,7 +11,7 @@ Hợp đồng kiểm soát kiến trúc, hướng phụ thuộc giữa các tầ
 
 1. **Một module & Một Production Binary duy nhất:**
    - Toàn bộ backend nằm trong module `thinhthan`; production chỉ deploy `thinhthan-server` từ `server/cmd/server/`. `IMP-006` tạo entry point tối thiểu và `IMP-069` là owner cuối cùng của composition/lifecycle wiring.
-   - `cmd/compiler`, `cmd/migrate`, và `cmd/verify` là build/operator tools, không phải server processes hoặc independently deployed services.
+   - `cmd/compiler`, `cmd/migrate`, `cmd/verify` và `internal/conformance/caching/cmd/cachemerge` (IMP-106 report-only cache telemetry) là tool-main exceptions chính xác, không phải server processes hoặc independently deployed services.
    - `server/` hiện là planned path và chỉ được materialize theo `repository_layout.md`.
    - Tuyệt đối cấm tạo repository/module thứ hai hoặc tách microservices độc lập.
 2. **Một Tiến trình Duy nhất Chứa Đủ 4 Subsystems:**
@@ -78,12 +78,12 @@ Mọi package trong `server/internal/` phải tuân thủ nghiêm ngặt ma tr�
 ## 4. Tự động hóa Kiểm tra Kiến trúc (Executable Architecture Gates)
 
 IMP-000 materialize verifier (`server/internal/conformance/gates/`); IMP-083 sở hữu Q0 task-graph (`server/internal/conformance/taskgraph/`) và Q4 kiến trúc (`server/internal/conformance/architecture/architecture_test.go`); IMP-068 sở hữu ratchet và trusted CI (`server/internal/conformance/ratchet/`, `trusted/`). Từ module root `server/`, wrapper gọi `go run ./cmd/verify`:
-1. **Forbidden Dependencies Gate:** Gin, Chi, Echo, Fiber, Gorilla, Redis, Kafka, NATS, gRPC, GORM, sqlx, zap, logrus, zerolog, legacy `math/rand`.
+1. **Forbidden Dependencies Gate:** Gin, Chi, Echo, Fiber, Gorilla, Redis, Kafka, NATS, GORM, sqlx, zap, logrus, zerolog, legacy `math/rand`; first-party gRPC imports/services/clients/generators are forbidden. Only the transitive import/module closure required by the exactly pinned OTel **HTTP** exporters in `../00_context/technology_versions.md` is approved, including `google.golang.org/grpc v1.83.1` and OTLP proto `v1.11.0`. Q1 compares the complete resolved closure against the approved exact matrix/lock; Q4 rejects every first-party grpc import, gRPC exporter or independently rooted gRPC dependency. The exception does not permit a gameplay/admin/internal gRPC transport or broader allowlist.
 2. **SQL ownership:** chỉ `durable` (và stackpin/conformance/migrate) được import pgx/`database/sql`.
 3. **Sim isolation:** `sim` không import SQL hoặc `edge`.
 4. **Durable isolation:** `durable` không import `sim`.
 5. **Protocol isolation:** `protocol` không import domain/runtime.
-6. **One production main:** chỉ `cmd/server`. Chỉ ba tool main được phép thêm là compiler/verify/migrate; mọi main khác bị từ chối.
+6. **One production main:** only `server/cmd/server`. Exact non-production tool-main exceptions: `server/cmd/compiler`, `server/cmd/verify`, `server/cmd/migrate`, `server/internal/conformance/caching/cmd/cachemerge` (IMP-106 report-only telemetry merge; no listener/runtime composition). Every other main is rejected.
 7. **Generated source:** `.pb.go` phải reference proto source, không chỉ header DO NOT EDIT.
 8. **Schema:** cấm `item_instances.durability` và `global_leader_lease`.
 9. **asmdef:** không cycle; IMP-000 sở hữu cả 13 asmdef và reference graph của `repository_layout.md` § Mandatory Assemblies (ADR-0068); mọi asmdef lệch khỏi bảng đó bị từ chối; `ThinhThan.App` là composition root (IMP-067) và chỉ `ThinhThan.Tests.PlayMode` tham chiếu nó; `ThinhThan.Protocol` không tham chiếu assembly nào của dự án.

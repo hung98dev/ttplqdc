@@ -39,16 +39,15 @@ Element order:
 4 THO
 ```
 
-Three concurrent active regions per hour (§6.3 coverage fix):
+Three concurrent active regions per hour (ADR-0079, access-respecting coverage):
 ```text
-region_slot_0 = H mod 6
-region_slot_1 = (H + 2) mod 6
-region_slot_2 = (H + 4) mod 6
+region_slot_0 = 0
+pair_index = H mod 5
+region_slot_1, region_slot_2 = pairs[pair_index]
+pairs = [(1,3),(2,4),(3,5),(4,1),(5,2)]
 ```
 
-Each region appears as the primary, secondary, or tertiary slot across successive hours:
-- any specific region is active in 3 of every 6 hours = 50% of the time
-- at 1 Surge event/hour × 15 min, a region sees ≈ 7.5 active minutes/hour of coverage (ADR-0032: once per hour, 15-minute duration; canonical in `../02_world/world_rules.md`)
+Region 0 is active every hour; regions 1..5 each appear twice in every five hours (40%). At 15 minutes per event this gives 15 active minutes/hour in Làng Đa and 6 minutes/hour on average elsewhere. These are world schedule slots, not per-character unlock grants.
 
 Field and element assignment per slot:
 ```text
@@ -64,9 +63,17 @@ element_slot_2 = (H + floor(H / 6) + 2) mod 5
 The three concurrent events each host a distinct field and a distinct element where possible.
 All three selections are derivable from H alone; no state must be persisted across restart.
 
-Coverage arithmetic: each region is active 50% of hours, but with the EXP act rule above a
-character always has a full-rate Surge within its own or the adjacent lower region, so the
-1 event/hour WORLD_EVENT assumption in `progression_route.md` holds.
+Participation eligibility first applies normal region/map access (`world_route_catalog.md`); an active locked region is never enterable merely because a Surge is running. The deterministic recommended region is the highest-index active region the character has unlocked (ties cannot occur), with region 0 always available. All six acts therefore have an accessible hourly event and receive their own character-act WORLD_EVENT EXP on eligible completion; travel to a higher locked act is not required.
+
+| H mod 5 | active region indices | Act-I eligible/recommended index |
+|---|---|---|
+| 0 | `0,1,3` | `0` |
+| 1 | `0,2,4` | `0` |
+| 2 | `0,3,5` | `0` |
+| 3 | `0,4,1` | `0` |
+| 4 | `0,5,2` | `0` |
+
+For unlocked acts I..VI (highest region index 0..5), filter each row to indices `<= highest_unlocked_region` and select its maximum. The result exists in every row, never exceeds access, and includes region 0 for Act I in all five cases.
 
 # Eligible Field Order
 | region | field 0 | field 1 | field 2 |
@@ -183,7 +190,7 @@ Act IV 282111
 Act V 377909
 Act VI 419769
 ```
-EXP act = `min(character_act, region_act + 1)`: a character earns its own act rate in its own region or the region one act below, and never more than its own act rate elsewhere. Because active regions alternate even/odd every hour, every character from Act II upward has a full-rate Surge every hour; Act I characters get full rate in `zone.lang_da` (even hours) or `zone.rung_u_minh` (odd hours). Side grant like Soul EXP; not a drop-table slot.
+EXP act = the eligible character's current `character_act` at completion (ADR-0079), independent of selected region tier. Access and contribution requirements still apply; no region unlock, monster EXP scaling, or additional hourly grant is implied. This is a WORLD_EVENT side grant, not a drop-table slot.
 
 # Restart / Idempotency
 Event instance key:
@@ -214,5 +221,5 @@ safe anchors never selected
 presence != reward
 no exclusive permanent power
 selection deterministic from server UTC time
-coverage per region = 50% of hours (3 of 6 slots)
+coverage region0 = 100% of hours; each region1..5 = 40% of hours (2 of 5)
 ```

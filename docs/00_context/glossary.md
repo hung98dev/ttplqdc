@@ -13,7 +13,9 @@ Canonical project terminology. Domain specs own exact mechanics; this file only 
 
 **Stable content ID** — Immutable ASCII lowercase identifier for authored definitions such as skills, maps, items, bosses, quests and currencies.
 
-**Durable entity ID** — UUID v4 identity for persistent entities such as account, character, guild, item instance, listing, claim and operation.
+**Durable entity ID** — UUID v4 identity for persistent entities such as account, character, guild, item instance, listing and claim.
+
+**Operation ID** — Idempotency identity for retriable value mutations: client-initiated mutations use RFC 9562 UUID v7; server jobs and deterministic content grants use UUID v5 (`06_data/ids.md`, ADR-0079).
 
 **Display name** — Localized/user-facing text. Never authoritative identity.
 

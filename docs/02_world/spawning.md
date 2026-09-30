@@ -192,6 +192,13 @@ Do not persist individual ordinary monster runtime instances.
 
 Persistent encounter entities require an explicit owning-system rule.
 
+## Night Activation
+`NIGHT` predicates are computed from `world_rules.md` UTC phase before partition activation, restart reconstruction, or any due admission. In DAY there are no NIGHT_RARE admissions or queued retries. At night activation (including a partition started/restarted during night), request one initial admission per rare group in stable `spawn_group_id` ASCII order. Surviving ordinary actors are not evicted to admit it.
+
+Every due admission, ordinary or rare, is processed by `(due_tick, spawn_group_id, replacement_index)` ascending; evaluate activation, capacity and 6m visible-player suppression before selection/creation. A rejected/suppressed NIGHT_RARE admission creates no actor and retries after its configured 300s; an ordinary group retries after its own authored respawn delay. Timers are tick deadlines rounded up; no per-tick busy retry. At death/removal, schedule recovery only if the group remains active.
+
+At dawn (phase0) cancel all pending rare retries and remove living rare actors immediately before combat/hit resolution that tick, including actors in combat: no kill credit, drops, EXP or death event. DAY_ONLY/NIGHT_ONLY NPC presence uses the same boundary; an inactive NPC cannot receive TALK credit. Night actors/timers are ephemeral: restart discards them and recomputes current phase, initial admissions and deterministic order, never resurrecting a daytime rare. Sleep/wake rechecks the phase; a sleeping night's actor cannot survive a dawn transition.
+
 ## Capacity and Idempotency
 Spawn creation uses stable server-side operation identity where retries are possible.
 

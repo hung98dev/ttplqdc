@@ -55,6 +55,7 @@ protobuf regeneration has zero byte drift
 migration apply/down/apply passes on PostgreSQL 18.6
 known_blockers.md has no open item applicable to foundation/runtime
 IMP-068 has passing ADR-0057 CI evidence
+Linux Unity technical skips are resolved from actual Windows results at manifest merge; no unresolved `SKIP(windows-only)` satisfies foundation exit (ADR-0078).
 ```
 
 # M1 — Identity / Persistence / Session Slice
@@ -64,7 +65,7 @@ Deliver:
 - runtime cores: observability core, durable command queue, lock-order helper, Edge listener/heartbeat, Global runtime, Sim tick/AOI/replication,
 - operation idempotency and audit primitives,
 - canonical account identity and character lifecycle with three-character cap,
-- federated authentication, one-account-one-live-session epoch, attach/detach,
+- first-party username/password authentication, one-account-one-live-session epoch, attach/detach,
 - currency/item ownership primitives,
 - WSS/protobuf client bootstrap and reconnect baseline.
 

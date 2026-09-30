@@ -109,7 +109,7 @@ Limit: one detonation per target per 2.0s.
 Resolution (deterministic):
 - Trigger: the triggering component commits `hp_damage >= 0` without `DODGED`; detonation resolves after that commit and before the component's own status applications.
 - Every eligible DoT instance on the target is consumed in the tick order of `status_effects.md` § Determinism; the whole set counts as one detonation for the 2.0s limit. While the limit is active nothing is consumed.
-- Per consumed instance: `remaining_ticks` = number of scheduled ticks `t` with `now < t <= expires_at` (`../07_content/class_skill_catalog.md` § Canonical Basic Effect Templates). It commits one damage result owned by the DoT's `source_id` with `raw_damage = remaining_ticks * stack_count * floor(source_attack_snapshot * per_tick_attack_ratio)`, `source_damage_multiplier = 1.50` (stats.md Damage Pipeline step 2), the DoT template element, `can_crit=false`, `can_dodge=false`. `remaining_ticks = 0` consumes the instance with no damage.
+- Per consumed instance: `remaining_ticks` counts unexecuted anchored ticks with `now < t <= damage_expires_at`, never residual `expires_at` (`../07_content/class_skill_catalog.md`). It commits one damage result owned by the DoT's `source_id` with `raw_damage = remaining_ticks * stack_count * floor(source_attack_snapshot * per_tick_attack_ratio)`, `source_damage_multiplier = 1.50`, template element, `can_crit=false`, `can_dodge=false`. `remaining_ticks = 0` consumes the instance with no damage.
 - Ranked PvP multiplier overrides replace `1.50` only.
 
 Launch player DoTs and the resulting cross-class combos:

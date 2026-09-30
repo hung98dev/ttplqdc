@@ -15,10 +15,10 @@ The repository owner is the only human in the process. Before `IMP-000` the owne
 repository         public GitHub repo with docs/ pushed to main; allow auto-merge; delete branch on merge;
                    Actions: require approval for all outside collaborators; fork PRs are never accepted (ADR-0058)
 runners            GitHub-hosted standard runners only: ubuntu-24.04 and windows-2022 (no self-hosted runner, no VM,
-                   no GPU); nothing to install: CI provisions Go, pwsh, gh, jq, Git LFS, native Windows Unity editor
-                   and Android module (ADR-0073, ADR-0078; ubuntu-24.04 runs Go/PostgreSQL only and never invokes Unity,
-                   ADR-0078), PostgreSQL and gcloud from the pins in ../00_context/technology_versions.md; no local Unity
-                   editor is required (CI materializes Unity files, agent_execution_protocol.md §4b)
+                   no GPU); CI is specified to provision Go, pwsh, gh, jq, Git LFS, native Windows Unity editor
+                   and Android module from exact pins; ubuntu-24.04 runs Go/PostgreSQL only and never invokes Unity
+                   (ADR-0078). Successful provision, licence activation and observed WARP graphics capability
+                   are evidence prerequisites, not assumed hosted-runner features; no local Unity editor is required
 android devices    Google Cloud project on the free Firebase Spark plan with Test Lab enabled. Recorded physical
                    device models: ANDROID_MIN-class = `bonito` (Pixel 3a XL) @ Android 10; ANDROID_REC-class = `redfin`
                    (Pixel 5) @ Android 12. Android performance = Unity game-loop tests via
@@ -36,15 +36,16 @@ App                thinhthan-policy-reviewer installed on the repo (checks:write
                    is an Actions secret used only by the guard workflow on `main`
 secrets/vars       UNITY_LICENSE, UNITY_EMAIL, UNITY_PASSWORD (or UNITY_SERIAL), GCP_TEST_LAB_SA_KEY,
                    GUARD_APP_ID + GUARD_APP_KEY (merge-guard App, via actions/create-github-app-token),
-                   variable AUTO_MERGE_FROZEN=false; variable UNITY_KILL_PROBE retired (ADR-0078);
+                   variable AUTO_MERGE_FROZEN=false;
                    repository Actions cache storage limit set to 30 GB (owner configuration, ADR-0078);
                    Git LFS payment method / non-zero budget configured in GitHub Billing (ADR-0078)
 agent tokens       fine-grained, this repository only: Contents RW, Pull requests RW, Workflows RW, Actions RW,
                    Issues RW, Variables R, Administration R, Secrets R (names only), Metadata R; one token per role
                    session (coordinator, implementers, spec-owner, reviewer); never an Actions secret
-art tool           Direct AI Generation: recorded in ../00_context/technology_versions.md § Content production
-                   tools (approved by Owner 2026-09-30); AI agents generate assets directly in the session;
-                   no external desktop GUI tool required; tasks IMP-071..075, IMP-104, IMP-105 are unblocked
+art tool           Direct AI Generation is the owner-approved route, not proof of an available generation tool.
+                   Before final-art claims: actual provider/API/model/version, seed semantics, commercial terms
+                   and actor-rig/audio capability proof per presentation_asset_manifest.md §5; FREE_LICENSED
+                   sources remain allowed. Missing capability/rights = scoped OPS prerequisite, never invented provenance.
 backup storage     one S3-compatible bucket for the pgBackRest 2.59.1 repo1 and the `erasure-ledger/` prefix, configured
                    exactly per ../08_scale_ops/backup_recovery.md § Backup Storage Configuration: world host
                    `BACKUP_STORAGE_URL` (s3://bucket/prefix?region=&endpoint=) + `BACKUP_STORAGE_CREDENTIALS_FILE` (two lines
@@ -70,6 +71,8 @@ A Q gate or sub-gate is required iff its owner task is `DONE` on `main` or set t
 
 `SKIP(no-client-change)` (ADR-0073) applies only to the Unity checks (`Q1.unity.editor`, Q3 Unity EditMode/PlayMode) of a `pull_request*` run whose diff touches no Unity-relevant path (§ Job Preconditions item 3); the verifier re-derives the diff and fails the Unity checks when the workflow skipped Unity on a Unity-relevant diff, on a `push`, or on an `imp/IMP-068-*` / `*-done` branch. It is never valid on `main` pushes.
 
+`SKIP(windows-only)` is allowed only in the Linux report for Unity editor/compile/EditMode/PlayMode/Performance/VisualReview checks. It means delegated execution, not gate satisfaction. Windows merge replaces each delegated result with the same gate's Windows result (owner/scope skip only when independently valid); missing, failed or still-delegated Windows result fails merge. It never exempts Go, codegen, content, schema or architecture gates and never persists as an unsatisfied required gate in merged evidence.
+
 A PR head that sets a packet `DONE` without `evidence/<ID>/manifest.json` passes Q0/Q6 (the manifest cannot exist before the run that produces it); the head that is merged must contain the manifest, and Q6 verifies it there (ADR-0072).
 
 ## Job Preconditions (always on, not gates)
@@ -78,9 +81,15 @@ Every `verify.yml` job runs these steps before any gate, in every PR including `
 
 Job layout (ADR-0075, ADR-0078): 3 jobs per PR run — `Unity (Windows)` (`unity-windows`, `windows-2022`) runs every Unity step natively (scope, mode plan, editor, `client/Library`, materialization, planned tests, D3D11 WARP renders for Performance and Visual Review, drift, `unity-materialized-windows`, `unity-test-results-windows`, `visual-review`); `Q0-Q6 verify (Windows)` (`windows-2022`, required) runs Go/EDB-Postgres/protoc gates, the pre-Unity phase (`verify.ps1 -Phase pre-unity`), joins `Unity (Windows)` (`.devin/scripts/wait_job.sh`), downloads its test results, runs the Unity phase (`-Phase unity -PreReport ...`), joins `Q0-Q6 verify (Linux)` (which finishes early), downloads `verify-report-linux`, merges both reports with `verify.ps1 -MergeReports` into schema-v2 `manifest.json`, and uploads artifact `evidence` (ADR-0078); `Q0-Q6 verify (Linux)` (`ubuntu-24.04`, required) runs Go build, vet, staticcheck, unit tests with `-race` for `sim|edge|durable|global`, non-race allocation pass, PostgreSQL 18.6 service-container tests (Q5), and builds the Linux production binary. The Linux job runs no Unity steps, downloads no GameCI images, and activates no Unity licence; its report marks Unity-dependent gates as `SKIP(windows-only)`, which the Windows required job pulls from its own report. Items 1–2 apply to all three jobs.
 
+All checkouts default to `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`. Only `Unity (Windows)` fetches LFS media after restoring `.git/lfs` and running `git lfs pull`; Windows player-build/main-scope warming jobs may do the same. Neither required verify job downloads media or materializes Unity. Media-dependent checks run in Unity (Windows) and deliver results/artifacts to the Windows required job, while required Go/content checks operate on pointer metadata or non-LFS inputs.
+
+`verify.yml` concurrency group is `verify-${{ github.event.pull_request.number || github.ref }}`; `cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}`. Both bootstrap and trusted PR updates release superseded runners/licence seats; main pushes never cancel. The retired Linux kill-probe command, variable and artifacts are forbidden workflow surfaces (ADR-0078).
+
 1. Fork guard: only on `pull_request` / `pull_request_target` events, the first step fails when `head.repo.full_name != github.repository` (`external PRs not accepted`); on `push` (post-merge guard) the step is skipped.
 2. Freeze: when repository variable `AUTO_MERGE_FROZEN == 'true'`, the job fails with `AUTO_MERGE_FROZEN` unless the head branch starts with `revert/` or `ops/`.
 3. Unity materialization: `Unity (Windows)` (ADR-0075, ADR-0078) opens `client/` in the pinned native Windows editor (`6000.6.1f1`, batchmode; at most 5 attempts before the failure is classified infrastructure: licence/infra failure waits 60 s, compiler errors retry at once on a clean Library and stop when two consecutive attempts report them, ADR-0077) even when every Unity gate reports `SKIP(owner-not-done)`. Every Unity editor invocation runs with network egress — the licensing client's access-token refresh needs it (BLK-008). Functional tests (`-runTests`) pass `-nographics` and write `-logFile` to `artifacts/unity-tests/<Mode>-editor.log`; the test verdict is the completion line `Test run completed. Exiting with code 0` in that log plus a `Passed` results XML (BLK-013); a results XML is final and not retried (ADR-0077). Tests requiring rendering (Performance category, Visual Review screenshots) run without `-nographics` under `-force-d3d11` on D3D11 WARP (Microsoft Basic Render Driver; ADR-0050, ADR-0078) and record `renderer=warp`. If the editor created or modified any file under `client/` (outside ignored `Library/`, `Temp/`, `Logs/`, `obj/`), the job uploads those files as artifact `unity-materialized-windows` and fails with `commit unity-materialized`. Single exemption: `m_currentHash.Hash` in `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset` is an editor-derived cache field; when that `Hash:` line is the file's only diff, the gate restores the committed file before computing drift (BLK-018). On a `pull_request*` run whose diff matches no `gates.UnityRelevantPattern` path, every Unity step is skipped and the Unity checks report `SKIP(no-client-change)`; `push` runs, `imp/IMP-068-*` and `*-done` branches always run Unity (ADR-0073).
+
+Graphics mode planning is independent of functional PlayMode activation: EditMode owner `IMP-000`, functional PlayMode owner `IMP-065`, VisualReview owner `IMP-070`, Performance owner `IMP-095`, representative-load graphics owner `IMP-067`. Required graphics categories launch without `-nographics` using `-force-d3d11` and require observed device/capture proof per `../07_content/presentation_asset_manifest.md` §3.3a; unavailable/mismatched device, empty/missing captures or category results fail, never downgrade to a headless pass.
 
 
 ## Gate A — Contract Coherence
@@ -111,7 +120,7 @@ Met only when:
 
 ## Gate C — Executable Conformance
 
-Every required Q gate executes; `SKIP(owner-not-done)` is allowed only for a gate whose owner task is not `DONE` (§ Gate Activation), `SKIP(status-only)` only on the Q0-only fast path (§ Protected Paths), and `SKIP(no-client-change)` only for the Unity checks of a pull request that touches no Unity-relevant path (§ Gate Activation, ADR-0073). Otherwise a tool missing in either CI job is an `OPS-xxx` failure, never a silent skip.
+Every required Q gate executes; `SKIP(owner-not-done)` is allowed only for a gate whose owner task is not `DONE` (§ Gate Activation), `SKIP(status-only)` only on the Q0-only fast path (§ Protected Paths), `SKIP(no-client-change)` only for Unity checks of a pull request that touches no Unity-relevant path, and `SKIP(windows-only)` only as Linux-to-Windows delegation with mandatory Windows merge validation (§ Gate Activation). Otherwise a missing tool in either CI job is an `OPS-xxx` failure, never a silent skip.
 
 - Q1 toolchain/dependency/action pins;
 - Q2 protobuf Go/C# regenerated into a temp directory and byte-compared, including the generated C# header (`CODE-004`);
@@ -151,6 +160,8 @@ docs/10_implementation/*.md                    (control files)
 
 Implementer PRs may change control content only as follows: their own packet `status`/`claimed_by`/`branch`/`claimed_at`/`blocked_by` fields and summary-row status cell; appending `known_blockers.md` entries; adding `evidence/<own ID>/`. Q0 rejects any other control-file change unless the PR author role is `spec-owner` or `coordinator`. The role is derived from the branch prefix (ADR-0068, ADR-0072); any other prefix fails Q0:
 
+The only implementer governance exceptions are `IMP-106`'s exact `.devin/scripts/cache_telemetry.sh`, `cache_telemetry.ps1`, `cache-policy.md` on `imp/IMP-106[-suffix]`. IMP-000 may author only `Protocol/ThinhThan.Protocol.asmdef`, `Protocol/csc.rsp` and their `.meta` companions on `imp/IMP-000[-suffix]`; Protocol C# and parent metadata remain generated-only. Permissions defer Protocol path decisions to the write hook; no directory-wide generated/governance bypass. Protected-path reviewer checks still apply.
+
 ```text
 spec/     spec-owner    spec-change PRs; BLK resolution; BLOCKED -> NOT_STARTED for BLK-blocked tasks
 claim/    coordinator   claim / unclaim (claim fields + summary-row status only); BLOCKED (REVERT-<sha>) -> NOT_STARTED
@@ -177,7 +188,7 @@ Status-only PRs (`claim/`, `block/`, `ops/`: only the fields listed above, no `D
 
 ## Foundation Exit
 
-`IMP-068` may become `DONE` only when Gates A-D pass and every Q gate whose owner task is `DONE` runs without skip. If a later change breaks a gate, the post-merge guard reverts it.
+`IMP-068` may become `DONE` only when Gates A-D pass and every Q gate whose owner task is `DONE` has an executed passing result in merged Linux+Windows evidence. Linux `SKIP(windows-only)` is valid only with a resolved Windows passing result; no required gate may remain skipped after merge. `SKIP(status-only)` and `SKIP(no-client-change)` cannot satisfy this foundation-exit run; unactivated owners may still report `SKIP(owner-not-done)`. If a later change breaks a gate, the post-merge guard reverts it.
 
 ## Invariants
 

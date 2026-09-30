@@ -128,7 +128,7 @@ Verification (Act VI): 109,140,000+49,113,000+32,742,000+32,742,000+21,828,000+1
 
 ### Baseline Leveling Pace and Daily/PvP Decoupling
 - **Continuous Leveling Feasibility**: Baseline first-character leveling to Level 60 is strictly designed to be continuous and achievable through uncapped ambient channels (`FIELD_COMBAT`, `DUNGEON_REPEAT`, `ELITE_BOSS`, `LIFE_SKILL`, `WORLD_EVENT`, `STORY_ONCE`). A player who plays in extended or marathon sessions without logging in across hundreds of calendar days is never progress-locked by daily reset timers.
-- **BOUNTY_REPEAT Role**: The `BOUNTY_REPEAT` allocation (12% of act budget, 240 target hours) models the structured daily bounty loop (1 set = 3 bounties per active day, ~40 minutes/set at 1.5 sets/hour equivalent rate, capped at 1 set/UTC day per `02_world/quests.md`). Over an expected multi-month journey (~360 active days), this channel provides a high-efficiency progression accelerator. If a player bypasses daily bounties, the equivalent EXP is readily obtainable via uncapped ambient `FIELD_COMBAT` and `DUNGEON_REPEAT` at standard channel rates without causing progression failure or balance rejection.
+- **BOUNTY_REPEAT Role**: Its 12% allocation calibrates one three-bounty set at 1.5 sets/hour equivalent active time, not unlimited sets in a calendar simulation. The zero-bounty feasibility fixture instead reallocates this channel's 240 hours/12% EXP between FIELD_COMBAT and DUNGEON_REPEAT in their 40:18 ratio: FIELD `40+12*40/58 = 48.275862%`, DUNGEON `18+12*18/58 = 21.724138%`; other shares unchanged. Use independently authored ambient unit EXP and frequency, never fabricate bounty rewards or apply the original per-channel 15% check to these deliberately substituted shares. Aggregate act EXP, actual route reachability and derived act hours retain their 15% gates.
 - **Ranked PvP and Guild War**: These modes remain zero-EXP progression channels and are never required for character leveling.
 
 ## Act III Efficiency Note
@@ -205,7 +205,7 @@ FIELD_COMBAT:   600 kills/hour  peak-optimal (one kill every 6s sustained)
                 450 kills/hour  realistic sustained (travel, loot, death, idle counted)
                 Derivation uses 450/hour; 600/hour is the cap for performance telemetry.
 DUNGEON_REPEAT: 3 runs/hour     (~20-minute average run across all tiers)
-WORLD_EVENT:    1 event/hour    (every hour one of the character's own region or the region one act below is active; EXP act rule in world_event_catalog.md)
+WORLD_EVENT:    1 event/hour    (region0 always plus Hmod5 pairs {1,3},{2,4},{3,5},{4,1},{5,2}; three concurrent 15-minute slots. Region0 coverage100%, regions1..5 coverage40%. Select highest unlocked active region; eligible completion pays character_act EXP once/hour, never unlocks travel.)
 BOUNTY_REPEAT:  1.5 sets/hour   (~40 minutes per bounty set including travel)
 ELITE kills:    5 kills/hour    (encounters ~60s each including travel; sub-channel of ELITE_BOSS)
 Major boss:     1.5 kills/hour  (PUBLIC bosses only; 30..45 min respawn + fight ≈ 40 min cycle; sub-channel of ELITE_BOSS in Acts III and VI)

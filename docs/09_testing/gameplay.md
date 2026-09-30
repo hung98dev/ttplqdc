@@ -55,7 +55,7 @@ Required cases:
 10. target modes accepted by combat exactly match `skills.md`.
 
 11. On respawn: character restores exactly `40% MAX_HP` and `40% MAX_MP`; `current_hp` and `current_mp` after respawn equal `floor(MAX_HP * 0.40)` and `floor(MAX_MP * 0.40)` respectively.
-12. During respawn invulnerability window: outgoing damage from the respawned character is `0`; incoming damage is also `0`; the window ends on first accepted action-start or timer expiry, whichever comes first.
+12. Respawn protection lasts exactly 3,000ms: outgoing/incoming damage stays zero and incoming negative statuses are rejected throughout. Attack/cast does not cancel it. Exercise an action during protection, a hit before expiry and one at expiry.
 13. Just Guard juice (70ms hitstop, 220ms 0.35× slow-mo) does not change the 0.60 damage multiplier, ICD, or `in_combat`.
 14. `beast_passive2_success` juice (90ms hitstop, 350ms 0.30× slow-mo) does not apply on ICD reject or failed predicate.
 15. Predicted Just Guard/`CUU_NGUY` before `S2C_COMBAT_EVENT` is a test failure.
@@ -78,8 +78,8 @@ Regression: another player's CHILL must not satisfy a caster-owned THUY freeze c
 For each of 5 classes:
 - exactly 4 basic + 5 active + 3 passive definitions (12 skills per class, 60 total),
 - unlock milestones match `skills.md` (Lv1 B1, Lv4 B2, Lv8 A1, Lv11 P1, Lv14 A2, Lv18 B3, Lv22 A3, Lv27 P2, Lv32 A4, Lv36 B4, Lv45 A5, Lv50 P3),
-- exactly 1 learned basic attack equipped in the dedicated basic slot; active loadout count is `0..min(4, learned active count)` (five actives are learned, four may be equipped at a time — ADR-0033),
-- held basic input is rate-limited by server cooldown and cannot create duplicate accepted actions,
+- exactly one learned basic equipped; `0..min(5, learned active count)` actives in five slots; five distinct learned actives accepted, sixth/duplicate/unlearned/wrong-type rejected atomically; empty early slots valid,
+- held/repeated basic pacing uses effective next-accept tick at AS0/cap; stored cooldown is not a second gate; recovery self-chain cannot overlap forced motion,
 - 75 Level-60 skill points (59 level-up + 12 books + 4 Lv55/Lv60 bonus — ADR-0033) cannot spend >75; full respec restores exactly spent points,
 - movement skills cannot bypass blocked geometry/portals,
 - passive/Soul/set proc cannot self-recurse accidentally,
@@ -147,7 +147,7 @@ Required regressions:
 - basic DOT templates snapshot source ATTACK, tick at the authored 1,000ms boundaries, use no crit/dodge, and honor reapply/stack/dispel flags; `burn_true_3s` rejects normal cleanse,
 - `area_splash_50` excludes primary, applies its 1.20m/50% payload, and cannot exceed the basic action's resolved target cap,
 - MOC `hoi_xuan` base includes `0.12 target MAX_HP + 0.25 source ATTACK` before support scaling,
-- THUY freeze-immune CHILL resolution applies the authored 25% SLOW/2s fallback.
+- THUY immune `han_khi` attempt consumes the caster-owned three CHILL stacks and starts its ICD even when FREEZE is rejected; no unauthored SLOW fallback. Boss control follows stagger conversion, not ordinary FREEZE.
 - only `skill.kim.basic.vo_song_kiem` has PENETRATE + ratio 0.15; other class basic_4 rows have no PENETRATE tag and no ratio.
 
 # Equipment / Build Tests
@@ -218,7 +218,7 @@ ELITE base_exp (act average = target): I 51333 `hon_xo_non` 49800 / `ma_xo` 5286
 Boss kill EXP: PUBLIC `ma_da_chua` 168846, `ngu_tinh` 279846; every INSTANCED boss (`quy_nhap_trang`, `moc_tinh_da`, `thuong_luong`, `ho_tinh`, `ho_tinh_chin_duoi`, `than_trung`) grants 0 kill EXP.
 Dungeon EXP: trash/ELITE/boss kills inside a dungeon grant 0; completion grants `dungeon_repeat_exp(min(character_act, dungeon_tier_act + 1))` (e.g. Act VI character in T5 → 139923; Act VI character in T4 → 125970).
 ELITE_BOSS split: Acts III and VI budget 6% ELITE + 2% PUBLIC boss; Acts I, II, IV, V budget 8% ELITE.
-Spirit Surge: completion EXP uses act `min(character_act, region_act + 1)`; an Act IV character in the Act III region earns the Act IV rate, in the Act I region the Act II rate.
+Spirit Surge: eligible completion EXP uses `character_act` irrespective of accessible active region; Act IV characters in Act I earn the Act IV rate. Region0 is always active; rotating Hmod5 pairs {1,3},{2,4},{3,5},{4,1},{5,2} give each other region40% coverage. Three concurrent slots never grant access to locked maps; one completion EXP key/hour remains.
 WORLD_EVENT Spirit Surge completion grants character EXP (not inventory) equal to WORLD_EVENT per-unit: I 256667, II 331333, III 253269, IV 282111, V 377909, VI 419769. Key `surge.completion.exp.<utc_hour>.<character_id>`.
 LIFE_SKILL: each successful `FISH_CAUGHT`, `DISH_COOKED`, and atlas tier-up grants LIFE_SKILL per-unit for the character's current act: I 6417, II 8283, III 6332, IV 7047, V 9448, VI 10494.
 BOUNTY: `bounty_set_exp` at 1.5 sets/hour: I 171111, II 220889, III 168846, IV 188074, V 251939, VI 279846. Still 3 completions = 1 set; 3-cap/UTC-day unchanged.
@@ -275,7 +275,7 @@ For every ENDGAME_L60 run:
 - quest completion/reward retry is idempotent.
 - full inventory routes earned items to Reward Claims rather than loss/reroll.
 
-Conservative progression simulation from `../07_content/balance_validation.md` must satisfy both channel-deviation reject rules: independently authored per-unit channel EXP (authored monster/dungeon/event EXP × unit frequency × channel hours, per "Channel EXP Rate References" in `../07_content/progression_route.md`) must not deviate from the target channel EXP by more than 15% for any channel in any act; and |derived_act_hours − target_act_hours| / target_act_hours ≤ 0.15 for any act. Daily/PvP/Guild War must not be injected into this simulation.
+Run two distinct progression fixtures from `balance_validation.md`: seven-channel per-unit calibration (including bounty rate calibration, not a calendar simulation), and zero-bounty continuous ambient feasibility with explicit FIELD/DUNGEON substitution. Only calibration checks every original channel within 15%; feasibility checks aggregate act EXP/gates/hours without Daily/PvP/Guild War.
 
 # Reward / Economy Tests
 - currency caps fail atomically; never clamp silently.
@@ -354,8 +354,8 @@ Test cases for LIFESTEAL, REFLECT, ABSORB, and HEAL_REDUCTION behaviors.
 ## Lifesteal Throttle
 1. Lifesteal per-second throttle: when committed LIFESTEAL heal in a 1.0s rolling window exceeds `LIFESTEAL_HPS_CAP = 0.015 * attacker MAX_HP`, the excess is discarded. It is NOT banked, queued, or deferred to the next window. Assert the healed HP equals exactly the throttle cap, not the raw `hp_damage * LIFESTEAL` value.
 2. Throttle window resets are rolling: a second burst within the same second discards the overage; the first-second cap is not refilled until the window rolls past.
-3. Lifesteal against AoE: the third and subsequent targets in one skill hit each contribute `hp_damage * LIFESTEAL * 0.30` toward the throttle bucket. Assert the 0.30 multiplier applies before throttle comparison.
-4. Lifesteal against DoT ticks: each periodic tick contribution uses `tick_damage * LIFESTEAL * 0.30`. Assert the multiplier.
+3. Every additional AoE target, including the second and third, contributes `hp_damage * LIFESTEAL * 0.30`; primary direct uses 1.00. Apply before throttle after heal modifiers.
+4. Basic DOT and zone-periodic HP damage each uses 0.30 once (also additional periodic targets); exclusion tags/self/reflected damage still reject.
 5. Lifesteal never triggers from: a `DODGED` result, reflected damage instances (tagged `NO_LIFESTEAL`), or damage the character deals to itself.
 
 ## Reflect Range Gate and Per-Hit Cap

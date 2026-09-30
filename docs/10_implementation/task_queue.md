@@ -88,7 +88,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `NOT_STARTED` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
 | `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `NOT_STARTED` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `NOT_STARTED` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
-| `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `NOT_STARTED` | IMP-000 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
+| `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `NOT_STARTED` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-066` | Unity Input Action Mapping & Core UI/HUD State Machine | `NOT_STARTED` | IMP-013, IMP-065 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-067` | Unity IL2CPP Player Build (Windows, Android) & Release Packaging | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-076, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-093, IMP-099, IMP-103 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
@@ -157,9 +157,9 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../00_context/technology_versions.md`, `../00_context/constraints.md`, `../00_context/glossary.md`, `../00_context/non_goals.md`, `../00_context/vision.md`, `../04_architecture/system_overview.md`, `../04_architecture/backend.md`, `repository_layout.md`, `architecture_conformance.md`, `../09_testing/test_and_release_evidence.md`, `audit_gates.md`, `agent_execution_protocol.md`, `engineering_conventions.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/capacity.md`]
-adrs: [`0006-unity-go-postgresql-stack.md`, `0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0075-parallel-unity-jobs-planned-modes-and-pro-concurrency.md`, `0077-ci-critical-path-cheap-unity-retries-and-two-phase-verifier.md`]
+adrs: [`0006-unity-go-postgresql-stack.md`, `0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0050-windows-only-ci-and-auto-merge.md`, `0052-single-launch-world.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0075-parallel-unity-jobs-planned-modes-and-pro-concurrency.md`, `0077-ci-critical-path-cheap-unity-retries-and-two-phase-verifier.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
 depends_on: []
-owned_paths: [`.editorconfig`, `.gitignore`, `.gitattributes`, `.github/pull_request_template.md`, `.github/workflows/verify.yml`, `scripts/verify.ps1`, `server/go.mod`, `server/go.sum`, `server/cmd/verify/`, `server/internal/conformance/gates/`, `server/internal/stackpin/`, `client/Packages/`, `client/ProjectSettings/`, `client/Assets/Plugins/Google.Protobuf/`, `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/DefaultVolumeProfile.asset.meta`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset.meta`, `client/Assets/Scripts/Core/ThinhThan.Core.asmdef`, `client/Assets/Scripts/Net/ThinhThan.Net.asmdef`, `client/Assets/Scripts/Systems/ThinhThan.Systems.asmdef`, `client/Assets/Scripts/UI/ThinhThan.UI.asmdef`, `client/Assets/Scripts/App/ThinhThan.App.asmdef`, `client/Assets/Tests/EditMode/ThinhThan.Tests.EditMode.asmdef`, `client/Assets/Tests/PlayMode/ThinhThan.Tests.PlayMode.asmdef`, `client/Assets/Scripts/Protocol/ThinhThan.Protocol.asmdef`, `client/Assets/Scripts/Core/Assets/ThinhThan.Core.Assets.asmdef`, `client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef`, `client/Assets/Scripts/Core/Localization/ThinhThan.Core.Localization.asmdef`, `client/Assets/Scripts/Core/Localization/Editor/ThinhThan.Core.Localization.Editor.asmdef`, `client/Assets/Scripts/Core/Geometry/Editor/ThinhThan.Core.Geometry.Editor.asmdef`, `client/Assets/Tests/EditMode/AssemblyGraph/`, `client/Assets/Scripts/Protocol/csc.rsp`, `client/Assets/Scripts/Core/csc.rsp`, `client/Assets/Scripts/Core/Assets/csc.rsp`, `client/Assets/Scripts/Core/Assets/Editor/csc.rsp`, `client/Assets/Scripts/Core/Localization/csc.rsp`, `client/Assets/Scripts/Core/Localization/Editor/csc.rsp`, `client/Assets/Scripts/Core/Geometry/Editor/csc.rsp`, `client/Assets/Scripts/Net/csc.rsp`, `client/Assets/Scripts/Systems/csc.rsp`, `client/Assets/Scripts/UI/csc.rsp`, `client/Assets/Scripts/App/csc.rsp`, `client/Assets/Tests/EditMode/csc.rsp`, `client/Assets/Tests/PlayMode/csc.rsp`, `server/internal/conformance/style/`]
+owned_paths: [`.editorconfig`, `.gitignore`, `.gitattributes`, `.github/pull_request_template.md`, `.github/workflows/verify.yml`, `scripts/verify.ps1`, `server/go.mod`, `server/go.sum`, `server/cmd/verify/`, `server/internal/conformance/gates/`, `server/internal/stackpin/`, `client/Packages/`, `client/ProjectSettings/`, `client/Assets/Plugins/Google.Protobuf/`, `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/DefaultVolumeProfile.asset.meta`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset.meta`, `client/Assets/Scripts/Core/ThinhThan.Core.asmdef`, `client/Assets/Scripts/Net/ThinhThan.Net.asmdef`, `client/Assets/Scripts/Systems/ThinhThan.Systems.asmdef`, `client/Assets/Scripts/UI/ThinhThan.UI.asmdef`, `client/Assets/Scripts/App/ThinhThan.App.asmdef`, `client/Assets/Tests/EditMode/ThinhThan.Tests.EditMode.asmdef`, `client/Assets/Tests/PlayMode/ThinhThan.Tests.PlayMode.asmdef`, `client/Assets/Scripts/Protocol/ThinhThan.Protocol.asmdef`, `client/Assets/Scripts/Core/Assets/ThinhThan.Core.Assets.asmdef`, `client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef`, `client/Assets/Scripts/Core/Localization/ThinhThan.Core.Localization.asmdef`, `client/Assets/Scripts/Core/Localization/Editor/ThinhThan.Core.Localization.Editor.asmdef`, `client/Assets/Scripts/Core/Geometry/Editor/ThinhThan.Core.Geometry.Editor.asmdef`, `client/Assets/Tests/EditMode/AssemblyGraph/`, `client/Assets/Scripts/Protocol/csc.rsp`, `client/Assets/Scripts/Core/csc.rsp`, `client/Assets/Scripts/Core/Assets/csc.rsp`, `client/Assets/Scripts/Core/Assets/Editor/csc.rsp`, `client/Assets/Scripts/Core/Localization/csc.rsp`, `client/Assets/Scripts/Core/Localization/Editor/csc.rsp`, `client/Assets/Scripts/Core/Geometry/Editor/csc.rsp`, `client/Assets/Scripts/Net/csc.rsp`, `client/Assets/Scripts/Systems/csc.rsp`, `client/Assets/Scripts/UI/csc.rsp`, `client/Assets/Scripts/App/csc.rsp`, `client/Assets/Tests/EditMode/csc.rsp`, `client/Assets/Tests/PlayMode/csc.rsp`, `server/internal/conformance/style/`, `.devin/scripts/wait_job.sh`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [version matrix, docs-only baseline, repository layout]
 contract_outputs: [native lockfiles, pinned project skeleton, Q0/Q1 verifier entrypoint]
@@ -181,7 +181,7 @@ Materialize the ADR-0059 code-quality baseline: an asmdef-scoped `csc.rsp` (`-wa
 - `audit_gates.md` § Job Preconditions in every job, in order: the fork guard (first step; on `pull_request`/`pull_request_target` it fails a fork PR with `external PRs not accepted` before checkout, cache or secrets; skipped on `push`; no job-level `if`), the freeze check (`vars.AUTO_MERGE_FROZEN == 'true'` fails with `AUTO_MERGE_FROZEN` unless the head branch starts with `revert/` or `ops/`), and Unity materialization (`Unity (Windows)` opens `client/` even when every Unity gate is `SKIP`, including in this task's own PR; licence activation retried up to 5 times, 60 s apart; every Unity editor invocation runs with network egress — no `--network=none` or equivalent isolation, the licensing token refresh needs it (BLK-008); invocations pass `-batchmode`; functional tests pass `-nographics` and write `-logFile` to `artifacts/unity-tests/<Mode>-editor.log`; the test verdict is the `Test run completed. Exiting with code 0` completion line in that log plus a `Passed` results XML (BLK-013); a results XML is final and not retried (ADR-0077); created/modified files under `client/` are uploaded as `unity-materialized-windows` and the job fails with `commit unity-materialized`); steps use `shell: pwsh`; Unity runs natively only on `windows-2022` (ADR-0073, ADR-0078), with the licence from secrets and `client/Library` cached for Windows; Unity steps are path-scoped on pull requests and report `SKIP(no-client-change)` when the diff touches no `gates.UnityRelevantPattern` path (ADR-0073),
 - PostgreSQL 18.6: the Linux job uses the digest-pinned `postgres:18.6` service container, the Windows job the EDB binaries; both export `THINHTHAN_TEST_PG_DSN`; migrations and apply/down/apply remain owned by IMP-005/Q5,
 - unlisted/floating/prerelease core dependency fails CI,
-- each job first installs `pwsh`, `gh`, `jq` and Git LFS from the pinned release assets with SHA-256 verification and prepends them to `PATH` (`../00_context/technology_versions.md`); preinstalled runner copies are never invoked; only `Unity (Windows)` checks out with `lfs: true` and restores cached `.git/lfs` objects; required verify jobs checkout with `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1` (ADR-0078),
+- each job first installs `pwsh`, `gh`, `jq` and Git LFS from the pinned release assets with SHA-256 verification and prepends them to `PATH` (`../00_context/technology_versions.md`); preinstalled runner copies are never invoked; all jobs checkout with `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`; only `Unity (Windows)` restores cached `.git/lfs` objects then runs `git lfs pull` for missing objects (ADR-0078),
 - Go tests run in both jobs; `-race` for `sim|edge|durable|global` runs only in the Linux job (ADR-0072),
 - `client/Assets/Plugins/Google.Protobuf/Google.Protobuf.dll` is `lib/netstandard2.0/Google.Protobuf.dll` from the pinned NuGet package whose SHA-256 is verified; the EDB zip SHA-256 is verified before unpacking; both hashes are asserted by `server/internal/stackpin/`,
 - the `Unity (Windows)` job runs functional tests (`-runTests`) with `-nographics`, and runs tests requiring a graphics device (category `Performance`, Visual Review screenshots) without `-nographics` under `-force-d3d11` on D3D11 WARP (ADR-0050, ADR-0078), uploading `artifacts/visual-review/` as artifact `visual-review` whenever it is non-empty (IMP-070 and the art packets write into it),
@@ -214,7 +214,7 @@ Materialize the ADR-0059 code-quality baseline: an asmdef-scoped `csc.rsp` (`-wa
 - `server/internal/conformance/gates/gates_test.go` (BLK-001): TestImp000OwnedPathsCoverMaterializedAssets — IMP-000 `owned_paths` cover `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset` and their `.meta`.
 - `server/internal/conformance/gates/gates_test.go` (BLK-003): TestGoModDeclaresProtobufRequire — `server/go.mod` declares `require google.golang.org/protobuf v1.36.12` (the `GoModulePins` pin) so generated protocol code compiles without implementers editing lockfiles. Amended by BLK-015: accepts both the single-line `require google.golang.org/protobuf v1.36.12` and a `require ( ... )` block entry, since `go mod tidy` may rewrite the file into block form.
 - `server/internal/conformance/gates/gates_test.go` (BLK-002, BLK-007, BLK-012, BLK-015): TestBootstrapAbsentPathsOwnerAware, TestBlocksLineCaseInsensitive, TestGeneratedBoundaryAllowsCscRsp, TestImp064OwnedPathsCoverLocalizationRegistry, TestImp005OwnedPathsCoverModuleLockfiles, TestSchemaSnapshotFileExemptFromNumberedMigrationGate.
-- `server/internal/conformance/gates/workflow_test.go` (ADR-0077, ADR-0078): TestKillProbeOptIn, TestUnityTestFailedVerdictIsFinal, TestRequiredJobsRunPreUnityPhase, TestPrRunCancellationGroup.
+- `server/internal/conformance/gates/workflow_test.go` (ADR-0077, ADR-0078): TestWindowsXmlFailureCannotBecomePassOnRetry (failed result XML remains final), TestMissingOrMalformedWindowsXmlFailsClosed, TestRequiredJobsRunPreUnityPhase, TestPrRunCancellationGroup.
 
 generated_artifacts: [editor-materialized `client/Packages/packages-lock.json`, `client/ProjectSettings/*.asset`, `client/Assets/DefaultVolumeProfile.asset`, `client/Assets/UniversalRenderPipelineGlobalSettings.asset`, `.meta` files (committed from `unity-materialized-windows`)]
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -234,7 +234,7 @@ depends_on: [IMP-000]
 owned_paths: [`server/internal/core/id/`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [stable-ID grammar, UUID rules, immutable content-grant namespace]
-contract_outputs: [validated IDs, UUID v4/v5 primitives, content/schema revision values]
+contract_outputs: [validated IDs, UUID v4/v5/v7 primitives, canonical SHA-256 content revision]
 consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
 
 ## Change
@@ -242,15 +242,16 @@ Implement stable entity/content/schema/operation IDs and content revision identi
 
 ## Acceptance
 - static IDs follow the canonical ASCII namespace rules from `../06_data/ids.md`,
-- durable entity IDs are server-generated RFC 4122 UUID v4 using `crypto/rand`; operation IDs follow `../06_data/ids.md` § Operation IDs (client-initiated requests carry a client-generated UUID v4 that the server validates, rejecting nil/non-v4/malformed with `PROTOCOL_MALFORMED`),
+- durable entity IDs remain server-generated UUIDv4 using `crypto/rand`; client operation IDs are RFC 9562 UUIDv7 with 48-bit estimated authenticated server UTC milliseconds and 74 cryptographically random bits; nil/non-v7/malformed requests return `PROTOCOL_MALFORMED` (`../06_data/ids.md`, ADR-0079).
 - runtime entity IDs are owner/epoch-scoped uint64 values,
 - revision included in compile/runtime diagnostic context,
 - IDs are never inferred from display strings,
 - malformed/zero UUID and conflicting operation-ID payload tests pass.
 - Server-initiated job `operation_id` = UUID v5 over `SERVER_JOB_NAMESPACE_UUID` and `"<operation_family>:<job_key>"` (`../06_data/ids.md` § Operation IDs, ADR-0070).
+- content_revision is exactly 64 lowercase hexadecimal SHA-256 characters over the complete canonical semantic payload, never prefixed/numeric; owner activation creates a fresh crypto-v4 incarnation and source counter starts at 1 without reuse; source-event UUIDv5 identity retains incarnation, counter and tick through retry/journal replay.
 
 ## Tests
-- `server/internal/core/id/id_test.go`: `TestUUIDv4`, `TestUUIDv4Uniqueness`, `TestParseUUIDRejections`, `TestUUIDv5DeterministicContentGrant`, `TestValidateStaticContentID`, `TestRuntimeEntityID`, `TestContentRevisionDiagnosticContext`, `TestOperationPayloadConsistency`.
+- `server/internal/core/id/id_test.go`: TestUUIDv4EntityIdentity, TestUUIDv7OperationTimestampAndCryptoRandomness, TestParseUUIDRejections, TestUUIDv5DeterministicContentGrant, TestValidateStaticContentID, TestRuntimeEntityID, TestContentRevisionDiagnosticContext, TestOperationPayloadConsistency, TestIncarnationRecreationSameCounterTickDifferentOperation, TestJournalReplayRetainsSourceIdentity.
 - `server/internal/core/id/job_id_test.go`: `TestServerJobIdDeterministic`, `TestServerJobNamespacePinned` (ADR-0070).
 
 generated_artifacts: []
@@ -627,7 +628,7 @@ consumers_checked: [docs/10_implementation/README.md, docs/10_implementation/mil
 - a PR that edits the verifier is still judged by the verifier built from `main`,
 - removing a ratchet entry or adding a skip without an ADR already on `main` fails,
 - a failing `main` push yields a revert PR; a failing revert or infrastructure failure freezes auto-merge instead,
-- Unity EditMode executes in both OS jobs; PlayMode becomes required when IMP-065 is `DONE` (gate activation, not Bootstrap Mode),
+- Unity EditMode executes only in `Unity (Windows)`; PlayMode becomes required there when IMP-065 is `DONE`. Linux reports `SKIP(windows-only)` for Unity-dependent gates; the Windows merge must supply their actual results (or only the documented owner/scope skip), and an unresolved technical skip cannot satisfy foundation exit (ADR-0078),
 - a fork PR fails both required checks before any checkout or secret use; the trusted workflow never checks out fork code with secrets,
 - `policy-review` is evidenced as a check run whose `app.id` is the policy-reviewer App; Owner Setup evidence shows the agent-token permission set, the policy-reviewer App (`checks:write`, `metadata:read`) and the merge-guard App (`contents`, `pull_requests`, `issues`, `variables` write) (ADR-0072),
 - trusted cutover: after this PR only `pull_request` + `pull_request_target` exist; after `imp/IMP-068-done` only `pull_request_target`; both PRs report the two required checks,
@@ -654,7 +655,7 @@ blocked_by: ""
 specs: [`audit_gates.md`, `agent_execution_protocol.md`, `engineering_conventions.md`, `../00_context/technology_versions.md`, `../09_testing/test_and_release_evidence.md`]
 adrs: [`0010-exact-technology-version-pinning.md`, `0050-windows-only-ci-and-auto-merge.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0068-implementation-packet-readiness-corrections.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0073-ci-speed-native-unity-windows-and-path-scoped-unity-gates.md`, `0078-unity-windows-native-and-linux-go-only-ci.md`]
 depends_on: [IMP-000]
-owned_paths: [`.github/workflows/verify.yml`, `.github/workflows/cache_warm.yml`, `.github/workflows/cache_prune.yml`, `scripts/verify.ps1`, `.devin/scripts/`, `server/internal/conformance/caching/`]
+owned_paths: [`.github/workflows/verify.yml`, `.github/workflows/cache_warm.yml`, `.github/workflows/cache_prune.yml`, `scripts/verify.ps1`, `.devin/scripts/cache_telemetry.sh`, `.devin/scripts/cache_telemetry.ps1`, `.devin/scripts/cache-policy.md`, `server/internal/conformance/caching/`]
 forbidden_paths: [`server/cmd/server/`, `.github/workflows/post_merge_guard.yml`, `client/`]
 contract_inputs: [pinned version matrix, verify job topology, materialized artifact contract]
 contract_outputs: [pinned cache steps in verify.yml, `.devin/scripts/` cache helpers + cache-key policy doc, cache hit/miss + wall-time fields in `verify-report.json`]
@@ -675,12 +676,13 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - every `actions/cache` step uses the pinned SHA from `technology_versions.md`; every `key` hashes all lockfile/pin/digest inputs; `restore-keys` never substitute a different pinned version or OS, and content-derived caches (`unity-library`) set no `restore-keys` — exact key only (CI-001),
 - a cache hit never skips or weakens a Q gate, the fork guard, job preconditions, the §4b materialization commit, or licence activation (licence state is never cached) (CI-002),
 - `verify-report.json` records `hit|miss` and `wall_seconds` per cached step, and the task PR reports lower total Linux+Windows wall-time on a warm-cache run than its own cold run (CI-003),
-- cold and warm runs produce identical `source_tree_hash`, zero codegen drift and identical evidence manifests; no new secrets, runners or services (CI-004, ADR-0058).
+- CI-004: cold and warm runs on the same tested source have equal stable evidence projections (source identity, executed gate result/error identities, codegen zero-drift), not byte-identical manifests; run identity, timings and cache telemetry are excluded (`../09_testing/test_and_release_evidence.md` §2a). No new secrets, runners or services.
 
 ## Tests
 - `server/internal/conformance/caching/caching_test.go` (CI-001): TestCacheActionPinnedSha, TestCacheKeysCoverPinInputs, TestRestoreKeysNeverCrossPinOrOs, TestLibraryCacheExactKeyOnly (BLK-005).
 - `server/internal/conformance/caching/caching_test.go` (CI-002): TestNoGateSkippedOnCacheHit, TestMaterializeCommitStillRequiredOnHit, TestLicenceStateNeverCached.
 - `server/internal/conformance/caching/caching_test.go` (CI-003, CI-004): TestWallTimeFieldsRecorded, TestEvidenceIdentityIndependentOfCache.
+- `server/internal/conformance/caching/caching_test.go`: TestStableProjectionIgnoresRunTimingCacheFields, TestStableProjectionDetectsGateErrorChange, TestCodegenDriftFailsWithWarmCache.
 - `server/internal/conformance/caching/caching_test.go` (ADR-0073): TestCacheWarmMirrorsVerifyCaches.
 - `server/internal/conformance/caching/caching_test.go` (ADR-0078): TestLfsObjectCacheKeyAndRestore, TestAndroidModuleCacheKey.
 
@@ -980,6 +982,7 @@ IMP-005 is the only migration owner. No other packet adds a migration; a later s
 - ADR-0061: the baseline creates `public_boss_schedules` with its CHECK constraints (`../06_data/data_model.md`); no other packet migrates that table.
 - ADR-0065: `operations` is keyed `(operation_family, owner_id, operation_id)`; the same `operation_id` under two owners commits twice, under one owner once; the baseline seeds `TOMBSTONE_ACCOUNT_ID`, creates every ADR-0065 table (auth, `account_login_history`, IAP dedup/cursors, reward claim tables, `auction_listings`, guild tables, `audit_events`), `name_key VARCHAR(256)`, the tombstone-excluding season-track partial index and the two `DEFERRABLE` composite FKs of `account_entitlement_claims`.
 - Baseline schema includes ADR-0070 changes: `pending_erasure_ledger`; `world_consequence_relics.spawned_at` + typed columns + `(relic_id, expires_at)` and `(expires_at)` partial indexes; typed `region_di_tich_markers`; `reward_claim_lines` line-kind CHECK; `auction_listings` `(state = 'ACTIVE') = (ended_at IS NULL)` CHECK; typed `guild_storage_audit` with action/section CHECKs.
+- ADR-0079: baseline stores content_revision as CHAR(64) with lowercase-hex CHECK; client operation records have `replay_until` and purge index. Authenticate owner and compare fingerprint before mutable preconditions on a retained replay; UUID time + 180 days expiry rejects `OPERATION_EXPIRED` before execution, including after payload purge; future skew over 60 seconds rejects malformed. Retain payload through its immutable expiry; server UUIDv5 operations use durable natural-key business dedup where retention ends.
 
 ## Tests
 - `server/internal/durable/idempotency/idempotency_test.go`: TestOperationDeduplication, TestCommitBeforeResponseRetry, TestConflictingPayloadRejection, TestPostgresUniqueConstraint, TestOperationKeyScopedByOwner (ADR-0065).
@@ -988,6 +991,8 @@ IMP-005 is the only migration owner. No other packet adds a migration; a later s
 - `server/internal/testing/pgtest/pgtest_test.go`: TestUsesPresetDsn, TestStartsEdbBinariesWhenDsnUnset.
 - `server/internal/durable/schema/schema_snapshot_test.go`: TestBaselineAdr0060Tables, TestNoStoredRefundScore (ADR-0060), TestBaselinePublicBossSchedules (ADR-0061).
 - `server/internal/durable/schema/adr0070_schema_test.go`: `TestPendingErasureLedgerTable`, `TestRelicTypedColumnsAndIndexes`, `TestRewardClaimLineKindCheck`, `TestAuctionEndedAtCheck`, `TestGuildStorageAuditChecks` (ADR-0070).
+- `server/internal/durable/idempotency/replay_horizon_test.go`: TestReplayBeforeMutablePreconditions, TestOwnerFingerprintMismatchCannotReplay, TestRetryAt180DayBoundaryExpired, TestPurgedUuidCannotExecuteAgain, TestFutureTimestampOver60SecondsMalformed, TestPurgeNeverBeforeReplayUntil, TestServerNaturalKeyDedupAfterOperationPurge.
+- `server/internal/durable/schema/adr0079_schema_test.go`: TestContentRevisionHex64Check, TestOperationReplayUntilAndPurgeIndex.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -2007,7 +2012,7 @@ Implement deterministic hourly event selection/waves/contribution/rewards.
 - `server/internal/global/spirit_surge/spirit_surge_test.go`: TestHourlySurgeEventSelection, TestWaveContributionTracking, TestSurgeRewardDistribution.
 - `client/Assets/Tests/PlayMode/SpiritSurgePresentation/SpiritSurgePresentationTests.cs`: global activation/deactivation and region UI.
 - `server/internal/sim/world/surge/surge_idempotency_test.go`: TestSurgeChainIdentityPerChannel, TestSurgeCompletionOncePerHour, TestSurgeDailyFirstOncePerDay.
-- `server/internal/global/spirit_surge/chain_id_test.go`: TestChainIdUuidV7UniqueAcrossRestart (ADR-0062).
+- `server/internal/global/spirit_surge/chain_id_test.go`: TestChainIdUuidV4DistinctAcrossRestart (server entity identity remains v4, not client-operation v7; ADR-0062).
 - `server/internal/global/spirit_surge/window_test.go`: TestDeactivateAtQuarterPast, TestRestartBeforeMinute15ActivatesRemainder, TestRestartAfterMinute15ActivatesNothing, TestLateStartedPartitionGetsActivation, TestPartitionEndsAtEndsAtUtcWhenCommandLate (ADR-0066).
 
 generated_artifacts: []
@@ -2591,6 +2596,7 @@ Implement same-map/range two-player atomic trade.
 - `server/internal/sim/trade/trade_lock_test.go`: TestSameAccountTradeForbidden, TestTwelveEntriesPerSide, TestRestartReleasesTradeLocks.
 - `server/internal/sim/trade/trade_test.go`: TestTradeLockInPlace, TestTradeRestartCancelsSessions, TestTradeSameAccountForbidden (ADR-0060).
 - `server/internal/sim/trade/partial_lock_test.go`: TestPartialStackLocksOfferedQuantity, TestRemainderUsableLockedQuantityProtected, TestMergeIntoLockedStackRejected, TestSessionCancelledOnParticipantTransferOrDeath (ADR-0062).
+- `server/internal/durable/trade/fees_test.go`: TestDirectTradeCurrencyFeeTenPercentCeiling, TestCurrencyFeeChargedOnlyToOfferingSide, TestFeeFailureRollsBackBothSides.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -2632,6 +2638,7 @@ Implement listing escrow, fixed-price purchase, fee/tax, pending seller proceeds
 - `server/internal/durable/auction/auction_gates_test.go`: TestAuctionLevel15GateAllOperations, TestListingAgeGate, TestListingFloorPerUnitTimesQuantity, TestSameAccountPurchaseForbidden.
 - `server/internal/durable/auction/auction_test.go`: TestAuctionPriceFloorCode, TestAuctionSameAccountBuy, TestAuctionExpectedPrice (ADR-0060).
 - `server/internal/durable/auction/ended_at_test.go`: `TestEndedAtSetOnEveryTerminalTransition` (ADR-0070).
+- `server/internal/durable/auction/fees_test.go`: TestAuctionTaxFifteenPercentCeiling, TestMorningMarketFivePercentCeiling, TestSaleFeeAndProceedsAtomic.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -3577,7 +3584,7 @@ Build reproducible component, partition, and full-service load scenarios with ac
 
 ## Acceptance
 - ramp, 60-minute 10k hold, six-hour soak, reconnect/deploy/fault, scheduler, Spirit Surge, boss/dungeon, and database-degradation scenarios meet canonical thresholds,
-- hotspot 42 `AI_CLASS_NAMED_MECHANIC` + 22 players (forced-placement cap, ADR-0066) keeps p95 tick below 35 ms; with 22 players the 58th non-player entity is permitted and the 59th rejected (scenario 18),
+- hotspot 42 `AI_CLASS_NAMED_MECHANIC` + 22 players keeps p95 tick below 35 ms; scenario 18 fills independent 42 spawn / 12 event / 8 boss / 16 transient budgets (78 non-player, 100 total), accepts each class's final slot and rejects its next slot without blocking a different class or legal forced player placement.
 - scenario 10 maintenance restart follows `../08_scale_ops/deployment.md` § Drain and Shutdown: completes within `DRAIN_LEAD` + `SHUTDOWN_FLUSH_MAX`, exits with durable queue depth 0, never hits the systemd stop timeout,
 - `MAX_PARTITIONS_PER_PROCESS >= 720 + peak concurrent instances` measured in scenario 3,
 - saturated 40-entity AOI bandwidth is measured and the release budget is updated from evidence rather than assumed,
@@ -3587,7 +3594,7 @@ Build reproducible component, partition, and full-service load scenarios with ac
 - Load scenarios 18 (all entity class budgets = 100 entities) and 19 (all 720 normal-channel partitions forced to run) of `../09_testing/load.md` run and record results; scenario 10 also asserts the outbox journal path when the flush is forced to time out (ADR-0070).
 
 ## Tests
-- `server/internal/testing/load/load_test.go`: TestMandatoryScenarioManifest, TestTenThousandActivePlayerFingerprint, TestHotspotFortyTwoNamedPlusTwentyTwo, TestEntityCapNonPlayer58PlayerSlotsReserved, TestChannelCapacityEighteen, TestForcedPlacementCapTwentyTwo, TestMaintenanceDrainSequence, TestPartitionGateCoversAllChannels, TestSLOAndCorrectnessFailClosed, TestCapacityMeasurementMetadata.
+- `server/internal/testing/load/load_test.go`: TestMandatoryScenarioManifest, TestTenThousandActivePlayerFingerprint, TestHotspotFortyTwoNamedPlusTwentyTwo, TestEntityClassBudgets42Spawn12Event8Boss16TransientAt100Total, TestChannelCapacityEighteen, TestForcedPlacementCapTwentyTwo, TestMaintenanceDrainSequence, TestPartitionGateCoversAllChannels, TestSLOAndCorrectnessFailClosed, TestCapacityMeasurementMetadata.
 - `server/internal/testing/load/adr0070_scenarios_test.go`: `TestScenario18ClassBudgets`, `TestScenario19AllPartitionsRunning`, `TestScenario10ForcedFlushTimeoutJournals` (ADR-0070).
 
 generated_artifacts: []
@@ -3618,7 +3625,7 @@ Automate fresh/apply/down/apply and supported-version migration rehearsals, cont
 - fresh and representative supported snapshots migrate with invariant checks and restart-safe bounded backfills,
 - destructive production down-migration is never used where forward-fix or PITR is required,
 - verified restore meets the RPO <= 5 minutes and RTO <= 60 minutes targets and records measured duration,
-- absent/corrupt WorldConsequence data fails restore; zero rows pass only for a proven pre-defeat snapshot,
+- absent/unreadable WorldConsequence tables, corrupt rows and unknown content references fail restore; zero rows always pass, including a fresh launch or a snapshot after every relic expired (`backup_recovery.md` § Restore Procedure),
 - restored-as-of time is used to re-evaluate relic/cosmetic expiry and external side effects reconcile by operation/audit ID,
 - post-restore login, character, inventory, economy, escrow, Reward Claim, content-revision, and schema-compatibility smoke tests pass.
 - The restore rehearsal parses `BACKUP_STORAGE_URL` (`s3://bucket/prefix?region=&endpoint=`) and the two-line credentials file, and replays erasure-ledger objects in `LEDGER_REPLAY` mode against restored accounts (`../08_scale_ops/backup_recovery.md`, ADR-0070).
@@ -3626,6 +3633,7 @@ Automate fresh/apply/down/apply and supported-version migration rehearsals, cont
 ## Tests
 - `server/internal/testing/migration/migration_test.go`: TestRepresentativeSnapshotMigration, TestRollbackIntegrityRehearsal, TestSchemaChecksumDeterministic, TestPITRRestoreReconciliation, TestWorldConsequenceRestoreGuard, TestRestoredAsOfExpiryEvaluation.
 - `server/internal/testing/migration/restore_adr0070_test.go`: `TestBackupStorageUrlParse`, `TestCredentialsFileFormat`, `TestRestoreReplaysErasureLedger` (ADR-0070).
+- `server/internal/testing/migration/restore_validity_test.go`: TestZeroWorldConsequenceRowsValidFreshAndExpired, TestMissingTablesFailRestore, TestCorruptOrUnknownContentRowsFailRestore.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -4034,7 +4042,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md`, `../04_architecture/physics_geometry_contract.md`]
 adrs: [`0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-063, IMP-070]
-owned_paths: [`client/Assets/Art/Actors/Players/`, `client/Assets/Tests/EditMode/PlayerArtCoverage/`, `client/Assets/Art/Provenance/fragments/actors_players.json`, `client/Assets/Art/StyleRef/actors_players/`, `client/Assets/Art/Provenance/terms/actors_players/`]
+owned_paths: [`client/Assets/Art/Actors/Players/`, `client/Assets/Tests/EditMode/PlayerArtCoverage/`, `client/Assets/Art/Provenance/fragments/actors_players.json`, `client/Assets/Art/StyleRef/actors_players/`, `client/Assets/Art/Provenance/terms/actors_players/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`]
 forbidden_paths: [`server/`, `proto/`]
 contract_inputs: [five class identities, launch monster/boss/beast rosters, canonical size profiles and source policy]
 contract_outputs: [production actor sprites/animations, Addressable mappings, approved provenance rows]
@@ -4072,7 +4080,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/spirit_beast_catalog.md`, `../04_architecture/physics_geometry_contract.md`]
 adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-063, IMP-070]
-owned_paths: [`client/Assets/Art/Actors/Creatures/`, `client/Assets/Tests/EditMode/CreatureArtCoverage/`, `client/Assets/Art/Provenance/fragments/actors_creatures.json`, `client/Assets/Art/StyleRef/actors_creatures/`, `client/Assets/Art/Provenance/terms/actors_creatures/`]
+owned_paths: [`client/Assets/Art/Actors/Creatures/`, `client/Assets/Tests/EditMode/CreatureArtCoverage/`, `client/Assets/Art/Provenance/fragments/actors_creatures.json`, `client/Assets/Art/StyleRef/actors_creatures/`, `client/Assets/Art/Provenance/terms/actors_creatures/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/beast.shared.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.lang_da.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.rung_u_minh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.ben_nuoc_den.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.deo_may.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.thanh_co.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.nui_thieng.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.dinh_lang_bo_hoang.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.mieu_ba_trong_rung.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.xom_chim.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.hang_ma_tranh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.den_tran.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.finale.asset`, `client/Assets/Art/Actors/Npcs/`]
 forbidden_paths: [`server/`, `proto/`]
 contract_inputs: [monster/boss/Spirit Beast rosters, size profiles, art direction]
 contract_outputs: [final creature sheets/animations, Addressable keys, provenance fragment]
@@ -4110,7 +4118,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md`, `../02_world/maps_zones.md`, `../04_architecture/physics_geometry_contract.md`]
 adrs: [`0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-062, IMP-063, IMP-070]
-owned_paths: [`client/Assets/Art/World/`, `client/Assets/Scenes/World/`, `client/Assets/Tests/EditMode/WorldArtCoverage/`, `client/Assets/Art/Provenance/fragments/world.json`, `client/Assets/Art/StyleRef/world/`, `client/Assets/Art/Provenance/terms/world/`]
+owned_paths: [`client/Assets/Art/World/`, `client/Assets/Scenes/World/`, `client/Assets/Tests/EditMode/WorldArtCoverage/`, `client/Assets/Art/Provenance/fragments/world.json`, `client/Assets/Art/StyleRef/world/`, `client/Assets/Art/Provenance/terms/world/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.lang_da.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.rung_u_minh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.ben_nuoc_den.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.deo_may.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.thanh_co.asset`, `client/Assets/AddressableAssetsData/AssetGroups/region.nui_thieng.asset`]
 forbidden_paths: [`server/internal/sim/spatial/maps/`, `client/Assets/Scenes/Collision/`, `proto/`]
 contract_inputs: [locked scene roster/topology, exported geometry, size/viewport contract, source policy]
 contract_outputs: [authored production scenes, tile/prop/parallax sets, approved provenance rows]
@@ -4150,7 +4158,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../04_architecture/physics_geometry_contract.md`]
 adrs: [`0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-062, IMP-063, IMP-070]
-owned_paths: [`client/Assets/Art/Instances/`, `client/Assets/Scenes/Dungeons/`, `client/Assets/Scenes/Finale/`, `client/Assets/Scenes/Competitive/`, `client/Assets/Tests/EditMode/InstanceArtCoverage/`, `client/Assets/Art/Provenance/fragments/instances.json`, `client/Assets/Art/StyleRef/instances/`, `client/Assets/Art/Provenance/terms/instances/`]
+owned_paths: [`client/Assets/Art/Instances/`, `client/Assets/Scenes/Dungeons/`, `client/Assets/Scenes/Finale/`, `client/Assets/Scenes/Competitive/`, `client/Assets/Tests/EditMode/InstanceArtCoverage/`, `client/Assets/Art/Provenance/fragments/instances.json`, `client/Assets/Art/StyleRef/instances/`, `client/Assets/Art/Provenance/terms/instances/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.dinh_lang_bo_hoang.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.mieu_ba_trong_rung.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.xom_chim.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.hang_ma_tranh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.den_tran.asset`, `client/Assets/AddressableAssetsData/AssetGroups/dungeon.finale.asset`, `client/Assets/AddressableAssetsData/AssetGroups/pvp.shared.asset`]
 forbidden_paths: [`server/internal/sim/spatial/maps/`, `client/Assets/Scenes/Collision/`, `proto/`]
 contract_inputs: [dungeon/finale/competitive space profiles, exported geometry]
 contract_outputs: [final instance scenes, Addressable keys, provenance fragment]
@@ -4189,7 +4197,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md`, `../07_content/item_catalog.md`, `../07_content/equipment_catalog.md`, `../04_architecture/client_localization.md`]
 adrs: [`0016-twelve-skill-pool-upgradeable-basics.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-063, IMP-070]
-owned_paths: [`client/Assets/Art/UI/`, `client/Assets/Art/Items/`, `client/Assets/Art/VFX/`, `client/Assets/Tests/EditMode/InterfaceArtCoverage/`, `client/Assets/Art/Provenance/fragments/interface.json`, `client/Assets/Art/StyleRef/interface/`, `client/Assets/Art/Provenance/terms/interface/`]
+owned_paths: [`client/Assets/Art/UI/`, `client/Assets/Art/Items/`, `client/Assets/Art/VFX/`, `client/Assets/Tests/EditMode/InterfaceArtCoverage/`, `client/Assets/Art/Provenance/fragments/interface.json`, `client/Assets/Art/StyleRef/interface/`, `client/Assets/Art/Provenance/terms/interface/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/bootstrap.local.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`, `client/Assets/AddressableAssetsData/AssetGroups/icons.shared.asset`]
 forbidden_paths: [`server/`, `proto/`]
 contract_inputs: [release UI states, skill/item/equipment IDs, presentation size budgets, source policy]
 contract_outputs: [production UI/font/icon art and skill telegraphs/VFX, approved provenance rows]
@@ -4227,7 +4235,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md`, `../03_systems/cosmetics.md`]
 adrs: [`0053-durable-contract-reconciliation.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0063-economy-contract-reconciliation.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-063, IMP-070]
-owned_paths: [`client/Assets/Art/Cosmetics/`, `client/Assets/Tests/EditMode/CosmeticArtCoverage/`, `client/Assets/Art/Provenance/fragments/cosmetics.json`, `client/Assets/Art/Provenance/cultural_review.md`, `client/Assets/Art/StyleRef/cosmetics/`, `client/Assets/Art/Provenance/terms/cosmetics/`]
+owned_paths: [`client/Assets/Art/Cosmetics/`, `client/Assets/Tests/EditMode/CosmeticArtCoverage/`, `client/Assets/Art/Provenance/fragments/cosmetics.json`, `client/Assets/Art/Provenance/cultural_review.md`, `client/Assets/Art/StyleRef/cosmetics/`, `client/Assets/Art/Provenance/terms/cosmetics/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/cosmetic.shared.asset`, `client/Assets/AddressableAssetsData/AssetGroups/icons.shared.asset`]
 forbidden_paths: [`server/`, `proto/`]
 contract_inputs: [launch cosmetic entitlements and equip slots, cultural-review rule, source policy]
 contract_outputs: [production cosmetic visuals or explicit text/shared-art mappings, approved provenance rows]
@@ -4265,7 +4273,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md`, `../00_context/constraints.md`]
 adrs: [`0014-unity-addressables-asset-delivery.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-063, IMP-070]
-owned_paths: [`client/Assets/Audio/`, `client/Assets/Tests/EditMode/AudioAssetCoverage/`, `client/Assets/Art/Provenance/fragments/audio.json`, `client/Assets/Art/Provenance/terms/audio/`]
+owned_paths: [`client/Assets/Audio/`, `client/Assets/Tests/EditMode/AudioAssetCoverage/`, `client/Assets/Art/Provenance/fragments/audio.json`, `client/Assets/Art/Provenance/terms/audio/`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.lang_da.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.rung_u_minh.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.ben_nuoc_den.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.deo_may.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.thanh_co.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.nui_thieng.asset`, `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.shared.asset`]
 forbidden_paths: [`server/`, `proto/`]
 contract_inputs: [release map/action/UI cue inventory, audio group budgets, source policy]
 contract_outputs: [production SFX/BGM and cue mappings, approved provenance rows]
@@ -4301,7 +4309,7 @@ blocked_by: ""
 specs: [`../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md`, `definition_of_done.md`]
 adrs: [`0014-unity-addressables-asset-delivery.md`, `0045-ci-evidence-without-self-referential-sha.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0057-bootstrap-trusted-ci-evidence-identity-and-merge-mechanics.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`]
 depends_on: [IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105]
-owned_paths: [`client/Assets/Scripts/Core/Assets/Editor/AssetProduction/ReleaseAssetAudit.cs`, `client/Assets/Tests/EditMode/ReleaseAssetAudit/`, `client/Assets/Notices/THIRD_PARTY_ASSETS.txt`, `client/Assets/Art/Provenance/asset_source_register.json`, `client/Assets/Art/Provenance/asset_rights_review.md`]
+owned_paths: [`client/Assets/Scripts/Core/Assets/Editor/AssetProduction/ReleaseAssetAudit.cs`, `client/Assets/Tests/EditMode/ReleaseAssetAudit/`, `client/Assets/Notices/THIRD_PARTY_ASSETS.txt`, `client/Assets/Art/Provenance/asset_source_register.json`, `client/Assets/Art/Provenance/asset_rights_review.md`, `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset`, `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset`]
 forbidden_paths: [`server/`, `proto/`]
 contract_inputs: [validated release catalogs, completed asset groups/scenes, source register]
 contract_outputs: [complete release coverage report, reviewed rights report, packaged credits notice]

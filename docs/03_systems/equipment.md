@@ -67,6 +67,7 @@ Increasing a maximum does not refill it.
 
 ## Rolled Stats
 Each `item_id` defines fixed stat identities/ranges. Server rolls once at instance creation; values persist forever unless an explicit future reroll system exists.
+Inventory, direct-trade offers and Auction search/detail all carry the same authoritative `ItemInstanceView` from `messages.md` § Item Instance Projection, including persisted rolled base/secondary stat values, effective stats, enhancement, binding and creation content revision. Inspecting an unequipped/market copy never rolls again; a purchased/transferred instance retains the exact same projected values.
 
 ## Enhancement
 Range `+0..+16`; base rolls never reroll. All probability/cost/failure rules belong in `crafting.md`.

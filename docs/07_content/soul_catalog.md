@@ -16,262 +16,57 @@ Soul presentation uses creatures already present in the Vietnamese-folklore enco
 - `BURN`, `POISON`, `SLOW`, `ROOT`, `FREEZE`, and semantic status tags come from `../01_gameplay/status_effects.md`.
 - A Soul never changes the element of an equipment item.
 
-# NORMAL — 15
-Exactly three NORMAL Souls per element.
+# Runtime Soul Roster
+`values` lists exact Lv1/Lv3/Lv5 fractions; Lv2=Lv1, Lv4=Lv3. `v` selects that row's value. All triggers observe committed authoritative events; damage requires connected `hp_damage>0` unless explicitly shield-break. One effect per target/root, trigger-depth3, no secondary self-retrigger. ICD starts on successful proc except `ARM` where stated consumption starts it. Refreshing a window does not bypass an active ICD; counters clear on proc/timeout/unload/death/transfer. Buffs refresh duration, never stack, instance `(owner,effect_id)`; target debuffs key `(target,effect_id,source_id)`. Threshold crossings compare pre/post committed HP; lethal commit never resurrects.
 
-## KIM
-### `soul.normal.coc_thanh_tinh`
-Display: **Hồn Cóc Thành Tinh**  
-source: `monster.lang_da.coc_thanh_tinh`
+| soul_id | display | source_id | effect_id | values | trigger | payload | icd_ms | icd_scope |
+|---|---|---|---|---|---|---|---:|---|
+| `soul.normal.coc_thanh_tinh` | Hồn Cóc Thành Tinh | `monster.lang_da.coc_thanh_tinh` | `effect.soul.coc_thanh_tinh.mo_dau` | `0.04,0.05,0.06` | `HP_DAMAGE;TARGET_PRE_HP_GE(0.80)` | `DAMAGE_ADD(v)` | 8000 | TARGET |
+| `soul.normal.ho_con_tinh` | Hồn Hổ Con Tinh | `monster.deo_may.ho_con_tinh` | `effect.soul.ho_con_tinh.vo_moi` | `0.06,0.08,0.10` | `ACCEPT_TAG(MOVEMENT)` | `ARM(NEXT_BASIC,4000,DAMAGE_ADD(v))` | 0 | OWNER |
+| `soul.normal.hon_binh` | Hồn Binh Cũ | `monster.thanh_co.hon_binh` | `effect.soul.hon_binh.nhip_danh` | `0.03,0.04,0.05` | `DISTINCT_ACTIONS_SAME_TARGET(3,5000)` | `BUFF(ATTACK_SPEED,FLAT_ADD,v,4000)` | 8000 | OWNER |
+| `soul.normal.tinh_cay` | Hồn Tinh Cây | `monster.rung_u_minh.tinh_cay` | `effect.soul.tinh_cay.re_non` | `0.01,0.015,0.02` | `APPLY_STATUS(ROOT,SLOW)` | `HEAL_SELF(v)` | 8000 | OWNER |
+| `soul.normal.ma_rung` | Hồn Ma Rừng | `monster.rung_u_minh.ma_rung` | `effect.soul.ma_rung.hoi_khi` | `0.02,0.03,0.04` | `REWARD_ELIGIBLE_KILL` | `RESTORE_SELF_MP(v)` | 4000 | OWNER |
+| `soul.normal.khi_nui` | Hồn Khỉ Núi | `monster.deo_may.khi_nui` | `effect.soul.khi_nui.chuyen_can` | `0.03,0.04,0.05` | `VOLUNTARY_LAND` | `BUFF(MOVE_SPEED,FLAT_ADD,v,3000)` | 5000 | OWNER |
+| `soul.normal.ma_da` | Hồn Ma Da | `monster.ben_nuoc_den.ma_da` | `effect.soul.ma_da.keo_khi` | `2,3,4` | `HP_DAMAGE;TARGET_TAG(SLOW)` | `RESTORE_SELF_MP_FLAT(v)` | 2000 | OWNER |
+| `soul.normal.ca_tinh` | Hồn Cá Tinh | `monster.ben_nuoc_den.ca_tinh` | `effect.soul.ca_tinh.luot_song` | `0.08,0.10,0.12` | `VOLUNTARY_TRAVEL_WIDTH` | `ARM(NEXT_PROJECTILE_HIT,4000,DAMAGE_TARGET(v,THUY))` | 6000 | OWNER |
+| `soul.normal.hon_chet_duoi` | Hồn Chết Đuối | `monster.ben_nuoc_den.hon_chet_duoi` | `effect.soul.hon_chet_duoi.lanh_nuoc` | `0.06,0.08,0.10` | `CROSS_HP_BELOW(0.40)` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,3000)` | 20000 | OWNER |
+| `soul.normal.dom_dom_ma` | Hồn Đom Đóm Ma | `monster.lang_da.dom_dom_ma` | `effect.soul.dom_dom_ma.tan_sang` | `0.02,0.03,0.04` | `ACTION_DISTINCT_HOSTILES(3)` | `RESTORE_SELF_MP(v)` | 8000 | OWNER |
+| `soul.normal.dom_lua` | Hồn Đốm Lửa Rừng | `monster.rung_u_minh.dom_lua` | `effect.soul.dom_lua.am_ia` | `250,500,750` | `APPLY_OWN_DOT(BURN,POISON)` | `RESIDUAL_EXTENSION_MS(v)` | 0 | OWNER |
+| `soul.normal.qua_tinh` | Hồn Quạ Tinh | `monster.thanh_co.qua_tinh` | `effect.soul.qua_tinh.vu_den` | `0.03,0.04,0.05` | `CRIT` | `BUFF(CAST_SPEED,FLAT_ADD,v,3000)` | 6000 | OWNER |
+| `soul.normal.bu_nhin_rom` | Hồn Bù Nhìn Rơm | `monster.lang_da.bu_nhin_rom` | `effect.soul.bu_nhin_rom.dung_gio` | `0.04,0.05,0.06` | `STATIONARY(1250)` | `PREDICATE_BUFF(DEFENSE,PERCENT_ADD,v,UNTIL_MOVEMENT)` | 0 | OWNER |
+| `soul.normal.vong_hon` | Hồn Vong | `monster.lang_da.vong_hon` | `effect.soul.vong_hon.lanh_gay` | `0.03,0.04,0.05` | `HOSTILE_HP_DAMAGE_TAKEN` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,2000)` | 8000 | OWNER |
+| `soul.normal.ma_co` | Hồn Ma Cổ | `monster.thanh_co.ma_co` | `effect.soul.ma_co.giu_menh` | `0.015,0.02,0.025` | `HOSTILE_SHIELD_BREAK` | `HEAL_SELF(v)` | 10000 | OWNER |
+| `soul.elite.ho_tinh_ve` | Hồn Hổ Tinh Vệ | `monster.deo_may.ho_tinh_ve` | `effect.soul.ho_tinh_ve.lay_da` | `0.08,0.10,0.12` | `ACCEPT_TAG(MOVEMENT)` | `ARM(NEXT_DAMAGING_ACTIVE,4000,ACTION_CRIT_ADD(v))` | 8000 | CONSUMPTION |
+| `soul.elite.thach_ve` | Hồn Thạch Vệ | `monster.thanh_co.thach_ve` | `effect.soul.thach_ve.pha_the` | `-0.08,-0.10,-0.12` | `HOSTILE_HP_DAMAGE_TAKEN` | `ARM(NEXT_DAMAGING_ACTIVE_HIT,5000,TARGET_DEBUFF(DEFENSE,PERCENT_ADD,v,3000))` | 10000 | OWNER |
+| `soul.elite.moc_tinh` | Hồn Mộc Tinh | `monster.rung_u_minh.moc_tinh` | `effect.soul.moc_tinh.re_song` | `0.03,0.04,0.05` | `APPLY_STATUS(ROOT)` | `HOT_SELF_TOTAL(v,3000,1000,3)` | 12000 | OWNER |
+| `soul.elite.ma_tranh` | Hồn Ma Trành | `monster.rung_u_minh.ma_tranh` | `effect.soul.ma_tranh.dau_rung` | `0.12,0.16,0.20` | `HP_DAMAGE;TARGET_CONTROL_OR_RECOVERY` | `DOT_TOTAL(effect.soul.ma_tranh.poison,v,MOC,POISON)` | 10000 | TARGET |
+| `soul.elite.ma_da_gia` | Hồn Ma Da Già | `monster.ben_nuoc_den.ma_da_gia` | `effect.soul.ma_da_gia.nuoc_niu` | `0.15,0.20,0.25` | `APPLY_DISPLACEMENT(PULL,KNOCKBACK)` | `TARGET_SLOW(v,2000);RESTORE_SELF_MP(0.02+0.01*level_step)` | 10000 | OWNER |
+| `soul.elite.ma_xo` | Hồn Ma Xó | `monster.lang_da.ma_xo` | `effect.soul.ma_xo.vung_cam` | `0.06,0.08,0.10` | `ACTIVE_TAGS(AREA,DAMAGING);TARGET_TAG(NEGATIVE)` | `DAMAGE_ADD(v)` | 0 | OWNER |
+| `soul.elite.ma_tranh_gia` | Hồn Ma Trành Già | `monster.deo_may.ma_tranh_gia` | `effect.soul.ma_tranh_gia.nep_duong` | `0.06,0.08,0.10` | `HOSTILE_HP_DAMAGE_TAKEN_GE(0.12)` | `SHIELD_SELF(v,4000)` | 20000 | OWNER |
+| `soul.boss.thuong_luong` | Hồn Thuồng Luồng | `boss.thuong_luong` | `effect.soul.thuong_luong.song_duoi` | `0.45,0.55,0.65` | `COMPLETE_TAG(MOVEMENT)` | `SPATIAL_DAMAGE(spatial.soul.song_duoi,v,THUY);TARGET_SLOW(0.20,2000)` | 24000 | OWNER |
+| `soul.boss.ho_tinh_chin_duoi` | Hồn Hồ Tinh Chín Đuôi | `boss.ho_tinh_chin_duoi` | `effect.soul.ho_tinh_chin_duoi.lua_anh` | `0.65,0.80,0.95` | `DISTINCT_DAMAGING_ACTIVE_IDS(3,6000)` | `ARM(NEXT_DAMAGING_ACTIVE_HIT,5000,SPATIAL_DAMAGE(spatial.soul.lua_anh,v,HOA)+DOT_TOTAL(effect.soul.lua_anh.burn,0.20,HOA,BURN))` | 25000 | CONSUMPTION |
+| `soul.boss.than_trung` | Hồn Thần Trùng | `boss.than_trung` | `effect.soul.than_trung.diem_bao` | `0.15,0.18,0.20` | `CROSS_HP_BELOW(0.25)` | `BUFF(DAMAGE_REDUCTION,FLAT_ADD,v,4000+500*level_step)` | 45000 | OWNER |
 
-Effect `effect.soul.coc_thanh_tinh.mo_dau`:
-- trigger: first damaging hit against a target currently at `>= 80% MAX_HP`
-- Lv1/Lv3/Lv5 bonus damage: `+0.04 / +0.05 / +0.06`
-- cooldown: `8s per target`
+## Spatial Payloads
+All dimensions use canonical geometry quantization/collision from `physics_geometry_contract.md`. Boundary intersection is inclusive. Snapshot origin/direction and offensive stats at proc commit. Instant queries, not traveling projectiles; no movement/extra iframe. Hostiles only; distance from origin then durable target-ID selection. `shared_action` caps count the union of triggering-action and proc targets; otherwise proc cap independent. No proc can trigger itself.
 
-### `soul.normal.ho_con_tinh`
-Display: **Hồn Hổ Con Tinh**  
-source: `monster.deo_may.ho_con_tinh`
+| spatial_id | geometry | origin | direction | timing | collision | monster_cap | player_cap | cap_scope |
+|---|---|---|---|---|---|---:|---:|---|
+| `spatial.soul.song_duoi` | `DIRECTION_BOX(length=3.2m,half_height=0.9m)` | CASTER_AFTER_MOTION | ACCEPTED_ACTION_DIRECTION | INSTANT | LOS_SOLID | 4 | 3 | INDEPENDENT |
+| `spatial.soul.lua_anh` | `AREA_POSITION(radius=1.5m)` | FIRST_CONNECTED_TARGET_CENTER | NONE | INSTANT | LOS_SOLID | 4 | 3 | SHARED_ACTION |
 
-Effect `effect.soul.ho_con_tinh.vo_moi`:
-- after a `MOVEMENT`-tagged skill, next basic attack within 4s gains damage
-- Lv1/Lv3/Lv5: `+0.06 / +0.08 / +0.10`
-- buff does not stack; new qualifying movement refreshes the 4s window
+## Typed DOT / HoT Schedule
+`DOT_TOTAL` has exact duration3000ms, first_tick1000ms, interval1000ms, count3, no activation damage; tags `NEGATIVE,DOT,<BURN|POISON>`, dispellable, source-keyed refresh/no-stack. Snapshot total raw pool `floor(ATTACK*total_ratio)` on application; split `q=pool div3`, `r=pool mod3`, first r ticks get q+1, others q. All ticks use normal mitigation, snapshotted offense, live defense, no crit/dodge. Refresh replaces pool/snapshot and resets damaging deadline to now+3000 on original1000ms anchor; remainder partition indexes restart at next anchored tick. Residual extension changes marker expiry only. KHAC sums the actual unexecuted raw tick amounts, not an assumed class basic template. `HOT_SELF_TOTAL` uses `floor(MAX_HP*v)` split the same way, self target, first1000ms through3000ms inclusive; healing modifiers reevaluate each tick. Reapplications while live do not create copies. All deadlines round up exact cumulative ms to50ms ticks.
 
-### `soul.normal.hon_binh`
-Display: **Hồn Binh Cũ**  
-source: `monster.thanh_co.hon_binh`
+# Compiler Source Schema
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Runtime Soul Roster`; headers `soul_id,display,source_id,effect_id,values,trigger,payload,icd_ms,icd_scope` | souls / soul_id; effects / effect_id | ID refs; display UTF8; values exact decimal triple or integer triple; trigger/payload calls below; icd_ms uint32; scope OWNER,TARGET,CONSUMPTION | infer rank from ID and element from referenced encounter; level mapping1,1,3,3,5; no other defaults |
+| `Spatial Payloads`; headers `spatial_id,geometry,origin,direction,timing,collision,monster_cap,player_cap,cap_scope` | spatial_effects / spatial_id | geometry closed calls DIRECTION_BOX(length:m,half_height:m),AREA_POSITION(radius:m); enums exactly table tokens; caps uint32 | cast_range=0; instantaneous; hostile-only; exact geometry quantization and stable selection above |
 
-Effect `effect.soul.hon_binh.nhip_danh`:
-- three damaging actions against the same target within 5s grant ATTACK_SPEED for 4s
-- Lv1/Lv3/Lv5: `+0.03 / +0.04 / +0.05 ATTACK_SPEED`
-- proc cooldown: `8s`
-- one authoritative multi-hit action counts once
+Call grammar: `NAME(arg,...)`, sequence `;`, ARM embedded payload combination `+`; tokens case-sensitive, no English interpretation. Numbers exact decimals→signed bp except MP/ms/count uint32. `v` row-selected value; `level_step`0,1,2; only expressions `0.02+0.01*level_step`, `4000+500*level_step` allowed. Exhaustive trigger dispatch: HP_DAMAGE,CRIT,REWARD_ELIGIBLE_KILL,VOLUNTARY_LAND,VOLUNTARY_TRAVEL_WIDTH,HOSTILE_HP_DAMAGE_TAKEN,HOSTILE_SHIELD_BREAK,TARGET_CONTROL_OR_RECOVERY take no args; TARGET_PRE_HP_GE,CROSS_HP_BELOW,HOSTILE_HP_DAMAGE_TAKEN_GE take ratio; ACCEPT_TAG,COMPLETE_TAG,TARGET_TAG take one stable tag; APPLY_STATUS/APPLY_DISPLACEMENT/APPLY_OWN_DOT/ACTIVE_TAGS take nonempty listed enum set; DISTINCT_ACTIONS_SAME_TARGET,DISTINCT_DAMAGING_ACTIVE_IDS take count+window_ms; ACTION_DISTINCT_HOSTILES count; STATIONARY duration_ms. TARGET_CONTROL_OR_RECOVERY is exactly ROOT,SLOW,FREEZE,STUN or active PULL/KNOCKBACK recovery. Travel threshold is physics character collider width, accumulated voluntary path since last arm; forced displacement neither counts nor preserves stationary buff.
 
-## MOC
-### `soul.normal.tinh_cay`
-Display: **Hồn Tinh Cây**  
-source: `monster.rung_u_minh.tinh_cay`
-
-Effect `effect.soul.tinh_cay.re_non`:
-- applying ROOT or SLOW heals owner
-- Lv1/Lv3/Lv5: `1.0% / 1.5% / 2.0% MAX_HP`
-- cooldown: `8s`
-
-### `soul.normal.ma_rung`
-Display: **Hồn Ma Rừng**  
-source: `monster.rung_u_minh.ma_rung`
-
-Effect `effect.soul.ma_rung.hoi_khi`:
-- defeating an eligible hostile enemy restores MAX_MP
-- Lv1/Lv3/Lv5: `2% / 3% / 4% MAX_MP`
-- cooldown: `4s`
-- trivial/non-reward entities do not qualify
-
-### `soul.normal.khi_nui`
-Display: **Hồn Khỉ Núi**  
-source: `monster.deo_may.khi_nui`
-
-Effect `effect.soul.khi_nui.chuyen_can`:
-- after landing from a voluntary jump or fall, gain MOVE_SPEED for 3s
-- Lv1/Lv3/Lv5: `+0.03 / +0.04 / +0.05 MOVE_SPEED`
-- cooldown: `5s`
-- forced displacement does not trigger it
-
-## THUY
-### `soul.normal.ma_da`
-Display: **Hồn Ma Da**  
-source: `monster.ben_nuoc_den.ma_da`
-
-Effect `effect.soul.ma_da.keo_khi`:
-- damaging a target carrying SLOW restores MP
-- Lv1/Lv3/Lv5: `2 / 3 / 4 MP`
-- cooldown: `2s`
-
-### `soul.normal.ca_tinh`
-Display: **Hồn Cá Tinh**  
-source: `monster.ben_nuoc_den.ca_tinh`
-
-Effect `effect.soul.ca_tinh.luot_song`:
-- after voluntary movement of at least one character-width, next `PROJECTILE`-tagged hit within 4s deals a bonus hit
-- Lv1/Lv3/Lv5 bonus: `0.08 / 0.10 / 0.12 ATTACK`
-- cooldown: `6s`
-- bonus hit cannot trigger itself
-
-### `soul.normal.hon_chet_duoi`
-Display: **Hồn Chết Đuối**  
-source: `monster.ben_nuoc_den.hon_chet_duoi`
-
-Effect `effect.soul.hon_chet_duoi.lanh_nuoc`:
-- when owner crosses below `40% MAX_HP`, gain DAMAGE_REDUCTION for 3s
-- Lv1/Lv3/Lv5: `+0.06 / +0.08 / +0.10`
-- cooldown: `20s`
-
-## HOA
-### `soul.normal.dom_dom_ma`
-Display: **Hồn Đom Đóm Ma**  
-source: `monster.lang_da.dom_dom_ma`
-
-Effect `effect.soul.dom_dom_ma.tan_sang`:
-- damaging at least 3 distinct hostile targets with one action restores MAX_MP
-- Lv1/Lv3/Lv5: `2% / 3% / 4% MAX_MP`
-- cooldown: `8s`
-
-### `soul.normal.dom_lua`
-Display: **Hồn Đốm Lửa Rừng**  
-source: `monster.rung_u_minh.dom_lua`
-
-Effect `effect.soul.dom_lua.am_ia`:
-- BURN or POISON applied by owner gains additional duration
-- Lv1/Lv3/Lv5: `+0.25s / +0.50s / +0.75s`
-- does not increase tick frequency or create extra stacks
-
-### `soul.normal.qua_tinh`
-Display: **Hồn Quạ Tinh**  
-source: `monster.thanh_co.qua_tinh`
-
-Effect `effect.soul.qua_tinh.vu_den`:
-- critical hit grants CAST_SPEED for 3s
-- Lv1/Lv3/Lv5: `+0.03 / +0.04 / +0.05 CAST_SPEED`
-- cooldown: `6s`
-
-## THO
-### `soul.normal.bu_nhin_rom`
-Display: **Hồn Bù Nhìn Rơm**  
-source: `monster.lang_da.bu_nhin_rom`
-
-Effect `effect.soul.bu_nhin_rom.dung_gio`:
-- after remaining voluntarily stationary for 1.25s, gain DEFENSE through PERCENT_ADD until voluntary movement begins
-- Lv1/Lv3/Lv5: `+0.04 / +0.05 / +0.06 DEFENSE`
-- forced displacement ends the benefit but does not impose a cooldown
-
-### `soul.normal.vong_hon`
-Display: **Hồn Vong**  
-source: `monster.lang_da.vong_hon`
-
-Effect `effect.soul.vong_hon.lanh_gay`:
-- taking hostile damage grants DAMAGE_REDUCTION for 2s
-- Lv1/Lv3/Lv5: `+0.03 / +0.04 / +0.05`
-- cooldown: `8s`
-
-### `soul.normal.ma_co`
-Display: **Hồn Ma Cổ**  
-source: `monster.thanh_co.ma_co`
-
-Effect `effect.soul.ma_co.giu_menh`:
-- when an owner shield breaks from hostile damage, heal owner
-- Lv1/Lv3/Lv5: `1.5% / 2.0% / 2.5% MAX_HP`
-- cooldown: `10s`
-
-# ELITE — 7
-
-## KIM
-### `soul.elite.ho_tinh_ve`
-Display: **Hồn Hổ Tinh Vệ**  
-source: `monster.deo_may.ho_tinh_ve`
-
-Effect `effect.soul.ho_tinh_ve.lay_da`:
-- after a `MOVEMENT`-tagged skill, next `DAMAGING` active skill within 4s gains CRIT_CHANCE
-- Lv1/Lv3/Lv5: `+0.08 / +0.10 / +0.12 CRIT_CHANCE`
-- cooldown starts on consumption: `8s`
-
-### `soul.elite.thach_ve`
-Display: **Hồn Thạch Vệ**  
-source: `monster.thanh_co.thach_ve`
-
-Effect `effect.soul.thach_ve.pha_the`:
-- after owner takes hostile damage, next `DAMAGING` active hit within 5s applies target DEFENSE reduction for 3s
-- Lv1/Lv3/Lv5: `-0.08 / -0.10 / -0.12 DEFENSE` through target PERCENT_ADD
-- same-source effect does not stack
-- cooldown: `10s`
-
-## MOC
-### `soul.elite.moc_tinh`
-Display: **Hồn Mộc Tinh**  
-source: `monster.rung_u_minh.moc_tinh`
-
-Effect `effect.soul.moc_tinh.re_song`:
-- applying ROOT starts a 3s owner regeneration effect
-- total heal Lv1/Lv3/Lv5: `3% / 4% / 5% MAX_HP`
-- cooldown: `12s`
-- reapplication during regeneration does not stack copies
-
-### `soul.elite.ma_tranh`
-Display: **Hồn Ma Trành**  
-source: `monster.rung_u_minh.ma_tranh`
-
-Effect `effect.soul.ma_tranh.dau_rung`:
-- first damaging hit against a target under ROOT, SLOW, FREEZE, STUN, PULL recovery, or KNOCKBACK recovery applies POISON for 3s
-- total POISON Lv1/Lv3/Lv5: `0.12 / 0.16 / 0.20 ATTACK`
-- cooldown: `10s per target`
-
-## THUY
-### `soul.elite.ma_da_gia`
-Display: **Hồn Ma Da Già**  
-source: `monster.ben_nuoc_den.ma_da_gia`
-
-Effect `effect.soul.ma_da_gia.nuoc_niu`:
-- owner PULL or KNOCKBACK also applies SLOW for 2s and restores MP
-- SLOW Lv1/Lv3/Lv5: `15% / 20% / 25%`
-- MP restore Lv1/Lv3/Lv5: `2% / 3% / 4% MAX_MP`
-- cooldown: `10s`
-
-## HOA
-### `soul.elite.ma_xo`
-Display: **Hồn Ma Xó**  
-source: `monster.lang_da.ma_xo`
-
-Effect `effect.soul.ma_xo.vung_cam`:
-- `AREA` + `DAMAGING` skills against targets carrying any NEGATIVE status gain source additive damage
-- Lv1/Lv3/Lv5: `+0.06 / +0.08 / +0.10`
-- each authoritative action receives the modifier at most once
-
-## THO
-### `soul.elite.ma_tranh_gia`
-Display: **Hồn Ma Trành Già**  
-source: `monster.deo_may.ma_tranh_gia`
-
-Effect `effect.soul.ma_tranh_gia.nep_duong`:
-- taking one hostile committed result of at least `12% MAX_HP` grants a 4s shield
-- Lv1/Lv3/Lv5 shield: `6% / 8% / 10% MAX_HP`
-- cooldown: `20s`
-
-# BOSS — 3
-Boss Souls follow the one-BOSS-Soul-per-loadout rule and are guaranteed once through their configured first eligible character-clear reward in `drop_tables.md`; repeat kills may provide low-rate duplicate acquisition for alternate loadouts.
-
-## THUY — `soul.boss.thuong_luong`
-Display: **Hồn Thuồng Luồng**  
-source: `boss.thuong_luong`
-
-Effect `effect.soul.thuong_luong.song_duoi`:
-- after a `MOVEMENT`-tagged skill, emit a readable forward water wave
-- wave damage Lv1/Lv3/Lv5: `0.45 / 0.55 / 0.65 ATTACK`
-- applies `20% SLOW` for 2s
-- cooldown: `24s`
-- wave cannot retrigger the Soul
-
-## HOA — `soul.boss.ho_tinh_chin_duoi`
-Display: **Hồn Hồ Tinh Chín Đuôi**  
-source: `boss.ho_tinh_chin_duoi`
-
-Effect `effect.soul.ho_tinh_chin_duoi.lua_anh`:
-- using three different `DAMAGING` active-skill IDs within 6s arms `LUA_ANH` for 5s
-- next `DAMAGING` active hit consumes it and creates one area spirit-fire burst
-- burst Lv1/Lv3/Lv5: `0.65 / 0.80 / 0.95 ATTACK`
-- burst applies BURN for 3s, total `0.20 ATTACK`
-- cooldown after burst: `25s`
-- the burst cannot count toward or retrigger the three-skill sequence
-
-## THO — `soul.boss.than_trung`
-Display: **Hồn Thần Trùng**  
-source: `boss.than_trung`
-
-Effect `effect.soul.than_trung.diem_bao`:
-- when owner crosses below `25% MAX_HP`, gain a ward
-- DAMAGE_REDUCTION Lv1/Lv3/Lv5: `+0.15 / +0.18 / +0.20`
-- duration Lv1/Lv3/Lv5: `4s / 4.5s / 5s`
-- cooldown: `45s`
-- does not prevent lethal damage that already committed before the trigger
+Payload dispatch: DAMAGE_ADD(source_additive_ratio),ACTION_CRIT_ADD(ratio); BUFF(stat,FLAT_ADD|PERCENT_ADD,value,duration_ms); PREDICATE_BUFF(stat,stage,value,UNTIL_MOVEMENT); HEAL_SELF(target_max_hp_ratio),RESTORE_SELF_MP(target_max_mp_ratio),RESTORE_SELF_MP_FLAT(integer_mp); ARM(selector,duration_ms,payload) selectors NEXT_BASIC,NEXT_PROJECTILE_HIT,NEXT_DAMAGING_ACTIVE,NEXT_DAMAGING_ACTIVE_HIT, consume once on matching accept or connected hit as selector states, expiry discards; DAMAGE_TARGET(attack_ratio,element) shares triggering connected target, no extra spatial query; TARGET_DEBUFF(stat,stage,value,duration_ms); TARGET_SLOW(slow_fraction,duration_ms); SHIELD_SELF(target_max_hp_ratio,duration_ms); HOT_SELF_TOTAL(total_hp_ratio,duration_ms,interval_ms,tick_count); DOT_TOTAL(effect_id,total_attack_ratio,element,status); RESIDUAL_EXTENSION_MS(uint32); SPATIAL_DAMAGE(spatial_id,attack_ratio,element). Damage secondary no crit/dodge, normal pipeline, snapshot at trigger; heal/shield floor ratio*current MAX_HP at proc before modifiers. Source additive modifies triggering result before primary commit rather than spawning another hit. Unknown/missing args, IDs, expressions or unmatched payloads fail compilation.
 
 # Element Count Validation
 ```text

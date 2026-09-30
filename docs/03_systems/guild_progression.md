@@ -68,6 +68,9 @@ At cycle start snapshot active members M (current members whose character attach
 M_effective = clamp(M,5,40)
 required_points_per_element = 120 + 12*M_effective
 ```
+Persist the cycle-start roster in `guild_ritual_cycle_members`, keyed `(guild_id,cycle_id,character_id)`, with immutable `account_id` and `membership_id` (UUIDv4 identity of the historical membership interval). `M` is the actual number of rows; `M_effective` alone is only the clamped requirement input, never the voter list. Snapshot uses intervals `[joined_at,left_at)` active exactly at Monday 00:00 UTC and an immutable `character_activity_attach_events` admission event in `[cycle_start-14 days,cycle_start]`; the leader at that cutoff always counts. Online sessions do not synthesize new attach events. Attach history key is `(character_id,session_epoch)`, with `attached_at` fixed once when admission commits, retained 180 days. `character_activity` persists actual attach/detach and `session_active` (reconciled false on startup), not generic character updates.
+
+For a new operation, after authenticated owner/fingerprint committed-receipt lookup, pre-acquire the complete lock set in canonical priority order (`../06_data/database.md`) before freezing any due cycle; never acquire character/activity locks while already holding only a guild lock. Materialize the current open cycle before any post-cutoff membership, role or activity mutation, grant or vote. Historical closed cycles missed during downtime are recorded as missed/no-reward cycles (break cosmetic streak); they cannot be retrospectively completed, drafted, voted or rewarded. Reconstruct only the current open cycle from retained intervals/events, not current membership/latest attach alone. Later attach/join does not enter its snapshot. Leaving then rejoining creates a new `membership_id` and does not restore voting eligibility; mid-cycle members may still contribute. Persist account-level vote uniqueness `(guild_id,cycle_id,account_id)` and validate immutable roster plus matching still-current `membership_id` while locked. Retain snapshots and receipts through operation replay expiry; the historical activity inputs need cover only the current seven-day cycle and its 14-day lookback, inside the 180-day event retention.
 
 ## Ritual Points
 Every eligible event grants explicit points to exactly one authoritative element:
@@ -136,6 +139,7 @@ Lv1 advancement/hunt/exploration; Lv10 +craft; Lv20 +endurance; Lv30 +activity. 
 
 ## Persistence / Idempotency
 Persist EXP/level/revision, cycle/vessels/streak, draft/candidates/votes, active Blessing/expiry, member contribution. Stable operation IDs for every grant/vote/finalization/unlock.
+The authoritative guild UI is `S2C_GUILD_STATE` 628 / `GuildProgressionView` in `../05_network/messages.md`: immutable cycle identity/requirements, all five vessel totals, next rotation element, candidates, vote deadline/counts/receiver choice and eligibility, active blessing/expiry and contribution. Attach/reconnect/change use that full members-only projection; result 649 is not a substitute for state. Clients neither reconstruct a draft from past events nor choose a rotation element.
 
 ## Invariants
 ```text

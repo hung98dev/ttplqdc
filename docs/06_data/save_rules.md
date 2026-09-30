@@ -118,7 +118,7 @@ When a durable commit is required and PostgreSQL is unavailable:
 
 Simulation-originated commands (kill/boss/quest/discovery settlements, `WriteWorldConsequence`):
 ```text
-operation_id        = UUIDv5(CONTENT_GRANT_NAMESPACE_UUID, "<partition_key>.<source_event_id>.<tick>")  -- deterministic
+operation_id        = UUIDv5(CONTENT_GRANT_NAMESPACE_UUID, source_event_name)  -- encoding below
 holding             = per-partition durable-result queue (64, ../04_architecture/concurrency.md)
 retry               = same operation_id, exponential backoff 100 ms .. 5 s while the DB is unavailable
 queue full          = partition enters DURABLE_BACKPRESSURE until the queue drains below 32:
@@ -127,10 +127,14 @@ queue full          = partition enters DURABLE_BACKPRESSURE until the queue drai
                       clients get the system notice loc.system.rewards_paused and blocked requests return `DURABLE_BACKPRESSURE` (`../05_network/errors.md`); metric + alert
 crash before commit = uncommitted commands are lost; none was shown as final; loss is bounded by the queue
 ```
+
+`partition_incarnation_id` is a fresh crypto-random UUID v4 created once whenever a simulation owner starts/restarts, including reactivation of the same map/channel. `source_event_id` is a uint64 counter starting at 1 and incremented once per finalized source event in that incarnation; overflow stops the partition before reuse. The source event carries the original `tick` and complete finalized outputs. Retries, all recipient settlements and maintenance-journal replay reuse this event identity; they do not regenerate it in a new partition.
+
+Canonical `source_event_name` is UTF-8 ASCII `sim:<map_id>:<channel_id>:<instance_id>:<partition_incarnation_id>:<source_event_id>:<tick>`: stable lowercase map ID; decimal channel without leading zeroes (`0` for an instance); lowercase canonical durable instance UUID (`0` for a normal channel); canonical lowercase incarnation UUID; unsigned decimal counter and tick without leading zeroes. Static IDs cannot contain `:`. UUID v5 uses namespace network-order bytes and these exact name bytes (`ids.md`). A source event emits one settlement command per owner/family containing every finalized output for that owner; multiple recipients share the UUID but not the owner-scoped key. Two new incarnations with identical counters/ticks therefore have different operations; replay of one event has the identical operation.
 A partition cannot start while PostgreSQL is unavailable (its `world_consequence` recovery read must succeed); entry attempts return `TEMPORARY_DEPENDENCY_FAILURE` and the client retries with backoff.
 
 # Content Revision
-Store content revision/provenance when required to reconstruct randomized/generated outcomes. Committed result never rerolls/reinterprets because active content revision changes.
+Store content revision/provenance when required to reconstruct randomized/generated outcomes. `content_revision` is exactly 64 lowercase SHA-256 hexadecimal characters, defined in `content_authoring_contract.md`; PostgreSQL uses `CHAR(64)` with `[0-9a-f]{64}` validation, protobuf/JSON use the same string. Committed result never rerolls/reinterprets because active content revision changes.
 
 # Background Jobs
 Auction expiry, resets and cleanup use deterministic job/window keys and idempotent per-target operations under the same transaction rules. Duplicate worker execution must be safe.

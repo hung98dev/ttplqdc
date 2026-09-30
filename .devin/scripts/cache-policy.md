@@ -47,6 +47,11 @@ Applies to `.github/workflows/verify.yml`. Enforced by
 - `UNITY_WINDOWS_EDITOR_URL`/`_SHA256` must equal
   `stackpin.UnityWindowsInstallers["editor"]` — the tests assert both.
   Unity runs on Windows only; no Unity image is cached and no Linux Unity job exists (ADR-0073, ADR-0078).
+- All required verify checkouts use `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`. Only
+  Unity (Windows), Windows player builds and main-scope Windows cache warming
+  restore `.git/lfs` and run `git lfs pull`; never the Linux or Windows required Go verifier.
+- PR cancellation covers both `pull_request` and `pull_request_target`; main pushes
+  never cancel (`audit_gates.md` § Job Preconditions). No retired Linux kill probe.
 
 ## Never cached (CI-002)
 
@@ -70,15 +75,13 @@ the `commit unity-materialized` drift check, or the licence activation.
   then runs `server/internal/conformance/caching/cmd/cachemerge` to fold all
   entries into `verify-report.json` as `cached_steps[]`. The merge is
   best-effort — it can never fail verification.
-- Evidence manifests (`gates.MergeReports`) decode reports into the fixed
-  `VerifyReport` struct, so `cached_steps` is dropped before the manifest —
-  evidence identity is cache-independent (CI-004).
+- Evidence merge excludes `cached_steps` telemetry but retains independent CI run identity and all gate outcomes. Cold/warm equality is the exact CI-004 stable evidence projection in `docs/09_testing/test_and_release_evidence.md` §2a, never whole-manifest byte equality.
 - The Windows required job's evidence step (`verify.ps1 -MergeReports -Task`, ADR-0075, ADR-0078) early-exits on branches whose head ref has no `IMP-\d+`
   (claim/ops/spec/status PRs): it skips *manifest generation* only, never a
   gate. No manifest on those branches is by design — not a failure.
-- The `Unity (Windows)` job ships its `cache-telemetry.jsonl` inside
-  `unity-test-results-<os>`; the required job appends it to its own telemetry
-  before the verifier folds `cached_steps` (ADR-0075).
+- `Unity (Windows)` ships its `cache-telemetry.jsonl` inside
+  `unity-test-results-windows`; the Windows required job appends it to its own telemetry
+  before the verifier folds `cached_steps` (ADR-0075, ADR-0078).
 
 ## Postgres service container
 

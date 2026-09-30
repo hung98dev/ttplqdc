@@ -50,35 +50,36 @@ For multi-aggregate transactions:
 2. stable UUID byte/lexical order,
 3. child rows by stable slot/index/ID.
 
-Aggregate-type priority (canonical; lock lower number first; ADR-0053, ADR-0060, ADR-0065):
+Aggregate-type priority (canonical; lock lower number first; ADR-0053, ADR-0060, ADR-0065, ADR-0079):
 ```text
+0  competitive_season_finalizations (season advisory lock)
 1  accounts, account_password_credentials, account_identities, auth_session_families,
-   auth_refresh_credentials, auth_revocations, account_login_history
-2  characters, character_chivalry
+   auth_refresh_credentials, auth_revocations, account_login_history, erasure_intents
+2  characters, character_activity, character_attach_events, character_chivalry, character_chat_restrictions
 3  character_currencies
 4  character_inventories
 5  item_instances / item_locations
 6  character_beasts, character_beast_food_daily, beast_equipment_locations
-7  character_souls, character_soul_resonance
+7  character_souls, character_soul_collection, character_soul_resonance
 8  account_iap_entitlements, account_refund_consumed_events, iap_notification_dedup, iap_provider_cursors
 9  account_cosmetic_entitlements, account_entitlement_claims,
    character_cosmetic_entitlements, character_cosmetic_equips
-10 friends, friend_requests, blocks
-11 guilds, guild_memberships, guild_member_contributions, guild_invites, guild_applications,
-   guild_stone_category_completions
-12 guild_progression, guild_ritual_cycles, guild_blessing_votes
+10 friends, friend_requests, blocks, player_reports
+11 guilds, guild_memberships, guild_membership_history, guild_member_contributions, guild_invites, guild_applications,
+   guild_stone_category_completions, guild_stone_masteries, guild_cosmetic_entitlements, guild_cosmetic_selections
+12 guild_progression, guild_ritual_cycles, guild_ritual_cycle_members, guild_blessing_votes
 13 guild storage rows (item_locations GUILD_STORAGE) + guild_storage_claims, guild_storage_audit
 14 trade_settlement_records
 15 auction_listings, auction_proceeds
-16 pvp_ratings, pvp_match_settlements, pvp_sanctions,
-   guild_war_ratings, guild_war_settlements
-17 reward_claims, reward_claim_lines, reward_claim_contributions, boss_chest_eligibility
-18 world_consequence_relics, region_di_tich_markers, public_boss_schedules
-19 character_feats, character_feat_milestones, character_atlas
+16 competitive_match_admissions, pvp_ratings, pvp_match_settlements, pvp_sanctions,
+   guild_war_ratings, guild_war_settlements, competitive_season_frozen_awards
+17 reward_claims, reward_claim_lines, reward_claim_contributions, boss_chest_eligibility, public_boss_reward_settlements
+18 region_di_tich_markers, world_consequence_relics, public_boss_schedules
+19 character_feats, character_feat_milestones, character_atlas, character_atlas_state
 20 economy daily rollups
 ```
 Direct trade has no session row; its settlement locks the two characters' rows in priorities 2..5 (UUID order), then inserts priority 14 and 20 rows.
-Within one priority, tables are locked in the order listed on that line; exceptions: priority 18 locks `region_di_tich_markers` before `world_consequence_relics` (`data_model.md` § Boss Aftermath Relic), and `public_boss_schedules` is only written in single-row transactions. The account-erasure transaction (`data_model.md` § Account Erasure step 2) acquires its whole lock set in this priority order before any mutation (account, characters in UUID order, then each listed priority; guilds in `guild_id` order), with FK checks deferred to commit; `pending_erasure_ledger` is insert-only and has no priority. The relic expiry sweep (ADR-0070) uses the priority-18 marker-first order.
+Within one priority, tables are locked in the order listed on that line; exceptions: priority 18 locks `region_di_tich_markers` before `world_consequence_relics` (`data_model.md` § Boss Aftermath Relic), and `public_boss_schedules` is only written in single-row transactions. The account-erasure transaction (`data_model.md` § Account Erasure step 2) acquires its whole lock set in this priority order before any mutation (account and `erasure_intents` in priority 1, characters in UUID order in priority 2, then each listed priority; guilds in `guild_id` order), with FK checks deferred to commit. The relic expiry sweep (ADR-0070) uses the priority-18 marker-first order.
 `operations` rows are inserted last in the same transaction.
 
 An owning feature may define a stricter deterministic order.

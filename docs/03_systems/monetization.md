@@ -114,7 +114,7 @@ product.cosmetic.bundle.nguoi_hung_lang_da          -> grants the three: cosmeti
 
 No mounts. `product.cosmetic.mount_appearance.ngua_bach_ma` does not exist.
 
-All 13 launch store cosmetic products (4 character skins, 3 weapon trails, 3 emotes, 1 portrait frame, 1 nameplate, 1 title glow, and the bundle) are **store exclusive** revenue items. They have no in-game `currency.special`, drop, or material equivalent. They grant zero combat power, zero stats, and zero progression efficiency.
+The 13 individual launch store cosmetic products (4 character skins, 3 weapon trails, 3 emotes, 1 portrait frame, 1 nameplate, 1 title glow) plus the bundle product are **store exclusive** revenue items. The bundle grants three existing IDs and adds no cosmetic ID. They have no in-game `currency.special`, drop, or material equivalent and grant zero combat power, stats or progression efficiency.
 ## Character Slots
 At launch every account receives **3 character slots** (base entitlement, no payment required). Cap = 3 (ADR-0029). Additional slots are not sold.
 

@@ -44,6 +44,7 @@ Chỉ hỗ trợ 3 nhà cung cấp xác thực liên kết (Federated Identity P
 - **Apple Server Notifications v2:** Nhận qua webhook endpoint `/api/v1/iap/apple/webhook`. Payload là signed JWS. Server verify chữ ký bằng chứng chỉ Apple root CA.
 - **Google Cloud Pub/Sub RTDN:** Nhận qua webhook endpoint `/api/v1/iap/google/webhook`. Bắt buộc xác thực OIDC JWT Bearer Token trong header `Authorization` do Google gửi kèm theo [Google Pub/Sub Push Authentication](https://docs.cloud.google.com/pubsub/docs/authenticate-push-subscriptions), kiểm tra `aud` = `GOOGLE_RTDN_AUDIENCE` và `email` = `GOOGLE_RTDN_SERVICE_ACCOUNT_EMAIL` (§ 4).
 - **Idempotency:** Mỗi notification chứa `notificationUUID` (Apple) hoặc `messageId` (Google). Server ghi nhận vào bảng `iap_notification_dedup` trước khi xử lý, loại trừ trùng lặp.
+All inbound/provider response byte caps and deterministic oversized errors are canonical in `validation.md` § HTTPS Size Boundary; Apple signed JWS and Google OIDC/data decoding happen only after those limits. Dedup insertion and applying the notification commit in the same database transaction.
 
 ## 3. Shared Auth Rate-Limiting (Không dùng Redis)
 
@@ -64,7 +65,7 @@ Quy chuẩn điều phối giới hạn tốc độ yêu cầu (Rate Limiting) t
      previous_count   INTEGER NOT NULL DEFAULT 0
      ```
      Upsert atomic: nếu `window_start` hiện tại khớp thì `current_count + 1`; nếu là cửa sổ kế tiếp thì `previous_count = current_count, current_count = 1`; xa hơn thì cả hai reset (`previous_count = 0, current_count = 1`).
-     `effective = current_count + previous_count × (1 − elapsed_in_window / window_seconds)`; `effective > limit` → `RATE_LIMITED` (BACKOFF, `retry_after_ms` = thời gian tới khi `effective ≤ limit`). Hàng không đổi trong 24 h bị xóa bởi job dọn dẹp.
+     `effective = current_count + previous_count × (1 − elapsed_in_window / window_seconds)`; `effective > limit` → `RATE_LIMITED` (BACKOFF, `retry_after_ms` = thời gian tới khi `effective ≤ limit`). Hàng không đổi trong 24 h bị xóa bởi job dọn dẹp. Ngoại lệ password USERNAME: chỉ đếm lỗi đã xác thực; kiểm tra mật khẩu trong IP capacity trước, mật khẩu đúng bỏ qua/xóa USERNAME failure counter (`rate_limits.md` § Authentication). IP request counter vẫn chặn trước Argon2id và không reset khi đăng nhập đúng.
    - Backoff lũy tiến cho đăng nhập sai (`auth_failure_backoff`):
      ```text
      key_hash               BYTEA PRIMARY KEY   -- HMAC-SHA-256(ACCOUNT_SIGNAL_SALT, 'auth.password.login:USERNAME:' || username_key), cùng cho 'IP'
@@ -82,7 +83,7 @@ Mọi cấu hình môi trường được nạp qua biến môi trường tiêu 
 |---|---|---|
 | `DATABASE_URL` | Có | Chuỗi kết nối PostgreSQL (pgx pool format) |
 | `SERVER_PORT` | Có | Cổng TCP mở listener WSS (mặc định 8080) |
-| `WORLD_CCU_CAP` | Có | Số session attached tối đa trước khi bật login queue; đặt bằng CCU đo được ở release gate 10k (`../08_scale_ops/capacity.md`, `session.md` § Login Queue, ADR-0052) |
+| `WORLD_CCU_CAP` | Có | Số tài khoản giữ admission slot tối đa (ticket reservation + character select + attached + reconnect grace, mỗi account đúng một slot); đặt bằng CCU đo được ở release gate 10k (`../08_scale_ops/capacity.md`, `session.md` § Login Queue, ADR-0052/0079) |
 | `IAP_SANDBOX` | Không | `true` \| `false` (mặc định `false`) |
 | `APPLE_KEY_ID` | Khi bật IAP | Key ID cấp bởi Apple Developer Portal |
 | `APPLE_ISSUER_ID` | Khi bật IAP | Issuer ID của App Store Connect |
@@ -99,12 +100,13 @@ Mọi cấu hình môi trường được nạp qua biến môi trường tiêu 
 | `GOOGLE_RTDN_AUDIENCE` | Khi bật IAP | `aud` bắt buộc của OIDC token Pub/Sub push (= URL webhook `/api/v1/iap/google/webhook`) |
 | `GOOGLE_RTDN_SERVICE_ACCOUNT_EMAIL` | Khi bật IAP | `email` bắt buộc của OIDC token Pub/Sub push |
 | `ADMIN_BIND_ADDR` | Luôn luôn | `host:port` của listener admin HTTPS trên mạng vận hành riêng (`auth.md` § Operator); không bao giờ là địa chỉ public |
+| `ALERTMANAGER_WEBHOOK_TOKEN` | Luôn luôn | 32-byte crypto-random secret base64url cho SYSTEM-only private `/admin/v1/alerts/security`; same secret injected into Alertmanager credentials_file; no interactive API scope (`auth.md`) |
 | `TLS_TERMINATION` | Có | `SERVER` \| `PROXY` (`../05_network/protocol.md` § TLS) |
 | `TLS_CERT_FILE`, `TLS_KEY_FILE` | Khi `TLS_TERMINATION=SERVER` | Đường dẫn chứng chỉ/khóa PEM của listener public |
 | `ACCOUNT_SIGNAL_SALT` | Luôn luôn | 32-byte (base64) salt cho `account_login_history` hash (`../06_data/data_model.md`) và khóa HMAC của `rate_limit_counters` / `auth_failure_backoff` (§ 3) |
 | `ERASURE_LEDGER_SALT` | Luôn luôn | 32-byte (base64) salt cho `account_id_hash` của erasure ledger (`../08_scale_ops/backup_recovery.md`) |
-| `BACKUP_STORAGE_URL` | Luôn luôn | URL kho S3-compatible của Owner Setup cho erasure ledger (world process chỉ ghi thêm prefix `erasure-ledger/`; `../08_scale_ops/backup_recovery.md`, IMP-056) |
-| `BACKUP_STORAGE_CREDENTIALS_FILE` | Luôn luôn | Đường dẫn file credential chỉ-ghi-thêm cho prefix đó (quyền 0600, world host) |
+| `BACKUP_STORAGE_URL` | Luôn luôn | URL kho S3-compatible độc lập primary DB cho immutable PREPARED erasure ledger; consistent LIST/GET + conditional PUT required (`../08_scale_ops/backup_recovery.md`, IMP-056) |
+| `BACKUP_STORAGE_CREDENTIALS_FILE` | Luôn luôn | File 0600, key limited to conditional PUT + GET + LIST under erasure-ledger prefix, no DELETE/overwrite; lifecycle janitor uses separate ops credential |
 | `PGBACKREST_REPO1_S3_KEY`, `PGBACKREST_REPO1_S3_KEY_SECRET`, `PGBACKREST_REPO1_CIPHER_PASS` | Trên PostgreSQL host | Credential repository và mật khẩu mã hóa của pgBackRest (biến môi trường gốc của pgBackRest; không nạp vào world process) |
 
 ## Invariants

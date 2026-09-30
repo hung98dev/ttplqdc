@@ -85,7 +85,7 @@ Basic attacks participate in skill point progression and build customization:
 - Learned passive skills are always active; there are no passive slots.
 - Loadout may change only while not `in_combat` and not under a PvP/content build lock. Request: `C2S_LOADOUT_CHANGE{kind=SKILL_SET}` (`../05_network/messages.md`); the server validates the whole basic + 5-slot set atomically.
 - Unequipping a skill does not reset its cooldown.
-- Basic attack intent may be submitted on press or while its input remains held. While held, the client may submit at most one intent per currently known server cooldown; the server still accepts only one action after the authoritative cooldown and state checks. No client-side auto-hit result is valid.
+- Basic attack intent may be submitted on press or while held. Held pacing uses the replicated effective **next-accept deadline**, not the stored content cooldown. At most one intent per known accept interval; reject duplicates and any intent before that deadline. For basics `cooldown_ends_at_tick` means this deadline; for actives it means the ordinary cooldown deadline. No client-side auto-hit is valid.
 ## Target Count Limits and Scaling
 Damaging active and basic skills are subject to hard server target caps under ADR-0018:
 ```text
@@ -222,10 +222,14 @@ recovery_ms
 
 Meaning:
 - `startup_ms`: accepted action to first authoritative active resolution/spawn opportunity,
-- `active_ms`: authoritative hitbox/projectile-spawn/forced-movement execution window,
+- `active_ms`: authoritative hitbox/projectile-spawn window and forced-movement start opportunity. Authored forced motion has its own unscaled lifetime and may continue into RECOVERY.
 - `recovery_ms`: time after ACTIVE before another non-cancelled action may normally start.
 
 Long-lived zones, DoTs, shields, summons, and channels use their own effect durations after creation; `active_ms` is not automatically their lifetime.
+
+Every action/timer uses exact cumulative integer-millisecond deadlines from `accepted_at_ms = server_tick * 50`: `active_due = accepted_at_ms + effective_startup_ms`, `recovery_due = active_due + effective_active_ms`, `complete_due = recovery_due + effective_recovery_ms`. Execute each at `ceil(due_ms / 50)`; never round each phase to ticks before summing. Status/zone/projectile deadlines use the same rule. Due damage/heal ticks at exact expiry resolve before expiry removal; determinism ties follow `status_effects.md`. Actual next action starts on an accepted server tick, not a fictitious sub-tick start; each new action anchors to that actual accept time.
+
+`DASH_LINE`, `MOVE_LINE`, and `MOVE_CONTACT_LINE` motion starts at the executed ACTIVE transition; its exact end is `active_due + authored_duration_ms`, executed with the same upward tick rounding. Sweeps follow only the collision-resolved path and hit each selected target at most once per action. Motion ends on authored end, obstruction, death, or transfer; ACTIVE ending is not a truncation. No new action or self-chain can start while forced motion remains. An obstructed dash still reserves its authored motion deadline; there is no cancel/replace/overlap mechanic.
 
 ## Timing Speed Stat
 Each action explicitly declares:
@@ -413,7 +417,7 @@ Default skill cancel behavior:
 no cancel_in
 no cancel_out
 ```
-Exception — equipped `BASIC_ATTACK` only: `cancel_out` during `recovery_ms` into another accept of the **same equipped** basic skill. Actives keep no cancel. Cooldown still gates the next accept.
+Exception — equipped `BASIC_ATTACK` only: `cancel_out` during recovery into another accept of the **same equipped** basic skill, after its effective next-accept deadline and forced-motion deadline. Actives keep no cancel.
 
 Authoritative basic interval:
 ```text
@@ -421,19 +425,25 @@ phase_scale(S) = cooldown_seconds(S) / base_cooldown
 startup_ms(S) = ceil(base_startup_ms * phase_scale(S))
 active_ms(S)  = max(40, ceil(base_active_ms * phase_scale(S)))
 recovery_ms(S)= ceil(base_recovery_ms * phase_scale(S))
-interval_ms   = max( ceil(cooldown_ms(S) / (1 + ATTACK_SPEED)), startup_ms(S) + active_ms(S) )
+effective_startup_ms = ceil(startup_ms(S) / (1 + ATTACK_SPEED))
+motion_end_offset_ms = effective_startup_ms + authored_motion_duration_ms  # zero duration when no motion
+interval_ms = max(ceil(cooldown_ms(S) / (1 + ATTACK_SPEED)),
+                  effective_startup_ms + active_ms(S), motion_end_offset_ms)
+next_accept_tick = accepted_tick + ceil(interval_ms / 50)
 ```
-`ATTACK_SPEED` shortens `startup_ms` and `recovery_ms` via `ceil(phase_ms / (1 + ATTACK_SPEED))` (Timing Speed Stat rule) **and**, for basic attacks, also reduces the cooldown floor in the interval. After self-chain, recovery does not block the next basic if cooldown elapsed. Advertised class base hits/s is this interval at skill_level 12 with `ATTACK_SPEED = 0`.
+`ATTACK_SPEED` shortens startup/recovery and the basic interval floor, never movement lifetime. Stored content cooldown is metadata, not a second basic gate. Recovery self-chain waits for `next_accept_tick`; normal non-self-chain actions additionally wait for completion. Timing inputs are snapshotted on accept. Theoretical cadence is `1000/interval_ms`; observable sustained held cadence is `1000/(50*ceil(interval_ms/50))`. Published reference balance uses observable cadence.
 
 At the `ATTACK_SPEED` cap (0.50), the minimum interval for the class's fastest basic at Lv12 becomes:
 
-| class | Lv12 cooldown | interval at AS cap (0.50) | hits/s at cap |
-|---|---:|---:|---:|
-| KIM | 200 ms | 134 ms | ~7.46 |
-| THUY | 300 ms | 200 ms | 5.00 |
-| MOC | 340 ms | 227 ms | ~4.41 |
-| HOA | 390 ms | 260 ms | ~3.85 |
-| THO | 480 ms | 320 ms | ~3.13 |
+| class | Lv12 cooldown | exact interval at AS cap | executable interval | observable hits/s |
+|---|---:|---:|---:|---:|
+| KIM | 200 ms | 134 ms | 150 ms | 6.6667 |
+| THUY | 300 ms | 200 ms | 200 ms | 5.0000 |
+| MOC | 340 ms | 227 ms | 250 ms | 4.0000 |
+| HOA | 390 ms | 260 ms | 300 ms | 3.3333 |
+| THO | 480 ms | 320 ms | 350 ms | 2.8571 |
+
+These fastest-basic rows do not include `truy_phong_kiem`. Its Lv1 AS0 exact interval is 520ms (550ms executable); Lv12 AS0 is `max(220,72+43,72+180)=252ms` (300ms executable); Lv12 AS0.50 is `max(147,48+43,48+180)=228ms` (250ms executable). All preserve 2.4m / 180ms motion, one sweep and no overlap.
 
 A BASIC_ATTACK may declare `air_geometry` used when movement state is `JUMP` or `FALL`. If omitted, grounded geometry is used.
 

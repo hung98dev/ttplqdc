@@ -261,6 +261,78 @@ Act I NORMAL variants. Same formula band as neighbors. Not counted in launch 46+
 | `monster.lang_da.vong_bien` | NORMAL | 7 | NONE | GROUND | MELEE | THOAT_XAC: brief incorporeal phase-flicker visual before each swing; no invulnerability | 575 | `drop.monster.lang_da.vong_bien` |
 | `monster.lang_da.hon_gao` | NORMAL | 8 | NONE | GROUND | MELEE | THOAT_XAC: brief incorporeal phase-flicker visual before each swing; no invulnerability | 585 | `drop.monster.lang_da.hon_gao` |
 
+# Typed Attack Expansion
+The following tables are authoritative attack/profile inputs; prose under Shared Combat Profiles and Named Mechanic Extensions is explanatory. Every member of a profile emits `attack.<monster_id without monster.>.<suffix>`. `MELEE` basic coefficient ELITE=0.90; other rank coefficients are the two explicit columns below. All timers are milliseconds, quantized by ceiling cumulative due time /50, not by rounding individual intervals. Cooldown begins at cast start. RUSH movement travels the rectangle's length during active time; PROJECTILE speed is length/active seconds. Geometry is facing-local at cast start: RECT `(0,0,length,width)`, CIRCLE center at selected ground point at most range away. `NONE` means no independent effect or geometry, never an inferred value.
+
+| profile | suffix | shape | length_m | width_m | radius_m | startup_ms | active_ms | recovery_ms | cooldown_ms | normal_coeff | elite_coeff | hit_cap |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| MELEE | basic | RECT | 1.8 | 1.2 | 0 | 350 | 150 | 600 | 1300 | 0.80 | 0.90 | 1 |
+| RUSH | rush | RECT | 5.5 | 1.2 | 0 | 700 | 500 | 800 | 4500 | 1.10 | 1.25 | 1 |
+| PROJECTILE | shot | PROJECTILE | 8 | 0.3 | 0 | 500 | 1000 | 550 | 1800 | 0.80 | 0.95 | 1 |
+| ZONE | basic | PROJECTILE | 8 | 0.3 | 0 | 500 | 1000 | 550 | 1800 | 0.70 | 0.70 | 1 |
+| ZONE | zone | CIRCLE | 6 | 0 | 2 | 800 | 2500 | 600 | 5500 | 0.85 | 1.00 | 1 |
+| CONTROL | basic | RECT | 1.8 | 1.2 | 0 | 350 | 150 | 600 | 1300 | 0.70 | 0.70 | 1 |
+| CONTROL | control_hit | RECT | 3 | 1.2 | 0 | 750 | 150 | 650 | 5500 | 0.75 | 0.90 | 1 |
+| FLOAT_BURST | shot | PROJECTILE | 8 | 0.3 | 0 | 500 | 1000 | 550 | 1800 | 0.70 | 0.70 | 1 |
+| FLOAT_BURST | burst | CIRCLE | 0 | 0 | 2 | 750 | 150 | 650 | 4500 | 0.90 | 1.05 | 1 |
+| GUARD | basic | RECT | 1.8 | 1.2 | 0 | 350 | 150 | 600 | 1300 | 0.90 | 0.90 | 1 |
+| GUARD | guard | NONE | 0 | 0 | 0 | 0 | 1500 | 0 | 5000 | 0 | 0 | 0 |
+| GUARD | counter | RECT | 3 | 1.2 | 0 | 550 | 150 | 650 | 5000 | 1.20 | 1.20 | 1 |
+| SUMMON_ECHO | basic | RECT | 1.8 | 1.2 | 0 | 350 | 150 | 600 | 1300 | 0.90 | 0.90 | 1 |
+| SUMMON_ECHO | summon | NONE | 0 | 0 | 0 | 800 | 0 | 600 | 10000 | 0 | 0 | 0 |
+
+RUSH additionally inherits MELEE/basic. No other implicit attack inheritance. Guard is frontal incoming damage multiplier0.60, not invulnerability; counter fires once on guard end. Summon admits one echo only under class capacity; owner MAX_HP*0.20 floored, ATTACK*0.60 floored, owner DEFENSE, MONSTER_SMALL, GROUND movement, lifetime8000ms, max1, zero reward/credit. Echo uses MELEE/basic geometry/timers coefficient0.70. Boss and event quotas cannot be borrowed.
+
+## Typed Mechanic Operations
+`ops` grammar is an ordered comma list of `KIND(arg;...)` tuples; semicolon separates typed positional arguments, not prose. IDs in the closed table are enums, not lowercase stable entity IDs. Constructors: `VISUAL(enumCue)`, `STATUS(enumStatus;bp;duration_ms;trigger)` with trigger HIT/ZONE/EXIT, `PULL(meters)`, `DOT(enumStatus;attack_coeff;tick_count;interval_ms)`, `TRAIL(width_m;duration_ms;slow_bp;slow_ms)`, `RANGE(meters)`, `SHIELD(target_max_hp_ratio;lifetime_ms;max_active)`, `SHOTS(count;gap_ms;gap_m)`, `FEINT(commit_ms;lane_count)`, `BOUNCE(max_count;second_coeff)`, `EXPAND(start_radius;end_radius;duration_ms)`, `COUNTER(shape;range;coeff)`, `EXIT_EXTEND(first_ms;second_ms;window_ms)`. STATUS stat effects are percent additive and invoke canonical gameplay status/control rules. PULL resolves before subsequent status. DOT first tick occurs at interval_ms, no immediate tick. Constructor arity/types are exhaustive; unknown/missing args reject.
+
+| mechanic_id | attack_suffix | ops |
+|---|---|---|
+| THOAT_XAC | ALL | VISUAL(PHASE_FLICKER) |
+| SONG_TRA_NGAN | rush | TRAIL(1;1500;1000;1000) |
+| SAT_BO | rush | DOT(BLEED;0.10;2;1000) |
+| KHUC_XA | shot | BOUNCE(1;0.60) |
+| HON_CHIEM | control_hit | STATUS(WEAKEN;1000;2000;HIT) |
+| SONG_TRA | rush | TRAIL(1.5;2000;1500;1500) |
+| BIEN_HOA | rush | FEINT(350;2) |
+| LUONG_LONG | shot | SHOTS(2;0;0.8) |
+| TRAM_DOC | zone | STATUS(VULNERABLE;1500;3000;EXIT) |
+| PHAN_CHIEU | counter | COUNTER(RECT;3;1.35) |
+| HON_CUOP | control_hit | STATUS(STUN;0;500;HIT),SHIELD(0.08;8000;1) |
+| OAN_HON | control_hit | STATUS(WEAKEN;1500;3000;HIT) |
+| SONG_CUNG | shot | SHOTS(2;500;0.8) |
+| LOAN_VUNG | zone | EXPAND(1.5;3;1500),STATUS(SLOW;1500;50;ZONE) |
+| TRUONG_XOC | rush | RANGE(7) |
+| CUON_XA | rush | PULL(1.5),STATUS(SLOW;1500;1500;HIT) |
+| TAI_HOA | zone | STATUS(VULNERABLE;1000;2500;EXIT),EXIT_EXTEND(2500;5000;8000) |
+
+Mechanic binding is the leading `mechanic_id:` token in roster `special`, or exact `THOAT_XAC:` prefix. Remaining text is display commentary. SAT_BO cannot stack another same-source BLEED within2000ms. TRAIL refreshes at most once/target per cast. BOUNCE uses a deterministic terrain-normal reflection (one bounce, no homing; consumes max two hit targets, unique target per projectile); no unspecified authored trajectory. SHOTS origins face-local y=-0.55,+0.55, clear edge gap>=0.8m; SONG_CUNG gap500ms. FEINT previews straight and reflected facing lanes, fixes final lane at350ms, only final lane hits; never retarget after commit. Zone EXIT tracking is per cast+target; TAI_HOA repeated exit extends only until its effect expiry. Unresolved geometry rejects.
+
+## Typed Roster Overrides
+These are the only non-mechanic overrides from roster special commentary. All other descriptive special text is visual-only with no combat delta. Each key is `monster.<key>`.
+
+| monster_key | attack_suffix | override_field | value |
+|---|---|---|---|
+| lang_da.bu_nhin_rom | rush | startup_ms | 400 |
+| lang_da.co_lua | rush | startup_ms | 400 |
+| lang_da.ma_xo | ALL | jump | true |
+| rung_u_minh.ma_tranh | rush | recovery_ms | 1500 |
+| rung_u_minh.tinh_cay | control_hit | ops | STATUS(ROOT;0;1000;HIT) |
+| rung_u_minh.dai_tinh_cay | control_hit | ops | STATUS(ROOT;0;1500;HIT) |
+| rung_u_minh.moc_tinh | zone | ops | STATUS(ROOT;0;1000;CENTER) |
+| ben_nuoc_den.ma_da | control_hit | ops | PULL(1.5) |
+| ben_nuoc_den.bong_nuoc_ma | burst | startup_ms | 1000 |
+| ben_nuoc_den.ma_da_gia | control_hit | ops | PULL(2),FOLLOWUP(slam;1.20;800) |
+| ben_nuoc_den.hon_chet_duoi | shot | ops | STATUS(SLOW;1500;2000;HIT) |
+| ben_nuoc_den.thuy_quai | zone | safe_wedge_degrees | 90 |
+| deo_may.vong_rung | zone | ops | STATUS(SLOW;1500;50;ZONE) |
+| deo_may.ho_tinh_ve | rush | repeat_count | 2 |
+| deo_may.ho_tinh_ve | rush | recovery_ms | 1500 |
+| nui_thieng.than_rung_dem | rush | startup_ms | 800 |
+| nui_thieng.linh_ve | guard | active_ms | 2000 |
+
+CENTER trigger = distance<=0.5m from zone center at emergence; ZONE refresh50ms while inside and removes on exit. FOLLOWUP emits `attack.<key>.slam` using CONTROL rectangle geometry, coefficient1.20, startup800ms from pull resolution, active150/recovery650/cooldown5500; it cancels if target is no longer valid or outside rectangle. Repeat_count2 previews each rush separately, second begins only after full first recovery. Safe wedge rotates clockwise one full turn over2500ms from facing at cast start, never damages inside current90-degree sector; collider boundary follows physics contract. Overrides are typed by field (ms/int/bool/degrees/ops), never arbitrary strings. No effect comes from visual-only commentary.
+
 # Static Expansion Requirements
 For every roster row, static compilation must emit the required runtime fields from `../02_world/monsters.md`:
 ```text

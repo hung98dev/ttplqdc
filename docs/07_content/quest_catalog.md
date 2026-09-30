@@ -466,7 +466,24 @@ SIDE `mystery_owner = quest`. Rewards use no unique power item and no rare rando
 | `quest.side.a6.duong_may_nguoc` | Đường Mây Ngược | FALSE_TRAIL | `npc.nui_thieng.cho_1` | INTERACT `moc_nguoc_that`; decoys `moc_may_gia_*`. Aftermath: KILL 3 vong_linh. |
 | `quest.side.a6.vet_tren_da_suong` | Vết Trên Đá Sương | FALSE_TRAIL | `npc.nui_thieng.dem_1` | INTERACT `vet_that`; decoy stones `vet_gia_*`. Aftermath: KILL 3 tinh_thu. |
 
-Quest-local IDs for SIDE use `quest_object.<quest_id_suffix>.*` as in the MAIN section. Decoy/hazard objects are quest-local and exist only while that SIDE is ACTIVE.
+SIDE local-object ownership and placement are exactly the finite table below; short objective names above are display aliases, not runtime IDs. Each comma list expands to full `quest_object.<prefix>.<key>` IDs and matching `anchor.quest.<prefix>.<key>` FIXED_POINT locators on the given map. `platform.one_way.*` references require the map exporter to emit that exact one-way segment. All anchors are reachable under normal map access; TESTIMONY markers are on the safe anchor's ground path, not a locked field. No wildcard or name-based object creation is legal.
+
+| quest_id | map_id | prefix | authentic ordered keys | wrong keys | one_way_platform |
+|---|---|---|---|---|---|
+| `quest.side.a1.chiec_non_ben_da` | `map.lang_da.ben_da` | a1_chiec_non_ben_da | ghe_cu | ghe_gia | NONE |
+| `quest.side.a1.luy_tre_keu_dem` | `map.lang_da.dinh_lang` | a1_luy_tre | huong_an_that | cot_tre_gia_01,cot_tre_gia_02 | NONE |
+| `quest.side.a2.nguoi_di_rung_muon` | `map.rung_u_minh.loi_tram` | a2_nguoi_di_rung_muon | moc_that | moc_gia_01,moc_gia_02,moc_gia_03 | NONE |
+| `quest.side.a2.goc_da_co` | `map.rung_u_minh.rung_sau` | a2_goc_da_co | moc_goc | NONE | NONE |
+| `quest.side.a3.den_ben_do` | `map.ben_nuoc_den.ben_do_cu` | a3_den_ben_do | den_a,den_c | den_b | NONE |
+| `quest.side.a3.tieng_go_tren_mai` | `map.ben_nuoc_den.duong_ngap` | a3_tieng_go_tren_mai | mai_go | NONE | `platform.one_way.a3_mai.van_mat` |
+| `quest.side.a4.chiec_mong_sat` | `map.deo_may.rung_cam` | a4_chiec_mong_sat | dau_chan_that | dau_gia_01,dau_gia_02 | NONE |
+| `quest.side.a4.cau_tre_gay` | `map.deo_may.khe_da` | a4_cau_tre_gay | bo_xa | NONE | `platform.one_way.a4_cau.van_mat` |
+| `quest.side.a5.vien_gach_co` | `map.thanh_co.duong_da` | a5_vien_gach_co | gach_1,gach_2 | NONE | NONE |
+| `quest.side.a5.tieng_buoc_tren_tuong` | `map.thanh_co.cong_ngoai` | a5_tuong | bia_da_that | gach_gia_01,gach_gia_02 | NONE |
+| `quest.side.a6.duong_may_nguoc` | `map.nui_thieng.rung_may` | a6_duong_may_nguoc | moc_nguoc_that | moc_may_gia_01,moc_may_gia_02 | NONE |
+| `quest.side.a6.vet_tren_da_suong` | `map.nui_thieng.suon_da` | a6_vet_tren_da_suong | vet_that | vet_gia_01,vet_gia_02 | NONE |
+
+INTERACT range is 2m; REACH object radius is 1m. HEIGHT_BAND anchors must be on double-jump-only perches outside the main-path standing volume; DROP_THROUGH REACH must be below the named one-way platform, with the required down+jump transition before credit. LIGHT_ORDER follows authentic list order, wrong resets to zero. TESTIMONY accepts three **distinct** present NPC IDs from the owning region's `cho_1,cho_2,dem_1,dem_2,nguoi_dan_duong` pool in one attempt; repeating TALK gives no credit. True INTERACT is accepted only at count3; a wrong INTERACT clears the TALK set and marker progress together, without failing. DAY has two cho NPCs + guide; NIGHT has two dem NPCs + guide, so three are always reachable at the safe anchor.
 
 # DAILY Bounty Template Pool — 12 standard + 1 mystery meta
 Daily board generation selects six currently accessible templates with concrete target substitution from the character's unlocked act. Slot 6 is always the `daily.mystery` MYSTERY meta-template; slots 1–5 are drawn from the 12 standard objective templates. Maximum three completions per reset remains canonical.
@@ -494,7 +511,7 @@ Templates:
 | `daily.surge_if_active` | EVENT | contribute to one active Spirit Surge; only generated when schedule/access permits | common + event completion reward only |
 | `daily.mystery` | MYSTERY | objective, area, and reward hidden (`???`) until revealed by reaching the area or interacting with starter NPC; drawn from the same pool as above with a `+15% EXP` bonus; grants `currency.bound` in addition to the standard common/material reward | `common × 1.15 (rounded)` + `bound` (see tier table below) + regional material |
 
-The `daily.mystery` template is always the 6th slot (the one MYSTERY slot per board). It is flagged `mystery: true`; server assigns one of the 12 standard objective templates with variable-ratio weighting but withholds title/objective/reward text until reveal. The bound grant and +15% EXP modifier are applied at reveal/settlement, not at board generation.
+The `daily.mystery` template is always slot6, flagged `mystery: true`. Its resolution is either a capped weighted standard template or the finite TESTIMONY resolution below; this is not a new template or a MAIN/SIDE `mystery_type` declaration. Title/objective/reward are withheld until reveal; the bound grant and +15% EXP modifier settle once on completion.
 
 Daily `currency.bound` grant from MYSTERY bounty by current tier:
 ```text
@@ -520,8 +537,8 @@ No Daily template grants exclusive equipment, Soul, skill point, potential point
 Daily payouts are optional accelerators and are not included in the baseline affordability assumptions in `economy_catalog.md`.
 
 Board constraints:
-- slot 6 is always `daily.mystery`; its underlying objective is drawn from the non-MYSTERY pool
-- no more than 2 templates from the same objective family (the MYSTERY slot's underlying family counts toward this limit), except the slot-6 fallback in § Board Generation
+- slot 6 is always `daily.mystery`; normally its underlying objective is drawn from the capped non-MYSTERY pool
+- no more than 2 templates from the same primary objective family (MYSTERY's underlying family counts); TESTIMONY resolution is a TALK/INTERACT family, not an uncapped third KILL/REACH/DUNGEON
 - do not generate `daily.surge_if_active` unless an eligible Surge can be entered during the current board resolution window
 - do not target a dungeon/field the character has not unlocked
 - objective counts never require rare random drops
@@ -537,23 +554,17 @@ target region R = region of the character's highest unlocked act (tier = that ac
 eligible = standard templates whose target resolves (DUNGEON: >= 1 unlocked dungeon; surge: rule above)
 candidates(capped) = eligible templates not yet on the board and, when capped, whose family has < 2 on the board
 slots 1..5: each slot = draw(standard weights of candidates(capped = true)); one rng call per slot, no rejection loop
-slot 6:     draw(mystery weights of candidates(capped = true)); if that set is empty, draw(mystery weights of
-            candidates(capped = false)) — the only case where a 3rd template of one family is allowed
+slot 6:     draw(mystery weights of candidates(capped = true)); when empty, resolve daily.mystery as TESTIMONY
+            without an RNG draw; never uncapped-draw or add a template
 targets:    resolved slot 1..6 in order with the same rng, using the rules below
 ```
-Eligibility always contains the 9 non-DUNGEON, non-EVENT templates (every region has ELITEs, markers and route points), so every slot has a non-empty candidate set. Below Level 8 (no dungeon) and without an active Surge the capped set is exhausted after slot 5 (KILL 2 + REACH 2 + INTERACT 1) and slot 6 uses the uncapped draw.
+Eligibility always contains the nine non-DUNGEON/non-EVENT templates. Their KILL/REACH/INTERACT family capacities are 2/2/1. When no dungeon/Surge is eligible, slots1..5 exhaust these capacities and slot6 deterministically uses TESTIMONY. Its reward uses standard current-tier common/material2, mystery common modifier, +15% EXP and bound; no extra reward source.
 
-Golden vectors (template selection only; `character_id` given as UUID, hashed as its 16 raw bytes):
-```text
-case A  character_id 01920000-0000-7000-8000-000000000001, utc_date 2026-10-01, no unlocked dungeon, no Surge
-        digest[0:16] 4f7a4430e2b9f1fb2cf6d902d7312f32   slot 6 uncapped = true
-        1 daily.old_marks  2 daily.spirit_cleanup  3 daily.elite_watch  4 daily.field_route
-        5 daily.river_or_trail  6 daily.guardian
-case B  character_id 01920000-0000-7000-8000-000000000002, utc_date 2026-10-01, >= 1 unlocked dungeon, Surge eligible
-        digest[0:16] c07c3ffea4db31dd4cafff80315df897   slot 6 uncapped = false
-        1 daily.spirit_cleanup  2 daily.field_route  3 daily.dungeon_path  4 daily.surge_if_active
-        5 daily.explore_quiet  6 daily.elite_watch
-```
+TESTIMONY target resolution: owning region's safe TOWN is `area_id`; starter is its ALWAYS `npc.<region>.nguoi_dan_duong`. Pool = that region's existing `cho_1,cho_2,dem_1,dem_2,nguoi_dan_duong` (five IDs, no new NPC). TALK any three distinct present members in one attempt, then INTERACT the true marker. Wrong marker clears all three TALK credits and progress, does not fail. Repeat TALK does not increment. DAY/NIGHT always supplies two ambient members + guide; the safe anchor is reachable immediately at region unlock, even if its same-tier fields/dungeon are not. Daily board reveal by reaching this safe area or interacting with the guide guarantees reveal access without granting any locked map access.
+
+Finite marker expansion over the six TOWN rows of `world_route_catalog.md`: true `quest_object.daily_mystery.<region_key>.that`, wrong `.gia_01,.gia_02`; matching `anchor.quest.daily_mystery.<region_key>.<key>` on that TOWN's ground safe path, INTERACT range2m, no combat/hazard/drop. These are per-character quest-active projections with independent progress, not shared destructibles. Export all18 anchors; missing, unreachable or locked placement rejects activation.
+
+Golden vectors are listed in § Deterministic Golden Fixtures; UUIDs are durable entity UUIDv4, not client operation UUIDv7.
 | template_id | standard weight | mystery weight |
 |---|---:|---:|
 | `daily.hunt_small` | 12 | 6 |
@@ -622,7 +633,7 @@ Static validation rejects:
 - SIDE EXP/common/material reward not matching the deterministic owning-act row,
 - SIDE bound preview differing from `economy_catalog.md` `10 * owning_tier`,
 - direct skill/potential reward (bonus books are items, not direct points, so they are allowed),
-- Daily board with >2 same primary objective family, except the single 3rd template placed by the slot-6 uncapped fallback of § Board Generation,
+- Daily board with >2 same primary objective family, including the slot6 resolved standard template; TESTIMONY must use its distinct TALK_INTERACT family,
 - Daily target outside character access,
 - quest-local object referenced by another unrelated quest,
 - duplicate completion idempotency key,

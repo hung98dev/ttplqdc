@@ -61,8 +61,8 @@ Rules:
 - Federated login with an unknown `provider_id + provider_subject` creates a new account (federated sign-up); a known one logs into its account.
 - `link` fails `PROVIDER_ALREADY_LINKED` when the subject belongs to another account; `unlink` fails `LAST_LOGIN_METHOD` when it would leave no usable login method; both fail `CREDENTIAL_CHANGE_LOCKED` while `accounts.credential_guard_until > now` unless `current_password` is supplied (`anti_cheat.md` § Account takeover).
 - `refresh` rotates per § Refresh Rotation; a lost-response retry is served by the grace rule there; any other reuse of a rotated token returns `AUTH_INVALID` and revokes the family.
-- `gameplay/ticket` returns `CLIENT_UPDATE_REQUIRED`, `CONTENT_INCOMPATIBLE`, `SERVER_DRAINING`, `ACCOUNT_BANNED`, `ACCOUNT_SUSPENDED`, or `SERVER_OVERLOADED` with `queue_position` and `retry_after_ms` (login queue, `session.md`; skipped when a character of the account is live or inside reconnect grace); a pending-deletion account still gets a ticket (attach then returns `ACCOUNT_PENDING_DELETION`).
-- `account/delete/cancel` returns the account from `PENDING_DELETION` to `ACTIVE` and clears `deletion_scheduled_at`; 204 also when the account is not pending (idempotent); 409 `INVALID_STATE` once erasure has started. Login (any provider or password) never cancels a pending deletion by itself; the client shows only "cancel deletion" / "log out" while `pending_deletion = true` (`data_protection.md` § Erasure). Rate limit `account.delete_cancel` (`rate_limits.md`).
+- `gameplay/ticket` returns `CLIENT_UPDATE_REQUIRED`, `CONTENT_INCOMPATIBLE`, `SERVER_DRAINING`, `ACCOUNT_BANNED`, or `SERVER_OVERLOADED` with `queue_position` and `retry_after_ms` (login queue, `session.md`; existing live/grace slot reused); a pending-deletion account still gets a ticket (attach then returns `ACCOUNT_PENDING_DELETION`). Payment reconciliation never denies login, refresh, ticket or existing-character attach.
+- `account/delete/cancel` locks the account row shared with refund insertion and erasure-intent preparation. Before `erasure_started_at` is set, cancellation clears `deletion_requested_at` (and therefore derived `deletion_scheduled_at`), reevaluates the canonical 180-day refund-consumed score under that lock, and returns to `SUSPENDED_PAYMENT_RECONCILIATION` iff score >= 2, otherwise `ACTIVE`. It returns 204 when not pending (idempotent), or 409 `INVALID_STATE` once irreversible erasure preparation started. Refunds while pending never cancel/delay scheduled erasure. Login never cancels deletion; while pending the UI offers only cancellation/logout. Rate limit `account.delete_cancel` (`rate_limits.md`).
 - Errors: HTTP 400 validation (`USERNAME_INVALID`, `EMAIL_INVALID`, `PASSWORD_INVALID`), 401 `AUTH_INVALID` / `AUTH_EXPIRED`, 403 `ACCOUNT_BANNED` / `ACCOUNT_SUSPENDED` / `CREDENTIAL_CHANGE_LOCKED`, 409 `USERNAME_TAKEN` / `EMAIL_TAKEN` / `PROVIDER_ALREADY_LINKED` / `LAST_LOGIN_METHOD`, 426 `CLIENT_UPDATE_REQUIRED` / `CONTENT_INCOMPATIBLE`, 429 `RATE_LIMITED`, 503 `SERVER_OVERLOADED` / `SERVER_DRAINING` / `TEMPORARY_DEPENDENCY_FAILURE`. Body: `error_code, retryability, retry_after_ms, queue_position, safe_message_key` (`../05_network/errors.md`).
 - Character create/list/select are WSS messages 12..14 and 6 (`../05_network/messages.md`); the resume credential is presented only in `C2S_HELLO`.
 
@@ -164,7 +164,7 @@ rehash           = on successful login when params_version < current
 Errors:
 - login with unknown username or wrong password -> `AUTH_INVALID` (same shape and similar latency; hash a dummy value for unknown usernames),
 - registration -> `USERNAME_INVALID`, `EMAIL_INVALID`, `PASSWORD_INVALID`, `USERNAME_TAKEN`, `EMAIL_TAKEN` (`../05_network/errors.md`),
-- banned/suspended accounts -> `ACCOUNT_BANNED` / `ACCOUNT_SUSPENDED` after a correct password.
+- banned accounts -> `ACCOUNT_BANNED` after a correct password; `SUSPENDED_PAYMENT_RECONCILIATION` accounts authenticate normally.
 
 Recovery: none at launch. No password reset by email or support. An account with a linked federated provider can still log in through it. The client registration screen states that a forgotten password cannot be recovered unless a provider is linked.
 
@@ -181,13 +181,19 @@ login              password + TOTP (RFC 6238, 30 s step, 6 digits; implemented w
 network            admin HTTPS API bound to the private operations network only, never the public listener
 session            8 h absolute, 30 min idle; separate from player sessions
 roles              SUPPORT     read-only lookup
-                   MODERATOR   mute / suspend / BANNED status changes
+                   MODERATOR   channel-scoped mute / lift mute / BANNED status changes
                    ECONOMY     rollback or grant of items/currency
                    ADMIN       operator management, config
 two-person rule    ECONOMY grants/rollbacks above 1,000,000 common or any item of tier >= T5 need a second operator's approval
 audit              every call writes audit_events(actor = operator_id, reason, ticket_id, before/after, operation_id)
 ```
-Setting `accounts.status = BANNED` or `SUSPENDED_*` is only possible through this API and revokes all player sessions.
+`SUSPENDED_PAYMENT_RECONCILIATION` restricts only new IAP, new character creation and Ranked PvP queue join (`ACCOUNT_SUSPENDED`); login/provider/password, refresh, gameplay ticket, character list/select/attach and ordinary play of existing characters remain allowed. A receipt already bound to the account remains readable on `/iap/verify` without a new grant. This status is not a general moderation suspension: MODERATOR uses the declared channel mute or `BANNED`, never an invented `SUSPENDED_*` enum. Ban changes revoke sessions; entering payment reconciliation does not revoke them. ECONOMY/ADMIN may clear reconciliation through an audited payment-resolution action.
+
+### First ADMIN Provisioning
+IMP-077 supplies `thinhthan operator provision-first-admin` as an out-of-band command of the existing world binary, not a listener/service or public route. Run only on the trusted operations host with a dedicated PostgreSQL provisioning credential and `OPERATOR_TOTP_KEY`, before normal interactive operator access. Read login, password and TOTP secret from protected interactive input or a 0600 input file (never argv/environment/logs); validate normal login/password/TOTP rules and prove one current TOTP code. A short transaction serializes on a fixed PostgreSQL advisory transaction lock, requires the operators table to be empty, inserts exactly one ACTIVE ADMIN with Argon2id password and AES-256-GCM secret, and appends `OPERATOR_BOOTSTRAP` SYSTEM audit with operator UUID and deployment ticket (no secrets). Commit then discard input; later execution fails `INVALID_STATE` without changing credentials. No default/password seed, API bypass or committed secret exists. Revoke the one-use provisioning database credential after success; subsequent operator creation uses the TOTP-authenticated ADMIN API. A disabled/nonempty operator store is not bootstrap-eligible.
+
+### SYSTEM Alert Receiver
+Only `POST /admin/v1/alerts/security` on the private HTTPS listener accepts the Alertmanager machine principal instead of an interactive password+TOTP session. Require constant-time comparison of `Authorization: Bearer <ALERTMANAGER_WEBHOOK_TOKEN>` (32 cryptographically random bytes, base64url); deploy injects the same secret into Alertmanager `http_config.authorization.credentials_file` and the server, never Git. TLS/private routing alone is insufficient. This principal can only append validated SYSTEM firing/resolved alert history; every lookup/config/grant/moderation/operator route still requires an interactive operator session and returns `PERMISSION_DENIED` to this token. Bound request size per `validation.md`; unknown receiver/status/labels reject safely. Deduplicate each alert by receiver + fingerprint + startsAt + status + endsAt (resolved only), durable unique key in `audit_events`; retries return success without another row. Operator audit continues to require reason/ticket, while SYSTEM records use the notification identity and bounded allowlisted labels, never supplied actor IDs.
 
 ## Revocation
 Revocation scopes include:

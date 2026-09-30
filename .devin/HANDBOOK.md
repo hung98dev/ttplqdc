@@ -44,8 +44,10 @@ channel cap 18 (ADR-0035); map cap 540; tick 20 Hz; p95 tick < 35 ms
 Go 1.27.1 | Unity 6000.6.1f1 (C# 9.0) | PostgreSQL 18.6 | protoc 36.2
 pgx/v5 5.11.0 | coder/websocket 1.8.15 | golang-migrate 4.20.1 | x/crypto 0.57.0 (Argon2id)
 protobuf go 1.36.12 | Google.Protobuf 3.36.2 | slog | x/text | uax29
-NO: routers, ORMs, zap/logrus/zerolog, Redis/Kafka/NATS, gRPC, math/rand v1
+NO: routers, ORMs, zap/logrus/zerolog, Redis/Kafka/NATS, first-party gRPC, math/rand v1
 ```
+
+Only the exact transitive module/import closure of the pinned OTel HTTP exporters in `technology_versions.md` may contain gRPC dependencies. No first-party gRPC import, exporter, client, service or generator is allowed; Q1 checks the exact closure and Q4 checks first-party imports (`architecture_conformance.md` §4).
 
 ## Commands
 
@@ -58,9 +60,9 @@ NO: routers, ORMs, zap/logrus/zerolog, Redis/Kafka/NATS, gRPC, math/rand v1
 | Regenerate protobuf + Unity metadata | `pwsh -NoProfile -File scripts/codegen.ps1` |
 | Regenerate golden fixtures | `cd server && go test ./internal/testing/protocol -run TestBinaryEncodingParity -update-golden` |
 | Go suite | `go -C server test ./...` / affected sim/edge/durable/global with `-race` (needs cgo + C compiler; CI runs `-race` on Linux only) |
-| Unity EditMode | `"$UNITY_EDITOR_PATH" -batchmode -projectPath client -runTests -testPlatform EditMode -quit` |
+| Unity EditMode | `"$UNITY_EDITOR_PATH" -batchmode -nographics -projectPath client -runTests -testPlatform EditMode -testResults <tmp>/editmode.xml -logFile <tmp>/editmode.log` |
 
-`.devin` auto-discovers the pinned Unity Hub editor path on Windows or Linux; a machine without it gets `WARN` and defers Unity to CI, which also materializes editor-generated files into artifact `unity-materialized-windows` for you to commit (`agent_execution_protocol.md` §4b). Set `UNITY_EDITOR_PATH` only to another binary whose path contains `6000.6.1f1`. Codegen manages protoc under ignored `tools/`; global `protoc` is optional.
+Local `.devin` checks auto-discover the pinned Unity Hub editor on Windows or Linux; a machine without it reports `DEFERRED(local-missing)`, never CI evidence. CI Unity runs only in `Unity (Windows)`; the Linux required verifier runs Go/PostgreSQL/codegen without Unity or LFS media. Windows required verify joins Unity and Linux results and produces the schema-v2 `evidence` artifact. Required verify checkouts use `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`; only Windows Unity/player-build/cache-warming jobs hydrate media. Set `UNITY_EDITOR_PATH` only to the pinned `6000.6.1f1` editor. Codegen manages protoc under ignored `tools/`; global `protoc` is optional. Graphics categories require observed WARP/URP/capture proof, not merely `-force-d3d11` (`presentation_asset_manifest.md` §3.3a).
 
 ## Read order for any task
 
@@ -72,7 +74,7 @@ AGENTS.md -> docs/README.md -> 00_context/technology_versions.md
 
 ## Never touch by hand
 
-`docs/**` except `docs/10_implementation/**` (implementer role), `server/internal/protocol/**`, `client/Assets/Scripts/Protocol/**`, generated `client/Assets{,/Scripts{,/Protocol}}.meta`, `proto/testdata/golden/**`, `tools/**`, Unity generated folders, `server/vendor/`, `.git/`, committed migrations.
+`docs/**` except `docs/10_implementation/**` (implementer role), generated Protocol Go/C#, generated `client/Assets{,/Scripts{,/Protocol}}.meta`, `proto/testdata/golden/**`, `tools/**`, Unity generated folders, `server/vendor/`, `.git/`, committed migrations. Exact authored skeleton exception: only IMP-000 on `imp/IMP-000[-suffix]` may write `client/Assets/Scripts/Protocol/{ThinhThan.Protocol.asmdef,csc.rsp}` and their `.meta`; codegen preserves the asmdef. Exact governance exception: only IMP-106 on `imp/IMP-106[-suffix]` may write `.devin/scripts/{cache_telemetry.sh,cache_telemetry.ps1,cache-policy.md}`. These do not bypass protected-path review or grant directory-wide writes.
 
 ## Open blockers (check before claiming)
 

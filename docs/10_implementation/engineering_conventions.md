@@ -132,7 +132,7 @@ services            constructor injection from ThinhThan.App       constructor i
   - Go: tabs. Proto: 2 spaces.
   - All files: UTF-8 without BOM, LF, final newline, no trailing whitespace.
 - Root `.gitattributes`: `* text=auto eol=lf` (including `*.ps1`, `*.sh`, Unity YAML `*.unity *.prefab *.asset *.meta *.mat *.anim *.controller`); binary media per `repository_layout.md` LFS rules.
-- The Go verifier (`server/internal/conformance/style/`) checks the C# style deterministically without a .NET SDK or Roslyn. It checks every first-party `.cs` file:
+- The Go verifier (`server/internal/conformance/style/`) checks authored C# style deterministically without a .NET SDK or Roslyn. It checks every first-party authored `.cs` file, excluding only the canonical generated `client/Assets/Scripts/Protocol/*.cs` outputs reproduced by Q2. A generated header elsewhere does not exempt authored code. Protocol outputs remain subject to CODE-004 header checks, Q2 byte-identical regeneration, CODE-001 compilation/warning checks and Go/C# wire parity; never rename/split/reformat generated types to meet authored style:
   - a line ending in `{` contains only `{`, and a line starting with `}` contains only `}` optionally followed by `;`, `,` or `)`;
   - indentation is a multiple of 4 spaces, with no tabs;
   - there is no trailing whitespace; the file uses LF, has no BOM and ends with a final newline;
@@ -178,8 +178,8 @@ merge      squash via auto-merge enabled by the merge-slot holder after the §5a
 ## 6. CI Caching Conventions
 
 - **Pin:** every `actions/cache` step uses the exact action SHA pinned in `../00_context/technology_versions.md`; no floating version tags.
-- **Keys:** a cache `key` hashes every input that changes output — lockfiles (`server/go.sum`, `client/Packages/packages-lock.json`), compiler-flag files (`client/Assets/**/csc.rsp`), version pins (Go/Unity/protobuf/EDB SHA-256) and image digests. `restore-keys` may shorten the lookup but never substitute a different pinned version or OS, and are forbidden on caches whose payload is derived from the hashed inputs — a prefix hit there is a silent wrong-content restore (BLK-005). Content-derived caches (e.g. `unity-library`) restore on the exact `key` only; `restore-keys` remain legal only on content-addressed stores whose entries stay valid under a partial restore (e.g. `go-build`) and on pure-pin payloads (`unity-image`, `edb`).
-- **Gate integrity:** a cache hit never skips or weakens a Q gate, the fork guard, job preconditions, the §4b materialization-commit requirement or licence activation (licence state is never cached); cold and warm runs produce identical `source_tree_hash`, codegen drift and evidence manifests.
+- **Keys:** a cache `key` hashes every input that changes output — lockfiles (`server/go.sum`, `client/Packages/packages-lock.json`), compiler-flag files (`client/Assets/**/csc.rsp`), version pins (Go/Unity/protobuf/EDB SHA-256) and image digests. `restore-keys` may shorten the lookup but never substitute a different pinned version or OS, and are forbidden on caches whose payload is derived from the hashed inputs — a prefix hit there is a silent wrong-content restore (BLK-005). Content-derived caches (e.g. `unity-library`) restore on the exact `key` only; `restore-keys` remain legal only on content-addressed stores whose entries stay valid under a partial restore (e.g. `go-build`, `lfs-objects`) and on pure-pin payloads (`unity-editor`, `edb`). Unity/Android/Library/LFS caches are Windows-only; required verify jobs checkout with `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`, and only `Unity (Windows)` (plus Windows main-scope cache warming/player builds) fetches media.
+- **Gate integrity:** a cache hit never skips or weakens a Q gate, the fork guard, job preconditions, the §4b materialization-commit requirement or licence activation (licence state is never cached); cold and warm runs have equal CI-004 stable evidence projections (`../09_testing/test_and_release_evidence.md` §2a), not byte-identical whole manifests.
 - **Measurement:** `verify-report.json` records `hit|miss` and `wall_seconds` per cached step so the warm-run speedup is checkable (CI-003).
 
 ## Requirement IDs
@@ -188,15 +188,15 @@ Covered by Q0 requirement coverage like spec tables (`audit_gates.md` Gate B).
 | ID | Requirement | Gate |
 |---|---|---|
 | `CODE-001` | a `csc.rsp` beside every `ThinhThan.*` asmdef = `-warnaserror+ -nullable:enable`; no root `client/Assets/csc.rsp`; every first-party assembly compiles with 0 warnings (§2.7) | every PR (Q3 Unity compile, Q4) |
-| `CODE-002` | `.editorconfig` + `.gitattributes` present with the §2.7 keys; C# style check passes on every first-party `.cs` (§2.7) | every PR (Q4) |
+| `CODE-002` | `.editorconfig` + `.gitattributes` present with the §2.7 keys; C# authored-source style check passes on every first-party authored `.cs`, excluding only canonical Q2-regenerated Protocol outputs (§2.7) | every PR (Q4) |
 | `CODE-003` | `gofmt -l` empty, `go vet ./...` and pinned `staticcheck ./...` clean; no `//lint:file-ignore` (§1.1) | every PR (Q4) |
 | `CODE-004` | generated C# begins with the `#nullable disable` + pragma header, byte-deterministic (§2.7) | every PR (Q2) |
 | `CODE-005` | client API fence with justified allowlist entries only (§2.5) | every PR (Q4) |
 | `CODE-006` | one canonical implementation per concern; duplicates detected by name/base-type patterns (§2.6) | every PR (Q4) |
 | `CI-001` | every `actions/cache` step uses the pinned action SHA; its `key` hashes every lockfile/pin/digest input; `restore-keys` never substitute a different pinned version or OS and content-derived caches (`unity-library`) restore on exact `key` only (§6) | every PR (Q0) |
 | `CI-002` | a cache hit never skips or weakens a Q gate, the fork guard, job preconditions, the §4b materialization commit or licence activation — licence state is never cached (§6) | every PR (Q0) |
-| `CI-003` | `verify-report.json` records `hit|miss` and `wall_seconds` per cached step (§6) | every PR (Q6) |
-| `CI-004` | cold and warm runs produce identical `source_tree_hash`, codegen drift and evidence manifests (§6) | every PR (Q6) |
+| `CI-003` | `verify-report.json` records `hit\|miss` and `wall_seconds` per cached step (§6) | every PR (Q6) |
+| `CI-004` | cold and warm runs on the same tested source have equal stable evidence projections, including `source_tree_hash` and zero codegen drift; run identity/timings/cache telemetry are not compared (§6; evidence contract §2a) | every PR (Q6) |
 
 ## Invariants
 

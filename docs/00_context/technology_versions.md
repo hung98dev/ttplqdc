@@ -64,7 +64,7 @@ Addressables `2.11.2` is the canonical content-delivery package for this launch 
 | Protocol Buffers Go generator | `protoc-gen-go v1.36.12` | Generator must match this pin. |
 | OpenTelemetry Go | `go.opentelemetry.io/otel v1.46.0` | Canonical observability API/SDK family. |
 | OpenTelemetry HTTP instrumentation | `go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.71.0` | HTTP instrumentation pin. |
-| OpenTelemetry SDK + OTLP exporters | `go.opentelemetry.io/otel/sdk v1.46.0`, `go.opentelemetry.io/otel/sdk/metric v1.46.0`, `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.46.0`, `go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.46.0` | Metrics and traces over OTLP/HTTP to the local Collector (`../08_scale_ops/observability.md` § Launch Telemetry Stack, ADR-0066). Logs stay `log/slog` JSON to stdout (journald); no OTLP log exporter. |
+| OpenTelemetry SDK + OTLP exporters | `go.opentelemetry.io/otel/sdk v1.46.0`, `go.opentelemetry.io/otel/sdk/metric v1.46.0`, `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.46.0`, `go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.46.0` | Metrics and traces over OTLP/HTTP to the local Collector (`../08_scale_ops/observability.md` § Launch Telemetry Stack, ADR-0066). Logs stay `log/slog` JSON to stdout (journald); no OTLP log exporter. Transitive dependency closure of the pinned OTLP HTTP exporters includes `go.opentelemetry.io/proto/otlp v1.11.0` and `google.golang.org/grpc v1.83.1` (type definitions only; ADR-0079); first-party direct gRPC service or client imports remain strictly forbidden. |
 | Unicode normalization / case folding | `golang.org/x/text v0.42.0` | Canonical NFC + Unicode case-fold implementation for authoritative player text. |
 | Password hashing | `golang.org/x/crypto v0.57.0` | Argon2id only (`golang.org/x/crypto/argon2`, ADR-0051). Latest stable 2026-09-08; requires Go >= 1.26 and `golang.org/x/text v0.42.0` (matches the pin). Transitive `x/sys v0.48.0`, `x/term v0.46.0`, `x/net v0.58.0` come only from this module's go.mod and are locked in `go.sum`. |
 | Unicode grapheme segmentation | `github.com/clipperhouse/uax29/v2 v2.7.0` | Canonical UAX #29 Unicode-17 grapheme segmentation/counting. |
@@ -98,7 +98,7 @@ Rules:
 - committed `.proto` files are the wire-schema source of truth,
 - generated C# and Go outputs must be reproducible from the pins above,
 - generator/version drift fails CI,
-- gRPC is **not selected**; do not add `Grpc.Tools`, grpc-go, or a gRPC service layer unless architecture is intentionally changed,
+- gRPC is **not selected** for gameplay or internal communication; do not add `Grpc.Tools`, a gRPC service layer, or direct first-party `grpc-go` imports (the only permitted presence is the transitive type closure of the approved OTLP HTTP exporters: `google.golang.org/grpc v1.83.1` and `go.opentelemetry.io/proto/otlp v1.11.0`; ADR-0079),
 - gameplay transport remains WSS as defined in `../05_network/protocol.md`.
 
 # Database

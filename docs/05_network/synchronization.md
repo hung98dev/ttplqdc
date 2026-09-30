@@ -53,13 +53,7 @@ Do not broadcast every map entity to every client.
 ## Baseline
 On character attach, map transfer, reconnect requiring resync, or detected delta-gap recovery, server sends `S2C_WORLD_BASELINE`.
 
-Baseline contains:
-- baseline_id,
-- authoritative server tick,
-- character authoritative state,
-- relevant AOI entity states,
-- relevant encounter/objective state,
-- content revision identifiers needed for interpretation.
+Baseline contains the full self EntityState, self-only MP/accepted-target projection, complete `MovementCheckpoint` plus `last_processed_client_seq`, AOI entities and complete active typed encounter states, baseline_id, server_tick and content_revision (`messages.md`). Jump count, drop-ignore platform/deadline, held intent and effective movement parameters are always present, including zero/empty values; no reconstruction from animation or incomplete equipment snapshots.
 
 Client sends `C2S_BASELINE_ACK`.
 
@@ -78,18 +72,17 @@ A delta never implies that omitted fields became zero/default.
 ## Local Player Prediction
 Unity predicts only responsiveness-critical local movement/presentation.
 
-Each movement intent carries `client_seq`. Every `S2C_STATE_DELTA` carries `self_ack` (ADR-0069):
-- last_processed_client_seq,
-- the authoritative self transform/movement state after that input (the delta's `server_tick`).
+Each movement intent carries `client_seq`. Every `S2C_STATE_DELTA` carries `self_ack`: `last_processed_client_seq` and the complete post-tick `MovementCheckpoint` at that delta's `server_tick` (`messages.md` § Self Private Projection and Movement Checkpoint). It acknowledges processed input, not every frame merely sent/received; legal queue acceptance and explicit rejections follow `protocol.md` and `concurrency.md`.
 
 ### Local Reconciliation
 On every `self_ack`, Unity:
-1. drops buffered inputs with `client_seq <= last_processed_client_seq`,
-2. replays the remaining buffered inputs from the acknowledged state (deterministic movement rules, `../04_architecture/physics_geometry_contract.md`),
-3. computes `error = |replayed position - currently displayed predicted position|`,
-4. `error <= 0.50 m`: smooths the difference over 100 ms; `error > 0.50 m`: snaps (`../04_architecture/client_performance.md` § Network Smoothness).
+1. captures the **currently displayed** predicted position (including any active smoothing offset) before restore,
+2. drops buffered inputs with `client_seq <= last_processed_client_seq`,
+3. restores every checkpoint field, then replays remaining buffered intents in sequence at their recorded local simulation tick offsets, using the same integer-mm movement rules and checkpoint effective parameters (`../04_architecture/physics_geometry_contract.md`); absolute drop-ignore deadlines remain in the checkpoint server-tick domain with the prediction tick offset preserved,
+4. compares checked signed64 squared integer-mm distance between the replayed **current** position and the captured displayed **current** position to `500*500`; never compare historical predicted-at-ACK position to current authority,
+5. commits replayed physics state immediately. Distance squared <=250000: apply only a visual offset that decays to zero over100ms; >250000: snap display to replayed current state. Visual smoothing never feeds back into physics.
 
-`S2C_MOVEMENT_CORRECTION` (107) is sent only when the server rejects or overrides the predicted path (`reason = ILLEGAL_MOVE | KNOCKBACK | PORTAL | RESPAWN | FORCED`): Unity restores that state, drops inputs up to its `last_processed_client_seq`, replays the rest, and snaps (KNOCKBACK plays the knockback presentation instead of a snap).
+`S2C_MOVEMENT_CORRECTION` (107) uses the same full checkpoint/drop/replay process and forces a snap (`ILLEGAL_MOVE | KNOCKBACK | PORTAL | RESPAWN | FORCED`; KNOCKBACK also plays its presentation without changing the authoritative replay result). New baseline resets prediction history/tick mapping; transfer does not replay source-partition inputs in the destination.
 
 Server never accepts the replayed client transform as truth.
 
@@ -125,7 +118,7 @@ Client rejects:
 - delta for unknown baseline,
 - event referencing an entity lifecycle that is already definitively despawned unless message semantics explicitly permit it.
 
-If baseline/delta state cannot be reconciled safely, request/trigger full baseline resync rather than guessing missing authoritative state.
+Client sends registered `C2S_BASELINE_RESYNC_REQUEST` 307 when safe application fails, retaining at most one outstanding request and suspending baseline-dependent delta application until recovery. It remains legal in IN_WORLD/DEAD; during TRANSFER the normal destination baseline recovers instead. Server replies308 and on success sends a fresh300 with a new baseline_id followed by required private snapshots, then resumes deltas only after306 ACK. IDs/correlation/fields are in `messages.md`; rate bucket is `../07_security/rate_limits.md` (one request/5s, burst1, duplicate pending request ignored). A rate rejection leaves the request retryable after retry_after_ms, not an unbounded baseline storm. Resume/transfer may supersede an outstanding recovery request and invalidate its old baseline/generation.
 
 ## Bandwidth Guardrails
 Per-client replication is bounded by AOI and change detection.

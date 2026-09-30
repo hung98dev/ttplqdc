@@ -20,15 +20,15 @@ Back up all canonical PostgreSQL durable gameplay/account state required to reco
 In-memory simulation state is not a backup target.
 
 ## PostgreSQL Strategy
-Tooling (ADR-0066): pgBackRest `2.59.1` (`pgbackrest=2.59.1-1.pgdg24.04+1`) on the PostgreSQL host (Ubuntu Server 24.04 LTS, `postgresql-18=18.6-1.pgdg24.04+2`; pins in `../00_context/technology_versions.md` § Production Operations), repository = the S3-compatible bucket configured in Owner Setup and injected at deploy time as `BACKUP_STORAGE_URL` / `BACKUP_STORAGE_CREDENTIALS_FILE`. The erasure ledger lives in the same bucket (§ Erasure Ledger); the server writes it with Go standard library `net/http` + `crypto/hmac` AWS Signature V4 PUT requests (no S3 SDK dependency).
+Tooling (ADR-0066): pgBackRest `2.59.1` (`pgbackrest=2.59.1-1.pgdg24.04+1`) on the PostgreSQL host (Ubuntu Server 24.04 LTS, `postgresql-18=18.6-1.pgdg24.04+2`; pins in `../00_context/technology_versions.md` § Production Operations), repository = the S3-compatible bucket configured in Owner Setup and injected at deploy time as `BACKUP_STORAGE_URL`. The erasure ledger lives in the same bucket (§ Erasure Ledger), independently of the primary database/WAL. The server uses Go standard library `net/http` + `crypto/hmac` AWS Signature V4 conditional PUT, GET and LIST requests (no S3 SDK dependency), with separate least-privilege ledger credentials.
 
 ### Backup Storage Configuration (ADR-0070)
 ```text
 BACKUP_STORAGE_URL               s3://<bucket>/<prefix>?region=<aws-region>&endpoint=<https-url>
                                  bucket/prefix = pgBackRest repo1-s3-bucket / repo1-path; region = SigV4 signing region;
                                  endpoint = S3-compatible HTTPS endpoint (omit for the AWS default); no other query keys
-BACKUP_STORAGE_CREDENTIALS_FILE  world host: path to a 0600 file with exactly two lines, for a key limited to PUT under
-                                 <prefix>/erasure-ledger/:
+BACKUP_STORAGE_CREDENTIALS_FILE  world host: path to a 0600 file with exactly two lines, for a key limited to conditional
+                                 PUT + GET + LIST under <prefix>/erasure-ledger/, no overwrite or DELETE:
                                    access_key_id=<value>
                                    secret_access_key=<value>
 PGBACKREST_REPO1_S3_KEY,         PostgreSQL host only: pgBackRest repository credentials
@@ -62,18 +62,21 @@ weekly restore points: 8 weeks
 monthly restore points: 6 months
 ```
 
-Longer retention may be configured for compliance/business needs.
+Six calendar months is the hard maximum age of any retained restore point, not a minimum that operators may widen. Retention configuration must enforce this maximum and the erasure-coverage conditions below together. Widening either requires an explicit privacy/backup ADR, never a unilateral bucket setting.
 
-### Erasure Ledger (ADR-0065, ADR-0070)
-One immutable object per executed erasure, outside the database, in the backup bucket:
+### Erasure Ledger (ADR-0079; supersedes ADR-0065/0070 publication order)
+One immutable external object per **prepared** erasure is published and verified **before** destructive database mutation:
 ```text
-key      <prefix>/erasure-ledger/<operation_id>.json        (operation_id = the erasure operation, ../06_data/ids.md)
-body     {"format_version":1,"operation_id":"<uuid>","account_id_hash":"<64 hex>","executed_at":"<RFC 3339 UTC>"}
-hash     account_id_hash = hex(SHA-256(ERASURE_LEDGER_SALT || account_id bytes))
-writer   erasure ledger sweeper from pending_erasure_ledger (../06_data/data_model.md § Account Erasure); PUT is idempotent
-lifetime kept as long as the longest restore point (6 months) + 30 days, then deleted by bucket lifecycle rule
+key      <prefix>/erasure-ledger/<operation_id>.json (canonical server-job UUID v5)
+body     {"format_version":2,"state":"PREPARED","operation_id":"<uuid>","account_id_hash":"<64 lowercase hex>","prepared_at":"YYYY-MM-DDTHH:mm:ss.ffffffZ"}
+hash     account_id_hash = hex(SHA-256(raw 32-byte ERASURE_LEDGER_SALT || raw 16-byte account UUID))
+writer   world-owned erasure worker from erasure_intents (../06_data/data_model.md § Account Erasure)
 ```
-It holds no personal data beyond the salted hash and exists only to re-apply erasures after a restore. Restore points older than 6 months are deleted, so erased data leaves backups within 6 months.
+Object bytes are UTF-8, no BOM, whitespace or trailing newline, with members in exactly the displayed order. `prepared_at` is the first staged database timestamp, fixed UTC microsecond precision, serialized with exactly six fractional digits and `Z`; retries never regenerate it or the operation ID. Stage the intent and `accounts.erasure_started_at` under the account lock, commit, then release **all** database locks before storage calls. The fence rejects cancellation even during a storage outage. Conditional `PUT If-None-Match: *`, followed by GET and byte-for-byte comparison, establishes the external durability boundary. An already-existing matching object succeeds; mismatching/malformed objects fail closed; ambiguous PUT outcomes retry GET/the same key and bytes. No destructive transaction or completion acknowledgement is allowed before exact verification. The worker resumes pending intents at startup and every 60 s.
+
+Storage activation requires observed independent durability, atomic create-if-absent and complete, strongly consistent paginated LIST/GET under the ledger prefix; merely possessing an S3-shaped URL is insufficient. The writer cannot overwrite/delete objects; a separate operations janitor credential can delete only after checking lifecycle eligibility. Uncompleted `erasure_intents` and PREPARED objects **never expire**. Completed intents/objects may be deleted only after independently verified database completion, `completed_at + INTERVAL '6 months' + INTERVAL '30 days'`, and proof that no retained restore point precedes that completion. Lack of completion evidence (including after database loss) blocks deletion. The janitor checks the current completion/backup inventory, not object creation age; no blanket bucket TTL applies to PREPARED objects. Preserve `ERASURE_LEDGER_SALT` securely for the complete restore/ledger lifetime.
+
+The salted account hash is pseudonymous recovery metadata, not proof of anonymization; its restricted erasure-compliance retention is enumerated in `personal_data_register.md`. Restore-point deletion within the six-month maximum and ledger coverage are both required.
 
 ## Restore Procedure
 Recovery runbook:
@@ -85,7 +88,7 @@ Recovery runbook:
 6. reconcile Auction escrow/proceeds and Reward Claims,
 6a. reconcile WorldConsequence aggregate: load from backup, verify schema, foreign keys, and internal consistency against the checkpoint manifest; an absent table or corrupted payload **must fail the restore**. Zero rows is always a valid state (fresh launch, or every relic expired); the check fails only on an unreadable table or a row referencing unknown content IDs (stale markers are repaired by the partition-start load, `../06_data/data_model.md` § Boss Aftermath Relic); do not promote a recovered database where partitions would start against stale or missing world-consequence state,
 6b. re-validate time-sensitive expiries: relic expiry timestamps and timed cosmetic expiry timestamps were stored against server wall time; after PITR, re-evaluate all `timestamptz` expiry fields against the restored-as-of timestamp (not the restore-execution time) and mark expired entries as expired; entries that fall in the recovery window must be resolved by policy, not silently carried forward as active,
-6c. re-apply erasures: list every ledger object with `executed_at` after the restore point, match `account_id_hash` against every restored `accounts` row, and run the erasure transaction in `LEDGER_REPLAY` mode for each match (`../06_data/data_model.md` § Account Erasure: no `PENDING_DELETION` precondition, same `operation_id`); also run every `pending_erasure_ledger` row present in the restored database; a restore that would resurrect erased personal data **must not be promoted**,
+6c. re-apply erasures: while all public writes, erasure producers and ledger janitors are cordoned, completely paginate LIST and GET-validate **every** retained PREPARED object, regardless of its preparation time relative to PITR. Match its hash against restored accounts using the preserved salt; run `LEDGER_REPLAY` with the exact operation ID and preparation metadata for each match (no pending/fence precondition; already-erased or absent accounts remain erased/absent). Preparation can precede the restore point while destruction follows it, so timestamp filtering is forbidden. Also resume every restored pending `erasure_intents` row through the same publication/verification/destruction protocol. Record enumerated object keys/digests and replay outcomes in the restore evidence. Missing permissions/salt, incomplete pagination, storage outage, invalid/mismatching objects or any unresolved matching intent block promotion; neither a timeout nor RPO allowance waives completeness. Then confirm no matched restored account retains personal rows before releasing the cordon,
 7. verify active content/schema compatibility,
 8. run smoke login/character/inventory/economy tests,
 9. promote recovered database,
@@ -122,3 +125,6 @@ If PostgreSQL durability cannot be guaranteed:
 - value mutation never falls back to non-durable success.
 - WorldConsequence aggregate is in backup scope; an absent/unreadable table or a row with unknown content IDs fails the restore; zero rows is valid.
 - after PITR, timestamptz expiries are re-validated against the restored-as-of time, not restore-execution time.
+- erasure requires immutable externally verified PREPARED intent before destruction; no network call holds database locks.
+- every retained PREPARED object is replayed independently of PITR timestamps; incomplete coverage blocks promotion.
+- restore points are at most six calendar months old; pending erasure intents/objects never expire; completed cleanup uses completion plus six calendar months plus 30 days and absence of older restore points.

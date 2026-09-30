@@ -264,13 +264,14 @@ If this would exceed Vice-Leader capacity, transfer is rejected until a Vice Lea
 Exactly one LEADER exists before and after commit.
 
 ## Leader Inactivity
-If the LEADER has not attached any character session for `30 days` (server time since last detach), one eligible member may claim leadership:
+If the LEADER has no active character session and `server_now - last_attached_at >= 30 days`, one eligible member may claim leadership. A continuously online leader is never inactive; a finalized disconnect does not reset the attach-age clock.
 ```text
 eligible claimant = highest role present (VICE_LEADER > OFFICER > MEMBER), ties -> longest guild tenure
 claimant must have been a member >= 14 days and attached within the last 7 days
 claim            -> claimant becomes LEADER; old LEADER becomes MEMBER; audited; one claim per guild per 30 days
 ```
 Any later attach by the old leader does not revert the claim. Shorter offline time never changes ownership, preventing hostile takeovers.
+`character_activity` is authoritative and persistent: `last_attached_at` advances on successful attach/reattach; `last_detached_at` advances on finalized logout/disconnect; `session_active` reflects the live attached session and is reconciled to false before admission after process restart. Failed authentication, heartbeat, generic character saves, inventory updates and account-wide activity do not advance attach time. A character with no attach uses its creation time only for leader inactivity; claimant eligibility requires a real attach. Leadership claim locks guild, membership and leader/claimant activity records, revalidates the live-session guard and tenure, then commits roles and audit together. Offline `last_online_at` projection is `last_detached_at` (or last attach when no detach exists); it is presentation, not the takeover input.
 
 ## Chat
 Guild chat uses `GUILD` from `social.md`.
@@ -328,6 +329,9 @@ Every Safe Anchor hosts a communal **Guild Stone** (`object.guild_stone.<map_id>
 - **Persistence**: the weekly display is derived every Monday from Guild War and progression tables; seasonal category completions are persisted in `guild_stone_category_completions` (`../06_data/data_model.md`); no separate guild currency.
 - **Inscription styles**: a character may buy a cosmetic style for how its own name renders on the Stone (`cosmetic.guild_stone.inscription.*`, prices in `../07_content/economy_catalog.md`). Styles are the only purchasable part of the Stone; they change presentation only.
 - **Seasonal category** (`guild_stone.season.<season_region_index>.<region>`, IDs in `seasons.md`): during a season, a guild completes the category when its members' seasonal Atlas T3 masteries earned during that season sum to `>= 30` (each character-page counted once; members counted while in the guild at mastery time). Completion permanently inscribes the guild under that category and adds `+1` to the guild's Guild Stone count; it grants no currency, stats or character cosmetic. Repeat cycles of the region can be completed again and add another inscription line.
+The first transition to T3 for a seasonal page atomically inserts `guild_stone_masteries(season_id,character_id,atlas_page_id,guild_id NULL,membership_id NULL,mastered_at)` with unique `(season_id,character_id,atlas_page_id)`. `season_id` is the server season at mastery commit, not page region index. Pre-acquire the character, Atlas, membership and guild lock set in canonical priority order; copy the current guild and immutable membership interval identity (both NULL for unguilded) in the same transaction as first T3. A later join/leave/rejoin cannot rewrite or transfer attribution. Replaying the event conflicts on the durable distinct key and adds no credit.
+
+Count persisted credits for the attributed guild/season and authored seasonal roster. At 30 distinct credits, insert the existing category completion under `(guild_id,season_id,category_id)` exactly once in that transaction; 29 credits survive restart. Permanent T3 pages do not emit another first-mastery event when a region repeats; a later season may count only genuinely first-time character-page masteries earned then. Retain credit rows through season finalization and replay retention; completed inscriptions remain prestige history, not personal rewards.
 
 This section is the single owner of Guild Stone rules.
 
@@ -349,6 +353,7 @@ ACTIVE -> DISBANDING
 -> finalize progression/blessing state
 -> DISBANDED
 ```
+Disband deletes current guild cosmetic selections/entitlements and active progression projections, not historical inscription/grant audits. Guild cosmetics never become personal/account entitlements or transferable items. Retained membership intervals identify membership at earlier season cutoffs; ending the current interval on disband does not rewrite earlier attribution.
 
 Operation is idempotent.
 

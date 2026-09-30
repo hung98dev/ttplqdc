@@ -35,6 +35,8 @@ Record bounded signals such as:
 
 ### Economy Behavioural Signals (Anti-RMT / Gold Farming)
 
+**Exact windows and rank:** At one stable evaluation timestamp `T`, every economy signal uses `[T - W, T)` in UTC (`W` = exactly 7 or 30 elapsed 24-hour days). Sum rollups only for complete UTC days contained in the interval; add indexed raw events for the oldest and current partial days. At midnight the boundary partial is empty; otherwise there are at most W-1 whole-day rollup rows and two raw partial ranges. Never sum W calendar dates as an approximation or double-count a boundary event. Raw settlement/audit records remain the reference oracle. The active 7-day population is non-tombstone accounts with at least one settled direct-trade or Auction purchase/proceeds event in that same interval (including zero/negative net outflow); count each account once. For `N > 0`, `k = ceil(N/100)` and the kth largest net outflow is the cutoff; all ties at the cutoff qualify, even when this exceeds 1% of the population. `N = 0` flags nobody. No rounding of common or floating percentile interpolation is permitted; compare concentration via integer cross-multiplication `5 * top3 >= 4 * total`. Aggregate each partner before sorting, with UUID order for deterministic evidence ties.
+
 **Net common outflow — 7-day rolling window**
 For each account, compute:
 ```text
@@ -48,7 +50,7 @@ Flag for manual economy review when:
 net_outflow_7d > 20,000,000 common   AND
 account is in the top 1% of net_outflow_7d across all accounts active in that window
 ```
-A flagged account enters `ECONOMY_REVIEW` signal state (`accounts.economy_review_flagged_at`, `../06_data/data_model.md`). This is not a ban; it is a queue entry for the economy/security team to examine the trade graph. The flag clears automatically if net_outflow_7d drops below threshold.
+A flagged account enters `ECONOMY_REVIEW` signal state (`accounts.economy_review_flagged_at`, `../06_data/data_model.md`). IMP-054 evaluates all three economy predicates (net outflow, common-partner concentration, item-source concentration); OR them across the account's characters. Set the timestamp and append one audit on false->true, clear it only when all three are false, and do not append again while true. This is manual review, never a ban. Operator handling does not fabricate a durable currency score.
 
 Rationale: 20 M common in 7 days is well above normal player spending rates but reachable by active farmers. Combined with the top-1% percentile gate this minimises false positives from players who are legitimately buying from the AH heavily in one week.
 
@@ -71,6 +73,7 @@ Computed from `economy_character_daily_rollups.item_partner_counts` (item instan
 ```text
 received_items_30d >= 50   AND   share from the top 3 source characters >= 0.80   -> ECONOMY_REVIEW
 ```
+Producer ownership: IMP-029 direct-trade commit records both item-transfer directions and quantities; IMP-030 Auction buy commit records seller -> buyer item quantity (not on later proceeds claim); IMP-096 Guild Storage common withdrawal and approved reserve `CLAIM_DELIVER` record original depositor -> actual receiver only when characters differ. Deposit/move/request/approve/cancel/expiry and the depositor's own withdrawal do not count. Each producer stores typed transfer provenance in its existing raw settlement/audit row and adds `item_partner_counts` to the receiving character's UTC-day rollup in the same transaction, deduplicated by its existing operation identity. Stack units count quantity, each nonstack item counts one; split/merge preserves counts. Source means the immediate counterparty/original guild depositor, not inferred historical owners. All sources use raw `(receiver_character_id, occurred_at)` indexes for boundary corrections; erasure preserves anonymized character provenance, not the erased account link. No new transfer service/event store exists.
 
 **Automation cadence — rolling session**
 ```text
@@ -78,6 +81,7 @@ combat or gather actions for >= 6 continuous hours (gaps < 5 min)
 AND coefficient of variation of inter-action intervals < 0.05 over the last 1,000 actions
 -> AUTOMATION_REVIEW (manual queue; no automatic ban)
 ```
+IMP-054 defines cadence evaluation; IMP-013 accepted basic/skill action starts and IMP-028 accepted gather starts feed it exactly once from the authoritative Simulation owner. Rejected/duplicate/stale/cancelled-before-start requests, periodic DOT hits, auto-attacks emitted by an already-started action, loot grants, chat, movement and visual frames do not create samples. Use monotonic server timestamps at action start; action intervals may be zero on the same tick. Per live account character keep a fixed 1,000-timestamp ring, streak start, last accepted timestamp and active flag (no unbounded action log). 1,000 actions yield 999 intervals; fewer cannot qualify. If a gap is >= 5 minutes, reset ring/streak and clear flag; measure continuity from first accepted action to latest, >= 6 hours. Mean must be > 0; zero mean cannot qualify. Compare population coefficient of variation from the 999 intervals using exact integer sums: `400 * (n * sum_squared - sum * sum) < sum * sum` (`n = 999`, equivalent CV < 0.05), checked widened arithmetic. Set/clear `AUTOMATION_REVIEW` and append transition audit through a bounded Durable queue, never punitive enforcement. Continuous live/grace lineage retains state across same-process replacement/transfer; logout, grace expiry, character switch or process restart clears runtime state. Global Runtime owns one bounded ring per admitted account (<= WORLD_CCU_CAP) and receives ordered accepted-start samples from the current Simulation epoch; rejected old epochs never enter it. Timer clears on reaching the 5-minute gap even without another action; manual queue evidence remains in Category H audit after runtime clear.
 
 **Account takeover — per login**
 ```text

@@ -61,7 +61,8 @@ Use coarse groups that align with actual lifetime/update boundaries rather than 
 Canonical groups (final names; download/RAM budgets and residency are canonical in `../07_content/presentation_asset_manifest.md` §1; ADR-0071):
 ```text
 bootstrap.local        built into the player: boot/login/update/error UI, Vietnamese SDF fonts, splash
-shared.local           built into the player: HUD/menu UI art, 5 class actor sheets + animation, every class skill VFX, core SFX
+shared.local           built into the player: HUD/menu UI art, 5 class actor sheets + animation, every class skill VFX, core SFX,
+                       generated third-party credits notice TextAsset (`asset.ui.credits.text`)
 icons.shared           item, equipment, skill, status and cosmetic icons (atlased)
 beast.shared           Linh Thú actor sheets + beast VFX
 cosmetic.shared        cosmetic appearance / frame / title / guild art; bundle mode Pack Separately
@@ -101,7 +102,7 @@ catalog-backed   asset.<catalog_id>.<facet>
                               PvP / Guild War spaces use their space_id from ../04_architecture/physics_geometry_contract.md §6.1
 non-catalog      asset.<kind>.<name>.<facet>
                  kind ∈ { ui, sfx, bgm, font, prop, tile, parallax, vfx }, name = [a-z0-9_]+ segments joined by '.'
-facet            ∈ { prefab, sprite, anim, scene, vfx, icon, portrait, bgm, clip, font }
+facet            ∈ { prefab, sprite, anim, scene, vfx, icon, portrait, bgm, clip, font, text }
 no variant segment: a variant is its own catalog ID or its own facet
 ```
 Examples:
@@ -114,6 +115,7 @@ asset.cosmetic.title.thien_ha_de_nhat.icon
 asset.ui.hud.skill_bar.prefab            asset.sfx.just_guard_success.clip    asset.font.body_vi.font
 ```
 A catalog ID that reuses a shared asset still has its own key: the key addresses a `PresentationAlias` asset whose `target_key` names the shared key; resolution follows exactly one alias hop and an alias to an alias fails validation.
+The `text` facet resolves a Unity `TextAsset`, never a prefab or a validator exemption. The generated UTF-8 `THIRD_PARTY_ASSETS.txt` notice uses exactly `asset.ui.credits.text` in `shared.local`; IMP-076 produces/registers/packages it and IMP-099 resolves `TextAsset.text` for the credits screen. The former `asset.ui.credits.third_party_assets` is removed during this docs-only cutover: no legacy alias, alternate key or local bypass. Key validation covers the canonical positive key and rejects the obsolete suffix and a non-TextAsset `text` entry.
 
 They are presentation IDs only.
 

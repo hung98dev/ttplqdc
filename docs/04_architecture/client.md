@@ -120,7 +120,7 @@ At minimum:
 - never embed server/database credentials,
 - never trust local save files for online progression,
 - validate server certificates/secure transport according to network specs,
-- bound packet/event queues to avoid client memory growth,
+- enforce the decoded queue/backing-capacity bounds, overflow/resync action, immutable buffer/message leases and epoch/ownership-generation cancellation in `../05_network/protocol.md` § Client Receive Queue and Lease Ownership; never reuse a queued lease or apply an old connection's entry,
 - malformed/unknown messages fail safely,
 - reconnect does not duplicate actions or rewards,
 - logs must not contain authentication secrets.

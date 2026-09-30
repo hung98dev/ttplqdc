@@ -129,6 +129,7 @@ Designated water access points (riverbanks, piers, village ponds) feature intera
   While the featured region has `has_water=true` fishing spots, those spots use `fishing.catch.season.<season_number mod 6>`; otherwise `fishing.catch.default`. Seasons 3 and 4 have no seasonal catch table. At most one seasonal table is active. Seasonal weights are owned by `item_catalog.md` (each table sums to 10000).
 - Di Tích rare-fish buff (`bosses.md`): if the map `has_water = true` and `buff.di_tich.*` is active, `item.material.ca_chep_hoa_rong` weight is `100 -> 110` bp and the largest COMMON weight is reduced by `10` bp so the table still sums to `10000`.
 - A successful catch increments `character_id + utc_date` atomically with reward settlement; maximum is 50. Full inventory uses Reward Claims. Disconnect during `CASTING` or `HOOK_WINDOW` resolves as failure; retrying the same operation returns that result and cannot reroll or refund bait. Each successful `FISH_CAUGHT` is 1 LIFE_SKILL action granting character EXP for the current act (`../07_content/progression_route.md`): I 6417, II 8283, III 6332, IV 7047, V 9448, VI 10494.
+- A fishing overflow reward uses `source_type = FISHING`, `source_family = FISHING`, and `source_ref = (fishing_spot_id, character_id, utc_date, cast_sequence)`. The durable sequence belongs to the accepted cast; its successful result and catch counter commit once with `fishing.<character_id>.<utc_date>.<cast_sequence>`. CAST/HOOK operation replay returns that result and never allocates another sequence for the same cast.
 - **Rare catch peak**: settling `item_id ∈ RARE_CATCH` is one `PHAT_HIEN` opportunity (`../00_context/vision.md`). If that settlement also promotes Atlas Seen for `atlas.page.co_vat.ca_chep_hoa_rong`, emit **one** peak (`source=FISH_RARE`), not two. Presentation starts only after the authoritative settlement: 1200ms carp-dragon splash, `loc.peak.phat_hien.rare_fish`, atlas ping when Seen is new. Spectators in the same `map_instance_id` within 15m see the splash on the catcher. Presentation does not pause simulation, grant power, or reroll.
 
 ## Village Hearth Cooking (Bếp Lửa Làng Quê)
@@ -151,6 +152,16 @@ WORLD_DAY_DURATION = 120 real minutes
 DAY = 80 minutes
 NIGHT = 40 minutes
 ```
+
+Authoritative phase is UTC-epoch aligned, never process-uptime aligned:
+```text
+WORLD_DAY_EPOCH_UTC_SECONDS = 0
+WORLD_DAY_SECONDS = 7200
+phase_seconds = floor_mod(floor(server_utc_seconds) - WORLD_DAY_EPOCH_UTC_SECONDS, WORLD_DAY_SECONDS)
+DAY = 0 <= phase_seconds < 4800
+NIGHT = 4800 <= phase_seconds < 7200
+```
+At exactly phase 4800 night activates; at phase 0 dawn deactivates night groups/NIGHT_ONLY NPCs and activates DAY_ONLY NPCs. Restart recomputes phase before any spawn or NPC interaction; no night extension/restart reroll. Dusk lighting interpolates during phase `[4500,4800)` and dawn during `[0,300)`; lighting does not shift the activation boundary. Night-spawn suppression, cleanup, and retry follow `spawning.md` § Night Activation.
 Time-of-day alters presentation without hidden stat inflation:
 - **Day (80 min)**: Daylight palette, rural market audio, normal bird calls.
 - **Night (40 min)**: Safe Anchors illuminate communal lanterns (`den_long_dinh_lang`); ambient audio transitions to evening crickets, cicadas, and distant night-watch gongs (`tieng_mo_dem`); adventure fields reveal drifting will-o'-the-wisp motes and activate night-only rare spawns (`map_spawn_catalog.md`).
@@ -168,7 +179,7 @@ starts at every whole UTC hour
 duration = 15 minutes
 ```
 
-Each surge activates **three concurrent eligible outdoor regions**, each with its own field and element selection. Region and field assignment rotate deterministically from server UTC time (see `../07_content/world_event_catalog.md`). Each region is active approximately 50% of all hours, so the 12% EXP channel (`WORLD_EVENT`) is reachable without forcing players to chase a specific region.
+Each surge activates **three concurrent outdoor regions** with their own field/element selection (`../07_content/world_event_catalog.md`, ADR-0079): Làng Đa every hour plus two rotating regions. Region 0 has 100% hourly coverage; each other region has 40%. A character may enter only unlocked maps and is directed to the highest accessible active region. Eligible completion pays that character's current-act WORLD_EVENT rate at most once per hour, preserving the 12% channel without opening locked regions.
 
 Elements in use per surge:
 

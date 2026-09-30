@@ -185,11 +185,13 @@ Initial cosmetic entitlements are non-tradable/non-auctionable.
 A material used for cosmetic redemption follows its own item binding rules; entitlement itself never becomes tradable because its input was tradable/bound.
 
 ## Guild-Scoped Cosmetics
-Guild banner/crest/shrine definitions may be guild-scoped rather than character-scoped.
+Exactly five launch guild banner/crest/shrine definitions in `../07_content/cosmetic_catalog.md` are owned by the guild, not its members. Server settlement grants them only from their authored Ritual/Guild War sources, uniquely under `(guild_id,cosmetic_id)`; repeated unlocks are no-ops with the original grant audit retained.
 
-Guild-scoped unlock/equip requires canonical guild permission/state and disappears from personal equip availability after leaving that guild unless a separate character or IAP account entitlement was also granted.
+Persist `guild_cosmetic_entitlements(guild_id,cosmetic_id,grant_operation_id,acquired_at,source_reference)` and `guild_cosmetic_selections` with one row per `(guild_id,slot)` where `slot=SHRINE|BANNER|CREST`. A selected non-null ID must be an unlocked cosmetic of that exact category for the same guild. `guild_cosmetic_revision` increases only on a real entitlement/selection change.
 
-Guild cosmetic state never modifies Guild War or Guild progression power.
+Only a current `LEADER` or `VICE_LEADER` may equip or clear any of those three slots. `C2S_GUILD_COSMETIC_EQUIP` 656 carries stable operation ID, guild/slot, nullable cosmetic ID and expected revision; response is 649. Lock guild and actor membership, look up committed operation before mutable checks, validate role/revision/entitlement/category, and commit selection/revision/receipt atomically. Members/officers cannot change selections or grant unlocks.
+
+`S2C_GUILD_STATE` 628 carries unlocked guild cosmetics, all selections and cosmetic revision to current members; existing guild profile/banner/Stone surfaces render the authoritative selected IDs, never the member's personal equip. Leave/kick immediately removes member access; it never transfers ownership or clears the guild's selection. Disband removes operational ownership/selections and keeps historical grant/inscription audit without an equippable entitlement. No guild cosmetic affects combat, Guild War or progression power.
 
 ## Persistence
 Persist:

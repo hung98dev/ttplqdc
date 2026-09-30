@@ -14,7 +14,7 @@ Canonical: `docs/10_implementation/engineering_conventions.md` §1, `architectur
 ## Format & packages
 
 - `gofmt` clean (tabs); `go vet ./...` and `staticcheck` 2026.2.1 clean (Q4, `CODE-003`; `//lint:ignore` needs a reason, `//lint:file-ignore` is forbidden). Package names: short, lowercase, domain-named (`sim`, `durable`, `edge`, `global`, `core/id`, `core/rng`). No `utils`, `helpers`, `common`, `misc` packages.
-- One module `thinhthan` rooted at `server/go.mod`. One production main: `cmd/server`. Only `cmd/compiler`, `cmd/migrate`, `cmd/verify` tools allowed besides it.
+- One module `thinhthan` rooted at `server/go.mod`. One production main: `cmd/server`. Exact non-production tool-main exceptions: `cmd/compiler`, `cmd/migrate`, `cmd/verify`, `internal/conformance/caching/cmd/cachemerge` (IMP-106 report-only cache telemetry; no listener or runtime composition). Every other main is forbidden.
 - No import cycles. Interfaces small and defined at the consumer; do not create an interface just to have one.
 - Import fences (enforced by Q4/architecture tests — do not violate):
   - `sim/` — no `database/sql`, no `pgx`, no `edge/` import
@@ -29,7 +29,7 @@ Canonical: `docs/10_implementation/engineering_conventions.md` §1, `architectur
 - HTTP: `net/http`. Time: `time.Now().UTC()` — server is the only time authority; never trust client timestamps.
 - IDs/revisions/operation identity: reuse `server/internal/core/id/` once IMP-001 creates it; never create a second UUID, revision, static-ID, runtime-entity-ID, or operation-conflict implementation.
 - RNG: gameplay rolls via injected `core/rng` (`math/rand/v2` PCG-64); `crypto/rand` only through the canonical ID/security owners. `math/rand` v1 is forbidden.
-- Forbidden: Gin/Chi/Echo/Fiber, gorilla/*, gRPC, GORM/sqlx/ORM, zap/logrus/zerolog, Redis/Kafka/NATS clients, `x/time/rate` (not pinned; the rate limiter is Go stdlib per `external_integrations.md`).
+- Forbidden: Gin/Chi/Echo/Fiber, gorilla/*, first-party gRPC imports/clients/services/generators/exporters, GORM/sqlx/ORM, zap/logrus/zerolog, Redis/Kafka/NATS clients, `x/time/rate` (not pinned; the rate limiter is Go stdlib per `external_integrations.md`). Only the exact transitive module/import closure required by pinned OTel HTTP exporters in `technology_versions.md` may contain gRPC; Q1 compares that exact closure and Q4 denies first-party gRPC imports (`architecture_conformance.md` §4). Never add a gRPC exporter or independently rooted gRPC module.
 
 ## Errors, context, concurrency
 

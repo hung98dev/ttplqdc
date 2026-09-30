@@ -17,18 +17,30 @@ This includes:
 
 ## Validation Layers
 Every inbound operation applies applicable layers in this order:
-1. envelope/schema/size,
-2. authentication/session,
-3. rate limit,
-4. ownership/scope,
-5. current simulation/durable revision,
-6. state-machine legality,
-7. spatial/range/collision,
-8. resource/currency/item preconditions,
-9. idempotency/sequence,
-10. transaction/commit constraints.
+1. envelope/schema/size and canonical ID decoding,
+2. authentication/session and transport rate limits,
+3. immutable owner/scope authorization (never reveal another owner's outcome),
+4. client operation UUIDv7 timestamp check (`../06_data/ids.md`: future > 60 s -> `PROTOCOL_MALFORMED`; `now >= issued_at + 180 days` -> `OPERATION_EXPIRED`),
+5. owner-scoped committed-operation lookup and canonical request-fingerprint comparison,
+6. only for a genuinely new operation: current revision, state-machine legality, spatial/range/collision and resource/currency/item preconditions,
+7. transaction/commit constraints, including repeated owner/precondition checks and unique operation insertion.
 
-Failure stops before mutation.
+An authenticated in-horizon retry with the same key and fingerprint returns/reconstructs its committed result before mutable predicates; depleted materials, changed enhancement level, moved range, changed target/state or later suspension must not turn that recorded outcome into a new failure. A different fingerprint returns `OPERATION_CONFLICT`. New operations still apply every current feature restriction and commit-time precondition. Sequence checks for ephemeral intents remain on their normal path. Failure stops before mutation. An ambiguous operation that has expired must not be automatically resubmitted with a new ID; the client reconciles authoritative state/history and asks for a deliberate new user action.
+
+### HTTPS Size Boundary
+Limits are UTF-8/wire bytes, enforced before JSON/JWS/base64 parsing on both public and private listeners:
+```text
+ordinary auth/account/ticket/IAP/admin JSON request body   16,384 bytes
+Apple and Google IAP webhook request body                 262,144 bytes
+SYSTEM security-alert webhook request body                65,536 bytes; max 100 alerts
+all request headers combined (net/http MaxHeaderBytes)    16,384 bytes
+each header field value (including Authorization)          8,192 bytes
+provider_token / identity JWT / Steam hexadecimal ticket   8,192 bytes
+access / refresh / gameplay / resume token field           1,024 bytes
+platform_receipt (purchaseToken/transactionId/orderid)        512 bytes
+provider verification HTTP response body               1,048,576 bytes
+```
+Use `http.MaxBytesReader` at each handler (check unknown-length/chunked bodies as well as Content-Length); set server `MaxHeaderBytes` and enforce individual field bounds before token parsing. Reverse proxies must match or tighten these caps, never relax them. Read provider responses through a bounded reader before decoding; over-limit/malformed response cannot authorize a grant and follows dependency-failure/PENDING handling. Reject non-identity Content-Encoding (HTTP 400 `PROTOCOL_MALFORMED`) rather than allowing compression to bypass the decoded bound. Exactly-at-limit valid input is accepted subject to its schema; limit+1 body is HTTP 413 `REQUEST_TOO_LARGE`, over-limit header is HTTP 431 `REQUEST_TOO_LARGE`, over-limit token/receipt is HTTP 400 `PROTOCOL_MALFORMED`. These are `NEVER` retryability until the caller changes input; no raw payload is echoed. Malformed/unknown JSON fields are HTTP 400 `PROTOCOL_MALFORMED`; invalid authentication stays HTTP 401 `AUTH_INVALID`. Expired operation is HTTP 410 `OPERATION_EXPIRED` on HTTPS (same typed error on WSS), never fresh-ID automatic retry. Protocol-level header rejection may have no JSON body; clients map status 413/431 to the same safe error. Unknown fields never evade a predecode bound.
 
 ## Numeric Validation
 Reject:
@@ -122,12 +134,13 @@ The IAP path is an outbound call to a platform payment provider. It is not an in
 POST /api/v1/iap/verify        Authorization: Bearer <access token> (auth.md)
   body     platform : GOOGLE_PLAY | APP_STORE | STEAM, product_id, platform_receipt
            (Google purchaseToken | Apple transactionId | Steam orderid)
-  response entitlement_id, grant_state : PENDING | GRANTED | REJECTED, error_code
+  response entitlement_id, grant_state : PENDING | GRANTED | REJECTED | REFUNDED | REFUNDED_CONSUMED, error_code
 POST /api/v1/iap/steam/init    Authorization: Bearer <access token>
   body     product_id
   response orderid, entitlement_id   (server calls ISteamMicroTxn/InitTxn; the Steam overlay asks the user)
 ```
 `platform_receipt` is UNIQUE: the first call inserts the `PENDING` row (after the account/product/season checks), later calls with the same receipt return the existing row (idempotent), and a receipt bound to another account returns `IAP_RECEIPT_ACCOUNT_MISMATCH` without a row. Rate limit: L2 `rate_limit_counters` action `iap_verify` (`rate_limits.md`). Steam (ADR-0064): `/steam/init` inserts the `PENDING` row before calling `InitTxn`; a second `/steam/init` for a season-track product while that account holds a `PENDING` Steam order for the same season first calls `QueryTxn` on that order (ADR-0069): `Approved` or `Succeeded` → return the existing `orderid` and `entitlement_id` (the client then calls `/verify`); `Init`, `Failed`, user-declined or not found → mark the old row `REJECTED` (`IAP_RECEIPT_INVALID`, releasing the season slot) and create a new `PENDING` row + `InitTxn` (the new order shows the overlay again). A client callback with `bAuthorized = false` calls `/verify` with the `orderid`; `/verify` re-queries and an `Init`/declined order becomes `REJECTED`. `/verify` with the `orderid` after the overlay callback calls `FinalizeTxn` (retried; "already finalized" is not an error) and then `QueryTxn`; `QueryTxn` status is the only authority: `Succeeded` → `GRANTED`; `Approved` → call `FinalizeTxn` again and re-query; `Failed` or order not found → `REJECTED` (`IAP_RECEIPT_INVALID`); `Init` (never approved by the user, so never chargeable) stays `PENDING` and becomes `REJECTED` 24 h after `InitTxn`; any refund status → `REFUNDED`. A finalize error alone never rejects. A worker re-queries every Steam `PENDING` row older than 15 min every 15 min with the same mapping. Google Play: a `PENDING` purchase that Google refunds (e.g. auto-refund of an unacknowledged purchase) moves `PENDING -> REFUNDED` from the RTDN notification. Google Play: after `GRANTED` the server acknowledges the purchase (`purchases.products.acknowledge`) with retry; an unacknowledged purchase that Google refunds arrives through RTDN as a refund. Providers and endpoints: `external_integrations.md` § 2.
+Existing owner-bound receipt lookup precedes new-purchase/payment-status predicates. Every durable state above is returned exactly as stored without a new grant; both refunded states are terminal. The reconciliation restriction applies only to initiating a new purchase/receipt, not reading a previously committed entitlement.
 
 **What is validated before grant:**
 1. Receipt schema: the `platform_receipt` field is a non-empty opaque token within the allowed byte length; structural pre-checks are platform-specific (app store vs. regional gateway).

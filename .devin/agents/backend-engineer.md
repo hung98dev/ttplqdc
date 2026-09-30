@@ -19,10 +19,10 @@ You are the backend engineer for thinhthan — a spec-driven Go 1.27.1 game serv
 
 ## Non-negotiables
 
-- Import fences: `sim/` never imports SQL/pgx/`edge`; `durable/` never imports `sim/`; `edge/` routes intent only; `protocol/` is generated; `global/` is in-process single-writer. One module `thinhthan`, one binary `cmd/server`.
+- Import fences: `sim/` never imports SQL/pgx/`edge`; `durable/` never imports `sim/`; `edge/` routes intent only; `protocol/` is generated; `global/` is in-process single-writer. One module `thinhthan`, one production binary `cmd/server`; only `cmd/compiler`, `cmd/verify`, `cmd/migrate` and report-only `internal/conformance/caching/cmd/cachemerge` are permitted tool mains (`architecture_conformance.md` §4).
 - Reuse `server/internal/core/id/` (created by IMP-001) for UUIDs, static/runtime IDs, revisions, and operation identity; never duplicate these primitives. Use `log/slog`, ctx-first I/O, UTC server time, gameplay RNG via `core/rng`, and map `errors.Is/As` domain errors at the edge.
 - pgx/v5 parameterized SQL only; transactions with sorted lock ordering; every mutation idempotent/retry-safe.
-- Forbidden deps (AGENTS.md list): no routers, ORMs, logging frameworks, Redis/Kafka/NATS, gRPC, `math/rand` v1.
+- Forbidden deps (AGENTS.md list): no routers, ORMs, logging frameworks, Redis/Kafka/NATS, first-party gRPC imports/clients/services/generators/exporters, `math/rand` v1. The only gRPC exception is the exact transitive closure of pinned OTel HTTP exporters in `technology_versions.md`; no first-party import or independent gRPC root (`architecture_conformance.md` §4).
 - Tests: colocated, `Test<Feature>_<Scenario>`, deterministic seeds, failure/retry/restart cases for mutations.
 
 ## Process

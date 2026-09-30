@@ -63,7 +63,7 @@ server/
 ├── migrations/            # IMP-005 only; baseline 000001, immutable numbered pairs
 └── internal/
     ├── app/               # IMP-069 production composition/lifecycle
-    ├── conformance/       # gates+style IMP-000, taskgraph+architecture IMP-083, ratchet+trusted IMP-068, deviceperf IMP-096
+    ├── conformance/       # gates+style IMP-000, taskgraph+architecture IMP-083, ratchet+trusted IMP-068, deviceperf IMP-096; caching/cmd/cachemerge IMP-106 (tool-only main exception)
     ├── stackpin/          # IMP-000
     ├── config/            # IMP-003/004; equipment IMP-026; validation/{balance,beast,drop} IMP-049/050/051
     ├── core/id/  core/rng/  # IMP-001, IMP-002
@@ -195,7 +195,7 @@ Only `scripts/codegen.ps1` may regenerate them.
 
 ## Git Attributes
 
-Binary art assets use LFS (Git LFS `3.8.0`, every CI checkout `lfs: true`) when IMP-000 creates `.gitattributes`. Unity YAML stays text and uses UnityYAMLMerge:
+Binary art assets use LFS (Git LFS `3.8.0`) when IMP-000 creates `.gitattributes`. All CI jobs checkout with `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`; only `Unity (Windows)` restores the OID-keyed `.git/lfs` cache and runs `git lfs pull` for missing objects (ADR-0078). Unity YAML stays text and uses UnityYAMLMerge:
 
 ```gitattributes
 *.png filter=lfs diff=lfs merge=lfs -text
@@ -219,7 +219,7 @@ Do not put `*.prefab`, `*.asset`, `*.meta`, or `*.unity` in LFS.
 ## Ownership Rules
 
 - Import fences: `sim/` never imports pgx/SQL or `edge/`; `durable/` never imports `sim/`; `edge/` routes intent and never owns combat/value mutation; `global/` is in-process and persists through typed Durable interfaces; `app/` is wiring only; `protocol/v1/` is generated-only; handwritten protocol parity tests live under `testing/protocol/` (`architecture_conformance.md`).
-- Every owned path has the owner(s) listed in § Path Ownership Index. Nested or equal ownership by two packets is allowed only when one transitively depends on the other; the earlier task creates the path.
+- Every owned path has the owner(s) listed in § Path Ownership Index. Nested or equal ownership requires a transitive dependency, except the exact key-disjoint append registries in § Addressables Append Registry Grants; the earlier registry owner creates every baseline file. The exception is not general directory write permission.
 - Go tests live in the package they test (`<package>/<name>_test.go`) and therefore inside the packet's owned directory.
 - Unity tests live in `client/Assets/Tests/{EditMode|PlayMode}/<Feature>/`, one folder per packet, listed in its `owned_paths`. The root test asmdefs belong to IMP-000; `PlayMode/Harness/` belongs to IMP-065 and is read-only for other packets.
 - Shared registries: `client/Assets/AddressableAssetsData/` is owned by IMP-063; a packet that depends on IMP-063 may append groups/entries only for keys it owns (append-only, key-owner checked by the IMP-063 validator). The append surface is granted by naming the exact registry files in the packet's `owned_paths` (Q0 `ownedFile` matches exact paths or `dir/` prefixes and implies `.meta`) together with a `depends_on` edge to the registry owner, which `paths.ownership_overlap` requires for any shared path; e.g. IMP-064 owns `AddressableAssetSettings.asset` plus the `AssetGroups/localization.*(.asset)` group and schema assets (ADR-0074). Localization string tables are per feature: the packet owning `client/Assets/Scripts/{Systems|UI}/<Feature>/` implicitly owns `client/Assets/Localization/Tables/<Feature>/`; `Tables/Core/` belongs to IMP-064.
@@ -230,24 +230,45 @@ Do not put `*.prefab`, `*.asset`, `*.meta`, or `*.unity` in LFS.
 - Only IMP-005 writes `server/migrations/`.
 - Path ownership changes require updating this file and the owning task packet in the same change; Q0 checks parity.
 
+### Addressables Append Registry Grants
+
+IMP-063 materializes each canonical group and its schemas before consumers. Every row below grants only `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset` and the exact `client/Assets/AddressableAssetsData/AssetGroups/<group>.asset` files expanded from its listed group names; corresponding `.meta` files are implied, but existing GUIDs remain immutable. These same exact files MUST appear in the packet and Path Ownership Index.
+
+| Packet | Exact group names | Owned entry scope |
+|---|---|---|
+| IMP-071 | `shared.local` | Five class/player actor keys |
+| IMP-072 | `region.lang_da`, `region.rung_u_minh`, `region.ben_nuoc_den`, `region.deo_may`, `region.thanh_co`, `region.nui_thieng` | World scene/tile/prop/parallax keys |
+| IMP-073 | `bootstrap.local`, `shared.local`, `icons.shared` | UI/font/item/equipment/skill/status icon and skill VFX keys |
+| IMP-074 | `cosmetic.shared`, `icons.shared` | Cosmetic visual/icon keys |
+| IMP-075 | `shared.local`, `audio.bgm.lang_da`, `audio.bgm.rung_u_minh`, `audio.bgm.ben_nuoc_den`, `audio.bgm.deo_may`, `audio.bgm.thanh_co`, `audio.bgm.nui_thieng`, `audio.bgm.shared` | SFX/BGM keys |
+| IMP-104 | `beast.shared`, `region.lang_da`, `region.rung_u_minh`, `region.ben_nuoc_den`, `region.deo_may`, `region.thanh_co`, `region.nui_thieng`, `dungeon.dinh_lang_bo_hoang`, `dungeon.mieu_ba_trong_rung`, `dungeon.xom_chim`, `dungeon.hang_ma_tranh`, `dungeon.den_tran`, `dungeon.finale` | Monster/boss/beast/NPC actor, required portrait and actor-only VFX keys |
+| IMP-105 | `dungeon.dinh_lang_bo_hoang`, `dungeon.mieu_ba_trong_rung`, `dungeon.xom_chim`, `dungeon.hang_ma_tranh`, `dungeon.den_tran`, `dungeon.finale`, `pvp.shared` | Instance scene/tile/prop/parallax and encounter telegraph keys |
+| IMP-076 | `shared.local` | Only `asset.ui.credits.text` |
+
+Q0 allows unordered owners on these exact files only because entry GUIDs and addresses are disjoint and checked against the catalog/key owner. Relative to `main`, a producer may append its own entries only: no deletion/reassignment of another owner's entry, no settings/profile/schema change, no group schema/reference/GUID rewrite, and no group creation/rename. IMP-064's package-managed localization entries retain their existing exact grants and disjoint namespace. A duplicate GUID/address or foreign-key edit fails closed. Review scenes remain IMP-070-owned and data-driven from keys/catalog/provenance; producers do not edit them. The IMP-063 validator verifies the semantic registry diff, not merely filenames.
+
+
 ## Path Ownership Index
 
 Generated from `task_queue.md` `owned_paths`.
 
 | Path | Owner |
 |---|---|
-| `.devin/scripts/` | IMP-106 |
+| `.devin/scripts/cache-policy.md` | IMP-106 |
+| `.devin/scripts/cache_telemetry.ps1` | IMP-106 |
+| `.devin/scripts/cache_telemetry.sh` | IMP-106 |
+| `.devin/scripts/wait_job.sh` | IMP-000 |
 | `.editorconfig` | IMP-000 |
 | `.gitattributes` | IMP-000 |
 | `.github/pull_request_template.md` | IMP-000 |
-| `.github/workflows/cache_warm.yml` | IMP-106 |
 | `.github/workflows/cache_prune.yml` | IMP-106 |
+| `.github/workflows/cache_warm.yml` | IMP-106 |
 | `.github/workflows/device_perf.yml` | IMP-096 |
 | `.github/workflows/post_merge_guard.yml` | IMP-068 |
 | `.github/workflows/verify.yml` | IMP-000, IMP-068, IMP-106 |
 | `.gitignore` | IMP-000 |
 | `client/Assets/AddressableAssetsData/` | IMP-063 |
-| `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AddressableAssetSettings.asset` | IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-076, IMP-104, IMP-105 |
 | `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.locales_BundledAssetGroupSchema.asset` | IMP-064 |
 | `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.locales_ContentUpdateGroupSchema.asset` | IMP-064 |
 | `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.shared_BundledAssetGroupSchema.asset` | IMP-064 |
@@ -256,11 +277,37 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.en_us_ContentUpdateGroupSchema.asset` | IMP-064 |
 | `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.vi_vn_BundledAssetGroupSchema.asset` | IMP-064 |
 | `client/Assets/AddressableAssetsData/AssetGroups/Schemas/localization.strings.vi_vn_ContentUpdateGroupSchema.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.ben_nuoc_den.asset` | IMP-075 |
+| `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.deo_may.asset` | IMP-075 |
+| `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.lang_da.asset` | IMP-075 |
+| `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.nui_thieng.asset` | IMP-075 |
+| `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.rung_u_minh.asset` | IMP-075 |
+| `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.shared.asset` | IMP-075 |
+| `client/Assets/AddressableAssetsData/AssetGroups/audio.bgm.thanh_co.asset` | IMP-075 |
+| `client/Assets/AddressableAssetsData/AssetGroups/beast.shared.asset` | IMP-104 |
+| `client/Assets/AddressableAssetsData/AssetGroups/bootstrap.local.asset` | IMP-073 |
+| `client/Assets/AddressableAssetsData/AssetGroups/cosmetic.shared.asset` | IMP-074 |
+| `client/Assets/AddressableAssetsData/AssetGroups/dungeon.den_tran.asset` | IMP-104, IMP-105 |
+| `client/Assets/AddressableAssetsData/AssetGroups/dungeon.dinh_lang_bo_hoang.asset` | IMP-104, IMP-105 |
+| `client/Assets/AddressableAssetsData/AssetGroups/dungeon.finale.asset` | IMP-104, IMP-105 |
+| `client/Assets/AddressableAssetsData/AssetGroups/dungeon.hang_ma_tranh.asset` | IMP-104, IMP-105 |
+| `client/Assets/AddressableAssetsData/AssetGroups/dungeon.mieu_ba_trong_rung.asset` | IMP-104, IMP-105 |
+| `client/Assets/AddressableAssetsData/AssetGroups/dungeon.xom_chim.asset` | IMP-104, IMP-105 |
+| `client/Assets/AddressableAssetsData/AssetGroups/icons.shared.asset` | IMP-073, IMP-074 |
 | `client/Assets/AddressableAssetsData/AssetGroups/localization.locales.asset` | IMP-064 |
 | `client/Assets/AddressableAssetsData/AssetGroups/localization.shared.asset` | IMP-064 |
 | `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.en_us.asset` | IMP-064 |
 | `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.vi_vn.asset` | IMP-064 |
+| `client/Assets/AddressableAssetsData/AssetGroups/pvp.shared.asset` | IMP-105 |
+| `client/Assets/AddressableAssetsData/AssetGroups/region.ben_nuoc_den.asset` | IMP-072, IMP-104 |
+| `client/Assets/AddressableAssetsData/AssetGroups/region.deo_may.asset` | IMP-072, IMP-104 |
+| `client/Assets/AddressableAssetsData/AssetGroups/region.lang_da.asset` | IMP-072, IMP-104 |
+| `client/Assets/AddressableAssetsData/AssetGroups/region.nui_thieng.asset` | IMP-072, IMP-104 |
+| `client/Assets/AddressableAssetsData/AssetGroups/region.rung_u_minh.asset` | IMP-072, IMP-104 |
+| `client/Assets/AddressableAssetsData/AssetGroups/region.thanh_co.asset` | IMP-072, IMP-104 |
+| `client/Assets/AddressableAssetsData/AssetGroups/shared.local.asset` | IMP-071, IMP-073, IMP-075, IMP-076 |
 | `client/Assets/Art/Actors/Creatures/` | IMP-104 |
+| `client/Assets/Art/Actors/Npcs/` | IMP-104 |
 | `client/Assets/Art/Actors/Players/` | IMP-071 |
 | `client/Assets/Art/Cosmetics/` | IMP-074 |
 | `client/Assets/Art/Instances/` | IMP-105 |
@@ -309,27 +356,36 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Scenes/World/` | IMP-072 |
 | `client/Assets/Scripts/App/` | IMP-067 |
 | `client/Assets/Scripts/App/ThinhThan.App.asmdef` | IMP-000 |
+| `client/Assets/Scripts/App/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Core/Assets/` | IMP-063 |
 | `client/Assets/Scripts/Core/Assets/Editor/AssetProduction/` | IMP-070 |
 | `client/Assets/Scripts/Core/Assets/Editor/AssetProduction/ReleaseAssetAudit.cs` | IMP-076 |
 | `client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Core/Assets/Editor/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Core/Assets/ThinhThan.Core.Assets.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Core/Assets/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Core/Geometry/` | IMP-062 |
 | `client/Assets/Scripts/Core/Geometry/Editor/ThinhThan.Core.Geometry.Editor.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Core/Geometry/Editor/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Core/Input/` | IMP-066 |
 | `client/Assets/Scripts/Core/Localization/` | IMP-064 |
 | `client/Assets/Scripts/Core/Localization/Editor/ThinhThan.Core.Localization.Editor.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Core/Localization/Editor/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Core/Localization/ThinhThan.Core.Localization.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Core/Localization/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Core/Performance/` | IMP-095 |
 | `client/Assets/Scripts/Core/PerformanceDevice/` | IMP-096 |
 | `client/Assets/Scripts/Core/Rendering/` | IMP-101 |
 | `client/Assets/Scripts/Core/Runtime/` | IMP-065 |
 | `client/Assets/Scripts/Core/Session/` | IMP-065 |
 | `client/Assets/Scripts/Core/ThinhThan.Core.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Core/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Net/` | IMP-065 |
 | `client/Assets/Scripts/Net/ThinhThan.Net.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Net/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Protocol/` | IMP-061 |
 | `client/Assets/Scripts/Protocol/ThinhThan.Protocol.asmdef` | IMP-000 |
+| `client/Assets/Scripts/Protocol/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/Systems/Atlas/` | IMP-060 |
 | `client/Assets/Scripts/Systems/Auction/` | IMP-030 |
 | `client/Assets/Scripts/Systems/Beasts/` | IMP-057 |
@@ -376,6 +432,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Scripts/Systems/WeaponGlow/` | IMP-088 |
 | `client/Assets/Scripts/Systems/World/` | IMP-018 |
 | `client/Assets/Scripts/Systems/WorldEvents/` | IMP-025 |
+| `client/Assets/Scripts/Systems/csc.rsp` | IMP-000 |
 | `client/Assets/Scripts/UI/Account/` | IMP-103 |
 | `client/Assets/Scripts/UI/Atlas/` | IMP-060 |
 | `client/Assets/Scripts/UI/Auction/` | IMP-030 |
@@ -419,6 +476,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Scripts/UI/ThinhThan.UI.asmdef` | IMP-000 |
 | `client/Assets/Scripts/UI/Trade/` | IMP-029 |
 | `client/Assets/Scripts/UI/WorldEvents/` | IMP-025 |
+| `client/Assets/Scripts/UI/csc.rsp` | IMP-000 |
 | `client/Assets/Settings/Performance/` | IMP-095 |
 | `client/Assets/Settings/Rendering/` | IMP-101 |
 | `client/Assets/Tests/EditMode/AddressablesValidation/` | IMP-063 |
@@ -446,6 +504,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Tests/EditMode/VolumeDepthGate/` | IMP-070 |
 | `client/Assets/Tests/EditMode/WeaponGlow/` | IMP-088 |
 | `client/Assets/Tests/EditMode/WorldArtCoverage/` | IMP-072 |
+| `client/Assets/Tests/EditMode/csc.rsp` | IMP-000 |
 | `client/Assets/Tests/PlayMode/AccountUi/` | IMP-103 |
 | `client/Assets/Tests/PlayMode/AppComposition/` | IMP-067 |
 | `client/Assets/Tests/PlayMode/ArenaUi/` | IMP-041 |
@@ -500,21 +559,9 @@ Generated from `task_queue.md` `owned_paths`.
 | `client/Assets/Tests/PlayMode/ThinhThan.Tests.PlayMode.asmdef` | IMP-000 |
 | `client/Assets/Tests/PlayMode/TradeUi/` | IMP-029 |
 | `client/Assets/Tests/PlayMode/WorldTransferPresentation/` | IMP-018 |
+| `client/Assets/Tests/PlayMode/csc.rsp` | IMP-000 |
 | `client/Assets/UniversalRenderPipelineGlobalSettings.asset` | IMP-000 |
 | `client/Assets/UniversalRenderPipelineGlobalSettings.asset.meta` | IMP-000 |
-| `client/Assets/Scripts/Protocol/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Core/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Core/Assets/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Core/Assets/Editor/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Core/Localization/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Core/Localization/Editor/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Core/Geometry/Editor/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Net/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/Systems/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/UI/csc.rsp` | IMP-000 |
-| `client/Assets/Scripts/App/csc.rsp` | IMP-000 |
-| `client/Assets/Tests/EditMode/csc.rsp` | IMP-000 |
-| `client/Assets/Tests/PlayMode/csc.rsp` | IMP-000 |
 | `client/BuildProfiles/` | IMP-067 |
 | `client/Packages/` | IMP-000 |
 | `client/ProjectSettings/` | IMP-000 |

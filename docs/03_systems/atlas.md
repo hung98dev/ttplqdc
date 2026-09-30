@@ -61,6 +61,7 @@ Server owns all unlock counters, tier promotion, and reward grants. Client only 
 
 ## UI
 Atlas Journal in Safe Anchors and menu: grid of pages, completion %, lore viewer, "new reward" marker cleared by `C2S_ATLAS_CLAIM` acknowledgement. No trading of pages.
+The journal consumes `S2C_ATLAS_STATE` 518, `messages.md` § Daily Board and Atlas Projection: `atlas_revision`, every authored page's authoritative counter/reached tier and per-tier settled grant/acknowledgement marker. Full state is sent on attach/reconnect and after counter, tier or acknowledgement changes. Transient progression event 506 is feedback only, never journal reconstruction. `C2S_ATLAS_CLAIM` only acknowledges an already-settled tier; opening/recovering the journal cannot grant again or mark unseen progress as acknowledged.
 
 ## Invariants
 ```text

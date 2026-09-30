@@ -9,17 +9,19 @@ Evidence, verification commands and release acceptance for thinhthan. Every `DON
 
 | Operation | Command | Requirement |
 |---|---|---|
-| Full repository verify | CI: `pwsh -NoProfile -File scripts/verify.ps1 -UnityResultsDir <dir>`; local: `pwsh -NoProfile -File scripts/verify.ps1 -LocalDeferMissing` | Q0-Q6; non-zero exit on any failed gate; uses `THINHTHAN_TEST_PG_DSN` when set (Linux CI `postgres:18.6` service container), otherwise on Windows starts the pinned EDB binaries on a random port and exports it, on Linux starts the pinned `postgres:18.6` digest with `docker run` when Docker exists. `-LocalDeferMissing` (never in CI) reports a missing Unity editor, PostgreSQL, Windows-only binary or cgo C compiler as `DEFERRED(local-missing)` instead of failing (ADR-0072) |
+| Full repository verify | Windows CI: `pwsh -NoProfile -File scripts/verify.ps1 -UnityResultsDir <dir>`; Linux CI: `pwsh -NoProfile -File scripts/verify.ps1` with Unity delegation per ADR-0078; local: `pwsh -NoProfile -File scripts/verify.ps1 -LocalDeferMissing` | Q0-Q6; non-zero exit on any failed gate; uses `THINHTHAN_TEST_PG_DSN` when set (Linux CI `postgres:18.6` service container), otherwise Windows starts pinned EDB binaries on a random port; Linux local starts pinned `postgres:18.6` digest via Docker when available. `-LocalDeferMissing` never in CI; missing local tools report `DEFERRED(local-missing)`, never CI evidence |
 | Protobuf codegen | `pwsh -NoProfile -File scripts/codegen.ps1` | Go + C# output with zero drift |
 | Content compile | `go -C server run ./cmd/compiler` | all content catalogs compile |
-| Backend tests | `go -C server test ./...` on both OSes; `-race` for `sim|edge|durable|global` on the Linux job only (ADR-0072) | unit and architecture tests |
+| Backend tests | `go -C server test ./...` on both OSes; `-race` for `sim\|edge\|durable\|global` on the Linux job only (ADR-0072) | unit and architecture tests |
 | Go static checks | `gofmt -l server`, `go -C server vet ./...`, `staticcheck ./...` (pinned `v0.8.1`, run in `server/`) | Q4 `CODE-003`; empty output (ADR-0059) |
 | Go allocation budgets / benchmarks | `go -C server test -run TestAllocs_ ./...` (non-race build); `go -C server test -run "^$" -bench . -benchmem -benchtime=200x -count=1 <hot packages>` | allocs/op exact (`../08_scale_ops/capacity.md` § Hot-Path Allocation Budgets); ns/op report-only in `verify-report.json` |
-| Unity EditMode | local: `"$UNITY_EDITOR_PATH" -batchmode -projectPath client -runTests -testPlatform EditMode -testResults <tmp>/editmode.xml -logFile <tmp>/editmode.log`; CI: the same `-runTests` invocation on the `Unity (Windows)` job (native pinned install, ADR-0073, ADR-0078; Linux job runs Go/PostgreSQL only, ADR-0078) writing `artifacts/unity-tests/<Mode>-results.xml` into `-UnityResultsDir`; `SKIP(no-client-change)` on a PR without Unity-relevant changes | always required |
-| Unity PlayMode | same with `-testPlatform PlayMode`; category `Performance` runs on the `Unity (Windows)` job without `-nographics` under D3D11 WARP (ADR-0078) | required after `IMP-065` is DONE |
+| Unity EditMode | local: `"$UNITY_EDITOR_PATH" -batchmode -nographics -projectPath client -runTests -testPlatform EditMode -testResults <tmp>/editmode.xml -logFile <tmp>/editmode.log`; CI: native `Unity (Windows)` writes results into `artifacts/unity-tests/`; Linux delegates with `SKIP(windows-only)` | required when IMP-000 DONE on main/head; legal status/scope skips per audit_gates |
+| Unity functional PlayMode / graphics | functional mode uses `-nographics`; graphics categories use `-force-d3d11` without `-nographics`, with observed WARP device proof (§3.3a manifest) | independent owners: functional PlayMode IMP-065, VisualReview IMP-070, Performance IMP-095, representative-load graphics IMP-067; required when own owner DONE on main/head, not hidden behind functional PlayMode |
 | Android performance | `gcloud firebase test android run --type game-loop` on the Owner Setup device models | scheduled `device-perf` workflow on `main` (not a PR check); `DEFERRED(quota)` on exhausted quota (`../04_architecture/client_performance.md`) |
 
 `scripts/verify.ps1` resolves the Unity editor from `UNITY_EDITOR_PATH` (must contain `6000.6.1f1`) and fails if the version differs; with `-UnityResultsDir` it gates on the Unity result XML instead (missing or failed results = FAIL). CI: Windows runs the pinned native install (ADR-0073); Linux runs no Unity (ADR-0078). Library cache and temp directories are per worktree (CI: `actions/cache` for Windows). CI has no GPU: rendering uses D3D11 WARP on Windows (ADR-0050, ADR-0078). Before any gate the `Unity (Windows)` job opens `client/` in the editor and uploads editor-created or -modified files as artifact `unity-materialized-windows`, failing with `commit unity-materialized` (`../10_implementation/audit_gates.md` § Job Preconditions). A missing tool or licence on CI is an OPS failure, never a silent skip.
+
+Both required verify jobs checkout with `lfs: false` and `GIT_LFS_SKIP_SMUDGE=1`. Only Windows Unity/player-build/cache-warming jobs fetch media; graphics/provenance/texture/audio checks require hydrated assets there. Linux must not open Unity, fetch LFS media or wait for Windows.
 
 ## 2. Evidence Manifest
 
@@ -44,15 +46,23 @@ toolchain.protoc = 36.2
 toolchain.protoc_gen_go = v1.36.12
 commands[]
 test_summary.total / passed / failed / skipped
-skipped_reasons[] (id, reason, allowed)        -- SKIP(owner-not-done) entries name the gate and its owner task; SKIP(status-only) only on the Q0 fast path; SKIP(no-client-change) only for Unity checks on a PR without Unity-relevant changes (ADR-0073)
+skipped_reasons[] (id, reason, allowed)        -- owner/status/scope skips per audit_gates; windows-only permitted only in raw Linux reports and resolved from Windows before merged evidence
 content_revision                               -- "none" while no content compiler exists at the tested source
 ci_run_id, run_attempt
 jobs[] (name, os = linux|windows, result = PASSED)   -- both verify jobs of the same run
+gates[] (id, os, owner, result, reason)          -- complete per-OS report verdicts; merged Unity verdicts use Windows only
+codegen_drift[] (path, result)                  -- complete generated output set; every result = IDENTICAL when Q2 active
 worktree_clean = true
 result = PASSED
 ```
 
 Q6 validates only manifests added in the PR diff: `source_tree_hash` equals the PR head tree hash, and the GitHub API confirms `ci_run_id`/`run_attempt` belong to workflow `verify.yml` with conclusion `success`. Older manifests get schema checks only. A two-phase task's manifest comes from its follow-up status PR's own run on its final code head (fixes inside the packet's `owned_paths` allowed); its hash equals the merged head because `task_queue.md`, `known_blockers.md` and `evidence/**` are excluded (ADR-0068, ADR-0072). A head that sets `DONE` without a manifest passes Q0/Q6; the merged head must contain it. Milestone evidence lives in `docs/10_implementation/evidence/M<n>/manifest.json` with the same schema (`task_id` = `M<n>`).
+
+### 2a. Stable Evidence Projection (`CI-004`)
+
+Cold/warm comparison uses two successful runs on the same source tree, task and activation/scope plan. First validate both full manifests independently (schema, API identity, commands, clean state and all required results); projection equality never substitutes these validations. Compare canonical JSON containing exactly `schema_version`, `task_id`, `source_tree_hash`, all `toolchain` fields, `content_revision`, `worktree_clean`, `result`, `test_summary`, `jobs` tuples `(name,os,result)` sorted by `(os,name)`, `gates` tuples `(id,os,owner,result,reason)` sorted by `(os,id)`, `skipped_reasons` tuples `(id,reason,allowed)` sorted by `(id,reason)`, and `codegen_drift` tuples `(path,result)` sorted by path. Object keys sort lexically; scalar values retain types; no gate/skip/drift entry may be dropped. Required drift entries all equal `IDENTICAL`; merged Unity gates resolve Linux delegation using Windows evidence.
+
+Exclude only execution-specific fields: `ci_run_id`, `run_attempt`, workflow/job/artifact URLs and timestamps, raw `commands` (which contain run-specific absolute/temp paths), command durations, report-only benchmark `ns/op` and `cached_steps` (`hit|miss`, `wall_seconds`). These remain in their owning original artifacts for independent validation/measurement. A result, test count, pin, semantic revision, skip, gate verdict or generated output difference fails CI-004. Whole manifest bytes differ legitimately by run identity; do not rewrite either artifact to make them equal.
 
 ## 3. Fixture Registry
 
@@ -100,5 +110,5 @@ chat logs and screenshots never replace evidence (screenshots are review artifac
 worktree_clean = true after verify
 CI = GitHub-hosted jobs `Q0-Q6 verify (Linux)` + `Q0-Q6 verify (Windows)`; `policy-review` is the App check run; post-merge guard (ADR-0050, ADR-0057, ADR-0058, ADR-0072)
 DEFERRED(local-missing) exists only locally; CI never passes -LocalDeferMissing
-missing Unity/image/licence/tool on CI = OPS failure, never a skip (except SKIP(owner-not-done) / SKIP(status-only) / SKIP(no-client-change)); Test Lab quota = DEFERRED(quota)
+missing required CI tool/licence or graphics capability = OPS failure, never a skip; Linux Unity-only SKIP(windows-only) requires Windows resolution before evidence merge; owner/status/scope skips only per audit_gates; Test Lab quota = DEFERRED(quota)
 ```

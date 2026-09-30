@@ -162,10 +162,15 @@ SKILL_LOADOUT_INVALID     POTENTIAL_POINTS_INSUFFICIENT  POTENTIAL_CAP_EXCEEDED
 INSUFFICIENT_MP           SOUL_CONTRACT_LIMIT_REACHED    STORY_CHOICE_REQUIRED
 NOT_DISCOVERED            GUILD_NAME_TAKEN          GUILD_NAME_INVALID
 ATLAS_TIER_NOT_REACHED    CHAT_TEXT_INVALID
+OPERATION_EXPIRED        REQUEST_TOO_LARGE
 ```
 Meaning of the progression/build codes: `SKILL_NOT_LEARNED` (skill not unlocked yet), `SKILL_MAX_LEVEL` (Basic/Active 12, Passive 6), `SKILL_POINTS_INSUFFICIENT` / `POTENTIAL_POINTS_INSUFFICIENT` (no unspent points), `POTENTIAL_CAP_EXCEEDED` (60% per-stat cap, `../01_gameplay/stats.md`), `SKILL_LOADOUT_INVALID` (wrong skill type, duplicate or unlearned in a slot), `INSUFFICIENT_MP` (skill MP cost), `SOUL_CONTRACT_LIMIT_REACHED` (any `soul_contracts.md` § Contract limit), `STORY_CHOICE_REQUIRED` (dungeon entry while the act-closing MAIN quest is ACTIVE with its branch unset, message 509), `NOT_DISCOVERED` (travel destination not discovered), `CLAIM_CAP_REACHED` (100 PENDING Reward Claims, `../03_systems/reward_claims.md`), `CHARM_INELIGIBLE` (charm stacking or level eligibility, `../03_systems/crafting.md`), `GUILD_NAME_TAKEN` / `GUILD_NAME_INVALID` (`../06_data/text.md`), `ATLAS_TIER_NOT_REACHED` (atlas acknowledge for an unreached tier, `../03_systems/atlas.md`), `CHAT_TEXT_INVALID` (chat text rejected by `../03_systems/social.md` § Message Content).
 `DURABLE_BACKPRESSURE` (retry after state refresh) is returned for boss activation, dungeon completion and quest turn-in while a partition is in durable backpressure (`../06_data/save_rules.md`).
 Retryability: `STATE_CONFLICT`, `COOLDOWN_ACTIVE` and `DURABLE_BACKPRESSURE` may be retried after the client refreshes state; the others are **NEVER** with the same input. A system needing a new reason adds it to this list in the same change.
+
+`OPERATION_EXPIRED`: client UUIDv7 timestamp is at/older than its180-day replay deadline; **NEVER** automatically retry or generate a replacement ID. Reject before new execution even if the outcome was purged; user explicitly starts a new action only after reconciling current state/history (`../06_data/ids.md`). In-horizon owner/fingerprint lookup still precedes mutable preconditions. Future timestamp >60s is `PROTOCOL_MALFORMED`.
+
+`REQUEST_TOO_LARGE`: bounded HTTPS body/header exceeds `../07_security/validation.md`; HTTP413 for body,431 for headers; **NEVER** with the same input. Gameplay WebSocket hard frame limits remain `MESSAGE_TOO_LARGE` and close. Malformed/overlong tokens use HTTP400 `PROTOCOL_MALFORMED`; invalid/missing machine scope uses HTTP403 `PERMISSION_DENIED`. Erasure-fenced mutations use HTTP409 `INVALID_STATE`; provider over-limit response never authorizes grants and uses dependency-failure/PENDING handling, not a successful empty response.
 ## Disconnect Policy
 Immediate connection close after response or without response where unsafe:
 - malformed envelope that prevents safe parsing,

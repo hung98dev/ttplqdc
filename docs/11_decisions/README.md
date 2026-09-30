@@ -40,7 +40,7 @@ Use `docs/templates/adr.md`.
 | 0026 | Just Guard Mitigation and Ma Am Folklore Status _(amended by ADR-0034, ADR-0038)_ | ACCEPTED |
 | 0027 | Boss Aftermath, Mystery Bounty, and Capacity Unification _(amended by ADR-0040)_ | ACCEPTED |
 | 0028 | Atlas Collection, Soft Pity, Guild Stone, and Morning Market _(amended by ADR-0042)_ | ACCEPTED |
-| 0029 | Character Resource Isolation _(amended by ADR-0041)_ | ACCEPTED |
+| 0029 | Character Resource Isolation _(amended by ADR-0041, ADR-0079)_ | ACCEPTED |
 | 0030 | One Account One Live Session | ACCEPTED |
 | 0031 | EXP Scale ×100 and Corrected Act Budgets | ACCEPTED |
 | 0032 | Seven-Channel EXP Source Portfolio | ACCEPTED |
@@ -51,8 +51,8 @@ Use `docs/templates/adr.md`.
 | 0037 | Reflect, Lifesteal, Absorb, Heal-Reduction Stats | ACCEPTED |
 | 0038 | Discrete Movement-Edge Input Message | ACCEPTED |
 | 0039 | Entity Capacity Model and AI Budget Classes _(amended by ADR-0066, ADR-0070)_ | ACCEPTED |
-| 0040 | WorldConsequence Durable Aggregate _(amended by ADR-0053)_ | ACCEPTED |
-| 0041 | Anti-RMT Trade Gates and IAP Entitlement Integrity _(amended by ADR-0060, ADR-0063)_ | ACCEPTED |
+| 0040 | WorldConsequence Durable Aggregate _(amended by ADR-0053, ADR-0079)_ | ACCEPTED |
+| 0041 | Anti-RMT Trade Gates and IAP Entitlement Integrity _(amended by ADR-0060, ADR-0063, ADR-0079)_ | ACCEPTED |
 | 0042 | Atlas Roster Expansion to 104 Launch Pages | ACCEPTED |
 | 0043 | Spirit Beast Instance Identity | ACCEPTED |
 | 0044 | Launch Topology — One Process Hosting Edge, Sim, Durable and Global _(amended by ADR-0052)_ | ACCEPTED |
@@ -61,33 +61,34 @@ Use `docs/templates/adr.md`.
 | 0047 | Skill Reach Budget and Collider-Aware Resolution | ACCEPTED |
 | 0048 | Character Row Update Timestamp _(amended: included in baseline 000001)_ | ACCEPTED |
 | 0049 | Guild Storage Same-Account Transfer Prohibition | ACCEPTED |
-| 0050 | Windows-Only CI and Auto-Merge on Green _(amended by ADR-0057, ADR-0058)_ | ACCEPTED |
+| 0050 | Windows-Only CI and Auto-Merge on Green _(amended by ADR-0057, ADR-0058, ADR-0079)_ | ACCEPTED |
 | 0051 | First-Party Username/Password Login | ACCEPTED |
 | 0052 | Single Launch World | ACCEPTED |
-| 0053 | Durable Data Contract Reconciliation | ACCEPTED |
+| 0053 | Durable Data Contract Reconciliation _(amended by ADR-0079)_ | ACCEPTED |
 | 0054 | Wire Message Completion | ACCEPTED |
 | 0055 | 2x Texture Authoring and Cutout Quality Gate _(amended by ADR-0071, ADR-0076)_ | ACCEPTED |
 | 0056 | Volumetric Art Direction and URP 2D Lighting _(amended by ADR-0071, ADR-0076)_ | ACCEPTED |
 | 0057 | Bootstrap, Trusted CI, Evidence Identity and Merge Mechanics _(amended by ADR-0058, ADR-0068, ADR-0072)_ | ACCEPTED |
-| 0058 | Public Repository on GitHub-Hosted Linux and Windows Runners _(amended by ADR-0072, ADR-0073, ADR-0075)_ | ACCEPTED |
+| 0058 | Public Repository on GitHub-Hosted Linux and Windows Runners _(amended by ADR-0072, ADR-0073, ADR-0075, ADR-0079)_ | ACCEPTED |
 | 0059 | Client Smoothness by Construction and Machine-Enforced Code Quality | ACCEPTED |
 | 0060 | Wire and Durable Contract Completion for Gameplay, World and Systems _(amended by ADR-0062)_ | ACCEPTED |
-| 0061 | World Lifecycle and Content Reconciliation _(amended by ADR-0062)_ | ACCEPTED |
+| 0061 | World Lifecycle and Content Reconciliation _(amended by ADR-0062, ADR-0079)_ | ACCEPTED |
 | 0062 | World and Systems Regression Fixes | ACCEPTED |
 | 0063 | Economy Contract Reconciliation | ACCEPTED |
 | 0064 | Session Handshake, Wire Scalar Types and Result Contract | ACCEPTED |
-| 0065 | Data Schema Completion, Erasure and Retention _(amended by ADR-0070)_ | ACCEPTED |
+| 0065 | Data Schema Completion, Erasure and Retention _(amended by ADR-0070, ADR-0079)_ | ACCEPTED |
 | 0066 | Measurable Client Gates, Forced-Cap Worst Case, Drain and Operations Stack _(amended by ADR-0070, ADR-0078)_ | ACCEPTED |
 | 0067 | _Number not used; never assign_ | — |
 | 0068 | Implementation Packet Readiness Corrections _(amended by ADR-0072, ADR-0075)_ | ACCEPTED |
 | 0069 | Session Continuity, Auth Hardening and Wire Corrections | ACCEPTED |
-| 0070 | Durable Restart Safety, Relic Expiry, Erasure Ledger and Entity Class Budgets _(amended by ADR-0078)_ | ACCEPTED |
+| 0070 | Durable Restart Safety, Relic Expiry, Erasure Ledger and Entity Class Budgets _(amended by ADR-0078, ADR-0079)_ | ACCEPTED |
 | 0071 | Client Presentation Contract Reconciliation | ACCEPTED |
-| 0072 | Executable Merge Pipeline for AI Agents _(amended by ADR-0073, ADR-0075, ADR-0078)_ | ACCEPTED |
+| 0072 | Executable Merge Pipeline for AI Agents _(amended by ADR-0073, ADR-0075, ADR-0078, ADR-0079)_ | ACCEPTED |
 | 0073 | CI Speed — Native Unity on Windows and Path-Scoped Unity Gates _(amended by ADR-0077, ADR-0078)_ | ACCEPTED |
 | 0074 | Localization Addressables Group Integration | ACCEPTED |
 | 0075 | Parallel Unity Jobs, Planned Unity Modes, In-Job Evidence and Pro Concurrency _(amended by ADR-0077, ADR-0078)_ | ACCEPTED |
 | 0076 | AI Art Pipeline — Consistency, Animation and Gate Corrections | ACCEPTED |
 | 0077 | CI Critical Path — Cheap Unity Retries, Fail-Fast Verdicts, Overlapped Image Pull and Two-Phase Verifier _(amended by ADR-0078)_ | ACCEPTED |
-| 0078 | Unity-on-Windows-Only CI and Go-Only Linux Runner Topology | ACCEPTED |
+| 0078 | Unity-on-Windows-Only CI and Go-Only Linux Runner Topology _(amended by ADR-0079)_ | ACCEPTED |
+| 0079 | Readiness Contract Closure | ACCEPTED |
 

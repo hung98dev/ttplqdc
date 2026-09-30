@@ -17,7 +17,7 @@ Canonical: `engineering_conventions.md` §2, `04_architecture/client.md`, `04_ar
 ## Style
 
 - Allman braces, 4 spaces. PascalCase types/methods, camelCase locals/params, `_camelCase` private fields. C# 9.0 language level — do not use newer syntax.
-- The `csc.rsp` beside each `ThinhThan.*` asmdef makes every warning an error and enables nullable (scoped per-asmdef — no root `Assets/csc.rsp`, package sources in `Library/PackageCache` must not see these flags, BLK-007); one top-level type per file, namespace = assembly + folder. The verifier's style check (Q4) enforces this — see `engineering_conventions.md` §2.7.
+- The `csc.rsp` beside each `ThinhThan.*` asmdef makes every warning an error and enables nullable (scoped per-asmdef — no root `Assets/csc.rsp`, package sources in `Library/PackageCache` must not see these flags, BLK-007). Authored C# uses one top-level type per file and namespace = assembly + folder. Canonical generated `Assets/Scripts/Protocol/*.cs` is excluded only from authored-style Q4 checks, never CODE-004 header/Q2 byte-identical regeneration/CODE-001 warnings/wire parity checks; do not rename or split generated types (`engineering_conventions.md` §2.7).
 
 ## Assemblies (acyclic)
 
@@ -31,7 +31,7 @@ ThinhThan.App        composition root (creates FrameLoop + services); nothing re
 ThinhThan.Tests.*    EditMode / PlayMode
 ```
 
-Never create or edit an asmdef or `client/ProjectSettings/` entry: IMP-000 authors all 13 asmdefs and the ProjectSettings baseline (`docs/10_implementation/repository_layout.md` § Mandatory Assemblies, § ProjectSettings Baseline; ADR-0068); only IMP-095 edits `QualitySettings.asset`. A missing reference is a `BLK-xxx`. `Assets/Scripts/Protocol/` is generated — never hand-edit.
+Only IMP-000 authors all 13 asmdefs and the ProjectSettings baseline (`docs/10_implementation/repository_layout.md` § Mandatory Assemblies, § ProjectSettings Baseline; ADR-0068); only IMP-095 edits `QualitySettings.asset`. Other tasks never create/edit an asmdef or ProjectSettings entry; a missing reference is a `BLK-xxx`. IMP-000's exact `imp/IMP-000[-suffix]` write exception includes `Assets/Scripts/Protocol/{ThinhThan.Protocol.asmdef,csc.rsp}` and their `.meta`; generated C# and parent metadata remain generated-only, and codegen never touches the authored asmdef.
 
 ## Authority boundary (hard rule)
 

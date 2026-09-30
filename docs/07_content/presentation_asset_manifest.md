@@ -76,8 +76,11 @@ Flip hướng dùng `SpriteRenderer.flipX`; cấm dùng negative scale. Collisio
 | `BOSS_LARGE` | `200x220` | `256x256` | `512x512` | `120x160` |
 | `WORLD_BOSS` | `250x280` | `320x320` | `640x640` | `150x200` |
 | `SPIRIT_BEAST` | `48x48` | `64x64` | `128x128` | không có (companion chỉ hiển thị, `../03_systems/spirit_beasts.md`) |
+| `NPC_HUMANOID` | `64x96` | `96x128` | `192x256` | không có (interaction anchor/range là authority, không collider từ art) |
 
 Mọi Linh Thú dùng `SPIRIT_BEAST`. Asset không có `size_profile` khai báo `cell_ref` (reference px, bội số của 16, tối đa `512x512`) trong metadata import: `PROP` và `VFX_SOFT`/VFX gameplay theo khai báo đó; texture = đúng 2 x `cell_ref`. `PROP` áp Đệm cell và Kích thước cell của §3.2 theo `cell_ref`; VFX chỉ áp "texture = 2 x cell_ref". Icon item/equipment/skill/cosmetic = `64x64` ref (§3.1).
+
+**NPC final roster owner = IMP-104:** toàn bộ 18 regional service + 24 ambient `npc_id` của `npc_shop_catalog.md` (42 ID, không tự thêm roster) dùng `ACTOR` / `NPC_HUMANOID`, exact 2x/100 PPU/Bottom Center và clips NPC §3.7. Mỗi ID có `asset.<npc_id>.prefab`; portrait bắt buộc chỉ khi owning dialogue/UI dùng portrait. Có thể chia sẻ visual bằng `PresentationAlias` đúng một hop, nhưng coverage phải duyệt đủ 42 ID, giải alias tới prefab final và kiểm profile/clips, vùng xuất hiện, `folklore_card`/provenance của visual cùng review các ID dùng nó. Media nằm `client/Assets/Art/Actors/Npcs/`; fragment/style/terms thuộc `actors_creatures` của IMP-104. Không coi NPC là prop hay player placeholder, không thêm physics collider.
 
 Cell được phép có transparent padding; silhouette không được tự co giãn để lấp cell. Với nhân vật, body idle/run/jump cao `88..96px`; tóc/trang phục/vũ khí có thể vượt tối đa `8px` mỗi phía nhưng phải nằm trong cell. VFX/weapon trail vượt cell là asset con riêng.
 
@@ -93,7 +96,7 @@ Cell được phép có transparent padding; silhouette không được tự co 
 ### 3.1a Phạm vi gate theo loại asset
 | asset_class | Cutout Gate §3.2 | Volume Gate §3.6 | Ghi chú |
 |---|---|---|---|
-| `ACTOR` (nhân vật, quái, boss, Linh Thú), `COSMETIC_APPEARANCE` | toàn bộ | toàn bộ | |
+| `ACTOR` (nhân vật, quái, boss, Linh Thú, NPC), `COSMETIC_APPEARANCE` | toàn bộ | toàn bộ | |
 | `PROP`, `ITEM_ICON`, `EQUIPMENT_ICON` | toàn bộ | toàn bộ trừ "Actor trên nền" | |
 | `UI_ART` (khung, nút, 9-slice) | Định dạng, Dải bán trong suốt, Viền màu, Pixel trong suốt | miễn | 9-slice: không áp Đệm cell/Kích thước cell; biên ngoài được phép cứng |
 | `FONT_ATLAS` (SDF) | miễn | miễn | kiểm tra glyph coverage (IMP-073) |
@@ -132,8 +135,8 @@ Mask translucent: file `<texture>.translucent.png` cùng kích thước, 1-bit (
 Validator ghi số đo từng file vào báo cáo; một vi phạm là fail. Ngưỡng chỉ được nới bằng ADR (gate ratchet, ADR-0050).
 
 ### 3.3 Duyệt hiển thị trong game (Visual Review Gate)
-Ảnh review được render trên job `Unity (Windows)` của CI (GitHub-hosted, không GPU) bằng Direct3D 11 WARP (Microsoft Basic Render Driver, ADR-0050, ADR-0078); metadata ảnh ghi `renderer=warp`. Ảnh chỉ dùng để soi hình ảnh, không dùng cho số liệu hiệu năng GPU.
-Mỗi entity/UI được chụp trong các scene review `client/Assets/Scenes/Review/` (IMP-070), dựng từ các lớp map thật của vùng/instance mà entity xuất hiện, ở `1280x720`, `1920x1080` và profile điện thoại `2400x1080`, cả ngày và đêm, ở zoom 100% và 200%. Job `Unity (Windows)` render và upload artifact `visual-review`; ảnh là review artifact được manifest evidence tham chiếu, không commit và không phải evidence. Agent `reviewer` (khác người tạo) ghi kết luận vào PR review comment và đặt `review_state` của bản ghi nguồn:
+Ảnh review chỉ render trên `Unity (Windows)` bằng graphics device đã **quan sát và chứng minh** tại §3.3a. `-force-d3d11` chọn API, không chứng minh WARP; metadata `renderer=warp` chỉ được ghi khi probe xác nhận adapter software WARP. Ảnh chỉ dùng để soi hình ảnh, không dùng cho số liệu hiệu năng GPU.
+Scenes/Review của IMP-070 là renderer **data-driven**, không scene append-per-asset: đọc catalog presentation requirements, Addressables keys/one-hop aliases và tất cả provenance fragments ở head (sổ hợp nhất khi release), chọn asset theo `content_id` và vùng/instance từ catalog rồi nạp actual map layers, clip/profile và Style Pack của asset. Asset chung không có vùng được review trong tất cả vùng runtime tham chiếu; UI dùng UI review surface. Thiếu mapping/context/key/clip/pack là fail, không bỏ qua. Producer chỉ thêm media/keys/provenance vào owned paths và exact registry grants `repository_layout.md` § Addressables Append Registry Grants; không sửa `client/Assets/Scenes/Review/`. Mỗi entity/UI được chụp ở `1280x720`, `1920x1080`, profile `2400x1080`, ngày/đêm, zoom 100%/200%. Job upload `visual-review`; ảnh là review artifact được manifest evidence tham chiếu, không commit và không thay thế evidence. Agent `reviewer` khác người tạo ghi kết luận vào PR review comment và đặt `review_state`:
 - không thấy viền lem, quầng màu, răng cưa hay đốm rác ở cả hai mức zoom;
 - silhouette đọc rõ trên nền: `ΔL*` trung bình giữa dải biên actor và nền cục bộ ≥ 20 (cùng phép đo "Actor trên nền" §3.6), hoặc asset có outline;
 - telegraph/VFX đọc được mà không phụ thuộc chỉ vào màu (`../00_context/constraints.md`);
@@ -144,6 +147,24 @@ Bổ sung (ADR-0076):
 - Profile LOW (`ART-006`): thêm render `960x540` (tương đương 1280x720 × render scale 0.75 của preset `LOW`) gồm một clip di chuyển ngang 2 s của mỗi actor; reviewer ghi `shimmer = none | visible`. `visible` kích hoạt quy tắc mip §3.1.
 - Rubric (`ART-011`): mỗi tiêu chí ở trên chấm 0 / 1 / 2 (0 = lỗi, 2 = đạt rõ); asset đạt khi không tiêu chí nào 0 và tổng ≥ 80% điểm tối đa. Artifact `visual-review` có thêm contact sheet đặt asset cạnh các ảnh neo của Style Pack (§3.8); điểm và contact sheet ghi vào PR review comment.
 Task sản xuất (IMP-071..075, IMP-104, IMP-105) tham chiếu artifact `visual-review` của lần chạy CI trong manifest evidence; IMP-076 kiểm lại.
+
+### 3.3a Observed Graphics Capability and Activation
+
+IMP-000 owns the graphics launch/probe and owner-derived plan; IMP-070 owns data-driven review capture; IMP-095 owns hotspot/overdraw accounting. Every graphical invocation uses the pinned native Windows Editor, URP 2D pipeline and `-force-d3d11` **without** `-nographics`. Before admitting graphical results, record actual Editor/package versions, `SystemInfo.graphicsDeviceType`, device/vendor/name/version/IDs, and the observed DXGI adapter software flag plus adapter description/LUID. D3D11 API + a generic device name alone is not WARP proof: match the initialized device to the software Microsoft Basic Render Driver/WARP adapter; ambiguity, null graphics device or a hardware adapter fails this required hosted software path. Device observation may use Windows platform diagnostics in the probe; no new runtime package, GPU host, Linux Unity or external GUI dependency is introduced.
+
+The same invocation must render a known URP Sprite-Lit fixture under day/night lights and prove finite, nonblank output and the fixture's expected lit-region luminance change (day mean L* exceeds night by >= 5). Verify material/shader SRP-Batcher compatibility separately; do not infer every SpriteRenderer uses the SRP batching path. Check `RFloat` render-target support, then render a 16x16 additive overlap fixture: clear=0, one full-target layer=1, a second layer covering the left 8 columns gives left=2/right=1, readback error <= 0.001 per pixel. Actual readback completion/format and all finite values are required even if API support flags claim success. Missing/invalid probe output, URP lit failure, unsupported target or failed/all-zero/NaN readback fails closed before review/performance gates; never emit fabricated adapter metadata, substitute another format or skip rendering. Probe report, results XML and captured artifact refer to the same source identity and invocation.
+
+**Executable graphics routes (not a third functional PlayMode owner):** the IMP-000-owned Editor helper `ThinhThan.Core.Assets.Editor.GraphicsCapabilityProbe.VerifyCurrentInvocation` performs the observations/fixtures above inside every process admitting graphical output. IMP-070's static `ThinhThan.Core.Assets.Editor.AssetProduction.VisualReviewBatch.Run` is launched with `-batchmode -projectPath client -force-d3d11 -executeMethod ThinhThan.Core.Assets.Editor.AssetProduction.VisualReviewBatch.Run -logFile <output>/visual-review.log`, with neither `-nographics` nor `-runTests`. It calls the probe, renders the data-driven capture matrix and required rendered fixtures, waits for capture/readback completion, writes `artifacts/visual-review/capture-report.json` with expected/actual capture identities, file hashes, source identity, invocation ID and probe outcome, and exits explicitly 0 only after complete success, nonzero otherwise. No fixed sleep or successful process exit alone establishes completed captures. This route does not require IMP-065 or an active functional PlayMode plan. Tests requiring rendered inputs are explicitly category `GraphicsFixtures`; a separate graphics-enabled EditMode invocation (`-runTests -testPlatform EditMode -testCategory GraphicsFixtures`, no `-nographics`) exercises them under IMP-070 activation. Functional `-nographics` test invocations exclude `GraphicsFixtures`, `Performance` and rendered load tests and cannot claim their results.
+
+| Pass | Owner activation (DONE on main or head) | Graphics | Required output |
+|---|---|---|---|
+| Functional EditMode | IMP-000 | no (`-nographics`) | nonempty EditMode XML |
+| Functional PlayMode, excluding graphics categories | IMP-065 | no (`-nographics`) | nonempty functional PlayMode XML |
+| Visual Review batch method + rendered EditMode fixtures | IMP-070, independent of IMP-065 | yes + capability probe in each invocation | `capture-report.json`, complete `visual-review` artifact + nonempty GraphicsFixtures XML |
+| Performance hotspot/counters/overdraw | IMP-095 | yes + capability probe | Performance XML + probe/metric report |
+| Graphical load/transfer harness using existing bundles | IMP-067 | yes + capability probe | load XML + bundle/load report |
+
+Use the same activation predicate for planning and result verification. Status-only claims and full-approved no-client-change scopes do not launch these passes; apply only the canonical skip reasons of `audit_gates.md`, not a new skip exemption. Otherwise every active owner requires its own pass even if functional PlayMode is not active. Planning two functional modes never suppresses Visual Review/Performance/load passes; `-nographics` XML cannot satisfy a graphical category. IMP-070 active/IMP-065 not DONE still requires review rendering; IMP-095 active requires Performance; IMP-067 active requires load. Missing XML, empty expected category, absent images/metrics or invalid capability never passes. Actual hosted WARP/URP/RFloat and pinned model/tool proofs are environment prerequisites until observed, not assertions established by these docs.
 
 ### 3.5 Art Direction — Painted-Volume 2D Chibi (ADR-0056)
 Asset không được trông như tranh phẳng. Mọi actor, prop, vật phẩm và lớp môi trường gameplay tuân thủ:
@@ -197,6 +218,12 @@ Actor trên nền   trên render review (§3.3): mean L* của B - mean L* của
 ```
 Vi phạm là fail; ngưỡng chỉ nới bằng ADR (gate ratchet).
 
+**Deterministic numeric completion:** coordinates use image origin top-left, row-major `(y,x)` tie order; pixels outside the cell are outside S. Empty S/B or any required background/layer region fails its applicable gate. Convert sRGB using IEC sRGB transfer and D65 Lab; use binary64, fixed row-major reduction order, reject every nonfinite input/intermediate/result (NaN is never a comparison pass). Quantile q uses sorted `(L*,y,x)` and nearest rank `max(0,ceil(q*N)-1)` with no interpolation. Use that identical rank rule for all stated percentiles.
+
+Both Lloyd algorithms assign by squared distance, equal distances choose the lower original cluster index. Keep duplicate initial centers; empty clusters keep their previous finite center, have area 0 and are not counted toward the >=3 value tiers or >=5% hue eligibility. Recompute nonempty centers in row-major order; stop on identical assignments or use the completed 100th iteration (no random reseed, no threshold epsilon stop). A completed iteration is assignment followed by mean recomputation: the final memberships, areas and means all come from that same iteration; do not run an unrecorded extra assignment after the iteration limit. All value/hue clusters being empty or no eligible hue cluster fails. Weighted median sorts `(d,cluster_index)`, chooses the first d whose doubled cumulative integer pixel area is >= the total eligible area (lower median on an exact half). For top/bottom thirds, bbox height h uses `max(1,ceil(h/3))` rows at each end; overlap for h <= 2 is intentional. If either part has no pixels of C, that eligible cluster's top-light measurement fails, not omit it.
+
+For an empty 5..8 px core ring K (legitimate thin silhouette), use the deepest pixels of S by Chebyshev distance to outside S as K, then nearest Euclidean/row-major tie as above; report `core_mode=DEEPEST`. K must be nonempty and disjoint from B; a silhouette only one edge-band thick with no deeper pixel fails the applicable rim gate rather than returning NaN/auto-pass. Thresholds remain unchanged. Fixtures include duplicate-centroid grayscale, equal-rank pixels, empty clusters/thirds, a thin PROP with valid deepest core, an all-edge silhouette failure and missing background.
+
 Fixtures bắt buộc của validator (IMP-070, `client/Assets/Tests/EditMode/` của packet đó): `gradient_smooth_pass.png` (khối trụ tô gradient mịn, phải PASS "Không mảng phẳng"), `flat_fill_fail.png` (mảng một màu > 20% S, phải FAIL), `dark_hair_toplit_pass.png` (chibi tóc đen, sáng từ trên đúng, phải PASS "Sáng từ trên"), `bottom_lit_fail.png` (sáng từ dưới, phải FAIL), `tile_solid_edge_pass.png` (`TILE` cạnh đặc, phải PASS "Định dạng").
 
 ### 3.7 Animation Contract (ADR-0076, `ART-004`)
@@ -207,13 +234,18 @@ Kỹ thuật theo `size_profile`:
 | `CHARACTER` | skeletal (PSB layer → PSD Importer 15.0.0 + 2D Animation 16.0.0); một skeleton dùng chung cho 5 class; cosmetic/trang bị đổi bằng Sprite Library/Resolver | `idle, run, jump_up, fall, land, attack_basic, cast, hit, guard, defeat` | skeletal: key ≥ 4 mỗi clip, sample 30 fps |
 | `MONSTER_MEDIUM`, `MONSTER_ELITE`, `BOSS_LARGE`, `WORLD_BOSS` | skeletal (skeleton riêng mỗi rig) | `idle, move, attack_<n>` (mỗi skill của catalog), `hit, defeat`; boss thêm `phase_transition` mỗi phase | key ≥ 4, 30 fps |
 | `MONSTER_SMALL`, `SPIRIT_BEAST` | frame-by-frame | `idle, move, attack_basic, hit, defeat` (Linh Thú: `idle, move, cast`) | ≥ 4 frame, 12 fps |
+| `NPC_HUMANOID` | frame-by-frame (noncombat NPCs, no player rig requirement) | `idle, interact`; `move` only if catalog explicitly declares PATROL | ≥ 4 frame mỗi clip, 12 fps |
 | VFX gameplay | flipbook (§3.9) | theo skill | ≤ 16 frame, 12 hoặc 24 fps |
 
 Layer PSB tối thiểu cho skeletal: `head, hair, torso, arm_front, arm_back, leg_front, leg_back, weapon` (+ `accessory_*` tùy chọn); tên layer cố định để Sprite Library ánh xạ cosmetic.
 
 ```text
-Nhất quán frame   với mỗi frame f của mọi clip frame-by-frame: mọi cụm sắc độ (§3.6) có |mean Lab(f) - mean Lab(idle_0)|
-                  ΔE00 <= 3; độ rộng bbox(S) lệch <= 8 texture px so với idle_0 trừ clip attack/hit/defeat (được lệch <= 32)
+Nhất quán frame   fit hue centers only on idle_0 (§3.6); freeze their original indices and discard empty idle_0
+                  clusters from the candidate set. Assign every frame pixel to the nearest remaining idle_0 center
+                  with lower-original-index ties. Each candidate must have nonempty corresponding frame membership;
+                  ΔE00 between its mean Lab and idle_0 mean <= 3. Empty idle_0 centers never steal pixels or get reseeded.
+                  New frame clusters are not fitted; empty frame silhouette or any nonfinite mean/difference fails.
+                  độ rộng bbox(S) lệch <= 8 texture px so với idle_0 trừ clip attack/hit/defeat (được lệch <= 32)
 Pivot             pivot Bottom Center giữ nguyên mọi frame/clip; chân chạm y = 0 ở idle/run/land
 ```
 Ngưỡng ΔE00 3 / 8 px là đề xuất: hiệu chỉnh trên lô asset đầu tiên bằng gate-ratchet ADR.
@@ -274,7 +306,9 @@ AI agent chịu trách nhiệm tạo hoặc tìm, chỉnh sửa, tích hợp và
 
 Điều kiện công cụ AI và giấy phép nguồn phải được kiểm tra **ở thời điểm lấy/tạo asset**; “tải miễn phí”, “royalty-free” hoặc một trang tổng hợp không ghi chủ sở hữu/giấy phép không đủ bằng chứng. Không dùng `NC`, `ND`, `SA`, editorial-only, trial, nguồn bị nghi lấy cắp, hay giấy phép riêng chưa được chấp thuận. Nếu không chứng minh được quyền sử dụng thương mại, **dừng asset đó**, tự tạo asset khác hoặc chọn nguồn hợp lệ khác; không âm thầm thay bằng placeholder. `CC0`/`CC BY` không tự giải quyết quyền hình ảnh cá nhân, nhãn hiệu hay hình tượng văn hóa nhạy cảm. Quy tắc cultural review của `cosmetic_catalog.md` vẫn áp dụng. Tham chiếu giấy phép chính thức: [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/), [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/), [OFL-1.1](https://openfontlicense.org/open-font-license-official-text/).
 
-Tiêu chí chọn công cụ AI (chủ repo ghi lựa chọn tại `../00_context/technology_versions.md` § Content production tools): hỗ trợ ảnh tham chiếu/style adapter, seed tái lập được, xuất PNG có alpha, điều khoản cho phép phân phối thương mại, ghi được model/phiên bản chính xác.
+Tiêu chí công cụ AI là **prerequisite thực tế**, không suy từ tên “Direct AI Generation”: trước claim final-art, Owner Setup và `technology_versions.md` phải ghi provider/access API, exact tool/model/version, terms URI và snapshot/hash tại thời điểm tạo, quyền thương mại và giới hạn truy cập/giá 0. Demonstrate reference-image/style input, reproducible explicit seed returned/accepted by that API and exact-size PNG/alpha export (native hoặc key-background cleanup qua gate). Không ghi seed/model/terms giả nếu tool không cung cấp: chọn in-session route đáp ứng contract khác hoặc dừng final-art đó; placeholder chỉ cho engineering scope §4, không thay final output. Owner-approved in-session production remains, không thêm external desktop GUI dependency hay loại miễn giấy phép.
+
+Capability proof phải theo output: một actor sample đi từ generation/source tới layer PSB đúng tên, rig/clip import bằng pinned Unity packages và final packaged sprite/prefab qua gate/review; image generation không tự chứng minh layered rig/animation/audio. IMP-075 có thể dùng generated audio chỉ khi selected API/tool thật có capability và terms phù hợp, hoặc FREE_LICENSED CC0/CC-BY audio có URL/hash/license thật theo §5. Chứng minh cue playback và BGM loop/stream import; không bắt buộc chọn audio generator nếu permitted free-licensed route đã đáp ứng. Ghi actual capability artifact/source hashes trong setup/evidence, không lấy generic category approval làm proof mọi packet ready. Seed/terms/version unavailable là missing environment prerequisite, không tự miễn provenance.
 
 Rủi ro bản quyền (ADR-0076): art thuần AI có thể không được bảo hộ bản quyền ở một số thị trường (ví dụ Mỹ); dự án chấp nhận rủi ro này. Nền tảng phát hành yêu cầu khai báo nội dung AI (Steam) được xử lý trong checklist phát hành của `IMP-067`.
 
@@ -300,10 +334,13 @@ source_sha256      hash file đầu vào; bằng final_sha256 nếu không sửa
 final_sha256       hash file được đưa vào build
 changes            mô tả biến đổi; "none" nếu không có
 attribution        dòng credit phát hành; null nếu không bắt buộc
+style_pack_id      image-level pack identity `<fragment>/<pack_id>` resolving §3.8, required for every image row
+                   (including FREE_LICENSED with generation_record=null); null only for non-image media
 generation_record  {tool, version, model_id, model_sha256, terms_uri, terms_snapshot_sha256, prompt, seed, parameters,
-                    workflow_sha256, style_pack_id, reference_uris, reference_sha256[], c2pa_present} nếu dùng AI tạo/chỉnh;
+                    workflow_sha256, reference_uris, reference_sha256[], c2pa_present} nếu dùng AI tạo/chỉnh;
                     null nếu không. terms_snapshot_sha256 = hash bản sao điều khoản tại thời điểm tạo, lưu LFS tại
                     client/Assets/Art/Provenance/terms/<fragment>/<sha256>.txt; model_sha256/workflow_sha256 null nếu công cụ không lộ ra
+                   style_pack_id is not nested in generation_record; legacy nested field is removed, not duplicated
 folklore_card      {source_tales[], regional_variants, motifs_checked[]} cho entity văn hóa (§5); null cho asset chung
 inputs             [] hoặc danh sách {creator, source_uri, license_id, license_uri, acquired_at_utc, sha256} cho nguồn ngoài dùng tạo/ghép
 review_state       PENDING | APPROVED | REJECTED
@@ -311,7 +348,7 @@ review_state       PENDING | APPROVED | REJECTED
 
 Không ghi URL tìm kiếm thay cho URL nguồn gốc. Với `AI_CREATED` hoặc asset tải về rồi chỉnh bằng AI, `generation_record` phải chỉ ra điều khoản cho phép phân phối thương mại; mọi ảnh/âm thanh đầu vào bên thứ ba phải hiện trong `inputs` với giấy phép hợp lệ. `APPROVED` chỉ khi metadata, file/hash, giấy phép/điều khoản, thẩm mỹ và quyền liên quan đã được kiểm tra. File bị `PENDING` hoặc `REJECTED` không được vào release. Danh sách attribution của mọi bản ghi `CC-BY-4.0` và notice của font `OFL-1.1` phải được sinh từ sổ này và đóng gói để người chơi truy cập được trong credits.
 
-Coverage được tính từ **toàn bộ catalog và feature phát hành**, không chỉ các key đã có trong Addressables: nhân vật/animation, quái/boss/Linh Thú, bản đồ/props/parallax, UI/font/icon, vật phẩm/equipment/cosmetics, skill VFX/telegraph, SFX/BGM và scene. Mỗi ID cần presentation có đúng một key hoặc một mapping tường minh tới asset chia sẻ; asset chia sẻ vẫn có sổ nguồn. Không tạo bản vẽ chỉ để đạt đủ số lượng nếu asset chia sẻ hợp lý và không làm mất nhận diện riêng của entity/map.
+Coverage được tính từ **toàn bộ catalog và feature phát hành**, không chỉ keys trong Addressables: nhân vật/animation, quái/boss/Linh Thú, đủ 42 NPC (§3), bản đồ/props/parallax, UI/font/icon, vật phẩm/equipment/cosmetics, skill VFX/telegraph, SFX/BGM và scene. Mỗi ID cần presentation có đúng một key hoặc mapping tường minh tới asset chia sẻ đúng một hop; asset chia sẻ vẫn có sổ nguồn. Không tạo bản vẽ chỉ để đạt đủ số lượng nếu chia sẻ hợp lý và không mất nhận diện riêng.
 
 Âm thanh tối thiểu: mỗi trong 33 scene phát hành có BGM key hoặc mapping tường minh tới một BGM chia sẻ; các cue `ui_confirm`, `ui_cancel`, `ui_error`, `jump`, `land`, `basic_attack`, `hit`, `guard`, `just_guard_success`, `skill_cast`, `boss_telegraph`, `item_pickup`, `quest_complete`, `map_transfer` có SFX key. Mọi cue khác được runtime/UI tham chiếu cũng phải phân giải trước M10. Một file có thể phục vụ nhiều cue nếu mapping công khai và không làm mất phản hồi quan trọng.
 

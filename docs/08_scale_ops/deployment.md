@@ -75,8 +75,10 @@ SIGTERM or SIGINT starts the sequence once (a second signal is ignored; only the
 ```text
 DURABLE_OUTBOX_DIR   = /var/lib/thinhthan/outbox   (systemd StateDirectory, same host, not PostgreSQL)
 file                 = <boot_id>.journal, written then fsync'd, then renamed to <boot_id>.ready
-record               = uint32 length | DurableCommandRecord (protobuf) | uint32 CRC32C of the record bytes
-DurableCommandRecord = operation_family, owner_id (16 B), operation_id (16 B), command_type, payload bytes, enqueued_at_ms
+record               = uint32 length | DurableCommandRecord (protobuf) | uint32 CRC32C of length + record bytes
+DurableCommandRecord = schema_version (uint32 = 1), operation_family (string), owner_id (16 B UUID), operation_id (16 B UUID),
+                       command_type (enum: COMMAND_KILL_SETTLEMENT, COMMAND_WRITE_WORLD_CONSEQUENCE, COMMAND_PUBLIC_BOSS_SETTLEMENT, COMMAND_CHECKPOINT, COMMAND_REWARD_CLAIM),
+                       payload (bytes: typed protobuf submessage corresponding to command_type), enqueued_at_ms (int64)
 write budget         = the 120 s TimeoutStopSec margin
 ```
 - The journal is written without PostgreSQL, so a database outage (the usual flush-timeout cause) cannot lose the queue.

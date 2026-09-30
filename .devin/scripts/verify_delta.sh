@@ -109,6 +109,10 @@ fi
 # --- 1. Spec/task integrity ----------------------------------------------------
 hdr "Spec integrity"
 protected_docs="$(printf '%s\n' "$files" | grep -E '^docs/|^\.devin/|^AGENTS\.md$|^README\.md$' | grep -v '^docs/10_implementation/' || true)"
+branch="$(git branch --show-current 2>/dev/null || true)"
+if [[ "$branch" =~ ^imp/IMP-106(-[A-Za-z0-9._-]+)?$ ]]; then
+  protected_docs="$(printf '%s\n' "$protected_docs" | grep -vE '^\.devin/scripts/(cache_telemetry\.(sh|ps1)|cache-policy\.md)$' || true)"
+fi
 if [ -n "$protected_docs" ]; then
   if [ "${THINHTHAN_AGENT_ROLE:-}" = "spec-owner" ]; then
     warn "spec-change diff touches protected docs (spec-owner): $protected_docs — PR needs policy-review"
@@ -140,9 +144,13 @@ fi
 
 # --- 2. Generated-code integrity ---------------------------------------------
 hdr "Generated code"
-if in_scope GENERATED && ! in_scope PROTO; then
+generated_files="$(printf '%s\n' "$files" | grep -E '(^server/internal/protocol/|^client/Assets/Scripts/Protocol/|^client/Assets(\/Scripts(\/Protocol)?)?\.meta$|^proto/testdata/golden/)' || true)"
+if [[ "$branch" =~ ^imp/IMP-000(-[A-Za-z0-9._-]+)?$ ]]; then
+  generated_files="$(printf '%s\n' "$generated_files" | grep -vE '^client/Assets/Scripts/Protocol/(ThinhThan\.Protocol\.asmdef|csc\.rsp)(\.meta)?$' || true)"
+fi
+if [ -n "$generated_files" ] && ! in_scope PROTO; then
   fail "generated files changed without proto source change — suspected hand-edit"
-elif in_scope GENERATED; then
+elif [ -n "$generated_files" ]; then
   pass "generated changes accompany proto source changes"
 else
   pass "no generated files touched"

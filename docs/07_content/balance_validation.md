@@ -30,24 +30,11 @@ Act totals under `exp_required(L) = 10000 * L * L` (×100 scale):
 
 Each row sums exactly to its act_exp_total; the six acts sum to 702,100,000.
 
-Guardrails:
-```text
-REJECT if the independently computed channel EXP — derived from per-unit values in
-          progression_route.md "Channel EXP Rate References" × unit frequency × channel hours
-          (authored monster/dungeon/event EXP from owning catalogs) — deviates from
-          the target channel EXP by more than 15% for any channel in any act.
-          (The 2-percentage-point channel-share check is NOT a valid substitute: any value
-          computed as act_total × channel_percentage satisfies it trivially and catches
-          only authoring typos, not wrong EXP targets.)
-REJECT if | derived_act_hours - target_act_hours | / target_act_hours > 0.15
-```
+Two separate fixtures are mandatory:
+1. **Seven-channel calibration**: compute each channel from independent per-unit owning-catalog EXP × authored frequency × portfolio channel hours; reject >15% deviation for each original channel/act. BOUNTY calibrates active-time rate only; this is not a calendar simulation and grants no uncapped daily rewards. WORLD_EVENT uses one eligible completion/hour at `character_act`: region0 always, two rotating regions, highest unlocked active region, no access bypass.
+2. **Zero-bounty continuous feasibility**: no Daily, Ranked PvP or Guild War EXP. Substitute FIELD/DUNGEON shares `48.275862%/21.724138%` per `progression_route.md`, leave all other shares unchanged, run actual accessible routes/ambient rates and require each act total/gate. Do not check zero BOUNTY against its calibration target or original FIELD/DUNGEON shares. Reject aggregate EXP or derived act-hours drift >15%, or calendar-reset/locked-map dependency.
 
-Daily, Ranked PvP, and Guild War never count toward this benchmark.
-
-Reject a revision when:
-- any channel's EXP computed from independently authored per-unit values (see "Channel EXP Rate References" in `progression_route.md`) deviates from the target channel EXP by more than 15% in any act,
-- any act's derived hours deviate from the target by more than 15%,
-- a next-act level gate can only be reached by Daily/PvP/Guild War,
+Both fixtures use independently authored unit EXP, never `act_total * target_share` as measured output. Reject when:
 - a MAIN route introduces a rare-drop/slow-public-boss wait gate to fill EXP,
 - optional repeat monster grinding becomes the only practical way to satisfy the next region's level requirement.
 
@@ -175,12 +162,21 @@ Release guardrail:
 A boss whose ordinary five-player reference time falls below the floor is at risk of skipping authored mechanic cadence. Prefer boss-specific mechanic/HP correction over increasing player damage taken.
 
 # Level-60 Rotation Benchmark
-For an offensive-throughput check at Level 60:
-- equip the five highest useful single-target damage actives available to that class; if fewer than five directly damage, use all damaging actives; fill all downtime with the reference basic attack,
-- set those damaging actives to `skill_level = 10`, which costs at most `45` of the `75` earned Level-60 skill points (59 level-up + 12 books + 4 bonus),
-- use authored cooldown/startup/active/recovery values,
-- use `+8` T6 synthetic reference gear,
-- exclude optional build-system damage bonuses.
+Use the +8 T6 synthetic reference, no optional build layers. Exact selected active IDs in scheduling priority order:
+
+| class | active_priority |
+|---|---|
+| KIM | `nhat_kiem_dinh_hon,kiem_tran,pha_giap,hoi_kiem,xuyen_phong` |
+| MOC | `van_moc_hoi_sinh,van_doc,thanh_dang,moc_bo` |
+| THUY | `thien_ha,han_trieu,trieu_quyen` |
+| HOA | `cuu_hoa_lien,hoa_vuc,lien_bao,boc_bo` |
+| THO | `thien_son_tran,dia_chan,thach_kich` |
+
+All listed actives Lv10; equipped basic_1 Lv1, passives unlearned, remaining slots empty. Target is an immortal stationary boss hurtbox of the actual boss profile, center `(1.0m,0)` relative to stationary caster origin `(0,0)`; caster faces +X, positioned casts use target center. Neutral element, no outgoing boss attacks/control/dodge, player full HP/MP, cooldowns ready at tick0, no statuses. MP regen ticks at t=1000ms then every1000ms using in-combat reference rate; basic_1 connected primary restores2MP. Damage/status/zone/projectile resolution and all clocks use runtime formulas, including cast travel and expiry; never assume instantaneous projectile hits.
+
+At each50ms tick resolve due effects and regen in canonical order, then if actor is free and current basic self-chain/deadlines permit, choose first ready affordable active from the fixed priority; otherwise choose basic if eligible; otherwise wait. An unaffordable active is skipped, not resource-borrowed; every accepted action spends actual MP, snapshots timing and starts cooldown once. Actives do not cancel recovery; same-basic recovery self-chain is the sole exception. Stop on first boss-HP zero commit. Five-player fixture has five identical actors and stable IDs1..5 sharing the boss, each initialized identically; actual multi-source DOTs coexist.
+
+Emit tick/action-ID/accepted-ms/active-due/recovery-due/complete-due/next-accept-tick/MP-before/MP-cost/MP-after/cooldown-ready/committed-HP-damage trace. Same revision/input must produce byte-identical canonical trace and TTK; cost, priority or schedule mutation must change the appropriate trace, not a private alternative scheduler.
 
 Approximate launch reference windows after the boss-durability correction:
 ```text
@@ -232,14 +228,14 @@ A larger spread requires explicit review because solo progression would otherwis
 Damage-role differences may remain visible; this guardrail is not a class ranking and does not require a trinity.
 
 # New-Stat Power-Budget Validation (ADR-0037)
-`LIFESTEAL`, `REFLECT`, `ABSORB`, `HEAL_REDUCTION`, and `HEALING_RECEIVED` enter the **existing** equipment secondary-roll pool and compete for existing roll slots. The number of secondary rolls per item does not increase. Total expected secondary-roll power per item must remain unchanged.
+The 12-type secondary pool competes for unchanged per-item roll slots. The accepted 8→12 expansion may reduce expected power; it must not inflate it. Equality of raw ratios is not a common-unit power proof.
 
 ## Roll-Magnitude Budget Rule
 Before activation of any content revision that adds or changes the magnitude of these secondary rolls:
 
-1. Enumerate the updated secondary-roll pool entries and their authored magnitude ranges.
-2. Compute the pre-change and post-change expected secondary-roll power-unit total per item using the same synthetic reference metric used for existing rolls (e.g., weighted average contribution to the reference build's effective DPS/survivability).
-3. **Reject** if post-change expected total exceeds pre-change total by more than `1%` without an explicit intentional balance note that documents the approved deviation and records the revised expected values.
+1. Enumerate old8 (`ATTACK,DEFENSE,MAX_HP,MAX_MP,CRIT_CHANCE,ATTACK_SPEED,CAST_SPEED,COOLDOWN_REDUCTION`) and current12 (plus LIFESTEAL,REFLECT,ABSORB,HEAL_REDUCTION), preserving the old8 authored ranges as the comparison baseline.
+2. Use exact common power units: `power(x)=10000*x/reference_stat` for flat stats (ATTACK724,DEFENSE426,MAX_HP4794,MAX_MP859); utility `power(x)=10000*x/global_PvE_cap` (CRIT_CHANCE0.60,ATTACK_SPEED0.50,CAST_SPEED0.50,COOLDOWN_REDUCTION0.35,LIFESTEAL0.08,REFLECT0.15,ABSORB0.10,HEAL_REDUCTION0.30). This is a declared budget-utilization metric, not a claim that one utility point equals DPS. Uniform inclusive integer/bp draws use exact rational midpoint; `E_item=K/N*sum(E_power(type))`. Compute per tier with K1/2; no caps/gear floors on this marginal metric. Old8 baseline uses the same denominators. Runtime-sensitive tests below remain independent.
+3. Reject current expected power >old8*1.01 without an explicit approved balance note with numeric before/after; no note can waive runtime guardrails. Report decreases explicitly; do not call equal roll count a power proof.
 
 The guardrail numbers (TTK windows, survivability windows) are **never** to be widened to accommodate a roll-magnitude overshoot. If a window moves outside its guardrail after adding these stats, the roll magnitudes are wrong — fix the magnitudes.
 
@@ -266,7 +262,7 @@ REJECT if: (LIFESTEAL_HPS_CAP + reference_combat_HP_REGEN) >= documented_boss_av
 This guardrail must never be satisfied by a real build. If combined lifesteal+regen sustain reaches or exceeds the documented boss average DPS at the pinned reference, the roll magnitudes or `LIFESTEAL_HPS_CAP` is wrong — fix the source parameter, not the guardrail.
 
 ## TTK and Survivability Window Preservation Rule
-After any content revision that grants or changes `LIFESTEAL`, `REFLECT`, `ABSORB`, or `HEAL_REDUCTION` values, the validation suite must re-run the full synthetic reference build (§ "Synthetic PvE Reference Build") with these stats set to zero (the reference build deliberately excludes secondary rolls). The TTK and survivability windows must still fall within their existing guardrails.
+Run two independent fixtures: (A) the no-roll reference unchanged, proving base-budget guardrails, and (B) a roll-sensitive marginal fixture. For B enumerate each type and every legal magnitude (integer/bp values inclusive), add that roll to each of the14 reference slots separately, average its actual runtime-derived damage/defense/resources/sustain contribution uniformly, and weight K/N per tier. Also run fixed deterministic stress loadouts with each type at maximum on every eligible slot (no duplicate type per item; other roll slot empty). Sustain scenario: boss hits reference every3s, player attacks per pinned scheduler, target has healing each3s so HEAL_REDUCTION is measurable; no stochastic RNG, expected crit and hit probabilities. Report per-type before/after outputs and reject the same hard combat/sustain windows, never widen them. Perturb an ATTACK-flat endpoint and each new utility endpoint by one legal unit and require its marginal output or budget metric to change; A intentionally remains unchanged. Only B/metric may be repaired by roll retuning.
 
 **Explicit reject rule — effective sustain or mitigation inflation:**
 ```text

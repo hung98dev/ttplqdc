@@ -166,6 +166,17 @@ pre-attach inbound queue         = 8 frames; after attach the per-character queu
 ```
 Required authoritative events/results are never silently dropped: they either enqueue or the connection closes. The server never buffers unbounded history for a slow client.
 
+## Client Receive Queue and Lease Ownership
+Unity uses one WebSocket receive/decode producer and one main-thread consumer. The receiver never calls Unity APIs. Bounds apply to queued **and currently applying** decoded frames: at most 256 frames and 4 MiB of accounted live memory, whichever is reached first. Accounting includes owned encoded-buffer capacity, decoded backing arrays/string storage and fixed message storage; shared pool capacity is charged while leased, not merely payload byte length. Decode reserves this bound before allocating, validates all schema/count limits, and stops with reconnect recovery if the reservation cannot fit. No unbounded decoded-object staging queue exists.
+
+Every queue entry has `(connection_generation,session_epoch,server_seq,baseline_id when applicable)` and exactly one owner lease. Receiver owns it until successful enqueue; queue owns it until dequeue; main-thread consumer owns it while applying. Immutable access only while owned; return/reset exactly once after application, rejection, cancellation or drain. Enqueue failure returns the producer's lease. A referenced buffer/message cannot return to its pool while queued/applying, and a superseded entry releases its old lease only after replacement data has its own ownership. A merge either transfers uniquely owned storage or copies into already-reserved storage; it cannot alias a released lease.
+
+Only unapplied REPLACEABLE_STATE may supersede the same state key, without crossing a baseline or intervening lifecycle/control barrier. 303 merges optional fields and self-private fields field-wise (newer wins, absence unchanged), retains the newest complete SelfAck, and treats explicitly present list wrappers as replacement; it is never whole-snapshot replacement. Full snapshots such as 433/628 replace only their own state key. AUTHORITATIVE_EVENT, DURABLE_RESULT, CONTROL, spawn/despawn and baselines preserve server order and never coalesce.
+
+On either bound, first attempt only these safe supersessions. If a required entry still cannot fit, stop the receiver, close/reconnect with the resume credential, invalidate the local baseline and request fresh authoritative state; never silently drop an event/result and continue. Pending client operations retry their original IDs after recovery. Queue exhaustion is local backpressure, not permission to send invented server errors.
+
+Connection replacement/disconnect increments the local `connection_generation` before any new receive starts. Cancel/join the old producer, drain its queue and release every lease, then publish the new epoch. The consumer checks generation/epoch immediately before application; old entries release without mutating world/UI or advancing ACK. An already applying entry finishes under the main-thread boundary before replacement activation; it cannot mutate the new generation. Transfer/baseline replacement similarly discards baseline-dependent old state with exact-once release. Diagnostics expose frame/byte high-water marks, supersessions, rejected stale generations and reconnect-overflow counts.
+
 ## Forbidden
 - client-supplied authoritative position/damage/reward result,
 - unbounded frame/body allocation,

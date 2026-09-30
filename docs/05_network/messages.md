@@ -66,7 +66,7 @@ Session field lists (ADR-0064):
 6  C2S_CHARACTER_ATTACH       character_id
 7  S2C_CHARACTER_ATTACH_OK    character_id, ownership_epoch (uint64), map_id, channel_index (uint32), instance_id (16 bytes,
                               empty in the normal world), content_revision; followed by S2C_WORLD_BASELINE (300) and every state push
-                              (432..438, 515, 607, 616, 619, 628). Rejections use S2C_ERROR: CHARACTER_ALREADY_ACTIVE, NOT_OWNER,
+                              (432..438, 515, 517, 518, 607, 616, 619, 628). Rejections use S2C_ERROR: CHARACTER_ALREADY_ACTIVE, NOT_OWNER,
                               ACCOUNT_PENDING_DELETION. The login queue is enforced only at the ticket (session.md § Login
                               Queue), never at attach. A forced-placement wait answers with 15 instead (world_rules.md § Forced Placement).
 8  S2C_SESSION_REPLACED       reason : NEWER_SESSION | REVOKED; the server closes the socket after sending
@@ -129,9 +129,8 @@ Input/transfer field lists (envelope `client_seq` identifies every C2S frame; pa
                               instance_id (16 bytes, empty in the normal world), content_revision, ready_deadline_ms (uint32;
                               TRANSFER_BUDGET_* in ../04_architecture/concurrency.md)
 106 C2S_PRESENTATION_READY    transfer_id
-107 S2C_MOVEMENT_CORRECTION   last_processed_client_seq (uint64), server_tick, x_mm, y_mm (sint32), vx_mm_s, vy_mm_s (sint32),
-                              facing, movement_state : IDLE | RUN | JUMP | FALL | KNOCKBACK (../01_gameplay/movement.md),
-                              platform_id (string; empty = none), reason : ILLEGAL_MOVE | KNOCKBACK | PORTAL | RESPAWN | FORCED
+107 S2C_MOVEMENT_CORRECTION   last_processed_client_seq (uint64), server_tick, checkpoint : MovementCheckpoint,
+                              reason : ILLEGAL_MOVE | KNOCKBACK | PORTAL | RESPAWN | FORCED
                               (ADR-0069). Sent only when the server rejects or overrides the predicted path (illegal move,
                               knockback/displacement, portal, respawn, other forced placement); ordinary prediction error is
                               computed by the client from S2C_STATE_DELTA.self_ack. The client snaps/replays per
@@ -231,7 +230,8 @@ C2S_BASIC_ATTACK (201)    client_mono_ms (advisory), facing, target_entity_id (0
 C2S_TARGET_INTENT (202)   target_entity_id (0 = clear target)
 S2C_ACTION_STARTED (203)  action_instance_id (uint64), source_entity_id, skill_id, client_seq (echo of the request envelope client_seq; 0 for
                           server-originated actions), server_tick, facing, target_entity_id,
-                          area_center_x_mm, area_center_y_mm, cast_ms, cooldown_ends_at_tick, mp_after
+                          area_center_x_mm, area_center_y_mm, cast_ms, cooldown_ends_at_tick, mp_after,
+                          active_starts_at_tick, active_ends_at_tick, recovery_ends_at_tick, motion_ends_at_tick
 S2C_ACTION_REJECTED (204) client_seq (echo of the request envelope), request_message_id (200 | 201 | 202 | 208),
                           operation_id (208 only), skill_id,
                           error_code : COOLDOWN_ACTIVE | INSUFFICIENT_MP | SKILL_NOT_LEARNED | SKILL_LOADOUT_INVALID
@@ -257,6 +257,8 @@ S2C_COMBAT_EVENT (304)    event_id (uint64, unique per partition), server_tick, 
                           beast_passive2_success, plus the secondary fields below
 ```
 `C2S_RESPAWN_REQUEST` (208) is valid only for a `DEAD` character in the normal world when `server_tick >= respawn_available_at_tick` (`RESPAWN_DELAY`, `../01_gameplay/death_respawn.md`); success is `S2C_RESPAWN`, rejection is `S2C_ACTION_REJECTED` (carrying the request `operation_id`) with `INVALID_STATE` (not dead, too early, or respawn is server-driven in dungeon/PvP/Guild War). When every channel of the checkpoint map is at the forced-placement cap the server answers `S2C_PLACEMENT_PENDING` (15) and respawns the character when a slot frees (`../02_world/world_rules.md` § Forced Placement). A retry with the same `operation_id` after success re-sends the committed `S2C_RESPAWN`. A character that never sends 208 stays `DEAD`.
+
+Action deadlines use exact cumulative due-time rounded UP to the first 50 ms tick (`../01_gameplay/skills.md`, `../04_architecture/realtime_loop.md` § Action Deadline Conversion), never a separately rounded duration per phase. `cast_ms` remains the theoretical effective startup duration. For BASIC_ATTACK, `cooldown_ends_at_tick` is the earliest next acceptance tick from the effective basic interval, including the DASH_LINE motion-end gate; it is not the stored unscaled cooldown. For ACTIVE it is the ordinary authoritative cooldown deadline. `motion_ends_at_tick = 0` when there is no motion. Clients pace held attacks using this authoritative acceptance deadline and never self-chain a dash before its motion ends.
 
 
 `S2C_COMBAT_EVENT` also carries the following secondary results generated at Global Effect Resolution Order stage 7 (ADR-0037). Each field is present only when the corresponding secondary result occurred in that event; absence means zero/not-triggered:
@@ -287,6 +289,8 @@ ID   Name
 304  S2C_COMBAT_EVENT     (see Combat section above)
 305  S2C_ENCOUNTER_EVENT
 306  C2S_BASELINE_ACK
+307  C2S_BASELINE_RESYNC_REQUEST
+308  S2C_BASELINE_RESYNC_RESULT
 ```
 
 Baseline and delta semantics are canonical in `synchronization.md`.
@@ -302,19 +306,32 @@ EntityState               entity_id, entity_kind : PLAYER | MONSTER | NPC | BEAS
                           equipped_cosmetics : list of {slot, cosmetic_id} (PLAYER), encounter_id (0 = none),
                           stat_lifesteal, stat_reflect, stat_absorb, stat_heal_reduction, stat_healing_received (basis points)
 300 S2C_WORLD_BASELINE    baseline_id (uint64), server_tick, map_id, channel_index, instance_id, content_revision,
-                          self : EntityState, entities : list of EntityState (AOI set, <= MAX_ENTITIES_IN_AOI_PER_CLIENT),
-                          encounters : list of {encounter_id, encounter_content_id, phase_number, active_mechanic_ids}
+                          self : EntityState, self_private : SelfPrivateState, self_checkpoint : MovementCheckpoint,
+                          entities : list of EntityState (AOI set, <= MAX_ENTITIES_IN_AOI_PER_CLIENT),
+                          encounters : list of EncounterState {encounter_id, encounter_content_id, phase_number,
+                          active_mechanics : list of ActiveMechanicState (same typed payload and lifecycle as 305)}
 301 S2C_ENTITY_SPAWN      baseline_id, server_tick, entity : EntityState
 302 S2C_ENTITY_DESPAWN    baseline_id, server_tick, entity_id, reason : LEFT_AOI | DIED | REMOVED | TRANSFERRED | SHED
-303 S2C_STATE_DELTA       baseline_id, server_tick, self_ack : SelfAck {last_processed_client_seq (uint64), x_mm, y_mm,
-                          vx_mm_s, vy_mm_s (sint32), movement_state, platform_id} (always present; the authoritative self
-                          state after the last processed input, used by client reconciliation, synchronization.md § Local
-                          Reconciliation), entities : list of EntityDelta {entity_id, then every scalar EntityState field
-                          except entity_id/entity_kind/content_id/character_id as proto3 `optional` (absent = unchanged); list
-                          fields are wrapped: `statuses : StatusList {repeated entries}` and `equipped_cosmetics : CosmeticList
-                          {repeated entries}` as message fields (absent = unchanged; present = full replacement, possibly empty)}
+303 S2C_STATE_DELTA       baseline_id, server_tick, self_ack : SelfAck {last_processed_client_seq (uint64),
+                          checkpoint : MovementCheckpoint} (always present; post-tick complete authoritative self state),
+                          self_private : SelfPrivateDelta {optional current_mp, optional max_mp,
+                          optional accepted_target_entity_id}; entities : list of EntityDelta {entity_id, then every scalar
+                          EntityState field except entity_id/entity_kind/content_id/character_id as proto3 `optional`
+                          (absent = unchanged); list fields wrapped: statuses : StatusList {repeated entries} and
+                          equipped_cosmetics : CosmeticList {repeated entries} (absent = unchanged; present = full replacement)}
 306 C2S_BASELINE_ACK      baseline_id
+307 C2S_BASELINE_RESYNC_REQUEST request_id (uint64 echo-only), known_baseline_id (0 if none),
+                          reason : UNKNOWN_BASELINE | INVALID_DELTA | LOCAL_STATE_LOST
+308 S2C_BASELINE_RESYNC_RESULT request_id, status, error_code (RATE_LIMITED | INVALID_STATE),
+                          recovery_baseline_id (SUCCESS), retry_after_ms
 ```
+
+### Self Private Projection and Movement Checkpoint
+`SelfPrivateState` is self-only: `current_mp`, `max_mp` (int64, `0 <= current_mp <= max_mp`), `accepted_target_entity_id` (uint64, 0 = none). Never put these fields in remote EntityState/EntityDelta or broadcast them. Attach/reconnect/transfer/resync baseline always includes the full projection. Delta carries every MP change (cost, regen, restoration/respawn, consumable, equipment/max-stat clamp, status/build change); max MP and clamped current MP are one atomic patch. Private delta is merged field-wise exactly like EntityDelta, never snapshot-replaced.
+
+202 remains the sole requested target setter. Successful selection or clear emits 303 with an explicitly present `accepted_target_entity_id` (including 0), even if unchanged; envelope correlation_id echoes 202's client_seq. Rejection 204 preserves the old value. The partition clears a stored target when it dies, leaves visibility/AOI, becomes invalid, or ownership transfers; it emits an explicit 0 without a request correlation. A fresh baseline contains the final stored value, so UI never infers acceptance from silence or 203.
+
+`MovementCheckpoint` contains `x_mm,y_mm,vx_mm_s,vy_mm_s` (sint32), `facing`, `movement_state`, `platform_id`, `is_grounded`, `jump_count` (0..2), `drop_ignore_platform_id` (empty = none), `drop_ignore_until_tick` (absolute in this partition; 0 = none), `held_horizontal_intent : NONE | LEFT | RIGHT`, and `effective_parameters : EffectiveMovementParameters {run_speed_mm_s,first_jump_mm_s,second_jump_mm_s,gravity_mm_s2,max_fall_mm_s,air_control_bp,max_step_height_mm}`. These are the authoritative effective values after all applied build/status modifiers; the client never derives them from incomplete equipment state. Baseline, SelfAck, 107 and internal transfer/source recovery all use this one complete type. The baseline adds `last_processed_client_seq` beside `self_checkpoint`; new ownership resets partition-scoped deadlines to destination ticks from the remaining duration, never blindly copies absolute source tick numbers. Jump count resets only on valid ground contact; expired drop ignore is encoded empty/0. Restore the entire checkpoint before replay.
 
 ### S2C_ENCOUNTER_EVENT
 Primary delivery vehicle for encounter-level events: boss phase transitions, telegraphed mechanics, and per-mechanic lifecycle. Delivery class: `AUTHORITATIVE_EVENT`.
@@ -346,12 +363,25 @@ affected_entity_ids  : repeated uint64 — runtime entity IDs of players or enti
 phase_number         : uint32 — new phase number when event_type is PHASE_TRANSITION;
                                 absent (0) for all other event types; Phase 2 is
                                 expressed as a PHASE_TRANSITION with phase_number = 2
-mechanic_payload     : bytes  — mechanic-specific protobuf sub-message, interpreted
-                                according to mechanic_id; absent when mechanic_id = 0
-                                or the mechanic carries no extra data
+mechanic_payload     : EncounterMechanicPayload — typed oneof selected by the immutable registry
+                                in ../07_content/encounter_catalog.md § Immutable Mechanic Registry;
+                                required for nonzero mechanic_id, absent for phase transition
 ```
 
 The client renders encounter events for telegraphs, VFX cues, phase UI transitions, and boss mechanic presentation. The client never declares encounter state; the server is authoritative.
+
+### Typed Encounter Payloads
+`mechanic_instance_id` (uint64 partition lifetime unique) and `starts_at_tick`,`ends_at_tick` accompany every non-phase 305 event and ActiveMechanicState. Start/trigger upsert this identity; end/expired removes only that instance. Baseline includes complete still-active telegraphs/mechanics (including remaining tick deadlines), not just numeric IDs; no hidden history is needed to draw reconnect state.
+
+`EncounterMechanicPayload` arms are `lane : LaneMechanic`, `zone : ZoneMechanic`, `projectile : ProjectileMechanic`, `spawn : SpawnMechanic`, `control : ControlMechanic`, `composite : CompositeMechanic`, `visual : VisualMechanic`. Registry numbers are explicit immutable assignments, never alphabetical ordinals; compiler and both decoders validate numeric ID/arm agreement.
+- `LaneMechanic`: `path_points : repeated PositionMm` (2..16), `width_mm`, `safe_rects : repeated RectMm` (0..8), `hit_cap`, `effect_id`.
+- `ZoneMechanic`: `areas : repeated MechanicArea` (1..16), `safe_areas` (0..8), `pulse_at_ticks` (0..16), `effect_id`, `hit_cap`; MechanicArea is oneof `circle {center,radius_mm}` or `rect : RectMm {min_x_mm,min_y_mm,max_x_mm,max_y_mm}`.
+- `ProjectileMechanic`: `origin : PositionMm`, `velocities : repeated VelocityMmS` (1..16), `radius_mm`, `effect_id`, `hit_cap`, `projectile_entity_ids` (0..16; absent until emitted).
+- `SpawnMechanic`: `spawns : repeated {entity_id,content_id,position : PositionMm,hp,max_hp,despawn_at_tick,required_destroy}` (0..7); IDs are actual admitted boss adds/objects, never promised rejected spawns.
+- `ControlMechanic`: `affected_entity_ids` (0..40), `effect_id`, `stacks`, `expires_at_tick`, `damage_taken_bp`, `break_entity_ids` (0..7).
+- `CompositeMechanic`: up to 2 non-composite typed components, same fields above, total geometry primitives <=16; `pattern_id` content ID, `resolved : bool`. No recursive bytes or arbitrary map.
+- `VisualMechanic`: `cue_id` content ID, `origin : PositionMm`, `facing`; no invented damage/status.
+All coordinates/dimensions are integer mm; positive dimensions, ordered tick deadlines, referenced effect/content IDs and counts validate against the owning compiled mechanic. Damage formulas remain server content, not client-authored payloads. Empty affected IDs mean AOI visibility only, never a client-side hit rule.
 
 `S2C_STATE_DELTA` replicates the current derived stat values for the five new stats (ADR-0037) whenever they change on a visible entity:
 
@@ -411,10 +441,12 @@ ID   Name
 439  C2S_REWARD_CLAIM_LIST_REQUEST
 440  S2C_REWARD_CLAIM_LIST_RESULT
 441  S2C_REWARD_CLAIM_DELTA
-442..499  (reserved, unassigned)
+442  C2S_SOUL_LIST_REQUEST
+443  S2C_SOUL_LIST_RESULT
+444..499  (reserved, unassigned)
 ```
 
-Every result below carries `operation_id`, `status : SUCCESS | ERROR` and `error_code` (`NONE` on success; domain list in `errors.md`). A retry with the same `operation_id` returns the committed result.
+Every result below carries `operation_id`, `status : SUCCESS | ERROR` and `error_code` (`NONE` on success; domain list in `errors.md`). Client mutations use UUIDv7 and the 180-day immutable timestamp horizon in `../06_data/ids.md`; expired IDs return `OPERATION_EXPIRED` before execution, never a new attempt. Within horizon authenticated owner/fingerprint committed lookup precedes mutable preconditions. Read-only paging uses `request_id` and never inserts an operation record.
 
 - **C2S_INVENTORY_MUTATE (400)**: `operation_id`, `op : MOVE | SPLIT | MERGE | SORT | DISCARD | USE`, `item_instance_id` (all but SORT), `to_slot : uint32` (MOVE/SPLIT/MERGE; MOVE onto an occupied slot swaps), `quantity : uint32` (SPLIT/DISCARD: stack units, 0 = whole stack for DISCARD; USE: 1). Rules: `../03_systems/inventory.md`, `../03_systems/items.md` (Consumables, Transfer / Use / Discard, Bonus Books). `USE` covers every usable item: potions (shared cooldown groups), food buffs, `item.book.potential` / `item.book.skill` (grant unspent points; idempotent by `operation_id`). Beast food uses 416, never USE. Errors: `ITEM_NOT_FOUND`, `ITEM_LOCKED`, `INVENTORY_FULL`, `COOLDOWN_ACTIVE`, `INVALID_STATE` (dead, item not usable/discardable in this context), `STATE_CONFLICT`.
 - **S2C_INVENTORY_RESULT (401)**: `op`, `inventory_revision : uint64`, `changed_slots : list of {slot, item_instance_id (empty = now empty), item_id, quantity}`, `use_effect : {potential_points_granted, skill_points_granted, cooldown_group, cooldown_ends_at_tick}` (USE only).
@@ -431,18 +463,18 @@ Every result below carries `operation_id`, `status : SUCCESS | ERROR` and `error
 - **C2S_ENHANCE (406)**: `operation_id`, `npc_id` (SERVICE(enhancement) in range), `item_instance_id`, `target_level : uint32 (current + 1)`, `lucky_charm_item_instance_id` (optional), `insurance_item_instance_id` (optional). At most one of each (`crafting.md` § Lucky Charm, § Insurance). Errors: `ITEM_NOT_FOUND`, `ITEM_LOCKED`, `INSUFFICIENT_ITEM`, `INSUFFICIENT_CURRENCY`, `CHARM_INELIGIBLE`, `STATE_CONFLICT` (target_level != current + 1), `OUT_OF_RANGE`.
 - **S2C_ENHANCE_RESULT (407)**: `item_instance_id`, `success : bool`, `level_before`, `level_after`, `final_rate_bp`, `pity_fail_count`, `consumed : list of {item_id, quantity}`, `currency_delta`.
 - **C2S_REWARD_CLAIM (408)**: `operation_id`, `reward_claim_id : UUID`. Rules `../03_systems/reward_claims.md`. Errors: `INVENTORY_FULL`, `CURRENCY_CAP_EXCEEDED`, `EXPIRED`, `NOT_OWNER`, `STATE_CONFLICT` (already CLAIMED returns the committed result instead).
-- **S2C_REWARD_CLAIM_RESULT (409)**: `reward_claim_id`, `granted : list of {item_instance_id, item_id, quantity}`, `currency_delta`.
+- **S2C_REWARD_CLAIM_RESULT (409)**: `reward_claim_id`, `granted : list of ItemGrant`, `currency_delta`, `delivered_lines : list of {line_no,delivered_quantity,remaining_after}`, `claim_state : PENDING | CLAIMED`. SINGLE finalized claims are all-or-nothing; consolidated aggregates deliver a deterministic capacity-fitting atomic batch and retain every remainder (`reward_claims.md`).
 - **C2S_NPC_SHOP_SELL (426)**: `operation_id`, `npc_id` (NPC with SHOP in range), `item_instance_id`, `quantity : uint32 (>=1)`. Price = the item's `sell_back_price` (`../07_content/npc_shop_catalog.md`, `../03_systems/economy.md` § NPC Sell-Back) × quantity; items without one reject `INVALID_STATE`. Errors also: `ITEM_LOCKED`, `CURRENCY_CAP_EXCEEDED`, `OUT_OF_RANGE`. Result 427: `item_id`, `quantity_sold`, `currency_delta`.
 - **C2S_INVENTORY_EXPAND (428)**: `operation_id`, `expected_capacity : uint32` (current capacity; mismatch = `STATE_CONFLICT`). Buys the next `+10` step at the `../03_systems/inventory.md` price. Errors: `INSUFFICIENT_CURRENCY`, `CAPACITY_FULL` (already 120). Result 429: `capacity_after`, `currency_delta`.
 - **C2S_BEAST_LEVEL_UP (430)**: `operation_id`, `beast_id`, `expected_level : uint32` (current level; mismatch = `STATE_CONFLICT`). Consumes the Linh Đan and `currency.common` cost of the next level (`../07_content/spirit_beast_catalog.md`; rules `../03_systems/spirit_beasts.md`). Errors: `BEAST_NOT_OWNED`, `INSUFFICIENT_ITEM`, `INSUFFICIENT_CURRENCY`, `LEVEL_TOO_LOW` (beast level would exceed character level), `CAPACITY_FULL` (beast level 60). Result 431: `beast_id`, `level_after`, `consumed`, `currency_delta`.
 
-State pushes (`REPLACEABLE_STATE`, full snapshot each time; sent after `S2C_CHARACTER_ATTACH_OK` and after every committed change affecting them; exception: reward claims are paged, see 434 / 439..441):
+State pushes (`REPLACEABLE_STATE`, full snapshot each time; sent after `S2C_CHARACTER_ATTACH_OK` and after every committed change affecting them; exceptions: reward claims and Soul Collection use bounded pages):
 ```text
 432 S2C_WALLET_STATE             balances : list of {currency_id, amount, cap}; wallet_revision
-433 S2C_INVENTORY_STATE          capacity, inventory_revision, slots : list of {slot, item_instance_id, item_id, quantity,
-                                 effective_binding, enhancement_level, locked_quantity (uint32; units locked by an open trade
-                                 session, 0 = none; ../03_systems/items.md § Trade Lock)}; loadouts : 3 x {loadout_id, is_active,
-                                 slots : list of {slot_id, item_instance_id}}; loadout_revision
+433 S2C_INVENTORY_STATE          capacity, inventory_revision, slots : list of {slot,item : ItemInstanceView,
+                                 locked_quantity (uint32; units locked by an open trade session, 0 = none)};
+                                 loadouts : 3 x {loadout_id,is_active,slots : list of {slot_id,item : ItemInstanceView}};
+                                 loadout_revision
 434 S2C_REWARD_CLAIMS_STATE      claims_revision (uint64), total_count (all PENDING claims), cap (100),
                                  claims : the 50 oldest PENDING claims (created_at, reward_claim_id order) as RewardClaimView
                                  {reward_claim_id, source_type, source_reference, reward_slot, state, lines : list of
@@ -457,10 +489,20 @@ State pushes (`REPLACEABLE_STATE`, full snapshot each time; sent after `S2C_CHAR
                                  season_number, claim_deadline_at, claimable_tier_ids, claimed_tier_ids (this character)}
 436 S2C_BEAST_STATE              beasts : list of {beast_id, level, bond_points, daily_food_points_gained, is_active,
                                  equipment : list of {slot_id, item_instance_id}}
-437 S2C_SOUL_STATE               souls : list of {soul_instance_id, soul_id, level, current_soul_exp,
-                                 contracted_item_instance_id}; resonance : list of {soul_id, memory_resonance_count}
+437 S2C_SOUL_STATE               soul_revision, total_count (uint64), souls : first page of <=50 SoulView rows;
+                                 resonance : list of {soul_id,memory_resonance_count}; contracts : list of
+                                 {soul_instance_id,item_instance_id}; paging contract below
 438 S2C_COSMETIC_STATE           owned : list of {cosmetic_id, scope : CHARACTER | ACCOUNT}; equipped : list of {slot, cosmetic_id}
 ```
+
+### Item Instance Projection
+One reusable `ItemInstanceView` carries `item_instance_id` (UUID), `item_id`, `quantity`, `content_revision` (64 lowercase hex), `effective_binding`, `enhancement_level`, `rolled_base_stats : repeated StatValue {stat_id,value : int64}`, `rolled_secondary_stats : repeated StatValue`, `effective_stats : repeated StatValue`. Arrays sorted by stat_id, unique keys, <=32 entries each. Rolled values are the exact immutable committed instance rolls, not regenerated catalog ranges or enhancement-scaled values; effective stats are the authoritative current item result. The view never exposes RNG seed or source secrets. Inventory/loadouts, trade offer inspection, auction search/own escrow and received item details use this same type; no alternate detail store/request/setter. Ordinary non-equipment uses empty stat lists. A committed mutation affecting details sends its result and current inventory snapshot; market views are transaction/revision-coherent with the locked instance.
+
+### Soul Collection Paging
+437 is a bounded first-page/invalidation snapshot after attach and each committed Soul change, not an unbounded collection dump. `SoulView {soul_instance_id,soul_id,level,current_soul_exp,contracted_item_instance_id}`; ascending UUID binary order. Resonance is bounded by the authored Soul roster; contracts by existing loadout contract limits. `soul_revision` increments atomically for acquisition/EXP/level/contract/resonance changes.
+
+442 C2S_SOUL_LIST_REQUEST: `request_id` uint64 echo-only, `soul_revision` (0 = open current first page), `after_soul_instance_id` UUID (empty = first), `limit` uint32 1..50.
+443 S2C_SOUL_LIST_RESULT: `request_id,status,error_code,soul_revision,total_count,souls` (<=limit), `next_after_soul_instance_id,has_more`. Changed revision returns `STATE_CONFLICT` and no rows; client discards accumulated pages and opens revision 0 again. A continuation cursor is only valid for this character/revision and must identify an existing row; otherwise STATE_CONFLICT. Read each page in a consistent DB snapshot and verify revision within that snapshot. No runtime cache of the whole collection is required. Missing pages are loading, never proof of nonownership; mutations validate durable truth. Limits bound transport/work, **not** product collection capacity. Rate bucket: rate_limits.md.
 
 - **C2S_NPC_SHOP_BUY (420)**: `operation_id : UUID`, `npc_id : string`, `offer_id : string`, `quantity : uint32 (>=1)`. Prices/limits: `../07_content/npc_shop_catalog.md`. Result 421: `operation_id`, `status`, `error_code` (`errors.md` domain list), `granted : list of {item_id, quantity}`.
 - **C2S_COSMETIC_REDEEM (422)**: `operation_id : UUID`, `cosmetic_id : string`, `route : CURRENCY_SPECIAL | CURRENCY_COMMON | MATERIAL`. Rules: `../03_systems/cosmetics.md` (Material Redemption, Redemption Guardrails). Result 423: `operation_id`, `status`, `error_code`, `cosmetic_id`.
@@ -499,13 +541,17 @@ ID   Name
 513  C2S_RESPEC
 514  S2C_PROGRESSION_MUTATE_RESULT
 515  S2C_PROGRESSION_STATE
-516..599  (reserved, unassigned)
+516  C2S_DAILY_BOARD_REQUEST
+517  S2C_DAILY_BOARD_STATE
+518  S2C_ATLAS_STATE
+519..599  (reserved, unassigned)
 ```
 
 Quest field lists (rules `../02_world/quests.md`; states LOCKED | AVAILABLE | ACTIVE | READY_TO_COMPLETE | COMPLETED | FAILED | EXPIRED):
 ```text
-500 C2S_QUEST_ACCEPT          operation_id, quest_id, npc_id (giver in range; empty for DAILY board and auto-offered quests),
-                              board_slot (uint32 1..6 for DAILY board quests; 0 otherwise)
+500 C2S_QUEST_ACCEPT          operation_id, quest_id (empty only for unrevealed DAILY choice), npc_id
+                              (giver in range; empty for DAILY board and auto-offered quests), board_slot
+                              (uint32 1..6 for DAILY), board_cycle_id (DAILY only; stale reset cycle = STATE_CONFLICT)
 501 S2C_QUEST_ACCEPT_RESULT   operation_id, status, error_code (LEVEL_TOO_LOW | CAPACITY_FULL (active quest limit) |
                               DAILY_LIMIT_REACHED | OUT_OF_RANGE | INVALID_STATE (not AVAILABLE) | ALREADY_OWNED), quest_id
 502 C2S_QUEST_TURN_IN         operation_id, quest_id, npc_id (turn-in NPC in range; empty for AUTO completion mode)
@@ -528,6 +574,12 @@ Quest field lists (rules `../02_world/quests.md`; states LOCKED | AVAILABLE | AC
 - **C2S_RESPEC (513)**: `operation_id`, `npc_id` (NPC with SERVICE(respec) in range), `kind : SKILL | POTENTIAL`. Full reset of that kind at the `progression.md` § Respec price, refunding all spent points of that kind; learned skills stay learned and equipped at their base level (spent upgrade points are refunded). Errors: `INSUFFICIENT_CURRENCY`, `IN_COMBAT`, `INVALID_STATE` (active PvP or encounter build lock), `OUT_OF_RANGE`.
 - **S2C_PROGRESSION_MUTATE_RESULT (514)**: `operation_id`, `request_message_id (511 | 512 | 513)`, `status`, `error_code`, followed by `S2C_PROGRESSION_STATE`.
 - **S2C_PROGRESSION_STATE (515)** (`REPLACEABLE_STATE`, full snapshot after attach and every change): `level`, `current_exp`, `unspent_skill_points`, `unspent_potential_points`, `potential_allocated : {str, vit, int, agi}`, `potential_earned_total`, `skills : list of {skill_id, level}`, `skill_loadout : {basic_skill_id, active_slots[5]}`, `progression_revision : uint64`.
+
+### Daily Board and Atlas Projection
+516 C2S_DAILY_BOARD_REQUEST: `request_id` uint64 echo-only, `board_anchor_id` content/object ID. Read-only, authenticated attached character, board within interaction range; errors `OUT_OF_RANGE | TARGET_INVALID | RATE_LIMITED`. No client seed, chosen level or reveal flag.
+517 S2C_DAILY_BOARD_STATE: `request_id,status,error_code,cycle_id` (UTC date), `board_revision` uint64, `completed_count` (0..3), `reset_at_ms`, `entries` (exactly six on success), each `board_slot` 1..6, `state`, `is_mystery`, oneof `hidden : MysteryBoardPlaceholder {safe_area_id}` or `revealed : DailyQuestView {quest_id,title_key,objectives,reward_preview,starter_npc_id,area_id}`. Objective/reward shapes reuse 503 and ItemQuantity/CurrencyDelta/EXP. A hidden choice transmits **no** quest/template ID, title/objective/reward/seed/target/starter identity in any field or other state push; only authored safe broad area clue is public. Server authoritative reach/starter-interact reveal atomically persists reveal, increments board revision and emits the complete redacted six-entry snapshot (unsolicited request_id=0). Attach/reconnect/reset/accept/abandon/completion likewise send current board state; pre-reveal 503 does not leak hidden detail. DAILY accept resolves persisted cycle+slot, not a client-selected hidden quest; rejection 501 for a hidden choice leaves quest_id empty. Revealed details remain revealed for that cycle; at reset expire old attempts and replace the board. Fixed six entries are the bounded board, not a new quest product cap.
+
+518 S2C_ATLAS_STATE: full self snapshot after attach/reconnect and every committed counter, promotion or acknowledgement change; `atlas_revision` uint64, `pages : repeated AtlasPageView {atlas_page_id,counter : uint64,reached_tier,tiers : repeated AtlasTierView {tier,reward_operation_id,acknowledged_at_ms,settled_grant : AtlasGrantView {exp,currency_delta,reward_claim_ids}}}`. Include every authored current/seasonal page (locked pages counter/tier zero, empty tiers); tier rows only for reached, already-settled tiers. Sorted page_id then tier, no reroll or grant on projection. Acknowledgement 504/505 updates this same durable projection. Account-wide journal display may locally aggregate each owned character's authorized snapshots; rewards and acknowledgement always remain character-scoped. Snapshot can exceed the normal32KiB target up to hard256KiB; compiler bounds the full authored page/tier representation to this limit, never truncates pages or adds a gameplay page cap.
 
 ### Trade ID Reservation (700..729)
 All trade message IDs must be registered here. A content spec MUST NOT use an ID in this sub-range without adding a row to this table.
@@ -558,8 +610,8 @@ Trade field lists (rules `../03_systems/trading_auction.md` § Direct Trade). Of
 705 C2S_TRADE_OFFER_UPDATE  operation_id, trade_id, expected_revision, items : list of {item_instance_id, quantity}
                             (full replacement of own offer; max entries per trading_auction.md), common_amount (int64 >= 0)
 706 S2C_TRADE_OFFER_STATE   trade_id, revision, state : OPEN | LOCKED | COMMITTING,
-                            sides : 2 x {character_id, items : list of {item_instance_id, item_id, quantity, enhancement_level},
-                            common_amount, confirmed (bool)}, fee_preview
+                            sides : 2 x {character_id,items : list of ItemInstanceView,
+                            common_amount,confirmed (bool)}, fee_preview
 707 C2S_TRADE_CONFIRM       operation_id, trade_id, expected_revision (locks own side; any offer change clears both)
 708 C2S_TRADE_FINALISE      operation_id, trade_id, expected_revision (both confirmed)
 710 S2C_TRADE_REQUEST_RESULT operation_id, request_message_id (700 | 702 | 703 | 705 | 707), status, error_code, trade_id
@@ -596,22 +648,22 @@ Auction field lists (rules `../03_systems/trading_auction.md` § Auction House; 
 730 C2S_AUCTION_LIST            operation_id, item_instance_id, quantity (whole lot), price_common (int64; total lot price)
 731 S2C_AUCTION_LIST_RESULT     listing_id, listing_fee, expires_at
 732 C2S_AUCTION_BUY             operation_id, listing_id, expected_price_common
-733 S2C_AUCTION_BUY_RESULT      listing_id, price_common, received : {item_instance_id, item_id, quantity}
+733 S2C_AUCTION_BUY_RESULT      listing_id, price_common, received : ItemInstanceView
 734 C2S_AUCTION_CANCEL_LISTING  operation_id, listing_id
 735 S2C_AUCTION_CANCEL_RESULT   listing_id, escrow_asset_id
 736 S2C_AUCTION_SOLD            listing_id, item_id, quantity, price_common, tax, proceeds_id, proceeds_amount
 738 C2S_AUCTION_SEARCH          operation_id (echo only; search is read-only and never idempotency-stored), item_id, category, tier, min_price, max_price, sort : PRICE_ASC | PRICE_DESC | NEWEST,
                                 page_cursor (opaque), page_size (1..50)
 739 S2C_AUCTION_SEARCH_RESULT   operation_id, status, error_code (RATE_LIMITED | AH_ELIGIBILITY_LEVEL_REQUIRED | OUT_OF_RANGE),
-                                rows : list of {listing_id, item_id, quantity, enhancement_level, price_common,
-                                seller_display_name, expires_at}, next_page_cursor
+                                rows : list of {listing_id,item : ItemInstanceView,price_common,
+                                seller_display_name,expires_at}, next_page_cursor
 740 C2S_AUCTION_RECLAIM         operation_id, escrow_asset_id
-741 S2C_AUCTION_RECLAIM_RESULT  escrow_asset_id, received : {item_instance_id, item_id, quantity}
+741 S2C_AUCTION_RECLAIM_RESULT  escrow_asset_id, received : ItemInstanceView
 742 C2S_AUCTION_PROCEEDS_CLAIM  operation_id, proceeds_id
 743 S2C_AUCTION_PROCEEDS_RESULT proceeds_id, amount_common
-744 S2C_AUCTION_MY_STATE        listings : list of {listing_id, item_id, quantity, price_common, state, expires_at},
-                                escrow_assets : list of {escrow_asset_id, item_id, quantity, reason : CANCELLED | EXPIRED,
-                                auto_claim_at}, proceeds : list of {proceeds_id, amount_common, state}
+744 S2C_AUCTION_MY_STATE        listings : list of {listing_id,item : ItemInstanceView,price_common,state,expires_at},
+                                escrow_assets : list of {escrow_asset_id,item : ItemInstanceView,reason : CANCELLED | EXPIRED,
+                                auto_claim_at}, proceeds : list of {proceeds_id,amount_common,state}
 ```
 Auction errors: `AH_ELIGIBILITY_LEVEL_REQUIRED`, `AH_ELIGIBILITY_AGE_REQUIRED`, `AH_PRICE_FLOOR_NOT_MET`, `SAME_ACCOUNT_FORBIDDEN`, `AUCTION_LISTING_NOT_ACTIVE`, `CAPACITY_FULL` (20 active listings), `ITEM_LOCKED`, `INSUFFICIENT_CURRENCY`, `INVENTORY_FULL`, `CURRENCY_CAP_EXCEEDED`, `STATE_CONFLICT` (expected price mismatch).
 
@@ -694,7 +746,8 @@ ID   Name                       Direction   Notes
 653  S2C_PARTY_RESULT           S→C         typed result for every party request
 654  S2C_SOCIAL_RESULT          S→C         typed result for every friend/block request
 655  S2C_CHAT_SEND_RESULT       S→C         typed result for C2S_CHAT_SEND
-656..699 (reserved, unassigned)
+656  C2S_GUILD_COSMETIC_EQUIP   C→S         select unlocked guild shrine/banner/crest
+657..699 (reserved, unassigned)
 ```
 
 ### Social / Guild Payload Contracts
@@ -737,6 +790,7 @@ ID   Name                       Direction   Notes
   - `C2S_GUILD_ROLE_UPDATE` (626): `operation_id : UUID`, `target_character_id : UUID`, `new_role : guild.role.vice_leader | guild.role.officer | guild.role.member`. Caller must be LEADER, or VICE_LEADER for MEMBER->OFFICER and OFFICER->MEMBER (`../03_systems/guild.md` § Permissions).
   - `C2S_GUILD_LEADER_TRANSFER` (627): `operation_id : UUID`, `target_character_id : UUID`. Caller must be LEADER.
   - `S2C_GUILD_STATE` (628): `guild_id : UUID`, `guild_revision : uint64`, `guild_name : string`, `role : string` (receiver's role), `level : uint32`, `members_count : uint32`, `max_members : uint32`, `motd : string`, `recruitment_mode : CLOSED | APPLICATIONS`, `members : list of {character_id, display_name, class_id, level, role, online_state : ONLINE | OFFLINE, last_online_at (rounded per guild.md § Presence UI; offline only)}`.
+  - 628 additionally contains `progression : GuildProgressionView {guild_exp,ritual_streak,cycle_id,m_effective,required_points_per_element,points : exactly five {element,current},completed_at_ms,candidate_blessing_ids (0 or3),vote_closes_at_ms,vote_counts (same order),receiver_vote (empty = none),active_blessing_id,blessing_expires_at_ms,receiver_lifetime_contribution,receiver_cycle_contribution}`, plus `owned_guild_cosmetic_ids`, `guild_cosmetic_selections : {shrine,banner,crest}`, `cosmetic_revision`. Members-only full snapshot on attach/join and every committed EXP/contribution/vessel/draft/vote/finalization/blessing-expiry/membership/cosmetic change; departing/kicked receiver gets guild_id empty and clears the projection. Aggregate vote counts only, never other account ballots. Durable outcome is applied through the existing committed-result queue, not a second ritual owner.
   - `C2S_GUILD_STORAGE_DEPOSIT` (629): `operation_id : UUID`, `item_instance_id : UUID`, `quantity : uint32` (stack units; full stack if 0), `section : COMMON | RESERVE`. Caller has DEPOSIT permission for the section; item UNBOUND in inventory. Rate limit: durable mutation.
   - `C2S_GUILD_STORAGE_WITHDRAW` (630): `operation_id : UUID`, `item_instance_id : UUID`, `quantity : uint32`, `section : COMMON | RESERVE` (RESERVE: Leader/Vice only). Caller has WITHDRAW permission; inventory has space; same-account and 72h membership checks (`guild_storage.md`). Rate limit: durable mutation.
   - `S2C_GUILD_STORAGE_STATE` (631): `guild_id : UUID`, `storage_revision : uint64`, `items : list of {item_instance_id, item_id, quantity, section, deposited_by, deposited_at}`.
@@ -755,8 +809,9 @@ ID   Name                       Direction   Notes
   - `C2S_GUILD_SETTINGS_SET` (650): `operation_id : UUID`, `recruitment_mode : CLOSED | APPLICATIONS`. LEADER only (`guild.md` § Recruitment Mode). Switching to CLOSED leaves PENDING applications to be decided or expire.
   - `C2S_GUILD_INVITE_CANCEL` (651): `operation_id : UUID`, `target_character_id : UUID`. Original inviter, LEADER or VICE_LEADER; invite -> CANCELLED.
   - `C2S_GUILD_APPLICATION_CANCEL` (652): `operation_id : UUID`, `guild_id : UUID`. Applicant only; application -> CANCELLED.
+  - `C2S_GUILD_COSMETIC_EQUIP` (656): `operation_id,guild_id,slot : SHRINE | BANNER | CREST,cosmetic_id` (empty = unequip), `expected_revision` = cosmetic_revision. LEADER/VICE_LEADER only; guild-owned unlock required. Result649 (NOT_OWNER | PERMISSION_DENIED | STATE_CONFLICT | TARGET_INVALID), followed by628. Never writes character cosmetic438 or personal slots.
   - `C2S_GUILD_CREATE` / rename validation errors: `GUILD_NAME_INVALID` (text rules `../06_data/text.md`), `GUILD_NAME_TAKEN` (`name_key` collision).
-  - `S2C_GUILD_RESULT` (649): `operation_id : UUID`, `request_message_id : uint32`, `status : SUCCESS | ERROR`, `error_code` (domain list in `errors.md`), `guild_id`. Typed result for every guild C2S request: 608, 610, 623..627, 629, 630, 637..640, 642..646, 648, 650..652; state changes follow as 628 / 631 / 641 / 647.
+  - `S2C_GUILD_RESULT` (649): `operation_id : UUID`, `request_message_id : uint32`, `status : SUCCESS | ERROR`, `error_code` (domain list in `errors.md`), `guild_id`. Typed result for every guild C2S request: 608,610,623..627,629,630,637..640,642..646,648,650..652,656; state changes follow as628/631/641/647.
 - **Player Report (632..633)**:
   - `C2S_REPORT_PLAYER` (632): `operation_id : UUID`, `target_character_id : UUID`, `reason : SPAM | HARASSMENT | HATE_OR_ABUSE | CHEATING | SCAM | INAPPROPRIATE_NAME | OTHER`, `chat_message_id : UUID (optional)`, `reporter_notes : string (optional, <= 200 graphemes)`. Canonical reasons and limit (10 submissions / 24h per account): `../03_systems/social.md` § Reports.
   - `S2C_REPORT_PLAYER_RESULT` (633): `operation_id : UUID`, `status : SUCCESS | ERROR`, `error_code` (`RATE_LIMITED` (10 per 24 h per account), `TARGET_INVALID`, `ITEM_NOT_FOUND` (unknown `chat_message_id`)), `report_id : UUID` (SUCCESS).
@@ -883,7 +938,7 @@ Malformed payloads never reach gameplay handlers as partially trusted data. The 
 - client_mono_ms is advisory; server clamps compensation to 80 ms; edges implying implausible timing are rejected,
 - just_guard is detected server-side only; the client never sends a just_guard flag,
 - every message ID in every range must be registered in this document (ID, direction, fields) before use; unregistered IDs are `MESSAGE_UNKNOWN`,
-- every C2S request that can fail gets exactly one typed result carrying `operation_id`, `status` and `error_code` (every `*_RESULT` embeds `OperationResult` as field 1, `protobuf_conventions.md` § 6) (movement and combat intents 100..102, 108, 200..202 are answered by 107 / 204 instead; dungeon entry 111 / 113 / 117 by 112); state pushes (`S2C_*_STATE`) are full snapshots except `S2C_FRIEND_STATE` (616, event) and reward claims (434 paged + 441 delta),
+- every C2S request that can fail gets exactly one typed result with status/error and its operation_id or read-only request_id; `*_RESULT` embeds OperationResult field1 except explicitly read-only request_id results308/443 (protobuf_conventions.md §6). Movement/combat100..102,108,200..202 use107/204 or accepted checkpoint/target delta; dungeon111/113/117 uses112; read516 uses517. State pushes are full snapshots except friend616 events, paged claims434/441 and Soul437/443. Protocol/phase rejection precedes this domain guarantee.
 - durable mutation carries stable operation identity,
 - server results are authoritative,
 - transport reliability does not bypass stale/duplicate validation,

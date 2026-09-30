@@ -208,11 +208,12 @@ The `target_multiplier` used by LIFESTEAL and ABSORB:
 target_multiplier = 1.00  for the authoritative primary target
                     0.30  for every additional AoE target
                     0.30  for DoT / periodic tick damage
+Periodic precedence: use 0.30 once for any DOT/zone-periodic component, including its primary target; do not multiply by another 0.30 for additional periodic targets.
 ```
 
 ### LIFESTEAL Resolution
 ```text
-Trigger: committed hp_damage > 0 from a DAMAGING direct component
+Trigger: committed hp_damage > 0 from a DAMAGING direct or periodic component
   heal_base = hp_damage * LIFESTEAL * target_multiplier
   result is a HEAL result; passes through source_heal_multiplier and target.HEALING_RECEIVED
 
@@ -315,7 +316,7 @@ ATTACK_SPEED_CAP = 0.50
 CAST_SPEED_CAP = 0.50
 COOLDOWN_REDUCTION_CAP = 0.35
 ```
-Attack interval formula: see `skills.md` — `interval_ms = max(ceil(cooldown_ms / (1 + ATTACK_SPEED)), startup_ms + active_ms)` is the authoritative definition and single owner.
+Attack interval formula: `skills.md` § Authoritative basic interval is the single owner, including forced-motion lifetime and executable `ceil(exact_deadline_ms/50)` acceptance.
 Cast duration = `base_cast_time / (1 + CAST_SPEED)` when allowed.
 Cooldown = `base_cooldown * (1 - COOLDOWN_REDUCTION)` for ACTIVE skills when allowed. Basic attacks ignore `COOLDOWN_REDUCTION`; their cadence uses the `ATTACK_SPEED` interval in `skills.md`.
 MOVE_SPEED clamps to `0.40..1.50` unless hard control blocks movement.
@@ -352,8 +353,8 @@ Derivation — reference_lv60_max_hp (THO class):
   reference_lv60_max_hp  = 3,096 + 534 + 1,164    = 4,794
 
 Derivation — reference_lv60_attack (KIM class, STR primary):
-  base + growth:          floor(40 + 5.5 × 59)     =   364
-  STR potential (178 pts): floor(178 × 0.75)        =   133
+  base + growth:          40 + 5.5 × 59             = 364.5
+  STR potential (178 pts): 178 × 0.75               = 133.5
   T6 +8 equipment (7 ATTACK slots, A=29):
     weapon  floor(2.00×29)= 58  → floor( 58×1.20)  =    69
     hands   floor(0.70×29)= 20  → floor( 20×1.20)  =    24
@@ -363,7 +364,7 @@ Derivation — reference_lv60_attack (KIM class, STR primary):
     seal    floor(0.80×29)= 23  → floor( 23×1.20)  =    27
     charm   floor(0.70×29)= 20  → floor( 20×1.20)  =    24
     equipment subtotal                              =   226
-  reference_lv60_attack  = 364 + 133 + 226         =   723
+  reference_lv60_attack = floor(364.5 + 133.5 + 226) = 724
 
 Derivation — reference_lv60_defense (THO class):
   base + growth:          20 + 3.0 × 59            =   197
@@ -382,6 +383,7 @@ Derivation — reference_lv60_defense (THO class):
 ```
 
 These values are pinned. A content revision that changes class growth, potential rules, T6 equipment base stats, or the +8 enhancement multiplier must recompute and update all three rows here and in `../03_systems/spirit_beasts.md`.
+Class growth and potential fractions survive addition and percentage stages until the final integer-stat floor. Authored integer equipment lines retain their own per-line floors; never introduce an extra growth/potential component floor.
 
 ## Invariants
 ```text
@@ -392,7 +394,7 @@ percent resource effects are typed, never ambiguous decimals
 shield value formula is deterministic; absorption lifecycle = combat.md
 HP_REGEN and MP_REGEN scale per-level per class growth table; out-of-combat multiplier = x8 after 8.0s continuously not in_combat
 reference_lv60_max_hp  = 4,794  (THO class, synthetic fully-geared Lv60 reference)
-reference_lv60_attack  =   723  (KIM class, synthetic fully-geared Lv60 reference)
+reference_lv60_attack  =   724  (KIM class, synthetic fully-geared Lv60 reference)
 reference_lv60_defense =   426  (THO class, synthetic fully-geared Lv60 reference)
 LIFESTEAL_CAP = 0.08 (PvP 0.05); LIFESTEAL_HPS_CAP = 0.015 * MAX_HP per rolling 1.0s; excess discarded not banked
 HEAL_REDUCTION_CAP = 0.30 (PvP 0.25); combined HEAL_REDUCTION product floor 0.40 (max 60% from HEAL_REDUCTION statuses)

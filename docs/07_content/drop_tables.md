@@ -395,7 +395,7 @@ RARE_ROLL:
 
 Spirit Surge does not drop exclusive permanent power.
 
-WORLD_EVENT character EXP is a side grant like Soul EXP (not inventory). Eligible completion grants LIFE-channel-independent WORLD_EVENT per-unit for act `min(character_act, region_act + 1)` (`world_event_catalog.md`): I 256667, II 331333, III 253269, IV 282111, V 377909, VI 419769. Key `surge.completion.exp.<utc_hour>.<character_id>`.
+WORLD_EVENT character EXP is a side grant like Soul EXP (not inventory). Eligible completion grants the current `character_act` WORLD_EVENT per-unit independent of event region (ADR-0079, `world_event_catalog.md`): I 256667, II 331333, III 253269, IV 282111, V 377909, VI 419769. Key `surge.completion.exp.<utc_hour>.<character_id>`; at most one per UTC hour.
 
 # Soul EXP Side Grant
 Eligible reward settlements also grant the non-inventory Soul EXP values owned by `../03_systems/soul_contracts.md`.
@@ -447,6 +447,7 @@ RARE_ROLL:
 ```
 
 Exactly one đan line applies per map tier. Key: `character_id + chest_id + availability_start_utc`.
+An overflow reward uses `source_type = HIDDEN_CHEST`, `source_family = HIDDEN_CHEST`, and structured `source_ref = (character_id, chest_id, availability_start_utc)` matching that open's committed identity; it is neither MONSTER nor QUEST. The concrete chest definition comes from `world_route_catalog.md`.
 # Linh Thú extra grants
 ELITE RARE_ROLL add:
 ```text
@@ -456,10 +457,23 @@ Regional beast by map tier (one per region; T1 and T6 are both THO by design): T
 
 Dungeon FIRST_CLEAR add the regional beast of that tier if unowned, else 2 `linh_dan` of the map tier.
 
-Spirit Surge daily-first RARE_ROLL:
+Spirit Surge daily-first RARE_ROLL uses stable slot `surge.beast`:
 ```text
-0300 bp -> unowned surge-element beast else 1 linh_dan of act tier
+chance_bp = 300
+candidate_rule = launch_beasts_of_event_element_not_owned_at_settlement
+selection = uniform_sorted_beast_id
+empty_result = 1 linh_dan of character act tier
 ```
+
+| event element | finite candidate roster (filter owned IDs, then ASCII sort) |
+|---|---|
+| KIM | `beast.kim.ho_vang,beast.kim.nghe_dong` |
+| MOC | `beast.moc.chim_lac,beast.moc.huou_sao` |
+| THUY | `beast.thuy.rai_ca,beast.thuy.rua_than` |
+| HOA | `beast.hoa.ga_than,beast.hoa.hoa_diep` |
+| THO | `beast.tho.coc_than,beast.tho.trau_dong` |
+
+First roll the 300bp acquisition chance once. On success, lock/read the character beast collection, filter the two authored IDs by ownership, and draw uniformly over the remaining IDs using one bounded server RNG draw (two unowned = 50:50, one = 100%, none = guaranteed one tier-appropriate Linh Đan). Commit the selected beast/duplicate-empty result with the daily-first reward slot; retries/claim capacity never re-filter or reroll. No non-launch beast or implicit regional substitute is eligible.
 # Validation
 Static validation rejects:
 - source ID absent from owning encounter/runtime catalog,
