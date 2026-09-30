@@ -166,6 +166,7 @@ RARE_ROLL, independent:
 0800 bp -> one random-slot equipment piece, 50:50 Set A/Set B, HUNT_eligible=false
 0300 bp -> 1 mapped Lucky Charm (T1..T2 so_cap, T3..T4 trung_cap, T5..T6 cao_cap), HUNT_eligible=false
 0400 bp -> 1 item.consumable.chia_khoa_co, HUNT_eligible=false
+0500 bp -> regional beast_id if unowned else 1 linh_dan.so_cap, HUNT_eligible=false
 ```
 
 If a row has a `soul_id`, add:

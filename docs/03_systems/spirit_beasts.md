@@ -236,7 +236,7 @@ Reference values are populated from `stats.md` (Spirit Beast Power Budget Refere
   - `item.material.linh_dan.so_cap` (Sơ cấp): Used for beast levels 1..20.
   - `item.material.linh_dan.trung_cap` (Trung cấp): Used for beast levels 21..40.
   - `item.material.linh_dan.cao_cap` (Cao cấp): Used for beast levels 41..60.
-- **Acquisition Sources**: Dungeons (first-clear and repeat drop tables), elite monsters, daily bounties, and Spirit Surge events.
+- **Acquisition Sources**: Dungeons (first-clear and repeat drop tables), elite monsters (on duplicate beast roll), hidden chests, and Spirit Surge events (as catalogued in `drop_tables.md`).
 - **Level-Up Effect**:
   - Increases the beast's base stat attributes.
   - Scales the values of Passive 1.
