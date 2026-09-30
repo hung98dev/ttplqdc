@@ -90,11 +90,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root . -print-pin go-version)" >> "$GITHUB_ENV"
-          echo "UNITY_WINDOWS_EDITOR_URL=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-installer-url)" >> "$GITHUB_ENV"
-          echo "UNITY_WINDOWS_EDITOR_SHA256=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-installer-sha256)" >> "$GITHUB_ENV"
-          echo "UNITY_EDITOR_VERSION_PIN=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-editor-version)" >> "$GITHUB_ENV"
-          echo "UNITY_EDITOR_CHANGESET=$(go -C server run ./cmd/verify -repo-root . -print-pin unity-editor-changeset)" >> "$GITHUB_ENV"
+          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-url)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-sha256)" >> "$GITHUB_ENV"
+          echo "UNITY_EDITOR_VERSION_PIN=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-editor-version)" >> "$GITHUB_ENV"
+          echo "UNITY_EDITOR_CHANGESET=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-editor-changeset)" >> "$GITHUB_ENV"
 
       - name: Unity scope + mode plan
         id: plan
@@ -102,7 +102,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p artifacts
-          go -C server run ./cmd/verify -repo-root . -plan-unity artifacts/unity-plan.json
+          go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -plan-unity artifacts/unity-plan.json
           cat artifacts/unity-plan.json
           for k in scope editmode playmode visual_review performance graphical_load; do
             echo "$k=$(jq -r ".$k" artifacts/unity-plan.json)" >> "$GITHUB_OUTPUT"
@@ -400,9 +400,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root . -print-pin go-version)" >> "$GITHUB_ENV"
-          echo "EDB_ZIP_SHA256=$(go -C server run ./cmd/verify -repo-root . -print-pin edb-sha256)" >> "$GITHUB_ENV"
-          echo "EDB_URL=$(go -C server run ./cmd/verify -repo-root . -print-pin edb-url)" >> "$GITHUB_ENV"
+          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "EDB_ZIP_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-sha256)" >> "$GITHUB_ENV"
+          echo "EDB_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-url)" >> "$GITHUB_ENV"
 
       - name: Cache Go build
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
@@ -598,7 +598,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root . -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
 
       - name: Cache Go build
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
