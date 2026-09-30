@@ -200,7 +200,15 @@ jobs:
               & $licClient --activate-all --include-personal --username $env:UNITY_EMAIL --password $env:UNITY_PASSWORD 2>&1 | Out-Host
             }
             & $editor @uargs
-            if ($LASTEXITCODE -eq 0) { Write-Host "licence activated (attempt $i)"; exit 0 }
+            $ec = $LASTEXITCODE
+            # Unity.exe can detach on hosted runners: also accept the
+            # editor's own clean-exit marker, and drain any lingering
+            # editor process before the next attempt.
+            Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 90 -ErrorAction SilentlyContinue
+            $txt = Get-Content "artifacts\unity-tests\licence-activation.log" -Raw -ErrorAction SilentlyContinue
+            if ($ec -eq 0 -or $txt -match 'Exiting batchmode successfully') {
+              Write-Host "licence activated (attempt $i)"; exit 0
+            }
             Write-Host "activation attempt $i failed; retry in 60s"
             Start-Sleep -Seconds 60
           }
@@ -227,17 +235,42 @@ jobs:
           $compileFails = 0
           for ($i = 1; $i -le 5; $i++) {
             Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+            Wait-Process -Name Unity -Timeout 30 -ErrorAction SilentlyContinue
             Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
             $log = "artifacts\unity-tests\materialize-editor-$i.log"
-            & $editor -batchmode -quit -projectPath "$PWD\client" -logFile $log
-            if ($LASTEXITCODE -eq 0) { exit 0 }
-            $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
-            if ($txt -match 'Scripts have compiler errors|error CS\d+') {
+            # Unity.exe may detach on hosted runners: the verdict is the
+            # editor log's terminal marker, not the launcher exit code.
+            $null = Start-Process -FilePath $editor -PassThru -ArgumentList `
+              '-batchmode','-quit','-projectPath',"$PWD\client",'-logFile',$log
+            $verdict = $null
+            $deadline = (Get-Date).AddMinutes(20)
+            while ((Get-Date) -lt $deadline) {
+              Start-Sleep -Seconds 10
+              $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+              if ($txt -match 'Exiting batchmode successfully') { $verdict = 'ok'; break }
+              if ($txt -match 'another Unity instance') { $verdict = 'infra'; break }
+              if (-not (Get-Process -Name Unity -ErrorAction SilentlyContinue)) {
+                if ($txt -match 'Scripts have compiler errors|error CS\d+') { $verdict = 'compile' }
+                else { $verdict = 'infra' }
+                break
+              }
+            }
+            Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
+            if (-not $verdict) {
+              Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+              $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+              if ($txt -match 'Exiting batchmode successfully') { $verdict = 'ok' }
+              elseif ($txt -match 'Scripts have compiler errors|error CS\d+') { $verdict = 'compile' }
+              else { $verdict = 'infra' }
+            }
+            if ($verdict -eq 'ok') { Write-Host "materialized (attempt $i)"; exit 0 }
+            if ($verdict -eq 'compile') {
               $compileFails++
               if ($compileFails -ge 2) { throw "two consecutive compile-error attempts" }
               Remove-Item -Recurse -Force client\Library -ErrorAction SilentlyContinue
               continue  # compile-error retry: immediately, on a clean Library
             }
+            $compileFails = 0
             Start-Sleep -Seconds 60  # licence/infra failure: wait then retry
           }
           throw "materialization failed after 5 attempts"
@@ -250,12 +283,26 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
           Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Wait-Process -Name Unity -Timeout 30 -ErrorAction SilentlyContinue
           Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
-          & $editor -batchmode -nographics -runTests -testPlatform EditMode `
-            -projectPath "$PWD\client" `
-            -testResults "$PWD\artifacts\unity-tests\editmode-results.xml" `
-            -logFile "$PWD\artifacts\unity-tests\editmode-editor.log"
-
+          $log = "$PWD\artifacts\unity-tests\editmode-editor.log"
+          $xml = "$PWD\artifacts\unity-tests\editmode-results.xml"
+          # Unity.exe may detach on hosted runners: the verdict is the
+          # UTF completion marker + results XML, not the launcher exit code.
+          $null = Start-Process -FilePath $editor -PassThru -ArgumentList `
+            '-batchmode','-nographics','-runTests','-testPlatform','EditMode','-projectPath',"$PWD\client",'-testResults',$xml,'-logFile',$log
+          $deadline = (Get-Date).AddMinutes(25)
+          while ((Get-Date) -lt $deadline) {
+            Start-Sleep -Seconds 10
+            $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+            if ($txt -match 'Test run completed|Exiting batchmode') { break }
+            if (-not (Get-Process -Name Unity -ErrorAction SilentlyContinue)) { break }
+          }
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
+          $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+          if ($txt -match 'Test run completed\. Exiting with code 0' -and (Test-Path $xml)) { exit 0 }
+          Write-Host "::error::editmode run did not complete cleanly (see editor log)"
+          exit 1
       - name: Run PlayMode tests
         if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.playmode == 'true'
         timeout-minutes: 30
@@ -264,12 +311,26 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
           Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Wait-Process -Name Unity -Timeout 30 -ErrorAction SilentlyContinue
           Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
-          & $editor -batchmode -nographics -runTests -testPlatform PlayMode `
-            -projectPath "$PWD\client" `
-            -testResults "$PWD\artifacts\unity-tests\playmode-results.xml" `
-            -logFile "$PWD\artifacts\unity-tests\playmode-editor.log"
-
+          $log = "$PWD\artifacts\unity-tests\playmode-editor.log"
+          $xml = "$PWD\artifacts\unity-tests\playmode-results.xml"
+          # Unity.exe may detach on hosted runners: the verdict is the
+          # UTF completion marker + results XML, not the launcher exit code.
+          $null = Start-Process -FilePath $editor -PassThru -ArgumentList `
+            '-batchmode','-nographics','-runTests','-testPlatform','PlayMode','-projectPath',"$PWD\client",'-testResults',$xml,'-logFile',$log
+          $deadline = (Get-Date).AddMinutes(25)
+          while ((Get-Date) -lt $deadline) {
+            Start-Sleep -Seconds 10
+            $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+            if ($txt -match 'Test run completed|Exiting batchmode') { break }
+            if (-not (Get-Process -Name Unity -ErrorAction SilentlyContinue)) { break }
+          }
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
+          $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+          if ($txt -match 'Test run completed\. Exiting with code 0' -and (Test-Path $xml)) { exit 0 }
+          Write-Host "::error::playmode run did not complete cleanly (see editor log)"
+          exit 1
       - name: Run Performance tests (D3D11 WARP)
         if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.performance == 'true'
         timeout-minutes: 30
@@ -278,12 +339,26 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
           Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Wait-Process -Name Unity -Timeout 30 -ErrorAction SilentlyContinue
           Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
-          & $editor -batchmode -force-d3d11 -runTests -testPlatform EditMode -testCategory Performance `
-            -projectPath "$PWD\client" `
-            -testResults "$PWD\artifacts\unity-tests\performance-results.xml" `
-            -logFile "$PWD\artifacts\unity-tests\performance-editor.log"
-
+          $log = "$PWD\artifacts\unity-tests\performance-editor.log"
+          $xml = "$PWD\artifacts\unity-tests\performance-results.xml"
+          # Unity.exe may detach on hosted runners: the verdict is the
+          # UTF completion marker + results XML, not the launcher exit code.
+          $null = Start-Process -FilePath $editor -PassThru -ArgumentList `
+            '-batchmode','-force-d3d11','-runTests','-testPlatform','EditMode','-testCategory','Performance','-projectPath',"$PWD\client",'-testResults',$xml,'-logFile',$log
+          $deadline = (Get-Date).AddMinutes(25)
+          while ((Get-Date) -lt $deadline) {
+            Start-Sleep -Seconds 10
+            $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+            if ($txt -match 'Test run completed|Exiting batchmode') { break }
+            if (-not (Get-Process -Name Unity -ErrorAction SilentlyContinue)) { break }
+          }
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
+          $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+          if ($txt -match 'Test run completed\. Exiting with code 0' -and (Test-Path $xml)) { exit 0 }
+          Write-Host "::error::performance run did not complete cleanly (see editor log)"
+          exit 1
       - name: Run Visual Review (D3D11 WARP)
         if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.visual_review == 'true'
         timeout-minutes: 30
@@ -292,12 +367,26 @@ jobs:
           $ErrorActionPreference = 'Stop'
           $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
           Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Wait-Process -Name Unity -Timeout 30 -ErrorAction SilentlyContinue
           Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
-          & $editor -batchmode -force-d3d11 -runTests -testPlatform EditMode -testCategory VisualReview `
-            -projectPath "$PWD\client" `
-            -testResults "$PWD\artifacts\unity-tests\visualreview-results.xml" `
-            -logFile "$PWD\artifacts\unity-tests\visualreview-editor.log"
-
+          $log = "$PWD\artifacts\unity-tests\visualreview-editor.log"
+          $xml = "$PWD\artifacts\unity-tests\visualreview-results.xml"
+          # Unity.exe may detach on hosted runners: the verdict is the
+          # UTF completion marker + results XML, not the launcher exit code.
+          $null = Start-Process -FilePath $editor -PassThru -ArgumentList `
+            '-batchmode','-force-d3d11','-runTests','-testPlatform','EditMode','-testCategory','VisualReview','-projectPath',"$PWD\client",'-testResults',$xml,'-logFile',$log
+          $deadline = (Get-Date).AddMinutes(25)
+          while ((Get-Date) -lt $deadline) {
+            Start-Sleep -Seconds 10
+            $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+            if ($txt -match 'Test run completed|Exiting batchmode') { break }
+            if (-not (Get-Process -Name Unity -ErrorAction SilentlyContinue)) { break }
+          }
+          Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
+          $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+          if ($txt -match 'Test run completed\. Exiting with code 0' -and (Test-Path $xml)) { exit 0 }
+          Write-Host "::error::visualreview run did not complete cleanly (see editor log)"
+          exit 1
       - name: Drift check (unity-materialized)
         id: drift
         if: always() && steps.plan.outputs.scope == 'full'

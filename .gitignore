@@ -1,6 +1,7 @@
 client/Library/
 client/Temp/
 client/Logs/
+client/UserSettings/
 client/obj/
 client/[Bb]uild*/
 tools/
