@@ -4,7 +4,6 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 namespace ThinhThan.Core.Assets.Editor
 {
@@ -257,6 +256,35 @@ namespace ThinhThan.Core.Assets.Editor
         }
 
         /// <summary>
+        /// Light2D lives in the URP 2D package assembly, which this
+        /// assembly does not reference (the Mandatory Assemblies table is
+        /// exact); the fixture binds the component late and fails closed if
+        /// the type or its members are absent.
+        /// </summary>
+        private static Type FindLight2DType()
+        {
+            var t = Type.GetType(
+                    "UnityEngine.Rendering.Universal.Light2D, Unity.RenderPipelines.Universal.2D.Runtime")
+                ?? Type.GetType(
+                    "UnityEngine.Rendering.Universal.Light2D, Unity.RenderPipelines.Universal.Runtime");
+            if (t == null)
+            {
+                throw new GraphicsProbeException("Light2D type not found");
+            }
+            return t;
+        }
+
+        private static void SetLight2DGlobal(Component light)
+        {
+            var t = light.GetType();
+            var lt = t.GetNestedType("LightType")
+                ?? throw new GraphicsProbeException("Light2D.LightType not found");
+            var prop = t.GetProperty("lightType")
+                ?? throw new GraphicsProbeException("Light2D.lightType not found");
+            prop.SetValue(light, Enum.Parse(lt, "Global"));
+        }
+
+        /// <summary>
         /// Render the Sprite-Lit fixture under day then night global Light2D
         /// and require the day mean luminance to exceed night by >= 5.
         /// </summary>
@@ -277,16 +305,19 @@ namespace ThinhThan.Core.Assets.Editor
                 cam.backgroundColor = Color.black;
                 cam.targetTexture = rt;
 
-                var light = lightGo.AddComponent<Light2D>();
-                light.lightType = Light2D.LightType.Global;
+                var light2dType = FindLight2DType();
+                var light = lightGo.AddComponent(light2dType);
+                SetLight2DGlobal(light);
+                var intensity = light2dType.GetProperty("intensity")
+                    ?? throw new GraphicsProbeException("Light2D.intensity property not found");
 
                 var sr = quadGo.AddComponent<SpriteRenderer>();
                 sr.sprite = WhiteSprite();
                 sr.material = new Material(Shader.Find("Universal Render Pipeline/2D/Sprite-Lit-Default"));
 
-                light.intensity = 1f;
+                intensity.SetValue(light, 1f);
                 float day = RenderAndMeanLuminance(cam, rt);
-                light.intensity = 0f;
+                intensity.SetValue(light, 0f);
                 float night = RenderAndMeanLuminance(cam, rt);
                 report.LitFixtureOk = LuminanceDeltaSufficient(day, night);
                 if (!report.LitFixtureOk)
