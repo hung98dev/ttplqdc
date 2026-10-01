@@ -489,3 +489,30 @@ func TestParseQueueFieldForms(t *testing.T) {
 		t.Fatal("blocks: field must parse case-insensitively")
 	}
 }
+
+func TestFailLines(t *testing.T) {
+	out := strings.Join([]string{
+		"=== RUN   TestGood",
+		"--- PASS: TestGood (0.00s)",
+		"=== RUN   TestBad",
+		"    bad_test.go:12: boom",
+		"--- FAIL: TestBad (0.01s)",
+		"--- SKIP: TestLater (0.00s)",
+		"panic: timed out",
+		"FAIL",
+		"FAIL\tthinhthan/internal/x\t0.012s",
+		"FAIL\tthinhthan/internal/y [build failed]",
+		"ok  \tthinhthan/internal/z\t0.500s",
+	}, "\n")
+	got := failLines(out)
+	want := []string{"--- FAIL: TestBad (0.01s)", "--- SKIP: TestLater (0.00s)", "panic: timed out", "FAIL",
+		"FAIL\tthinhthan/internal/x\t0.012s", "FAIL\tthinhthan/internal/y [build failed]"}
+	if len(got) != len(want) {
+		t.Fatalf("failLines = %v", got)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Fatalf("failLines[%d] = %q, want %q (all %v)", i, got[i], want[i], got)
+		}
+	}
+}
