@@ -86,6 +86,8 @@ jobs:
           echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
           mkdir -p "$RUNNER_TEMP/tools/lfs" && 7z x -y -o"$RUNNER_TEMP/tools/lfs" "$RUNNER_TEMP/lfs.zip" > /dev/null
           cp "$(find "$RUNNER_TEMP/tools/lfs" -name git-lfs.exe | head -1)" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
 
       - name: CLI tools on PATH
         shell: bash
@@ -275,6 +277,8 @@ jobs:
           echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
           mkdir -p "$RUNNER_TEMP/tools/lfs" && 7z x -y -o"$RUNNER_TEMP/tools/lfs" "$RUNNER_TEMP/lfs.zip" > /dev/null
           cp "$(find "$RUNNER_TEMP/tools/lfs" -name git-lfs.exe | head -1)" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
 
       - name: CLI tools on PATH
         shell: bash
