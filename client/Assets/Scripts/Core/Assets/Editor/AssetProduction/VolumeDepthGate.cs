@@ -219,7 +219,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             }
             for (int i = 0; i < w * h; i++)
             {
-                if (inS[i] && dist[i] == maxDist && dist[i] > EdgeBandWidth)
+                if (inS[i] && dist[i] == maxDist && maxDist > 0)
                 {
                     deepestCore.Add(i);
                 }
@@ -735,6 +735,14 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             if (core.Count == 0 && band.Count != 0)
             {
                 r.Violations.Add("silhouette is one edge band thick; rim gate fails");
+            }
+            for (int i = 0; i < core.Count; i++)
+            {
+                if (dist[core[i]] <= EdgeBandWidth)
+                {
+                    r.Violations.Add("core set is not disjoint from the edge band");
+                    break;
+                }
             }
             r.ValueRangeL = ValueRange(sPixels, lab);
             if (double.IsNaN(r.ValueRangeL) || r.ValueRangeL < ValueRangeMin)
