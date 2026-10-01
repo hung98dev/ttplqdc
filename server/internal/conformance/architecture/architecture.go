@@ -137,6 +137,12 @@ func hasImport(g goFile, prefixes ...string) (string, bool) {
 	return "", false
 }
 
+// isFixtureDir names test-fixture trees any repo-wide walk must skip:
+// mutation corpora live under _testdata/testdata and would self-flag.
+func isFixtureDir(name string) bool {
+	return name == "testdata" || name == "_testdata" || name == "vendor"
+}
+
 func under(p, prefix string) bool { return strings.HasPrefix(p, prefix) }
 
 // CheckImportDirection enforces dependency-direction rules 2-5 and 10 on the
@@ -256,7 +262,16 @@ func checkForbiddenImports(files []goFile) []string {
 func checkSchema(root string) []string {
 	var out []string
 	_ = filepath.Walk(path.Join(root, migrationsDir), func(p string, info os.FileInfo, err error) error {
-		if err != nil || info.IsDir() || !strings.HasSuffix(p, ".sql") {
+		if err != nil {
+			return nil
+		}
+		if info.IsDir() {
+			if isFixtureDir(info.Name()) {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		if !strings.HasSuffix(p, ".sql") {
 			return nil
 		}
 		b, rerr := os.ReadFile(p)
@@ -293,7 +308,16 @@ var pbSourceRe = regexp.MustCompile(`//\s*source:\s*(\S+\.proto)`)
 func checkPbGo(root string) []string {
 	var out []string
 	_ = filepath.Walk(path.Join(root, serverRoot), func(p string, info os.FileInfo, err error) error {
-		if err != nil || info.IsDir() || !strings.HasSuffix(p, ".pb.go") {
+		if err != nil {
+			return nil
+		}
+		if info.IsDir() {
+			if isFixtureDir(info.Name()) {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		if !strings.HasSuffix(p, ".pb.go") {
 			return nil
 		}
 		b, rerr := os.ReadFile(p)
@@ -464,7 +488,16 @@ func checkTestPlacement(root string) []string {
 	}
 	dirs := map[string]*dirPkgs{}
 	_ = filepath.Walk(path.Join(root, serverRoot), func(p string, info os.FileInfo, err error) error {
-		if err != nil || info.IsDir() || !strings.HasSuffix(p, ".go") {
+		if err != nil {
+			return nil
+		}
+		if info.IsDir() {
+			if isFixtureDir(info.Name()) {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		if !strings.HasSuffix(p, ".go") {
 			return nil
 		}
 		fset := token.NewFileSet()

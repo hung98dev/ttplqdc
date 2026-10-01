@@ -69,7 +69,19 @@ func TestForbiddenDependencies(t *testing.T) {
 	if len(findDetails(got, "badpkg/dep.go", "math/rand")) == 0 {
 		t.Errorf("expected math/rand violation, got %v", got)
 	}
-	got = checkSchema(fxRoot)
+	// Rule 8 mutation fixture: materialized at test time so the file never
+	// matches the repo-wide NNNNNN_*.up.sql migration-pair scan.
+	schemaRoot := t.TempDir()
+	migDir := filepath.Join(schemaRoot, "server", "migrations")
+	if err := os.MkdirAll(migDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	badSQL := "ALTER TABLE item_instances ADD COLUMN durability INT NOT NULL DEFAULT 0;\n" +
+		"CREATE TABLE global_leader_lease (id TEXT PRIMARY KEY);\n"
+	if err := os.WriteFile(filepath.Join(migDir, "000002_bad.up.sql"), []byte(badSQL), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	got = checkSchema(schemaRoot)
 	for _, w := range []string{"durability", "global_leader_lease"} {
 		if len(findDetails(got, w)) == 0 {
 			t.Errorf("expected schema %s violation, got %v", w, got)
