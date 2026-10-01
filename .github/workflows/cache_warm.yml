@@ -1,0 +1,460 @@
+name: cache-warm
+
+# Main-scope cache warming (.devin/scripts/cache-policy.md § Main-scope
+# warming, ADR-0073/0078). Saves the pure-pin caches on pushes to main and
+# fully restores them on the 5-day schedule so the 7-day unused-cache
+# eviction never fires. Never runs on pull_request.
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '37 4 */5 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cache-warm-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  GIT_LFS_SKIP_SMUDGE: '1'
+  # stackpin.AndroidModules (docs/00_context/technology_versions.md)
+  ANDROID_SUPPORT_URL: 'https://download.unity3d.com/download_unity/7efac9f6c10e/TargetSupportInstaller/UnitySetup-Android-Support-for-Editor-6000.6.1f1.exe'
+  ANDROID_SUPPORT_SHA256: '7fce3760578959becae2aadf80ecc788fd5cdfd9df0e8d45f60faeb643f97aa3'
+  OPENJDK_URL: 'https://download.unity3d.com/download_unity/open-jdk/open-jdk-win-x64/jdk17.0.18-8_15e8817d1f5db6db3571ebe7430ef37f7fa8e60e8ff6f3e18ca1cb4c29f78774.zip'
+  OPENJDK_SHA256: '15e8817d1f5db6db3571ebe7430ef37f7fa8e60e8ff6f3e18ca1cb4c29f78774'
+  SDK_TOOLS_URL: 'https://download.unity3d.com/download_unity/android-sdk-tools/1_5312bb398affd0d94b90d3780976e1a162aa91944ef6bb40c8feb10ad6cc360d.zip'
+  SDK_TOOLS_SHA256: '5312bb398affd0d94b90d3780976e1a162aa91944ef6bb40c8feb10ad6cc360d'
+  NDK_URL: 'https://dl.google.com/android/repository/android-ndk-r27c-windows.zip'
+  NDK_SHA256: '27e49f11e0cee5800983d8af8f4acd5bf09987aa6f790d4439dda9f3643d2494'
+  CMAKE_URL: 'https://dl.google.com/android/repository/cmake-3.22.1-windows.zip'
+  CMAKE_SHA256: 'c9a9d568452a20cf27d703cb21ef9529dd67bda6be048c4d4b884acb3ac3a2b8'
+  BUILD_TOOLS_URL: 'https://dl.google.com/android/repository/build-tools_r36_windows.zip'
+  BUILD_TOOLS_SHA256: 'aa1095cb14d83e483818a748a2c06faaeb8e601561b06a356a119a1b2ca280d3'
+  PLATFORM_TOOLS_URL: 'https://dl.google.com/android/repository/platform-tools_r36.0.0-win.zip'
+  PLATFORM_TOOLS_SHA256: '12c2841f354e92a0eb2fd7bf6f0f9bf8538abce7bd6b060ac8349d6f6a61107c'
+  PLATFORM_34_URL: 'https://dl.google.com/android/repository/platform-34-ext7_r02.zip'
+  PLATFORM_34_SHA256: '5323311cc3e4ad614f0b8053c72b651726f3422448cedd39e48f00737cda8ad0'
+  PLATFORM_36_URL: 'https://dl.google.com/android/repository/platform-36_r02.zip'
+  PLATFORM_36_SHA256: '37607369a28c5b640b3a7998868d45898ebcb777565a0e85f9acf36f29631d2e'
+  PLATFORM_37_URL: 'https://dl.google.com/android/repository/platform-37.0_r02.zip'
+  PLATFORM_37_SHA256: '840b23e827f96e64aea4c89a1194aac3dc5f6bad37edb231c5c795d890330e8d'
+  COMMANDLINETOOLS_URL: 'https://dl.google.com/android/repository/commandlinetools-win-12266719_latest.zip'
+  COMMANDLINETOOLS_SHA256: 'f9088c04a44f1f37a8a3a228a7663e11ae9445fa07529c96cef38acb985a88f3'
+
+jobs:
+  warm-pins:
+    name: Warm pure-pin caches
+    runs-on: windows-2022
+    timeout-minutes: 180
+    steps:
+      - name: Cache CLI tools
+        id: cache-cli-tools
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/tools
+          key: cli-tools-${{ runner.os }}-pwsh-7.6.6-02fe458be20493fb-gh-2.101.0-bc6c814367b193cd-jq-1.8.2-a6fc67fedaf9128a-lfs-3.8.0-b62e7b8ceddee635
+
+      - name: Install pinned CLI tools
+        if: steps.cache-cli-tools.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/tools/bin"
+          # pwsh 7.6.6
+          curl -fsSL -o "$RUNNER_TEMP/pwsh.zip" \
+            "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip"
+          echo "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860  $RUNNER_TEMP/pwsh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/pwsh" && 7z x -y -o"$RUNNER_TEMP/tools/pwsh" "$RUNNER_TEMP/pwsh.zip" > /dev/null
+          # gh 2.101.0
+          curl -fsSL -o "$RUNNER_TEMP/gh.zip" \
+            "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_windows_amd64.zip"
+          echo "bc6c814367b193cd8e713611d61e36013c0ef843b8f516458fe3eda039192794  $RUNNER_TEMP/gh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/gh" && 7z x -y -o"$RUNNER_TEMP/tools/gh" "$RUNNER_TEMP/gh.zip" > /dev/null
+          cp "$(find "$RUNNER_TEMP/tools/gh" -name gh.exe | head -1)" "$RUNNER_TEMP/tools/bin/gh.exe"
+          # jq 1.8.2
+          curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq.exe" \
+            "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-windows-amd64.exe"
+          echo "a6fc67fedaf9128a3309a1e2ebb8b986aeccf70122ee46d2cb4849e423f0c627  $RUNNER_TEMP/tools/bin/jq.exe" | sha256sum -c -
+          # git-lfs 3.8.0
+          curl -fsSL -o "$RUNNER_TEMP/lfs.zip" \
+            "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-windows-amd64-v3.8.0.zip"
+          echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/lfs" && 7z x -y -o"$RUNNER_TEMP/tools/lfs" "$RUNNER_TEMP/lfs.zip" > /dev/null
+          cp "$(find "$RUNNER_TEMP/tools/lfs" -name git-lfs.exe | head -1)" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - name: CLI tools on PATH
+        shell: bash
+        run: |
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          lfs: false
+          fetch-depth: 0
+
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: '1.27.1'
+          cache: false
+
+      - name: Resolve pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-url)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-sha256)" >> "$GITHUB_ENV"
+          echo "EDB_ZIP_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-sha256)" >> "$GITHUB_ENV"
+          echo "EDB_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-url)" >> "$GITHUB_ENV"
+
+      - name: Cache Go build
+        id: cache-go-build
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: |
+            ~\AppData\Local\go-build
+            ~\go\pkg\mod
+          key: go-build-${{ runner.os }}-${{ env.GO_VERSION }}-${{ hashFiles('server/go.sum') }}
+          restore-keys: |
+            go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
+
+      - name: Warm go build cache
+        if: steps.cache-go-build.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          go -C server build ./...
+
+      - name: Cache Unity editor
+        id: cache-editor
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/unity-editor
+          key: unity-editor-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}
+
+      - name: Install Unity editor
+        if: steps.cache-editor.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dir = "$env:RUNNER_TEMP\unity-editor"
+          $installer = "$env:RUNNER_TEMP\UnitySetup64.exe"
+          Invoke-WebRequest -Uri $env:UNITY_WINDOWS_EDITOR_URL -OutFile $installer
+          $sha = (Get-FileHash $installer -Algorithm SHA256).Hash.ToLower()
+          if ($sha -ne $env:UNITY_WINDOWS_EDITOR_SHA256) { throw "installer sha256 mismatch: $sha" }
+          & $installer /S /D=$dir | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw "installer exit $LASTEXITCODE" }
+
+      - name: Cache EDB Postgres
+        id: edb-cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: tools/pgsql
+          key: edb-${{ runner.os }}-18.6-${{ env.EDB_ZIP_SHA256 }}
+
+      - name: Provision EDB Postgres binaries
+        if: steps.edb-cache.outputs.cache-hit != 'true'
+        shell: bash
+        timeout-minutes: 30
+        run: |
+          set -euo pipefail
+          curl -fSL --retry 4 --retry-all-errors --connect-timeout 30 \
+            -o "$RUNNER_TEMP/edb.zip" "$EDB_URL"
+          echo "$EDB_ZIP_SHA256  $RUNNER_TEMP/edb.zip" | sha256sum -c -
+          mkdir -p tools/pgsql && 7z x -y -otools/pgsql "$RUNNER_TEMP/edb.zip" > /dev/null
+          if [ -d tools/pgsql/pgsql ]; then
+            mv tools/pgsql/pgsql/* tools/pgsql/ && rmdir tools/pgsql/pgsql
+          fi
+          [ -f tools/pgsql/bin/pg_isready.exe ]
+
+      - name: Compute Android module key
+        id: androidkey
+        shell: bash
+        run: |
+          set -euo pipefail
+          key=$(printf '%s\n' \
+            "$ANDROID_SUPPORT_SHA256" "$OPENJDK_SHA256" "$SDK_TOOLS_SHA256" \
+            "$NDK_SHA256" "$CMAKE_SHA256" "$BUILD_TOOLS_SHA256" \
+            "$PLATFORM_TOOLS_SHA256" "$PLATFORM_34_SHA256" \
+            "$PLATFORM_36_SHA256" "$PLATFORM_37_SHA256" \
+            "$COMMANDLINETOOLS_SHA256" | sha256sum | cut -d' ' -f1)
+          echo "key=$key" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Unity Android modules
+        id: cache-android
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/unity-editor/Editor/Data/PlaybackEngines/AndroidPlayer
+          key: unity-android-module-${{ runner.os }}-${{ steps.androidkey.outputs.key }}
+
+      - name: Install Unity Android modules
+        if: steps.cache-android.outputs.cache-hit != 'true'
+        shell: pwsh
+        timeout-minutes: 60
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dl = "$env:RUNNER_TEMP\android-dl"
+          New-Item -ItemType Directory -Force $dl | Out-Null
+          $exe = "$dl\android-support.exe"
+          Invoke-WebRequest -Uri $env:ANDROID_SUPPORT_URL -OutFile $exe
+          $sha = (Get-FileHash $exe -Algorithm SHA256).Hash.ToLower()
+          if ($sha -ne $env:ANDROID_SUPPORT_SHA256) { throw "android-support sha256 mismatch: $sha" }
+          & $exe /S /D="$env:RUNNER_TEMP\unity-editor\Editor" | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw "installer exit $LASTEXITCODE" }
+          $ap = "$env:RUNNER_TEMP\unity-editor\Editor\Data\PlaybackEngines\AndroidPlayer"
+          $mods = @(
+            @{ env='OPENJDK';           dst="OpenJDK" },
+            @{ env='SDK_TOOLS';         dst="SDK" },
+            @{ env='NDK';               dst="NDK" },
+            @{ env='CMAKE';             dst="SDK\cmake\3.22.1" },
+            @{ env='BUILD_TOOLS';       dst="SDK\build-tools\36.0.0" },
+            @{ env='PLATFORM_TOOLS';    dst="SDK\platform-tools" },
+            @{ env='PLATFORM_34';       dst="SDK\platforms\android-34" },
+            @{ env='PLATFORM_36';       dst="SDK\platforms\android-36" },
+            @{ env='PLATFORM_37';       dst="SDK\platforms\android-37" },
+            @{ env='COMMANDLINETOOLS';  dst="SDK\cmdline-tools\latest" }
+          )
+          foreach ($m in $mods) {
+            $zip = "$dl\$($m.env).zip"
+            $url = (Get-Item "env:$($m.env)_URL").Value
+            $want = ((Get-Item "env:$($m.env)_SHA256").Value).ToLower()
+            Invoke-WebRequest -Uri $url -OutFile $zip
+            $got = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
+            if ($got -ne $want) { throw "$($m.env) sha256 mismatch: $got" }
+            $stage = "$dl\$($m.env)-x"
+            Expand-Archive -Path $zip -DestinationPath $stage -Force
+            $target = Join-Path $ap $m.dst
+            New-Item -ItemType Directory -Force $target | Out-Null
+            $tops = @(Get-ChildItem -Force $stage)
+            if ($tops.Count -eq 1 -and $tops[0].PSIsContainer) {
+              Copy-Item -Recurse -Force (Join-Path $tops[0].FullName '*') $target
+            } else {
+              Copy-Item -Recurse -Force (Join-Path $stage '*') $target
+            }
+          }
+          if (-not (Test-Path "$ap\OpenJDK")) { throw 'AndroidPlayer OpenJDK missing after install' }
+
+  warm-library-windows:
+    name: Warm unity-library
+    runs-on: windows-2022
+    timeout-minutes: 180
+    steps:
+      - name: Cache CLI tools
+        id: cache-cli-tools
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/tools
+          key: cli-tools-${{ runner.os }}-pwsh-7.6.6-02fe458be20493fb-gh-2.101.0-bc6c814367b193cd-jq-1.8.2-a6fc67fedaf9128a-lfs-3.8.0-b62e7b8ceddee635
+
+      - name: Install pinned CLI tools
+        if: steps.cache-cli-tools.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/tools/bin"
+          curl -fsSL -o "$RUNNER_TEMP/pwsh.zip" \
+            "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip"
+          echo "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860  $RUNNER_TEMP/pwsh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/pwsh" && 7z x -y -o"$RUNNER_TEMP/tools/pwsh" "$RUNNER_TEMP/pwsh.zip" > /dev/null
+          curl -fsSL -o "$RUNNER_TEMP/gh.zip" \
+            "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_windows_amd64.zip"
+          echo "bc6c814367b193cd8e713611d61e36013c0ef843b8f516458fe3eda039192794  $RUNNER_TEMP/gh.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/gh" && 7z x -y -o"$RUNNER_TEMP/tools/gh" "$RUNNER_TEMP/gh.zip" > /dev/null
+          cp "$(find "$RUNNER_TEMP/tools/gh" -name gh.exe | head -1)" "$RUNNER_TEMP/tools/bin/gh.exe"
+          curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq.exe" \
+            "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-windows-amd64.exe"
+          echo "a6fc67fedaf9128a3309a1e2ebb8b986aeccf70122ee46d2cb4849e423f0c627  $RUNNER_TEMP/tools/bin/jq.exe" | sha256sum -c -
+          curl -fsSL -o "$RUNNER_TEMP/lfs.zip" \
+            "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-windows-amd64-v3.8.0.zip"
+          echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/lfs" && 7z x -y -o"$RUNNER_TEMP/tools/lfs" "$RUNNER_TEMP/lfs.zip" > /dev/null
+          cp "$(find "$RUNNER_TEMP/tools/lfs" -name git-lfs.exe | head -1)" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - name: CLI tools on PATH
+        shell: bash
+        run: |
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          lfs: false
+          fetch-depth: 0
+
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: '1.27.1'
+          cache: false
+
+      - name: Resolve pins
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "UNITY_WINDOWS_EDITOR_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-url)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-sha256)" >> "$GITHUB_ENV"
+
+      - name: Compute LFS objects key
+        id: lfskey
+        shell: bash
+        run: |
+          set -euo pipefail
+          oids=$(git lfs ls-files --long 2>/dev/null | awk '{print $1}' | sort | sha256sum | cut -d' ' -f1)
+          echo "key=${oids:-empty}" >> "$GITHUB_OUTPUT"
+
+      - name: Cache LFS objects
+        id: cache-lfs
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: .git/lfs/objects
+          key: lfs-objects-${{ runner.os }}-${{ steps.lfskey.outputs.key }}
+          restore-keys: |
+            lfs-objects-${{ runner.os }}-
+
+      - name: LFS pull
+        shell: bash
+        run: git lfs pull
+
+      - name: Cache Unity editor
+        id: cache-editor
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/unity-editor
+          key: unity-editor-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}
+
+      - name: Install Unity editor
+        if: steps.cache-editor.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $dir = "$env:RUNNER_TEMP\unity-editor"
+          $installer = "$env:RUNNER_TEMP\UnitySetup64.exe"
+          Invoke-WebRequest -Uri $env:UNITY_WINDOWS_EDITOR_URL -OutFile $installer
+          $sha = (Get-FileHash $installer -Algorithm SHA256).Hash.ToLower()
+          if ($sha -ne $env:UNITY_WINDOWS_EDITOR_SHA256) { throw "installer sha256 mismatch: $sha" }
+          & $installer /S /D=$dir | Out-Null
+          if ($LASTEXITCODE -ne 0) { throw "installer exit $LASTEXITCODE" }
+
+      - name: Cache client Library
+        id: cache-library
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: client/Library
+          key: unity-library-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}-${{ hashFiles('client/Packages/manifest.json', 'client/Packages/packages-lock.json', 'client/ProjectSettings/**', 'client/Assets/**/csc.rsp') }}
+          # push: lookup-only (no download; miss -> materialize + save).
+          # schedule: full restore keeps the 7-day eviction from firing.
+          lookup-only: ${{ github.event_name == 'push' }}
+
+      - name: Activate Unity licence
+        if: steps.cache-library.outputs.cache-hit != 'true'
+        timeout-minutes: 30
+        shell: pwsh
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          $licClient = "$env:RUNNER_TEMP\unity-editor\Editor\Data\Resources\Licensing\Client\Unity.Licensing.Client.exe"
+          $uargs = @('-batchmode','-nographics','-quit','-logFile',"$env:RUNNER_TEMP\warm-licence.log")
+          $useLicClient = $false
+          if ($env:UNITY_LICENSE) {
+            $ulf = "$env:RUNNER_TEMP\Unity_lic.ulf"
+            [IO.File]::WriteAllText($ulf, $env:UNITY_LICENSE)
+            $uargs += @('-manualLicenseFile', $ulf)
+          } elseif ($env:UNITY_SERIAL) {
+            $uargs += @('-username', $env:UNITY_EMAIL, '-password', $env:UNITY_PASSWORD, '-serial', $env:UNITY_SERIAL)
+          } else {
+            $useLicClient = $true
+          }
+          for ($i = 1; $i -le 5; $i++) {
+            if ($useLicClient) {
+              & $licClient --activate-all --include-personal --username $env:UNITY_EMAIL --password $env:UNITY_PASSWORD 2>&1 | Out-Host
+            }
+            & $editor @uargs
+            $ec = $LASTEXITCODE
+            Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 90 -ErrorAction SilentlyContinue
+            $txt = Get-Content "$env:RUNNER_TEMP\warm-licence.log" -Raw -ErrorAction SilentlyContinue
+            if ($ec -eq 0 -or $txt -match 'Exiting batchmode successfully') {
+              Write-Host "licence activated (attempt $i)"; exit 0
+            }
+            Write-Host "activation attempt $i failed; retry in 60s"
+            Start-Sleep -Seconds 60
+          }
+          throw "licence activation failed after 5 attempts"
+
+      - name: Materialize client
+        if: steps.cache-library.outputs.cache-hit != 'true'
+        timeout-minutes: 30
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          $compileFails = 0
+          for ($i = 1; $i -le 5; $i++) {
+            Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+            Wait-Process -Name Unity -Timeout 30 -ErrorAction SilentlyContinue
+            Remove-Item -Recurse -Force client\Temp -ErrorAction SilentlyContinue
+            $log = "$env:RUNNER_TEMP\warm-materialize-$i.log"
+            $null = Start-Process -FilePath $editor -PassThru -ArgumentList `
+              '-batchmode','-quit','-projectPath',"$PWD\client",'-logFile',$log
+            $verdict = $null
+            $deadline = (Get-Date).AddMinutes(20)
+            while ((Get-Date) -lt $deadline) {
+              Start-Sleep -Seconds 10
+              $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+              if ($txt -match 'Exiting batchmode successfully') { $verdict = 'ok'; break }
+              if ($txt -match 'another Unity instance') { $verdict = 'infra'; break }
+              if (-not (Get-Process -Name Unity -ErrorAction SilentlyContinue)) {
+                if ($txt -match 'Scripts have compiler errors|error CS\d+') { $verdict = 'compile' }
+                else { $verdict = 'infra' }
+                break
+              }
+            }
+            Get-Process -Name Unity -ErrorAction SilentlyContinue | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue
+            if (-not $verdict) {
+              Get-Process -Name Unity -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+              $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
+              if ($txt -match 'Exiting batchmode successfully') { $verdict = 'ok' }
+              elseif ($txt -match 'Scripts have compiler errors|error CS\d+') { $verdict = 'compile' }
+              else { $verdict = 'infra' }
+            }
+            if ($verdict -eq 'ok') { Write-Host "materialized (attempt $i)"; exit 0 }
+            if ($verdict -eq 'compile') {
+              $compileFails++
+              if ($compileFails -ge 2) { throw "two consecutive compile-error attempts" }
+              Remove-Item -Recurse -Force client\Library -ErrorAction SilentlyContinue
+              continue
+            }
+            $compileFails = 0
+            Start-Sleep -Seconds 60
+          }
+          throw "materialization failed after 5 attempts"
+
+      - name: Return Unity licence
+        if: always() && steps.cache-library.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          $licClient = "$env:RUNNER_TEMP\unity-editor\Editor\Data\Resources\Licensing\Client\Unity.Licensing.Client.exe"
+          if (Test-Path $licClient) {
+            $j = Start-Job { & $using:licClient --return-entitlement; if ($LASTEXITCODE -ne 0) { & $using:licClient --deactivate } }
+            if (-not ($j | Wait-Job -Timeout 90)) { $j | Stop-Job }
+          }
+          Remove-Item "$env:LOCALAPPDATA\Unity\licenses\*.xml" -Force -ErrorAction SilentlyContinue
+          Remove-Item "$env:ProgramData\Unity\Unity_lic.ulf" -Force -ErrorAction SilentlyContinue
+          $editor = "$env:RUNNER_TEMP\unity-editor\Editor\Unity.exe"
+          if (Test-Path $editor) {
+            $j = Start-Job { & $using:editor -batchmode -quit -returnlicense }
+            if (-not ($j | Wait-Job -Timeout 90)) { $j | Stop-Job }
+          }

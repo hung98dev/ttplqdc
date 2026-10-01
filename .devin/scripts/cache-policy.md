@@ -25,9 +25,9 @@ Applies to `.github/workflows/verify.yml`. Enforced by
   |-----------------|--------------------------------------|--------------|
   | `go-build`      | `env.GO_VERSION`                     | `hashFiles('server/go.sum')` |
   | `unity-editor`  | `env.UNITY_WINDOWS_EDITOR_SHA256` (Windows only, ADR-0073) | (sha is the pin) |
-| `cli-tools`     | pinned pwsh/jq/gh/git-lfs versions + sha prefixes (Windows only) | (pins only) |
+| `cli-tools`     | `pwsh-<v>-<sha16>`/gh/jq/git-lfs pin tuple (Windows only) | (pins only) |
 | `unity-library` | `env.UNITY_WINDOWS_EDITOR_SHA256` (Windows only, ADR-0078) | `hashFiles(manifest.json, packages-lock.json, ProjectSettings/**, Assets/**/csc.rsp)` |
-| `edb`           | `env.EDB_ZIP_SHA256` + version       | (sha is the pin) |
+| `edb`           | `<postgres-version>` + `env.EDB_ZIP_SHA256` | (sha is the pin) |
 | `lfs-objects`   | `windows-2022` (Windows only, ADR-0078) | SHA-256 of sorted LFS object OIDs |
 | `unity-android` | pinned Android installer + submodules SHAs (Windows only, ADR-0078) | (shas are the pin) |
 - `restore-keys:` entries must keep `${{ runner.os }}` AND the pin segment —
@@ -66,6 +66,12 @@ the `commit unity-materialized` drift check, or the licence activation.
   `cache_telemetry.ps1` to `$RUNNER_TEMP/cache-telemetry.jsonl`
   (`{step, result: hit|miss, wall_seconds}`). `RUNNER_TEMP` is outside the
   workspace so telemetry never dirties the tree (Q6 clean_tree).
+- In the workflow, every `actions/cache` step is bracketed by a `Cache timer`
+  step (records `CT0` into `$GITHUB_ENV`) and a `Telemetry` step that emits
+  `result` from `steps.<id>.outputs.cache-hit` and `wall_seconds` spanning the
+  restore. The `cli-tools` cache restores before checkout, so its Telemetry
+  step inlines the identical JSONL format (the committed helper is not yet in
+  the worktree).
 - `scripts/verify.ps1` measures its own `go run` wall time, appends a `verify`
   entry (the ADR-0077 pre-Unity phase appends `verify-pre-unity` and never
   merges; the final phase does) (hit = `THINHTHAN_CACHE_HIT_GO`, set from the Go cache step output),
@@ -73,7 +79,7 @@ the `commit unity-materialized` drift check, or the licence activation.
   entries into `verify-report.json` as `cached_steps[]`. The merge is
   best-effort — it can never fail verification.
 - Evidence merge excludes `cached_steps` telemetry but retains independent CI run identity and all gate outcomes. Cold/warm equality is the exact CI-004 stable evidence projection in `docs/09_testing/test_and_release_evidence.md` §2a, never whole-manifest byte equality.
-- The Windows required job's evidence step (`verify.ps1 -MergeReports -Task`, ADR-0075, ADR-0078) early-exits on branches whose head ref has no `IMP-\d+`
+- The Windows required job's evidence step (`verify.ps1 -MergeReports`, ADR-0075, ADR-0078) early-exits on branches whose head ref has no `IMP-\d+`
   (claim/ops/spec/status PRs): it skips *manifest generation* only, never a
   gate. No manifest on those branches is by design — not a failure.
 - `Unity (Windows)` ships its `cache-telemetry.jsonl` inside
@@ -89,4 +95,4 @@ risk. The Windows EDB binaries ARE cached (large download, sha-asserted).
 
 ## Main-scope warming (ADR-0073)
 
-Caches saved by a PR run are visible only to that PR. `.github/workflows/cache_warm.yml` saves the pure-pin caches (`unity-editor`, `cli-tools`, `edb`, `go-build`) on pushes to `main`; its cache steps must equal a `verify.yml` cache step byte-for-byte (key + path, `TestCacheWarmMirrorsVerifyCaches`). `unity-library` is warmed only by its `warm-library-windows` job: exact key (no `restore-keys`), `lookup-only` so a hit downloads nothing, materialization identical to `verify.yml` on a miss; it alone reads the Unity licence secrets, safe because the workflow never runs on `pull_request`. Repository Actions cache budget is 30 GB (owner configuration, ADR-0078); closed-PR caches are pruned hourly and on pushes to `main` by `cache_prune.yml`. Keep-alive: `cache_warm.yml` also runs every 5 days (`schedule`, default branch only) and fully restores every main-scope cache (Library included: `lookup-only` is false on schedule) so the 7-day unused-cache eviction never fires, and re-creates missing entries.
+Caches saved by a PR run are visible only to that PR. `.github/workflows/cache_warm.yml` saves the pure-pin caches (`unity-editor`, `cli-tools`, `edb`, `go-build`, `unity-android`) on pushes to `main`; its cache steps must equal a `verify.yml` cache step byte-for-byte (key + path, `TestCacheWarmMirrorsVerifyCaches`). `unity-library` is warmed only by its `warm-library-windows` job: exact key (no `restore-keys`), `lookup-only` so a hit downloads nothing, materialization identical to `verify.yml` on a miss; it alone reads the Unity licence secrets, safe because the workflow never runs on `pull_request`. Repository Actions cache budget is 30 GB (owner configuration, ADR-0078); closed-PR caches are pruned hourly and on pushes to `main` by `cache_prune.yml`. Keep-alive: `cache_warm.yml` also runs every 5 days (`schedule`, default branch only) and fully restores every main-scope cache (Library included: `lookup-only` is false on schedule) so the 7-day unused-cache eviction never fires, and re-creates missing entries.

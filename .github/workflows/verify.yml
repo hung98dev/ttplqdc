@@ -47,7 +47,28 @@ jobs:
             exit 1
           fi
 
+      - name: Cache timer cli-tools
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
+      - name: Cache CLI tools
+        id: cache-cli-tools
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/tools
+          key: cli-tools-${{ runner.os }}-pwsh-7.6.6-02fe458be20493fb-gh-2.101.0-bc6c814367b193cd-jq-1.8.2-a6fc67fedaf9128a-lfs-3.8.0-b62e7b8ceddee635
+
+      - name: Telemetry cli-tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          f="${THINHTHAN_CACHE_TELEMETRY:-$RUNNER_TEMP/cache-telemetry.jsonl}"
+          mkdir -p "$(dirname "$f")"
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          printf '{"step":"cli-tools","result":"%s","wall_seconds":%s}\n' '${{ steps.cache-cli-tools.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall" >> "$f"
+
       - name: Install pinned CLI tools
+        if: steps.cache-cli-tools.outputs.cache-hit != 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -73,6 +94,12 @@ jobs:
           echo "b62e7b8ceddee635f691233d77de8eaa4b213e9209e0173811d8cfa77f7882c1  $RUNNER_TEMP/lfs.zip" | sha256sum -c -
           mkdir -p "$RUNNER_TEMP/tools/lfs" && 7z x -y -o"$RUNNER_TEMP/tools/lfs" "$RUNNER_TEMP/lfs.zip" > /dev/null
           cp "$(find "$RUNNER_TEMP/tools/lfs" -name git-lfs.exe | head -1)" "$RUNNER_TEMP/tools/bin/git-lfs.exe"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
+      - name: CLI tools on PATH
+        shell: bash
+        run: |
           echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
           echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
 
@@ -108,7 +135,12 @@ jobs:
             echo "$k=$(jq -r ".$k" artifacts/unity-plan.json)" >> "$GITHUB_OUTPUT"
           done
 
+      - name: Cache timer go-build
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
       - name: Cache Go build
+        id: cache-go-build
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
@@ -118,6 +150,14 @@ jobs:
           restore-keys: |
             go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
 
+      - name: Telemetry go-build
+        shell: bash
+        run: |
+          set -euo pipefail
+          . .devin/scripts/cache_telemetry.sh
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
+
       - name: Compute LFS objects key
         id: lfskey
         shell: bash
@@ -126,7 +166,13 @@ jobs:
           oids=$(git lfs ls-files --long 2>/dev/null | awk '{print $1}' | sort | sha256sum | cut -d' ' -f1)
           echo "key=${oids:-empty}" >> "$GITHUB_OUTPUT"
 
+      - name: Cache timer lfs-objects
+        if: steps.plan.outputs.scope == 'full'
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
       - name: Cache LFS objects
+        id: cache-lfs
         if: steps.plan.outputs.scope == 'full'
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
@@ -135,10 +181,24 @@ jobs:
           restore-keys: |
             lfs-objects-${{ runner.os }}-
 
+      - name: Telemetry lfs-objects
+        if: steps.plan.outputs.scope == 'full'
+        shell: bash
+        run: |
+          set -euo pipefail
+          . .devin/scripts/cache_telemetry.sh
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          cache_telemetry_emit lfs-objects '${{ steps.cache-lfs.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
+
       - name: LFS pull
         if: steps.plan.outputs.scope == 'full'
         shell: bash
         run: git lfs pull
+
+      - name: Cache timer unity-editor
+        if: steps.plan.outputs.scope == 'full'
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
 
       - name: Cache Unity editor
         id: cache-editor
@@ -147,6 +207,15 @@ jobs:
         with:
           path: ${{ runner.temp }}/unity-editor
           key: unity-editor-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}
+
+      - name: Telemetry unity-editor
+        if: steps.plan.outputs.scope == 'full'
+        shell: bash
+        run: |
+          set -euo pipefail
+          . .devin/scripts/cache_telemetry.sh
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          cache_telemetry_emit unity-editor '${{ steps.cache-editor.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Install Unity editor
         if: steps.plan.outputs.scope == 'full' && steps.cache-editor.outputs.cache-hit != 'true'
@@ -161,12 +230,27 @@ jobs:
           & $installer /S /D=$dir | Out-Null
           if ($LASTEXITCODE -ne 0) { throw "installer exit $LASTEXITCODE" }
 
+      - name: Cache timer unity-library
+        if: steps.plan.outputs.scope == 'full'
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
       - name: Cache client Library
+        id: cache-library
         if: steps.plan.outputs.scope == 'full'
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: client/Library
           key: unity-library-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}-${{ hashFiles('client/Packages/manifest.json', 'client/Packages/packages-lock.json', 'client/ProjectSettings/**', 'client/Assets/**/csc.rsp') }}
+
+      - name: Telemetry unity-library
+        if: steps.plan.outputs.scope == 'full'
+        shell: bash
+        run: |
+          set -euo pipefail
+          . .devin/scripts/cache_telemetry.sh
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          cache_telemetry_emit unity-library '${{ steps.cache-library.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Activate Unity licence
         if: steps.plan.outputs.scope == 'full'
@@ -418,6 +502,15 @@ jobs:
           name: unity-materialized-windows
           path: client/
 
+      - name: Ship cache telemetry
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p artifacts/unity-tests
+          if [ -f "$RUNNER_TEMP/cache-telemetry.jsonl" ]; then
+            cp "$RUNNER_TEMP/cache-telemetry.jsonl" artifacts/unity-tests/
+          fi
+
       - name: Upload unity-test-results-windows
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -481,7 +574,28 @@ jobs:
             exit 1
           fi
 
+      - name: Cache timer cli-tools
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
+      - name: Cache CLI tools
+        id: cache-cli-tools
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+        with:
+          path: ${{ runner.temp }}/tools
+          key: cli-tools-${{ runner.os }}-pwsh-7.6.6-02fe458be20493fb-gh-2.101.0-bc6c814367b193cd-jq-1.8.2-a6fc67fedaf9128a-lfs-3.8.0-b62e7b8ceddee635
+
+      - name: Telemetry cli-tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          f="${THINHTHAN_CACHE_TELEMETRY:-$RUNNER_TEMP/cache-telemetry.jsonl}"
+          mkdir -p "$(dirname "$f")"
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          printf '{"step":"cli-tools","result":"%s","wall_seconds":%s}\n' '${{ steps.cache-cli-tools.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall" >> "$f"
+
       - name: Install pinned CLI tools
+        if: steps.cache-cli-tools.outputs.cache-hit != 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -506,6 +620,12 @@ jobs:
           echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
           echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
 
+      - name: CLI tools on PATH
+        shell: bash
+        run: |
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
+
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           lfs: false
@@ -524,7 +644,12 @@ jobs:
           echo "EDB_ZIP_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-sha256)" >> "$GITHUB_ENV"
           echo "EDB_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-url)" >> "$GITHUB_ENV"
 
+      - name: Cache timer go-build
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
       - name: Cache Go build
+        id: cache-go-build
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
@@ -534,12 +659,32 @@ jobs:
           restore-keys: |
             go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
 
+      - name: Telemetry go-build
+        shell: bash
+        run: |
+          set -euo pipefail
+          . .devin/scripts/cache_telemetry.sh
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
+
+      - name: Cache timer edb
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
       - name: Cache EDB Postgres
         id: edb-cache
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: tools/pgsql
-          key: edb-${{ runner.os }}-${{ env.EDB_ZIP_SHA256 }}
+          key: edb-${{ runner.os }}-18.6-${{ env.EDB_ZIP_SHA256 }}
+
+      - name: Telemetry edb
+        shell: bash
+        run: |
+          set -euo pipefail
+          . .devin/scripts/cache_telemetry.sh
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          cache_telemetry_emit edb '${{ steps.edb-cache.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Provision EDB Postgres binaries
         if: steps.edb-cache.outputs.cache-hit != 'true'
@@ -577,6 +722,7 @@ jobs:
         timeout-minutes: 30
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: |
           pwsh -NoProfile -File scripts/verify.ps1 -Phase pre-unity -ReportOut "$env:RUNNER_TEMP\verify-pre-unity.json"
 
@@ -601,10 +747,21 @@ jobs:
           name: unity-test-results-windows
           path: unity-results/
 
+      - name: Fold unity cache telemetry
+        shell: bash
+        run: |
+          set -euo pipefail
+          f="$RUNNER_TEMP/cache-telemetry.jsonl"
+          touch "$f"
+          if [ -f unity-results/cache-telemetry.jsonl ]; then
+            cat unity-results/cache-telemetry.jsonl >> "$f"
+          fi
+
       - name: Unity phase verify
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: |
           pwsh -NoProfile -File scripts/verify.ps1 -Phase unity `
             -PreReport "$env:RUNNER_TEMP\verify-pre-unity.json" `
@@ -742,7 +899,12 @@ jobs:
           set -euo pipefail
           echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
 
+      - name: Cache timer go-build
+        shell: bash
+        run: echo "CT0=$(date +%s.%N)" >> "$GITHUB_ENV"
+
       - name: Cache Go build
+        id: cache-go-build
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: |
@@ -751,6 +913,14 @@ jobs:
           key: go-build-${{ runner.os }}-${{ env.GO_VERSION }}-${{ hashFiles('server/go.sum') }}
           restore-keys: |
             go-build-${{ runner.os }}-${{ env.GO_VERSION }}-
+
+      - name: Telemetry go-build
+        shell: bash
+        run: |
+          set -euo pipefail
+          . .devin/scripts/cache_telemetry.sh
+          wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
+          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Install protoc
         shell: bash
@@ -770,6 +940,7 @@ jobs:
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: pwsh -NoProfile -File scripts/verify.ps1 -ReportOut artifacts/verify-report-linux.json
 
       - name: Upload verify-report-linux
