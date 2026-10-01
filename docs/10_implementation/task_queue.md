@@ -85,7 +85,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-058` | Folk Fishing Runtime | `NOT_STARTED` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `NOT_STARTED` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
 | `IMP-060` | Atlas Journal Runtime | `NOT_STARTED` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
-| `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `NOT_STARTED` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
+| `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `IN_PROGRESS` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
 | `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `NOT_STARTED` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `IN_PROGRESS` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
 | `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `NOT_STARTED` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
@@ -377,10 +377,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-004/"
 
 ## `IMP-061` — Protocol Buffers Schema & Multi-Language Codegen Harness
 id: IMP-061
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-061"
+branch: "imp/IMP-061-proto-schema"
+claimed_at: "2026-10-01T10:24:02Z"
 blocked_by: ""
 
 specs: [`../05_network/protocol.md`, `../05_network/messages.md`, `../05_network/errors.md`, `../05_network/protobuf_conventions.md`, `../05_network/synchronization.md`, `../05_network/versioning.md`, `repository_layout.md`, `../06_data/ids.md`, `../06_data/save_rules.md`, `../08_scale_ops/deployment.md`, `../03_systems/soul_contracts.md`]
