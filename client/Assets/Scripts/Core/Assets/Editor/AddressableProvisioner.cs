@@ -31,7 +31,10 @@ namespace ThinhThan.Core.Assets.Editor
         [InitializeOnLoadMethod]
         private static void ProvisionOnEditorLoad()
         {
-            Provision();
+            // The domain reload finishes before the first asset import, so
+            // provisioning inline would see an empty AddressableAssetsData and
+            // recreate everything. delayCall runs once the editor is ready.
+            EditorApplication.delayCall += () => Provision();
         }
 
         /// <summary>
@@ -60,6 +63,14 @@ namespace ThinhThan.Core.Assets.Editor
         private static AddressableAssetSettings EnsureSettings()
         {
             var settings = AssetDatabase.LoadAssetAtPath<AddressableAssetSettings>(SettingsPath);
+            if (settings == null
+                && File.Exists(Path.Combine(ProjectRoot(), SettingsPath)))
+            {
+                // Committed asset exists on disk but has not been imported
+                // yet: force the import synchronously rather than recreating.
+                AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+                settings = AssetDatabase.LoadAssetAtPath<AddressableAssetSettings>(SettingsPath);
+            }
             if (settings == null)
             {
                 settings = AddressableAssetSettings.Create(SettingsFolder, "AddressableAssetSettings", false, true);
