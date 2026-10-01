@@ -407,7 +407,7 @@ namespace ThinhThan.Core.Localization.Editor
         private static List<GroupSnapshot>? SnapshotGroups(LocaleValidationReport report)
         {
             var settingsType = System.Type.GetType(
-                "UnityEditor.AddressableAssets.AddressableAssetSettings, Unity.Addressables.Editor");
+                "UnityEditor.AddressableAssets.Settings.AddressableAssetSettings, Unity.Addressables.Editor");
             var settings = settingsType == null
                 ? null
                 : AssetDatabase.LoadAssetAtPath(
