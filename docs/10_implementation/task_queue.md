@@ -26,7 +26,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 |---|---|---|---|---|
 | `IMP-000` | M0 Bootstrap Gate & Toolchain Harness | `DONE` | none | `../00_context/technology_versions.md`, `../00_context/constraints.md` |
 | `IMP-001` | Stable IDs / Revisions | `DONE` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
-| `IMP-002` | Deterministic RNG Interface | `NOT_STARTED` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
+| `IMP-002` | Deterministic RNG Interface | `IN_PROGRESS` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
 | `IMP-003` | Content Compiler | `NOT_STARTED` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
 | `IMP-004` | Integration / Balance Activation Gate | `NOT_STARTED` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-005` | Operation Idempotency Primitive | `NOT_STARTED` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
@@ -264,10 +264,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-001/"
 
 ## `IMP-002` — Deterministic RNG Interface
 id: IMP-002
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-002"
+branch: "imp/IMP-002-deterministic-rng"
+claimed_at: "2026-10-01T18:26:48Z"
 blocked_by: ""
 
 specs: [`../04_architecture/concurrency.md`, `../06_data/config.md`, `../09_testing/gameplay.md`]
