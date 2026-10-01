@@ -39,7 +39,7 @@ Any change whose effect crosses a layer boundary as defined in `dependency_graph
 
 ## Version / Dependency Discipline
 - implementation matches every applicable exact pin in `../00_context/technology_versions.md`,
-- no `latest`, wildcard, floating direct dependency, unpinned Git dependency, preview/beta/RC/nightly dependency, or hidden local-tool override is introduced,
+- no `latest`, wildcard, floating direct dependency, unpinned Git dependency, preview/beta/RC/nightly dependency (an exact commit pseudo-version recorded in `../00_context/technology_versions.md` transitive-closure entries is an approved pin), or hidden local-tool override is introduced,
 - Unity `ProjectVersion.txt`, package manifest/lock (including Addressables 2.11.2), Go module/checksum files, protobuf generators, migration tool, database deployment version, and CI toolchain agree with the canonical matrix,
 - introducing a new core runtime/framework/infrastructure dependency first updates the canonical matrix and owning architecture spec,
 - dependency/toolchain upgrade is an explicit reviewed change with regeneration/compatibility tests rather than an incidental package-manager resolution.
