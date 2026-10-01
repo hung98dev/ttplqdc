@@ -307,6 +307,53 @@ func TestQ0AbsentPathsMutationFails(t *testing.T) {
 	}
 }
 
+func TestQ0AbsentPathsMetaAndSharedCoverage(t *testing.T) {
+	idx := PacketIndex{
+		"IMP-000": &Packet{ID: "IMP-000", Status: "DONE", OwnedPaths: []string{
+			"client/ProjectSettings/",
+			"client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef",
+		}},
+		"IMP-063": &Packet{ID: "IMP-063", Status: "NOT_STARTED", OwnedPaths: []string{
+			"client/Assets/Scripts/Core/Assets/",
+		}},
+		"IMP-095": &Packet{ID: "IMP-095", Status: "NOT_STARTED", OwnedPaths: []string{
+			"client/ProjectSettings/QualitySettings.asset",
+		}},
+	}
+	tracked := []string{
+		// materialized asmdef plus its directory .meta markers
+		"client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef",
+		"client/Assets/Scripts/Core/Assets/Editor.meta",
+		"client/Assets/Scripts/Core/Assets.meta",
+		"client/Assets/Scripts.meta",
+		// dual-covered: live IMP-000 dir + dead IMP-095 exact file
+		"client/ProjectSettings/QualitySettings.asset",
+	}
+	if errs := CheckAbsentPaths(idx, tracked); len(errs) != 0 {
+		t.Fatalf("materialized .meta and shared-coverage paths must pass: %v", errs)
+	}
+	// A directory .meta whose contents are only dead-owned still violates.
+	errs := CheckAbsentPaths(
+		PacketIndex{"IMP-063": idx["IMP-063"]},
+		[]string{"client/Assets/Scripts/Core/Assets/Editor.meta"})
+	if len(errs) == 0 || !strings.Contains(errs[0], "Editor.meta") {
+		t.Fatalf("dead-owned directory meta must violate: %v", errs)
+	}
+	// A stray .meta for a directory with no tracked content is unowned.
+	errs = CheckAbsentPaths(idx, []string{"client/Assets/Stray.meta"})
+	if len(errs) != 1 || !strings.Contains(errs[0], "unowned path") {
+		t.Fatalf("stray directory meta must be unowned: %v", errs)
+	}
+	// A file .meta follows its file's owner.
+	errs = CheckAbsentPaths(idx, []string{
+		"client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef",
+		"client/Assets/Scripts/Core/Assets/Editor/ThinhThan.Core.Assets.Editor.asmdef.meta",
+	})
+	if len(errs) != 0 {
+		t.Fatalf("file .meta must follow its file's owner: %v", errs)
+	}
+}
+
 func TestQ1PinsMutationFails(t *testing.T) {
 	root := fixtureRepo(t)
 	writeFile(t, root, "server/go.mod",

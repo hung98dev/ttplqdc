@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using NUnit.Framework;
 using UnityEngine;
@@ -37,14 +38,16 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
                 var lines = File.ReadAllLines(cs);
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    var line = lines[i];
-                    StringAssert.DoesNotContain(
-                        "#pragma warning disable",
-                        line,
+                    // Match the directive/attribute itself, not the literal
+                    // in this test's own source: a trimmed line that starts
+                    // with the pragma or an attribute bracket.
+                    var t = lines[i].TrimStart();
+                    Assert.IsFalse(
+                        t.StartsWith("#pragma warning disable", StringComparison.Ordinal),
                         cs + ":" + (i + 1));
-                    StringAssert.DoesNotContain(
-                        "SuppressMessage",
-                        line,
+                    Assert.IsFalse(
+                        t.StartsWith("[", StringComparison.Ordinal) &&
+                            t.Contains("SuppressMessage", StringComparison.Ordinal),
                         cs + ":" + (i + 1));
                 }
             }

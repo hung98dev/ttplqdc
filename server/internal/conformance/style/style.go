@@ -149,10 +149,21 @@ func exprBracePrefix(prefix string) bool {
 	if p == "" {
 		return false
 	}
-	for _, m := range []string{"=", "=>", "new ", "return "} {
+	for _, m := range []string{"=>", "new ", "new[", "return "} {
 		if strings.Contains(p, m) {
 			return true
 		}
+	}
+	// A bare '=' marks initializer context (`var x = new List<int> {`) but
+	// '==' '!=' '<=' '>=' are comparisons, not initializers.
+	masked := strings.NewReplacer("==", "", "!=", "", "<=", "", ">=", "").Replace(p)
+	if strings.Contains(masked, "=") {
+		return true
+	}
+	// An unclosed '(' puts the brace inside an argument list — always
+	// expression context (`Split(new[] { " and " }, opts)`).
+	if strings.Count(p, "(") > strings.Count(p, ")") {
+		return true
 	}
 	switch p[len(p)-1] {
 	case '(', '[', ',', '{', '}':
