@@ -54,7 +54,7 @@ namespace ThinhThan.Core.Assets.Editor
             EnsureVariable(profileSettings, RemoteLoadPathVar, "[" + RemoteBaseUrlVar + "]/[BuildTarget]");
             EnsureVariable(profileSettings, RemoteBaseUrlVar, DevRemoteBaseUrl);
 
-            var names = profileSettings.GetProfileNames();
+            var names = profileSettings.GetAllProfileNames();
             foreach (var env in EnvironmentProfiles)
             {
                 string profileId;
@@ -64,7 +64,7 @@ namespace ThinhThan.Core.Assets.Editor
                 }
                 else
                 {
-                    profileId = profileSettings.CreateProfile(env, string.Empty);
+                    profileId = profileSettings.AddProfile(env, settings.activeProfileId);
                 }
                 profileSettings.SetValue(profileId, RemoteBaseUrlVar, BaseUrlFor(env));
             }
