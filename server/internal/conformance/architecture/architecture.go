@@ -89,45 +89,6 @@ type goFile struct {
 	imports []string
 }
 
-func collectGoFiles(root string) ([]goFile, error) {
-	var out []goFile
-	base := path.Join(root, serverRoot)
-	err := filepath.Walk(base, func(p string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		if info.IsDir() {
-			switch e := info.Name(); e {
-			case "testdata", "_testdata", "vendor", ".git":
-				return filepath.SkipDir
-			}
-			return nil
-		}
-		if !strings.HasSuffix(p, ".go") {
-			return nil
-		}
-		rel, rerr := filepath.Rel(root, p)
-		if rerr != nil {
-			return rerr
-		}
-		fset := token.NewFileSet()
-		f, perr := parser.ParseFile(fset, p, nil, parser.ImportsOnly)
-		if perr != nil {
-			return fmt.Errorf("parse %s: %w", rel, perr)
-		}
-		gf := goFile{rel: filepath.ToSlash(rel), pkg: f.Name.Name}
-		if gf.pkg == "main" {
-			gf.isMain = true
-		}
-		for _, im := range f.Imports {
-			gf.imports = append(gf.imports, strings.Trim(im.Path.Value, `"`))
-		}
-		out = append(out, gf)
-		return nil
-	})
-	return out, err
-}
-
 // goImports builds path -> []imports for a supplied file list (fixture-aware:
 // files may live anywhere under root, including _testdata dirs).
 func scanGoTree(root, dir string, skipTestdata bool) ([]goFile, error) {

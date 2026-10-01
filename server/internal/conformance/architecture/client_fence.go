@@ -160,11 +160,10 @@ func (e AllowlistEntry) exempts(file, symbol string) bool {
 // maskCommentsStrings strips // comments, /* */ blocks and string literals so
 // token patterns match code only.
 var (
-	lineCommentRe = regexp.MustCompile(`//.*$`)
-	strLitRe      = regexp.MustCompile(`"(?:[^"\\]|\\.)*"`)
-	charLitRe     = regexp.MustCompile(`'(?:[^'\\]|\\.)*'`)
-	interpStrRe   = regexp.MustCompile(`\$"(?:[^"\\]|\\.)*"`)
-	verbalStrRe   = regexp.MustCompile(`@"(?:[^"]|"")*"`)
+	strLitRe    = regexp.MustCompile(`"(?:[^"\\]|\\.)*"`)
+	charLitRe   = regexp.MustCompile(`'(?:[^'\\]|\\.)*'`)
+	interpStrRe = regexp.MustCompile(`\$"(?:[^"\\]|\\.)*"`)
+	verbalStrRe = regexp.MustCompile(`@"(?:[^"]|"")*"`)
 )
 
 func maskLine(line string) string {

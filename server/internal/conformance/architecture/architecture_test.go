@@ -22,17 +22,21 @@ func findDetails(details []string, substrs ...string) []string {
 	return out
 }
 
-func fixtureGoFiles(t *testing.T) []goFile {
-	t.Helper()
-	files, err := collectGoFiles(fxRoot)
-	if err != nil {
-		t.Fatalf("collectGoFiles: %v", err)
-	}
-	return files
+// badImportFiles is the in-code mutation fixture for import-graph rules:
+// forbidden modules and fenced directions must each fail.
+var badImportFiles = []goFile{
+	{rel: "server/internal/edge/bad_sql.go", pkg: "edge", imports: []string{"database/sql"}},
+	{rel: "server/internal/sim/bad.go", pkg: "sim", imports: []string{"github.com/jackc/pgx/v5", "thinhthan/internal/edge"}},
+	{rel: "server/internal/durable/bad.go", pkg: "durable", imports: []string{"thinhthan/internal/sim"}},
+	{rel: "server/internal/protocol/bad.go", pkg: "protocol", imports: []string{"thinhthan/internal/global"}},
+	{rel: "server/internal/observability/bad.go", pkg: "observability", imports: []string{"thinhthan/internal/edge"}},
+	{rel: "server/internal/badpkg/dep.go", pkg: "badpkg", imports: []string{"github.com/gin-gonic/gin", "math/rand"}},
+	{rel: "server/cmd/server/main.go", pkg: "main", isMain: true},
+	{rel: "server/cmd/foo/main.go", pkg: "main", isMain: true},
 }
 
 func TestImportDirection(t *testing.T) {
-	got := checkImports(fixtureGoFiles(t))
+	got := checkImports(badImportFiles)
 	for _, w := range []struct{ file, via string }{
 		{"edge/bad_sql.go", "database/sql"}, // rule 2: edge not an SQL owner
 		{"sim/bad.go", "pgx"},               // rule 2: sim must not touch SQL
@@ -48,7 +52,7 @@ func TestImportDirection(t *testing.T) {
 }
 
 func TestOneProductionMain(t *testing.T) {
-	got := checkMains(fixtureGoFiles(t))
+	got := checkMains(badImportFiles)
 	if len(findDetails(got, "cmd/foo/main.go")) == 0 {
 		t.Fatalf("expected cmd/foo violation, got %v", got)
 	}
@@ -58,7 +62,7 @@ func TestOneProductionMain(t *testing.T) {
 }
 
 func TestForbiddenDependencies(t *testing.T) {
-	got := checkForbiddenImports(fixtureGoFiles(t))
+	got := checkForbiddenImports(badImportFiles)
 	if len(findDetails(got, "badpkg/dep.go", "gin")) == 0 {
 		t.Errorf("expected gin violation, got %v", got)
 	}

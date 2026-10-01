@@ -250,9 +250,7 @@ func ParseBlockers(text string) map[string]BlockerEntry {
 		}
 		if cur != nil && strings.HasPrefix(strings.TrimSpace(line), "blocks:") {
 			e := out[cur.ID]
-			for _, id := range impRefRe.FindAllString(line, -1) {
-				e.Blocks = append(e.Blocks, id)
-			}
+			e.Blocks = append(e.Blocks, impRefRe.FindAllString(line, -1)...)
 			if strings.Contains(line, "ALL") {
 				e.Blocks = append(e.Blocks, "ALL")
 			}
