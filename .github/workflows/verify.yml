@@ -65,7 +65,7 @@ jobs:
           f="${THINHTHAN_CACHE_TELEMETRY:-$RUNNER_TEMP/cache-telemetry.jsonl}"
           mkdir -p "$(dirname "$f")"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          printf '{"step":"cli-tools","result":"%s","wall_seconds":%s}\n' '${{ steps.cache-cli-tools.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall" >> "$f"
+          printf '{"step":"cli-tools","result":"%s","wall_seconds":%s}\n' '${{ steps.cache-cli-tools.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall" >> "$f"
 
       - name: Install pinned CLI tools
         if: steps.cache-cli-tools.outputs.cache-hit != 'true'
@@ -156,7 +156,7 @@ jobs:
           set -euo pipefail
           . .devin/scripts/cache_telemetry.sh
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall"
+          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Compute LFS objects key
         id: lfskey
@@ -188,7 +188,7 @@ jobs:
           set -euo pipefail
           . .devin/scripts/cache_telemetry.sh
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          cache_telemetry_emit lfs-objects '${{ steps.cache-lfs.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall"
+          cache_telemetry_emit lfs-objects '${{ steps.cache-lfs.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: LFS pull
         if: steps.plan.outputs.scope == 'full'
@@ -215,7 +215,7 @@ jobs:
           set -euo pipefail
           . .devin/scripts/cache_telemetry.sh
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          cache_telemetry_emit unity-editor '${{ steps.cache-editor.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall"
+          cache_telemetry_emit unity-editor '${{ steps.cache-editor.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Install Unity editor
         if: steps.plan.outputs.scope == 'full' && steps.cache-editor.outputs.cache-hit != 'true'
@@ -250,7 +250,7 @@ jobs:
           set -euo pipefail
           . .devin/scripts/cache_telemetry.sh
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          cache_telemetry_emit unity-library '${{ steps.cache-library.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall"
+          cache_telemetry_emit unity-library '${{ steps.cache-library.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Activate Unity licence
         if: steps.plan.outputs.scope == 'full'
@@ -592,7 +592,7 @@ jobs:
           f="${THINHTHAN_CACHE_TELEMETRY:-$RUNNER_TEMP/cache-telemetry.jsonl}"
           mkdir -p "$(dirname "$f")"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          printf '{"step":"cli-tools","result":"%s","wall_seconds":%s}\n' '${{ steps.cache-cli-tools.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall" >> "$f"
+          printf '{"step":"cli-tools","result":"%s","wall_seconds":%s}\n' '${{ steps.cache-cli-tools.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall" >> "$f"
 
       - name: Install pinned CLI tools
         if: steps.cache-cli-tools.outputs.cache-hit != 'true'
@@ -665,7 +665,7 @@ jobs:
           set -euo pipefail
           . .devin/scripts/cache_telemetry.sh
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall"
+          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Cache timer edb
         shell: bash
@@ -684,7 +684,7 @@ jobs:
           set -euo pipefail
           . .devin/scripts/cache_telemetry.sh
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          cache_telemetry_emit edb '${{ steps.edb-cache.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall"
+          cache_telemetry_emit edb '${{ steps.edb-cache.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Provision EDB Postgres binaries
         if: steps.edb-cache.outputs.cache-hit != 'true'
@@ -918,7 +918,7 @@ jobs:
           set -euo pipefail
           . .devin/scripts/cache_telemetry.sh
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
-          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == ''true'' && ''hit'' || ''miss'' }}' "$wall"
+          cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
       - name: Install protoc
         shell: bash
