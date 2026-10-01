@@ -63,8 +63,8 @@ namespace ThinhThan.Tests.EditMode.AddressablesValidation
             Assert.AreEqual(AssetKey.KeyFacet.Icon, icon.Facet);
             Assert.AreEqual(AddressableGroups.IconsShared, KeyGroupRule.Assign(icon));
 
-            Assert.IsFalse(AssetKey.TryParse("asset.item.gong_ren.hd.icon", out _),
-                "variant segment before the facet must fail");
+            Assert.IsFalse(AssetKey.TryParse("asset.item.gong_ren.icon.hd", out _),
+                "variant segment after the facet must fail");
             Assert.IsFalse(AssetKey.TryParse("asset.Item.gong_ren.icon", out _), "uppercase must fail");
             Assert.IsFalse(AssetKey.TryParse("asset.ui.credits.third_party_assets", out _), "obsolete key must fail");
         }

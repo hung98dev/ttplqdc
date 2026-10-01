@@ -74,27 +74,37 @@ namespace ThinhThan.Core.Assets.Editor
 
         /// <summary>
         /// The committed .meta pins the path-derived baseline GUID
-        /// (repository_layout.md § ProjectSettings Baseline). When Unity
-        /// generated a fresh GUID instead, rewrite the meta and reimport so the
-        /// pre-declared EditorBuildSettings slot resolves to this object.
+        /// (repository_layout.md § ProjectSettings Baseline). Unity may assign
+        /// a fresh GUID when the settings asset is (re)created and only flush
+        /// that GUID to the .meta on a later save, so converge in a loop:
+        /// save+refresh until the database GUID and the on-disk meta both say
+        /// baseline.
         /// </summary>
         private static void EnsureBaselineGuid()
         {
-            if (AssetDatabase.AssetPathToGUID(SettingsPath) == BaselineGuid)
-            {
-                return;
-            }
             var metaPath = Path.Combine(ProjectRoot(), SettingsPath + ".meta");
-            if (!File.Exists(metaPath))
+            for (var attempt = 0; attempt < 3; attempt++)
             {
-                return;
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+                if (AssetDatabase.AssetPathToGUID(SettingsPath) == BaselineGuid)
+                {
+                    return;
+                }
+                if (!File.Exists(metaPath))
+                {
+                    continue;
+                }
+                var text = File.ReadAllText(metaPath);
+                var updated = Regex.Replace(text, @"^guid:\s*[0-9a-fA-F]+", "guid: " + BaselineGuid, RegexOptions.Multiline);
+                if (updated != text)
+                {
+                    File.WriteAllText(metaPath, updated);
+                }
             }
-            var text = File.ReadAllText(metaPath);
-            var updated = Regex.Replace(text, @"^guid:\s*[0-9a-fA-F]+", "guid: " + BaselineGuid, RegexOptions.Multiline);
-            if (updated != text)
+            if (AssetDatabase.AssetPathToGUID(SettingsPath) != BaselineGuid)
             {
-                File.WriteAllText(metaPath, updated);
-                AssetDatabase.ImportAsset(SettingsPath, ImportAssetOptions.ForceSynchronousImport);
+                Debug.LogError("AddressableProvisioner: settings GUID != baseline " + BaselineGuid);
             }
         }
 
