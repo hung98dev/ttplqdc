@@ -29,6 +29,7 @@ namespace ThinhThan.Tests.EditMode.ProtocolParity
             }
         }
 
+        [Serializable]
         private sealed class GoldenEntry
         {
             public string file = string.Empty;
@@ -274,7 +275,7 @@ namespace ThinhThan.Tests.EditMode.ProtocolParity
             {
                 Assert.Fail("repo root not found above Application.dataPath");
             }
-            return dir.FullName;
+            return dir!.FullName;
         }
 
         private static IEnumerable<Type> ProtocolMessageTypes()
