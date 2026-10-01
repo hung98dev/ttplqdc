@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="22" result="Passed" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.2212445">
+  <test-suite type="TestSuite" id="1000" name="client" fullname="client" runstate="Runnable" testcasecount="22" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.221245" total="22" passed="22" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1027" name="ThinhThan.Tests.EditMode.dll" fullname="D:/a/ttplqdc/ttplqdc/client/Library/ScriptAssemblies/ThinhThan.Tests.EditMode.dll" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.200813" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="7128" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1028" name="ThinhThan" fullname="ThinhThan" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.200075" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1029" name="Tests" fullname="ThinhThan.Tests" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.199859" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1030" name="EditMode" fullname="ThinhThan.Tests.EditMode" runstate="Runnable" testcasecount="21" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.199623" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="1032" name="AssemblyGraph" fullname="ThinhThan.Tests.EditMode.AssemblyGraph" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.127812" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1010" name="AssemblyGraphTests" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests" classname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.099471" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1011" name="TestAsmdefReferencesAcyclic" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests.TestAsmdefReferencesAcyclic" methodname="TestAsmdefReferencesAcyclic" classname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests" runstate="Runnable" seed="2086652323" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.031902" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1013" name="TestMandatoryAssembliesDeclared" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests.TestMandatoryAssembliesDeclared" methodname="TestMandatoryAssembliesDeclared" classname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests" runstate="Runnable" seed="1058785247" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.029581" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1012" name="TestProtocolReferencesNoProjectAssembly" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests.TestProtocolReferencesNoProjectAssembly" methodname="TestProtocolReferencesNoProjectAssembly" classname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests" runstate="Runnable" seed="60615047" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.002964" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1014" name="TestReferenceGraphMatchesLayout" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests.TestReferenceGraphMatchesLayout" methodname="TestReferenceGraphMatchesLayout" classname="ThinhThan.Tests.EditMode.AssemblyGraph.AssemblyGraphTests" runstate="Runnable" seed="1370990118" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.010098" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1015" name="CompilerSettingsTests" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.CompilerSettingsTests" classname="ThinhThan.Tests.EditMode.AssemblyGraph.CompilerSettingsTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.013225" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1016" name="TestCscRspWarnAsErrorNullable" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.CompilerSettingsTests.TestCscRspWarnAsErrorNullable" methodname="TestCscRspWarnAsErrorNullable" classname="ThinhThan.Tests.EditMode.AssemblyGraph.CompilerSettingsTests" runstate="Runnable" seed="1509481237" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.003560" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1017" name="TestZeroCompilerWarnings" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.CompilerSettingsTests.TestZeroCompilerWarnings" methodname="TestZeroCompilerWarnings" classname="ThinhThan.Tests.EditMode.AssemblyGraph.CompilerSettingsTests" runstate="Runnable" seed="537675504" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.008366" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1018" name="GraphicsCapabilityProbeTests" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests" classname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.004058" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1019" name="TestProbeAdapterDetectionWarp" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests.TestProbeAdapterDetectionWarp" methodname="TestProbeAdapterDetectionWarp" classname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests" runstate="Runnable" seed="948064980" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.001296" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1021" name="TestProbeRFloatOverlapReadback" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests.TestProbeRFloatOverlapReadback" methodname="TestProbeRFloatOverlapReadback" classname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests" runstate="Runnable" seed="1591048770" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.000703" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1020" name="TestProbeSpriteLitDayNightLuminanceChange" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests.TestProbeSpriteLitDayNightLuminanceChange" methodname="TestProbeSpriteLitDayNightLuminanceChange" classname="ThinhThan.Tests.EditMode.AssemblyGraph.GraphicsCapabilityProbeTests" runstate="Runnable" seed="405121076" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.000458" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-suite type="TestFixture" id="1022" name="ProjectSettingsBaselineTests" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests" classname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.008375" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1023" name="TestEditorBuildSettingsConfigObjects" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests.TestEditorBuildSettingsConfigObjects" methodname="TestEditorBuildSettingsConfigObjects" classname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests" runstate="Runnable" seed="817911318" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.002723" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1024" name="TestGraphicsSettingsUrpSlot" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests.TestGraphicsSettingsUrpSlot" methodname="TestGraphicsSettingsUrpSlot" classname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests" runstate="Runnable" seed="1725255105" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.000368" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1026" name="TestPlayerAndPhysics2DBaseline" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests.TestPlayerAndPhysics2DBaseline" methodname="TestPlayerAndPhysics2DBaseline" classname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests" runstate="Runnable" seed="489117412" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.002152" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1025" name="TestServerGeometryTag" fullname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests.TestServerGeometryTag" methodname="TestServerGeometryTag" classname="ThinhThan.Tests.EditMode.AssemblyGraph.ProjectSettingsBaselineTests" runstate="Runnable" seed="291332920" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.000687" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestSuite" id="1031" name="RenderingSetup" fullname="ThinhThan.Tests.EditMode.RenderingSetup" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.070803" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestFixture" id="1001" name="RenderingSetupTests" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.070032" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1006" name="TestContactShadowPerActorProfile" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestContactShadowPerActorProfile" methodname="TestContactShadowPerActorProfile" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="1924697251" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.028857" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1004" name="TestDayNightInterpolation" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestDayNightInterpolation" methodname="TestDayNightInterpolation" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="1352679183" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.003235" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1009" name="TestPipelineAssetMatchesBaselineGuid" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestPipelineAssetMatchesBaselineGuid" methodname="TestPipelineAssetMatchesBaselineGuid" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="1744829308" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.001363" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1005" name="TestPresetLightBudget" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestPresetLightBudget" methodname="TestPresetLightBudget" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="1658672039" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.016175" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1002" name="TestRendererAsset" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestRendererAsset" methodname="TestRendererAsset" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="2135349498" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.002850" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1008" name="TestSortAxisAndSrpBatcher" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestSortAxisAndSrpBatcher" methodname="TestSortAxisAndSrpBatcher" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="2094241803" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.000966" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1003" name="TestSpriteLitMaterials" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestSpriteLitMaterials" methodname="TestSpriteLitMaterials" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="873647918" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.008320" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1007" name="TestUiImport200Ppu" fullname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests.TestUiImport200Ppu" methodname="TestUiImport200Ppu" classname="ThinhThan.Tests.EditMode.RenderingSetup.RenderingSetupTests" runstate="Runnable" seed="49026220" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.000346" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1035" name="Unity.Addressables.DocExampleCode.Editor.Tests.dll" fullname="D:/a/ttplqdc/ttplqdc/client/Library/ScriptAssemblies/Unity.Addressables.DocExampleCode.Editor.Tests.dll" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.002675" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="7128" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1036" name="AddressableAssets" fullname="AddressableAssets" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.001658" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1037" name="DocExampleCode" fullname="AddressableAssets.DocExampleCode" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.001355" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1033" name="TestStub" fullname="AddressableAssets.DocExampleCode.TestStub" classname="AddressableAssets.DocExampleCode.TestStub" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.001057" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1034" name="RequiredTest" fullname="AddressableAssets.DocExampleCode.TestStub.RequiredTest" methodname="RequiredTest" classname="AddressableAssets.DocExampleCode.TestStub" runstate="Runnable" seed="991603882" result="Passed" start-time="2026-10-01 12:49:59Z" end-time="2026-10-01 12:49:59Z" duration="0.000154" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/runneradmin/AppData/LocalLow/DefaultCompany/client\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
