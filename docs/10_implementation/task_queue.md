@@ -25,7 +25,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | ID | Title | Status | Dependencies | Specs |
 |---|---|---|---|---|
 | `IMP-000` | M0 Bootstrap Gate & Toolchain Harness | `DONE` | none | `../00_context/technology_versions.md`, `../00_context/constraints.md` |
-| `IMP-001` | Stable IDs / Revisions | `NOT_STARTED` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
+| `IMP-001` | Stable IDs / Revisions | `IN_PROGRESS` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
 | `IMP-002` | Deterministic RNG Interface | `NOT_STARTED` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
 | `IMP-003` | Content Compiler | `NOT_STARTED` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
 | `IMP-004` | Integration / Balance Activation Gate | `NOT_STARTED` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
@@ -224,10 +224,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-000/"
 
 ## `IMP-001` — Stable IDs / Revisions
 id: IMP-001
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-001"
+branch: "imp/IMP-001-stable-ids"
+claimed_at: "2026-10-01T10:24:01Z"
 blocked_by: ""
 
 specs: [`../06_data/ids.md`, `../06_data/config.md`, `../00_context/technology_versions.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
