@@ -29,7 +29,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-002` | Deterministic RNG Interface | `IN_PROGRESS` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
 | `IMP-003` | Content Compiler | `NOT_STARTED` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
 | `IMP-004` | Integration / Balance Activation Gate | `NOT_STARTED` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-005` | Operation Idempotency Primitive | `BLOCKED` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
+| `IMP-005` | Operation Idempotency Primitive | `NOT_STARTED` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-006` | Account Auth, Session & Login Queue | `NOT_STARTED` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `NOT_STARTED` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `NOT_STARTED` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
@@ -974,11 +974,11 @@ evidence_location: "docs/10_implementation/evidence/IMP-078/"
 
 ## `IMP-005` — Operation Idempotency Primitive
 id: IMP-005
-status: BLOCKED
-claimed_by: "devin-imp-005"
-branch: "imp/IMP-005-idempotency-schema"
-claimed_at: "2026-10-01T18:26:48Z"
-blocked_by: "BLK-001"
+status: NOT_STARTED
+claimed_by: ""
+branch: ""
+claimed_at: ""
+blocked_by: ""
 
 specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../06_data/data_model.md`, `../06_data/migrations.md`, `../06_data/physical_schema_contract.md`, `../07_security/personal_data_register.md`, `../06_data/ids.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
 adrs: [`0011-postgresql-relational-persistence.md`, `0040-world-consequence-durable-aggregate.md`, `0048-character-update-timestamp.md`, `0053-durable-contract-reconciliation.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
@@ -1026,6 +1026,7 @@ IMP-005 is the only migration owner. No other packet adds a migration; a later s
 - `server/internal/durable/schema/privacy_schema_test.go`: TestReportEvidenceSchemaAndIndependentPurge (PRIV-004), TestDisabledOperatorCredentialAndRetentionConstraints (PRIV-005), TestErasureIntentCompletionConstraintAndPurgeIndex (PRIV-006).
 - `server/internal/durable/idempotency/replay_horizon_test.go`: TestReplayBeforeMutablePreconditions, TestOwnerFingerprintMismatchCannotReplay, TestRetryAt180DayBoundaryExpired, TestPurgedUuidCannotExecuteAgain, TestFutureTimestampOver60SecondsMalformed, TestPurgeNeverBeforeReplayUntil, TestServerNaturalKeyDedupAfterOperationPurge.
 - `server/internal/durable/schema/adr0079_schema_test.go`: TestContentRevisionHex64Check, TestOperationReplayUntilAndPurgeIndex.
+- `server/internal/stackpin/versions_test.go`: TestGoModuleClosureDeclaredInMatrix (BLK-001).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
