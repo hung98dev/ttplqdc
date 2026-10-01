@@ -216,15 +216,28 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 
 // --- subprocess helpers ---------------------------------------------------
 
-// gateCmdTimeout bounds every subprocess a gate spawns — an unbounded child
-// turns into a silent multi-hour job stall instead of a named gate failure.
+// gateCmdTimeout bounds every subprocess the verifier spawns — an unbounded
+// child turns into a silent multi-hour job stall instead of a named failure.
 const gateCmdTimeout = 15 * time.Minute
+
+// ExecTimed runs argv with a hard timeout and a stderr progress line; every
+// subprocess the verifier spawns goes through it so a stuck child surfaces as
+// a named error in the step log instead of an invisible job hang.
+func ExecTimed(dir string, argv ...string) (string, error) {
+	fmt.Fprintf(os.Stderr, "verify: $ %s\n", strings.Join(argv, " "))
+	ctx, cancel := context.WithTimeout(context.Background(), gateCmdTimeout)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
+	cmd.Dir = dir
+	out, err := cmd.CombinedOutput()
+	return string(out), err
+}
 
 func (r *Runner) runCmd(ctx context.Context, dir string, argv ...string) (string, int) {
 	start := time.Now()
+	fmt.Fprintf(os.Stderr, "verify: $ %s\n", strings.Join(argv, " "))
 	ctx, cancel := context.WithTimeout(ctx, gateCmdTimeout)
 	defer cancel()
-	fmt.Fprintf(os.Stderr, "verify: $ %s\n", strings.Join(argv, " "))
 	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
 	cmd.Dir = dir
 	out, err := cmd.CombinedOutput()
@@ -243,7 +256,7 @@ func (r *Runner) runCmd(ctx context.Context, dir string, argv ...string) (string
 }
 
 func gitLsFiles(root string) ([]string, error) {
-	out, err := exec.Command("git", "-C", root, "ls-files").Output()
+	out, err := ExecTimed(root, "git", "ls-files")
 	if err != nil {
 		return nil, err
 	}
@@ -258,7 +271,7 @@ func gitLsFiles(root string) ([]string, error) {
 }
 
 func gitHeadSHA(root string) string {
-	out, err := exec.Command("git", "-C", root, "rev-parse", "HEAD").Output()
+	out, err := ExecTimed(root, "git", "rev-parse", "HEAD")
 	if err != nil {
 		return ""
 	}
@@ -270,7 +283,7 @@ func GitShowMain(root, relpath, ref string) (string, error) {
 	if ref == "" {
 		ref = "origin/main"
 	}
-	out, err := exec.Command("git", "-C", root, "show", ref+":"+relpath).Output()
+	out, err := ExecTimed(root, "git", "show", ref+":"+relpath)
 	if err != nil {
 		return "", err
 	}
@@ -411,7 +424,7 @@ func (r *Runner) goStatic() (errs []string, missing bool) {
 // cleanTree (Q6): `git status --porcelain` must be empty at the end of a run
 // — no verification-created drift.
 func (r *Runner) cleanTree() []string {
-	out, err := exec.Command("git", "-C", r.Root, "status", "--porcelain").Output()
+	out, err := ExecTimed(r.Root, "git", "status", "--porcelain")
 	if err != nil {
 		return []string{"git status: " + err.Error()}
 	}

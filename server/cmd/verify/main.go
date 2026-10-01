@@ -9,7 +9,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"runtime"
@@ -153,7 +152,7 @@ func absRoot(root string) (string, error) {
 }
 
 func gitHead(root string) string {
-	out, err := exec.Command("git", "-C", root, "rev-parse", "HEAD").Output()
+	out, err := gates.ExecTimed(root, "git", "rev-parse", "HEAD")
 	if err != nil {
 		return ""
 	}
@@ -166,7 +165,7 @@ func addedFiles(root string) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
-	out, err := exec.Command("git", "-C", root, "diff", "--name-only", "--diff-filter=A", base+"...HEAD").Output()
+	out, err := gates.ExecTimed(root, "git", "diff", "--name-only", "--diff-filter=A", base+"...HEAD")
 	if err != nil {
 		return nil, err
 	}
@@ -183,8 +182,8 @@ func addedFiles(root string) ([]string, error) {
 // failure surfaces as an error inside the gate.
 func ghAPICheck(root string) gates.APICheckFunc {
 	return func(runID, attempt string) (string, string, error) {
-		out, err := exec.Command("gh", "api", fmt.Sprintf("repos/{owner}/{repo}/actions/runs/%s", runID),
-			"--jq", "{workflow: .path, conclusion: .conclusion, attempt: .run_attempt}").Output()
+		out, err := gates.ExecTimed(root, "gh", "api", fmt.Sprintf("repos/{owner}/{repo}/actions/runs/%s", runID),
+			"--jq", "{workflow: .path, conclusion: .conclusion, attempt: .run_attempt}")
 		if err != nil {
 			return "", "", fmt.Errorf("gh api runs/%s: %w", runID, err)
 		}
@@ -193,7 +192,7 @@ func ghAPICheck(root string) gates.APICheckFunc {
 			Conclusion string `json:"conclusion"`
 			Attempt    int    `json:"attempt"`
 		}
-		if err := json.Unmarshal(out, &v); err != nil {
+		if err := json.Unmarshal([]byte(out), &v); err != nil {
 			return "", "", err
 		}
 		wf := filepath.Base(v.Workflow)
@@ -222,7 +221,7 @@ func buildContext(root string, localDefer bool) (gates.RunContext, error) {
 		ctx.HeadBranch = os.Getenv("GITHUB_REF_NAME")
 	}
 	if ctx.HeadBranch == "" {
-		out, err := exec.Command("git", "-C", root, "branch", "--show-current").Output()
+		out, err := gates.ExecTimed(root, "git", "branch", "--show-current")
 		if err == nil {
 			ctx.HeadBranch = strings.TrimSpace(string(out))
 		}
@@ -272,7 +271,7 @@ func prDiff(root string) ([]gates.FileChange, []string, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	out, err := exec.Command("git", "-C", root, "diff", "-U0", base+"...HEAD").Output()
+	out, err := gates.ExecTimed(root, "git", "diff", "-U0", base+"...HEAD")
 	if err != nil {
 		return nil, nil, err
 	}
@@ -280,7 +279,7 @@ func prDiff(root string) ([]gates.FileChange, []string, error) {
 }
 
 func mergeBase(root string) (string, error) {
-	out, err := exec.Command("git", "-C", root, "merge-base", "origin/main", "HEAD").Output()
+	out, err := gates.ExecTimed(root, "git", "merge-base", "origin/main", "HEAD")
 	if err != nil {
 		return "", err
 	}

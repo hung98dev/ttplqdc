@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -25,8 +24,7 @@ var sourceTreeExclusions = []string{
 // SourceTreeHash = SHA-256 over sorted lines "path NUL git-blob-sha LF" from
 // `git ls-files`, minus the three exclusions (test_and_release_evidence.md §2).
 func SourceTreeHash(root string) (string, error) {
-	cmd := exec.Command("git", "-C", root, "ls-files", "-s", "-z")
-	out, err := cmd.Output()
+	out, err := ExecTimed(root, "git", "ls-files", "-s", "-z")
 	if err != nil {
 		return "", fmt.Errorf("git ls-files: %w", err)
 	}
