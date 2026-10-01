@@ -13,6 +13,14 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
     {
         private static readonly string AssetsRoot = Application.dataPath;
 
+        // The generated-only Protocol tree is exempt: CODE-004 mandates the
+        // verbatim `#pragma warning disable` header on its .cs outputs
+        // (engineering_conventions.md §2.7). Same exclusion the Go verifier
+        // applies in style.generatedCSharpDir.
+        private static readonly string GeneratedProtocolDir =
+            Path.GetFullPath(Path.Combine(Application.dataPath, "Scripts", "Protocol"))
+                + Path.DirectorySeparatorChar;
+
         [Test]
         public void TestCscRspWarnAsErrorNullable()
         {
@@ -35,6 +43,10 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
             // remaining escape is a suppression directive, which is banned.
             foreach (var cs in Directory.GetFiles(AssetsRoot, "*.cs", SearchOption.AllDirectories))
             {
+                if (Path.GetFullPath(cs).StartsWith(GeneratedProtocolDir, StringComparison.Ordinal))
+                {
+                    continue;
+                }
                 var lines = File.ReadAllLines(cs);
                 for (int i = 0; i < lines.Length; i++)
                 {
