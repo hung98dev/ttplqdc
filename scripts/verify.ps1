@@ -73,12 +73,61 @@ function Resolve-TestPgDsn {
         if (-not (Test-Path $pgIsReady)) {
             throw "tools/pgsql exists but is incomplete (missing $pgIsReady)"
         }
-        $port = Get-Random -Minimum 20000 -Maximum 50000
+        # Start-Process with file redirection, never `& ... | Out-Null`: pg_ctl
+        # daemonizes postgres.exe, which inherits the anonymous-pipe write
+        # handle and keeps it open forever, blocking the pwsh pipeline on EOF.
         $data = Join-Path $toolsPg 'data'
-        if (-not (Test-Path $data)) {
-            & (Join-Path $toolsPg 'bin/initdb.exe') -D $data -E UTF8 -A trust | Out-Null
+        $portFile = Join-Path $toolsPg 'port.txt'
+        if ((Test-Path $data) -and (Test-Path $portFile)) {
+            # Reuse the postmaster a previous phase started on this runner.
+            $savedPort = (Get-Content $portFile -Raw).Trim()
+            $p = Start-Process -FilePath $pgIsReady -ArgumentList "-h localhost -p $savedPort -t 5" `
+                -NoNewWindow -PassThru `
+                -RedirectStandardOutput (Join-Path $toolsPg 'isready-out.log') `
+                -RedirectStandardError (Join-Path $toolsPg 'isready-err.log')
+            $p | Wait-Process -Timeout 20 -ErrorAction SilentlyContinue
+            if ($p.HasExited -and $p.ExitCode -eq 0) {
+                Write-Host "verify: postgres already running on port $savedPort"
+                return "postgres://postgres@localhost:$savedPort/postgres?sslmode=disable"
+            }
         }
-        & (Join-Path $toolsPg 'bin/pg_ctl.exe') -D $data -o "-p $port" -l (Join-Path $toolsPg 'pg.log') start | Out-Null
+        if (-not (Test-Path $data)) {
+            Write-Host "verify: initdb $data"
+            $p = Start-Process -FilePath (Join-Path $toolsPg 'bin/initdb.exe') `
+                -ArgumentList ('-D "{0}" -E UTF8 -A trust' -f $data) `
+                -NoNewWindow -PassThru `
+                -RedirectStandardOutput (Join-Path $toolsPg 'initdb-out.log') `
+                -RedirectStandardError (Join-Path $toolsPg 'initdb-err.log')
+            $p | Wait-Process -Timeout 600 -ErrorAction SilentlyContinue
+            if (-not $p.HasExited) {
+                Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+                throw 'initdb timed out after 600s'
+            }
+            if ($p.ExitCode -ne 0) {
+                $err = Get-Content (Join-Path $toolsPg 'initdb-err.log') -Raw -ErrorAction SilentlyContinue
+                throw "initdb exit $($p.ExitCode): $err"
+            }
+        }
+        $port = Get-Random -Minimum 20000 -Maximum 50000
+        Write-Host "verify: pg_ctl start on port $port"
+        $pgLog = Join-Path $toolsPg 'pg.log'
+        $p = Start-Process -FilePath (Join-Path $toolsPg 'bin/pg_ctl.exe') `
+            -ArgumentList ('-D "{0}" -o "-p {1}" -l "{2}" -w -t 120 start' -f $data, $port, $pgLog) `
+            -NoNewWindow -PassThru `
+            -RedirectStandardOutput (Join-Path $toolsPg 'pgctl-out.log') `
+            -RedirectStandardError (Join-Path $toolsPg 'pgctl-err.log')
+        $p | Wait-Process -Timeout 150 -ErrorAction SilentlyContinue
+        if (-not $p.HasExited) {
+            Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+            throw 'pg_ctl start timed out after 150s'
+        }
+        if ($p.ExitCode -ne 0) {
+            $err = Get-Content (Join-Path $toolsPg 'pgctl-err.log') -Raw -ErrorAction SilentlyContinue
+            $pg = Get-Content $pgLog -Raw -ErrorAction SilentlyContinue
+            throw "pg_ctl exit $($p.ExitCode): $err`n$pg"
+        }
+        Set-Content -Path $portFile -Value $port -NoNewline
+        Write-Host "verify: postgres started"
         return "postgres://postgres@localhost:$port/postgres?sslmode=disable"
     }
     if ($env:RUNNER_OS -ne 'Windows' -or $IsLinux) {
