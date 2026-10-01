@@ -1,0 +1,29 @@
+{
+    "name": "ThinhThan.App",
+    "rootNamespace": "ThinhThan.App",
+    "references": [
+        "ThinhThan.Protocol",
+        "ThinhThan.Core",
+        "ThinhThan.Core.Assets",
+        "ThinhThan.Core.Localization",
+        "ThinhThan.Net",
+        "ThinhThan.Systems",
+        "ThinhThan.UI",
+        "Unity.InputSystem",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.Addressables",
+        "Unity.ResourceManager",
+        "Unity.Localization"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Google.Protobuf.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

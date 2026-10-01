@@ -1,0 +1,22 @@
+{
+    "name": "ThinhThan.Core.Assets.Editor",
+    "rootNamespace": "ThinhThan.Core.Assets.Editor",
+    "references": [
+        "ThinhThan.Core",
+        "ThinhThan.Core.Assets",
+        "Unity.Addressables",
+        "Unity.Addressables.Editor",
+        "Unity.ResourceManager"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

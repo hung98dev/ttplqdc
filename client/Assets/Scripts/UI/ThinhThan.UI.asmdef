@@ -1,0 +1,26 @@
+{
+    "name": "ThinhThan.UI",
+    "rootNamespace": "ThinhThan.UI",
+    "references": [
+        "ThinhThan.Core",
+        "ThinhThan.Core.Assets",
+        "ThinhThan.Core.Localization",
+        "ThinhThan.Net",
+        "ThinhThan.Protocol",
+        "ThinhThan.Systems",
+        "Unity.InputSystem",
+        "UnityEngine.UI",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Google.Protobuf.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

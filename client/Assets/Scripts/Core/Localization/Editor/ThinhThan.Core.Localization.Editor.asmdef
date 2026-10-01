@@ -1,0 +1,21 @@
+{
+    "name": "ThinhThan.Core.Localization.Editor",
+    "rootNamespace": "ThinhThan.Core.Localization.Editor",
+    "references": [
+        "ThinhThan.Core",
+        "ThinhThan.Core.Localization",
+        "Unity.Localization",
+        "Unity.Localization.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
