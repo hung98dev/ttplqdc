@@ -747,6 +747,13 @@ jobs:
           name: unity-test-results-windows
           path: unity-results/
 
+      - name: Download visual-review
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: visual-review
+          path: artifacts/visual-review/
+
       - name: Fold unity cache telemetry
         shell: bash
         run: |
