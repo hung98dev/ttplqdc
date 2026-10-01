@@ -100,6 +100,36 @@ func TestOneTypePerFileAndNamespace(t *testing.T) {
 	}
 }
 
+// TestGeneratedProtocolDirExcluded: §2.7 exempts only canonical generated
+// client/Assets/Scripts/Protocol/*.cs; files directly in that dir are
+// skipped while files in subdirectories or elsewhere are still checked.
+func TestGeneratedProtocolDirExcluded(t *testing.T) {
+	root := t.TempDir()
+	bad := []byte("class KAndR { }\n")
+	mk := func(rel string) {
+		p := filepath.Join(root, filepath.FromSlash(rel))
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(p, bad, 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	mk("client/Assets/Scripts/Protocol/Combat.cs")     // generated: skipped
+	mk("client/Assets/Scripts/Protocol/Sub/Nested.cs") // subdir: checked
+	mk("client/Assets/Scripts/Core/Authored.cs")       // authored: checked
+	errs := CheckCSharpTree(root)
+	joined := strings.Join(errs, "\n")
+	if strings.Contains(joined, "Protocol/Combat.cs") {
+		t.Fatalf("generated Protocol/*.cs must be exempt, got:\n%s", joined)
+	}
+	for _, want := range []string{"Protocol/Sub/Nested.cs", "Scripts/Core/Authored.cs"} {
+		if !strings.Contains(joined, want) {
+			t.Fatalf("%s must be checked, got:\n%s", want, joined)
+		}
+	}
+}
+
 func TestEditorconfigGitattributesKeys(t *testing.T) {
 	out, err := exec.Command("git", "rev-parse", "--show-toplevel").Output()
 	if err != nil {

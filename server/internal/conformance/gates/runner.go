@@ -155,6 +155,8 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details = append(CheckForbiddenDeps(r.Root), CheckForbiddenImports(r.Root)...)
 	case "Q1.unity.editor":
 		details, missing = r.checkUnityEditor()
+	case "Q2.codegen":
+		details, missing = r.codegenDrift()
 	case "Q3.go.test":
 		details = r.goTest()
 	case "Q3.go.race":
@@ -407,6 +409,26 @@ func (r *Runner) goFmtVet() []string {
 		errs = append(errs, "go vet: "+tail(out))
 	}
 	return errs
+}
+
+// codegenDrift (Q2): `scripts/codegen.ps1 -Drift` regenerates protobuf Go/C#
+// in place and fails on any worktree drift over the generated paths — the
+// byte-identical regeneration check of audit_gates.md Gate C, including the
+// deterministic generated-C# header (CODE-004). A missing pwsh or script is
+// missing=true: fail-closed on CI, deferred locally (goStatic pattern).
+func (r *Runner) codegenDrift() (errs []string, missing bool) {
+	pwsh, err := exec.LookPath("pwsh")
+	if err != nil {
+		return nil, true
+	}
+	if _, err := os.Stat(filepath.Join(r.Root, "scripts", "codegen.ps1")); err != nil {
+		return nil, true
+	}
+	out, code := r.runCmd(context.Background(), r.Root, pwsh, "-NoProfile", "-File", "scripts/codegen.ps1", "-Drift")
+	if code != 0 {
+		return []string{"codegen.ps1 -Drift: " + tail(out)}, false
+	}
+	return nil, false
 }
 
 // goStatic runs the pinned staticcheck (installed in CI; local-missing
