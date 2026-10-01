@@ -73,8 +73,10 @@ func (s *Server) DumpSchema(ctx context.Context, dbName string) (string, error) 
 }
 
 // NormalizeDump strips volatile pg_dump lines so two dumps of identical
-// schema compare byte-equal (\restrict tokens, dump headers).
+// schema compare byte-equal (\restrict tokens, dump headers). pg_dump.exe
+// emits \r\n on Windows; canonical snapshots are LF — normalize first.
 func NormalizeDump(dump string) string {
+	dump = strings.ReplaceAll(dump, "\r\n", "\n")
 	var b strings.Builder
 	for _, line := range strings.Split(dump, "\n") {
 		switch {
