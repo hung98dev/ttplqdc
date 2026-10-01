@@ -162,7 +162,9 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 	case "Q3.go.alloc":
 		details = r.goAlloc()
 	case "Q3.go.bench":
-		details = r.goBench() // report-only; never fails on numbers
+		if !r.benchDone {
+			details = r.goBench() // report-only; never fails on numbers
+		}
 	case "Q3.unity.compile":
 		details, missing = r.unityCompile()
 	case "Q3.unity.editmode":
@@ -380,10 +382,10 @@ func (r *Runner) goBench() []string {
 // goAlloc: hot-path benchmarks must report 0 allocs/op (capacity.md exact
 // gates). Vacuous when no such benchmarks exist yet.
 func (r *Runner) goAlloc() []string {
-	if !r.benchDone {
-		r.goBench() // reuse one benchmark run for both gates
-	}
 	var errs []string
+	if !r.benchDone {
+		errs = r.goBench() // one benchmark run shared with Q3.go.bench
+	}
 	for _, b := range r.Bench {
 		if b.AllocOps > 0 {
 			errs = append(errs, fmt.Sprintf("%s allocs/op=%d (hot-path gate requires 0)", b.Name, b.AllocOps))
