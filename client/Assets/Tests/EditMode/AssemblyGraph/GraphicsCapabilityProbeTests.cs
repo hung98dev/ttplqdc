@@ -93,10 +93,13 @@ namespace ThinhThan.Tests.EditMode.AssemblyGraph
             }
             Assert.IsTrue(GraphicsCapabilityProbe.ValidateOverlapReadback(pixels), "exact fixture");
 
-            pixels[0] = 1.999f;
+            // float32 cannot place a value exactly 0.001 under 2f — 1.999f
+            // rounds to a diff slightly above the tolerance — so the inside
+            // check uses a representable value comfortably within it.
+            pixels[0] = 1.9995f;
             Assert.IsTrue(
                 GraphicsCapabilityProbe.ValidateOverlapReadback(pixels),
-                "error at tolerance boundary");
+                "error within tolerance");
 
             pixels[0] = 1.9f;
             Assert.IsFalse(

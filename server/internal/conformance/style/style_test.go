@@ -19,6 +19,20 @@ func TestBraceLines(t *testing.T) {
 	}
 }
 
+func TestBraceLinesExpressionBraces(t *testing.T) {
+	// Collection/object initializers and lambdas keep inline braces — they
+	// are expression context, not block braces.
+	expr := []byte("namespace X\n{\n    class Y\n    {\n        void M()\n        {\n            foreach (var s in T(new[] { \" a \" }, o))\n            {\n                var list = new List<int> { 1, 2 };\n                Func<int> f = () => { return 1; };\n            }\n        }\n    }\n}\n")
+	if errs := CheckBraceLines(expr); len(errs) != 0 {
+		t.Fatalf("expression braces must pass: %v", errs)
+	}
+	// A comparison operator does not turn a block brace into an initializer.
+	cmp := []byte("namespace X\n{\n    class Y\n    {\n        void M()\n        {\n            if (a == b) { return; }\n        }\n    }\n}\n")
+	if errs := CheckBraceLines(cmp); len(errs) == 0 {
+		t.Fatal("inline block brace after '==' must be flagged")
+	}
+}
+
 func TestIndentAndWhitespace(t *testing.T) {
 	bad := "namespace X\n{\n\tclass Y\n\t{\n    }\n}\n"
 	if errs := CheckIndentWhitespace([]byte(bad)); len(errs) == 0 {

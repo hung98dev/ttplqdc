@@ -138,9 +138,29 @@ func parseList(v string) []string {
 	return out
 }
 
-// OwnerOf returns the packet that owns path under the longest-prefix rule:
-// an owned_path entry ending in '/' is a directory prefix grant; an entry
-// without a trailing slash is an exact-file grant (implied .meta companion).
+// covers reports whether owned_path entry own covers path: a trailing-slash
+// entry is a directory prefix grant, an entry without a trailing slash an
+// exact-file grant; a .meta path is also covered when its base is covered
+// (the .meta companion is owned with its asset).
+func covers(own, path string) bool {
+	if strings.HasSuffix(own, "/") {
+		if strings.HasPrefix(path, own) {
+			return true
+		}
+	} else if path == own {
+		return true
+	}
+	if strings.HasSuffix(path, ".meta") {
+		base := strings.TrimSuffix(path, ".meta")
+		if strings.HasSuffix(own, "/") {
+			return strings.HasPrefix(base, own)
+		}
+		return base == own
+	}
+	return false
+}
+
+// OwnerOf returns the packet that owns path under the longest-prefix rule.
 func OwnerOf(idx PacketIndex, path string) *Packet {
 	var best *Packet
 	bestLen := -1
@@ -152,22 +172,7 @@ func OwnerOf(idx PacketIndex, path string) *Packet {
 	for _, id := range ids {
 		p := idx[id]
 		for _, own := range p.OwnedPaths {
-			match := false
-			if strings.HasSuffix(own, "/") {
-				match = strings.HasPrefix(path, own)
-			} else {
-				match = path == own
-			}
-			// .meta companions are owned with their asset.
-			if !match && strings.HasSuffix(path, ".meta") {
-				base := strings.TrimSuffix(path, ".meta")
-				if strings.HasSuffix(own, "/") {
-					match = strings.HasPrefix(base, own)
-				} else {
-					match = base == own
-				}
-			}
-			if match && len(own) > bestLen {
+			if covers(own, path) && len(own) > bestLen {
 				bestLen = len(own)
 				best = p
 			}
