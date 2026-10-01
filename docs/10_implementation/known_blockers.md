@@ -27,7 +27,15 @@ issue: <ops-blocked issue URL>                       (OPS only)
 
 ## Open Blockers
 
-None. No implementation task has started in the current baseline.
+### `BLK-001` — pgx v5.11.0 / golang-migrate v4.20.1 transitive closure undeclared in version matrix
+opened_by: devin-imp-005 / IMP-005   opened_at: 2026-10-01T20:02:13Z
+evidence: CI run https://github.com/hung98dev/ttplqdc/actions/runs/36916366758 (job Q0-Q6 verify Linux, head `ebb8c01`) — `Q1.pins`: `go.mod requires unlisted module github.com/jackc/pgerrcode v0.0.0-20220416144525-469b46aa5efa; go.mod requires unlisted module github.com/jackc/pgpassfile v1.0.0; go.mod requires unlisted module github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761; go.mod requires unlisted module github.com/jackc/puddle/v2 v2.2.2; go.mod requires unlisted module golang.org/x/sync`; `Q3.go.test`: stackpin `TestNoFloatingOrUnlistedDeps` — same violations plus `floating/prerelease dep` for the two commit pseudo-versions. Go >=1.21 module pruning requires `go.mod` to record every transitive requirement as `// indirect` rows; dropping them fails the readonly build (`updates to go.mod needed`). `server/internal/stackpin` `GoModulePins` registers `github.com/jackc/pgx/v5 v5.11.0` and `github.com/golang-migrate/migrate/v4 v4.20.1` but none of their require-closure.
+owning spec / system: `docs/00_context/technology_versions.md` § Backend (pin matrix; the OTLP entry declares its transitive closure in-spec — the existing precedent), `server/internal/stackpin/` pin registry, `server/internal/conformance/gates/pins.go` + `server/internal/stackpin/versions_test.go` floating-version check (`strings.Contains(ver, "-")` rejects every commit pseudo-version; `pgx v5.11.0` requires exactly the pseudo-versions of `pgerrcode`/`pgservicefile`, which have no tagged releases).
+options:
+  1. Declare the pgx/migrate require-closure in the matrix (per the OTLP precedent; resolved set on IMP-005 head `d92deb1`: `pgerrcode v0.0.0-20220416144525-469b46aa5efa`, `pgpassfile v1.0.0`, `pgservicefile v0.0.0-20240606120523-5a60cdf6a761`, `puddle/v2 v2.2.2`, `x/sync v0.23.0`), register it in `GoModulePins`, and amend the floating check to exempt allowlisted pinned-commit transitives — keeps per-version transitive pinning.
+  2. Exempt `// indirect` require rows in `checkGoModPins`/`parseGoModRequires` — smallest spec diff but drops per-version pinning of the transitive closure (weaker supply-chain gate).
+  3. Repin pgx/migrate to versions whose closure has tagged releases only — impossible: `pgerrcode`/`pgservicefile` have no tagged releases and pgx v5.11.0 requires exactly those commits.
+blocks: IMP-005
 
 ## Resolved Blockers
 
