@@ -6,15 +6,16 @@
 package taskgraph
 
 import (
+	"context"
 	"fmt"
 	"os"
+	"os/exec"
 	"path"
 	"regexp"
 	"sort"
 	"strconv"
 	"strings"
-
-	"thinhthan/internal/conformance/gates"
+	"time"
 )
 
 const (
@@ -305,9 +306,22 @@ func ownerOf(q *Queue, p string) string {
 
 // ---------- helpers ----------
 
+const cmdTimeout = 15 * time.Minute
+
+// execTimed mirrors gates.ExecTimed: bounded subprocess + stderr progress.
+func execTimed(dir string, argv ...string) (string, error) {
+	fmt.Fprintf(os.Stderr, "verify: $ %s\n", strings.Join(argv, " "))
+	ctx, cancel := context.WithTimeout(context.Background(), cmdTimeout)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
+	cmd.Dir = dir
+	out, err := cmd.CombinedOutput()
+	return string(out), err
+}
+
 func gitOut(root string, args ...string) (string, error) {
 	argv := append([]string{"git"}, args...)
-	return gates.ExecTimed(root, argv...)
+	return execTimed(root, argv...)
 }
 
 func showFile(root, ref, file string) (string, error) {
@@ -845,8 +859,12 @@ func checkReqCoverage(q *Queue, ids map[string]string, root string) []string {
 
 // ---------- control-file diff rules ----------
 
-// FileChange mirrors gates.FileChange for control-diff classification.
-type FileChange = gates.FileChange
+// FileChange mirrors gates.FileChange for control-diff classification
+type FileChange struct {
+	Path    string
+	Added   []string
+	Removed []string
+}
 
 // BlockerDiff describes what a diff did to known_blockers.md entries.
 type BlockerDiff struct {
