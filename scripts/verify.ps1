@@ -153,16 +153,19 @@ if ($MergeReports) {
     if (-not $branch) { $branch = (& git -C $RepoRoot branch --show-current) }
     if ($branch -notmatch 'IMP-\d+') {
         Write-Host "verify merge: head '$branch' has no IMP-N task — skipping manifest generation"
-        $linuxOk = (Test-Path $LinuxReport); $winOk = (Test-Path $WindowsReport)
+        $linuxOk = (Test-Path (Join-Path $RepoRoot $LinuxReport))
+        $winOk = (Test-Path (Join-Path $RepoRoot $WindowsReport))
         if (-not ($linuxOk -and $winOk)) { throw 'both reports required for merge' }
         exit 0
     }
+    # Resolve report paths before Push-Location: Resolve-Path is cwd-relative
+    # and the artifacts live under the repo root, not server/.
+    $linuxAbs = (Resolve-Path (Join-Path $RepoRoot $LinuxReport)).Path
+    $winAbs = (Resolve-Path (Join-Path $RepoRoot $WindowsReport)).Path
     Push-Location $serverDir
     try {
         $margs = @('run', './cmd/verify', '-repo-root', $RepoRoot, '-merge',
-            '-linux', (Resolve-Path $LinuxReport).Path,
-            '-windows', (Resolve-Path $WindowsReport).Path,
-            '-out', $OutManifest)
+            '-linux', $linuxAbs, '-windows', $winAbs, '-out', $OutManifest)
         & go @margs
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
     } finally { Pop-Location }
