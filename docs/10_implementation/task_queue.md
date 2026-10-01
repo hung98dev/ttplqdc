@@ -26,10 +26,10 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 |---|---|---|---|---|
 | `IMP-000` | M0 Bootstrap Gate & Toolchain Harness | `DONE` | none | `../00_context/technology_versions.md`, `../00_context/constraints.md` |
 | `IMP-001` | Stable IDs / Revisions | `DONE` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
-| `IMP-002` | Deterministic RNG Interface | `NOT_STARTED` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
+| `IMP-002` | Deterministic RNG Interface | `IN_PROGRESS` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
 | `IMP-003` | Content Compiler | `NOT_STARTED` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
 | `IMP-004` | Integration / Balance Activation Gate | `NOT_STARTED` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-005` | Operation Idempotency Primitive | `NOT_STARTED` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
+| `IMP-005` | Operation Idempotency Primitive | `IN_PROGRESS` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-006` | Account Auth, Session & Login Queue | `NOT_STARTED` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `NOT_STARTED` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `NOT_STARTED` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
@@ -88,7 +88,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
 | `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `NOT_STARTED` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
-| `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `NOT_STARTED` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
+| `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `IN_PROGRESS` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-066` | Unity Input Action Mapping & Core UI/HUD State Machine | `NOT_STARTED` | IMP-013, IMP-065 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-067` | Unity IL2CPP Player Build (Windows, Android) & Release Packaging | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-076, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-093, IMP-099, IMP-103 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
@@ -264,10 +264,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-001/"
 
 ## `IMP-002` — Deterministic RNG Interface
 id: IMP-002
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-002"
+branch: "imp/IMP-002-deterministic-rng"
+claimed_at: "2026-10-01T18:26:48Z"
 blocked_by: ""
 
 specs: [`../04_architecture/concurrency.md`, `../06_data/config.md`, `../09_testing/gameplay.md`]
@@ -544,10 +544,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-101/"
 
 ## `IMP-064` — Unity Bilingual Localization Pipeline (vi-VN / en-US)
 id: IMP-064
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-064"
+branch: "imp/IMP-064-localization"
+claimed_at: "2026-10-01T18:26:48Z"
 blocked_by: ""
 
 specs: [`../04_architecture/client_localization.md`, `../06_data/text.md`, `repository_layout.md`]
@@ -974,10 +974,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-078/"
 
 ## `IMP-005` — Operation Idempotency Primitive
 id: IMP-005
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-005"
+branch: "imp/IMP-005-idempotency-schema"
+claimed_at: "2026-10-01T18:26:48Z"
 blocked_by: ""
 
 specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../06_data/data_model.md`, `../06_data/migrations.md`, `../06_data/physical_schema_contract.md`, `../07_security/personal_data_register.md`, `../06_data/ids.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
