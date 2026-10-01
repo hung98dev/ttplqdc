@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "task_id": "IMP-000",
-  "source_tree_hash": "8f4d609fd9d7cf80bb11dc8f37531253b3f41f512c8210f17c31352a5a21e7c1",
+  "source_tree_hash": "a9fa36d64b3dfae143900d23f5656884ab25fb3c8d8ee5eb8c7ca462312cd278",
   "toolchain": {
     "go": "1.27.1",
     "unity": "6000.6.1f1",
@@ -9,24 +9,66 @@
     "protoc": "36.2",
     "protoc_gen_go": "v1.36.12"
   },
-  "commands": null,
+  "commands": [
+    {
+      "argv": [
+        "go",
+        "-C",
+        "server",
+        "build",
+        "./..."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.400851144
+    },
+    {
+      "argv": [
+        "go",
+        "-C",
+        "server",
+        "test",
+        "-v",
+        "./..."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 4.020988172
+    },
+    {
+      "argv": [
+        "/home/runner/go/bin/staticcheck",
+        "./..."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 2.414195335
+    },
+    {
+      "argv": [
+        "gofmt",
+        "-l",
+        "server/"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.007949315
+    },
+    {
+      "argv": [
+        "go",
+        "-C",
+        "server",
+        "vet",
+        "./..."
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.651485893
+    }
+  ],
   "test_summary": {
-    "total": 0,
-    "passed": 0,
+    "total": 88,
+    "passed": 88,
     "failed": 0,
     "skipped": 0
   },
   "skipped_reasons": [
-    {
-      "id": "Q0.absent_paths",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q0.ci",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
     {
       "id": "Q0.claims",
       "reason": "owner-not-done",
@@ -53,37 +95,7 @@
       "allowed": true
     },
     {
-      "id": "Q1.forbidden_deps",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q1.pins",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
       "id": "Q2.codegen",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.go.alloc",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.go.bench",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.go.race",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.go.test",
       "reason": "owner-not-done",
       "allowed": true
     },
@@ -99,26 +111,6 @@
     },
     {
       "id": "Q4.canonical",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q4.cscrsp",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q4.dotfiles",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q4.go.static",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q4.style",
       "reason": "owner-not-done",
       "allowed": true
     },
@@ -143,27 +135,7 @@
       "allowed": true
     },
     {
-      "id": "Q6.clean_tree",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q6.evidence",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
       "id": "Q6.ratchet",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q0.absent_paths",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q0.ci",
       "reason": "owner-not-done",
       "allowed": true
     },
@@ -193,47 +165,7 @@
       "allowed": true
     },
     {
-      "id": "Q1.forbidden_deps",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q1.pins",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q1.unity.editor",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
       "id": "Q2.codegen",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.go.alloc",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.go.bench",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.go.test",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.unity.compile",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q3.unity.editmode",
       "reason": "owner-not-done",
       "allowed": true
     },
@@ -273,26 +205,6 @@
       "allowed": true
     },
     {
-      "id": "Q4.cscrsp",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q4.dotfiles",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q4.go.static",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q4.style",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
       "id": "Q5.content_activation",
       "reason": "owner-not-done",
       "allowed": true
@@ -313,23 +225,13 @@
       "allowed": true
     },
     {
-      "id": "Q6.clean_tree",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
-      "id": "Q6.evidence",
-      "reason": "owner-not-done",
-      "allowed": true
-    },
-    {
       "id": "Q6.ratchet",
       "reason": "owner-not-done",
       "allowed": true
     }
   ],
   "content_revision": "none",
-  "ci_run_id": "36810695621",
+  "ci_run_id": "36818016079",
   "run_attempt": "1",
   "jobs": [
     {
@@ -348,15 +250,13 @@
       "id": "Q0.absent_paths",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q0.ci",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q0.claims",
@@ -397,15 +297,13 @@
       "id": "Q1.forbidden_deps",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q1.pins",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q2.codegen",
@@ -418,29 +316,25 @@
       "id": "Q3.go.alloc",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.go.bench",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.go.race",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.go.test",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q4.api_fence",
@@ -467,29 +361,25 @@
       "id": "Q4.cscrsp",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q4.dotfiles",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q4.go.static",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q4.style",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q5.content_activation",
@@ -523,15 +413,13 @@
       "id": "Q6.clean_tree",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q6.evidence",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q6.ratchet",
@@ -544,15 +432,13 @@
       "id": "Q0.absent_paths",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q0.ci",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q0.claims",
@@ -593,22 +479,19 @@
       "id": "Q1.forbidden_deps",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q1.pins",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q1.unity.editor",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q2.codegen",
@@ -621,36 +504,31 @@
       "id": "Q3.go.alloc",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.go.bench",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.go.test",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.unity.compile",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.unity.editmode",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q3.unity.loadgraphics",
@@ -705,29 +583,25 @@
       "id": "Q4.cscrsp",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q4.dotfiles",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q4.go.static",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q4.style",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q5.content_activation",
@@ -761,15 +635,13 @@
       "id": "Q6.clean_tree",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q6.evidence",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "SKIP",
-      "reason": "owner-not-done"
+      "result": "PASS"
     },
     {
       "id": "Q6.ratchet",
