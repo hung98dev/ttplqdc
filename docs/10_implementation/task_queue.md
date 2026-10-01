@@ -24,7 +24,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 
 | ID | Title | Status | Dependencies | Specs |
 |---|---|---|---|---|
-| `IMP-000` | M0 Bootstrap Gate & Toolchain Harness | `IN_PROGRESS` | none | `../00_context/technology_versions.md`, `../00_context/constraints.md` |
+| `IMP-000` | M0 Bootstrap Gate & Toolchain Harness | `DONE` | none | `../00_context/technology_versions.md`, `../00_context/constraints.md` |
 | `IMP-001` | Stable IDs / Revisions | `NOT_STARTED` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
 | `IMP-002` | Deterministic RNG Interface | `NOT_STARTED` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
 | `IMP-003` | Content Compiler | `NOT_STARTED` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
@@ -150,9 +150,9 @@ IMP-056 -> IMP-077 -> IMP-103 -> IMP-067 -> IMP-069 -> IMP-044 -> IMP-045 -> IMP
 
 ## `IMP-000` — M0 Bootstrap Gate & Toolchain Harness
 id: IMP-000
-status: IN_PROGRESS
+status: DONE
 claimed_by: devin-imp-000
-branch: imp/IMP-000-bootstrap
+branch: imp/IMP-000-done
 claimed_at: 2026-09-30T17:17:27Z
 blocked_by: ""
 
