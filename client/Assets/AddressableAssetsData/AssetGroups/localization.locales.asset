@@ -14,9 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: localization.locales
   m_GUID: 13b8f19a440dc894aa499b632c82080f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 5bf45cd68f1e94441b552c122b5b1c6d
+    m_Address: vi-VN
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d381d0874192b7648b0f208f5d987cce
+    m_Address: en-US
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
+  m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: a492422ac3742604994931566402f381, type: 2}

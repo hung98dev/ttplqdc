@@ -228,12 +228,19 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Locale
+    - Locale-vi-VN
+    - Locale-en-US
   m_SchemaTemplates: []
-  m_GroupTemplateObjects: []
+  m_GroupTemplateObjects:
+  - {fileID: 11400000, guid: 7c5b41eb7290f6d4f915ed0209b051ec, type: 2}
   m_InitializationObjects: []
   m_CertificateHandlerType:
     m_AssemblyName: 
     m_ClassName: 
   m_ActivePlayerDataBuilderIndex: 2
-  m_DataBuilders: []
+  m_DataBuilders:
+  - {fileID: 11400000, guid: 11daeb9c39d8d9b48a2e83478c2f1a41, type: 2}
+  - {fileID: 11400000, guid: c872d0844eff831408bf4d03ebf0fe16, type: 2}
+  - {fileID: 11400000, guid: 0cc96803f75658b469317e27768c0569, type: 2}
   m_ActiveProfileId: 764cf1f42279e4d4a86c77d4d5fbced0
