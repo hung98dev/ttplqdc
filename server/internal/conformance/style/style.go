@@ -27,6 +27,13 @@ func CheckCSharpFile(repoRoot, path string, src []byte) []string {
 	return errs
 }
 
+// generatedCSharpDir is the generated-only directory whose .cs outputs the
+// authored-style rules exempt (engineering_conventions.md §2.7: "excluding
+// only the canonical generated client/Assets/Scripts/Protocol/*.cs outputs
+// reproduced by Q2"). Files directly in this dir are skipped; files in
+// subdirectories remain authored surface and are checked.
+const generatedCSharpDir = "client/Assets/Scripts/Protocol"
+
 // CheckCSharpTree walks client/Assets/**/*.cs and checks each file.
 func CheckCSharpTree(repoRoot string) []string {
 	var errs []string
@@ -35,11 +42,14 @@ func CheckCSharpTree(repoRoot string) []string {
 		if err != nil || fi.IsDir() || !strings.HasSuffix(fi.Name(), ".cs") {
 			return err
 		}
+		rel, _ := filepath.Rel(repoRoot, p)
+		if filepath.ToSlash(filepath.Dir(rel)) == generatedCSharpDir {
+			return nil
+		}
 		b, err := os.ReadFile(p)
 		if err != nil {
 			return err
 		}
-		rel, _ := filepath.Rel(repoRoot, p)
 		for _, e := range CheckCSharpFile(repoRoot, filepath.ToSlash(rel), b) {
 			errs = append(errs, fmt.Sprintf("%s: %s", filepath.ToSlash(rel), e))
 		}
