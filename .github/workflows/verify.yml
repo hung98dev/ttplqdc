@@ -721,6 +721,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 30
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: |
           pwsh -NoProfile -File scripts/verify.ps1 -Phase pre-unity -ReportOut "$env:RUNNER_TEMP\verify-pre-unity.json"
@@ -759,6 +760,7 @@ jobs:
       - name: Unity phase verify
         shell: pwsh
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: |
           pwsh -NoProfile -File scripts/verify.ps1 -Phase unity `
@@ -937,6 +939,7 @@ jobs:
       - name: Verify
         shell: pwsh
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: pwsh -NoProfile -File scripts/verify.ps1 -ReportOut artifacts/verify-report-linux.json
 

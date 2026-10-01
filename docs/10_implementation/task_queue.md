@@ -25,7 +25,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | ID | Title | Status | Dependencies | Specs |
 |---|---|---|---|---|
 | `IMP-000` | M0 Bootstrap Gate & Toolchain Harness | `DONE` | none | `../00_context/technology_versions.md`, `../00_context/constraints.md` |
-| `IMP-001` | Stable IDs / Revisions | `NOT_STARTED` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
+| `IMP-001` | Stable IDs / Revisions | `DONE` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
 | `IMP-002` | Deterministic RNG Interface | `NOT_STARTED` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
 | `IMP-003` | Content Compiler | `NOT_STARTED` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
 | `IMP-004` | Integration / Balance Activation Gate | `NOT_STARTED` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
@@ -85,9 +85,9 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-058` | Folk Fishing Runtime | `NOT_STARTED` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `NOT_STARTED` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
 | `IMP-060` | Atlas Journal Runtime | `NOT_STARTED` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
-| `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `NOT_STARTED` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
+| `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `IN_PROGRESS` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
 | `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `NOT_STARTED` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
-| `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `IN_PROGRESS` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
+| `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
 | `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `NOT_STARTED` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-066` | Unity Input Action Mapping & Core UI/HUD State Machine | `NOT_STARTED` | IMP-013, IMP-065 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
@@ -125,7 +125,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-098` | Observability Core | `NOT_STARTED` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
 | `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `NOT_STARTED` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
 | `IMP-100` | Character Lifecycle | `NOT_STARTED` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
-| `IMP-101` | URP 2D Rendering & Lighting Setup | `IN_PROGRESS` | IMP-000 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
+| `IMP-101` | URP 2D Rendering & Lighting Setup | `DONE` | IMP-000 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
 | `IMP-102` | Entitlement Claims & Store Client | `NOT_STARTED` | IMP-010, IMP-053, IMP-066 | `../03_systems/account_storage.md`, `../03_systems/monetization.md` |
 | `IMP-103` | Account Deletion & Data Export API / Account UI | `NOT_STARTED` | IMP-056, IMP-066 | `../07_security/data_protection.md`, `../07_security/auth.md` |
 | `IMP-104` | Monster, Boss & Spirit Beast Art | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md` |
@@ -224,10 +224,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-000/"
 
 ## `IMP-001` — Stable IDs / Revisions
 id: IMP-001
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: DONE
+claimed_by: "devin-imp-001"
+branch: "imp/IMP-001-stable-ids"
+claimed_at: "2026-10-01T10:24:01Z"
 blocked_by: ""
 
 specs: [`../06_data/ids.md`, `../06_data/config.md`, `../00_context/technology_versions.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
@@ -377,10 +377,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-004/"
 
 ## `IMP-061` — Protocol Buffers Schema & Multi-Language Codegen Harness
 id: IMP-061
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-061"
+branch: "imp/IMP-061-proto-schema"
+claimed_at: "2026-10-01T10:24:02Z"
 blocked_by: ""
 
 specs: [`../05_network/protocol.md`, `../05_network/messages.md`, `../05_network/errors.md`, `../05_network/protobuf_conventions.md`, `../05_network/synchronization.md`, `../05_network/versioning.md`, `repository_layout.md`, `../06_data/ids.md`, `../06_data/save_rules.md`, `../08_scale_ops/deployment.md`, `../03_systems/soul_contracts.md`]
@@ -470,7 +470,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-062/"
 
 ## `IMP-063` — Addressables Asset Pipeline & Catalog Delivery
 id: IMP-063
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-063"
 branch: "imp/IMP-063-addressables"
 claimed_at: "2026-10-01T09:54:05Z"
@@ -509,7 +509,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-063/"
 
 ## `IMP-101` — URP 2D Rendering & Lighting Setup
 id: IMP-101
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-101"
 branch: "imp/IMP-101-urp-2d-lighting"
 claimed_at: "2026-10-01T09:54:09Z"
