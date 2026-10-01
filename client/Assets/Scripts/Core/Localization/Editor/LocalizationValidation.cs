@@ -3,7 +3,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Tables;
@@ -306,65 +305,155 @@ namespace ThinhThan.Core.Localization.Editor
         /// </summary>
         private static void CheckAddressableMembership(LocaleValidationReport report)
         {
-            var settings = AddressableAssetSettingsDefaultObject.Settings;
-            if (settings == null)
+            var groups = SnapshotGroups(report);
+            if (groups == null)
             {
-                report.Errors.Add("no AddressableAssetSettings");
                 return;
             }
-            foreach (var group in settings.groups)
+            foreach (var group in groups)
             {
                 if (group.Name.StartsWith(PackageGroupPrefix, System.StringComparison.Ordinal))
                 {
                     report.Errors.Add("unconverged package group present: " + group.Name);
                 }
             }
-            CheckAddressableEntry(report, settings, "Assets/Localization/Settings/Locale vi-VN.asset",
+            CheckAddressableEntry(report, groups, "Assets/Localization/Settings/Locale vi-VN.asset",
                 "localization.locales", "vi-VN", "Locale");
-            CheckAddressableEntry(report, settings, "Assets/Localization/Settings/Locale en-US.asset",
+            CheckAddressableEntry(report, groups, "Assets/Localization/Settings/Locale en-US.asset",
                 "localization.locales", "en-US", "Locale");
-            CheckAddressableEntry(report, settings, TablesDir + "/" + CollectionName + " Shared Data.asset",
+            CheckAddressableEntry(report, groups, TablesDir + "/" + CollectionName + " Shared Data.asset",
                 "localization.shared", CollectionName + " Shared Data", null);
-            CheckAddressableEntry(report, settings, TablesDir + "/" + CollectionName + "_vi-VN.asset",
+            CheckAddressableEntry(report, groups, TablesDir + "/" + CollectionName + "_vi-VN.asset",
                 "localization.strings.vi_vn", CollectionName + "_vi-VN", "Locale-vi-VN");
-            CheckAddressableEntry(report, settings, TablesDir + "/" + CollectionName + "_en-US.asset",
+            CheckAddressableEntry(report, groups, TablesDir + "/" + CollectionName + "_en-US.asset",
                 "localization.strings.en_us", CollectionName + "_en-US", "Locale-en-US");
         }
 
         private static void CheckAddressableEntry(
             LocaleValidationReport report,
-            AddressableAssetSettings settings,
+            List<GroupSnapshot> groups,
             string assetPath,
             string groupName,
             string address,
             string? label)
         {
             var guid = AssetDatabase.AssetPathToGUID(assetPath);
+            var tag = System.IO.Path.GetFileName(assetPath);
             if (string.IsNullOrEmpty(guid))
             {
                 report.Errors.Add("asset missing for addressable check: " + assetPath);
                 return;
             }
-            var entry = settings.FindAssetEntry(guid);
-            var tag = System.IO.Path.GetFileName(assetPath);
+            EntrySnapshot? entry = null;
+            string? entryGroup = null;
+            foreach (var group in groups)
+            {
+                foreach (var candidate in group.Entries)
+                {
+                    if (candidate.Guid == guid)
+                    {
+                        entry = candidate;
+                        entryGroup = group.Name;
+                        break;
+                    }
+                }
+                if (entry != null)
+                {
+                    break;
+                }
+            }
             if (entry == null)
             {
                 report.Errors.Add(tag + " has no addressable entry");
                 return;
             }
-            if (entry.parentGroup == null || entry.parentGroup.Name != groupName)
+            if (entryGroup != groupName)
             {
-                report.Errors.Add(tag + " not in group " + groupName);
+                report.Errors.Add(tag + " not in group " + groupName + " (in " + entryGroup + ")");
             }
-            if (entry.address != address)
+            if (entry.Address != address)
             {
-                report.Errors.Add(tag + " address " + entry.address + " != " + address);
+                report.Errors.Add(tag + " address " + entry.Address + " != " + address);
             }
-            if (label != null && !entry.labels.Contains(label))
+            if (label != null && !entry.Labels.Contains(label))
             {
                 report.Errors.Add(tag + " missing label " + label);
             }
             report.Checks.Add(tag + " -> " + groupName + " [" + address + "]");
+        }
+
+        /// <summary>
+        /// Snapshot of one addressable group: name + flattened entries.
+        /// The frozen asmdef does not reference <c>Unity.Addressables.Editor</c>,
+        /// so the group state is read through reflection — the member names are
+        /// the package's public surface
+        /// (<c>AddressableAssetSettings.groups</c> → <c>AddressableAssetGroup
+        /// .Name/.entries</c> → <c>AddressableAssetEntry.guid/.address/.labels</c>).
+        /// </summary>
+        private sealed class GroupSnapshot
+        {
+            public string Name = "";
+            public readonly List<EntrySnapshot> Entries = new List<EntrySnapshot>();
+        }
+
+        private sealed class EntrySnapshot
+        {
+            public string Guid = "";
+            public string Address = "";
+            public readonly HashSet<string> Labels = new HashSet<string>();
+        }
+
+        private static List<GroupSnapshot>? SnapshotGroups(LocaleValidationReport report)
+        {
+            var settingsType = System.Type.GetType(
+                "UnityEditor.AddressableAssets.AddressableAssetSettings, Unity.Addressables.Editor");
+            var settings = settingsType == null
+                ? null
+                : AssetDatabase.LoadAssetAtPath(
+                    "Assets/AddressableAssetsData/AddressableAssetSettings.asset", settingsType);
+            if (settings == null)
+            {
+                report.Errors.Add("no AddressableAssetSettings");
+                return null;
+            }
+            var groups = settingsType.GetProperty("groups")?.GetValue(settings)
+                as System.Collections.IEnumerable;
+            if (groups == null)
+            {
+                report.Errors.Add("AddressableAssetSettings.groups unreadable");
+                return null;
+            }
+            var snapshot = new List<GroupSnapshot>();
+            foreach (var group in groups)
+            {
+                var groupType = group.GetType();
+                var snap = new GroupSnapshot
+                {
+                    Name = groupType.GetProperty("Name")?.GetValue(group) as string ?? "",
+                };
+                var entries = groupType.GetProperty("entries")?.GetValue(group)
+                    as System.Collections.IEnumerable;
+                if (entries != null)
+                {
+                    foreach (var entry in entries)
+                    {
+                        var entryType = entry.GetType();
+                        var snapEntry = new EntrySnapshot
+                        {
+                            Guid = entryType.GetProperty("guid")?.GetValue(entry) as string ?? "",
+                            Address = entryType.GetProperty("address")?.GetValue(entry) as string ?? "",
+                        };
+                        if (entryType.GetProperty("labels")?.GetValue(entry)
+                            is IEnumerable<string> labels)
+                        {
+                            snapEntry.Labels.UnionWith(labels);
+                        }
+                        snap.Entries.Add(snapEntry);
+                    }
+                }
+                snapshot.Add(snap);
+            }
+            return snapshot;
         }
     }
 }

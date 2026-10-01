@@ -1,5 +1,6 @@
+using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.Localization;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -12,11 +13,14 @@ namespace ThinhThan.Core.Localization.Editor
     /// Materializes the bilingual localization pipeline (IMP-064,
     /// client_localization.md): the pinned <c>LocalizationSettings.asset</c>,
     /// the vi-VN/en-US locale assets, and the <c>Core</c> string table
-    /// collection seeded with the launch keys. Addressable entries are
-    /// registered directly into the canonical <c>localization.*</c> groups with
-    /// the package's address/label contract (ADR-0074), so the converged state
-    /// is produced in the same editor launch and no <c>Localization-*</c>
-    /// package group is ever created.
+    /// collection seeded with the launch keys.
+    /// Addressable registration goes through the package's editor API
+    /// (<see cref="LocalizationEditorSettings"/>), which lands entries in the
+    /// package's <c>Localization-*</c> groups; the pass then re-runs the
+    /// addressables provisioner (IMP-063), which rehomes those entries into
+    /// the canonical <c>localization.*</c> groups and deletes the empty
+    /// package groups (ADR-0074). The bridge is reflective because the frozen
+    /// asmdef does not reference <c>ThinhThan.Core.Assets.Editor</c>.
     /// </summary>
     public static class LocalizationProvisioner
     {
@@ -26,30 +30,17 @@ namespace ThinhThan.Core.Localization.Editor
 
         private const string SettingsAssetPath = SettingsDir + "/LocalizationSettings.asset";
 
-        private const string AddressableSettingsPath = "Assets/AddressableAssetsData/AddressableAssetSettings.asset";
-
         private const string EbsConfigName = "com.unity.localization.settings";
 
         private const string CollectionName = "Core";
 
-        private const string GroupLocales = "localization.locales";
+        private const string AssetsProvisionerTypeName =
+            "ThinhThan.Core.Assets.Editor.AddressableProvisioner, ThinhThan.Core.Assets.Editor";
 
-        private const string GroupShared = "localization.shared";
-
-        private const string GroupStringsViVn = "localization.strings.vi_vn";
-
-        private const string GroupStringsEnUs = "localization.strings.en_us";
-
-        private const string LocaleLabel = "Locale";
-
-        private const string LocaleLabelPrefix = "Locale-";
-
-        private const string SharedDataSuffix = " Shared Data";
-
-        private static readonly (string Code, string Group)[] _supportedLocales =
+        private static readonly string[] _supportedLocaleCodes =
         {
-            (ThinhThanLocale.VietnameseCode, GroupStringsViVn),
-            (ThinhThanLocale.EnglishCode, GroupStringsEnUs),
+            ThinhThanLocale.VietnameseCode,
+            ThinhThanLocale.EnglishCode,
         };
 
         private static readonly (string Key, string ViVn, string EnUs)[] _seedEntries =
@@ -73,28 +64,25 @@ namespace ThinhThan.Core.Localization.Editor
         /// <summary>Idempotent provisioning pass, safe to run on every editor launch.</summary>
         public static void Provision()
         {
-            var addressables = LoadAsset<AddressableAssetSettings>(AddressableSettingsPath);
-            if (addressables == null)
-            {
-                return;
-            }
-
-            var settingsCreated = EnsureSettingsAsset(out var settings);
+            var changed = EnsureSettingsAsset(out var settings);
             if (settings == null)
             {
                 Debug.LogError("LocalizationProvisioner: could not load " + SettingsAssetPath);
                 return;
             }
-            var changed = settingsCreated;
             changed |= NormalizeSettings(settings);
-            changed |= EnsureLocales(addressables);
-            changed |= EnsureCoreCollection(addressables);
+            changed |= EnsureLocales(out var locales);
+            changed |= EnsureCoreCollection(locales, out var collection);
+            if (collection != null)
+            {
+                changed |= SeedKeys(collection);
+            }
             if (changed)
             {
                 EditorUtility.SetDirty(settings);
-                EditorUtility.SetDirty(addressables);
                 AssetDatabase.SaveAssets();
             }
+            RunAssetsProvisioner();
         }
 
         private static bool EnsureSettingsAsset(out LocalizationSettings? settings)
@@ -166,216 +154,125 @@ namespace ThinhThan.Core.Localization.Editor
             return changed;
         }
 
-        private static bool EnsureLocales(AddressableAssetSettings addressables)
+        private static bool EnsureLocales(out List<Locale> locales)
         {
-            var group = addressables.FindGroup(GroupLocales);
-            if (group == null)
-            {
-                Debug.LogError("LocalizationProvisioner: canonical group missing: " + GroupLocales);
-                return false;
-            }
-
+            locales = new List<Locale>(_supportedLocaleCodes.Length);
             var changed = false;
-            foreach (var (code, _) in _supportedLocales)
+            foreach (var code in _supportedLocaleCodes)
             {
                 var path = SettingsDir + "/Locale " + code + ".asset";
                 var locale = LoadAsset<Locale>(path);
                 if (locale == null)
                 {
+                    // LocaleName drives the package's group-name pattern
+                    // (Localization-String-Tables-{LocaleName}) and the
+                    // addressable entry address; pinning it to the code makes
+                    // the ADR-0074 canonical mapping deterministic.
                     locale = Locale.CreateLocale(code);
                     locale.name = "Locale " + code;
+                    locale.LocaleName = code;
                     AssetDatabase.CreateAsset(locale, path);
                     changed = true;
                 }
-                changed |= EnsureEntry(
-                    addressables,
-                    path,
-                    group,
-                    address: code,
-                    label: LocaleLabel);
+                else if (locale.LocaleName != code)
+                {
+                    locale.LocaleName = code;
+                    EditorUtility.SetDirty(locale);
+                    changed = true;
+                }
+                if (LocalizationEditorSettings.GetLocale(new LocaleIdentifier(code)) == null)
+                {
+                    LocalizationEditorSettings.AddLocale(locale);
+                    changed = true;
+                }
+                locales.Add(locale);
             }
             return changed;
         }
 
-        private static bool EnsureCoreCollection(AddressableAssetSettings addressables)
+        private static bool EnsureCoreCollection(
+            IReadOnlyList<Locale> locales,
+            out StringTableCollection? collection)
         {
             EnsureFolder("Assets/Localization");
             EnsureFolder("Assets/Localization/Tables");
             EnsureFolder(TablesDir);
-
-            var shared = LoadAsset<SharedTableData>(TablesDir + "/" + CollectionName + SharedDataSuffix + ".asset");
-            var collection = LoadAsset<StringTableCollection>(TablesDir + "/" + CollectionName + ".asset");
             var changed = false;
-
-            var sharedGroup = addressables.FindGroup(GroupShared);
-            if (shared == null)
-            {
-                shared = ScriptableObject.CreateInstance<SharedTableData>();
-                shared.TableCollectionName = CollectionName;
-                var sharedPath = TablesDir + "/" + CollectionName + SharedDataSuffix + ".asset";
-                AssetDatabase.CreateAsset(shared, sharedPath);
-                shared.TableCollectionNameGuid = System.Guid.Parse(AssetDatabase.AssetPathToGUID(sharedPath));
-                EditorUtility.SetDirty(shared);
-                changed = true;
-            }
-            if (sharedGroup == null)
-            {
-                Debug.LogError("LocalizationProvisioner: canonical group missing: " + GroupShared);
-            }
-            else
-            {
-                changed |= EnsureEntry(
-                    addressables,
-                    TablesDir + "/" + CollectionName + SharedDataSuffix + ".asset",
-                    sharedGroup,
-                    address: CollectionName + SharedDataSuffix,
-                    label: null);
-            }
-
-            StringTable? viTable = null;
-            StringTable? enTable = null;
-            foreach (var (code, groupName) in _supportedLocales)
-            {
-                var tablePath = TablesDir + "/" + CollectionName + "_" + code + ".asset";
-                var table = LoadAsset<StringTable>(tablePath);
-                if (table == null)
-                {
-                    table = ScriptableObject.CreateInstance<StringTable>();
-                    table.SharedData = shared;
-                    table.LocaleIdentifier = new LocaleIdentifier(code);
-                    table.name = CollectionName + "_" + code;
-                    AssetDatabase.CreateAsset(table, tablePath);
-                    changed = true;
-                }
-                var group = addressables.FindGroup(groupName);
-                if (group == null)
-                {
-                    Debug.LogError("LocalizationProvisioner: canonical group missing: " + groupName);
-                }
-                else
-                {
-                    changed |= EnsureEntry(
-                        addressables,
-                        tablePath,
-                        group,
-                        address: CollectionName + "_" + code,
-                        label: LocaleLabelPrefix + code);
-                }
-                if (code == ThinhThanLocale.VietnameseCode)
-                {
-                    viTable = table;
-                }
-                else
-                {
-                    enTable = table;
-                }
-            }
-
-            if (viTable != null && enTable != null)
-            {
-                changed |= SeedKeys(viTable, enTable);
-            }
-
+            collection = LoadAsset<StringTableCollection>(TablesDir + "/" + CollectionName + ".asset");
             if (collection == null)
             {
-                collection = ScriptableObject.CreateInstance<StringTableCollection>();
-                collection.name = CollectionName;
-                var serialized = new SerializedObject(collection);
-                serialized.FindProperty("m_SharedTableData").objectReferenceValue = shared;
-                var tables = serialized.FindProperty("m_Tables");
-                tables.arraySize = 2;
-                tables.GetArrayElementAtIndex(0).objectReferenceValue = viTable;
-                tables.GetArrayElementAtIndex(1).objectReferenceValue = enTable;
-                serialized.ApplyModifiedPropertiesWithoutUndo();
-                AssetDatabase.CreateAsset(collection, TablesDir + "/" + CollectionName + ".asset");
-                changed = true;
-            }
-            return changed;
-        }
-
-        /// <summary>
-        /// Register an asset into a canonical group with the package's
-        /// address/label contract (ADR-0074). Idempotent: an existing entry with
-        /// the right address and label is left alone.
-        /// </summary>
-        private static bool EnsureEntry(
-            AddressableAssetSettings addressables,
-            string assetPath,
-            AddressableAssetGroup group,
-            string address,
-            string? label)
-        {
-            var guid = AssetDatabase.AssetPathToGUID(assetPath);
-            if (string.IsNullOrEmpty(guid))
-            {
-                return false;
-            }
-            var entry = addressables.FindAssetEntry(guid);
-            var changed = false;
-            if (entry == null)
-            {
-                entry = addressables.CreateOrMoveEntry(guid, group, true, true);
-                changed = true;
-            }
-            else if (entry.parentGroup != group)
-            {
-                addressables.MoveEntry(entry, group, true, true);
-                changed = true;
-            }
-            if (entry.address != address)
-            {
-                entry.address = address;
-                changed = true;
-            }
-            if (!string.IsNullOrEmpty(label) && !entry.labels.Contains(label))
-            {
-                entry.SetLabel(label, true, true);
+                collection = LocalizationEditorSettings.CreateStringTableCollection(
+                    CollectionName, TablesDir, new List<Locale>(locales));
                 changed = true;
             }
             return changed;
         }
 
         /// <summary>Seed the launch keys in both locales (idempotent upserts).</summary>
-        private static bool SeedKeys(StringTable viTable, StringTable enTable)
+        private static bool SeedKeys(StringTableCollection collection)
         {
+            var viTable = collection.GetTable(new LocaleIdentifier(ThinhThanLocale.VietnameseCode)) as StringTable;
+            var enTable = collection.GetTable(new LocaleIdentifier(ThinhThanLocale.EnglishCode)) as StringTable;
+            if (viTable == null || enTable == null)
+            {
+                Debug.LogError("LocalizationProvisioner: Core tables missing for vi-VN/en-US");
+                return false;
+            }
+
             var changed = false;
             foreach (var (key, viVn, enUs) in _seedEntries)
             {
-                var viEntry = viTable.GetEntry(key);
-                if (viEntry == null || viEntry.Value != viVn)
-                {
-                    viEntry = viTable.AddEntry(key, viVn);
-                    changed = true;
-                }
-                if (viEntry != null && viEntry.IsSmart != IsSmart(viVn))
-                {
-                    viEntry.IsSmart = IsSmart(viVn);
-                    changed = true;
-                }
-                var enEntry = enTable.GetEntry(key);
-                if (enEntry == null || enEntry.Value != enUs)
-                {
-                    enEntry = enTable.AddEntry(key, enUs);
-                    changed = true;
-                }
-                if (enEntry != null && enEntry.IsSmart != IsSmart(enUs))
-                {
-                    enEntry.IsSmart = IsSmart(enUs);
-                    changed = true;
-                }
+                changed |= Upsert(viTable, key, viVn);
+                changed |= Upsert(enTable, key, enUs);
             }
             if (changed)
             {
                 EditorUtility.SetDirty(viTable);
                 EditorUtility.SetDirty(enTable);
-                EditorUtility.SetDirty(viTable.SharedData);
+                if (viTable.SharedData != null)
+                {
+                    EditorUtility.SetDirty(viTable.SharedData);
+                }
             }
             return changed;
         }
 
-        private static bool IsSmart(string value)
+        private static bool Upsert(StringTable table, string key, string value)
         {
-            return value != null && value.Contains("{") && value.Contains("}");
+            var entry = table.GetEntry(key);
+            var changed = false;
+            if (entry == null || entry.Value != value)
+            {
+                entry = table.AddEntry(key, value);
+                changed = true;
+            }
+            var smart = value != null && value.Contains("{") && value.Contains("}");
+            if (entry != null && entry.IsSmart != smart)
+            {
+                entry.IsSmart = smart;
+                changed = true;
+            }
+            return changed;
+        }
+
+        /// <summary>
+        /// Re-runs the IMP-063 addressables provisioner so the package-created
+        /// <c>Localization-*</c> groups are rehomed into the canonical
+        /// <c>localization.*</c> groups in the same launch (ADR-0074). The
+        /// frozen asmdef does not reference <c>ThinhThan.Core.Assets.Editor</c>,
+        /// so the entry point is invoked by reflection; both provisioners are
+        /// idempotent, which makes the call ordering-independent.
+        /// </summary>
+        private static void RunAssetsProvisioner()
+        {
+            var type = System.Type.GetType(AssetsProvisionerTypeName);
+            var method = type?.GetMethod("Provision", BindingFlags.Public | BindingFlags.Static);
+            if (method == null)
+            {
+                Debug.LogError("LocalizationProvisioner: addressables provisioner not found");
+                return;
+            }
+            method.Invoke(null, null);
         }
 
         /// <summary>
