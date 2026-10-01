@@ -15,7 +15,9 @@ import (
 	"strings"
 	"time"
 
+	"thinhthan/internal/conformance/architecture"
 	"thinhthan/internal/conformance/style"
+	"thinhthan/internal/conformance/taskgraph"
 )
 
 // Registry is the canonical, ordered gate list. IMP-000 evaluates its own
@@ -150,6 +152,14 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details = CheckAbsentPaths(r.Ctx.HeadIdx, tracked)
 	case "Q0.ci":
 		details = CheckWorkflowLint(r.Root)
+	case "Q0.claims":
+		details = taskgraph.CheckClaims(r.Root)
+	case "Q0.control.diff":
+		details, evalErr = taskgraph.CheckControlDiff(r.Root, "origin/main", r.Ctx.HeadBranch)
+	case "Q0.dag":
+		details = taskgraph.CheckDag(r.Root)
+	case "Q0.req.coverage":
+		details = taskgraph.CheckReqCoverage(r.Root)
 	case "Q1.pins":
 		details = append(CheckPins(r.Root), checkProtobufDLL(r.Root)...)
 	case "Q1.forbidden_deps":
@@ -178,6 +188,12 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details = append(r.goFmtVet(), style.CheckCSharpTree(r.Root)...)
 	case "Q4.dotfiles":
 		details = checkDotfiles(r.Root)
+	case "Q4.api_fence":
+		details = architecture.CheckClientApiFence(r.Root)
+	case "Q4.arch":
+		details = architecture.CheckArch(r.Root)
+	case "Q4.canonical":
+		details = architecture.CheckCanonical(r.Root)
 	case "Q4.cscrsp":
 		details = append(checkCscRsp(r.Root), checkAsmdefs(r.Root)...)
 	case "Q4.go.static":
