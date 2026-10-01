@@ -16,7 +16,7 @@ namespace ThinhThan.Core.Localization
     [Serializable]
     public class ThinhThanOsLocaleSelector : IStartupLocaleSelector
     {
-        public Locale GetStartupLocale(ILocalesProvider availableLocales)
+        public Locale? GetStartupLocale(ILocalesProvider availableLocales)
         {
             var culture = CultureInfo.CurrentUICulture;
             if (culture != null && culture.Name.StartsWith("en", StringComparison.OrdinalIgnoreCase))

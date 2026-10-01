@@ -71,7 +71,7 @@ namespace ThinhThan.Core.Localization
             PlayerPrefs.Save();
         }
 
-        private static string Resolve(string key, IReadOnlyDictionary<string, object> args)
+        private static string Resolve(string key, IReadOnlyDictionary<string, object>? args)
         {
             if (string.IsNullOrEmpty(key))
             {
