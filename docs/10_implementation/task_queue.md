@@ -130,7 +130,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-103` | Account Deletion & Data Export API / Account UI | `NOT_STARTED` | IMP-056, IMP-066 | `../07_security/data_protection.md`, `../07_security/auth.md` |
 | `IMP-104` | Monster, Boss & Spirit Beast Art | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md` |
 | `IMP-105` | Dungeon, Finale & Competitive Environment Art | `NOT_STARTED` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md` |
-| `IMP-106` | Verify CI Wall-Time Reduction via Caching | `NOT_STARTED` | IMP-000 | `audit_gates.md`, `agent_execution_protocol.md` |
+| `IMP-106` | Verify CI Wall-Time Reduction via Caching | `IN_PROGRESS` | IMP-000 | `audit_gates.md`, `agent_execution_protocol.md` |
 
 ## Topological Execution Order
 
@@ -666,10 +666,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-068/"
 
 ## `IMP-106` — Verify CI Wall-Time Reduction via Caching
 id: IMP-106
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-106"
+branch: "imp/IMP-106-ci-caching"
+claimed_at: "2026-10-01T09:54:10Z"
 blocked_by: ""
 
 specs: [`audit_gates.md`, `agent_execution_protocol.md`, `engineering_conventions.md`, `../00_context/technology_versions.md`, `../09_testing/test_and_release_evidence.md`]
