@@ -368,11 +368,36 @@ var edbDir = func() string {
 var edbRoot = filepath.Join(edbDir(), "pgsql")
 
 func edbBinDir() string {
-	bin := filepath.Join(edbRoot, "bin")
-	if _, err := os.Stat(filepath.Join(bin, "postgres.exe")); err == nil {
-		return bin
+	for _, bin := range []string{toolsPgBinDir(), filepath.Join(edbRoot, "bin")} {
+		if bin == "" {
+			continue
+		}
+		if _, err := os.Stat(filepath.Join(bin, "postgres.exe")); err == nil {
+			return bin
+		}
 	}
 	return ""
+}
+
+// toolsPgBinDir finds <repo>/tools/pgsql/bin by walking up from the working
+// directory — where verify.ps1 unpacks the pinned EDB binaries — so the
+// harness reuses an existing provision instead of downloading its own.
+func toolsPgBinDir() string {
+	dir, err := os.Getwd()
+	if err != nil {
+		return ""
+	}
+	for {
+		bin := filepath.Join(dir, "tools", "pgsql", "bin")
+		if _, err := os.Stat(filepath.Join(bin, "postgres.exe")); err == nil {
+			return bin
+		}
+		parent := filepath.Dir(dir)
+		if parent == dir {
+			return ""
+		}
+		dir = parent
+	}
 }
 
 func ensureEDB(ctx context.Context) (*Server, error) {
