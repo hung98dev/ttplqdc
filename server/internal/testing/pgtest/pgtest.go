@@ -401,12 +401,27 @@ func ensureEDB(ctx context.Context) (*Server, error) {
 		return nil, fmt.Errorf("pgtest: initdb: %w\n%s", err, out)
 	}
 	logFile := filepath.Join(dataDir, "server.log")
-	if out, err := exec.CommandContext(ctx, exe("pg_ctl"),
+	// pg_ctl spawns postgres.exe, which inherits piped stdio and keeps the
+	// write end open after pg_ctl itself exits — capturing output through a
+	// pipe (CombinedOutput/Output) hangs Wait forever. Redirect pg_ctl's own
+	// output to a file instead (same pattern as scripts/verify.ps1).
+	ctlLog := filepath.Join(dataDir, "pg_ctl-out.log")
+	f, err := os.Create(ctlLog)
+	if err != nil {
+		os.RemoveAll(dataDir)
+		return nil, fmt.Errorf("pgtest: pg_ctl log: %w", err)
+	}
+	cmd := exec.CommandContext(ctx, exe("pg_ctl"),
 		"-D", dataDir, "-l", logFile, "-o",
 		fmt.Sprintf("-p %d -h 127.0.0.1", port),
-		"-w", "start").CombinedOutput(); err != nil {
+		"-w", "start")
+	cmd.Stdout, cmd.Stderr = f, f
+	startErr := cmd.Run()
+	out, _ := os.ReadFile(ctlLog)
+	f.Close()
+	if startErr != nil {
 		os.RemoveAll(dataDir)
-		return nil, fmt.Errorf("pgtest: pg_ctl start: %w\n%s", err, out)
+		return nil, fmt.Errorf("pgtest: pg_ctl start: %w\n%s", startErr, out)
 	}
 	s := &Server{
 		dsn:    fmt.Sprintf("postgres://postgres@127.0.0.1:%d/postgres?sslmode=disable", port),
