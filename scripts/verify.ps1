@@ -120,8 +120,10 @@ if ($MergeReports) {
     exit 0
 }
 
+Write-Host "verify: resolving test postgres DSN"
 $dsn = Resolve-TestPgDsn
 if ($dsn) { $env:THINHTHAN_TEST_PG_DSN = $dsn }
+Write-Host "verify: postgres ready, starting phase '$Phase'"
 
 Push-Location $serverDir
 try {
