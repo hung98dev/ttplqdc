@@ -322,8 +322,11 @@ namespace ThinhThan.Core.Localization.Editor
                 "localization.locales", "vi-VN", "Locale");
             CheckAddressableEntry(report, groups, "Assets/Localization/Settings/Locale en-US.asset",
                 "localization.locales", "en-US", "Locale");
+            // The package leaves the shared-data entry at its default address
+            // (the asset path) in localization.shared; only membership and the
+            // absence of a Locale-* label are contractual (ADR-0074).
             CheckAddressableEntry(report, groups, TablesDir + "/" + CollectionName + " Shared Data.asset",
-                "localization.shared", CollectionName + " Shared Data", null);
+                "localization.shared", TablesDir + "/" + CollectionName + " Shared Data.asset", null);
             CheckAddressableEntry(report, groups, TablesDir + "/" + CollectionName + "_vi-VN.asset",
                 "localization.strings.vi_vn", CollectionName + "_vi-VN", "Locale-vi-VN");
             CheckAddressableEntry(report, groups, TablesDir + "/" + CollectionName + "_en-US.asset",
