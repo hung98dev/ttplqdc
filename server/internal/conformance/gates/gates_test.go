@@ -240,6 +240,27 @@ func TestLocalDeferMissingNeverInCi(t *testing.T) {
 	}
 }
 
+// TestQ2CodegenMissingScript: an absent scripts/codegen.ps1 (or pwsh) is
+// missing=true — FAIL on CI, DEFERRED locally; never a silent pass.
+func TestQ2CodegenMissingScript(t *testing.T) {
+	r := &Runner{
+		Root: t.TempDir(),
+		Ctx:  RunContext{OSTarget: "linux", InCI: true},
+	}
+	row := r.evaluate(GateSpec{ID: "Q2.codegen", Owner: "IMP-061"})
+	if row.Result != ResultFail {
+		t.Fatalf("missing codegen.ps1 on CI must FAIL, got %s", row.Result)
+	}
+	r2 := &Runner{
+		Root: t.TempDir(),
+		Ctx:  RunContext{OSTarget: "linux", LocalDeferMissing: true},
+	}
+	row = r2.evaluate(GateSpec{ID: "Q2.codegen", Owner: "IMP-061"})
+	if row.Result != ResultDeferred || row.Reason != DeferLocalMissing {
+		t.Fatalf("missing codegen.ps1 locally must DEFER, got %s/%s", row.Result, row.Reason)
+	}
+}
+
 // --- wrapper-to-verifier wiring + fail-closed mutation fixtures ------------
 
 // fixtureRepo builds a minimal valid tree the IMP-000 gates accept.
