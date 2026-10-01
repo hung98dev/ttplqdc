@@ -1,0 +1,26 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.go]
+indent_style = tab
+
+[*.proto]
+indent_size = 2
+
+[*.cs]
+csharp_new_line_before_open_brace = all
+dotnet_naming_rule.private_field_underscore.severity = error
+dotnet_naming_rule.private_field_underscore.symbols = private_field
+dotnet_naming_rule.private_field_underscore.style = underscore_camel
+dotnet_naming_symbols.private_field.applicable_kinds = field
+dotnet_naming_symbols.private_field.applicable_accessibilities = private
+dotnet_naming_style.underscore_camel.required_prefix = _
+dotnet_naming_style.underscore_camel.capitalization = camel_case
+csharp_style_namespace_declarations = block_scoped

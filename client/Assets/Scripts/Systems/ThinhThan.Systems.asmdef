@@ -1,0 +1,26 @@
+{
+    "name": "ThinhThan.Systems",
+    "rootNamespace": "ThinhThan.Systems",
+    "references": [
+        "ThinhThan.Core",
+        "ThinhThan.Core.Assets",
+        "ThinhThan.Core.Localization",
+        "ThinhThan.Net",
+        "ThinhThan.Protocol",
+        "Unity.InputSystem",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.2D.Animation.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Google.Protobuf.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

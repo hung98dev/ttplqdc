@@ -1,0 +1,19 @@
+{
+    "name": "ThinhThan.Net",
+    "rootNamespace": "ThinhThan.Net",
+    "references": [
+        "ThinhThan.Core",
+        "ThinhThan.Protocol"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Google.Protobuf.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

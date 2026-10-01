@@ -1,0 +1,189 @@
+#!/usr/bin/env pwsh
+# Canonical Q0-Q6 verifier front-end (scripts/verify.ps1, IMP-000).
+# Requires pwsh 7.6.6+; drives `go run ./cmd/verify` and provisions the
+# Postgres test instance for DB gates when not already provided.
+#Requires -Version 7.6
+[CmdletBinding()]
+param(
+    [string]$RepoRoot,
+    [ValidateSet('all','pre-unity','unity')][string]$Phase = 'all',
+    [string]$PreReport,
+    [string]$UnityResultsDir,
+    [string]$ReportOut,
+    [switch]$LocalDeferMissing,
+    [switch]$MergeReports,
+    [string]$LinuxReport,
+    [string]$WindowsReport,
+    [string]$OutManifest
+)
+
+$ErrorActionPreference = 'Stop'
+
+# pwsh floor: 7.6.6 (technology_versions.md). Windows PowerShell 5.1 is rejected.
+if ($PSVersionTable.PSVersion -lt [version]'7.6.6') {
+    throw "pwsh 7.6.6+ required, found $($PSVersionTable.PSVersion)"
+}
+if ($env:CI -and $LocalDeferMissing) {
+    throw "-LocalDeferMissing is forbidden under CI"
+}
+
+if (-not $RepoRoot) {
+    $RepoRoot = Resolve-Path (Join-Path $PSScriptRoot '..')
+}
+$RepoRoot = (Resolve-Path $RepoRoot).Path
+$serverDir = Join-Path $RepoRoot 'server'
+
+# Pinned-editor sanity: a set UNITY_EDITOR_PATH must point at 6000.6.1f1.
+if ($env:UNITY_EDITOR_PATH -and $env:UNITY_EDITOR_PATH -notlike '*6000.6.1f1*') {
+    throw "UNITY_EDITOR_PATH must reference the pinned editor 6000.6.1f1: $env:UNITY_EDITOR_PATH"
+}
+
+function Resolve-TestPgDsn {
+    if ($env:THINHTHAN_TEST_PG_DSN) { return $env:THINHTHAN_TEST_PG_DSN }
+    $toolsPg = Join-Path $RepoRoot 'tools/pgsql'
+    $pgIsReady = Join-Path $toolsPg 'bin/pg_isready.exe'
+    if (-not (Test-Path $pgIsReady) -and $IsWindows) {
+        # EDB pinned binaries (URL + sha256 resolve through stackpin so the
+        # hash lives in exactly one place).
+        Push-Location $serverDir
+        try {
+            $url = (& go run ./cmd/verify -repo-root $RepoRoot -print-pin edb-url)
+            $sha = (& go run ./cmd/verify -repo-root $RepoRoot -print-pin edb-sha256)
+        } finally { Pop-Location }
+        if (-not $url -or -not $sha) { throw 'EDB pin unavailable via -print-pin' }
+        $zip = Join-Path ([IO.Path]::GetTempPath()) 'edb-pg.zip'
+        Write-Host "verify: fetching pinned EDB postgres binaries"
+        Invoke-WebRequest -Uri $url -OutFile $zip -TimeoutSec 300
+        $got = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+        if ($got -ne $sha.ToLowerInvariant()) {
+            Remove-Item $zip -Force -ErrorAction SilentlyContinue
+            throw "EDB zip sha256 mismatch: got $got expected $($sha.ToLowerInvariant())"
+        }
+        Expand-Archive -Path $zip -DestinationPath $toolsPg -Force
+        Remove-Item $zip -Force -ErrorAction SilentlyContinue
+        # The EDB zip nests everything under pgsql/; flatten to tools/pgsql.
+        $nested = Join-Path $toolsPg 'pgsql'
+        if (Test-Path $nested) {
+            Get-ChildItem -Force $nested | Move-Item -Destination $toolsPg -Force
+            Remove-Item $nested -Recurse -Force
+        }
+    }
+    if (Test-Path $toolsPg) {
+        # EDB binaries unpacked to ignored tools/pgsql; start on a random port.
+        if (-not (Test-Path $pgIsReady)) {
+            throw "tools/pgsql exists but is incomplete (missing $pgIsReady)"
+        }
+        # Start-Process with file redirection, never `& ... | Out-Null`: pg_ctl
+        # daemonizes postgres.exe, which inherits the anonymous-pipe write
+        # handle and keeps it open forever, blocking the pwsh pipeline on EOF.
+        $data = Join-Path $toolsPg 'data'
+        $portFile = Join-Path $toolsPg 'port.txt'
+        if ((Test-Path $data) -and (Test-Path $portFile)) {
+            # Reuse the postmaster a previous phase started on this runner.
+            $savedPort = (Get-Content $portFile -Raw).Trim()
+            $p = Start-Process -FilePath $pgIsReady -ArgumentList "-h localhost -p $savedPort -t 5" `
+                -NoNewWindow -PassThru `
+                -RedirectStandardOutput (Join-Path $toolsPg 'isready-out.log') `
+                -RedirectStandardError (Join-Path $toolsPg 'isready-err.log')
+            $p | Wait-Process -Timeout 20 -ErrorAction SilentlyContinue
+            if ($p.HasExited -and $p.ExitCode -eq 0) {
+                Write-Host "verify: postgres already running on port $savedPort"
+                return "postgres://postgres@localhost:$savedPort/postgres?sslmode=disable"
+            }
+        }
+        if (-not (Test-Path $data)) {
+            Write-Host "verify: initdb $data"
+            $p = Start-Process -FilePath (Join-Path $toolsPg 'bin/initdb.exe') `
+                -ArgumentList ('-D "{0}" -E UTF8 -A trust' -f $data) `
+                -NoNewWindow -PassThru `
+                -RedirectStandardOutput (Join-Path $toolsPg 'initdb-out.log') `
+                -RedirectStandardError (Join-Path $toolsPg 'initdb-err.log')
+            $p | Wait-Process -Timeout 600 -ErrorAction SilentlyContinue
+            if (-not $p.HasExited) {
+                Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+                throw 'initdb timed out after 600s'
+            }
+            if ($p.ExitCode -ne 0) {
+                $err = Get-Content (Join-Path $toolsPg 'initdb-err.log') -Raw -ErrorAction SilentlyContinue
+                throw "initdb exit $($p.ExitCode): $err"
+            }
+        }
+        $port = Get-Random -Minimum 20000 -Maximum 50000
+        Write-Host "verify: pg_ctl start on port $port"
+        $pgLog = Join-Path $toolsPg 'pg.log'
+        $p = Start-Process -FilePath (Join-Path $toolsPg 'bin/pg_ctl.exe') `
+            -ArgumentList ('-D "{0}" -o "-p {1}" -l "{2}" -w -t 120 start' -f $data, $port, $pgLog) `
+            -NoNewWindow -PassThru `
+            -RedirectStandardOutput (Join-Path $toolsPg 'pgctl-out.log') `
+            -RedirectStandardError (Join-Path $toolsPg 'pgctl-err.log')
+        $p | Wait-Process -Timeout 150 -ErrorAction SilentlyContinue
+        if (-not $p.HasExited) {
+            Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+            throw 'pg_ctl start timed out after 150s'
+        }
+        if ($p.ExitCode -ne 0) {
+            $err = Get-Content (Join-Path $toolsPg 'pgctl-err.log') -Raw -ErrorAction SilentlyContinue
+            $pg = Get-Content $pgLog -Raw -ErrorAction SilentlyContinue
+            throw "pg_ctl exit $($p.ExitCode): $err`n$pg"
+        }
+        Set-Content -Path $portFile -Value $port -NoNewline
+        Write-Host "verify: postgres started"
+        return "postgres://postgres@localhost:$port/postgres?sslmode=disable"
+    }
+    if ($env:RUNNER_OS -ne 'Windows' -or $IsLinux) {
+        $docker = Get-Command docker -ErrorAction SilentlyContinue
+        if ($docker) {
+            # pinned digest image from technology_versions.md
+            $img = 'postgres:18.6@sha256:5a5a84b19854a9ffaa54082c166ff4ec27473a361e496e5ea167f298f2da9722'
+            $port = Get-Random -Minimum 20000 -Maximum 50000
+            & docker run -d -e POSTGRES_PASSWORD=postgres -p "${port}:5432" $img | Out-Null
+            Start-Sleep -Seconds 3
+            return "postgres://postgres:postgres@localhost:$port/postgres?sslmode=disable"
+        }
+    }
+    if ($LocalDeferMissing) { return $null }
+    throw 'no PostgreSQL test server: set THINHTHAN_TEST_PG_DSN, provision tools/pgsql, or install docker'
+}
+
+if ($MergeReports) {
+    # Evidence merge early-exits on branches without an IMP-\d+ task reference
+    # (claim/ops/spec/status PRs): manifest generation is skipped, never a gate.
+    $branch = $env:GITHUB_HEAD_REF
+    if (-not $branch) { $branch = $env:GITHUB_REF_NAME }
+    if (-not $branch) { $branch = (& git -C $RepoRoot branch --show-current) }
+    if ($branch -notmatch 'IMP-\d+') {
+        Write-Host "verify merge: head '$branch' has no IMP-N task — skipping manifest generation"
+        $linuxOk = (Test-Path (Join-Path $RepoRoot $LinuxReport))
+        $winOk = (Test-Path (Join-Path $RepoRoot $WindowsReport))
+        if (-not ($linuxOk -and $winOk)) { throw 'both reports required for merge' }
+        exit 0
+    }
+    # Resolve report paths before Push-Location: Resolve-Path is cwd-relative
+    # and the artifacts live under the repo root, not server/.
+    $linuxAbs = (Resolve-Path (Join-Path $RepoRoot $LinuxReport)).Path
+    $winAbs = (Resolve-Path (Join-Path $RepoRoot $WindowsReport)).Path
+    Push-Location $serverDir
+    try {
+        $margs = @('run', './cmd/verify', '-repo-root', $RepoRoot, '-merge',
+            '-linux', $linuxAbs, '-windows', $winAbs, '-out', $OutManifest)
+        & go @margs
+        if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    } finally { Pop-Location }
+    exit 0
+}
+
+Write-Host "verify: resolving test postgres DSN"
+$dsn = Resolve-TestPgDsn
+if ($dsn) { $env:THINHTHAN_TEST_PG_DSN = $dsn }
+Write-Host "verify: postgres ready, starting phase '$Phase'"
+
+Push-Location $serverDir
+try {
+    $args = @('run', './cmd/verify', '-repo-root', $RepoRoot, '-phase', $Phase)
+    if ($PreReport) { $args += @('-pre-report', $PreReport) }
+    if ($UnityResultsDir) { $args += @('-unity-results-dir', $UnityResultsDir) }
+    if ($ReportOut) { $args += @('-report-out', $ReportOut) }
+    if ($LocalDeferMissing) { $args += '-local-defer-missing' }
+    & go @args
+    exit $LASTEXITCODE
+} finally { Pop-Location }
