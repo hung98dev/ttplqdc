@@ -1,0 +1,252 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+
+enum QuestState {
+  QUEST_STATE_UNSPECIFIED = 0;
+  QUEST_STATE_LOCKED = 1;
+  QUEST_STATE_AVAILABLE = 2;
+  QUEST_STATE_ACTIVE = 3;
+  QUEST_STATE_READY_TO_COMPLETE = 4;
+  QUEST_STATE_COMPLETED = 5;
+  QUEST_STATE_FAILED = 6;
+  QUEST_STATE_EXPIRED = 7;
+}
+
+enum ProgressionEventKind {
+  PROGRESSION_EVENT_KIND_UNSPECIFIED = 0;
+  PROGRESSION_EVENT_KIND_EXP_GAINED = 1;
+  PROGRESSION_EVENT_KIND_LEVEL_UP = 2;
+  PROGRESSION_EVENT_KIND_SKILL_UNLOCKED = 3;
+  PROGRESSION_EVENT_KIND_POINTS_GRANTED = 4;
+  PROGRESSION_EVENT_KIND_FEAT_COMPLETED = 5;
+  PROGRESSION_EVENT_KIND_ATLAS_TIER = 6;
+  PROGRESSION_EVENT_KIND_STORY_FLAG_SET = 7;
+  PROGRESSION_EVENT_KIND_DISCOVERY = 8;
+}
+
+enum RespecKind {
+  RESPEC_KIND_UNSPECIFIED = 0;
+  RESPEC_KIND_SKILL = 1;
+  RESPEC_KIND_POTENTIAL = 2;
+}
+
+message QuestObjectiveView {
+  uint32 objective_index = 1;
+  uint32 current = 2;
+  uint32 required = 3;
+}
+
+message PotentialDelta {
+  uint32 str = 1;
+  uint32 vit = 2;
+  uint32 int = 3;
+  uint32 agi = 4;
+}
+
+message SkillView {
+  string skill_id = 1;
+  uint32 level = 2;
+}
+
+message SkillLoadoutView {
+  string basic_skill_id = 1;
+  repeated string active_slots = 2;     // exactly 5
+}
+
+message MysteryBoardPlaceholder {
+  string safe_area_id = 1;
+}
+
+message DailyQuestView {
+  string quest_id = 1;
+  string title_key = 2;
+  repeated QuestObjectiveView objectives = 3;
+  repeated ItemQuantity reward_preview = 4;
+  string starter_npc_id = 5;
+  string area_id = 6;
+}
+
+message DailyBoardEntry {
+  uint32 board_slot = 1;                // 1..6
+  QuestState state = 2;
+  bool is_mystery = 3;
+  oneof view {
+    MysteryBoardPlaceholder hidden = 4;
+    DailyQuestView revealed = 5;
+  }
+}
+
+message AtlasGrantView {
+  int64 exp = 1;
+  repeated CurrencyDelta currency_delta = 2;
+  repeated bytes reward_claim_ids = 3;  // UUID, 16 bytes
+}
+
+message AtlasTierView {
+  uint32 tier = 1;
+  bytes reward_operation_id = 2;        // UUID, 16 bytes
+  int64 acknowledged_at_ms = 3;
+  AtlasGrantView settled_grant = 4;
+}
+
+message AtlasPageView {
+  string atlas_page_id = 1;
+  uint64 counter = 2;
+  uint32 reached_tier = 3;
+  repeated AtlasTierView tiers = 4;     // settled tiers only, sorted by tier
+}
+
+// ID 500
+message C2SQuestAccept {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string quest_id = 2;                  // empty only for unrevealed DAILY choice
+  string npc_id = 3;                    // empty for DAILY board / auto-offered
+  uint32 board_slot = 4;                // 1..6 for DAILY
+  string board_cycle_id = 5;            // DAILY only
+}
+
+// ID 501
+message S2CQuestAcceptResult {
+  OperationResult result = 1;
+  string quest_id = 2;
+}
+
+// ID 502
+message C2SQuestTurnIn {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string quest_id = 2;
+  string npc_id = 3;                    // empty for AUTO completion
+}
+
+// ID 503
+message S2CQuestUpdate {
+  optional OperationResult result = 1;  // present only when answering 502
+  string quest_id = 2;
+  QuestState state = 3;
+  repeated QuestObjectiveView objectives = 4;
+  int64 expires_at_ms = 5;              // DAILY/EVENT; 0 = none
+  int64 exp_gained = 6;                 // turn-in only
+  repeated ItemGrant granted = 7;       // turn-in only
+  repeated CurrencyDelta currency_delta = 8; // turn-in only
+}
+
+// ID 504
+message C2SAtlasClaim {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string atlas_page_id = 2;
+  uint32 tier = 3;
+}
+
+// ID 505
+message S2CAtlasClaimResult {
+  OperationResult result = 1;
+  string atlas_page_id = 2;
+  uint32 tier = 3;
+  AtlasGrantView granted = 4;           // the settled grant
+}
+
+// ID 506
+message S2CProgressionEvent {
+  ProgressionEventKind event_kind = 1;
+  int64 amount = 2;
+  uint32 level_after = 3;
+  string source_kind = 4;
+  string reference_id = 5;
+  int64 server_time_ms = 6;
+}
+
+// ID 507
+message C2SQuestAbandon {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string quest_id = 2;
+}
+
+// ID 508
+message S2CQuestAbandonResult {
+  OperationResult result = 1;
+  string quest_id = 2;
+  repeated ItemQuantity removed_items = 3;
+}
+
+// ID 509
+message C2SStoryBranchChoose {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string branch_flag = 2;
+  string option = 3;
+}
+
+// ID 510
+message S2CStoryBranchResult {
+  OperationResult result = 1;
+  string branch_flag = 2;
+  string option = 3;
+}
+
+// ID 511
+message C2SSkillUpgrade {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string skill_id = 2;
+  uint32 expected_level = 3;
+}
+
+// ID 512
+message C2SPotentialAllocate {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  PotentialDelta deltas = 2;
+}
+
+// ID 513
+message C2SRespec {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string npc_id = 2;
+  RespecKind kind = 3;
+}
+
+// ID 514
+message S2CProgressionMutateResult {
+  OperationResult result = 1;
+  uint32 request_message_id = 2;        // 511 | 512 | 513
+}
+
+// ID 515
+message S2CProgressionState {
+  uint32 level = 1;
+  int64 current_exp = 2;
+  uint32 unspent_skill_points = 3;
+  uint32 unspent_potential_points = 4;
+  PotentialDelta potential_allocated = 5;
+  uint32 potential_earned_total = 6;
+  repeated SkillView skills = 7;
+  SkillLoadoutView skill_loadout = 8;
+  uint64 progression_revision = 9;
+}
+
+// ID 516
+message C2SDailyBoardRequest {
+  uint64 request_id = 1;                // echo only
+  string board_anchor_id = 2;
+}
+
+// ID 517 (read-only request_id response)
+message S2CDailyBoardState {
+  uint64 request_id = 1;
+  ResultStatus status = 2;
+  ErrorCode error_code = 3;
+  string cycle_id = 4;                  // UTC date
+  uint64 board_revision = 5;
+  uint32 completed_count = 6;           // 0..3
+  int64 reset_at_ms = 7;
+  repeated DailyBoardEntry entries = 8; // exactly 6 on success
+}
+
+// ID 518
+message S2CAtlasState {
+  uint64 atlas_revision = 1;
+  repeated AtlasPageView pages = 2;
+}

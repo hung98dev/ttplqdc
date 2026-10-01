@@ -1,0 +1,158 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+
+enum ClientPlatform {
+  CLIENT_PLATFORM_UNSPECIFIED = 0;
+  CLIENT_PLATFORM_WINDOWS = 1;
+  CLIENT_PLATFORM_ANDROID = 2;
+}
+
+enum ClientLocale {
+  CLIENT_LOCALE_UNSPECIFIED = 0;
+  CLIENT_LOCALE_VI_VN = 1;
+  CLIENT_LOCALE_EN_US = 2;
+}
+
+enum SessionReplacedReason {
+  SESSION_REPLACED_REASON_UNSPECIFIED = 0;
+  SESSION_REPLACED_REASON_NEWER_SESSION = 1;
+  SESSION_REPLACED_REASON_REVOKED = 2;
+}
+
+enum ServerDrainingReason {
+  SERVER_DRAINING_REASON_UNSPECIFIED = 0;
+  SERVER_DRAINING_REASON_MAINTENANCE = 1;
+}
+
+enum PlacementReason {
+  PLACEMENT_REASON_UNSPECIFIED = 0;
+  PLACEMENT_REASON_RESPAWN = 1;
+  PLACEMENT_REASON_INSTANCE_RETURN = 2;
+  PLACEMENT_REASON_RECONNECT = 3;
+  PLACEMENT_REASON_FIRST_LOGIN = 4;
+}
+
+// ID 1
+message C2SHello {
+  oneof credential {
+    string gameplay_ticket = 1;
+    string resume_credential = 2;
+  }
+  uint32 client_build = 3;
+  ClientPlatform platform = 4;
+  string content_revision = 5;
+  bytes device_id = 6;          // UUID, 16 bytes
+  ClientLocale locale = 7;
+}
+
+// ID 2
+message S2CHelloOk {
+  bytes session_id = 1;                 // UUID, 16 bytes
+  uint64 session_epoch = 2;
+  bytes account_id = 3;                 // UUID, 16 bytes
+  int64 server_time_ms = 4;
+  uint32 heartbeat_interval_ms = 5;     // 5000
+  uint32 connection_timeout_ms = 6;     // 15000
+  string resume_credential = 7;
+  int64 resume_expires_at_ms = 8;
+  uint32 protocol_minor = 9;
+  string content_revision = 10;
+  bool pending_deletion = 11;
+  bytes resumed_character_id = 12;      // UUID, 16 bytes; empty = none
+  uint32 resume_rotate_interval_ms = 13; // 300000
+}
+
+// ID 3
+message S2CError {
+  ErrorCode error_code = 1;
+  Retryability retryability = 2;
+  uint32 retry_after_ms = 3;
+  uint32 queue_position = 4;
+  string safe_message_key = 5;
+  bool close_after = 6;
+}
+
+// ID 4
+message C2SHeartbeat {
+  uint64 client_mono_ms = 1;
+  uint64 echo_server_ms = 2;    // 0 if none received yet
+}
+
+// ID 5
+message S2CHeartbeat {
+  uint64 server_ms = 1;
+}
+
+// ID 6
+message C2SCharacterAttach {
+  bytes character_id = 1;       // UUID, 16 bytes
+}
+
+// ID 7
+message S2CCharacterAttachOk {
+  bytes character_id = 1;       // UUID, 16 bytes
+  uint64 ownership_epoch = 2;
+  string map_id = 3;
+  uint32 channel_index = 4;
+  bytes instance_id = 5;        // UUID, 16 bytes; empty in the normal world
+  string content_revision = 6;
+}
+
+// ID 8
+message S2CSessionReplaced {
+  SessionReplacedReason reason = 1;
+}
+
+// ID 9
+message S2CServerDraining {
+  ServerDrainingReason reason = 1;
+  int64 drain_deadline_ms = 2;  // absolute
+  uint32 reconnect_after_ms = 3;
+}
+
+// ID 10
+message C2SCharacterDetach {
+}
+
+// ID 11
+message S2CCharacterDetachOk {
+  bytes character_id = 1;       // UUID, 16 bytes
+}
+
+// ID 12
+message C2SCharacterCreate {
+  bytes operation_id = 1;       // UUID, 16 bytes
+  string character_name = 2;
+  string class_id = 3;
+}
+
+// ID 13
+message S2CCharacterCreateResult {
+  OperationResult result = 1;
+  CharacterSummary character = 2;
+}
+
+// ID 14
+message S2CCharacterList {
+  repeated CharacterSummary characters = 1;
+  uint32 character_slots = 2;
+}
+
+// ID 15
+message S2CPlacementPending {
+  uint32 request_message_id = 1; // 6, 208 or 0
+  PlacementReason reason = 2;
+  uint32 retry_after_ms = 3;     // 5000
+}
+
+// ID 16
+message S2CResumeCredential {
+  string resume_credential = 1;
+  int64 resume_expires_at_ms = 2;
+}

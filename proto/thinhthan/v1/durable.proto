@@ -1,0 +1,589 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+
+enum ItemBinding {
+  ITEM_BINDING_UNSPECIFIED = 0;
+  ITEM_BINDING_UNBOUND = 1;
+  ITEM_BINDING_ACCOUNT_BOUND = 2;
+  ITEM_BINDING_CHARACTER_BOUND = 3;
+}
+
+enum EntitlementType {
+  ENTITLEMENT_TYPE_UNSPECIFIED = 0;
+  ENTITLEMENT_TYPE_ONE_SHOT = 1;
+  ENTITLEMENT_TYPE_ACCOUNT_SCOPED_ACCESS = 2;
+  ENTITLEMENT_TYPE_DIRECT_ACCOUNT_COSMETIC = 3;
+}
+
+enum EntitlementGrantState {
+  ENTITLEMENT_GRANT_STATE_UNSPECIFIED = 0;
+  ENTITLEMENT_GRANT_STATE_PENDING = 1;
+  ENTITLEMENT_GRANT_STATE_GRANTED = 2;
+  ENTITLEMENT_GRANT_STATE_REJECTED = 3;
+  ENTITLEMENT_GRANT_STATE_REFUNDED = 4;
+  ENTITLEMENT_GRANT_STATE_REFUNDED_CONSUMED = 5;
+}
+
+enum InventoryOp {
+  INVENTORY_OP_UNSPECIFIED = 0;
+  INVENTORY_OP_MOVE = 1;
+  INVENTORY_OP_SPLIT = 2;
+  INVENTORY_OP_MERGE = 3;
+  INVENTORY_OP_SORT = 4;
+  INVENTORY_OP_DISCARD = 5;
+  INVENTORY_OP_USE = 6;
+}
+
+enum LoadoutChangeKind {
+  LOADOUT_CHANGE_KIND_UNSPECIFIED = 0;
+  LOADOUT_CHANGE_KIND_EQUIP = 1;
+  LOADOUT_CHANGE_KIND_UNEQUIP = 2;
+  LOADOUT_CHANGE_KIND_SWITCH_ACTIVE = 3;
+  LOADOUT_CHANGE_KIND_SKILL_SET = 4;
+  LOADOUT_CHANGE_KIND_SOUL_CONTRACT = 5;
+}
+
+enum SoulContractAction {
+  SOUL_CONTRACT_ACTION_UNSPECIFIED = 0;
+  SOUL_CONTRACT_ACTION_CREATE = 1;
+  SOUL_CONTRACT_ACTION_REMOVE = 2;
+  SOUL_CONTRACT_ACTION_MOVE = 3;
+  SOUL_CONTRACT_ACTION_REPLACE = 4;
+}
+
+enum BeastEquipSlot {
+  BEAST_EQUIP_SLOT_UNSPECIFIED = 0;
+  BEAST_EQUIP_SLOT_COLLAR = 1;
+  BEAST_EQUIP_SLOT_BARDING = 2;
+  BEAST_EQUIP_SLOT_ORB = 3;
+}
+
+enum CosmeticRoute {
+  COSMETIC_ROUTE_UNSPECIFIED = 0;
+  COSMETIC_ROUTE_CURRENCY_SPECIAL = 1;
+  COSMETIC_ROUTE_CURRENCY_COMMON = 2;
+  COSMETIC_ROUTE_MATERIAL = 3;
+}
+
+enum CosmeticScope {
+  COSMETIC_SCOPE_UNSPECIFIED = 0;
+  COSMETIC_SCOPE_CHARACTER = 1;
+  COSMETIC_SCOPE_ACCOUNT = 2;
+}
+
+// --- shared durable views ---
+
+message StatValue {
+  string stat_id = 1;
+  int64 value = 2;
+}
+
+// One reusable item instance projection (messages.md section Item Instance Projection).
+message ItemInstanceView {
+  bytes item_instance_id = 1;   // UUID, 16 bytes
+  string item_id = 2;
+  uint32 quantity = 3;
+  string content_revision = 4;  // 64 lowercase hex
+  ItemBinding effective_binding = 5;
+  uint32 enhancement_level = 6;
+  repeated StatValue rolled_base_stats = 7;       // sorted by stat_id, <= 32
+  repeated StatValue rolled_secondary_stats = 8;  // sorted by stat_id, <= 32
+  repeated StatValue effective_stats = 9;         // sorted by stat_id, <= 32
+}
+
+message SoulView {
+  bytes soul_instance_id = 1;   // UUID, 16 bytes
+  string soul_id = 2;
+  uint32 level = 3;
+  uint64 current_soul_exp = 4;
+  bytes contracted_item_instance_id = 5; // UUID, 16 bytes; empty = uncontracted
+}
+
+message SoulResonanceView {
+  string soul_id = 1;
+  uint32 memory_resonance_count = 2;
+}
+
+message SoulContractBinding {
+  bytes soul_instance_id = 1;           // UUID, 16 bytes
+  bytes item_instance_id = 2;           // UUID, 16 bytes; empty = Collection
+}
+
+message InventoryChangedSlot {
+  uint32 slot = 1;
+  bytes item_instance_id = 2;           // UUID, 16 bytes; empty = now empty
+  string item_id = 3;
+  uint32 quantity = 4;
+}
+
+message InventoryUseEffect {
+  uint32 potential_points_granted = 1;
+  uint32 skill_points_granted = 2;
+  string cooldown_group = 3;
+  uint64 cooldown_ends_at_tick = 4;
+}
+
+message LoadoutEquip {
+  string loadout_id = 1;
+  string slot_id = 2;
+  bytes item_instance_id = 3;           // UUID, 16 bytes
+}
+
+message LoadoutUnequip {
+  string loadout_id = 1;
+  string slot_id = 2;
+}
+
+message LoadoutSwitchActive {
+  string loadout_id = 1;
+}
+
+message LoadoutSkillSet {
+  string basic_skill_id = 1;
+  repeated string active_slots = 2;     // exactly 5, empty = unused
+}
+
+message LoadoutSoulContract {
+  SoulContractAction action = 1;
+  bytes soul_instance_id = 2;           // UUID, 16 bytes
+  bytes target_item_instance_id = 3;    // UUID, 16 bytes
+}
+
+message LoadoutChangedSlot {
+  string loadout_id = 1;
+  string slot_id = 2;
+  bytes item_instance_id = 3;           // UUID, 16 bytes
+}
+
+message RewardClaimDeliveredLine {
+  uint32 line_no = 1;
+  uint32 delivered_quantity = 2;
+  uint32 remaining_after = 3;
+}
+
+message WalletBalance {
+  string currency_id = 1;
+  int64 amount = 2;
+  int64 cap = 3;
+}
+
+message InventorySlotView {
+  uint32 slot = 1;
+  ItemInstanceView item = 2;
+  uint32 locked_quantity = 3;
+}
+
+message LoadoutSlotView {
+  string slot_id = 1;
+  ItemInstanceView item = 2;
+}
+
+message LoadoutView {
+  string loadout_id = 1;
+  bool is_active = 2;
+  repeated LoadoutSlotView slots = 3;
+}
+
+message EntitlementView {
+  bytes entitlement_id = 1;             // UUID, 16 bytes
+  string product_id = 2;
+  EntitlementType entitlement_type = 3;
+  EntitlementGrantState grant_state = 4;
+  uint32 season_number = 5;
+  int64 claim_deadline_at = 6;
+  repeated string claimable_tier_ids = 7;
+  repeated string claimed_tier_ids = 8;
+}
+
+message BeastEquipmentView {
+  BeastEquipSlot slot_id = 1;
+  bytes item_instance_id = 2;           // UUID, 16 bytes
+}
+
+message BeastView {
+  string beast_id = 1;
+  uint32 level = 2;
+  uint32 bond_points = 3;
+  uint32 daily_food_points_gained = 4;
+  bool is_active = 5;
+  repeated BeastEquipmentView equipment = 6;
+}
+
+message OwnedCosmeticView {
+  string cosmetic_id = 1;
+  CosmeticScope scope = 2;
+}
+
+// --- inventory / loadout (400..403) ---
+
+// ID 400
+message C2SInventoryMutate {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  InventoryOp op = 2;
+  bytes item_instance_id = 3;           // UUID, 16 bytes; all but SORT
+  uint32 to_slot = 4;
+  uint32 quantity = 5;
+}
+
+// ID 401
+message S2CInventoryResult {
+  OperationResult result = 1;
+  InventoryOp op = 2;
+  uint64 inventory_revision = 3;
+  repeated InventoryChangedSlot changed_slots = 4;
+  optional InventoryUseEffect use_effect = 5;  // USE only
+}
+
+// ID 402
+message C2SLoadoutChange {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  LoadoutChangeKind kind = 2;
+  oneof change {
+    LoadoutEquip equip = 3;
+    LoadoutUnequip unequip = 4;
+    LoadoutSwitchActive switch_active = 5;
+    LoadoutSkillSet skill_set = 6;
+    LoadoutSoulContract soul_contract = 7;
+  }
+}
+
+// ID 403
+message S2CLoadoutResult {
+  OperationResult result = 1;
+  LoadoutChangeKind kind = 2;
+  uint64 loadout_revision = 3;
+  string active_loadout_id = 4;
+  repeated LoadoutChangedSlot changed_slots = 5;
+  optional LoadoutSkillSet skill_loadout = 6;   // SKILL_SET
+  repeated SoulContractBinding soul_contracts = 7; // SOUL_CONTRACT and UNEQUIP
+}
+
+// --- craft / enhance / claim (404..409) ---
+
+// ID 404
+message C2SCraft {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string npc_id = 2;
+  string recipe_id = 3;
+  uint32 batch_quantity = 4;            // 1..99
+}
+
+// ID 405
+message S2CCraftResult {
+  OperationResult result = 1;
+  string recipe_id = 2;
+  uint32 batch_quantity = 3;
+  repeated ItemQuantity consumed = 4;
+  repeated CurrencyDelta currency_delta = 5;
+  repeated ItemGrant granted = 6;
+}
+
+// ID 406
+message C2SEnhance {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string npc_id = 2;
+  bytes item_instance_id = 3;           // UUID, 16 bytes
+  uint32 target_level = 4;              // current + 1
+  optional bytes lucky_charm_item_instance_id = 5; // UUID, 16 bytes
+  optional bytes insurance_item_instance_id = 6;   // UUID, 16 bytes
+}
+
+// ID 407
+message S2CEnhanceResult {
+  OperationResult result = 1;
+  bytes item_instance_id = 2;           // UUID, 16 bytes
+  bool success = 3;
+  uint32 level_before = 4;
+  uint32 level_after = 5;
+  uint32 final_rate_bp = 6;
+  uint32 pity_fail_count = 7;
+  repeated ItemQuantity consumed = 8;
+  repeated CurrencyDelta currency_delta = 9;
+}
+
+// ID 408
+message C2SRewardClaim {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes reward_claim_id = 2;            // UUID, 16 bytes
+}
+
+// ID 409
+message S2CRewardClaimResult {
+  OperationResult result = 1;
+  bytes reward_claim_id = 2;            // UUID, 16 bytes
+  repeated ItemGrant granted = 3;
+  repeated CurrencyDelta currency_delta = 4;
+  repeated RewardClaimDeliveredLine delivered_lines = 5;
+  RewardClaimState claim_state = 6;
+}
+
+// --- spirit beast (410..417, 430..431) ---
+
+// ID 410
+message C2SBeastSetActive {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string beast_id = 2;                  // empty = deactivate
+}
+
+// ID 411
+message S2CBeastSetActiveResult {
+  OperationResult result = 1;
+  string active_beast_id = 2;           // empty = none active
+}
+
+// ID 412
+message C2SBeastEquip {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string beast_id = 2;
+  BeastEquipSlot slot_id = 3;
+  bytes item_instance_id = 4;           // UUID, 16 bytes
+}
+
+// ID 413
+message S2CBeastEquipResult {
+  OperationResult result = 1;
+  string beast_id = 2;
+  BeastEquipSlot slot_id = 3;
+  bytes equipped_item_instance_id = 4;  // UUID, 16 bytes
+  optional bytes unequipped_item_instance_id = 5; // UUID, 16 bytes
+}
+
+// ID 414
+message C2SBeastUnequip {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string beast_id = 2;
+  BeastEquipSlot slot_id = 3;
+}
+
+// ID 415
+message S2CBeastUnequipResult {
+  OperationResult result = 1;
+  string beast_id = 2;
+  BeastEquipSlot slot_id = 3;
+  bytes unequipped_item_instance_id = 4; // UUID, 16 bytes
+}
+
+// ID 416
+message C2SBeastFeed {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string beast_id = 2;
+  string food_item_id = 3;
+  uint32 quantity = 4;
+}
+
+// ID 417
+message S2CBeastFeedResult {
+  OperationResult result = 1;
+  string beast_id = 2;
+  uint32 consumed_quantity = 3;
+  uint32 new_bond_points = 4;           // 0..100
+  uint32 daily_food_points_gained = 5;  // 0..20
+}
+
+// ID 430
+message C2SBeastLevelUp {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string beast_id = 2;
+  uint32 expected_level = 3;
+}
+
+// ID 431
+message S2CBeastLevelUpResult {
+  OperationResult result = 1;
+  string beast_id = 2;
+  uint32 level_after = 3;
+  repeated ItemQuantity consumed = 4;
+  repeated CurrencyDelta currency_delta = 5;
+}
+
+// --- entitlement / shop / cosmetic (418..429) ---
+
+// ID 418
+message C2SEntitlementClaim {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes entitlement_id = 2;             // UUID, 16 bytes
+  string reward_tier_id = 3;
+}
+
+// ID 419
+message S2CEntitlementClaimResult {
+  OperationResult result = 1;
+  bytes entitlement_id = 2;             // UUID, 16 bytes
+  string reward_tier_id = 3;
+  repeated ItemGrant granted = 4;
+  repeated string cosmetics_granted = 5;
+}
+
+// ID 420
+message C2SNpcShopBuy {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string npc_id = 2;
+  string offer_id = 3;
+  uint32 quantity = 4;
+}
+
+// ID 421
+message S2CNpcShopBuyResult {
+  OperationResult result = 1;
+  repeated ItemQuantity granted = 2;
+}
+
+// ID 422
+message C2SCosmeticRedeem {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string cosmetic_id = 2;
+  CosmeticRoute route = 3;
+}
+
+// ID 423
+message S2CCosmeticRedeemResult {
+  OperationResult result = 1;
+  string cosmetic_id = 2;
+}
+
+// ID 424
+message C2SCosmeticEquip {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  CosmeticSlot slot = 2;
+  string cosmetic_id = 3;               // empty = unequip
+}
+
+// ID 425
+message S2CCosmeticEquipResult {
+  OperationResult result = 1;
+  CosmeticSlot slot = 2;
+  string cosmetic_id = 3;
+}
+
+// ID 426
+message C2SNpcShopSell {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string npc_id = 2;
+  bytes item_instance_id = 3;           // UUID, 16 bytes
+  uint32 quantity = 4;
+}
+
+// ID 427
+message S2CNpcShopSellResult {
+  OperationResult result = 1;
+  string item_id = 2;
+  uint32 quantity_sold = 3;
+  repeated CurrencyDelta currency_delta = 4;
+}
+
+// ID 428
+message C2SInventoryExpand {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  uint32 expected_capacity = 2;
+}
+
+// ID 429
+message S2CInventoryExpandResult {
+  OperationResult result = 1;
+  uint32 capacity_after = 2;
+  repeated CurrencyDelta currency_delta = 3;
+}
+
+// --- state pushes (432..438) ---
+
+// ID 432
+message S2CWalletState {
+  repeated WalletBalance balances = 1;
+  uint64 wallet_revision = 2;
+}
+
+// ID 433
+message S2CInventoryState {
+  uint32 capacity = 1;
+  uint64 inventory_revision = 2;
+  repeated InventorySlotView slots = 3;
+  repeated LoadoutView loadouts = 4;    // exactly 3
+  uint64 loadout_revision = 5;
+}
+
+// ID 434
+message S2CRewardClaimsState {
+  uint64 claims_revision = 1;
+  uint32 total_count = 2;
+  uint32 cap = 3;                       // 100
+  repeated RewardClaimView claims = 4;  // <= 50
+}
+
+// ID 435
+message S2CEntitlementPanelState {
+  repeated EntitlementView entitlements = 1;
+}
+
+// ID 436
+message S2CBeastState {
+  repeated BeastView beasts = 1;
+}
+
+// ID 437
+message S2CSoulState {
+  uint64 soul_revision = 1;
+  uint64 total_count = 2;
+  repeated SoulView souls = 3;          // first page, <= 50
+  repeated SoulResonanceView resonance = 4;
+  repeated SoulContractBinding contracts = 5;
+}
+
+// ID 438
+message S2CCosmeticState {
+  repeated OwnedCosmeticView owned = 1;
+  repeated EquippedCosmetic equipped = 2;
+}
+
+// --- reward claim paging (439..441) ---
+
+// ID 439
+message C2SRewardClaimListRequest {
+  bytes operation_id = 1;               // UUID, 16 bytes; echo only
+  uint32 offset = 2;
+  uint32 limit = 3;                     // 1..50
+}
+
+// ID 440
+message S2CRewardClaimListResult {
+  OperationResult result = 1;
+  uint64 claims_revision = 2;
+  uint32 total_count = 3;
+  uint32 offset = 4;
+  repeated RewardClaimView claims = 5;
+}
+
+// ID 441
+message S2CRewardClaimDelta {
+  uint64 claims_revision = 1;
+  uint32 total_count = 2;
+  repeated RewardClaimView added = 3;
+  repeated bytes removed = 4;           // reward_claim_id, UUID 16 bytes
+}
+
+// --- soul collection paging (442..443) ---
+
+// ID 442
+message C2SSoulListRequest {
+  uint64 request_id = 1;                // echo
+  uint64 soul_revision = 2;             // 0 = open current first page
+  bytes after_soul_instance_id = 3;     // UUID, 16 bytes; empty = first
+  uint32 limit = 4;                     // 1..50
+}
+
+// ID 443 (read-only request_id result: no OperationResult)
+message S2CSoulListResult {
+  uint64 request_id = 1;
+  ResultStatus status = 2;
+  ErrorCode error_code = 3;
+  uint64 soul_revision = 4;
+  uint64 total_count = 5;
+  repeated SoulView souls = 6;
+  bytes next_after_soul_instance_id = 7; // UUID, 16 bytes
+  bool has_more = 8;
+}

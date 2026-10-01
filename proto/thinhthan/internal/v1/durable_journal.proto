@@ -1,0 +1,640 @@
+syntax = "proto3";
+
+package thinhthan.internal.v1;
+
+option go_package = "thinhthan/internal/durable/journal/v1;journalv1";
+
+import "thinhthan/v1/common.proto";
+import "thinhthan/v1/session.proto";
+import "thinhthan/v1/movement.proto";
+import "thinhthan/v1/durable.proto";
+import "thinhthan/v1/content.proto";
+import "thinhthan/v1/social.proto";
+import "thinhthan/v1/market.proto";
+
+// Durable command-journal schema (protobuf_conventions.md section 7).
+// Closed producer union: 13 command kinds. Enum number 11 and record field 30
+// are reserved forever. Deterministic encoding; unknown fields are corruption.
+
+enum JournalCommandType {
+  JOURNAL_COMMAND_TYPE_UNSPECIFIED = 0;
+  JOURNAL_COMMAND_TYPE_CLIENT = 1;
+  JOURNAL_COMMAND_TYPE_REWARD = 2;
+  JOURNAL_COMMAND_TYPE_WORLD_CONSEQUENCE = 3;
+  JOURNAL_COMMAND_TYPE_BOSS_ELIGIBILITY = 4;
+  JOURNAL_COMMAND_TYPE_BOSS_CHEST = 5;
+  JOURNAL_COMMAND_TYPE_CHECKPOINT = 6;
+  JOURNAL_COMMAND_TYPE_PUBLIC_SCHEDULE = 7;
+  JOURNAL_COMMAND_TYPE_MATCH = 8;
+  JOURNAL_COMMAND_TYPE_GUILD_EVENT = 9;
+  JOURNAL_COMMAND_TYPE_JOB = 10;
+  reserved 11;
+  JOURNAL_COMMAND_TYPE_ACTIVITY = 12;
+  JOURNAL_COMMAND_TYPE_COMPETITIVE_ADMISSION = 13;
+  JOURNAL_COMMAND_TYPE_CHAT_LOG = 14;
+}
+
+enum JournalOwnerKind {
+  JOURNAL_OWNER_KIND_UNSPECIFIED = 0;
+  JOURNAL_OWNER_KIND_ACCOUNT = 1;
+  JOURNAL_OWNER_KIND_CHARACTER = 2;
+  JOURNAL_OWNER_KIND_GUILD = 3;
+  JOURNAL_OWNER_KIND_WORLD = 4;
+}
+
+message DurableCommandRecord {
+  uint32 schema_version = 1;
+  string operation_family = 2;
+  JournalOwnerKind owner_kind = 3;
+  bytes owner_id = 4;
+  bytes operation_id = 5;
+  JournalCommandType command_type = 6;
+  int64 enqueued_at_ms = 7;
+  string content_revision = 8;
+  bytes request_fingerprint = 9;
+  uint64 admission_sequence = 10;
+  bytes producer_incarnation_id = 11;
+  reserved 30;
+  oneof command {
+    JournalClientCommand client = 20;
+    JournalRewardCommand reward = 21;
+    JournalWorldConsequence world_consequence = 22;
+    JournalBossEligibility boss_eligibility = 23;
+    JournalBossChest boss_chest = 24;
+    JournalCheckpoint checkpoint = 25;
+    JournalPublicSchedule public_schedule = 26;
+    JournalMatch match = 27;
+    JournalGuildEvent guild_event = 28;
+    JournalJob job = 29;
+    JournalActivity activity = 31;
+    JournalCompetitiveAdmission competitive_admission = 32;
+    JournalChatLog chat_log = 33;
+  }
+}
+
+message JournalSource {
+  string map_id = 1;
+  uint32 channel_id = 2;
+  optional bytes instance_id = 3;
+  bytes partition_incarnation_id = 4;
+  uint64 source_event_id = 5;
+  uint64 tick = 6;
+  int64 occurred_at_ms = 7;
+  string source_content_id = 8;
+  optional bytes encounter_instance_id = 9;
+  optional bytes generation_id = 10;
+  optional bytes chain_id = 11;
+  optional uint64 rng_seed_hi = 12;
+  optional uint64 rng_seed_lo = 13;
+}
+
+message JournalStat {
+  string stat_id = 1;
+  sint64 value = 2;
+  uint32 scale = 3;
+}
+
+message JournalPity {
+  uint32 target_level = 1;
+  uint32 fail_count = 2;
+}
+
+message JournalItem {
+  string item_id = 1;
+  uint64 quantity = 2;
+  string effective_binding = 3;
+  string content_revision = 4;
+  repeated JournalStat base_rolls = 5;
+  repeated JournalStat secondary_rolls = 6;
+  uint32 enhancement = 7;
+  repeated JournalPity pity = 8;
+  optional bytes item_instance_id = 9;
+  optional string soul_id = 10;
+  uint32 soul_level = 11;
+  uint64 soul_exp = 12;
+  optional int64 created_at_ms = 13;
+}
+
+message JournalCurrency {
+  string currency_id = 1;
+  int64 amount = 2;
+}
+
+message JournalSoulExp {
+  bytes soul_instance_id = 1;
+  uint64 amount = 2;
+}
+
+message JournalObjective {
+  string quest_id = 1;
+  uint32 objective_index = 2;
+  uint64 delta = 3;
+}
+
+message JournalAtlas {
+  string page_id = 1;
+  uint64 delta = 2;
+}
+
+message JournalFlag {
+  string flag_id = 1;
+  string value = 2;
+}
+
+message JournalSoulResonance {
+  uint32 memory_count_before = 1;
+  uint32 memory_count_after = 2;
+  optional int64 sheen_unlocked_before_ms = 3;
+  optional int64 sheen_unlocked_after_ms = 4;
+}
+
+message JournalSoulAcquisition {
+  bytes soul_instance_id = 1;
+  string soul_id = 2;
+  uint32 initial_level = 3;
+  uint64 initial_soul_exp = 4;
+  bool duplicate = 5;
+  JournalAtlas atlas_progress = 6;
+  bool atlas_page_mastered_before = 7;
+  optional JournalSoulResonance resonance = 8;
+  uint64 expected_soul_revision = 9;
+}
+
+message JournalRewardSlot {
+  string reward_slot = 1;
+  repeated JournalItem items = 2;
+  repeated JournalCurrency currencies = 3;
+  uint64 character_exp = 4;
+  repeated JournalSoulExp soul_exp = 5;
+  repeated JournalObjective quest_progress = 6;
+  repeated JournalAtlas atlas_progress = 7;
+  uint32 chivalry_points = 8;
+  repeated string beast_ids = 9;
+  repeated string cosmetic_ids = 10;
+  repeated JournalFlag flags = 11;
+  string source_type = 12;
+  string source_reference = 13;
+  bytes source_reward_operation_id = 14;
+  repeated JournalSoulAcquisition soul_acquisitions = 15;
+}
+
+message JournalRewardCommand {
+  optional JournalSource source = 1;
+  string kind = 2;
+  repeated JournalRewardSlot slots = 3;
+  optional string quest_id = 4;
+  optional string discovery_id = 5;
+  optional string dungeon_id = 6;
+  optional string run_tag = 7;
+  optional uint32 season_id = 8;
+  optional string grant_scope = 9;
+}
+
+message JournalWorldConsequence {
+  optional JournalSource source = 1;
+  string map_id = 2;
+  uint32 channel_id = 3;
+  string relic_id = 4;
+  string region_id = 5;
+  string marker_boss_id = 6;
+  string source_id = 7;
+  string buff_effect_id = 8;
+  int64 spawned_at_ms = 9;
+  int64 expires_at_ms = 10;
+  string transition = 11;
+  optional bytes defeated_encounter_instance_id = 12;
+  optional uint32 defeated_participant_count = 13;
+  optional int64 defeated_at_ms = 14;
+}
+
+message JournalBossEligibility {
+  optional JournalSource source = 1;
+  bytes character_id = 2;
+  bytes generation_id = 3;
+  string boss_id = 4;
+  string copy_map_id = 5;
+  uint32 copy_channel_id = 6;
+  string transition = 7;
+  optional int64 eligible_until_ms = 8;
+}
+
+message JournalBossChest {
+  optional JournalSource source = 1;
+  bytes character_id = 2;
+  bytes generation_id = 3;
+  string boss_id = 4;
+  string copy_map_id = 5;
+  uint32 copy_channel_id = 6;
+  string reason = 7;
+  repeated JournalRewardSlot slots = 8;
+}
+
+message JournalCheckpoint {
+  bytes character_id = 1;
+  uint64 ownership_epoch = 2;
+  string checkpoint_id = 3;
+  string safe_map_id = 4;
+  string entry_spawn_id = 5;
+  optional bytes transfer_id = 6;
+  optional bytes instance_id = 7;
+  optional string instance_dungeon_id = 8;
+  optional string instance_run_tag = 9;
+  optional string source_map_id = 10;
+  optional uint32 source_channel_id = 11;
+  string membership_state = 12;
+  int64 recorded_at_ms = 13;
+  uint64 source_tick = 14;
+  optional JournalSource source = 15;
+}
+
+message JournalPublicSchedule {
+  string boss_id = 1;
+  uint64 expected_revision = 2;
+  string transition = 3;
+  optional bytes prior_generation_id = 4;
+  optional bytes new_generation_id = 5;
+  optional int64 opened_at_ms = 6;
+  optional int64 next_spawn_at_ms = 7;
+  int64 transition_at_ms = 8;
+  optional uint32 respawn_delay_seconds = 9;
+}
+
+message JournalParticipant {
+  bytes character_id = 1;
+  optional bytes guild_id = 2;
+  string participation = 3;
+  uint32 team_index = 4;
+  uint32 active_seconds = 5;
+  uint32 disconnected_seconds = 6;
+  uint32 afk_seconds = 7;
+  bool reward_eligible = 8;
+  sint32 mmr_before = 9;
+  sint32 mmr_after = 10;
+  sint32 season_rating_before = 11;
+  sint32 season_rating_after = 12;
+  uint64 expected_rating_revision = 13;
+  uint32 abandon_penalty = 14;
+  optional uint32 bound_slot = 15;
+  optional int64 bound_window_start_ms = 16;
+  repeated JournalRewardSlot slots = 17;
+  optional bytes sanction_id = 18;
+  optional uint32 sanction_ladder_step = 19;
+  optional int64 sanction_starts_at_ms = 20;
+  optional int64 sanction_ends_at_ms = 21;
+  string result = 22;
+  optional bytes membership_id = 23;
+  uint64 guild_contribution = 24;
+}
+
+message JournalMatch {
+  bytes match_id = 1;
+  string mode_id = 2;
+  uint32 season_id = 3;
+  string match_state = 4;
+  string result = 5;
+  string settlement_type = 6;
+  repeated JournalParticipant participants = 7;
+  int64 resolved_at_ms = 8;
+  JournalSource source = 9;
+  repeated JournalGuildMatchOutput guild_outputs = 10;
+}
+
+message JournalGuildMatchOutput {
+  bytes guild_id = 1;
+  string result = 2;
+  uint64 expected_rating_revision = 3;
+  sint32 mmr_before = 4;
+  sint32 mmr_after = 5;
+  optional int64 progression_week_monday_ms = 6;
+  optional uint32 progression_slot = 7;
+  uint64 guild_exp = 8;
+  repeated JournalGuildContribution contributions = 9;
+}
+
+message JournalGuildContribution {
+  bytes character_id = 1;
+  bytes membership_id = 2;
+  uint64 amount = 3;
+}
+
+message JournalGuildEvent {
+  bytes guild_id = 1;
+  bytes character_id = 2;
+  bytes membership_id = 3;
+  bytes source_operation_id = 4;
+  string source_kind = 5;
+  string source_reference = 6;
+  int64 occurred_at_ms = 7;
+  uint32 element = 8;
+  uint32 ritual_points = 9;
+  uint64 guild_exp = 10;
+  optional bytes chain_id = 11;
+  optional int64 gathering_slot_start_ms = 12;
+  uint32 season_id = 13;
+  repeated JournalGuildContribution credited_members = 14;
+  string cycle_id = 15;
+  uint64 expected_guild_revision = 16;
+}
+
+message JournalTradeSide {
+  bytes character_id = 1;
+  bytes account_id = 2;
+  repeated JournalItem items = 3;
+  int64 common_amount = 4;
+}
+
+message JournalTrade {
+  bytes trade_id = 1;
+  uint64 expected_revision = 2;
+  JournalTradeSide initiator = 3;
+  JournalTradeSide counterpart = 4;
+  bytes settlement_id = 5;
+  int64 fee_common = 6;
+  int64 finalized_at_ms = 7;
+  bytes initiating_client_operation_id = 8;
+}
+
+message JournalActivity {
+  bytes character_id = 1;
+  uint64 session_epoch = 2;
+  string transition = 3;
+  int64 occurred_at_ms = 4;
+}
+
+message JournalCompetitiveAdmission {
+  string scope = 1;
+  bytes match_id = 2;
+  uint32 season_id = 3;
+  int64 admitted_at_ms = 4;
+  int64 deadline_at_ms = 5;
+  string state = 6;
+  optional int64 terminal_at_ms = 7;
+  optional JournalMatch resolution_snapshot = 8;
+  string content_revision = 9;
+}
+
+message JournalChatLog {
+  bytes message_id = 1;
+  bytes sender_account_id = 2;
+  bytes sender_character_id = 3;
+  string channel = 4;
+  optional string scope_id = 5;
+  string content = 6;
+  int64 created_at_ms = 7;
+}
+
+message JournalJob {
+  string kind = 1;
+  string job_key = 2;
+  int64 due_at_ms = 3;
+  oneof target {
+    JournalAuctionJob auction = 10;
+    JournalQuestJob quest = 11;
+    JournalGuildJob guild = 12;
+    JournalSeasonJob season = 13;
+    JournalErasureJob erasure = 14;
+    JournalPaymentJob payment = 15;
+    JournalMaintenanceJob maintenance = 16;
+    JournalCompensationJob compensation = 17;
+  }
+}
+
+message JournalAuctionJob {
+  bytes listing_id = 1;
+  optional bytes escrow_asset_id = 2;
+  uint64 expected_revision = 3;
+}
+
+message JournalQuestJob {
+  bytes character_id = 1;
+  string cycle_id = 2;
+  optional string quest_id = 3;
+}
+
+message JournalGuildJob {
+  bytes guild_id = 1;
+  string cycle_id = 2;
+  optional bytes claim_id = 3;
+}
+
+message JournalSeasonJob {
+  string scope = 1;
+  uint32 season_id = 2;
+  int64 cutoff_at_ms = 3;
+  optional bytes match_id = 4;
+  optional string cosmetic_id = 5;
+  optional bytes award_owner_id = 6;
+  optional bytes membership_id = 7;
+}
+
+message JournalErasureJob {
+  bytes operation_id = 1;
+  bytes account_id_hash = 2;
+  int64 prepared_at_ms = 3;
+}
+
+message JournalPaymentJob {
+  bytes entitlement_id = 1;
+  string provider = 2;
+  string notification_key = 3;
+}
+
+message JournalMaintenanceJob {
+  string row_family = 1;
+  int64 window_start_ms = 2;
+  int64 window_end_ms = 3;
+  optional bytes target_id = 4;
+  optional string cursor_key = 5;
+}
+
+message JournalCompensationJob {
+  bytes approved_audit_event_id = 1;
+  bytes character_id = 2;
+  repeated JournalRewardSlot slots = 3;
+}
+
+// --- Deterministic client/outcome declaration expansion ---
+
+message JournalAggregateRevision {
+  string aggregate = 1;
+  bytes owner_id = 2;
+  uint64 revision = 3;
+}
+
+message JournalEnhanceResult {
+  bool success = 1;
+  uint32 level_before = 2;
+  uint32 level_after = 3;
+  uint32 final_rate_bp = 4;
+  uint32 pity_fail_count = 5;
+  repeated thinhthan.v1.ItemQuantity consumed = 6;
+  repeated JournalCurrency currency_delta = 7;
+}
+
+message JournalConsumedItem {
+  bytes item_instance_id = 1;
+  string item_id = 2;
+  uint64 quantity = 3;
+}
+
+message JournalCraftSnapshot {
+  string recipe_id = 1;
+  uint32 batch_quantity = 2;
+  repeated JournalItem created_items = 3;
+  repeated JournalConsumedItem consumed = 4;
+  repeated JournalCurrency currency_delta = 5;
+  uint64 character_exp = 6;
+}
+
+message JournalClientCommand {
+  bytes account_id = 1;
+  optional bytes character_id = 2;
+  uint64 session_epoch = 3;
+  optional uint64 ownership_epoch = 4;
+  int64 admitted_at_ms = 5;
+  int64 issued_at_ms = 6;
+  optional JournalSource spatial_source = 7;
+  repeated JournalRewardSlot finalized_rewards = 8;
+  optional JournalTrade trade = 9;
+  repeated JournalAggregateRevision expected_revisions = 10;
+  optional JournalEnhanceResult rng_outputs = 11;
+  optional JournalCheckpoint checkpoint = 12;
+  repeated JournalEntryMember entry_members = 13;
+  optional JournalCraftSnapshot craft = 14;
+  oneof request {
+    thinhthan.v1.C2SCharacterCreate c2s_character_create = 1012;
+    thinhthan.v1.C2SInteract c2s_interact = 1103;
+    thinhthan.v1.C2SPortalUse c2s_portal_use = 1104;
+    thinhthan.v1.C2SChannelSwitch c2s_channel_switch = 1109;
+    thinhthan.v1.C2SDungeonEnterRequest c2s_dungeon_enter_request = 1111;
+    thinhthan.v1.C2SDungeonEntryRespond c2s_dungeon_entry_respond = 1113;
+    thinhthan.v1.C2SDungeonLeave c2s_dungeon_leave = 1114;
+    thinhthan.v1.C2SDungeonEntryCancel c2s_dungeon_entry_cancel = 1117;
+    thinhthan.v1.C2SInventoryMutate c2s_inventory_mutate = 1400;
+    thinhthan.v1.C2SLoadoutChange c2s_loadout_change = 1402;
+    thinhthan.v1.C2SCraft c2s_craft = 1404;
+    thinhthan.v1.C2SEnhance c2s_enhance = 1406;
+    thinhthan.v1.C2SRewardClaim c2s_reward_claim = 1408;
+    thinhthan.v1.C2SBeastSetActive c2s_beast_set_active = 1410;
+    thinhthan.v1.C2SBeastEquip c2s_beast_equip = 1412;
+    thinhthan.v1.C2SBeastUnequip c2s_beast_unequip = 1414;
+    thinhthan.v1.C2SBeastFeed c2s_beast_feed = 1416;
+    thinhthan.v1.C2SEntitlementClaim c2s_entitlement_claim = 1418;
+    thinhthan.v1.C2SNpcShopBuy c2s_npc_shop_buy = 1420;
+    thinhthan.v1.C2SCosmeticRedeem c2s_cosmetic_redeem = 1422;
+    thinhthan.v1.C2SCosmeticEquip c2s_cosmetic_equip = 1424;
+    thinhthan.v1.C2SNpcShopSell c2s_npc_shop_sell = 1426;
+    thinhthan.v1.C2SInventoryExpand c2s_inventory_expand = 1428;
+    thinhthan.v1.C2SBeastLevelUp c2s_beast_level_up = 1430;
+    thinhthan.v1.C2SQuestAccept c2s_quest_accept = 1500;
+    thinhthan.v1.C2SQuestTurnIn c2s_quest_turn_in = 1502;
+    thinhthan.v1.C2SAtlasClaim c2s_atlas_claim = 1504;
+    thinhthan.v1.C2SQuestAbandon c2s_quest_abandon = 1507;
+    thinhthan.v1.C2SStoryBranchChoose c2s_story_branch_choose = 1509;
+    thinhthan.v1.C2SSkillUpgrade c2s_skill_upgrade = 1511;
+    thinhthan.v1.C2SPotentialAllocate c2s_potential_allocate = 1512;
+    thinhthan.v1.C2SRespec c2s_respec = 1513;
+    thinhthan.v1.C2SGuildInvite c2s_guild_invite = 1608;
+    thinhthan.v1.C2SGuildAccept c2s_guild_accept = 1610;
+    thinhthan.v1.C2SFriendRequest c2s_friend_request = 1611;
+    thinhthan.v1.C2SFriendAccept c2s_friend_accept = 1613;
+    thinhthan.v1.C2SFriendDecline c2s_friend_decline = 1614;
+    thinhthan.v1.C2SFriendRemove c2s_friend_remove = 1615;
+    thinhthan.v1.C2SBlockAdd c2s_block_add = 1617;
+    thinhthan.v1.C2SBlockRemove c2s_block_remove = 1618;
+    thinhthan.v1.C2SGuildDecline c2s_guild_decline = 1623;
+    thinhthan.v1.C2SGuildLeave c2s_guild_leave = 1624;
+    thinhthan.v1.C2SGuildKick c2s_guild_kick = 1625;
+    thinhthan.v1.C2SGuildRoleUpdate c2s_guild_role_update = 1626;
+    thinhthan.v1.C2SGuildLeaderTransfer c2s_guild_leader_transfer = 1627;
+    thinhthan.v1.C2SGuildStorageDeposit c2s_guild_storage_deposit = 1629;
+    thinhthan.v1.C2SGuildStorageWithdraw c2s_guild_storage_withdraw = 1630;
+    thinhthan.v1.C2SReportPlayer c2s_report_player = 1632;
+    thinhthan.v1.C2SGuildCreate c2s_guild_create = 1637;
+    thinhthan.v1.C2SGuildDisband c2s_guild_disband = 1638;
+    thinhthan.v1.C2SGuildApply c2s_guild_apply = 1639;
+    thinhthan.v1.C2SGuildApplicationDecide c2s_guild_application_decide = 1640;
+    thinhthan.v1.C2SGuildMotdSet c2s_guild_motd_set = 1642;
+    thinhthan.v1.C2SGuildLeadershipClaim c2s_guild_leadership_claim = 1643;
+    thinhthan.v1.C2SGuildStorageMove c2s_guild_storage_move = 1644;
+    thinhthan.v1.C2SGuildStorageClaimRequest c2s_guild_storage_claim_request = 1645;
+    thinhthan.v1.C2SGuildStorageClaimDecide c2s_guild_storage_claim_decide = 1646;
+    thinhthan.v1.C2SGuildBlessingVote c2s_guild_blessing_vote = 1648;
+    thinhthan.v1.C2SGuildSettingsSet c2s_guild_settings_set = 1650;
+    thinhthan.v1.C2SGuildInviteCancel c2s_guild_invite_cancel = 1651;
+    thinhthan.v1.C2SGuildApplicationCancel c2s_guild_application_cancel = 1652;
+    thinhthan.v1.C2SGuildCosmeticEquip c2s_guild_cosmetic_equip = 1656;
+    thinhthan.v1.C2STradeFinalise c2s_trade_finalise = 1708;
+    thinhthan.v1.C2SAuctionList c2s_auction_list = 1730;
+    thinhthan.v1.C2SAuctionBuy c2s_auction_buy = 1732;
+    thinhthan.v1.C2SAuctionCancelListing c2s_auction_cancel_listing = 1734;
+    thinhthan.v1.C2SAuctionReclaim c2s_auction_reclaim = 1740;
+    thinhthan.v1.C2SAuctionProceedsClaim c2s_auction_proceeds_claim = 1742;
+  }
+}
+
+message JournalEntryMember {
+  bytes character_id = 1;
+  bytes account_id = 2;
+  string decision = 3;
+  JournalCheckpoint checkpoint = 4;
+}
+
+message JournalCreatedId {
+  string kind = 1;
+  optional bytes id = 2;
+  optional string content_id = 3;
+}
+
+message JournalOutcome {
+  thinhthan.v1.ResultStatus status = 1;
+  thinhthan.v1.ErrorCode error_code = 2;
+  bytes operation_id = 3;
+  repeated JournalRewardSlot reward_slots = 4;
+  repeated JournalCreatedId created_ids = 5;
+  repeated JournalAggregateRevision revisions = 6;
+  optional JournalEnhanceResult enhancement = 7;
+  optional JournalCheckpoint checkpoint = 8;
+  optional JournalPublicSchedule schedule = 9;
+  optional JournalMatch match = 10;
+  optional JournalCompetitiveAdmission competitive_admission = 11;
+  optional JournalCraftSnapshot craft = 12;
+  oneof client_result {
+    thinhthan.v1.S2CCharacterCreateResult s2c_character_create_result = 2013;
+    thinhthan.v1.S2CChannelSwitchResult s2c_channel_switch_result = 2110;
+    thinhthan.v1.S2CDungeonEntryState s2c_dungeon_entry_state = 2112;
+    thinhthan.v1.S2CDungeonLeaveResult s2c_dungeon_leave_result = 2115;
+    thinhthan.v1.S2CInteractResult s2c_interact_result = 2116;
+    thinhthan.v1.S2CInventoryResult s2c_inventory_result = 2401;
+    thinhthan.v1.S2CLoadoutResult s2c_loadout_result = 2403;
+    thinhthan.v1.S2CCraftResult s2c_craft_result = 2405;
+    thinhthan.v1.S2CEnhanceResult s2c_enhance_result = 2407;
+    thinhthan.v1.S2CRewardClaimResult s2c_reward_claim_result = 2409;
+    thinhthan.v1.S2CBeastSetActiveResult s2c_beast_set_active_result = 2411;
+    thinhthan.v1.S2CBeastEquipResult s2c_beast_equip_result = 2413;
+    thinhthan.v1.S2CBeastUnequipResult s2c_beast_unequip_result = 2415;
+    thinhthan.v1.S2CBeastFeedResult s2c_beast_feed_result = 2417;
+    thinhthan.v1.S2CEntitlementClaimResult s2c_entitlement_claim_result = 2419;
+    thinhthan.v1.S2CNpcShopBuyResult s2c_npc_shop_buy_result = 2421;
+    thinhthan.v1.S2CCosmeticRedeemResult s2c_cosmetic_redeem_result = 2423;
+    thinhthan.v1.S2CCosmeticEquipResult s2c_cosmetic_equip_result = 2425;
+    thinhthan.v1.S2CNpcShopSellResult s2c_npc_shop_sell_result = 2427;
+    thinhthan.v1.S2CInventoryExpandResult s2c_inventory_expand_result = 2429;
+    thinhthan.v1.S2CBeastLevelUpResult s2c_beast_level_up_result = 2431;
+    thinhthan.v1.S2CQuestAcceptResult s2c_quest_accept_result = 2501;
+    thinhthan.v1.S2CQuestUpdate s2c_quest_update = 2503;
+    thinhthan.v1.S2CAtlasClaimResult s2c_atlas_claim_result = 2505;
+    thinhthan.v1.S2CQuestAbandonResult s2c_quest_abandon_result = 2508;
+    thinhthan.v1.S2CStoryBranchResult s2c_story_branch_result = 2510;
+    thinhthan.v1.S2CProgressionMutateResult s2c_progression_mutate_result = 2514;
+    thinhthan.v1.S2CReportPlayerResult s2c_report_player_result = 2633;
+    thinhthan.v1.S2CGuildResult s2c_guild_result = 2649;
+    thinhthan.v1.S2CSocialResult s2c_social_result = 2654;
+    thinhthan.v1.S2CTradeResult s2c_trade_result = 2709;
+    thinhthan.v1.S2CAuctionListResult s2c_auction_list_result = 2731;
+    thinhthan.v1.S2CAuctionBuyResult s2c_auction_buy_result = 2733;
+    thinhthan.v1.S2CAuctionCancelResult s2c_auction_cancel_result = 2735;
+    thinhthan.v1.S2CAuctionReclaimResult s2c_auction_reclaim_result = 2741;
+    thinhthan.v1.S2CAuctionProceedsResult s2c_auction_proceeds_result = 2743;
+  }
+}
