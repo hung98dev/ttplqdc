@@ -102,7 +102,9 @@ func (r *Runner) Run(phase string) (*Report, error) {
 			row.Result = ResultSkip
 			row.Reason = v
 		default:
+			fmt.Fprintf(os.Stderr, "verify: evaluating %s\n", spec.ID)
 			row = r.evaluate(spec)
+			fmt.Fprintf(os.Stderr, "verify: %s -> %s\n", spec.ID, row.Result)
 		}
 		rows = append(rows, row)
 	}
@@ -214,8 +216,15 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 
 // --- subprocess helpers ---------------------------------------------------
 
+// gateCmdTimeout bounds every subprocess a gate spawns — an unbounded child
+// turns into a silent multi-hour job stall instead of a named gate failure.
+const gateCmdTimeout = 15 * time.Minute
+
 func (r *Runner) runCmd(ctx context.Context, dir string, argv ...string) (string, int) {
 	start := time.Now()
+	ctx, cancel := context.WithTimeout(ctx, gateCmdTimeout)
+	defer cancel()
+	fmt.Fprintf(os.Stderr, "verify: $ %s\n", strings.Join(argv, " "))
 	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
 	cmd.Dir = dir
 	out, err := cmd.CombinedOutput()
