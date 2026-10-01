@@ -10,6 +10,8 @@ namespace ThinhThan.Tests.EditMode.AddressablesValidation
     /// </summary>
     public class AssetKeyGroupTests
     {
+        private const long Mib = 1024L * 1024L;
+
         [Test]
         public void TestKeyDerivationRule()
         {
