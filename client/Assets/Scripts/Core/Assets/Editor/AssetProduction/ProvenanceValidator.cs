@@ -123,6 +123,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             CheckRows(root, repoRoot, verifyHashes: true, report);
             string artRoot = Path.Combine(repoRoot, "client", "Assets", "Art");
             var seen = new HashSet<string>(StringComparer.Ordinal);
+            var states = new Dictionary<string, string?>(StringComparer.Ordinal);
             if (root.Get("assets") != null && root.Get("assets")!.Type == RegisterJson.Node.Kind.Arr)
             {
                 foreach (var row in root.Get("assets")!.Arr!)
@@ -131,6 +132,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                     if (fp != null && fp.Type == RegisterJson.Node.Kind.Str)
                     {
                         seen.Add(NormalizePath(fp.Str));
+                        states[NormalizePath(fp.Str)] = StrField(row, "review_state");
                     }
                 }
             }
@@ -148,6 +150,12 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                     if (!seen.Contains(rel))
                     {
                         Fail(report, rel, "file_path", "release media file has no register row");
+                        continue;
+                    }
+                    if (states[rel] != "APPROVED")
+                    {
+                        Fail(report, rel, "review_state",
+                            "release media file requires an APPROVED row");
                         continue;
                     }
                     report.CoveredFiles++;
@@ -259,6 +267,8 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             {
                 Fail(report, where, "review_state", "must be PENDING, APPROVED or REJECTED");
             }
+            CheckAssetKey(row, where, report);
+            CheckFilePathShape(row, where, report);
             CheckAcquired(row, where, report);
             CheckHashes(row, where, repoRoot, verifyHashes, report);
             CheckStylePack(row, where, report);
@@ -306,6 +316,45 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             if (licUri == null || licUri.Type != RegisterJson.Node.Kind.Str || licUri.Str.Length == 0)
             {
                 Fail(report, where, "license_uri", "exact license/terms URL required");
+            }
+        }
+
+        /// <summary>
+        /// asset_key follows the client_assets.md grammar:
+        /// asset.&lt;catalog_id|kind&gt;.&lt;name&gt;.&lt;facet&gt; — lowercase
+        /// segments, at least three after the asset prefix.
+        /// </summary>
+        private static void CheckAssetKey(RegisterJson.Node row, string where, Report report)
+        {
+            var k = row.Get("asset_key");
+            if (k == null || k.Type != RegisterJson.Node.Kind.Str)
+            {
+                return;
+            }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(
+                k.Str, "^asset\\.[a-z0-9_]+(\\.[a-z0-9_]+){2,}$"))
+            {
+                Fail(report, where, "asset_key",
+                    "must match the asset.<kind>.<name>.<facet> grammar");
+            }
+        }
+
+        /// <summary>
+        /// file_path is stored normalized: forward slashes, no leading
+        /// slash, no .. or empty segments, repo-relative only.
+        /// </summary>
+        private static void CheckFilePathShape(RegisterJson.Node row, string where, Report report)
+        {
+            var fp = row.Get("file_path");
+            if (fp == null || fp.Type != RegisterJson.Node.Kind.Str)
+            {
+                return;
+            }
+            if (fp.Str.Length == 0 || fp.Str != NormalizePath(fp.Str)
+                || fp.Str.Contains("..") || fp.Str.Contains("//"))
+            {
+                Fail(report, where, "file_path",
+                    "must be a normalized repo-relative path");
             }
         }
 
