@@ -184,6 +184,35 @@ try {
     if ($UnityResultsDir) { $args += @('-unity-results-dir', $UnityResultsDir) }
     if ($ReportOut) { $args += @('-report-out', $ReportOut) }
     if ($LocalDeferMissing) { $args += '-local-defer-missing' }
+    $verifySw = [Diagnostics.Stopwatch]::StartNew()
     & go @args
-    exit $LASTEXITCODE
+    $verifyRc = $LASTEXITCODE
+    $verifySw.Stop()
+    # CI-003 telemetry (best-effort): append the verify wall-time entry, then
+    # fold the JSONL into the report as cached_steps[]. Telemetry can never
+    # fail verification (cache-policy.md § Telemetry).
+    try {
+        . (Join-Path $RepoRoot '.devin/scripts/cache_telemetry.ps1')
+        $verifyStep = if ($Phase -eq 'pre-unity') { 'verify-pre-unity' } else { 'verify' }
+        $goResult = if ($env:THINHTHAN_CACHE_HIT_GO -eq 'true') { 'hit' } else { 'miss' }
+        Write-CacheTelemetry -Step $verifyStep -Result $goResult -WallSeconds $verifySw.Elapsed.TotalSeconds
+    } catch {
+        Write-Host "verify: cache telemetry append skipped (non-fatal): $_"
+    }
+    # The pre-unity phase appends verify-pre-unity and never merges; the final
+    # phase folds every recorded entry into the report it just wrote.
+    if ($Phase -ne 'pre-unity' -and $ReportOut) {
+        try {
+            $reportAbs = $ReportOut
+            if (-not [IO.Path]::IsPathRooted($reportAbs)) { $reportAbs = Join-Path $RepoRoot $reportAbs }
+            if (Test-Path $reportAbs) {
+                $margs = @('run', './internal/conformance/caching/cmd/cachemerge', '-report', $reportAbs)
+                & go @margs
+                if ($LASTEXITCODE -ne 0) { Write-Host "verify: cachemerge exit $LASTEXITCODE (non-fatal)" }
+            }
+        } catch {
+            Write-Host "verify: cache telemetry merge skipped (non-fatal): $_"
+        }
+    }
+    exit $verifyRc
 } finally { Pop-Location }
