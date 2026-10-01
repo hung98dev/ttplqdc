@@ -81,7 +81,7 @@ if (-not (Test-Path $gengo)) {
   & $go -C server install google.golang.org/protobuf/cmd/protoc-gen-go
   if ($LASTEXITCODE -ne 0) { Write-Error "go install protoc-gen-go failed (exit $LASTEXITCODE)" }
 }
-$gengoVersion = (& $gengo --version) -replace '^protoc-gen-go\s+', ''
+$gengoVersion = (& $gengo --version) -replace '^protoc-gen-go(\.exe)?\s+', ''
 if ($gengoVersion -ne $PinnedGenGoVersion) {
   Write-Error "protoc-gen-go version mismatch: expected '$PinnedGenGoVersion', got '$gengoVersion'"
 }
