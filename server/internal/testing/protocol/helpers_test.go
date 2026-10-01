@@ -334,12 +334,3 @@ func messageType(t *testing.T, fullName string) protoreflect.MessageType {
 	}
 	return mt
 }
-
-// registryIDs returns the network registry IDs sorted ascending.
-func registryIDs() []uint32 {
-	ids := make([]uint32, 0, len(networkRegistry))
-	for _, e := range networkRegistry {
-		ids = append(ids, e.ID)
-	}
-	return ids
-}

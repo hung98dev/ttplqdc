@@ -387,10 +387,6 @@ func goldenMessages() map[string]proto.Message {
 	return msgs
 }
 
-func goldenTypeName(file string) string {
-	return goldenFixtureTypes[file]
-}
-
 // goldenFixtureTypes maps each fixture file to its fully-qualified proto type.
 // Order in goldenFixtureList is the canonical write order for index.json.
 var goldenFixtureList = []string{
@@ -621,12 +617,41 @@ func TestCodegenDriftCheck(t *testing.T) {
 		"thinhthan/v1/social.proto", "thinhthan/v1/market.proto",
 		"thinhthan/v1/pvp.proto",
 	}
+	// protoc-gen-go resolves the same way scripts/codegen.ps1 does: install the
+	// server/go.mod pin into GOBIN/GOPATH-bin, then expose that dir to protoc.
+	goTool, err := exec.LookPath("go")
+	if err != nil {
+		home, _ := os.UserHomeDir()
+		cand := filepath.Join(home, "tools", "go", "bin", "go")
+		if _, statErr := os.Stat(cand); statErr == nil {
+			goTool = cand
+		} else {
+			t.Skip("go toolchain not found")
+		}
+	}
+	goEnv := func(name string) string {
+		out, err := exec.Command(goTool, "env", name).Output()
+		if err != nil {
+			t.Fatalf("go env %s: %v", name, err)
+		}
+		return strings.TrimSpace(string(out))
+	}
+	gobin := goEnv("GOBIN")
+	if gobin == "" {
+		gobin = filepath.Join(goEnv("GOPATH"), "bin")
+	}
+	if out, err := exec.Command(goTool, "-C", filepath.Join(root, "server"),
+		"install", "google.golang.org/protobuf/cmd/protoc-gen-go").CombinedOutput(); err != nil {
+		t.Fatalf("install protoc-gen-go: %v\n%s", err, out)
+	}
+	home, _ := os.UserHomeDir()
+	toolPath := os.Getenv("PATH") + string(os.PathListSeparator) + gobin +
+		string(os.PathListSeparator) + filepath.Join(home, "tools", "bin")
 	run := func(args ...string) {
 		t.Helper()
 		cmd := exec.Command(protoc, args...)
 		cmd.Dir = root
-		cmd.Env = append(os.Environ(),
-			"PATH="+os.Getenv("PATH")+string(os.PathListSeparator)+filepath.Join(os.Getenv("HOME"), "tools", "bin"))
+		cmd.Env = append(os.Environ(), "PATH="+toolPath)
 		out, err := cmd.CombinedOutput()
 		if err != nil {
 			t.Fatalf("protoc %v: %v\n%s", args, err, out)
