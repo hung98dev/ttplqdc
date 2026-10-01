@@ -107,7 +107,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-080` | Global Runtime (In-Process Single Writer) | `NOT_STARTED` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
 | `IMP-081` | Edge Listener, Framing & Heartbeat | `NOT_STARTED` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
 | `IMP-082` | Durable Command Queue & Backpressure | `NOT_STARTED` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
-| `IMP-083` | Task-Graph & Architecture Conformance (Q0/Q4) | `NOT_STARTED` | IMP-000, IMP-061 | `architecture_conformance.md`, `repository_layout.md` |
+| `IMP-083` | Task-Graph & Architecture Conformance (Q0/Q4) | `IN_PROGRESS` | IMP-000, IMP-061 | `architecture_conformance.md`, `repository_layout.md` |
 | `IMP-084` | Death / Respawn | `NOT_STARTED` | IMP-014, IMP-016, IMP-018 | `../01_gameplay/death_respawn.md`, `../01_gameplay/combat.md` |
 | `IMP-085` | Folklore Feats & Titles | `NOT_STARTED` | IMP-019, IMP-022, IMP-027, IMP-038, IMP-040, IMP-042, IMP-058 | `../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-086` | Chivalry Points & Titles | `NOT_STARTED` | IMP-023, IMP-034, IMP-038 | `../03_systems/social.md`, `../06_data/data_model.md` |
@@ -579,10 +579,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-064/"
 
 ## `IMP-083` — Task-Graph & Architecture Conformance (Q0/Q4)
 id: IMP-083
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-083"
+branch: "imp/IMP-083-taskgraph-conformance"
+claimed_at: "2026-10-01T18:26:48Z"
 blocked_by: ""
 
 specs: [`architecture_conformance.md`, `repository_layout.md`, `audit_gates.md`, `task_queue.md`, `../templates/task.md`, `README.md`, `dependency_graph.md`, `spec_traceability.md`, `wave_execution_prompts.md`, `../README.md`, `../templates/adr.md`, `../templates/spec.md`, `engineering_conventions.md`, `../04_architecture/client_performance.md`]
