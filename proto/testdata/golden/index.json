@@ -1,0 +1,89 @@
+{
+  "fixtures": [
+    {
+      "file": "envelope.bin",
+      "type": "thinhthan.v1.Envelope",
+      "journal": false
+    },
+    {
+      "file": "hello.bin",
+      "type": "thinhthan.v1.C2SHello",
+      "journal": false
+    },
+    {
+      "file": "hello_ok.bin",
+      "type": "thinhthan.v1.S2CHelloOk",
+      "journal": false
+    },
+    {
+      "file": "error.bin",
+      "type": "thinhthan.v1.S2CError",
+      "journal": false
+    },
+    {
+      "file": "world_baseline.bin",
+      "type": "thinhthan.v1.S2CWorldBaseline",
+      "journal": false
+    },
+    {
+      "file": "combat_event.bin",
+      "type": "thinhthan.v1.S2CCombatEvent",
+      "journal": false
+    },
+    {
+      "file": "state_delta.bin",
+      "type": "thinhthan.v1.S2CStateDelta",
+      "journal": false
+    },
+    {
+      "file": "inventory_state.bin",
+      "type": "thinhthan.v1.S2CInventoryState",
+      "journal": false
+    },
+    {
+      "file": "quest_update.bin",
+      "type": "thinhthan.v1.S2CQuestUpdate",
+      "journal": false
+    },
+    {
+      "file": "daily_board.bin",
+      "type": "thinhthan.v1.S2CDailyBoardState",
+      "journal": false
+    },
+    {
+      "file": "guild_state.bin",
+      "type": "thinhthan.v1.S2CGuildState",
+      "journal": false
+    },
+    {
+      "file": "match_state.bin",
+      "type": "thinhthan.v1.S2CMatchState",
+      "journal": false
+    },
+    {
+      "file": "trade_offer.bin",
+      "type": "thinhthan.v1.S2CTradeOfferState",
+      "journal": false
+    },
+    {
+      "file": "journal_client.bin",
+      "type": "thinhthan.internal.v1.DurableCommandRecord",
+      "journal": true
+    },
+    {
+      "file": "journal_reward.bin",
+      "type": "thinhthan.internal.v1.DurableCommandRecord",
+      "journal": true
+    },
+    {
+      "file": "journal_match.bin",
+      "type": "thinhthan.internal.v1.DurableCommandRecord",
+      "journal": true
+    },
+    {
+      "file": "journal_job.bin",
+      "type": "thinhthan.internal.v1.DurableCommandRecord",
+      "journal": true
+    }
+  ]
+}

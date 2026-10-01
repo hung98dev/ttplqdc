@@ -54,8 +54,8 @@ $exe = if ($IsWindows) { '.exe' } else { '' }
 $protoc = $env:PROTOC
 if (-not $protoc) {
   $protoc = Find-Tool -Names @("protoc$exe", 'protoc') -ExtraCandidates @(
-    (Join-Path $HOME 'tools/protoc/bin/protoc' + $exe),
-    (Join-Path $HOME 'tools/protoc/protoc' + $exe)
+    (Join-Path $HOME ("tools/protoc/bin/protoc" + $exe)),
+    (Join-Path $HOME ("tools/protoc/protoc" + $exe))
   )
 }
 if (-not $protoc) { Write-Error 'protoc not found (expected pinned protoc 36.2 on PATH or ~/tools/protoc/bin)' }
@@ -67,7 +67,7 @@ if ($protocVersion -ne $PinnedProtocVersion) {
 $go = $env:GO
 if (-not $go) {
   $go = Find-Tool -Names @('go') -ExtraCandidates @(
-    (Join-Path $HOME 'tools/go/bin/go' + $exe),
+    (Join-Path $HOME ("tools/go/bin/go" + $exe)),
     '/usr/local/go/bin/go'
   )
 }
