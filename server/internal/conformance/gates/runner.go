@@ -3,6 +3,7 @@ package gates
 import (
 	"bufio"
 	"context"
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"os"
@@ -181,6 +182,8 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details, missing = r.unityCompile()
 	case "Q3.unity.editmode":
 		details, missing = r.unityEditMode()
+	case "Q3.unity.visualreview":
+		details, missing = r.unityVisualReview()
 	case "Q4.style":
 		details = append(r.goFmtVet(), style.CheckCSharpTree(r.Root)...)
 	case "Q4.dotfiles":
@@ -594,6 +597,134 @@ func (r *Runner) unityEditMode() (errs []string, missing bool) {
 		}
 	}
 	return errs, false
+}
+
+// visualReviewDir is where the Unity job's Visual Review batch writes its
+// outputs and where the downloaded `visual-review` artifact lands in the
+// verify job (presentation_asset_manifest.md §3.3a).
+const visualReviewDir = "artifacts/visual-review"
+
+// unityVisualReview (Q3.unity.visualreview, owner IMP-070) enforces the
+// Visual Review pass contract: `artifacts/visual-review/` must carry a
+// capture-report.json with a PASS verdict, a visual-review-fixtures.xml with
+// a nonempty GraphicsFixtures category and zero failed cases, and rendered
+// PNG captures — missing XML, empty expected category or absent images never
+// passes.
+func (r *Runner) unityVisualReview() (errs []string, missing bool) {
+	dir := filepath.Join(r.Root, visualReviewDir)
+	if st, err := os.Stat(dir); err != nil || !st.IsDir() {
+		return nil, true
+	}
+	report, err := os.ReadFile(filepath.Join(dir, "capture-report.json"))
+	if err != nil {
+		return nil, true
+	}
+	var doc map[string]any
+	if jerr := json.Unmarshal(report, &doc); jerr != nil {
+		errs = append(errs, "capture-report.json: invalid JSON: "+jerr.Error())
+	} else if verdict, ok := visualReviewVerdict(doc); !ok {
+		errs = append(errs, "capture-report.json: no PASS/FAIL verdict field")
+	} else if !verdict {
+		errs = append(errs, "capture-report.json: verdict is not PASS")
+	}
+	fixtures, err := os.ReadFile(filepath.Join(dir, "visual-review-fixtures.xml"))
+	if err != nil {
+		return nil, true
+	}
+	errs = append(errs, graphicsFixturesVerdict(fixtures)...)
+	pngCount := 0
+	_ = filepath.Walk(dir, func(_ string, fi os.FileInfo, err error) error {
+		if err == nil && !fi.IsDir() && strings.HasSuffix(strings.ToLower(fi.Name()), ".png") {
+			pngCount++
+		}
+		return nil
+	})
+	if pngCount == 0 {
+		errs = append(errs, "visual-review artifact has no rendered PNG captures")
+	}
+	return errs, false
+}
+
+// visualReviewVerdict extracts the report's PASS/FAIL verdict. The batch is
+// IMP-070's; tolerate the common verdict spellings but fail closed when none
+// is present.
+func visualReviewVerdict(doc map[string]any) (bool, bool) {
+	for k, v := range doc {
+		switch strings.ToLower(k) {
+		case "passed", "pass":
+			if b, ok := v.(bool); ok {
+				return b, true
+			}
+		case "result", "status", "verdict", "outcome":
+			if s, ok := v.(string); ok {
+				switch strings.ToUpper(strings.TrimSpace(s)) {
+				case "PASS", "PASSED", "OK", "SUCCESS", "SUCCEEDED":
+					return true, true
+				default:
+					return false, true
+				}
+			}
+		}
+	}
+	return false, false
+}
+
+// xmlTree is a generic XML projection for walking NUnit fixtures.
+type xmlTree struct {
+	XMLName  xml.Name
+	Attr     []xml.Attr `xml:",any,attr"`
+	Children []xmlTree  `xml:",any"`
+}
+
+// graphicsFixturesVerdict requires >=1 test-case in category GraphicsFixtures
+// and zero failed/error outcomes in that category.
+func graphicsFixturesVerdict(xmlBytes []byte) []string {
+	var root xmlTree
+	if err := xml.Unmarshal(xmlBytes, &root); err != nil {
+		return []string{"visual-review-fixtures.xml: invalid XML: " + err.Error()}
+	}
+	var cases []*xmlTree
+	var walk func(n *xmlTree)
+	walk = func(n *xmlTree) {
+		if n.XMLName.Local == "test-case" {
+			for _, c := range n.Children {
+				if c.XMLName.Local != "properties" {
+					continue
+				}
+				for _, p := range c.Children {
+					name, value := attrOf(p, "name"), attrOf(p, "value")
+					if p.XMLName.Local == "property" && name == "Category" &&
+						strings.Contains(value, "GraphicsFixtures") {
+						cases = append(cases, n)
+					}
+				}
+			}
+		}
+		for i := range n.Children {
+			walk(&n.Children[i])
+		}
+	}
+	walk(&root)
+	var errs []string
+	if len(cases) == 0 {
+		return []string{"visual-review-fixtures.xml: no test-case in category GraphicsFixtures"}
+	}
+	for _, c := range cases {
+		res := strings.ToUpper(attrOf(*c, "result"))
+		if res == "FAILED" || res == "ERROR" {
+			errs = append(errs, fmt.Sprintf("GraphicsFixtures case %s: %s", attrOf(*c, "name"), res))
+		}
+	}
+	return errs
+}
+
+func attrOf(n xmlTree, name string) string {
+	for _, a := range n.Attr {
+		if a.Name.Local == name {
+			return a.Value
+		}
+	}
+	return ""
 }
 
 // checkDotfiles (Q4.dotfiles): the dotfiles carry the exact required lines.

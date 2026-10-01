@@ -182,7 +182,7 @@ Status-only PRs (`claim/`, `block/`, `ops/`: only the fields listed above, no `D
 | Gate | Owner | Mandatory result |
 |---|---|---|
 | Q0 Task/spec integrity | IMP-000, IMP-083, IMP-068 | DAG, links, states, transitions, claim fields, control-file diff rules, requirement-ID coverage, evidence schema |
-| Q1 Version reproducibility | IMP-000 | exact native pins; no floating/unlisted dependency |
+| Q1 Version reproducibility | IMP-000 | exact native pins; no floating/unlisted dependency (transitive-closure entries declared in `../00_context/technology_versions.md` count as listed) |
 | Q2 Code generation drift | IMP-061 | pinned protoc generators; byte-identical Go/C# output |
 | Q3 Test suites | subsystem task, IMP-068 | Go/race, Go allocation budgets, Unity compile (warnings as errors), EditMode/PlayMode, client performance, deterministic fixtures |
 | Q4 Architecture conformance | IMP-000, IMP-083, IMP-068 | import fences, one production main, generated boundaries, schema prohibitions, C# style, Go vet/staticcheck, client API fence, canonical implementations |
