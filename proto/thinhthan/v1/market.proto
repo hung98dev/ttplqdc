@@ -1,0 +1,289 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+import "thinhthan/v1/durable.proto";
+
+enum TradeCancelReason {
+  TRADE_CANCEL_REASON_UNSPECIFIED = 0;
+  TRADE_CANCEL_REASON_DECLINED = 1;
+  TRADE_CANCEL_REASON_CANCELLED = 2;
+  TRADE_CANCEL_REASON_EXPIRED = 3;
+  TRADE_CANCEL_REASON_INACTIVE_TIMEOUT = 4;
+  TRADE_CANCEL_REASON_PARTNER_DISCONNECTED = 5;
+  TRADE_CANCEL_REASON_VALIDATION_FAILED = 6;
+}
+
+enum TradeOfferState {
+  TRADE_OFFER_STATE_UNSPECIFIED = 0;
+  TRADE_OFFER_STATE_OPEN = 1;
+  TRADE_OFFER_STATE_LOCKED = 2;
+  TRADE_OFFER_STATE_COMMITTING = 3;
+}
+
+enum AuctionSort {
+  AUCTION_SORT_UNSPECIFIED = 0;
+  AUCTION_SORT_PRICE_ASC = 1;
+  AUCTION_SORT_PRICE_DESC = 2;
+  AUCTION_SORT_NEWEST = 3;
+}
+
+enum AuctionListingState {
+  AUCTION_LISTING_STATE_UNSPECIFIED = 0;
+  AUCTION_LISTING_STATE_ACTIVE = 1;
+  AUCTION_LISTING_STATE_SETTLING = 2;
+  AUCTION_LISTING_STATE_SOLD = 3;
+  AUCTION_LISTING_STATE_CANCELLED = 4;
+  AUCTION_LISTING_STATE_EXPIRED = 5;
+}
+
+enum AuctionEscrowReason {
+  AUCTION_ESCROW_REASON_UNSPECIFIED = 0;
+  AUCTION_ESCROW_REASON_CANCELLED = 1;
+  AUCTION_ESCROW_REASON_EXPIRED = 2;
+}
+
+enum AuctionProceedsState {
+  AUCTION_PROCEEDS_STATE_UNSPECIFIED = 0;
+  AUCTION_PROCEEDS_STATE_PENDING = 1;
+  AUCTION_PROCEEDS_STATE_CLAIMED = 2;
+}
+
+// --- direct trade (700..710) ---
+
+// ID 700
+message C2STradeInvite {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 701
+message S2CTradeInvite {
+  bytes trade_id = 1;                   // UUID, 16 bytes
+  bytes inviter_character_id = 2;       // UUID, 16 bytes
+  string inviter_name = 3;
+  uint32 expires_in_seconds = 4;
+}
+
+// ID 702
+message C2STradeAccept {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes trade_id = 2;                   // UUID, 16 bytes
+}
+
+// ID 703
+message C2STradeCancel {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes trade_id = 2;                   // UUID, 16 bytes
+}
+
+// ID 704
+message S2CTradeCancelled {
+  bytes trade_id = 1;                   // UUID, 16 bytes
+  TradeCancelReason reason = 2;
+  ErrorCode error_code = 3;
+}
+
+message TradeOfferItem {
+  bytes item_instance_id = 1;           // UUID, 16 bytes
+  uint32 quantity = 2;
+}
+
+// ID 705
+message C2STradeOfferUpdate {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes trade_id = 2;                   // UUID, 16 bytes
+  uint64 expected_revision = 3;
+  repeated TradeOfferItem items = 4;    // full replacement of own offer
+  int64 common_amount = 5;              // >= 0
+}
+
+message TradeSide {
+  bytes character_id = 1;               // UUID, 16 bytes
+  repeated ItemInstanceView items = 2;
+  int64 common_amount = 3;
+  bool confirmed = 4;
+}
+
+// ID 706
+message S2CTradeOfferState {
+  bytes trade_id = 1;                   // UUID, 16 bytes
+  uint64 revision = 2;
+  TradeOfferState state = 3;
+  repeated TradeSide sides = 4;         // exactly 2
+  int64 fee_preview = 5;
+}
+
+// ID 707
+message C2STradeConfirm {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes trade_id = 2;                   // UUID, 16 bytes
+  uint64 expected_revision = 3;
+}
+
+// ID 708
+message C2STradeFinalise {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes trade_id = 2;                   // UUID, 16 bytes
+  uint64 expected_revision = 3;
+}
+
+// ID 709
+message S2CTradeResult {
+  OperationResult result = 1;           // operation_id empty when partner-triggered
+  bytes trade_id = 2;                   // UUID, 16 bytes
+  bytes settlement_id = 3;              // UUID, 16 bytes
+  repeated ItemGrant received = 4;
+  int64 common_received = 5;
+  int64 fee = 6;
+}
+
+// ID 710
+message S2CTradeRequestResult {
+  OperationResult result = 1;
+  uint32 request_message_id = 2;        // 700 | 702 | 703 | 705 | 707
+  bytes trade_id = 3;                   // UUID, 16 bytes
+}
+
+// --- auction house (730..744) ---
+
+// ID 730
+message C2SAuctionList {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes item_instance_id = 2;           // UUID, 16 bytes
+  uint32 quantity = 3;                  // whole lot
+  int64 price_common = 4;               // total lot price
+}
+
+// ID 731
+message S2CAuctionListResult {
+  OperationResult result = 1;
+  bytes listing_id = 2;                 // UUID, 16 bytes
+  int64 listing_fee = 3;
+  int64 expires_at = 4;
+}
+
+// ID 732
+message C2SAuctionBuy {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes listing_id = 2;                 // UUID, 16 bytes
+  int64 expected_price_common = 3;
+}
+
+// ID 733
+message S2CAuctionBuyResult {
+  OperationResult result = 1;
+  bytes listing_id = 2;                 // UUID, 16 bytes
+  int64 price_common = 3;
+  ItemInstanceView received = 4;
+}
+
+// ID 734
+message C2SAuctionCancelListing {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes listing_id = 2;                 // UUID, 16 bytes
+}
+
+// ID 735
+message S2CAuctionCancelResult {
+  OperationResult result = 1;
+  bytes listing_id = 2;                 // UUID, 16 bytes
+  bytes escrow_asset_id = 3;            // UUID, 16 bytes
+}
+
+// ID 736
+message S2CAuctionSold {
+  bytes listing_id = 1;                 // UUID, 16 bytes
+  string item_id = 2;
+  uint32 quantity = 3;
+  int64 price_common = 4;
+  int64 tax = 5;
+  bytes proceeds_id = 6;                // UUID, 16 bytes
+  int64 proceeds_amount = 7;
+}
+
+// ID 738
+message C2SAuctionSearch {
+  bytes operation_id = 1;               // UUID, 16 bytes; echo only
+  string item_id = 2;
+  string category = 3;
+  uint32 tier = 4;
+  int64 min_price = 5;
+  int64 max_price = 6;
+  AuctionSort sort = 7;
+  string page_cursor = 8;               // opaque
+  uint32 page_size = 9;                 // 1..50
+}
+
+message AuctionSearchRow {
+  bytes listing_id = 1;                 // UUID, 16 bytes
+  ItemInstanceView item = 2;
+  int64 price_common = 3;
+  string seller_display_name = 4;
+  int64 expires_at = 5;
+}
+
+// ID 739
+message S2CAuctionSearchResult {
+  OperationResult result = 1;
+  repeated AuctionSearchRow rows = 2;
+  string next_page_cursor = 3;
+}
+
+// ID 740
+message C2SAuctionReclaim {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes escrow_asset_id = 2;            // UUID, 16 bytes
+}
+
+// ID 741
+message S2CAuctionReclaimResult {
+  OperationResult result = 1;
+  bytes escrow_asset_id = 2;            // UUID, 16 bytes
+  ItemInstanceView received = 3;
+}
+
+// ID 742
+message C2SAuctionProceedsClaim {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes proceeds_id = 2;                // UUID, 16 bytes
+}
+
+// ID 743
+message S2CAuctionProceedsResult {
+  OperationResult result = 1;
+  bytes proceeds_id = 2;                // UUID, 16 bytes
+  int64 amount_common = 3;
+}
+
+message AuctionListingView {
+  bytes listing_id = 1;                 // UUID, 16 bytes
+  ItemInstanceView item = 2;
+  int64 price_common = 3;
+  AuctionListingState state = 4;
+  int64 expires_at = 5;
+}
+
+message AuctionEscrowAssetView {
+  bytes escrow_asset_id = 1;            // UUID, 16 bytes
+  ItemInstanceView item = 2;
+  AuctionEscrowReason reason = 3;
+  int64 auto_claim_at = 4;
+}
+
+message AuctionProceedsView {
+  bytes proceeds_id = 1;                // UUID, 16 bytes
+  int64 amount_common = 2;
+  AuctionProceedsState state = 3;
+}
+
+// ID 744
+message S2CAuctionMyState {
+  repeated AuctionListingView listings = 1;
+  repeated AuctionEscrowAssetView escrow_assets = 2;
+  repeated AuctionProceedsView proceeds = 3;
+}

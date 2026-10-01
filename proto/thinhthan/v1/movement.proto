@@ -1,0 +1,224 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+
+enum InteractKind {
+  INTERACT_KIND_UNSPECIFIED = 0;
+  INTERACT_KIND_TALK = 1;
+  INTERACT_KIND_PICKUP = 2;
+  INTERACT_KIND_CHEST = 3;
+  INTERACT_KIND_CAST = 4;
+  INTERACT_KIND_HOOK = 5;
+  INTERACT_KIND_KINDLE = 6;
+  INTERACT_KIND_COOK = 7;
+  INTERACT_KIND_BONFIRE_REST = 8;
+  INTERACT_KIND_QUEST_OBJECT = 9;
+  INTERACT_KIND_NPC_SERVICE = 10;
+  INTERACT_KIND_PORTAL = 11;
+}
+
+enum TransferReason {
+  TRANSFER_REASON_UNSPECIFIED = 0;
+  TRANSFER_REASON_PORTAL = 1;
+  TRANSFER_REASON_TRAVEL = 2;
+  TRANSFER_REASON_CHANNEL_SWITCH = 3;
+  TRANSFER_REASON_DUNGEON_ENTER = 4;
+  TRANSFER_REASON_DUNGEON_LEAVE = 5;
+  TRANSFER_REASON_RESPAWN = 6;
+  TRANSFER_REASON_PVP = 7;
+  TRANSFER_REASON_RECONNECT = 8;
+  TRANSFER_REASON_FORCED = 9;
+}
+
+enum MovementCorrectionReason {
+  MOVEMENT_CORRECTION_REASON_UNSPECIFIED = 0;
+  MOVEMENT_CORRECTION_REASON_ILLEGAL_MOVE = 1;
+  MOVEMENT_CORRECTION_REASON_KNOCKBACK = 2;
+  MOVEMENT_CORRECTION_REASON_PORTAL = 3;
+  MOVEMENT_CORRECTION_REASON_RESPAWN = 4;
+  MOVEMENT_CORRECTION_REASON_FORCED = 5;
+}
+
+enum MovementEdgeType {
+  MOVEMENT_EDGE_TYPE_UNSPECIFIED = 0;
+  MOVEMENT_EDGE_TYPE_PRESS = 1;
+  MOVEMENT_EDGE_TYPE_RELEASE = 2;
+  MOVEMENT_EDGE_TYPE_FLIP = 3;
+}
+
+enum DungeonRunTag {
+  DUNGEON_RUN_TAG_UNSPECIFIED = 0;
+  DUNGEON_RUN_TAG_NORMAL = 1;
+  DUNGEON_RUN_TAG_ENDGAME_L60 = 2;
+}
+
+enum DungeonEntryResponse {
+  DUNGEON_ENTRY_RESPONSE_UNSPECIFIED = 0;
+  DUNGEON_ENTRY_RESPONSE_PENDING = 1;
+  DUNGEON_ENTRY_RESPONSE_ACCEPTED = 2;
+  DUNGEON_ENTRY_RESPONSE_DECLINED = 3;
+  DUNGEON_ENTRY_RESPONSE_INELIGIBLE = 4;
+}
+
+enum DungeonEntryOutcome {
+  DUNGEON_ENTRY_OUTCOME_UNSPECIFIED = 0;
+  DUNGEON_ENTRY_OUTCOME_PENDING = 1;
+  DUNGEON_ENTRY_OUTCOME_CREATED = 2;
+  DUNGEON_ENTRY_OUTCOME_CANCELLED = 3;
+}
+
+enum DungeonEntryDecision {
+  DUNGEON_ENTRY_DECISION_UNSPECIFIED = 0;
+  DUNGEON_ENTRY_DECISION_ACCEPT = 1;
+  DUNGEON_ENTRY_DECISION_DECLINE = 2;
+}
+
+enum DungeonLeaveMode {
+  DUNGEON_LEAVE_MODE_UNSPECIFIED = 0;
+  DUNGEON_LEAVE_MODE_EXIT = 1;
+  DUNGEON_LEAVE_MODE_ABANDON = 2;
+}
+
+message DungeonEntryMember {
+  bytes character_id = 1;       // UUID, 16 bytes
+  string display_name = 2;
+  DungeonEntryResponse response = 3;
+  ErrorCode error_code = 4;
+}
+
+// ID 100
+message C2SInputState {
+  uint32 input_flags = 1;       // bitmask
+  uint64 client_mono_ms = 2;    // advisory
+}
+
+// ID 101
+message C2SJump {
+  uint64 client_mono_ms = 1;
+}
+
+// ID 102
+message C2SDropThrough {
+  uint64 client_mono_ms = 1;
+}
+
+// ID 103
+message C2SInteract {
+  InteractKind interact_kind = 1;
+  string target_id = 2;
+  bytes operation_id = 3;                       // UUID, 16 bytes
+  optional string recipe_id = 4;
+  optional bytes public_boss_spawn_generation_id = 5; // UUID, 16 bytes
+  optional string service_id = 6;
+  optional string service_param = 7;
+}
+
+// ID 104
+message C2SPortalUse {
+  bytes operation_id = 1;       // UUID, 16 bytes
+  string portal_id = 2;
+}
+
+// ID 105
+message S2CTransferPrepare {
+  bytes transfer_id = 1;        // UUID, 16 bytes
+  TransferReason reason = 2;
+  string map_id = 3;
+  uint32 channel_index = 4;
+  bytes instance_id = 5;        // UUID, 16 bytes
+  string content_revision = 6;
+  uint32 ready_deadline_ms = 7;
+}
+
+// ID 106
+message C2SPresentationReady {
+  bytes transfer_id = 1;        // UUID, 16 bytes
+}
+
+// ID 107
+message S2CMovementCorrection {
+  uint64 last_processed_client_seq = 1;
+  uint64 server_tick = 2;
+  MovementCheckpoint checkpoint = 3;
+  MovementCorrectionReason reason = 4;
+}
+
+// ID 108
+message C2SMovementEdge {
+  MovementEdgeType edge_type = 1;
+  Facing direction = 2;
+  uint64 client_mono_ms = 3;
+}
+
+// ID 109
+message C2SChannelSwitch {
+  uint32 target_channel_index = 1;
+  bytes operation_id = 2;       // UUID, 16 bytes
+}
+
+// ID 110
+message S2CChannelSwitchResult {
+  OperationResult result = 1;
+  uint32 target_channel_index = 2;
+  uint32 retry_after_ms = 3;
+}
+
+// ID 111
+message C2SDungeonEnterRequest {
+  bytes operation_id = 1;       // UUID, 16 bytes
+  string dungeon_id = 2;
+  DungeonRunTag run_tag = 3;
+  string entrance_id = 4;
+}
+
+// ID 112
+message S2CDungeonEntryState {
+  OperationResult result = 1;   // answers the recipient's own 111/113/117; empty otherwise
+  bytes entry_id = 2;           // UUID, 16 bytes
+  string dungeon_id = 3;
+  DungeonRunTag run_tag = 4;
+  bytes requester_character_id = 5; // UUID, 16 bytes
+  repeated DungeonEntryMember members = 6;
+  uint32 expires_in_ms = 7;
+  DungeonEntryOutcome outcome = 8;
+  ErrorCode cancel_reason_code = 9;
+}
+
+// ID 113
+message C2SDungeonEntryRespond {
+  bytes operation_id = 1;       // UUID, 16 bytes
+  bytes entry_id = 2;           // UUID, 16 bytes
+  DungeonEntryDecision decision = 3;
+}
+
+// ID 114
+message C2SDungeonLeave {
+  bytes operation_id = 1;       // UUID, 16 bytes
+  DungeonLeaveMode mode = 2;
+}
+
+// ID 115
+message S2CDungeonLeaveResult {
+  OperationResult result = 1;
+  DungeonLeaveMode mode = 2;
+}
+
+// ID 116
+message S2CInteractResult {
+  OperationResult result = 1;
+  InteractKind interact_kind = 2;
+  string target_id = 3;
+  repeated ItemQuantity granted = 4;
+  repeated CurrencyDelta currency_delta = 5;
+}
+
+// ID 117
+message C2SDungeonEntryCancel {
+  bytes operation_id = 1;       // UUID, 16 bytes
+  bytes entry_id = 2;           // UUID, 16 bytes
+}

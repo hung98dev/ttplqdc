@@ -1,0 +1,231 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+
+// Queue-update state for S2C_RANKED_QUEUE_UPDATE.
+enum QueueUpdateState {
+  QUEUE_UPDATE_STATE_UNSPECIFIED = 0;
+  QUEUE_UPDATE_STATE_QUEUED = 1;
+  QUEUE_UPDATE_STATE_MATCHED = 2;
+  QUEUE_UPDATE_STATE_ACCEPTING = 3;
+  QUEUE_UPDATE_STATE_LEFT = 4;
+}
+
+// Match lifecycle shared by pvp.md and guild_war.md.
+enum MatchState {
+  MATCH_STATE_UNSPECIFIED = 0;
+  MATCH_STATE_QUEUED = 1;
+  MATCH_STATE_MATCHED = 2;
+  MATCH_STATE_ACCEPTING = 3;
+  MATCH_STATE_PREPARING = 4;
+  MATCH_STATE_ACTIVE = 5;
+  MATCH_STATE_RESOLVING = 6;
+  MATCH_STATE_COMPLETED = 7;
+  MATCH_STATE_CANCELLED = 8;
+  MATCH_STATE_VOID = 9;
+}
+
+enum MatchResult {
+  MATCH_RESULT_UNSPECIFIED = 0;
+  MATCH_RESULT_NONE = 1;
+  MATCH_RESULT_WIN = 2;
+  MATCH_RESULT_LOSS = 3;
+  MATCH_RESULT_DRAW = 4;
+  MATCH_RESULT_VOID = 5;
+}
+
+enum MatchReadyDecision {
+  MATCH_READY_DECISION_UNSPECIFIED = 0;
+  MATCH_READY_DECISION_ACCEPT = 1;
+  MATCH_READY_DECISION_DECLINE = 2;
+}
+
+enum SparringOutcome {
+  SPARRING_OUTCOME_UNSPECIFIED = 0;
+  SPARRING_OUTCOME_ACCEPTED = 1;
+  SPARRING_OUTCOME_DECLINED = 2;
+  SPARRING_OUTCOME_EXPIRED = 3;
+  SPARRING_OUTCOME_REJECTED = 4;
+}
+
+enum DuelOutcome {
+  DUEL_OUTCOME_UNSPECIFIED = 0;
+  DUEL_OUTCOME_ACCEPTED = 1;
+  DUEL_OUTCOME_DECLINED = 2;
+  DUEL_OUTCOME_CANCELLED = 3;
+  DUEL_OUTCOME_EXPIRED = 4;
+  DUEL_OUTCOME_REJECTED = 5;
+}
+
+message MatchMemberView {
+  bytes character_id = 1;               // UUID, 16 bytes
+  string display_name = 2;
+  string class_id = 3;
+  bool ready = 4;
+  bool connected = 5;
+}
+
+message MatchTeamView {
+  uint32 team_index = 1;
+  uint32 score = 2;
+  repeated MatchMemberView members = 3;
+}
+
+// --- sparring (800, 801, 811, 812, 813) ---
+
+// ID 800
+message C2SSparringRequest {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 801
+message C2SSparringAccept {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes challenge_id = 2;               // UUID, 16 bytes
+}
+
+// ID 812
+message C2SSparringDecline {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes challenge_id = 2;               // UUID, 16 bytes
+}
+
+// ID 811
+message S2CSparringChallenge {
+  bytes challenge_id = 1;               // UUID, 16 bytes
+  bytes challenger_character_id = 2;    // UUID, 16 bytes
+  string challenger_name = 3;
+  uint32 expires_in_seconds = 4;        // 60
+}
+
+// ID 813
+message S2CSparringOutcome {
+  bytes challenge_id = 1;               // UUID, 16 bytes
+  SparringOutcome outcome = 2;
+  ErrorCode error_code = 3;
+}
+
+// --- ranked queue (802..804) ---
+
+// ID 802
+message C2SRankedQueueJoin {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string pvp_mode_id = 2;
+  bool with_party = 3;                  // Arena only
+}
+
+// ID 803
+message C2SRankedQueueLeave {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string pvp_mode_id = 2;
+}
+
+// ID 804
+message S2CRankedQueueUpdate {
+  string pvp_mode_id = 1;
+  QueueUpdateState state = 2;
+  uint32 queued_seconds = 3;
+  bytes pvp_match_id = 4;               // UUID, 16 bytes; from MATCHED
+  uint32 ready_deadline_ms = 5;         // ACCEPTING
+  ErrorCode error_code = 6;
+}
+
+// --- match (805..807) ---
+
+// ID 805
+message C2SMatchReady {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes match_id = 2;                   // UUID, 16 bytes
+  MatchReadyDecision decision = 3;
+}
+
+// ID 806
+message S2CMatchState {
+  bytes match_id = 1;                   // UUID, 16 bytes
+  string pvp_mode_id = 2;
+  MatchState state = 3;
+  int64 state_deadline_ms = 4;
+  uint32 round_number = 5;
+  repeated MatchTeamView teams = 6;
+  MatchResult result = 7;               // receiver's team
+  sint32 rating_before = 8;             // ranked only; 0 otherwise
+  sint32 rating_after = 9;              // ranked only; 0 otherwise
+}
+
+// ID 807
+message C2SMatchSurrender {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes match_id = 2;                   // UUID, 16 bytes
+}
+
+// --- guild war (808..810) ---
+
+// ID 808
+message C2SGuildWarQueueJoin {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  repeated bytes roster_character_ids = 2; // UUID, 16 bytes; exactly 10 distinct
+}
+
+// ID 809
+message C2SGuildWarQueueLeave {
+  bytes operation_id = 1;               // UUID, 16 bytes
+}
+
+// ID 810
+message S2CGuildWarState {
+  bytes guild_id = 1;                   // UUID, 16 bytes
+  MatchState state = 2;
+  repeated bytes roster_character_ids = 3; // UUID, 16 bytes
+  bytes guild_war_match_id = 4;         // UUID, 16 bytes
+  uint32 ready_deadline_ms = 5;
+  ErrorCode error_code = 6;
+}
+
+// --- duel (814..818) ---
+
+// ID 814
+message C2SDuelChallenge {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 815
+message S2CDuelChallenge {
+  bytes challenge_id = 1;               // UUID, 16 bytes
+  bytes challenger_character_id = 2;    // UUID, 16 bytes
+  string challenger_name = 3;
+  uint32 expires_in_seconds = 4;        // 60
+}
+
+// ID 816
+message C2SDuelRespond {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes challenge_id = 2;               // UUID, 16 bytes
+  MatchReadyDecision decision = 3;
+}
+
+// ID 817
+message C2SDuelCancel {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes challenge_id = 2;               // UUID, 16 bytes
+}
+
+// ID 818
+message S2CDuelOutcome {
+  bytes challenge_id = 1;               // UUID, 16 bytes
+  DuelOutcome outcome = 2;
+  ErrorCode error_code = 3;
+}
+
+// ID 819
+message S2CPvpResult {
+  OperationResult result = 1;
+  uint32 request_message_id = 2;        // 800|801|802|803|805|807|808|809|812|814|816|817
+  bytes reference_id = 3;               // UUID, 16 bytes; challenge_id or match_id, empty when none
+}

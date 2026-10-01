@@ -1,0 +1,601 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+
+enum ChatChannel {
+  CHAT_CHANNEL_UNSPECIFIED = 0;
+  CHAT_CHANNEL_WORLD = 1;
+  CHAT_CHANNEL_LOCAL = 2;
+  CHAT_CHANNEL_PARTY = 3;
+  CHAT_CHANNEL_GUILD = 4;
+  CHAT_CHANNEL_WHISPER = 5;
+}
+
+enum OnlineState {
+  ONLINE_STATE_UNSPECIFIED = 0;
+  ONLINE_STATE_ONLINE = 1;
+  ONLINE_STATE_OFFLINE = 2;
+}
+
+enum FriendActivity {
+  FRIEND_ACTIVITY_UNSPECIFIED = 0;
+  FRIEND_ACTIVITY_WORLD = 1;
+  FRIEND_ACTIVITY_DUNGEON = 2;
+  FRIEND_ACTIVITY_PVP = 3;
+}
+
+enum FriendChange {
+  FRIEND_CHANGE_UNSPECIFIED = 0;
+  FRIEND_CHANGE_UPSERT = 1;
+  FRIEND_CHANGE_REMOVED = 2;
+}
+
+enum ReportReason {
+  REPORT_REASON_UNSPECIFIED = 0;
+  REPORT_REASON_SPAM = 1;
+  REPORT_REASON_HARASSMENT = 2;
+  REPORT_REASON_HATE_OR_ABUSE = 3;
+  REPORT_REASON_CHEATING = 4;
+  REPORT_REASON_SCAM = 5;
+  REPORT_REASON_INAPPROPRIATE_NAME = 6;
+  REPORT_REASON_OTHER = 7;
+}
+
+enum GuildRecruitmentMode {
+  GUILD_RECRUITMENT_MODE_UNSPECIFIED = 0;
+  GUILD_RECRUITMENT_MODE_CLOSED = 1;
+  GUILD_RECRUITMENT_MODE_APPLICATIONS = 2;
+}
+
+enum GuildStorageSection {
+  GUILD_STORAGE_SECTION_UNSPECIFIED = 0;
+  GUILD_STORAGE_SECTION_COMMON = 1;
+  GUILD_STORAGE_SECTION_RESERVE = 2;
+}
+
+enum GuildStorageClaimDecision {
+  GUILD_STORAGE_CLAIM_DECISION_UNSPECIFIED = 0;
+  GUILD_STORAGE_CLAIM_DECISION_APPROVE = 1;
+  GUILD_STORAGE_CLAIM_DECISION_REJECT = 2;
+  GUILD_STORAGE_CLAIM_DECISION_CANCEL = 3;
+  GUILD_STORAGE_CLAIM_DECISION_DELIVER = 4;
+}
+
+enum GuildStorageClaimState {
+  GUILD_STORAGE_CLAIM_STATE_UNSPECIFIED = 0;
+  GUILD_STORAGE_CLAIM_STATE_PENDING = 1;
+  GUILD_STORAGE_CLAIM_STATE_APPROVED = 2;
+  GUILD_STORAGE_CLAIM_STATE_REJECTED = 3;
+  GUILD_STORAGE_CLAIM_STATE_CANCELLED = 4;
+  GUILD_STORAGE_CLAIM_STATE_EXPIRED = 5;
+  GUILD_STORAGE_CLAIM_STATE_COMPLETED = 6;
+}
+
+enum GuildApplicationDecision {
+  GUILD_APPLICATION_DECISION_UNSPECIFIED = 0;
+  GUILD_APPLICATION_DECISION_ACCEPT = 1;
+  GUILD_APPLICATION_DECISION_REJECT = 2;
+}
+
+enum GuildCosmeticSlot {
+  GUILD_COSMETIC_SLOT_UNSPECIFIED = 0;
+  GUILD_COSMETIC_SLOT_SHRINE = 1;
+  GUILD_COSMETIC_SLOT_BANNER = 2;
+  GUILD_COSMETIC_SLOT_CREST = 3;
+}
+
+// --- sub-views ---
+
+message PartyMemberView {
+  bytes character_id = 1;               // UUID, 16 bytes
+  string display_name = 2;
+  string class_id = 3;
+  uint32 level = 4;
+  OnlineState online_state = 5;
+  string zone_id = 6;
+}
+
+message PartyBoardEntry {
+  bytes post_id = 1;                    // UUID, 16 bytes
+  bytes poster_character_id = 2;        // UUID, 16 bytes
+  string display_name = 3;
+  string class_id = 4;
+  uint32 level = 5;
+  string dungeon_id = 6;
+  uint32 desired_size = 7;              // 2..5
+  uint32 expires_in_seconds = 8;
+}
+
+message FriendEntry {
+  bytes friend_character_id = 1;        // UUID, 16 bytes
+  string display_name = 2;
+  OnlineState online_state = 3;
+  string zone_id = 4;
+  FriendActivity activity = 5;
+  FriendChange change = 6;
+}
+
+message FriendRequestView {
+  bytes requester_character_id = 1;     // UUID, 16 bytes
+  string display_name = 2;
+  int64 expires_at_ms = 3;
+}
+
+message FriendOutgoingView {
+  bytes target_character_id = 1;        // UUID, 16 bytes
+  string display_name = 2;
+  int64 expires_at_ms = 3;
+}
+
+message BlockEntry {
+  bytes blocked_character_id = 1;       // UUID, 16 bytes
+  string display_name = 2;
+  int64 blocked_at_ms = 3;
+}
+
+message GuildMemberView {
+  bytes character_id = 1;               // UUID, 16 bytes
+  string display_name = 2;
+  string class_id = 3;
+  uint32 level = 4;
+  string role = 5;
+  OnlineState online_state = 6;
+  int64 last_online_at = 7;             // offline only
+}
+
+message GuildProgressionPoint {
+  Element element = 1;
+  uint32 current = 2;
+}
+
+message GuildProgressionView {
+  uint64 guild_exp = 1;
+  uint32 ritual_streak = 2;
+  string cycle_id = 3;
+  uint32 m_effective = 4;
+  uint32 required_points_per_element = 5;
+  repeated GuildProgressionPoint points = 6;     // exactly five
+  int64 completed_at_ms = 7;
+  repeated string candidate_blessing_ids = 8;    // 0 or 3
+  int64 vote_closes_at_ms = 9;
+  repeated uint32 vote_counts = 10;              // same order as candidates
+  string receiver_vote = 11;                     // empty = none
+  string active_blessing_id = 12;
+  int64 blessing_expires_at_ms = 13;
+  uint64 receiver_lifetime_contribution = 14;
+  uint64 receiver_cycle_contribution = 15;
+}
+
+message GuildCosmeticSelections {
+  string shrine = 1;
+  string banner = 2;
+  string crest = 3;
+}
+
+message GuildStorageItemView {
+  bytes item_instance_id = 1;           // UUID, 16 bytes
+  string item_id = 2;
+  uint32 quantity = 3;
+  GuildStorageSection section = 4;
+  bytes deposited_by = 5;               // character_id, UUID 16 bytes
+  int64 deposited_at = 6;
+}
+
+message GuildStorageClaimView {
+  bytes claim_id = 1;                   // UUID, 16 bytes
+  bytes requester_character_id = 2;     // UUID, 16 bytes
+  bytes item_instance_id = 3;           // UUID, 16 bytes
+  uint32 quantity = 4;
+  GuildStorageClaimState state = 5;
+  int64 expires_at = 6;
+}
+
+message GuildApplicationView {
+  bytes character_id = 1;               // UUID, 16 bytes
+  string display_name = 2;
+  string class_id = 3;
+  uint32 level = 4;
+  int64 applied_at = 5;
+}
+
+// --- chat (600..601, 655) ---
+
+// ID 600
+message C2SChatSend {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  ChatChannel channel = 2;
+  optional bytes target_character_id = 3; // UUID, 16 bytes; required for WHISPER
+  string message_text = 4;              // 1..240 graphemes
+}
+
+// ID 601
+message S2CChatMessage {
+  bytes chat_message_id = 1;            // UUID, 16 bytes
+  ChatChannel channel = 2;
+  bytes sender_character_id = 3;        // UUID, 16 bytes
+  string sender_name = 4;
+  string message_text = 5;
+  int64 sent_at_ms = 6;
+}
+
+// ID 655
+message S2CChatSendResult {
+  OperationResult result = 1;
+  bytes chat_message_id = 2;            // UUID, 16 bytes; SUCCESS only
+}
+
+// --- party (602..607, 620..622, 634..636, 653) ---
+
+// ID 602
+message C2SPartyInvite {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 603
+message S2CPartyInvite {
+  bytes party_id = 1;                   // UUID, 16 bytes
+  bytes inviter_character_id = 2;       // UUID, 16 bytes
+  string inviter_name = 3;
+  uint32 expires_in_seconds = 4;
+}
+
+// ID 604
+message C2SPartyAccept {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes party_id = 2;                   // UUID, 16 bytes
+  bytes inviter_character_id = 3;       // UUID, 16 bytes
+}
+
+// ID 605
+message C2SPartyLeave {
+  bytes operation_id = 1;               // UUID, 16 bytes
+}
+
+// ID 606
+message C2SPartyKick {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 607
+message S2CPartyState {
+  bytes party_id = 1;                   // UUID, 16 bytes
+  uint64 party_revision = 2;
+  bytes leader_character_id = 3;        // UUID, 16 bytes
+  repeated PartyMemberView members = 4;
+}
+
+// ID 620
+message C2SPartyDecline {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes party_id = 2;                   // UUID, 16 bytes
+  bytes inviter_character_id = 3;       // UUID, 16 bytes
+}
+
+// ID 621
+message C2SPartyInviteCancel {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 622
+message C2SPartyLeaderTransfer {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 634
+message C2SPartyBoardPost {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string dungeon_id = 2;
+  uint32 desired_size = 3;              // 2..5
+  string note = 4;                      // <= 40 chars
+}
+
+// ID 635
+message C2SPartyBoardCancel {
+  bytes operation_id = 1;               // UUID, 16 bytes
+}
+
+// ID 636
+message S2CPartyBoardState {
+  repeated PartyBoardEntry entries = 1;
+}
+
+// ID 653
+message S2CPartyResult {
+  OperationResult result = 1;
+  uint32 request_message_id = 2;        // 602|604|605|606|620|621|622|634|635
+  bytes party_id = 3;                   // UUID, 16 bytes
+}
+
+// --- guild (608..610, 623..631, 637..649, 650..652, 656) ---
+
+// ID 608
+message C2SGuildInvite {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 609
+message S2CGuildInvite {
+  bytes guild_id = 1;                   // UUID, 16 bytes
+  string guild_name = 2;
+  string inviter_name = 3;
+  uint32 expires_in_seconds = 4;
+}
+
+// ID 610
+message C2SGuildAccept {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes guild_id = 2;                   // UUID, 16 bytes
+}
+
+// ID 623
+message C2SGuildDecline {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes guild_id = 2;                   // UUID, 16 bytes
+}
+
+// ID 624
+message C2SGuildLeave {
+  bytes operation_id = 1;               // UUID, 16 bytes
+}
+
+// ID 625
+message C2SGuildKick {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 626
+message C2SGuildRoleUpdate {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+  string new_role = 3;                  // guild.role.* content ID
+}
+
+// ID 627
+message C2SGuildLeaderTransfer {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 628
+message S2CGuildState {
+  bytes guild_id = 1;                   // UUID, 16 bytes
+  uint64 guild_revision = 2;
+  string guild_name = 3;
+  string role = 4;                      // receiver's role
+  uint32 level = 5;
+  uint32 members_count = 6;
+  uint32 max_members = 7;
+  string motd = 8;
+  GuildRecruitmentMode recruitment_mode = 9;
+  repeated GuildMemberView members = 10;
+  GuildProgressionView progression = 11;
+  repeated string owned_guild_cosmetic_ids = 12;
+  GuildCosmeticSelections guild_cosmetic_selections = 13;
+  uint64 cosmetic_revision = 14;
+}
+
+// ID 629
+message C2SGuildStorageDeposit {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes item_instance_id = 2;           // UUID, 16 bytes
+  uint32 quantity = 3;                  // stack units; 0 = full stack
+  GuildStorageSection section = 4;
+}
+
+// ID 630
+message C2SGuildStorageWithdraw {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes item_instance_id = 2;           // UUID, 16 bytes
+  uint32 quantity = 3;
+  GuildStorageSection section = 4;
+}
+
+// ID 631
+message S2CGuildStorageState {
+  bytes guild_id = 1;                   // UUID, 16 bytes
+  uint64 storage_revision = 2;
+  repeated GuildStorageItemView items = 3;
+}
+
+// ID 637
+message C2SGuildCreate {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string guild_name = 2;
+}
+
+// ID 638
+message C2SGuildDisband {
+  bytes operation_id = 1;               // UUID, 16 bytes
+}
+
+// ID 639
+message C2SGuildApply {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes guild_id = 2;                   // UUID, 16 bytes
+}
+
+// ID 640
+message C2SGuildApplicationDecide {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes applicant_character_id = 2;     // UUID, 16 bytes
+  GuildApplicationDecision decision = 3;
+}
+
+// ID 641
+message S2CGuildApplications {
+  bytes guild_id = 1;                   // UUID, 16 bytes
+  repeated GuildApplicationView applications = 2;
+}
+
+// ID 642
+message C2SGuildMotdSet {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string motd = 2;
+}
+
+// ID 643
+message C2SGuildLeadershipClaim {
+  bytes operation_id = 1;               // UUID, 16 bytes
+}
+
+// ID 644
+message C2SGuildStorageMove {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes item_instance_id = 2;           // UUID, 16 bytes
+  GuildStorageSection to_section = 3;
+}
+
+// ID 645
+message C2SGuildStorageClaimRequest {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes item_instance_id = 2;           // UUID, 16 bytes
+  uint32 quantity = 3;
+}
+
+// ID 646
+message C2SGuildStorageClaimDecide {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes claim_id = 2;                   // UUID, 16 bytes
+  GuildStorageClaimDecision decision = 3;
+}
+
+// ID 647
+message S2CGuildStorageClaims {
+  bytes guild_id = 1;                   // UUID, 16 bytes
+  uint64 storage_revision = 2;
+  repeated GuildStorageClaimView claims = 3;
+}
+
+// ID 648
+message C2SGuildBlessingVote {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  string cycle_id = 2;
+  string blessing_id = 3;
+}
+
+// ID 649
+message S2CGuildResult {
+  OperationResult result = 1;
+  uint32 request_message_id = 2;        // owning guild C2S request
+  bytes guild_id = 3;                   // UUID, 16 bytes
+}
+
+// ID 650
+message C2SGuildSettingsSet {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  GuildRecruitmentMode recruitment_mode = 2;
+}
+
+// ID 651
+message C2SGuildInviteCancel {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 652
+message C2SGuildApplicationCancel {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes guild_id = 2;                   // UUID, 16 bytes
+}
+
+// ID 656
+message C2SGuildCosmeticEquip {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes guild_id = 2;                   // UUID, 16 bytes
+  GuildCosmeticSlot slot = 3;
+  string cosmetic_id = 4;               // empty = unequip
+  uint64 expected_revision = 5;         // cosmetic_revision
+}
+
+// --- friends & blocks (611..619, 654) ---
+
+// ID 611
+message C2SFriendRequest {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 612
+message S2CFriendRequest {
+  bytes requester_character_id = 1;     // UUID, 16 bytes
+  string display_name = 2;
+  int64 expires_at_ms = 3;
+}
+
+// ID 613
+message C2SFriendAccept {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes requester_character_id = 2;     // UUID, 16 bytes
+}
+
+// ID 614
+message C2SFriendDecline {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes requester_character_id = 2;     // UUID, 16 bytes
+}
+
+// ID 615
+message C2SFriendRemove {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 616
+message S2CFriendState {
+  bool full_snapshot = 1;
+  repeated FriendEntry entries = 2;
+  repeated FriendRequestView incoming_requests = 3;
+  repeated FriendOutgoingView outgoing_requests = 4;
+}
+
+// ID 617
+message C2SBlockAdd {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 618
+message C2SBlockRemove {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+}
+
+// ID 619
+message S2CBlockState {
+  repeated BlockEntry blocked = 1;
+}
+
+// ID 654
+message S2CSocialResult {
+  OperationResult result = 1;
+  uint32 request_message_id = 2;        // 611|613|614|615|617|618
+  bytes target_character_id = 3;        // UUID, 16 bytes
+}
+
+// --- report (632..633) ---
+
+// ID 632
+message C2SReportPlayer {
+  bytes operation_id = 1;               // UUID, 16 bytes
+  bytes target_character_id = 2;        // UUID, 16 bytes
+  ReportReason reason = 3;
+  optional bytes chat_message_id = 4;   // UUID, 16 bytes
+  optional string reporter_notes = 5;   // <= 200 graphemes
+}
+
+// ID 633
+message S2CReportPlayerResult {
+  OperationResult result = 1;
+  bytes report_id = 2;                  // UUID, 16 bytes; SUCCESS only
+}

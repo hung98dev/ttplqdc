@@ -1,0 +1,335 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+// Error codes: numbering authority is this enum. Codes 1..112 enumerate every
+// code in errors.md section Canonical Codes in order of first appearance,
+// fenced blocks in document order, each block row-major. New codes append only;
+// numbers are never reused or reordered.
+enum ErrorCode {
+  ERROR_CODE_UNSPECIFIED = 0;
+  ERROR_CODE_PROTOCOL_MALFORMED = 1;
+  ERROR_CODE_PROTOCOL_UNSUPPORTED = 2;
+  ERROR_CODE_PROTOCOL_VIOLATION = 3;
+  ERROR_CODE_MESSAGE_UNKNOWN = 4;
+  ERROR_CODE_MESSAGE_TOO_LARGE = 5;
+  ERROR_CODE_MESSAGE_NOT_ALLOWED_IN_STATE = 6;
+  ERROR_CODE_CLIENT_UPDATE_REQUIRED = 7;
+  ERROR_CODE_CONTENT_INCOMPATIBLE = 8;
+  ERROR_CODE_RATE_LIMITED = 9;
+  ERROR_CODE_SERVER_OVERLOADED = 10;
+  ERROR_CODE_SERVER_DRAINING = 11;
+  ERROR_CODE_AUTH_REQUIRED = 12;
+  ERROR_CODE_AUTH_INVALID = 13;
+  ERROR_CODE_AUTH_EXPIRED = 14;
+  ERROR_CODE_SESSION_EPOCH_STALE = 15;
+  ERROR_CODE_SESSION_REPLACED = 16;
+  ERROR_CODE_CHARACTER_ALREADY_ACTIVE = 17;
+  ERROR_CODE_RESUME_EXPIRED = 18;
+  ERROR_CODE_ACCOUNT_BANNED = 19;
+  ERROR_CODE_ACCOUNT_PENDING_DELETION = 20;
+  ERROR_CODE_ACCOUNT_SUSPENDED = 21;
+  ERROR_CODE_ENTITLEMENT_REVOKED = 22;
+  ERROR_CODE_USERNAME_INVALID = 23;
+  ERROR_CODE_EMAIL_INVALID = 24;
+  ERROR_CODE_PASSWORD_INVALID = 25;
+  ERROR_CODE_USERNAME_TAKEN = 26;
+  ERROR_CODE_EMAIL_TAKEN = 27;
+  ERROR_CODE_PROVIDER_ALREADY_LINKED = 28;
+  ERROR_CODE_LAST_LOGIN_METHOD = 29;
+  ERROR_CODE_CREDENTIAL_CHANGE_LOCKED = 30;
+  ERROR_CODE_CHARACTER_NAME_INVALID = 31;
+  ERROR_CODE_CHARACTER_NAME_TAKEN = 32;
+  ERROR_CODE_CHARACTER_SLOTS_FULL = 33;
+  ERROR_CODE_OWNER_NOT_FOUND = 34;
+  ERROR_CODE_OWNER_CHANGED = 35;
+  ERROR_CODE_TRANSFER_IN_PROGRESS = 36;
+  ERROR_CODE_TRANSFER_FAILED = 37;
+  ERROR_CODE_STALE_INPUT = 38;
+  ERROR_CODE_INVALID_TARGET = 39;
+  ERROR_CODE_INVALID_STATE = 40;
+  ERROR_CODE_MAP_CAPACITY_FULL = 41;
+  ERROR_CODE_OPERATION_CONFLICT = 42;
+  ERROR_CODE_OPERATION_IN_PROGRESS = 43;
+  ERROR_CODE_OPERATION_REJECTED = 44;
+  ERROR_CODE_TEMPORARY_DEPENDENCY_FAILURE = 45;
+  ERROR_CODE_IAP_RECEIPT_ACCOUNT_MISMATCH = 46;
+  ERROR_CODE_IAP_PRODUCT_MISMATCH = 47;
+  ERROR_CODE_IAP_RECEIPT_INVALID = 48;
+  ERROR_CODE_IAP_SEASON_TRACK_DUPLICATE = 49;
+  ERROR_CODE_IAP_VERIFICATION_PENDING = 50;
+  ERROR_CODE_CHEST_ELIGIBILITY_INVALID = 51;
+  ERROR_CODE_TRADE_PARTNER_DISCONNECTED = 52;
+  ERROR_CODE_TRADE_ELIGIBILITY_LEVEL_REQUIRED = 53;
+  ERROR_CODE_TRADE_ELIGIBILITY_AGE_REQUIRED = 54;
+  ERROR_CODE_AH_ELIGIBILITY_LEVEL_REQUIRED = 55;
+  ERROR_CODE_AH_ELIGIBILITY_AGE_REQUIRED = 56;
+  ERROR_CODE_TRADE_COMMON_BOTH_SIDES = 57;
+  ERROR_CODE_TRADE_PRICE_FLOOR_NOT_MET = 58;
+  ERROR_CODE_AH_PRICE_FLOOR_NOT_MET = 59;
+  ERROR_CODE_SAME_ACCOUNT_FORBIDDEN = 60;
+  ERROR_CODE_INVENTORY_FULL = 61;
+  ERROR_CODE_INSUFFICIENT_CURRENCY = 62;
+  ERROR_CODE_CURRENCY_CAP_EXCEEDED = 63;
+  ERROR_CODE_COOLDOWN_ACTIVE = 64;
+  ERROR_CODE_ITEM_NOT_FOUND = 65;
+  ERROR_CODE_ITEM_LOCKED = 66;
+  ERROR_CODE_NOT_OWNER = 67;
+  ERROR_CODE_PERMISSION_DENIED = 68;
+  ERROR_CODE_TARGET_INVALID = 69;
+  ERROR_CODE_OUT_OF_RANGE = 70;
+  ERROR_CODE_IN_COMBAT = 71;
+  ERROR_CODE_LEVEL_TOO_LOW = 72;
+  ERROR_CODE_CAPACITY_FULL = 73;
+  ERROR_CODE_ALREADY_OWNED = 74;
+  ERROR_CODE_EXPIRED = 75;
+  ERROR_CODE_STATE_CONFLICT = 76;
+  ERROR_CODE_NOT_IN_SAFE_ANCHOR = 77;
+  ERROR_CODE_DAILY_LIMIT_REACHED = 78;
+  ERROR_CODE_GUILD_DISBAND_BLOCKED = 79;
+  ERROR_CODE_GUILD_STORAGE_SAME_ACCOUNT = 80;
+  ERROR_CODE_GUILD_MEMBERSHIP_TOO_NEW = 81;
+  ERROR_CODE_AUCTION_LISTING_NOT_ACTIVE = 82;
+  ERROR_CODE_CLAIM_WINDOW_CLOSED = 83;
+  ERROR_CODE_DURABLE_BACKPRESSURE = 84;
+  ERROR_CODE_BEAST_NOT_OWNED = 85;
+  ERROR_CODE_SLOT_MISMATCH = 86;
+  ERROR_CODE_SLOT_EMPTY = 87;
+  ERROR_CODE_INSUFFICIENT_ITEM = 88;
+  ERROR_CODE_DAILY_FOOD_CAP_REACHED = 89;
+  ERROR_CODE_MAX_BOND_REACHED = 90;
+  ERROR_CODE_FRIEND_LIMIT_REACHED = 91;
+  ERROR_CODE_TARGET_BLOCKED = 92;
+  ERROR_CODE_ALREADY_FRIENDS = 93;
+  ERROR_CODE_PENDING_REQUEST_EXISTS = 94;
+  ERROR_CODE_CLAIM_CAP_REACHED = 95;
+  ERROR_CODE_CHARM_INELIGIBLE = 96;
+  ERROR_CODE_SKILL_NOT_LEARNED = 97;
+  ERROR_CODE_SKILL_MAX_LEVEL = 98;
+  ERROR_CODE_SKILL_POINTS_INSUFFICIENT = 99;
+  ERROR_CODE_SKILL_LOADOUT_INVALID = 100;
+  ERROR_CODE_POTENTIAL_POINTS_INSUFFICIENT = 101;
+  ERROR_CODE_POTENTIAL_CAP_EXCEEDED = 102;
+  ERROR_CODE_INSUFFICIENT_MP = 103;
+  ERROR_CODE_SOUL_CONTRACT_LIMIT_REACHED = 104;
+  ERROR_CODE_STORY_CHOICE_REQUIRED = 105;
+  ERROR_CODE_NOT_DISCOVERED = 106;
+  ERROR_CODE_GUILD_NAME_TAKEN = 107;
+  ERROR_CODE_GUILD_NAME_INVALID = 108;
+  ERROR_CODE_ATLAS_TIER_NOT_REACHED = 109;
+  ERROR_CODE_CHAT_TEXT_INVALID = 110;
+  ERROR_CODE_OPERATION_EXPIRED = 111;
+  ERROR_CODE_REQUEST_TOO_LARGE = 112;
+}
+
+enum Retryability {
+  RETRYABILITY_UNSPECIFIED = 0;
+  RETRYABILITY_NEVER = 1;
+  RETRYABILITY_RETRY_SAME_OPERATION = 2;
+  RETRYABILITY_RECONNECT = 3;
+  RETRYABILITY_UPDATE_REQUIRED = 4;
+  RETRYABILITY_REAUTHENTICATE = 5;
+  RETRYABILITY_BACKOFF = 6;
+}
+
+enum ResultStatus {
+  RESULT_STATUS_UNSPECIFIED = 0;
+  RESULT_STATUS_SUCCESS = 1;
+  RESULT_STATUS_ERROR = 2;
+}
+
+message OperationResult {
+  bytes operation_id = 1;       // UUID, 16 bytes
+  ResultStatus status = 2;
+  ErrorCode error_code = 3;
+}
+
+message ItemQuantity {
+  string item_id = 1;
+  uint32 quantity = 2;
+}
+
+message ItemGrant {
+  bytes item_instance_id = 1;   // UUID, 16 bytes
+  string item_id = 2;
+  uint32 quantity = 3;
+}
+
+message CurrencyDelta {
+  string currency_id = 1;
+  int64 amount = 2;
+}
+
+message PositionMm {
+  sint32 x_mm = 1;
+  sint32 y_mm = 2;
+}
+
+enum Element {
+  ELEMENT_UNSPECIFIED = 0;
+  ELEMENT_KIM = 1;
+  ELEMENT_THUY = 2;
+  ELEMENT_MOC = 3;
+  ELEMENT_HOA = 4;
+  ELEMENT_THO = 5;
+  ELEMENT_PHYSICAL = 6;
+}
+
+enum EntityKind {
+  ENTITY_KIND_UNSPECIFIED = 0;
+  ENTITY_KIND_PLAYER = 1;
+  ENTITY_KIND_MONSTER = 2;
+  ENTITY_KIND_NPC = 3;
+  ENTITY_KIND_BEAST = 4;
+  ENTITY_KIND_OBJECT = 5;
+  ENTITY_KIND_PROJECTILE = 6;
+}
+
+enum Facing {
+  FACING_UNSPECIFIED = 0;
+  FACING_LEFT = 1;
+  FACING_RIGHT = 2;
+}
+
+enum MovementState {
+  MOVEMENT_STATE_UNSPECIFIED = 0;
+  MOVEMENT_STATE_IDLE = 1;
+  MOVEMENT_STATE_RUN = 2;
+  MOVEMENT_STATE_JUMP = 3;
+  MOVEMENT_STATE_FALL = 4;
+  MOVEMENT_STATE_KNOCKBACK = 5;
+}
+
+enum HeldHorizontalIntent {
+  HELD_HORIZONTAL_INTENT_NONE = 0;
+  HELD_HORIZONTAL_INTENT_LEFT = 1;
+  HELD_HORIZONTAL_INTENT_RIGHT = 2;
+}
+
+enum CosmeticSlot {
+  COSMETIC_SLOT_UNSPECIFIED = 0;
+  COSMETIC_SLOT_TITLE = 1;
+  COSMETIC_SLOT_TITLE_GLOW = 2;
+  COSMETIC_SLOT_FRAME = 3;
+  COSMETIC_SLOT_NAMEPLATE = 4;
+  COSMETIC_SLOT_APPEARANCE = 5;
+  COSMETIC_SLOT_WEAPON_TRAIL = 6;
+  COSMETIC_SLOT_AURA = 7;
+  COSMETIC_SLOT_CHARACTER_SHRINE = 8;
+  COSMETIC_SLOT_GUILD_STONE_INSCRIPTION = 9;
+}
+
+enum RewardClaimState {
+  REWARD_CLAIM_STATE_UNSPECIFIED = 0;
+  REWARD_CLAIM_STATE_PENDING = 1;
+  REWARD_CLAIM_STATE_CLAIMED = 2;
+}
+
+message CharacterSummary {
+  bytes character_id = 1;       // UUID, 16 bytes
+  string character_name = 2;
+  string class_id = 3;
+  uint32 level = 4;
+  string map_id = 5;
+  int64 last_online_at_ms = 6;
+  bool is_attached = 7;
+}
+
+message EntityStatus {
+  string effect_id = 1;
+  uint64 source_entity_id = 2;
+  uint32 stacks = 3;
+  uint64 expires_at_tick = 4;
+}
+
+message EquippedCosmetic {
+  CosmeticSlot slot = 1;
+  string cosmetic_id = 2;
+}
+
+message EntityState {
+  uint64 entity_id = 1;
+  EntityKind entity_kind = 2;
+  string content_id = 3;
+  bytes character_id = 4;       // UUID, 16 bytes
+  string display_name = 5;
+  uint32 level = 6;
+  uint64 owner_entity_id = 7;
+  sint32 x_mm = 8;
+  sint32 y_mm = 9;
+  sint32 vx_mm_s = 10;
+  sint32 vy_mm_s = 11;
+  Facing facing = 12;
+  MovementState movement_state = 13;
+  int64 hp = 14;
+  int64 max_hp = 15;
+  int64 shield = 16;
+  uint32 flags = 17;
+  repeated EntityStatus statuses = 18;
+  repeated EquippedCosmetic equipped_cosmetics = 19;
+  uint64 encounter_id = 20;
+  uint32 stat_lifesteal = 21;
+  uint32 stat_reflect = 22;
+  uint32 stat_absorb = 23;
+  uint32 stat_heal_reduction = 24;
+  uint32 stat_healing_received = 25;
+}
+
+message RewardClaimLine {
+  oneof grant {
+    string item_id = 1;
+    string currency_id = 2;
+  }
+  uint32 quantity = 3;
+}
+
+message RewardClaimView {
+  bytes reward_claim_id = 1;    // UUID, 16 bytes
+  string source_type = 2;
+  string source_reference = 3;
+  string reward_slot = 4;
+  RewardClaimState state = 5;
+  repeated RewardClaimLine lines = 6;
+  int64 created_at_ms = 7;
+  int64 expires_at_ms = 8;
+}
+
+message EffectiveMovementParameters {
+  uint32 run_speed_mm_s = 1;
+  uint32 first_jump_mm_s = 2;
+  uint32 second_jump_mm_s = 3;
+  uint32 gravity_mm_s2 = 4;
+  uint32 max_fall_mm_s = 5;
+  uint32 air_control_bp = 6;
+  uint32 max_step_height_mm = 7;
+}
+
+message MovementCheckpoint {
+  sint32 x_mm = 1;
+  sint32 y_mm = 2;
+  sint32 vx_mm_s = 3;
+  sint32 vy_mm_s = 4;
+  Facing facing = 5;
+  MovementState movement_state = 6;
+  uint64 platform_id = 7;            // 0 = none
+  bool is_grounded = 8;
+  uint32 jump_count = 9;             // 0..2
+  uint64 drop_ignore_platform_id = 10;  // 0 = none
+  uint64 drop_ignore_until_tick = 11;   // 0 = none
+  HeldHorizontalIntent held_horizontal_intent = 12;
+  EffectiveMovementParameters effective_parameters = 13;
+}
+
+message Envelope {
+  uint32 protocol_major = 1;
+  uint32 protocol_minor = 2;
+  uint32 message_id = 3;
+  uint64 session_epoch = 4;
+  uint64 client_seq = 5;
+  uint64 server_seq = 6;
+  uint64 correlation_id = 7;
+  bytes payload = 8;
+}

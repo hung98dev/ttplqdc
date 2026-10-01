@@ -1,0 +1,434 @@
+syntax = "proto3";
+
+package thinhthan.v1;
+
+option go_package = "thinhthan/internal/protocol/v1;protocolv1";
+option csharp_namespace = "ThinhThan.Protocol.V1";
+
+import "thinhthan/v1/common.proto";
+
+enum CombatResultKind {
+  COMBAT_RESULT_KIND_UNSPECIFIED = 0;
+  COMBAT_RESULT_KIND_DAMAGE = 1;
+  COMBAT_RESULT_KIND_HEAL = 2;
+  COMBAT_RESULT_KIND_SHIELD_GRANT = 3;
+  COMBAT_RESULT_KIND_SHIELD_BREAK = 4;
+}
+
+enum CombatOutcome {
+  COMBAT_OUTCOME_UNSPECIFIED = 0;
+  COMBAT_OUTCOME_HIT = 1;
+  COMBAT_OUTCOME_DODGED = 2;
+  COMBAT_OUTCOME_INVULNERABLE = 3;
+}
+
+enum StatusEventKind {
+  STATUS_EVENT_KIND_UNSPECIFIED = 0;
+  STATUS_EVENT_KIND_APPLIED = 1;
+  STATUS_EVENT_KIND_REFRESHED = 2;
+  STATUS_EVENT_KIND_STACK_CHANGED = 3;
+  STATUS_EVENT_KIND_EXPIRED = 4;
+  STATUS_EVENT_KIND_DISPELLED = 5;
+  STATUS_EVENT_KIND_CONSUMED = 6;
+}
+
+enum DespawnReason {
+  DESPAWN_REASON_UNSPECIFIED = 0;
+  DESPAWN_REASON_LEFT_AOI = 1;
+  DESPAWN_REASON_DIED = 2;
+  DESPAWN_REASON_REMOVED = 3;
+  DESPAWN_REASON_TRANSFERRED = 4;
+  DESPAWN_REASON_SHED = 5;
+}
+
+enum ResyncReason {
+  RESYNC_REASON_UNSPECIFIED = 0;
+  RESYNC_REASON_UNKNOWN_BASELINE = 1;
+  RESYNC_REASON_INVALID_DELTA = 2;
+  RESYNC_REASON_LOCAL_STATE_LOST = 3;
+}
+
+enum EncounterEventType {
+  ENCOUNTER_EVENT_TYPE_UNSPECIFIED = 0;
+  ENCOUNTER_EVENT_TYPE_PHASE_TRANSITION = 1;
+  ENCOUNTER_EVENT_TYPE_TELEGRAPH_START = 2;
+  ENCOUNTER_EVENT_TYPE_TELEGRAPH_END = 3;
+  ENCOUNTER_EVENT_TYPE_MECHANIC_TRIGGERED = 4;
+  ENCOUNTER_EVENT_TYPE_MECHANIC_EXPIRED = 5;
+  ENCOUNTER_EVENT_TYPE_VULNERABILITY_OPEN = 6;
+  ENCOUNTER_EVENT_TYPE_VULNERABILITY_CLOSE = 7;
+}
+
+// --- combat input / action (200..208) ---
+
+// ID 200
+message C2SSkillUse {
+  uint64 client_mono_ms = 1;
+  string skill_id = 2;
+  Facing facing = 3;
+  uint64 target_entity_id = 4;
+  sint32 area_center_x_mm = 5;
+  sint32 area_center_y_mm = 6;
+}
+
+// ID 201
+message C2SBasicAttack {
+  uint64 client_mono_ms = 1;
+  Facing facing = 2;
+  uint64 target_entity_id = 3;
+}
+
+// ID 202
+message C2STargetIntent {
+  uint64 target_entity_id = 1;
+}
+
+// ID 203
+message S2CActionStarted {
+  uint64 action_instance_id = 1;
+  uint64 source_entity_id = 2;
+  string skill_id = 3;
+  uint64 client_seq = 4;                // echo
+  uint64 server_tick = 5;
+  Facing facing = 6;
+  uint64 target_entity_id = 7;
+  sint32 area_center_x_mm = 8;
+  sint32 area_center_y_mm = 9;
+  uint32 cast_ms = 10;
+  uint64 cooldown_ends_at_tick = 11;
+  int64 mp_after = 12;
+  uint64 active_starts_at_tick = 13;
+  uint64 active_ends_at_tick = 14;
+  uint64 recovery_ends_at_tick = 15;
+  uint64 motion_ends_at_tick = 16;
+}
+
+// ID 204
+message S2CActionRejected {
+  uint64 client_seq = 1;                // echo
+  uint32 request_message_id = 2;        // 200 | 201 | 202 | 208
+  bytes operation_id = 3;               // UUID, 16 bytes; only for 208
+  string skill_id = 4;
+  ErrorCode error_code = 5;
+}
+
+// ID 205
+message S2CStatusEvent {
+  uint64 target_entity_id = 1;
+  uint64 source_entity_id = 2;
+  string effect_id = 3;
+  string status_kind = 4;
+  StatusEventKind event = 5;
+  uint32 stacks = 6;
+  uint64 expires_at_tick = 7;
+  uint64 server_tick = 8;
+}
+
+// ID 206
+message S2CDeath {
+  uint64 entity_id = 1;
+  uint64 killer_entity_id = 2;
+  uint64 server_tick = 3;
+  uint64 respawn_available_at_tick = 4;
+}
+
+// ID 207
+message S2CRespawn {
+  uint64 entity_id = 1;
+  string map_id = 2;
+  string checkpoint_id = 3;
+  sint32 x_mm = 4;
+  sint32 y_mm = 5;
+  int64 hp_after = 6;
+  int64 mp_after = 7;
+  uint64 invulnerable_until_tick = 8;
+  uint64 server_tick = 9;
+}
+
+// ID 208
+message C2SRespawnRequest {
+  bytes operation_id = 1;               // UUID, 16 bytes
+}
+
+// --- replication shared types ---
+
+message SelfPrivateState {
+  int64 current_mp = 1;
+  int64 max_mp = 2;
+  uint64 accepted_target_entity_id = 3;
+}
+
+message SelfPrivateDelta {
+  optional int64 current_mp = 1;
+  optional int64 max_mp = 2;
+  optional uint64 accepted_target_entity_id = 3;
+}
+
+message SelfAck {
+  uint64 last_processed_client_seq = 1;
+  MovementCheckpoint checkpoint = 2;
+}
+
+message StatusList {
+  repeated EntityStatus entries = 1;
+}
+
+message CosmeticList {
+  repeated EquippedCosmetic entries = 1;
+}
+
+// Delta carries entity_id plus every changeable scalar EntityState field as
+// proto3 optional; entity_kind/content_id/character_id are immutable and absent.
+message EntityDelta {
+  uint64 entity_id = 1;
+  optional string display_name = 2;
+  optional uint32 level = 3;
+  optional uint64 owner_entity_id = 4;
+  optional sint32 x_mm = 5;
+  optional sint32 y_mm = 6;
+  optional sint32 vx_mm_s = 7;
+  optional sint32 vy_mm_s = 8;
+  optional Facing facing = 9;
+  optional MovementState movement_state = 10;
+  optional int64 hp = 11;
+  optional int64 max_hp = 12;
+  optional int64 shield = 13;
+  optional uint32 flags = 14;
+  optional uint64 encounter_id = 15;
+  optional uint32 stat_lifesteal = 16;
+  optional uint32 stat_reflect = 17;
+  optional uint32 stat_absorb = 18;
+  optional uint32 stat_heal_reduction = 19;
+  optional uint32 stat_healing_received = 20;
+  StatusList statuses = 21;
+  CosmeticList equipped_cosmetics = 22;
+}
+
+message VelocityMmS {
+  sint32 vx_mm_s = 1;
+  sint32 vy_mm_s = 2;
+}
+
+message RectMm {
+  sint32 min_x_mm = 1;
+  sint32 min_y_mm = 2;
+  sint32 max_x_mm = 3;
+  sint32 max_y_mm = 4;
+}
+
+message MechanicCircle {
+  PositionMm center = 1;
+  sint32 radius_mm = 2;
+}
+
+message MechanicArea {
+  oneof area {
+    MechanicCircle circle = 1;
+    RectMm rect = 2;
+  }
+}
+
+message LaneMechanic {
+  repeated PositionMm path_points = 1;  // 2..16
+  sint32 width_mm = 2;
+  repeated RectMm safe_rects = 3;       // 0..8
+  uint32 hit_cap = 4;
+  string effect_id = 5;
+}
+
+message ZoneMechanic {
+  repeated MechanicArea areas = 1;      // 1..16
+  repeated MechanicArea safe_areas = 2; // 0..8
+  repeated uint64 pulse_at_ticks = 3;   // 0..16
+  string effect_id = 4;
+  uint32 hit_cap = 5;
+}
+
+message ProjectileMechanic {
+  PositionMm origin = 1;
+  repeated VelocityMmS velocities = 2;          // 1..16
+  sint32 radius_mm = 3;
+  string effect_id = 4;
+  uint32 hit_cap = 5;
+  repeated uint64 projectile_entity_ids = 6;    // 0..16
+}
+
+message MechanicSpawn {
+  uint64 entity_id = 1;
+  string content_id = 2;
+  PositionMm position = 3;
+  int64 hp = 4;
+  int64 max_hp = 5;
+  uint64 despawn_at_tick = 6;
+  bool required_destroy = 7;
+}
+
+message SpawnMechanic {
+  repeated MechanicSpawn spawns = 1;    // 0..7
+}
+
+message ControlMechanic {
+  repeated uint64 affected_entity_ids = 1; // 0..40
+  string effect_id = 2;
+  uint32 stacks = 3;
+  uint64 expires_at_tick = 4;
+  uint32 damage_taken_bp = 5;
+  repeated uint64 break_entity_ids = 6;    // 0..7
+}
+
+message VisualMechanic {
+  string cue_id = 1;
+  PositionMm origin = 2;
+  Facing facing = 3;
+}
+
+// One non-composite arm of a CompositeMechanic.
+message EncounterMechanicComponent {
+  oneof component {
+    LaneMechanic lane = 1;
+    ZoneMechanic zone = 2;
+    ProjectileMechanic projectile = 3;
+    SpawnMechanic spawn = 4;
+    ControlMechanic control = 5;
+    VisualMechanic visual = 6;
+  }
+}
+
+message CompositeMechanic {
+  repeated EncounterMechanicComponent components = 1; // <= 2 non-composite
+  string pattern_id = 2;
+  bool resolved = 3;
+}
+
+message EncounterMechanicPayload {
+  oneof payload {
+    LaneMechanic lane = 1;
+    ZoneMechanic zone = 2;
+    ProjectileMechanic projectile = 3;
+    SpawnMechanic spawn = 4;
+    ControlMechanic control = 5;
+    CompositeMechanic composite = 6;
+    VisualMechanic visual = 7;
+  }
+}
+
+message ActiveMechanicState {
+  EncounterMechanicPayload payload = 1;
+  uint64 mechanic_instance_id = 2;
+  uint64 starts_at_tick = 3;
+  uint64 ends_at_tick = 4;
+}
+
+message EncounterState {
+  uint64 encounter_id = 1;
+  string encounter_content_id = 2;
+  uint32 phase_number = 3;
+  repeated ActiveMechanicState active_mechanics = 4;
+}
+
+// --- world replication (300..308) ---
+
+// ID 300
+message S2CWorldBaseline {
+  uint64 baseline_id = 1;
+  uint64 server_tick = 2;
+  string map_id = 3;
+  uint32 channel_index = 4;
+  bytes instance_id = 5;        // UUID, 16 bytes
+  string content_revision = 6;
+  EntityState self = 7;
+  SelfPrivateState self_private = 8;
+  MovementCheckpoint self_checkpoint = 9;
+  repeated EntityState entities = 10;
+  repeated EncounterState encounters = 11;
+}
+
+// ID 301
+message S2CEntitySpawn {
+  uint64 baseline_id = 1;
+  uint64 server_tick = 2;
+  EntityState entity = 3;
+}
+
+// ID 302
+message S2CEntityDespawn {
+  uint64 baseline_id = 1;
+  uint64 server_tick = 2;
+  uint64 entity_id = 3;
+  DespawnReason reason = 4;
+}
+
+// ID 303
+message S2CStateDelta {
+  uint64 baseline_id = 1;
+  uint64 server_tick = 2;
+  SelfAck self_ack = 3;
+  SelfPrivateDelta self_private = 4;
+  repeated EntityDelta entities = 5;
+}
+
+// ID 304
+message S2CCombatEvent {
+  uint64 event_id = 1;
+  uint64 server_tick = 2;
+  uint64 action_instance_id = 3;
+  uint64 source_entity_id = 4;
+  uint64 target_entity_id = 5;
+  string skill_id = 6;
+  string effect_id = 7;
+  CombatResultKind result_kind = 8;
+  CombatOutcome outcome = 9;
+  bool is_crit = 10;
+  Element damage_element = 11;
+  int64 post_mitigation_damage = 12;
+  int64 shield_absorbed = 13;
+  int64 hp_damage = 14;
+  int64 heal_amount = 15;
+  int64 shield_amount = 16;
+  int64 target_hp_after = 17;
+  int64 target_shield_after = 18;
+  bool killed = 19;
+  bool just_guard_window = 20;
+  bool just_guard_triggered = 21;
+  bool just_guard_hint = 22;
+  bool beast_passive2_success = 23;
+  optional int64 reflect_damage_instance = 24;
+  optional int64 lifesteal_heal_amount = 25;
+  optional int64 absorb_shield_amount = 26;
+}
+
+// ID 305
+message S2CEncounterEvent {
+  uint64 encounter_id = 1;
+  uint64 server_tick = 2;
+  EncounterEventType event_type = 3;
+  uint32 mechanic_id = 4;
+  uint64 source_entity_id = 5;
+  repeated uint64 affected_entity_ids = 6;
+  uint32 phase_number = 7;
+  EncounterMechanicPayload mechanic_payload = 8;
+  uint64 mechanic_instance_id = 9;
+  uint64 starts_at_tick = 10;
+  uint64 ends_at_tick = 11;
+}
+
+// ID 306
+message C2SBaselineAck {
+  uint64 baseline_id = 1;
+}
+
+// ID 307
+message C2SBaselineResyncRequest {
+  uint64 request_id = 1;        // echo
+  uint64 known_baseline_id = 2;
+  ResyncReason reason = 3;
+}
+
+// ID 308 (read-only request_id result: no OperationResult)
+message S2CBaselineResyncResult {
+  uint64 request_id = 1;
+  ResultStatus status = 2;
+  ErrorCode error_code = 3;     // RATE_LIMITED | INVALID_STATE
+  uint64 recovery_baseline_id = 4;
+  uint32 retry_after_ms = 5;
+}
