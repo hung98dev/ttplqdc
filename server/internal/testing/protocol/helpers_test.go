@@ -8,9 +8,12 @@ import (
 	"path/filepath"
 	"regexp"
 	"runtime"
+	"sort"
 	"strings"
 	"testing"
 
+	"google.golang.org/protobuf/encoding/protowire"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
 )
@@ -333,4 +336,60 @@ func messageType(t *testing.T, fullName string) protoreflect.MessageType {
 		t.Fatalf("message type %s not registered: %v", fullName, err)
 	}
 	return mt
+}
+
+// canonicalEncoding rewrites marshaled bytes into the spec's canonical wire
+// encoding: every field emitted in ascending field-number order, recursively
+// inside embedded messages (protobuf_conventions.md §5). Go's marshaler emits
+// oneof members after all singular fields, so raw Marshal output is not
+// canonical for oneof-bearing messages; the C# generator already emits
+// ascending order natively.
+func canonicalEncoding(t *testing.T, md protoreflect.MessageDescriptor, data []byte) []byte {
+	t.Helper()
+	type field struct {
+		num protowire.Number
+		tlv []byte
+	}
+	var fields []field
+	rest := data
+	for len(rest) > 0 {
+		num, typ, n := protowire.ConsumeTag(rest)
+		if n < 0 {
+			t.Fatalf("canonical encoding: bad tag in %v", rest)
+		}
+		vn := protowire.ConsumeFieldValue(num, typ, rest[n:])
+		if vn < 0 {
+			t.Fatalf("canonical encoding: bad value for field %d", num)
+		}
+		tlv := rest[:n+vn]
+		fd := md.Fields().ByNumber(protoreflect.FieldNumber(num))
+		if fd != nil && fd.Kind() == protoreflect.MessageKind && typ == protowire.BytesType {
+			v, m := protowire.ConsumeBytes(rest[n:])
+			if m < 0 {
+				t.Fatalf("canonical encoding: bad message field %d", num)
+			}
+			inner := canonicalEncoding(t, fd.Message(), v)
+			tlv = protowire.AppendTag(nil, num, typ)
+			tlv = protowire.AppendBytes(tlv, inner)
+		}
+		fields = append(fields, field{num: num, tlv: tlv})
+		rest = rest[n+vn:]
+	}
+	sort.SliceStable(fields, func(i, j int) bool { return fields[i].num < fields[j].num })
+	var out []byte
+	for _, f := range fields {
+		out = append(out, f.tlv...)
+	}
+	return out
+}
+
+// canonicalMarshal returns the spec-canonical encoding of msg: deterministic
+// marshal, then fields resorted into ascending order (see canonicalEncoding).
+func canonicalMarshal(t *testing.T, msg proto.Message) []byte {
+	t.Helper()
+	data, err := proto.MarshalOptions{Deterministic: true}.Marshal(msg)
+	if err != nil {
+		t.Fatalf("marshal: %v", err)
+	}
+	return canonicalEncoding(t, msg.ProtoReflect().Descriptor(), data)
 }

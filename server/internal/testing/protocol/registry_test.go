@@ -426,10 +426,7 @@ func writeGolden(t *testing.T, dir string) {
 		if !ok {
 			t.Fatalf("no constructor for fixture %s", file)
 		}
-		data, err := proto.MarshalOptions{Deterministic: true}.Marshal(msg)
-		if err != nil {
-			t.Fatalf("marshal %s: %v", file, err)
-		}
+		data := canonicalMarshal(t, msg)
 		if err := os.WriteFile(filepath.Join(dir, file), data, 0o644); err != nil {
 			t.Fatalf("write %s: %v", file, err)
 		}
@@ -469,10 +466,7 @@ func TestBinaryEncodingParity(t *testing.T) {
 		if u := msg.ProtoReflect().GetUnknown(); len(u) != 0 {
 			t.Fatalf("fixture %s carries unknown fields (%d bytes)", fx.File, len(u))
 		}
-		out, err := proto.MarshalOptions{Deterministic: true}.Marshal(msg)
-		if err != nil {
-			t.Fatalf("fixture %s re-encode failed: %v", fx.File, err)
-		}
+		out := canonicalMarshal(t, msg)
 		if !bytes.Equal(data, out) {
 			t.Fatalf("fixture %s: decode->deterministic re-encode is not byte-identical", fx.File)
 		}
