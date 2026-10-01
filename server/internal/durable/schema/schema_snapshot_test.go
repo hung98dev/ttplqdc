@@ -2,6 +2,8 @@ package schema
 
 import (
 	"context"
+	crand "crypto/rand"
+	"encoding/hex"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -145,8 +147,15 @@ func colType(cat *LiveCatalog, table, col string) string {
 	return ""
 }
 
+// rand16str returns unique hex chars per call. Crypto-random, not a
+// timestamp: on Windows the wall-clock granularity (~0.5-15.6 ms) makes
+// consecutive UnixNano reads collide.
 func rand16str() string {
-	return fmt.Sprintf("%d", time.Now().UnixNano())
+	var b [8]byte
+	if _, err := crand.Read(b[:]); err != nil {
+		panic(err)
+	}
+	return hex.EncodeToString(b[:])
 }
 
 func mustUUID(t *testing.T) string {
