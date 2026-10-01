@@ -1,0 +1,68 @@
+name: cache-prune
+
+# Deletes Actions cache entries whose ref is a closed pull request
+# (.devin/scripts/cache-policy.md § Main-scope warming, ADR-0078): hourly and
+# on pushes to main. Main-scope and open-PR caches are untouched.
+
+on:
+  schedule:
+    - cron: '23 * * * *'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+  pull-requests: read
+
+concurrency:
+  group: cache-prune
+  cancel-in-progress: false
+
+jobs:
+  prune:
+    name: Prune closed-PR caches
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Install pinned gh
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/tools/bin"
+          curl -fsSL -o "$RUNNER_TEMP/gh.tgz" \
+            "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_linux_amd64.tar.gz"
+          echo "9bca2d1c16825f109907a23307628a2f0698fbf99662b73a5cf0b020293072b8  $RUNNER_TEMP/gh.tgz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/gh" && tar -xzf "$RUNNER_TEMP/gh.tgz" -C "$RUNNER_TEMP/tools/gh"
+          cp "$(find "$RUNNER_TEMP/tools/gh" -type f -name gh | head -1)" "$RUNNER_TEMP/tools/bin/gh"
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+
+      - name: Delete caches of closed pull requests
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          page=0
+          deleted=0
+          while [ "$page" -lt 10 ]; do
+            page=$((page + 1))
+            url="repos/$GITHUB_REPOSITORY/actions/caches?per_page=100&page=$page"
+            count=$(gh api "$url" --jq '.actions_caches | length')
+            [ "$count" -eq 0 ] && break
+            while IFS=$'\t' read -r id ref; do
+              [ -z "$id" ] && continue
+              pr="${ref#refs/pull/}"
+              pr="${pr%%/*}"
+              state=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$pr" --jq .state 2>/dev/null || echo unknown)
+              if [ "$state" = "closed" ]; then
+                gh api -X DELETE "repos/$GITHUB_REPOSITORY/actions/caches/$id"
+                echo "deleted cache $id ($ref)"
+                deleted=$((deleted + 1))
+              fi
+            done < <(gh api "$url" --jq '.actions_caches[] | select(.ref | startswith("refs/pull/")) | [.id, .ref] | @tsv')
+            [ "$count" -lt 100 ] && break
+          done
+          echo "pruned $deleted closed-PR cache entries"
