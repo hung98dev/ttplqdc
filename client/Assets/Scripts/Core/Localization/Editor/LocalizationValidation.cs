@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 
 namespace ThinhThan.Core.Localization.Editor
@@ -411,7 +412,7 @@ namespace ThinhThan.Core.Localization.Editor
                 ? null
                 : AssetDatabase.LoadAssetAtPath(
                     "Assets/AddressableAssetsData/AddressableAssetSettings.asset", settingsType);
-            if (settings == null)
+            if (settingsType == null || settings == null)
             {
                 report.Errors.Add("no AddressableAssetSettings");
                 return null;
@@ -426,6 +427,10 @@ namespace ThinhThan.Core.Localization.Editor
             var snapshot = new List<GroupSnapshot>();
             foreach (var group in groups)
             {
+                if (group == null)
+                {
+                    continue;
+                }
                 var groupType = group.GetType();
                 var snap = new GroupSnapshot
                 {
@@ -437,6 +442,10 @@ namespace ThinhThan.Core.Localization.Editor
                 {
                     foreach (var entry in entries)
                     {
+                        if (entry == null)
+                        {
+                            continue;
+                        }
                         var entryType = entry.GetType();
                         var snapEntry = new EntrySnapshot
                         {
