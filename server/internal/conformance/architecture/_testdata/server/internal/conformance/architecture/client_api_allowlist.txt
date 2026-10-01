@@ -1,0 +1,5 @@
+# FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020).
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:Update  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:FixedUpdate  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:LateUpdate  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:OnGUI  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
