@@ -307,7 +307,8 @@ func (r *Runner) goTest() []string {
 	out, code = r.runCmd(context.Background(), r.Root, "go", "-C", "server", "test", "-v", "./...")
 	r.countGoTestOutput(out)
 	if code != 0 {
-		return []string{"go test: " + tail(out)}
+		details := failLines(out)
+		return append(details, "go test tail: "+tail(out))
 	}
 	return nil
 }
@@ -344,7 +345,8 @@ func (r *Runner) goRace() []string {
 	argv := append([]string{"go", "-C", "server", "test", "-race"}, dirs...)
 	out, code := r.runCmd(context.Background(), r.Root, argv...)
 	if code != 0 {
-		return []string{"go test -race: " + tail(out)}
+		details := failLines(out)
+		return append(details, "go test -race tail: "+tail(out))
 	}
 	return nil
 }
@@ -368,7 +370,8 @@ func (r *Runner) goBench() []string {
 	out, code := r.runCmd(context.Background(), r.Root, argv...)
 	r.benchDone = true
 	if code != 0 {
-		return []string{"go bench: " + tail(out)}
+		details := failLines(out)
+		return append(details, "go bench tail: "+tail(out))
 	}
 	for _, l := range strings.Split(out, "\n") {
 		if strings.HasPrefix(l, "ok \t") || strings.HasPrefix(l, "ok ") {
@@ -742,6 +745,25 @@ func checkDotfiles(root string) []string {
 		}
 	}
 	return errs
+}
+
+// failLines extracts every failure marker a `go test` tail would cut:
+// --- FAIL:/--- SKIP: test lines, package-level "FAIL\t<pkg>" lines, the
+// standalone FAIL result marker, and panic/fatal-error headers.
+func failLines(out string) []string {
+	var hits []string
+	for _, l := range strings.Split(out, "\n") {
+		l = strings.TrimRight(l, "\r")
+		switch {
+		case strings.HasPrefix(l, "--- FAIL:"), strings.HasPrefix(l, "--- SKIP:"):
+			hits = append(hits, l)
+		case l == "FAIL" || strings.HasPrefix(l, "FAIL\t") || strings.HasPrefix(l, "FAIL "):
+			hits = append(hits, l)
+		case strings.HasPrefix(l, "panic:"), strings.HasPrefix(l, "fatal error:"):
+			hits = append(hits, l)
+		}
+	}
+	return hits
 }
 
 func tail(s string) string {
