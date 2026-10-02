@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"os"
 	"os/exec"
@@ -18,6 +19,8 @@ import (
 	"thinhthan/internal/conformance/architecture"
 	"thinhthan/internal/conformance/style"
 	"thinhthan/internal/conformance/taskgraph"
+	"thinhthan/internal/durable/schema"
+	"thinhthan/internal/testing/pgtest"
 )
 
 // Registry is the canonical, ordered gate list. IMP-000 evaluates its own
@@ -77,6 +80,9 @@ type Runner struct {
 	AddedPaths []string     // files added by the PR diff (Q6.evidence)
 	APICheck   APICheckFunc // nil = skip API validation (local runs)
 	benchDone  bool         // Q3.go.alloc and Q3.go.bench share one benchmark run
+	pgDone     bool         // Q5.migrations and Q5.schema share one resolved server
+	pgSrv      *pgtest.Server
+	pgErr      error
 }
 
 // Run evaluates the registry and returns a populated Report (not yet written).
@@ -198,6 +204,20 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details = append(checkCscRsp(r.Root), checkAsmdefs(r.Root)...)
 	case "Q4.go.static":
 		details, missing = r.goStatic()
+	case "Q5.migrations":
+		srv, err := r.pg()
+		if err != nil {
+			evalErr = err
+			break
+		}
+		details, missing = schema.CheckMigrations(context.Background(), srv, r.Root)
+	case "Q5.schema":
+		srv, err := r.pg()
+		if err != nil {
+			evalErr = err
+			break
+		}
+		details, missing = schema.CheckSchema(context.Background(), srv, r.Root)
 	case "Q6.clean_tree":
 		details = r.cleanTree()
 	case "Q6.evidence":
@@ -235,6 +255,35 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		row.Reason = row.Reason[:2000]
 	}
 	return row
+}
+
+// pg resolves the shared pgtest server once per run (preset DSN, Docker, or
+// EDB): Q5.migrations and Q5.schema run their scratch databases on the same
+// endpoint. ErrUnavailable resolves to (nil, nil) — the Check* evaluators
+// report nil-server as missing=true (fail-closed on CI, DEFERRED locally).
+func (r *Runner) pg() (*pgtest.Server, error) {
+	if !r.pgDone {
+		r.pgDone = true
+		srv, err := pgtest.Ensure(context.Background())
+		switch {
+		case errors.Is(err, pgtest.ErrUnavailable):
+		case err != nil:
+			r.pgErr = err
+		default:
+			r.pgSrv = srv
+		}
+	}
+	return r.pgSrv, r.pgErr
+}
+
+// Close releases a bootstrapped pg server (preset-DSN servers are no-ops).
+// Callers invoke it explicitly — cmd/verify's fatal() uses os.Exit, so a
+// deferred Close would never run on the error path.
+func (r *Runner) Close() {
+	if r.pgSrv != nil {
+		r.pgSrv.Close()
+		r.pgSrv = nil
+	}
 }
 
 // --- subprocess helpers ---------------------------------------------------
