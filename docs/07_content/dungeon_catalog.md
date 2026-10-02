@@ -4,6 +4,23 @@ status: LOCKED
 ## Scope
 Concrete runtime roster for the five launch NORMAL dungeons. Generic dungeon state/membership/scaling belongs in `../02_world/dungeons.md`; environment and boss mechanic identity belong in `encounter_catalog.md`.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Per-dungeon assignment fences and numbered stage lists use the catalog-local grammars declared below; remix bullets are structured mechanic declarations, not prose.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Shared Rules` / both `text` fences | dungeon defaults + reward-slot mapping | assignment fence (type:enum(PARTY), party_size:range(int), difficulty:enum(NORMAL), lockout:enum(NONE), encounter_scaling:enum(PARTY_DEFAULT)); reward-slot fence `KIND -> drop.dungeon.<id>.<suffix>` | Inherited by all 5 dungeons; `ENDGAME_REWARD` maps to `.endgame` combined table, not a difficulty enum. |
+| `Canonical Instance Bounds and Layout Profiles` / table `dungeon_id / space_id, span (screens), bounds max (m), reference extent (px), layout_profile, required traversable topology` | space geometry / `dungeon_id` | dungeon_id/space_id:id; span:pair(decimal); bounds max:pair(decimal); reference extent:pair(int); layout_profile:enum token; required traversable topology:string | Exact bounds per ADR-0046 conversion (50 px/m); stage-route/branch/loop requirements compile into geometry checks; wave rule paragraph supplies `w1..wn` spawn/restore semantics and `anchor.dungeon.<stage_key>.w<n>` naming. |
+| `Progression First-Clear EXP` / table `dungeon_id, Act, act_exp_total, first_progression_clear_exp` + key fence | first-clear EXP / `dungeon_id` | dungeon_id:id; Act:enum(I..V); act_exp_total:grouped_int; first_progression_clear_exp:grouped_int; key fence `reward.first_progression_clear.<dungeon_id>.<character_id>` | Exactly 0.4% of owning act total; once per character; non-inventory side grant. |
+| `# N — <name>` / assignment fence + `Stages:` numbered list | dungeon / `dungeon_id`; stages / `(dungeon_id, stage_id)` | assignment fence: dungeon_id:id, recommended_level:int, minimum_level:int, final_boss:id, target_time:range(int, minutes); catalog-local stage grammar: `N. stage.<id>` then bullet fields `objective:`/`combat:`/`boss`/secret blocks; combat lines list `w<n>` groups of `count monster_id` with optional `(area X)` trigger | 5 dungeons × 3..4 stages; `stage_id` unique within dungeon; wave monsters must belong to the act roster; stage final entry may be a boss-only stage. |
+| `Level-60 Endgame-Tagged Runs` / `text` fence | endgame run tag | assignment fence: run_tag:enum(ENDGAME_L60), minimum_level:int, reward_slot:enum(ENDGAME_REWARD) | All 5 dungeons emit one variant `(dungeon_id, endgame)`; difficulty stays NORMAL. |
+| `Explicit Level-60 Stat Profile` / `text` fences | endgame stat profile / `(rank)` and boss multiplier | NORMAL/ELITE L60 baseline fields + multiplier fences; boss baseline + multiplier fences | Named finite rule: endgame trash = launch formula at L=60 × declared multipliers; endgame boss = boss baseline ×1.75 HP = 149800 one-member. |
+| `Concrete Mechanic Remixes` / each backticked `endgame.*` level-3 heading / bullet list | endgame variant / `(dungeon_id, variant_id)` | heading supplies `endgame.<dungeon_key>.<remix_key>` (variant_id); bullets = stage-mechanic override declarations (ordered trigger `at NN% HP`, mechanic token, count/ordering constraint) | Exactly one named remix per dungeon; telegraph floors never shrink; a stat-only variant rejects. |
+| `Endgame Reward Settlement` / `text` fence | settlement rule | settle/DO-NOT-settle lines naming `drop.dungeon.<id>.endgame`, `.normal`, `drop.boss.<final_boss>` | `.endgame` combined table replaces both repeat slots; lifetime first-clear operations evaluated independently. |
+| `Dungeon Repeat EXP` / formula fence + table `Act, act_exp_total, target_hours, denominator, dungeon_repeat_exp` + act-selection rule | repeat EXP / `(act)` | formula expr; grouped_int columns; `act = min(character_act, dungeon_tier_act + 1)` dispatch | Repeatable completion EXP per eligible run; derived once from act totals (exact integers in table). |
+| `Dungeon EXP` / bullet list | EXP channel rule | none | No kill EXP inside instances; EXP only via FIRST_CLEAR + DUNGEON_REPEAT settlements. |
+
 # Shared Rules
 All five:
 ```text
