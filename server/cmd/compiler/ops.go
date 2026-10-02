@@ -10,13 +10,6 @@ import (
 // ops.go — typed `KIND(arg;...)` op-list parser shared by the mechanic-ops
 // grammars (monster Typed Mechanic Operations, Typed Roster Overrides).
 
-// opCtor declares one constructor's name and argument spec: 'i' int,
-// 'r' ratio/decimal, 'e' enum token, 's' id string.
-type opCtor struct {
-	Name string
-	Args string // e.g. "errr"
-}
-
 // mechanicOpCtors is the closed constructor set of the monster catalog's
 // Typed Mechanic Operations table + the FOLLOWUP op the Typed Roster
 // Overrides section declares. Unknown constructors reject.

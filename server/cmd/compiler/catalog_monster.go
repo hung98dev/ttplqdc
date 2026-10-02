@@ -229,12 +229,8 @@ func monCombatProfiles(c *Ctx, f *File, b *SourceBinding, st *monsterState) {
 		for _, ch := range sec.Children {
 			var prose []string
 			for _, bl := range ch.Content {
-				for _, l := range bl.FLines {
-					prose = append(prose, l)
-				}
-				for _, l := range bl.Prose {
-					prose = append(prose, l)
-				}
+				prose = append(prose, bl.FLines...)
+				prose = append(prose, bl.Prose...)
 			}
 			name := strings.Trim(ch.Title, "` ")
 			st.combatProse[name] = strings.Join(prose, "\n")

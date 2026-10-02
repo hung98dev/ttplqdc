@@ -39,7 +39,7 @@ func compileEconomy(c *Ctx, f *File, r *Registry) {
 }
 
 var econRangeRe = regexp.MustCompile(`^([0-9,]+)\.\.([0-9,]+)`)
-var econCostRe = regexp.MustCompile("^(cosmetic\\.[a-z0-9_.]+)\\s+cost\\s+([0-9,]+)\\s+(common|special|bound)")
+var econCostRe = regexp.MustCompile(`^(cosmetic\.[a-z0-9_.]+)\s+cost\s+([0-9,]+)\s+(common|special|bound)`)
 
 func econFindSub(f *File, title string) *Section {
 	var hit *Section
@@ -210,7 +210,7 @@ func econBoundSources(c *Ctx, f *File, b *SourceBinding) {
 	c.consumed(f, b)
 }
 
-var offerRe = regexp.MustCompile("^(offer\\.bound\\.[a-z0-9_.]+)\\s*->\\s*(item\\.[a-z0-9_.]+)\\s+cost\\s+([0-9]+)\\s+bound")
+var offerRe = regexp.MustCompile(`^(offer\.bound\.[a-z0-9_.]+)\s*->\s*(item\.[a-z0-9_.]+)\s+cost\s+([0-9]+)\s+bound`)
 
 func econBoundSinks(c *Ctx, f *File, b *SourceBinding) {
 	sinks := econFindSub(f, "Sinks")
@@ -289,8 +289,8 @@ func econSpecialSources(c *Ctx, f *File, b *SourceBinding) {
 
 func econSpecialSinks(c *Ctx, f *File, b *SourceBinding) {
 	// base `20 special -> cosmetic.id` + fabric alternatives + extended cost fences
-	sinkRe := regexp.MustCompile("^([0-9]+)\\s+special\\s*->\\s*(cosmetic\\.[a-z0-9_.]+)")
-	fabRe := regexp.MustCompile("^([0-9]+)\\s+fabric\\s*->\\s*(cosmetic\\.[a-z0-9_.]+)")
+	sinkRe := regexp.MustCompile(`^([0-9]+)\s+special\s*->\s*(cosmetic\.[a-z0-9_.]+)`)
+	fabRe := regexp.MustCompile(`^([0-9]+)\s+fabric\s*->\s*(cosmetic\.[a-z0-9_.]+)`)
 	root := f.Root
 	for _, bl := range flattenBlocks(root) {
 		for j, l := range bl.FLines {

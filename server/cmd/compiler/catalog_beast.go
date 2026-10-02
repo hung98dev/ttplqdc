@@ -164,7 +164,7 @@ var statCurveRe = regexp.MustCompile("^`?([A-Z_]+)`?:\\s*(\\+?[0-9.]+)\\s*(/[a-z
 var passiveHeadRe = regexp.MustCompile("\\*\\*Passive ([12]) — (.+?) \\(`?(beast\\.skill\\.[a-z0-9_.]+)`?(,\\s*Clutch)?\\)\\*\\*")
 var levelPairRe = regexp.MustCompile("Level 1:\\s*`?(.+?)`?\\s*->\\s*Level 60:\\s*`?(.+?)`?\\.?\\s*$")
 var icdLineRe = regexp.MustCompile("Internal cooldown:\\s*`?([0-9]+)s`?\\s*\\(Lv20\\)\\s*->\\s*`?([0-9]+)s`?\\s*\\(Lv40\\)\\s*->\\s*`?([0-9]+)s`?\\s*\\(Lv60\\)")
-var elementLineRe = regexp.MustCompile("\\*\\*Element\\*\\*:\\s*([A-Z]+)")
+var elementLineRe = regexp.MustCompile(`\*\*Element\*\*:\s*([A-Z]+)`)
 var classRefRe = regexp.MustCompile("`?(class\\.[a-z_]+)`?")
 
 // beastProfiles — `## N. beast.*` sections, registered bullets grammar.

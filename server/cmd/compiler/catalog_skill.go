@@ -52,7 +52,7 @@ type skState struct {
 // ---- geometry calls -------------------------------------------------
 
 // geomArgRe parses `name=0.0m|0.0m/s|5000ms|0.0` named arguments.
-var geomCallRe = regexp.MustCompile("([A-Z_]+)\\(([^)]*)\\)")
+var geomCallRe = regexp.MustCompile(`([A-Z_]+)\(([^)]*)\)`)
 var geomArgRe = regexp.MustCompile(`([a-z_]+)\s*=\s*([0-9.]+)(m/s|ms|m|s)?`)
 
 // parseGeometry parses one `KIND(arg=val[unit], ...)` or bare `KIND` call.

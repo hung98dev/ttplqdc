@@ -150,7 +150,7 @@ func npcAmbient(c *Ctx, f *File, b *SourceBinding, st *npcState) {
 				for col := 1; col <= 3; col++ {
 					schedule := tbl.Headers[col]
 					cell := cellAt(row, col).Scalar()
-					for _, idm := range regexp.MustCompile("npc\\.[a-z0-9_.]+").FindAllString(cell, -1) {
+					for _, idm := range regexp.MustCompile(`npc\.[a-z0-9_.]+`).FindAllString(cell, -1) {
 						st.ambient = append(st.ambient, idm)
 						st.mapNPCs[mapID] = append(st.mapNPCs[mapID], idm)
 						emitNPC(c, f, b, st, idm, mapID, "ambient", schedule, "", row[0].Line)

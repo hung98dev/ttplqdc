@@ -407,7 +407,7 @@ func eqConvention(c *Ctx, f *File, b *SourceBinding, st *eqState) {
 var setHeadRe = regexp.MustCompile("^`?(set\\.t([0-9])\\.([a-z0-9_]+))`?\\s*—\\s*(.+)$")
 var kvLineRe = regexp.MustCompile("^([a-z ]+):\\s*`?([^`]+?)`?\\s*$")
 var setEffRe = regexp.MustCompile("^([0-9]+)pc\\s+(effect\\.[^\\s`]+)\\s*->\\s*(.+)$")
-var setEffNoIDRe = regexp.MustCompile("^([0-9]+)pc\\s*->\\s*(.+)$")
+var setEffNoIDRe = regexp.MustCompile(`^([0-9]+)pc\s*->\s*(.+)$`)
 var supportRe = regexp.MustCompile("^`?(support\\.set\\.[a-z0-9_]+)`?\\s*->\\s*(.+)$")
 
 func eqSetRoster(c *Ctx, f *File, b *SourceBinding, st *eqState) {

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
 
@@ -176,28 +175,6 @@ func keyFrom(vals map[string]config.Value, fields []string) ([]config.Value, boo
 	return key, true
 }
 
-// emitAssignRows parses `field = value` lines inside the binding's
-// sections' `text` fences into `family` records keyed by the field name.
-func emitAssignRows(c *Ctx, f *File, b *SourceBinding, family string) int {
-	n := 0
-	for _, sec := range bindingSections(c, f, b) {
-		for _, fb := range allFences(sec, "text") {
-			for name, raw := range fb.Assignments(f) {
-				v, err := (TypeSpec{Name: "string"}).ParseValue(raw)
-				if err != nil {
-					v = config.VStr(raw)
-				}
-				c.Emit(f.Name, b.Raw, family,
-					[]config.Value{config.VStr(name)},
-					map[string]config.Value{"value": v}, fb.Line+1)
-				n++
-			}
-		}
-	}
-	c.consumed(f, b)
-	return n
-}
-
 // emitRule emits one rule record per declared section for prose bindings
 // (zone contract, guardrails, invariants): section prose joins `rule`.
 func emitRule(c *Ctx, f *File, b *SourceBinding, family string) int {
@@ -238,15 +215,4 @@ func allBlocks(sec *Section) []*Block {
 // enumSpec builds an enum TypeSpec from allowed tokens.
 func enumSpec(tokens ...string) TypeSpec {
 	return TypeSpec{Name: "enum", Enum: tokens}
-}
-
-// romanActs maps act enum tokens to ordinals 1..6.
-var romanActs = map[string]int64{"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6}
-
-func actOrdinal(v config.Value) (int64, error) {
-	a, ok := romanActs[v.Str]
-	if !ok {
-		return 0, fmt.Errorf("act %q", v.Str)
-	}
-	return a, nil
 }

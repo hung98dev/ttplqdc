@@ -46,7 +46,7 @@ var dgDungeonRe = regexp.MustCompile(`^#?\s*N\s*—`)
 var rewardSlotRe = regexp.MustCompile(`^([A-Z_]+).*->\s*(drop\.[a-z0-9_.<>]+)`)
 var dgStageHeadRe = regexp.MustCompile("^([0-9]+)\\.\\s*`?(stage\\.[a-z0-9_.]+)`?\\s*$")
 var dgWaveRe = regexp.MustCompile("`?(w[0-9]+)`?\\s*(?:\\(([^)]*)\\))?\\s*:")
-var dgMonsterRefRe = regexp.MustCompile("([0-9]+)\\s+(monster\\.[a-z0-9_.]+)")
+var dgMonsterRefRe = regexp.MustCompile(`([0-9]+)\s+(monster\.[a-z0-9_.]+)`)
 var dgSecretRe = regexp.MustCompile("`?(secret\\.[a-z0-9_.]+)`?")
 
 func dgSharedRules(c *Ctx, f *File, b *SourceBinding) {

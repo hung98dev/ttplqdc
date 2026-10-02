@@ -41,23 +41,6 @@ func compileWorldEvent(c *Ctx, f *File, r *Registry) {
 	}
 }
 
-func weFences(c *Ctx, f *File, b *SourceBinding, sec *Section, fam string) {
-	for _, bl := range sec.Content {
-		var lines []config.Value
-		for _, l := range bl.FLines {
-			l = strings.TrimSpace(l)
-			if l != "" {
-				lines = append(lines, config.VStr(l))
-			}
-		}
-		if len(lines) > 0 {
-			c.EmitParam(f.Name, b.Raw, fam,
-				[]config.Value{config.VStr(lines[0].Str), config.VInt(int64(len(lines)))},
-				map[string]config.Value{"lines": config.VSet(lines...)}, bl.Line)
-		}
-	}
-}
-
 func weIdentity(c *Ctx, f *File, b *SourceBinding) {
 	sec := f.Root.SectionAt("Event Identity")
 	if sec == nil {

@@ -7,12 +7,9 @@ package main
 // minimal-but-complete fixture bundle can declare its own small domains.
 
 import (
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
-
-	"thinhthan/internal/config"
 )
 
 // fenceLines yields every fence body line in every section of f.
@@ -307,12 +304,6 @@ func readmeSkillCats(c *Ctx) (int64, int64, int64, bool) {
 	return 0, 0, 0, false
 }
 
-// groupedIntText parses a grouped integer like 702,100,000.
-func groupedIntText(s string) (int64, bool) {
-	v, err := strconv.ParseInt(strings.ReplaceAll(s, ",", ""), 10, 64)
-	return v, err == nil
-}
-
 // fileDeclN scans all section titles in a catalog for a declared count.
 func fileDeclN(c *Ctx, catalog string, re *regexp.Regexp) (int64, bool) {
 	f := c.Catalogs[catalog]
@@ -335,11 +326,6 @@ func fileDeclN(c *Ctx, catalog string, re *regexp.Regexp) (int64, bool) {
 	}
 	walk(f.Root)
 	return found, ok
-}
-
-// diagf formats a cross-catalog diagnostic at file:line 0.
-func diagf(c *Ctx, code config.DiagnosticCode, format string, args ...any) {
-	c.Diags.Addf(code, "", 0, "%s", fmt.Sprintf(format, args...))
 }
 
 // bindingDecl extracts a declared finite-rule count from a registry
@@ -399,18 +385,4 @@ func bindingDecl4(b *SourceBinding, re *regexp.Regexp) ([4]int64, bool) {
 		out[i] = v
 	}
 	return out, true
-}
-
-// fenceDecl scans `NUM = value` style declarations inside fence lines
-// (e.g. progression EXP budget `TOTAL = 702100000`).
-func fenceDecl(lines []string, re *regexp.Regexp) (int64, bool) {
-	for _, l := range lines {
-		if m := re.FindStringSubmatch(strings.TrimSpace(l)); m != nil {
-			v, err := strconv.ParseInt(m[1], 10, 64)
-			if err == nil {
-				return v, true
-			}
-		}
-	}
-	return 0, false
 }

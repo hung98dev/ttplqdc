@@ -91,9 +91,6 @@ func questSection(c *Ctx, f *File, sec *Section, b *SourceBinding) {
 				fields[kv[1]] = config.VStr(kv[2])
 				continue
 			}
-			if strings.HasPrefix(l, "Objectives") || strings.HasPrefix(l, "Rewards") {
-				continue
-			}
 		}
 		// objectives numbered list: prose lines "1. `VERB` ..."
 		for _, l := range bl.Prose {
@@ -600,31 +597,6 @@ func questBoardGen(c *Ctx, f *File, b *SourceBinding) {
 		}
 	}
 	c.consumed(f, b)
-}
-
-func flattenText(f *File) string {
-	var sb strings.Builder
-	var walk func(s *Section)
-	walk = func(s *Section) {
-		for _, bl := range s.Content {
-			for _, l := range bl.FLines {
-				sb.WriteString(l + "\n")
-			}
-			for _, l := range bl.Prose {
-				sb.WriteString(l + "\n")
-			}
-			for _, row := range bl.Cells {
-				for _, cell := range row {
-					sb.WriteString(cell.Text + "\n")
-				}
-			}
-		}
-		for _, ch := range s.Children {
-			walk(ch)
-		}
-	}
-	walk(f.Root)
-	return sb.String()
 }
 
 func questSurgeEvent(c *Ctx, f *File, b *SourceBinding) {

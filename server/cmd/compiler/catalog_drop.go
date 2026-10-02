@@ -2,7 +2,6 @@ package main
 
 import (
 	"regexp"
-	"strconv"
 	"strings"
 
 	"thinhthan/internal/config"
@@ -214,36 +213,6 @@ func dropEmitSlots(c *Ctx, f *File, b *SourceBinding, tid string, tableFields ma
 		c.Emit(f.Name, b.Raw, "drop_slot",
 			[]config.Value{config.VStr(tid), config.VStr(slot)}, s, line)
 	}
-}
-
-// rollFences parses `KIND:\n```text lines``` / plain fence` groups inside a section.
-func dropRollBlocks(sec *Section) map[string][][]string {
-	out := map[string][][]string{}
-	cur := ""
-	for _, bl := range sec.Content {
-		for _, pr := range bl.Prose {
-			t := strings.TrimSpace(pr)
-			if m := regexp.MustCompile(`^(GUARANTEED|COMMON_ROLL|RARE_ROLL|FIRST_CLEAR|DAILY_FIRST)[,:]?\s*$`).FindStringSubmatch(t); m != nil {
-				cur = m[1]
-			}
-		}
-		for j := range bl.FLines {
-			if cur == "" {
-				continue
-			}
-			l := strings.TrimSpace(bl.FLines[j])
-			if l == "" {
-				continue
-			}
-			// `KIND:` headers inside fences toggle group
-			if m := regexp.MustCompile(`^(GUARANTEED|COMMON_ROLL|RARE_ROLL|FIRST_CLEAR|DAILY_FIRST)[,:]?\s*$`).FindStringSubmatch(l); m != nil {
-				cur = m[1]
-				continue
-			}
-			out[cur] = append(out[cur], []string{l, string(rune(0)) + strconv.Itoa(bl.Line+1+j)})
-		}
-	}
-	return out
 }
 
 func dropParseSlots(c *Ctx, f *File, st *dropState, tier string, lines [][]string) []map[string]config.Value {
@@ -583,7 +552,7 @@ func dropBossTables(c *Ctx, f *File, b *SourceBinding, st *dropState) {
 	c.consumed(f, b)
 }
 
-var bossSoulMapRe = regexp.MustCompile("^(boss\\.[a-z0-9_]+)\\s*->\\s*(soul\\.[a-z0-9_.]+)$")
+var bossSoulMapRe = regexp.MustCompile(`^(boss\.[a-z0-9_]+)\s*->\s*(soul\.[a-z0-9_.]+)$`)
 
 func dropBossSideGrants(c *Ctx, f *File, b *SourceBinding, st *dropState) {
 	sec := f.Root.SectionAt("Boss First-Clear Side Grants")
@@ -820,7 +789,7 @@ func dropEndgameTables(c *Ctx, f *File, b *SourceBinding, st *dropState) {
 		}
 		for _, l := range bl.Prose {
 			l = strings.TrimSpace(l)
-			if m := regexp.MustCompile("^(drop\\.dungeon\\.[a-z0-9_.]+\\.endgame)\\s*->\\s*([0-9]{4}) bp (soul\\.[a-z0-9_.]+)$").FindStringSubmatch(strings.ReplaceAll(l, "`", "")); m != nil {
+			if m := regexp.MustCompile(`^(drop\.dungeon\.[a-z0-9_.]+\.endgame)\s*->\s*([0-9]{4}) bp (soul\.[a-z0-9_.]+)$`).FindStringSubmatch(strings.ReplaceAll(l, "`", "")); m != nil {
 				soulRepeat[m[1]] = m[3]
 			}
 		}
