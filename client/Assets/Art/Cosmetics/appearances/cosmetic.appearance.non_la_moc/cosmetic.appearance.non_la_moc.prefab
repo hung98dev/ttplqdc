@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 5.649852714368494e-29
-  m_labelHash: 2.2462454969863061e-29
+  m_CategoryHash: 1.0382175480631711e-37
+  m_labelHash: 3.7799521357756655e-26
   m_SpriteKey: 0
   m_SpriteHash: 0
 --- !u!1 &100007
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 1.0259437743798117e-09
-  m_labelHash: 2.2462454969863061e-29
+  m_CategoryHash: 9.709747463365655e-23
+  m_labelHash: 3.7799521357756655e-26
   m_SpriteKey: 0
   m_SpriteHash: 0
 --- !u!1 &100011
@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 1.385280695016214e-33
-  m_labelHash: 2.2462454969863061e-29
+  m_CategoryHash: 1.3838898053486944e-20
+  m_labelHash: 3.7799521357756655e-26
   m_SpriteKey: 0
   m_SpriteHash: 0
 --- !u!1 &100015
@@ -385,8 +385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 1.0987186132093813e-17
-  m_labelHash: 2.2462454969863061e-29
+  m_CategoryHash: 2.8998650135440835e-25
+  m_labelHash: 3.7799521357756655e-26
   m_SpriteKey: 0
   m_SpriteHash: 0
 --- !u!1 &100019
@@ -469,8 +469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 7.056504369886701e-24
-  m_labelHash: 2.2462454969863061e-29
+  m_CategoryHash: 1.8104357195625198e-06
+  m_labelHash: 3.7799521357756655e-26
   m_SpriteKey: 0
   m_SpriteHash: 0
 --- !u!1 &100023
@@ -553,8 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 0.009690354578197002
-  m_labelHash: 2.2462454969863061e-29
+  m_CategoryHash: 0.00019153392349835485
+  m_labelHash: 3.7799521357756655e-26
   m_SpriteKey: 0
   m_SpriteHash: 0
 --- !u!1 &100027
@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteResolver
-  m_CategoryHash: 0.3185683786869049
-  m_labelHash: 2.2462454969863061e-29
+  m_CategoryHash: 1.5006487317834123e-37
+  m_labelHash: 3.7799521357756655e-26
   m_SpriteKey: 0
   m_SpriteHash: 0
