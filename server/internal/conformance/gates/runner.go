@@ -204,6 +204,8 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details = append(checkCscRsp(r.Root), checkAsmdefs(r.Root)...)
 	case "Q4.go.static":
 		details, missing = r.goStatic()
+	case "Q5.content_compile":
+		details, missing = r.contentCompile()
 	case "Q5.migrations":
 		srv, err := r.pg()
 		if err != nil {

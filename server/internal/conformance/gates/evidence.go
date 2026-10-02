@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -158,11 +159,23 @@ func ValidateManifestSchema(path string) []string {
 // schema-v2 evidence manifest (test_and_release_evidence.md §2). Merged Unity
 // verdicts use the Windows rows only; Linux's SKIP(windows-only) rows for
 // those gates are dropped.
-func MergeReports(linuxPath, windowsPath string) (*Manifest, []string) {
+func MergeReports(linuxPath, windowsPath, compileReportPath string) (*Manifest, []string) {
 	var errs []string
+	contentRevision := "none"
+	if rep, err := readCompileReport(compileReportPath); err == nil {
+		if compileRevisionHex.MatchString(rep.ContentRevisionHash) {
+			contentRevision = rep.ContentRevisionHash
+		} else {
+			errs = append(errs, "compile report: content_revision_hash is not a 64-lowercase-hex revision")
+		}
+	} else if !errors.Is(err, os.ErrNotExist) {
+		// A present-but-unreadable report is inconsistent; a missing one only
+		// means the compile gate was not active at the tested source.
+		errs = append(errs, err.Error())
+	}
 	m := &Manifest{
 		SchemaVersion:   SchemaEvidenceVersion,
-		ContentRevision: "none",
+		ContentRevision: contentRevision,
 		CodegenDrift:    []DriftRow{},
 		Toolchain: Toolchain{
 			Go:          stackpin.GoVersion,
