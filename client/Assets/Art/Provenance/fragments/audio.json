@@ -1,0 +1,1224 @@
+{
+ "schema_version": 1,
+ "assets": [
+  {
+   "asset_key": "asset.dungeon.xom_chim.bgm",
+   "file_path": "client/Assets/Audio/Bgm/ben_nuoc_den/dungeon_xom_chim.ogg",
+   "content_id": "sha256:4ceef3152b0b483c90dd61c2c70d17d0079f972774f2e31f6a03d1f6a976092b",
+   "source_kind": "FREE_LICENSED",
+   "creator": "sterlingray — \"Into the Ruined Temple\"",
+   "source_uri": "https://opengameart.org/content/into-the-ruined-temple",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "def8dd4d4d111466770154b510034405f67af175e69c45162e89dac0b5c2a286",
+   "final_sha256": "4ceef3152b0b483c90dd61c2c70d17d0079f972774f2e31f6a03d1f6a976092b",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "sterlingray (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "black-water river market; sampans and stilt docks; sunken ruined hamlet"
+    ],
+    "regional_variants": [
+     "ben_nuoc_den"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.ben_nuoc_den.field.bgm",
+   "file_path": "client/Assets/Audio/Bgm/ben_nuoc_den/field.ogg",
+   "content_id": "sha256:af0f6de4e4af2ed6d0a9ae59ada165e9c26861805485058326ec3cf4b802688d",
+   "source_kind": "FREE_LICENSED",
+   "creator": "some-weirdo — \"Drifting\"",
+   "source_uri": "https://opengameart.org/content/drifting-0",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "e9b1bd8ebb5a560605c0a66f7a83e7cdfbfa3c554d2226ad7cc2fe86b6c7d5b1",
+   "final_sha256": "af0f6de4e4af2ed6d0a9ae59ada165e9c26861805485058326ec3cf4b802688d",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "some-weirdo (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "black-water river market; sampans and stilt docks; drifting water-level theme for flooded fields"
+    ],
+    "regional_variants": [
+     "ben_nuoc_den"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.ben_nuoc_den.town.bgm",
+   "file_path": "client/Assets/Audio/Bgm/ben_nuoc_den/town.ogg",
+   "content_id": "sha256:4b467be98bfffca7590f6acb94f8fd826ec4e228477c9f67627e977a4822d956",
+   "source_kind": "FREE_LICENSED",
+   "creator": "thimras — \"A Sailor's Chant (harpsichord, flutes, voice)\"",
+   "source_uri": "https://opengameart.org/content/a-sailors-chant",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "f830d37ad4c15a31282dd792c050c36e16b97251d9a3b0150e8be645d75a1cc7",
+   "final_sha256": "4b467be98bfffca7590f6acb94f8fd826ec4e228477c9f67627e977a4822d956",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "thimras (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "black-water river market; sampans and stilt docks; folk chant with flutes for the river-market town"
+    ],
+    "regional_variants": [
+     "ben_nuoc_den"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.hang_ma_tranh.bgm",
+   "file_path": "client/Assets/Audio/Bgm/deo_may/dungeon_hang_ma_tranh.ogg",
+   "content_id": "sha256:73579c198c6a27cb5d3f1f70f97d48d7c7a77c32879ec62626b1dd7b0662f52b",
+   "source_kind": "FREE_LICENSED",
+   "creator": "congusbongus — \"Ancient Caverns horror ambient loop\"",
+   "source_uri": "https://opengameart.org/content/ancient-caverns-horror-ambient-loop",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "5c841ef1a7bacd2a038801ecee0741e200d1cf1cd08f36a6a89cce95bcfb6a8a",
+   "final_sha256": "73579c198c6a27cb5d3f1f70f97d48d7c7a77c32879ec62626b1dd7b0662f52b",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "congusbongus (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "cloud-pass highland trail; cold mists over terraced hamlets; tiger-demon den: dark forbidding cavern pads"
+    ],
+    "regional_variants": [
+     "deo_may"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.deo_may.field.bgm",
+   "file_path": "client/Assets/Audio/Bgm/deo_may/field.ogg",
+   "content_id": "sha256:e2eef1a9431a316f24f8eabdea10db42df7a9b526931423d4e55c8dfa0aef7a7",
+   "source_kind": "FREE_LICENSED",
+   "creator": "nbjdlukasabsolute — \"Cool Air Cool Drums\"",
+   "source_uri": "https://opengameart.org/content/cool-air-cool-drums",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "519cfa1a5d7e4833b529d9cdc281eb5c963af7fe12f7b0002993bc0aba7d972c",
+   "final_sha256": "e2eef1a9431a316f24f8eabdea10db42df7a9b526931423d4e55c8dfa0aef7a7",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "nbjdlukasabsolute (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "cloud-pass highland trail; cold mists over terraced hamlets; cold mountain exploration drums"
+    ],
+    "regional_variants": [
+     "deo_may"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.deo_may.town.bgm",
+   "file_path": "client/Assets/Audio/Bgm/deo_may/town.ogg",
+   "content_id": "sha256:d517c3c1ee107edb188201bf6bded1360e81fe388af679c193f50ea19421d999",
+   "source_kind": "FREE_LICENSED",
+   "creator": "sen — \"A Dreamy Forest\"",
+   "source_uri": "https://opengameart.org/content/a-dreamy-forest",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "eac92cfb7bc1baab79f7fccaea0cbda8403e5be94f29654b8649bfefb004b3d6",
+   "final_sha256": "d517c3c1ee107edb188201bf6bded1360e81fe388af679c193f50ea19421d999",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "sen (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "cloud-pass highland trail; cold mists over terraced hamlets"
+    ],
+    "regional_variants": [
+     "deo_may"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.dinh_lang_bo_hoang.bgm",
+   "file_path": "client/Assets/Audio/Bgm/lang_da/dungeon_dinh_lang_bo_hoang.ogg",
+   "content_id": "sha256:f602921bcd0228188ff617ed175e37d3f2d515d2ab655002db41ec7a5ea7c690",
+   "source_kind": "FREE_LICENSED",
+   "creator": "qubodup — \"Dark Shrine loop (remix of yd - Shrine)\"",
+   "source_uri": "https://opengameart.org/content/dark-shrine-loop",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "9580618dc851f70c3a11b5ff87672867de44cd38b35dabf926d6befde20e78d0",
+   "final_sha256": "f602921bcd0228188ff617ed175e37d3f2d515d2ab655002db41ec7a5ea7c690",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "qubodup (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "rice-paddy village of the lowlands; communal đình life; ruined communal hall overrun by restless souls"
+    ],
+    "regional_variants": [
+     "lang_da"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.lang_da.field.bgm",
+   "file_path": "client/Assets/Audio/Bgm/lang_da/field.ogg",
+   "content_id": "sha256:fcebfbd3a0331a1ade6cafab388e1ca50c59b2dbcd5adbacf89136342b865676",
+   "source_kind": "FREE_LICENSED",
+   "creator": "tozan — \"Asian Style, Koto, Sakuhachi, and Ensemble Strings\"",
+   "source_uri": "https://opengameart.org/content/asianoriental1",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "172d95262348d020d7d1428046b100aefbad0a6cbaa93ef87efafeb8add107d0",
+   "final_sha256": "fcebfbd3a0331a1ade6cafab388e1ca50c59b2dbcd5adbacf89136342b865676",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "tozan (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "rice-paddy village of the lowlands; communal đình life; koto/shakuhachi-style plucked and bamboo-wind timbres echoing đàn bầu/tranh pastoral sound"
+    ],
+    "regional_variants": [
+     "lang_da"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.lang_da.town.bgm",
+   "file_path": "client/Assets/Audio/Bgm/lang_da/town.ogg",
+   "content_id": "sha256:8d380a0cba84345bd38ffcb02307a66b1d68da12a1c9331f19adaa4263b770d1",
+   "source_kind": "FREE_LICENSED",
+   "creator": "spring-spring — \"Danse du village (Cugzilia II 2.0)\"",
+   "source_uri": "https://opengameart.org/content/cugzilia-ii-20-danse-du-village",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "99b25f4a20b6f6df52386560f6ed7f40d23e9df14233f7a44e42c172faec4303",
+   "final_sha256": "8d380a0cba84345bd38ffcb02307a66b1d68da12a1c9331f19adaa4263b770d1",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "Spring Spring (Ren Fuchsfein) via opengameart.org, CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "rice-paddy village of the lowlands; communal đình life; village dance theme for the safe đình-lang town"
+    ],
+    "regional_variants": [
+     "lang_da"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.nui_thieng.field.bgm",
+   "file_path": "client/Assets/Audio/Bgm/nui_thieng/field.ogg",
+   "content_id": "sha256:51b850b589a03102ec986d26fc6f0bf5e0c07afa38ae68881ebd91fcce07aa2e",
+   "source_kind": "FREE_LICENSED",
+   "creator": "ignasd — \"Secrets of the Universe (Crystal)\"",
+   "source_uri": "https://opengameart.org/content/secrets-of-the-universe",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "35f568b9448e12d40817c3c94278cf925bc9ebb0f44ff2c5cfa3cd407658502c",
+   "final_sha256": "51b850b589a03102ec986d26fc6f0bf5e0c07afa38ae68881ebd91fcce07aa2e",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "ignasd (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "sacred mountain of Thần Trùng; pilgrimage through cloud forest; ethereal crystal tones for the cloud forest ascent"
+    ],
+    "regional_variants": [
+     "nui_thieng"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.instance.finale.than_trung.bgm",
+   "file_path": "client/Assets/Audio/Bgm/nui_thieng/finale.ogg",
+   "content_id": "sha256:7c36e69414c2bafda8d5330cc33142e22b3f78de54dc7d047551d3917ba5c86d",
+   "source_kind": "FREE_LICENSED",
+   "creator": "spring-spring — \"Final or Regular Boss Theme\"",
+   "source_uri": "https://opengameart.org/content/a-soundtrack",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "cde72cf708e1f663343f5d81e3b5a82a17cbdf57c518f7a7dfd97ee5dd8903a8",
+   "final_sha256": "7c36e69414c2bafda8d5330cc33142e22b3f78de54dc7d047551d3917ba5c86d",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "Spring Spring (Ren Fuchsfein) via opengameart.org, CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "sacred mountain of Thần Trùng; pilgrimage through cloud forest; the Thần Trùng confrontation at the summit"
+    ],
+    "regional_variants": [
+     "nui_thieng"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.nui_thieng.town.bgm",
+   "file_path": "client/Assets/Audio/Bgm/nui_thieng/town.ogg",
+   "content_id": "sha256:3a9b420d5c5c282fc17c9a0a89f77fb9c0440ec8578f9ab21f0cc4602a13f43c",
+   "source_kind": "FREE_LICENSED",
+   "creator": "adiutorium — \"Somnium\"",
+   "source_uri": "https://opengameart.org/content/somnium",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "fe6055d9eb118faafeb2ebb30e453b2b288c0c22d67331200c922fefb7d6a371",
+   "final_sha256": "3a9b420d5c5c282fc17c9a0a89f77fb9c0440ec8578f9ab21f0cc4602a13f43c",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "adiutorium (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "sacred mountain of Thần Trùng; pilgrimage through cloud forest; dreamlike mountain-foot hamlet"
+    ],
+    "regional_variants": [
+     "nui_thieng"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.mieu_ba_trong_rung.bgm",
+   "file_path": "client/Assets/Audio/Bgm/rung_u_minh/dungeon_mieu_ba_trong_rung.ogg",
+   "content_id": "sha256:27f6dd203d0ccb3866cb80ba16da7aa2e87e4cc872eadf4dee475ee4372e3949",
+   "source_kind": "FREE_LICENSED",
+   "creator": "haeldb — \"Evil Temple Ambiance loop\"",
+   "source_uri": "https://opengameart.org/content/evil-temple-ambiance-loop",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "d2449bcd9c560145d25ba4437892b947e16e371c08441164618e0a0ed676a5dc",
+   "final_sha256": "27f6dd203d0ccb3866cb80ba16da7aa2e87e4cc872eadf4dee475ee4372e3949",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "haeldb (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "U Minh dark mangrove forest; swamp hamlets and forest shrines; chant-laden temple ambience for the forest shrine"
+    ],
+    "regional_variants": [
+     "rung_u_minh"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.rung_u_minh.field.bgm",
+   "file_path": "client/Assets/Audio/Bgm/rung_u_minh/field.ogg",
+   "content_id": "sha256:e801fdcfd535063cb3faa2b1f39f7c74bf033082eb844127a22f384ed23f4b9a",
+   "source_kind": "FREE_LICENSED",
+   "creator": "pro-sensory — \"Chill Jungle\"",
+   "source_uri": "https://opengameart.org/content/chill-jungle",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "3de0a50a390d938f30d09cdef564b9235fbdb90e509207def3e1845bd57a9bdd",
+   "final_sha256": "e801fdcfd535063cb3faa2b1f39f7c74bf033082eb844127a22f384ed23f4b9a",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "Alex McCulloch / pro-sensory (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "U Minh dark mangrove forest; swamp hamlets and forest shrines"
+    ],
+    "regional_variants": [
+     "rung_u_minh"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.rung_u_minh.town.bgm",
+   "file_path": "client/Assets/Audio/Bgm/rung_u_minh/town.ogg",
+   "content_id": "sha256:05409e4619c94d37d6af5b4140ae05c28668ecc558e1833345448b5c01656aa6",
+   "source_kind": "FREE_LICENSED",
+   "creator": "pro-sensory — \"Binary Underwater Village loop\"",
+   "source_uri": "https://opengameart.org/content/binary-underwater-village-loop",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "63ea88e921bce528c6a3d41961579fb6111aeb246c1d677d2225a09b83d309a4",
+   "final_sha256": "05409e4619c94d37d6af5b4140ae05c28668ecc558e1833345448b5c01656aa6",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "Alex McCulloch / pro-sensory (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "U Minh dark mangrove forest; swamp hamlets and forest shrines; water village ambience for the swamp stilt town"
+    ],
+    "regional_variants": [
+     "rung_u_minh"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.duel_court.bgm",
+   "file_path": "client/Assets/Audio/Bgm/shared/duel_court.ogg",
+   "content_id": "sha256:1c054d8a4eabfbaa24ae55990c82ea3b5135e9f5c761177645e1f5431238ec5b",
+   "source_kind": "FREE_LICENSED",
+   "creator": "umplix — \"A Knight's Challenge\"",
+   "source_uri": "https://opengameart.org/content/a-knights-challenge",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "d987a876ed159b0e1fdf22fd4d16d4ee75299073f4368403b8ebcb50e0c1355d",
+   "final_sha256": "1c054d8a4eabfbaa24ae55990c82ea3b5135e9f5c761177645e1f5431238ec5b",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "umplix (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.bgm",
+   "file_path": "client/Assets/Audio/Bgm/shared/five_element_arena.ogg",
+   "content_id": "sha256:d32c1690c20575967220ce209087e12d8b78ab8ceb6691358e04234146f0df8b",
+   "source_kind": "FREE_LICENSED",
+   "creator": "cynicmusic — \"Battle Theme A\"",
+   "source_uri": "https://opengameart.org/content/battle-theme-a",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "6042399782e581d753d616bc703e66483d5eccb5fb687a20c9a552d68c49e620",
+   "final_sha256": "d32c1690c20575967220ce209087e12d8b78ab8ceb6691358e04234146f0df8b",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "cynicmusic (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "ancient citadel; stone gates and the sealed temple; epic strings-and-horns battle for the Five Elements arena"
+    ],
+    "regional_variants": [
+     "thanh_co"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.guild_war.five_seal_conflict.bgm",
+   "file_path": "client/Assets/Audio/Bgm/shared/five_seal_conflict.ogg",
+   "content_id": "sha256:a2b15b6b3ac912846316edc3a708c895b4a9eb8e1f1d0e64f3ec957b710e66f1",
+   "source_kind": "FREE_LICENSED",
+   "creator": "indieteur — \"Epic at the Jungle\"",
+   "source_uri": "https://opengameart.org/content/epic-at-the-jungle",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "724a727ba81374b078f2330beeb4234c8e1b2a03e3ab6983829fe6c9a48f536a",
+   "final_sha256": "a2b15b6b3ac912846316edc3a708c895b4a9eb8e1f1d0e64f3ec957b710e66f1",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "indieteur (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "U Minh dark mangrove forest; swamp hamlets and forest shrines; tribal-hero war drums for the Five Seal conflict"
+    ],
+    "regional_variants": [
+     "rung_u_minh"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.menu_main.bgm",
+   "file_path": "client/Assets/Audio/Bgm/shared/menu_main.ogg",
+   "content_id": "sha256:50a78cc9a866e7883a1a77c66765ee96717f5e9dd5e6d9d4a11967e06f3bd328",
+   "source_kind": "FREE_LICENSED",
+   "creator": "spring-spring — \"Cugzilia II 2.0 - Title\"",
+   "source_uri": "https://opengameart.org/content/cugzilia-ii-20-title-theme",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "b5f9630be4545d847e89d30f8d25b2eced10bd302e82c8262495d465b64ecb1a",
+   "final_sha256": "50a78cc9a866e7883a1a77c66765ee96717f5e9dd5e6d9d4a11967e06f3bd328",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "Spring Spring (Ren Fuchsfein) via opengameart.org, CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.den_tran.bgm",
+   "file_path": "client/Assets/Audio/Bgm/thanh_co/dungeon_den_tran.ogg",
+   "content_id": "sha256:27085893c723103f7fa5aae086f487c0a0ab9ecfed9f6849c59f398ed8329d81",
+   "source_kind": "FREE_LICENSED",
+   "creator": "ruskerdax — \"Ancient Grudge\"",
+   "source_uri": "https://opengameart.org/content/ancient-grudge",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "cf8e7cb2ef7c46e42d8860f7f9f363ba3f8a4624e7cd00ec6b74f9d2863537c3",
+   "final_sha256": "27085893c723103f7fa5aae086f487c0a0ab9ecfed9f6849c59f398ed8329d81",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "ruskerdax (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "ancient citadel; stone gates and the sealed temple; something old sealed inside the Trần-era temple"
+    ],
+    "regional_variants": [
+     "thanh_co"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.thanh_co.field.bgm",
+   "file_path": "client/Assets/Audio/Bgm/thanh_co/field.ogg",
+   "content_id": "sha256:ff4495ddd3bccfba035bc93092a4b1e27af79612bfda8af881ac523b59abe2a0",
+   "source_kind": "FREE_LICENSED",
+   "creator": "obscure-music — \"An Ancient Fairytale\"",
+   "source_uri": "https://opengameart.org/content/ancient-fairytale",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "b47f5cee3aab94fe9ed59a3c9eed29ae93850e82580e9025940285d4a3e6ea7d",
+   "final_sha256": "ff4495ddd3bccfba035bc93092a4b1e27af79612bfda8af881ac523b59abe2a0",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "obscure-music (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "ancient citadel; stone gates and the sealed temple"
+    ],
+    "regional_variants": [
+     "thanh_co"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.bgm.thanh_co.town.bgm",
+   "file_path": "client/Assets/Audio/Bgm/thanh_co/town.ogg",
+   "content_id": "sha256:a5faa5cb0c9425315c1e4a94d040e39323d4bfd3bc4431efef886c860bd18904",
+   "source_kind": "FREE_LICENSED",
+   "creator": "karatestudios — \"Army of Darkness (Dark Castle)\"",
+   "source_uri": "https://opengameart.org/content/army-of-darkness-castle",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "fefee3a210852d173c2f6935c357a192fb030a35fd6b5bace1c0ae2d2d1e36d5",
+   "final_sha256": "a5faa5cb0c9425315c1e4a94d040e39323d4bfd3bc4431efef886c860bd18904",
+   "changes": [
+    "loudness-normalized to -20 LUFS integrated (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q4, 44100 Hz stereo",
+    "imported as AudioClip loadType=Streaming (never fully resident in RAM)"
+   ],
+   "attribution": "Karate Studios (opengameart.org), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": {
+    "source_tales": [
+     "ancient citadel; stone gates and the sealed temple; citadel emerging from fog at the outer gate"
+    ],
+    "regional_variants": [
+     "thanh_co"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.basic_attack.clip",
+   "file_path": "client/Assets/Audio/Sfx/basic_attack.ogg",
+   "content_id": "sha256:d648d60eab4d8ac6df6331821a07ae00305a56373c04a9aca1d4bc77a98bbe25",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — rpg-audio pack, file knifeSlice2.ogg (weapon slash)",
+   "source_uri": "https://kenney.nl/assets/rpg-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "6c2064d0ef988d1ec3d56868e823ea8823a5cac00f2742560052633529407def",
+   "final_sha256": "d648d60eab4d8ac6df6331821a07ae00305a56373c04a9aca1d4bc77a98bbe25",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.boss_telegraph.clip",
+   "file_path": "client/Assets/Audio/Sfx/boss_telegraph.ogg",
+   "content_id": "sha256:fc76bf0619fc42728ecf7e5a34b85147bfdc8dbfdcc0925ab7b063e4db85a322",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — impact-sounds pack, file impactBell_heavy_002.ogg (heavy bell warning)",
+   "source_uri": "https://kenney.nl/assets/impact-sounds",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "a4171ed1a4a17fb858a38de1c59b5b42e50d8f046c525706c0e3ac8671f189f5",
+   "final_sha256": "fc76bf0619fc42728ecf7e5a34b85147bfdc8dbfdcc0925ab7b063e4db85a322",
+   "changes": [
+    "playback rate lowered to 65% (asetrate) for a deeper warning gong",
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.guard.clip",
+   "file_path": "client/Assets/Audio/Sfx/guard.ogg",
+   "content_id": "sha256:4cc0e44adb73ee7a409a691265df4ff424fcda9c99116c45958c9fabbcff682e",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — impact-sounds pack, file impactPlate_medium_002.ogg (raised-guard metal ring)",
+   "source_uri": "https://kenney.nl/assets/impact-sounds",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "68762e1ed49bb59ae6602fad6ce2ebac61958478ddb2668de9106f010cd4b6b0",
+   "final_sha256": "4cc0e44adb73ee7a409a691265df4ff424fcda9c99116c45958c9fabbcff682e",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.hit.clip",
+   "file_path": "client/Assets/Audio/Sfx/hit.ogg",
+   "content_id": "sha256:214c7f98f7d8e42918b106843232dd909c4f97a71059534247f33165ccbf5274",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — impact-sounds pack, file impactPunch_medium_002.ogg (body hit punch)",
+   "source_uri": "https://kenney.nl/assets/impact-sounds",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "6492f9ccbc8d24dcef607bb1b48790b7870961474561f7fe5601e1c73a3018ef",
+   "final_sha256": "214c7f98f7d8e42918b106843232dd909c4f97a71059534247f33165ccbf5274",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.item_pickup.clip",
+   "file_path": "client/Assets/Audio/Sfx/item_pickup.ogg",
+   "content_id": "sha256:60a9f0103b84b85d3b414ec2e91e5ea1a5af768a58ed067a9f8f7d5447f8085d",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — rpg-audio pack, file handleCoins2.ogg (coin pickup)",
+   "source_uri": "https://kenney.nl/assets/rpg-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "4b857968d64f9ac9336a10ffac6694d7547e1f01566ad6857b30bc8db3ee6c32",
+   "final_sha256": "60a9f0103b84b85d3b414ec2e91e5ea1a5af768a58ed067a9f8f7d5447f8085d",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.jump.clip",
+   "file_path": "client/Assets/Audio/Sfx/jump.ogg",
+   "content_id": "sha256:dd1abf3c9cd0cd701f3c6c7e75b4813708235e4e0ac56b26cba55739db777998",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — digital-audio pack, file phaseJump3.ogg (upward jump whoosh)",
+   "source_uri": "https://kenney.nl/assets/digital-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "69e25a1b7b0781f57af84eb4424973ec406d34bc48eed8b6964787b2d74093a9",
+   "final_sha256": "dd1abf3c9cd0cd701f3c6c7e75b4813708235e4e0ac56b26cba55739db777998",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.just_guard_success.clip",
+   "file_path": "client/Assets/Audio/Sfx/just_guard_success.ogg",
+   "content_id": "sha256:c20c23b7e28c2f2d042900c7ee7205c652adbf13afdf29d36dbb488d5325ed49",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — impact-sounds pack, file impactBell_heavy_001.ogg (heavy bell reward ring)",
+   "source_uri": "https://kenney.nl/assets/impact-sounds",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "9df61e3ae9a83dc65e5a1fd3ed19d480876f3b22b963a1b9ef6fa293592dcec4",
+   "final_sha256": "c20c23b7e28c2f2d042900c7ee7205c652adbf13afdf29d36dbb488d5325ed49",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.land.clip",
+   "file_path": "client/Assets/Audio/Sfx/land.ogg",
+   "content_id": "sha256:3fb6dc1d241023bf10d1fdabe5a5192bb9c9376605fa17562b72b8ef87d5bdea",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — impact-sounds pack, file impactSoft_medium_001.ogg (soft landing thud)",
+   "source_uri": "https://kenney.nl/assets/impact-sounds",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "7642a4fd43e547afe4f7adfadb3dabb681c0ff512f52c1674bae30a726841faf",
+   "final_sha256": "3fb6dc1d241023bf10d1fdabe5a5192bb9c9376605fa17562b72b8ef87d5bdea",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.map_transfer.clip",
+   "file_path": "client/Assets/Audio/Sfx/map_transfer.ogg",
+   "content_id": "sha256:ba081bfe950be00f1e27d75c742813bcaaf00961ee6938269d4fbe956997613a",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — digital-audio pack, file phaserUp6.ogg (portal transfer phase)",
+   "source_uri": "https://kenney.nl/assets/digital-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "39616fbeb3cf28288873502e99acfc590705d54bf7f58ef3f1a23cec72dd22db",
+   "final_sha256": "ba081bfe950be00f1e27d75c742813bcaaf00961ee6938269d4fbe956997613a",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.quest_complete.clip",
+   "file_path": "client/Assets/Audio/Sfx/quest_complete.ogg",
+   "content_id": "sha256:792a53bc132efd5b96289769a4ce3968ed6d401f8bc63120d00d62957f458dc3",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — digital-audio pack, file threeTone1.ogg (three-tone success motif)",
+   "source_uri": "https://kenney.nl/assets/digital-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "bdf21eb12e65507f091d074886fdac820e1ccae51d060caa168e5567acadb84b",
+   "final_sha256": "792a53bc132efd5b96289769a4ce3968ed6d401f8bc63120d00d62957f458dc3",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.skill_cast.clip",
+   "file_path": "client/Assets/Audio/Sfx/skill_cast.ogg",
+   "content_id": "sha256:e57af30782f2c2d8fe05fd4b6d3bbb86e1cacec38bdb7a6fbe0c5e4b9e2956da",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — digital-audio pack, file phaserUp4.ogg (rising cast phase)",
+   "source_uri": "https://kenney.nl/assets/digital-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "a64a69368af9d85dfce8dd38432fd6c9935a7766621782193102c9cb276571fc",
+   "final_sha256": "e57af30782f2c2d8fe05fd4b6d3bbb86e1cacec38bdb7a6fbe0c5e4b9e2956da",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.ui_cancel.clip",
+   "file_path": "client/Assets/Audio/Sfx/ui_cancel.ogg",
+   "content_id": "sha256:dd4bf5fff53c198c8b6dc2c4d881ad6facc683b922252fd6546e7c3599de2ec3",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — digital-audio pack, file twoTone2.ogg (counterpart two-tone cancel chime)",
+   "source_uri": "https://kenney.nl/assets/digital-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "e8e4a2d9faa4344f4722de9ef81103290858bbcd80f1dc686879128cae52e9f0",
+   "final_sha256": "dd4bf5fff53c198c8b6dc2c4d881ad6facc683b922252fd6546e7c3599de2ec3",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.ui_confirm.clip",
+   "file_path": "client/Assets/Audio/Sfx/ui_confirm.ogg",
+   "content_id": "sha256:df03becf2213009c086a73525e757ad55ba9ff5553425ffe5f85ec2a624dfdf4",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — digital-audio pack, file twoTone1.ogg (bright two-tone confirm chime)",
+   "source_uri": "https://kenney.nl/assets/digital-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "8732f14d6398407a8f1df77b986c2099cfd88f6583e1272cb60497cb2fe8da1d",
+   "final_sha256": "df03becf2213009c086a73525e757ad55ba9ff5553425ffe5f85ec2a624dfdf4",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.sfx.ui_error.clip",
+   "file_path": "client/Assets/Audio/Sfx/ui_error.ogg",
+   "content_id": "sha256:765f835fa314a7ec38e8433bdc7eaf0f6d072666f6ef9024e3c2fc2dda7a4a90",
+   "source_kind": "FREE_LICENSED",
+   "creator": "Kenney Vleugels (Kenney.nl) — digital-audio pack, file zapThreeToneDown.ogg (descending error zap)",
+   "source_uri": "https://kenney.nl/assets/digital-audio",
+   "license_id": "CC0-1.0",
+   "license_uri": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "acquired_at_utc": "2026-10-02T16:00:00Z",
+   "source_sha256": "272e60bc62a1685f990fa50d163c3cb7f85073c1c3f89e3c3409e7ec938703c5",
+   "final_sha256": "765f835fa314a7ec38e8433bdc7eaf0f6d072666f6ef9024e3c2fc2dda7a4a90",
+   "changes": [
+    "leading/tail silence trimmed",
+    "loudness-normalized to -16 LUFS (ITU-R BS.1770)",
+    "transcoded to Ogg Vorbis q5, 44100 Hz stereo",
+    "imported as AudioClip loadType=DecompressOnLoad (in-memory SFX)"
+   ],
+   "attribution": "Kenney (kenney.nl), CC0",
+   "style_pack_id": null,
+   "generation_record": null,
+   "folklore_card": null,
+   "inputs": [],
+   "review_state": "PENDING"
+  }
+ ]
+}

@@ -720,6 +720,76 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 614a8cd8b62745afa1fe8f861e110547
+    m_Address: asset.sfx.ui_confirm.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 010c9eb182ac4b89aca0f71ebae8f2f9
+    m_Address: asset.sfx.ui_cancel.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 729aa571270240c381169be0b3a1482a
+    m_Address: asset.sfx.ui_error.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9becb154a4049dfbc5d8ba25ba3635d
+    m_Address: asset.sfx.jump.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2e61dfadb044eb592839efae07d19d2
+    m_Address: asset.sfx.land.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5578811ff2244a0fb33950c71ec99d68
+    m_Address: asset.sfx.basic_attack.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3340998f407b4fc4810e02b38adc0d4f
+    m_Address: asset.sfx.hit.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0bb95cff9433448296ffe6b3a1007adc
+    m_Address: asset.sfx.guard.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 82f26c4f27b34fe6bdde995ab863f928
+    m_Address: asset.sfx.just_guard_success.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fefa1d83af444fb0a21eafd2c4cc539a
+    m_Address: asset.sfx.skill_cast.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25ecb71e21114dfdb1898cf14e748991
+    m_Address: asset.sfx.boss_telegraph.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09129549d18449af9069890e049e8904
+    m_Address: asset.sfx.item_pickup.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0233b52871f04795870c7b677efb72d8
+    m_Address: asset.sfx.quest_complete.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0447749f4a4f48cf9003297b208d95ad
+    m_Address: asset.sfx.map_transfer.clip
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:
