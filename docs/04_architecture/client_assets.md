@@ -77,6 +77,7 @@ localization.shared             built into the player: shared localization asset
 localization.strings.<locale_key>  built into the player: string tables of one locale
                                 (<locale_key> = lowercase locale code, '-' -> '_': vi_vn, en_us)
 ```
+`asset.class.<id>.<facet>` entries resolve to `shared.local` (the class actor sheets + animation above); an `asset.*` key whose catalog kind is not registered in § Stable Asset Keys fails canonical-group validation rather than falling back to a generic group.
 `com.unity.localization` auto-creates `Localization-*` groups during asset import (ADR-0074);
 the IMP-063 provisioner re-homes their entries into the canonical `localization.*` groups —
 package-assigned addresses and labels are preserved because they are the runtime's
@@ -98,7 +99,7 @@ Asset keys are ASCII lowercase, dot-separated, and derived deterministically (ca
 ```text
 catalog-backed   asset.<catalog_id>.<facet>
                  catalog_id = the canonical content ID verbatim, including its kind segment
-                              (monster., boss., map., dungeon., instance., skill., beast., item., cosmetic., npc., zone., ...);
+                              (monster., boss., map., dungeon., instance., skill., beast., item., cosmetic., npc., zone., class., ...);
                               PvP / Guild War spaces use their space_id from ../04_architecture/physics_geometry_contract.md §6.1
 non-catalog      asset.<kind>.<name>.<facet>
                  kind ∈ { ui, sfx, bgm, font, prop, tile, parallax, vfx }, name = [a-z0-9_]+ segments joined by '.'

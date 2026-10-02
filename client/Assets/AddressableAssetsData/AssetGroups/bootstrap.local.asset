@@ -14,7 +14,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: bootstrap.local
   m_GUID: 779aee121ef1fbc489296224bb795f37
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 8ce7588b5d00046478a1437004034467
+    m_Address: asset.font.body_vi.font
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37f11b30881d23b4f919d1ccd97681ac
+    m_Address: asset.font.title_vi.font
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7fd7264eef2568c9ae55a632392d391
+    m_Address: asset.ui.boot.logo.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e80a97d4bb7f5685b694f36fcb03f07e
+    m_Address: asset.ui.error.dialog.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d00fa9e5e8c55b8bbdab1221ffa63ed3
+    m_Address: asset.ui.login.button.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c534d10a08db58bf89e3578b095e54c7
+    m_Address: asset.ui.login.panel.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2b9f8581a8d5be9a4391deffde893d6
+    m_Address: asset.ui.login.queued.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfe7e7eaad295b3495797ed9470e7afd
+    m_Address: asset.ui.splash.screen.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 426c18aa5a8a52de8af285f3f65e8fca
+    m_Address: asset.ui.update.bar_fill.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18c72d1a71cd5fd68103ec509cf98747
+    m_Address: asset.ui.update.bar_frame.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

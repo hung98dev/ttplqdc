@@ -6,6 +6,24 @@ Concrete launch progression zones, field identities, enemy families, dungeons, a
 
 The visible world is **Vietnamese folklore fantasy**. Ngũ Hành remains a gameplay system underneath the setting; it must not turn the world into generic xianxia/elemental fantasy.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Catalog-local grammars declared below: field lines `<map_id> Lv<a>-<b> — <desc>`; enemy lines `<monster_id> <NORMAL|ELITE> — <desc>`; boss mechanic fences `<TOKEN> -> <desc>`; motif fences `<MOTIF> -> <desc>`; canonical list `N boss.<id> <placement>`; `Motifs: <M> ∥ <M>` pair declarations under `### Pair/Pattern` headings. The per-act `## Fields`/`## Enemy Family`/`## Dungeon — X`/`## Boss — Y` headings repeat signatures and are disambiguated by their `# ACT` ancestry.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Launch Budget` / `text` fence | domain sizes | counted assignments | 6 regions, 18 field maps, 5 dungeons, 8 major bosses. |
+| `Progression Route` / table `Act, Levels, zone_id, Display region, Folk identity, Dungeon` | progression region / `zone_id` | Act:enum roman I..VI; Levels:range(int) `a-b`; zone_id:id; Display region:string; Folk identity:string; Dungeon:id or `finale` token | 6 regions covering Lv1-60; Act VI dungeon column = `finale` (its finale lives in `# Final Boss`). |
+| `# ACT I..VI` / `## Fields` / field-line fence + safe-anchor line | field map identity / `map_id` | field grammar: `map.<zone>.<key> Lv<int>-<int> — <desc>`; anchor line `map.<zone>.<key>` | 3 fields per act = 18; each declares its level band; safe/social anchor one per act (presentation note `has_water`/`fishing_spot` may annotate a field line). |
+| `# ACT I..VI` / `## Enemy Family` / enemy-line fence | regional monster roster / `monster_id` | enemy grammar: `monster.<zone>.<key> NORMAL\|ELITE — <desc>`; season-0 tag via `season-0` prefix in desc | Normal + elite rows per act feed `monster_catalog.md` regional rosters and `map_spawn_catalog.md` logical pools; season-0-marked rows are seasonal-variant candidates. |
+| `# ACT I..VI` / `## Dungeon — <name>` / `dungeon.<id>` line + target + numbered stage list | dungeon identity / `dungeon_id` | id line `dungeon.<key>`; target `M-N min`; stages `N. <action>` ordered | 5 normal dungeons (Acts I–V); each declares target duration and authored 3-4 stage list ending in its boss kill. |
+| `# ACT I..VI` / `## Boss — <name>` + `## Public Boss — <name>` / `boss.<id>` line + Tests line + mechanic fence | boss encounter / `boss_id` | boss id line `boss.<key>` (+ optional `recommended Lv<n>`); Tests:string; mechanic fence `TOKEN -> <desc>` ordered payload lines | Mechanic tokens define the boss's authored mechanic set; phase rules may follow in prose (`Phase 2 below 50%`, hp thresholds); `boss.ho_tinh_chin_duoi` extra paragraph declares the shadow-absorb rule with thresholds 2.5s/3-stack/−1.0s. |
+| `# Final Boss — Thần Trùng` / phase sections `## Phase N — <name> (<hp range>)` + `### Pair/Pattern` blocks + `Motifs:` lines + coefficient statements | finale phases / `boss.than_trung` | phase hp ranges `100-70%`,`70-35%`,`35-0%`; Phase-1 motif fence `MOTIF -> <desc>` (5 entries); pair/pattern motifs `M ∥ M`; numeric coefficients `N.NN ATTACK` inline | Phase 1 = 5 motifs; Phase 2 = 2 authored pairs (2-hit limit); Phase 3 = 3 authored patterns + NUI_THIENG motif; each pattern resolves into the 5s 1.20 damage window. |
+| `Canonical Eight Major Bosses` / `text` fence | canonical boss list | `N boss.<id> <placement>` ordered lines | 8 bosses = 5 dungeon + 2 public + 1 finale. |
+| `Lv60 Endgame Reuse` / rules fence + Weekly Highlight sections (selection formula fence + `highlight_index, featured_dungeon_id` table + reset fence) | endgame-variant rules + weekly highlight dispatch | rules list; expr `highlight_index = utc_week_number mod 5` (week = Monday 00:00 UTC boundary); table index:int→dungeon_id | Highlight resolved at instance creation, once-per-character-per-utc_week_number grant owned by drop_tables; non-highlighted dungeons unaffected. |
+| `Readability Guardrails` / `text` fence | readability limits | `max simultaneous major boss mechanic families = 2` etc. | Guardrail constants: 2 mechanic families, ≤4 dangerous adds, safe ground preserved, no colour-only telegraphs. |
+| `Cultural Pillars` + `Forbidden Drift` / `text` fences + `Cultural Review Gate` | presentation rules | motif vocabulary lists + review steps | Design gate; narrative text, no runtime fields. |
+
 ## Cultural Pillars
 The launch world should be recognizable through Vietnamese spaces before the player reads any text:
 ```text
@@ -34,14 +52,6 @@ Hán-Việt vocabulary is allowed where natural in Vietnamese language/history, 
 
 ## Stable-ID Rule
 All runtime IDs are ASCII lowercase snake_case. Vietnamese diacritics belong in display/localization text only.
-
-## Launch Budget
-```text
-6 progression regions
-18 adventure field maps
-5 normal dungeons
-8 major bosses
-```
 
 # Progression Route
 

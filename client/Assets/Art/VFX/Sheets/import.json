@@ -1,0 +1,305 @@
+{
+  "asset_class": "VFX_SOFT",
+  "assets": {
+    "proj_fire.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "proj_water.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "proj_ice.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "proj_leaf.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ALPHA",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "proj_bamboo.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ALPHA",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "proj_venom.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "melee_kim.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "melee_tho.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ALPHA",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "dirbox_kim.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "dirbox_tho.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ALPHA",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "dirbox_thuy.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "dash_kim.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "dash_hoa.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "dash_thuy.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "area_kim.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "area_tho.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ALPHA",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "area_moc.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ALPHA",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "area_thuy.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "area_hoa.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "meteor_hoa.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "buff_thuy.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "buff_hoa.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "target_kim.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "heal_moc.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "barrier_tho.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ALPHA",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "aura_kim.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "aura_moc.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "aura_thuy.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "aura_hoa.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    },
+    "aura_tho.png": {
+      "cell_ref": 512,
+      "flipbook": {
+        "frames": 8,
+        "fps": 24,
+        "blend": "ADDITIVE",
+        "max_instances": 8
+      },
+      "soft_edges": true
+    }
+  }
+}

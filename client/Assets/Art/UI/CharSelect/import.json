@@ -1,0 +1,8 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "character_card.png": {
+      "cell_ref": 320
+    }
+  }
+}

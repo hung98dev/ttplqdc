@@ -1,0 +1,509 @@
+{
+  "asset_class": "EQUIPMENT_ICON",
+  "assets": {
+    "item_eq_t1_dinh_lang_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_dinh_lang_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t1_ben_da_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_u_minh_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t2_dom_lua_rung_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_ben_nuoc_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t3_xom_chim_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_deo_may_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t4_dau_ho_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_thanh_co_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t5_trong_tran_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_nui_thieng_charm.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_weapon.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_head.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_body.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_hands.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_legs.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_feet.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_necklace.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_ring.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_costume.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_talisman.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_jade.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_seal.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_relic.png": {
+      "cell_ref": 64
+    },
+    "item_eq_t6_dau_cu_charm.png": {
+      "cell_ref": 64
+    }
+  }
+}

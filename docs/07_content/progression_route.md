@@ -30,6 +30,26 @@ Total:              ~2,000 hours to reach maximum character Level 60
 | 41-50 | harder mechanics/final region | none |
 | 51-60 | culmination/endgame prep | none |
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Budget/verification fences are derived reference material (inputs are the tables they verify); `text` fences carrying `X = Y` assignments, expr formulas, reward keys, and `Act <roman> <int>` rows are registered inputs.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Target Pace` / `text` fences | pacing target | pace fence `~N hours` per act + total | ~2,000h forecast; telemetry anchor only, never a per-character constraint. |
+| `Acts` / table `Levels, Purpose, New system` | act unlock map / `(level band)` | Levels:range(int); Purpose:string; New system:`name <lv>` pairs or `none` | 6 bands; system unlock levels (crafting 5, auction 15, guild/Meridian/Soul 20, Formation 25, ranked PvP 30). |
+| `First Session` / table `minute, Beat, map / object, peak, source` | first-session beats | minute:range(int) `a–b`; Beat:typed verb+object; map/object:id; peak:enum token; source:enum(ATLAS_SEEN,CHEST_SPOTTED,QUEST_CLUE,JUST_GUARD_WINDOW,—) | 6 beats within 0–15 min; `VILLAGE_SEEN` bonfire is presentation-only; cutscenes never block input >3s. |
+| `Zone Contract` | zone shape rule | one anchor + three field maps + one dungeon/finale path per act | Binds encounter_catalog act contents to the progression route. |
+| `EXP Budget` / act totals table `Act, Level band, act_exp_total` + verification fence | act EXP budget / `(act)` | Act:enum I..VI; Level band:range(int); act_exp_total:grouped_int | Totals under `exp_required(L) = 10000*L*L` ×100 scale; TOTAL = 702,100,000. |
+| `Seven-Channel EXP Source Portfolio` / table `Channel, % of act budget, Target hours` | channel share / `(channel)` | Channel:enum(FIELD_COMBAT,DUNGEON_REPEAT,WORLD_EVENT,BOUNTY_REPEAT,ELITE_BOSS,LIFE_SKILL,STORY_ONCE); %:int; hours:int | Shares sum 100%; ELITE_BOSS sub-split 6/2 in Acts III & VI else 8; STORY_ONCE sub-split fence (MAIN 3.0, SIDE 0.8, anchor 0.2, fields 0.6, first-clear 0.4); bonfire rest EXP excluded. |
+| `Seven-Channel` / per-act allocation table `Channel, Act I..VI` + verification fence + STORY_ONCE sub-split table | channel EXP per act / `(channel, act)` | grouped_int cells | Each row/col sums to act_exp_total; sub-split table is the MAIN/SIDE/anchor/fields/first-clear allocation. |
+| `Baseline Leveling Pace and Daily/PvP Decoupling` + `Act III Efficiency Note` | pace rules | zero-bounty reallocation percentages; implied EXP/hour figures | BOUNTY substitution rule (48.275862%/21.724138% FIELD/DUNGEON); act EXP/hour figures = world_event EXP anchors. |
+| `Concrete First-Discovery EXP` / table `Act, safe anchor 0.2%, each field 0.2%, three fields 0.6%, discovery total 0.8%` + key fence + rules | discovery EXP / `(act, map)` | act rows:grouped_int; key fence `reward.discovery.<map_id>.<character_id>` | Exactly 1 anchor + 3 fields per act; commits once on first authoritative entry; character-scoped. |
+| `Concrete Major First-Completion EXP` / table `Act, source, first-completion EXP` + key fence | first-clear EXP / `(act)` | source:id (`dungeon.*` or `boss.than_trung`); EXP:grouped_int; key fence `reward.first_progression_clear.<source_id>.<character_id>` | 0.4% of act budget each; Act VI = finale slot; part of FIRST_CLEAR settlement for dungeons. |
+| `Optional SIDE Contribution` + `Overlevel / Underlevel Guardrail` | side-EXP + guardrail rules | 0.4% per SIDE quest ×2; guardrail bullets | SIDE total 0.8% inside STORY_ONCE; no hidden scaling; Lv60 EXP ignored. |
+| `Channel EXP Rate References` / `Assumed Unit Frequencies` fence + `Per-Unit EXP` table | per-unit EXP references / `(channel, act)` | unit frequencies assignments (kills/h, runs/h, sets/h, actions/h); table `Channel, Formula basis, Act I..VI`:grouped_int cells | Canonical reference values for the 15% deviation reject rule; authored content must cross-check within 15% per act. |
+| `Endgame` + `Anti-FOMO` + `Validation` + `Invariants` | validation rules | enumerated reject rules + invariant fence | Lv60 reuse-only endgame; no daily hard gate; reject thresholds listed (15% channel share, 15% act hours). |
+
 # First Session — Act I (`first_session.act1`)
 Canonical 0–15 minute onboarding. No key, rare fish, Linh Thú clutch, or +12 glow is required. First-15 SLO sources are only `ATLAS_SEEN`, `CHEST_SPOTTED`, `QUEST_CLUE`, `JUST_GUARD_WINDOW` (`../00_context/vision.md`).
 
