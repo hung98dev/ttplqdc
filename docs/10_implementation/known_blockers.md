@@ -27,7 +27,15 @@ issue: <ops-blocked issue URL>                       (OPS only)
 
 ## Open Blockers
 
-None.
+### `BLK-002` — `KeyGroupRule` cannot route `asset.class.<id>.prefab`; IMP-071 cannot register class actor keys canonically — OPEN
+opened_by: devin-imp-071 / IMP-071   opened_at: 2026-10-02T08:38:13Z
+evidence: `client/Assets/Scripts/Core/Assets/KeyGroupRule.cs` `AssignCatalog` switch (lines 51-79) has cases for `monster|npc|zone|map|dungeon|instance|boss|beast|cosmetic|skill|item|equipment|status` but no `case "class"` → returns `null`; `client/Assets/Scripts/Core/Assets/Editor/AddressableBuildConfig.cs` `VerifyCatalog` (lines 185-194) reports `unmapped key '<address>'` whenever `KeyGroupRule.Assign` is null. The catalog ID is canonical (`docs/01_gameplay/classes.md` lines 9-13 `class.kim|class.moc|class.thuy|class.hoa|class.tho`), the key form is canonical (`docs/04_architecture/client_assets.md` § Stable Asset Keys `asset.<catalog_id>.<facet>` → `asset.class.<id>.prefab`), and the group residence is canonical (`client_assets.md` § Grouping `shared.local ... 5 class actor sheets + animation`; `docs/10_implementation/repository_layout.md` § Addressables Append Registry Grants row `IMP-071 | shared.local | Five class/player actor keys`). Any `asset.class.*` entry appended to `shared.local` therefore fails the IMP-063 validator's canonical-group check, and the required "class-to-key coverage" test cannot assert the mapping.
+owning spec / system: `docs/04_architecture/client_assets.md` § Stable Asset Keys + § Grouping; `client/Assets/Scripts/Core/Assets/KeyGroupRule.cs` and `client/Assets/Tests/EditMode/AddressablesValidation/AssetKeyGroupTests.cs` (IMP-063 registry domain, outside IMP-071 `owned_paths`)
+options:
+  1. Add `case "class": return AddressableGroups.SharedLocal;` in `KeyGroupRule.AssignCatalog` + an `asset.class.<id>.prefab -> shared.local` row in `AssetKeyGroupTests` — smallest fix, matches § Grouping's "5 class actor sheets + animation" residence and preserves the canonical `asset.<catalog_id>.<facet>` key form.
+  2. Register class prefabs under a non-catalog kind (e.g. `asset.prop.<name>.prefab`, which falls back to `shared.local`) — needs no registry change but abandons the canonical catalog-backed key and erases class identity from the address; contradicts the audited plan's `asset.<class_id>.prefab` output.
+  3. Route `class` to a group other than `shared.local` — no canonical group fits better; the spec already names `shared.local` as the class-actor residence.
+blocks: IMP-071
 
 ## Resolved Blockers
 
