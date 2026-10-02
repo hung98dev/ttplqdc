@@ -414,7 +414,8 @@ namespace ThinhThan.Tests.EditMode.PlayerArtCoverage
                     c + " silhouette width exceeds 64 ref px");
                 Assert.LessOrEqual(bh, 192,
                     c + " silhouette height exceeds 96 ref px");
-                Assert.GreaterOrEqual(maxY, h - 6,
+                // Texture2D rows are bottom-up: feet on the canvas floor = low y.
+                Assert.LessOrEqual(minY, 5,
                     c + " feet do not reach the canvas bottom (y=0)");
             }
         }
@@ -563,6 +564,8 @@ namespace ThinhThan.Tests.EditMode.PlayerArtCoverage
                     var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
                     Assert.IsTrue(tex.LoadImage(File.ReadAllBytes(Abs(rel))));
                     var px = tex.GetPixels32();
+                    // Alpha carries most of the shading in the flat-shade
+                    // sheets/turnarounds, so count full RGBA tuples.
                     var colors = new HashSet<int>();
                     int opaque = 0;
                     foreach (var p in px)
@@ -572,12 +575,12 @@ namespace ThinhThan.Tests.EditMode.PlayerArtCoverage
                             continue;
                         }
                         opaque++;
-                        colors.Add((p.r << 16) | (p.g << 8) | p.b);
+                        colors.Add((p.r << 24) | (p.g << 16) | (p.b << 8) | p.a);
                     }
                     UnityEngine.Object.DestroyImmediate(tex);
                     Assert.Greater(opaque, 2000,
                         rel + " looks empty");
-                    Assert.Greater(colors.Count, 20,
+                    Assert.Greater(colors.Count, 100,
                         rel + " looks like a flat-color placeholder");
                 }
             }
