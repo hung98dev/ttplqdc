@@ -37,3 +37,22 @@ func (r *CoverageReport) Add(catalog, section, family, key string, kind Coverage
 		Kind:          kind,
 	})
 }
+
+// Bytes emits the coverage report as a canonical JSON list of entries.
+func (r *CoverageReport) Bytes() []byte {
+	vals := make([]Value, len(r.Entries))
+	for i, e := range r.Entries {
+		vals[i] = VRec(map[string]Value{
+			"catalog":        VStr(e.Catalog),
+			"key":            VStr(e.Key),
+			"kind":           VStr(string(e.Kind)),
+			"output_family":  VStr(e.OutputFamily),
+			"source_section": VStr(e.SourceSection),
+		})
+	}
+	b, err := CanonicalBytes(VRec(map[string]Value{"entries": VList(vals...)}))
+	if err != nil {
+		return []byte("{\"entries\":[]}\n")
+	}
+	return b
+}

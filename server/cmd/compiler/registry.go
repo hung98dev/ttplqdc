@@ -12,14 +12,15 @@ import (
 // defaults / finite rule` (contract §1).
 type SourceBinding struct {
 	Raw          string              // raw source_section cell
-	SectionPath  string              // backticked heading ancestry, "" when none
-	Target       string              // target descriptor after '/' (table sig, `text` fence, bullet list, ...)
+	SectionPaths []string            // every backticked heading ancestry in the cell
+	Target       string              // non-backticked remainder (table sig, `text` fence, bullet list, ...)
 	Output       string              // output family + key text
 	KeyCols      []string            // key column names parsed from `(a, b)` in Output
 	InputSpecs   map[string]TypeSpec // name -> parsed column spec where machine-readable
 	InputsText   string              // raw typed inputs cell
 	DefaultsText string              // raw defaults/finite rule cell
 	Line         int                 // registry row line
+	consumed     bool                // set by Ctx.consumed once any driver consumes it
 }
 
 // Registry is one catalog's parsed Compiler Source Schema.
@@ -81,24 +82,27 @@ func LoadRegistry(f *File) (*Registry, error) {
 	return r, nil
 }
 
-// parseSourceSection splits “ `section path` / target “ text.
+// parseSourceSection extracts the leading backticked heading paths from
+// the cell. A binding may join several sections with `+` (“ `A` + `B` “);
+// the first non-separator text (typically `/ table ...`) ends the path
+// list and becomes the target descriptor.
 func (b *SourceBinding) parseSourceSection(f *File) {
-	raw := b.Raw
-	if strings.HasPrefix(raw, "`") {
-		if end := strings.Index(raw[1:], "`"); end >= 0 {
-			b.SectionPath = raw[1 : 1+end]
-			rest := strings.TrimSpace(raw[2+end:])
-			b.Target = strings.TrimPrefix(rest, "/")
-			b.Target = strings.TrimSpace(b.Target)
-			return
+	rest := b.Raw
+	for {
+		rest = strings.TrimLeft(rest, " \t+,")
+		if !strings.HasPrefix(rest, "`") {
+			break
 		}
+		end := strings.IndexByte(rest[1:], '`')
+		if end < 0 {
+			break
+		}
+		b.SectionPaths = append(b.SectionPaths, rest[1:1+end])
+		rest = rest[end+2:]
 	}
-	// unquoted path then '/' then target
-	parts := strings.SplitN(raw, "/", 2)
-	b.SectionPath = strings.TrimSpace(strings.Trim(parts[0], "` "))
-	if len(parts) > 1 {
-		b.Target = strings.TrimSpace(parts[1])
-	}
+	t := strings.TrimSpace(rest)
+	t = strings.TrimPrefix(t, "/")
+	b.Target = strings.TrimSpace(t)
 }
 
 func (b *SourceBinding) parseKeyCols() {

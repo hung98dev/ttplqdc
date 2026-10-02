@@ -118,7 +118,7 @@ var Drivers = []Driver{
 	{Catalog: "economy_catalog.md"},
 	{Catalog: "world_event_catalog.md"},
 	{Catalog: "encounter_catalog.md"},
-	{Catalog: "progression_route.md"},
+	{Catalog: "progression_route.md", Compile: compileProgressionRoute},
 	{Catalog: "balance_validation.md"},
 	{Catalog: "integration_validation.md"},
 	{Catalog: "README.md", Compile: compileManifest, NoRegistryTable: true},
@@ -144,12 +144,13 @@ func runPipeline(c *Ctx) error {
 	regs := map[string]*Registry{}
 	for _, d := range Drivers {
 		f := c.Catalogs[d.Catalog]
+		if d.NoRegistryTable {
+			regs[d.Catalog] = &Registry{Catalog: f.Name}
+			continue
+		}
 		r, err := LoadRegistry(f)
 		if err != nil {
-			if !d.NoRegistryTable {
-				continue
-			}
-			r = &Registry{Catalog: f.Name}
+			continue
 		}
 		regs[d.Catalog] = r
 	}
@@ -184,50 +185,34 @@ func runPipeline(c *Ctx) error {
 // shared section/table resolution helpers
 // ---------------------------------------------------------------------
 
-// resolveSections resolves a binding's section path against f. When the
-// path contains '/', each part is tried as a heading ancestry step.
+// resolveSections resolves a binding's section path against f. Registry
+// locators use exact heading ancestry; when the path is a loose prefix of
+// a real heading (e.g. `Seven-Channel` for `Seven-Channel EXP Source
+// Portfolio`), prefix matching resolves it.
 func resolveSections(f *File, path string) []*Section {
-	// path uses ' > ' ancestry or a single title
 	if sec := f.Root.SectionAt(path); sec != nil {
 		return []*Section{sec}
 	}
-	// try last path segment anywhere
 	last := path
 	if i := strings.LastIndex(path, ">"); i >= 0 {
 		last = strings.TrimSpace(path[i+1:])
 	}
-	return f.Root.FindSections(last)
-}
-
-// tableInSection finds the table whose header signature matches sig
-// (comma-separated header names) inside sec (descendants included).
-func tableInSection(sec *Section, sig string, f *File, line int, diags *config.Diagnostics) *Block {
-	var hits []*Block
+	if secs := f.Root.FindSections(last); len(secs) > 0 {
+		return secs
+	}
+	// prefix fallback over every heading
+	var out []*Section
 	var walk func(s *Section)
 	walk = func(s *Section) {
-		for _, b := range s.Content {
-			if b.Kind != BlockTable {
-				continue
+		for _, ch := range s.Children {
+			if strings.HasPrefix(ch.Title, last) || strings.HasPrefix(last, ch.Title) {
+				out = append(out, ch)
 			}
-			if headerSig(b) == sig {
-				hits = append(hits, b)
-			}
-		}
-		for _, c := range s.Children {
-			walk(c)
+			walk(ch)
 		}
 	}
-	walk(sec)
-	if len(hits) == 0 {
-		diags.Addf(config.DiagSourceSchemaMissing, f.Path, sec.Line,
-			"no table with signature %q under %q", sig, sec.Title)
-		return nil
-	}
-	if len(hits) > 1 {
-		diags.Addf(config.DiagAmbiguousSource, f.Path, hits[1].Line,
-			"%d tables match signature %q under %q", len(hits), sig, sec.Title)
-	}
-	return hits[0]
+	walk(f.Root)
+	return out
 }
 
 func headerSig(b *Block) string {
