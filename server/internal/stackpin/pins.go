@@ -48,9 +48,16 @@ var GoModulePins = map[string]string{
 
 // TransitiveModuleAllowlist records the only non-direct modules the approved
 // closure may contain (technology_versions.md § Backend transitive rules).
+// Commit pseudo-versions appear verbatim as recorded in the matrix's
+// transitive-closure entries (ADR-0010); any other pseudo-version is floating.
 var TransitiveModuleAllowlist = map[string]string{
-	"google.golang.org/grpc":         "v1.83.1", // only via pinned OTel HTTP exporters
-	"go.opentelemetry.io/proto/otlp": "v1.11.0", // only via pinned OTel HTTP exporters
+	"google.golang.org/grpc":         "v1.83.1",                            // only via pinned OTel HTTP exporters
+	"go.opentelemetry.io/proto/otlp": "v1.11.0",                            // only via pinned OTel HTTP exporters
+	"github.com/jackc/pgerrcode":     "v0.0.0-20220416144525-469b46aa5efa", // via migrate/v4
+	"github.com/jackc/pgpassfile":    "v1.0.0",                             // via pgx/v5
+	"github.com/jackc/pgservicefile": "v0.0.0-20240606120523-5a60cdf6a761", // via pgx/v5
+	"github.com/jackc/puddle/v2":     "v2.2.2",                             // via pgx/v5
+	"golang.org/x/sync":              "v0.23.0",                            // via migrate/v4
 }
 
 // UnityPackagePins is the exact com.unity.* dependency set in

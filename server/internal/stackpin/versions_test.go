@@ -238,28 +238,94 @@ func TestDownloadArtifactAndGitLfsPins(t *testing.T) {
 }
 
 // TestNoFloatingOrUnlistedDeps: go.mod direct requires must be GoModulePins at
-// exact versions; no floating tag, range, prerelease or unlisted module.
+// exact versions; `// indirect` requires must be declared in GoModulePins or
+// the TransitiveModuleAllowlist. No floating tag, range, or prerelease — a
+// commit pseudo-version is permitted only when recorded verbatim in the
+// matrix's transitive-closure entries (floating-check amendment).
 func TestNoFloatingOrUnlistedDeps(t *testing.T) {
 	b, err := os.ReadFile(filepath.Join(repoRoot(t), "server", "go.mod"))
 	if err != nil {
 		t.Fatal(err)
 	}
+	matrix := readMatrix(t)
 	requires := parseGoModRequires(string(b))
 	if len(requires) == 0 {
 		t.Fatal("go.mod declares no requires")
 	}
+	indirect := parseGoModIndirect(string(b))
 	for mod, ver := range requires {
-		if ver == "latest" || strings.Contains(ver, "*") || strings.Contains(ver, "-") ||
-			strings.ContainsAny(ver, "<>^~") {
+		floating := ver == "latest" || strings.Contains(ver, "*") || strings.ContainsAny(ver, "<>^~")
+		if strings.Contains(ver, "-") && !isApprovedCommitPseudoVersion(matrix, mod, ver) {
+			floating = true
+		}
+		if floating {
 			t.Errorf("floating/prerelease dep %s@%s", mod, ver)
 		}
-		pin, ok := GoModulePins[mod]
-		if !ok {
-			t.Errorf("unlisted direct dependency %s@%s", mod, ver)
+		if pin, ok := GoModulePins[mod]; ok {
+			if pin != ver {
+				t.Errorf("dependency %s@%s, want pinned %s", mod, ver, pin)
+			}
 			continue
 		}
-		if pin != ver {
-			t.Errorf("dependency %s@%s, want pinned %s", mod, ver, pin)
+		if pin, ok := TransitiveModuleAllowlist[mod]; ok && indirect[mod] {
+			if pin != ver {
+				t.Errorf("transitive %s@%s, want pinned %s", mod, ver, pin)
+			}
+			continue
+		}
+		if indirect[mod] {
+			t.Errorf("unlisted transitive dependency %s@%s", mod, ver)
+		} else {
+			t.Errorf("unlisted direct dependency %s@%s", mod, ver)
+		}
+	}
+}
+
+// commitPseudoRe matches an exact commit pseudo-version
+// (`v0.0.0-<yyyymmddhhmmss>-<sha>`).
+var commitPseudoRe = regexp.MustCompile(`^v0\.0\.0-[0-9]{14}-[0-9a-f]+$`)
+
+// isApprovedCommitPseudoVersion reports whether ver is a commit pseudo-version
+// recorded verbatim in the matrix for mod — the only approved form of
+// pseudo-version pin (floating-check amendment).
+func isApprovedCommitPseudoVersion(matrix, mod, ver string) bool {
+	return commitPseudoRe.MatchString(ver) && strings.Contains(matrix, mod+" "+ver)
+}
+
+// TestGoModuleClosureDeclaredInMatrix: the approved transitive require-closure
+// is declared verbatim in the matrix and pinned in TransitiveModuleAllowlist
+// (BLK-001, spec-change #30); every commit pseudo-version in go.mod is a
+// matrix-declared pin.
+func TestGoModuleClosureDeclaredInMatrix(t *testing.T) {
+	matrix := readMatrix(t)
+	for mod, ver := range TransitiveModuleAllowlist {
+		if !strings.Contains(matrix, mod+" "+ver) {
+			t.Errorf("TransitiveModuleAllowlist %s %s not declared verbatim in matrix", mod, ver)
+		}
+	}
+	// BLK-001 declared closure of pgx/v5 v5.11.0 and migrate/v4 v4.20.1.
+	closure := map[string]string{
+		"github.com/jackc/pgerrcode":     "v0.0.0-20220416144525-469b46aa5efa",
+		"github.com/jackc/pgpassfile":    "v1.0.0",
+		"github.com/jackc/pgservicefile": "v0.0.0-20240606120523-5a60cdf6a761",
+		"github.com/jackc/puddle/v2":     "v2.2.2",
+		"golang.org/x/sync":              "v0.23.0",
+	}
+	for mod, ver := range closure {
+		if !strings.Contains(matrix, mod+" "+ver) {
+			t.Errorf("matrix missing transitive-closure entry %s %s", mod, ver)
+		}
+		if pin := TransitiveModuleAllowlist[mod]; pin != ver {
+			t.Errorf("TransitiveModuleAllowlist %s = %q, want %q", mod, pin, ver)
+		}
+	}
+	b, err := os.ReadFile(filepath.Join(repoRoot(t), "server", "go.mod"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for mod, ver := range parseGoModRequires(string(b)) {
+		if commitPseudoRe.MatchString(ver) && !isApprovedCommitPseudoVersion(matrix, mod, ver) {
+			t.Errorf("unapproved pseudo-version %s %s in go.mod", mod, ver)
 		}
 	}
 }
@@ -294,6 +360,41 @@ func TestGoModuleAndToolchain(t *testing.T) {
 	if !strings.Contains(string(layout), "module "+GoModuleName) {
 		t.Error("module name not declared in repository_layout.md")
 	}
+}
+
+// parseGoModIndirect returns the set of modules marked `// indirect`.
+func parseGoModIndirect(gomod string) map[string]bool {
+	out := map[string]bool{}
+	var inBlock bool
+	for _, line := range strings.Split(gomod, "\n") {
+		l := strings.TrimSpace(line)
+		switch {
+		case strings.HasPrefix(l, "require ("):
+			inBlock = true
+			continue
+		case inBlock && l == ")":
+			inBlock = false
+			continue
+		}
+		if !strings.Contains(l, "// indirect") {
+			continue
+		}
+		var spec string
+		if strings.HasPrefix(l, "require ") && !inBlock {
+			spec = strings.TrimPrefix(l, "require ")
+		} else if inBlock {
+			spec = l
+		} else {
+			continue
+		}
+		if i := strings.Index(spec, "//"); i >= 0 {
+			spec = strings.TrimSpace(spec[:i])
+		}
+		if f := strings.Fields(spec); len(f) >= 1 {
+			out[f[0]] = true
+		}
+	}
+	return out
 }
 
 // parseGoModRequires returns module -> version for every require entry, both
