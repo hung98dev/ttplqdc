@@ -15,48 +15,28 @@ MonoBehaviour:
   m_GroupName: region.lang_da
   m_GUID: e2a8beeb82fe87649ac4de643e770acf
   m_SerializeEntries:
+  - m_GUID: 058e69c95b9248afb644b4f6cd0239ae
+    m_Address: asset.npc.lang_da.ambient_day.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e816b0b0c824ced80edb5181775cd82
+    m_Address: asset.npc.lang_da.hang_quan.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 315d6e91ec7443af8dc3a71f0fcd4321
     m_Address: asset.monster.lang_da.bu_nhin_rom.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e274b56a67d5407b9e59f51169d9ae4f
-    m_Address: asset.monster.lang_da.coc_thanh_tinh.prefab
+  - m_GUID: 346a7fd1232143e0a769fc57b9431081
+    m_Address: asset.npc.lang_da.ambient_night.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f5be354cb3dd4332a19e1c44a8661685
-    m_Address: asset.monster.lang_da.dom_dom_ma.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eb262de8537a441ab6d6a4ad27da62c2
-    m_Address: asset.monster.lang_da.hon_do_trang.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fa7e6100e64343a193fa3e7bff7f9132
-    m_Address: asset.monster.lang_da.hon_ma_co_thu.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a5842906c136406099fe8dffe8fdfd11
-    m_Address: asset.monster.lang_da.hon_xo_non.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e2a73004a4724037ab6cf7652e827091
-    m_Address: asset.monster.lang_da.ma_xo.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f95cf456d8bd4b42b97ae317b6745d76
-    m_Address: asset.monster.lang_da.quy_nhap_trang.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9474cedf94954ac4aafc2d5120022d78
-    m_Address: asset.monster.lang_da.vong_hon.prefab
+  - m_GUID: 4f01c6f65b1e4fee9d21ae7e1f2e0f63
+    m_Address: asset.npc.lang_da.tho_nghe.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -65,13 +45,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 058e69c95b9248afb644b4f6cd0239ae
-    m_Address: asset.npc.lang_da.ambient_day.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 346a7fd1232143e0a769fc57b9431081
-    m_Address: asset.npc.lang_da.ambient_night.prefab
+  - m_GUID: 9474cedf94954ac4aafc2d5120022d78
+    m_Address: asset.monster.lang_da.vong_hon.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -85,18 +60,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bf1e209c8fa541d1baceeed5bd1513c5
-    m_Address: asset.npc.lang_da.dem_1.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f280c9aa821c47edb5e92098913ad04d
-    m_Address: asset.npc.lang_da.dem_2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2e816b0b0c824ced80edb5181775cd82
-    m_Address: asset.npc.lang_da.hang_quan.prefab
+  - m_GUID: a5842906c136406099fe8dffe8fdfd11
+    m_Address: asset.monster.lang_da.hon_xo_non.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -105,14 +70,48 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4f01c6f65b1e4fee9d21ae7e1f2e0f63
-    m_Address: asset.npc.lang_da.tho_nghe.prefab
+  - m_GUID: bf1e209c8fa541d1baceeed5bd1513c5
+    m_Address: asset.npc.lang_da.dem_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-
+  - m_GUID: e274b56a67d5407b9e59f51169d9ae4f
+    m_Address: asset.monster.lang_da.coc_thanh_tinh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2a73004a4724037ab6cf7652e827091
+    m_Address: asset.monster.lang_da.ma_xo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb262de8537a441ab6d6a4ad27da62c2
+    m_Address: asset.monster.lang_da.hon_do_trang.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f280c9aa821c47edb5e92098913ad04d
+    m_Address: asset.npc.lang_da.dem_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5be354cb3dd4332a19e1c44a8661685
+    m_Address: asset.monster.lang_da.dom_dom_ma.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f95cf456d8bd4b42b97ae317b6745d76
+    m_Address: asset.monster.lang_da.quy_nhap_trang.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fa7e6100e64343a193fa3e7bff7f9132
+    m_Address: asset.monster.lang_da.hon_ma_co_thu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
+  m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: 54334ed44c9727d4893a6499c5b2a59e, type: 2}

@@ -15,13 +15,13 @@ MonoBehaviour:
   m_GroupName: beast.shared
   m_GUID: 5523e2e971c0c0b4cbebfe04c491768d
   m_SerializeEntries:
-  - m_GUID: ebba832b910d45f4bad63285536eddce
-    m_Address: asset.beast.hoa.ga_than.prefab
+  - m_GUID: 22863ea897bf4f2b8ab2787018e244aa
+    m_Address: asset.beast.tho.trau_dong.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 991777c246f44b7b8f25556f2c08ea1f
-    m_Address: asset.beast.hoa.hoa_diep.prefab
+  - m_GUID: 23e34ef884d440b5be07733d40a5f3b2
+    m_Address: asset.beast.tho.coc_than.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -35,23 +35,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ff7c286c9a6b4606924f85a5798a59f6
-    m_Address: asset.beast.moc.chim_lac.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b990f43f6f7f400ab658f1a888d01764
-    m_Address: asset.beast.moc.huou_sao.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 23e34ef884d440b5be07733d40a5f3b2
-    m_Address: asset.beast.tho.coc_than.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 22863ea897bf4f2b8ab2787018e244aa
-    m_Address: asset.beast.tho.trau_dong.prefab
+  - m_GUID: 991777c246f44b7b8f25556f2c08ea1f
+    m_Address: asset.beast.hoa.hoa_diep.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -65,9 +50,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-
+  - m_GUID: b990f43f6f7f400ab658f1a888d01764
+    m_Address: asset.beast.moc.huou_sao.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebba832b910d45f4bad63285536eddce
+    m_Address: asset.beast.hoa.ga_than.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff7c286c9a6b4606924f85a5798a59f6
+    m_Address: asset.beast.moc.chim_lac.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
+  m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: 4dd29c2fefc5c1d47b2b354aebc2a26e, type: 2}
