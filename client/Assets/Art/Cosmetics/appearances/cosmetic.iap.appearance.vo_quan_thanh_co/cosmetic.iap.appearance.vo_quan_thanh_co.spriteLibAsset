@@ -14,46 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteLibraryAsset
   m_Labels:
     - m_Name: leg_back
-      m_Hash: 34427034
+      m_Hash: 416313356
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.vo_quan_thanh_co
-        m_Hash: 202558695
+        m_Hash: 436276905
         m_Sprite: {fileID: 21300000, guid: 548f4d74f6c44194a37a8f4a58737259, type: 3}
     - m_Name: arm_back
-      m_Hash: 451593325
+      m_Hash: 3663099
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.vo_quan_thanh_co
-        m_Hash: 202558695
+        m_Hash: 436276905
         m_Sprite: {fileID: 21300000, guid: beee803c3d164d5788edbee9179840a8, type: 3}
     - m_Name: torso
-      m_Hash: 511882343
+      m_Hash: 660585605
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.vo_quan_thanh_co
-        m_Hash: 202558695
+        m_Hash: 436276905
         m_Sprite: {fileID: 21300000, guid: eb89268457934368b7d1ba6c707cffd2, type: 3}
     - m_Name: leg_front
-      m_Hash: 380862002
+      m_Hash: 256218467
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.vo_quan_thanh_co
-        m_Hash: 202558695
+        m_Hash: 436276905
         m_Sprite: {fileID: 21300000, guid: e0ffa6051f124524a9def4d477b7efdb, type: 3}
     - m_Name: arm_front
-      m_Hash: 905117209
+      m_Hash: 738465096
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.vo_quan_thanh_co
-        m_Hash: 202558695
+        m_Hash: 436276905
         m_Sprite: {fileID: 21300000, guid: 5b671100dc0b449ba67e302ad69beff3, type: 3}
     - m_Name: head
-      m_Hash: 961074815
+      m_Hash: 670299804
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.vo_quan_thanh_co
-        m_Hash: 202558695
+        m_Hash: 436276905
         m_Sprite: {fileID: 21300000, guid: 69be0a550c614532ad44654b1f950c10, type: 3}
     - m_Name: hair
-      m_Hash: 38552058
+      m_Hash: 485974297
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.vo_quan_thanh_co
-        m_Hash: 202558695
+        m_Hash: 436276905
         m_Sprite: {fileID: 21300000, guid: 34267b7cc28d4709bfa3711d9c7d6304, type: 3}
   m_ModificationHash: 1
   m_Version: 1

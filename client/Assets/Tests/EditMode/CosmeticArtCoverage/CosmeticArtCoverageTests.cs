@@ -284,6 +284,26 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
             public int MaxBodyH;
         }
 
+        private static List<LabPixels.Lab> Palette()
+        {
+            var p = RegisterJson.Parse(Read(PaletteRel));
+            var labs = new List<LabPixels.Lab>();
+            foreach (var fam in p.Get("families")!.Obj!)
+            {
+                foreach (var tri in fam.Value.Get("lab")!.Arr!)
+                {
+                    labs.Add(new LabPixels.Lab
+                    {
+                        L = tri.Arr![0].Num,
+                        A = tri.Arr[1].Num,
+                        B = tri.Arr[2].Num,
+                    });
+                }
+            }
+            Assert.Greater(labs.Count, 0, "palette must not be empty");
+            return labs;
+        }
+
         private static List<GateJob> GateJobs(bool volume)
         {
             var jobs = new List<GateJob>();
@@ -349,6 +369,7 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
         {
             var fails = new ConcurrentBag<string>();
             var jobs = GateJobs(true);
+            var palette = Palette();
             Parallel.ForEach(jobs, j =>
             {
                 var rep = VolumeGate.Measure(
@@ -356,6 +377,21 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
                 if (rep.Violations.Count != 0)
                 {
                     fails.Add(j.Rel + ": " + string.Join("; ", rep.Violations));
+                }
+                VolumeGate.Silhouette(j.Img, null, out var inS, out var lab);
+                var s = new List<int>();
+                for (var i = 0; i < j.Img.Width * j.Img.Height; i++)
+                {
+                    if (inS[i])
+                    {
+                        s.Add(i);
+                    }
+                }
+                var cov = VolumeGate.PaletteCoverage(s, lab, palette);
+                if (double.IsNaN(cov) || cov < VolumeGate.PaletteCoverageMin)
+                {
+                    fails.Add(j.Rel + ": palette coverage " + cov.ToString("F3",
+                        CultureInfo.InvariantCulture));
                 }
             });
             var ordered = new List<string>(fails);

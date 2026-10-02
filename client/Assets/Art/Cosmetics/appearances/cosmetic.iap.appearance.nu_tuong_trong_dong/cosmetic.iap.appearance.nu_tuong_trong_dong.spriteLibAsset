@@ -14,52 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteLibraryAsset
   m_Labels:
     - m_Name: leg_back
-      m_Hash: 34427034
+      m_Hash: 416313356
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: 27d20768866443d1a8d63cf0f97c4b8c, type: 3}
     - m_Name: arm_back
-      m_Hash: 451593325
+      m_Hash: 3663099
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: 7981aad3d55d463cbea523ce9108891c, type: 3}
     - m_Name: accessory_cape
-      m_Hash: 557318372
+      m_Hash: 259819228
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: 9376b19e691541c0936ac234708a3a1e, type: 3}
     - m_Name: torso
-      m_Hash: 511882343
+      m_Hash: 660585605
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: 53f8bf07c62c44478662c8be8fea08cd, type: 3}
     - m_Name: leg_front
-      m_Hash: 380862002
+      m_Hash: 256218467
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: 70aa06a9874a4bae88eb8aa33b8497b3, type: 3}
     - m_Name: arm_front
-      m_Hash: 905117209
+      m_Hash: 738465096
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: e99a316cbc9f462585fc1249e7c31b89, type: 3}
     - m_Name: head
-      m_Hash: 961074815
+      m_Hash: 670299804
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: f01dbe85ec35473db98ea619275186a1, type: 3}
     - m_Name: hair
-      m_Hash: 38552058
+      m_Hash: 485974297
       m_CategoryList:
       - m_Name: cosmetic.iap.appearance.nu_tuong_trong_dong
-        m_Hash: 284871401
+        m_Hash: 395091495
         m_Sprite: {fileID: 21300000, guid: 4405a9de4c4d482aa852ef7f96aad066, type: 3}
   m_ModificationHash: 1
   m_Version: 1

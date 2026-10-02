@@ -14,46 +14,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteLibraryAsset
   m_Labels:
     - m_Name: leg_back
-      m_Hash: 34427034
+      m_Hash: 416313356
       m_CategoryList:
       - m_Name: cosmetic.appearance.khan_ben_nuoc
-        m_Hash: 394274559
+        m_Hash: 302244749
         m_Sprite: {fileID: 21300000, guid: b9b37db3c39f4f089ef645366a00e7cf, type: 3}
     - m_Name: arm_back
-      m_Hash: 451593325
+      m_Hash: 3663099
       m_CategoryList:
       - m_Name: cosmetic.appearance.khan_ben_nuoc
-        m_Hash: 394274559
+        m_Hash: 302244749
         m_Sprite: {fileID: 21300000, guid: 9a638ab0602244a0bf6b577438c432b2, type: 3}
     - m_Name: torso
-      m_Hash: 511882343
+      m_Hash: 660585605
       m_CategoryList:
       - m_Name: cosmetic.appearance.khan_ben_nuoc
-        m_Hash: 394274559
+        m_Hash: 302244749
         m_Sprite: {fileID: 21300000, guid: a6fc0b15c064484fae8fb2ffccadb125, type: 3}
     - m_Name: leg_front
-      m_Hash: 380862002
+      m_Hash: 256218467
       m_CategoryList:
       - m_Name: cosmetic.appearance.khan_ben_nuoc
-        m_Hash: 394274559
+        m_Hash: 302244749
         m_Sprite: {fileID: 21300000, guid: 5be05359bd0144ad8178589f34404904, type: 3}
     - m_Name: arm_front
-      m_Hash: 905117209
+      m_Hash: 738465096
       m_CategoryList:
       - m_Name: cosmetic.appearance.khan_ben_nuoc
-        m_Hash: 394274559
+        m_Hash: 302244749
         m_Sprite: {fileID: 21300000, guid: 01071c59f1ef4eb7913e230933028de4, type: 3}
     - m_Name: head
-      m_Hash: 961074815
+      m_Hash: 670299804
       m_CategoryList:
       - m_Name: cosmetic.appearance.khan_ben_nuoc
-        m_Hash: 394274559
+        m_Hash: 302244749
         m_Sprite: {fileID: 21300000, guid: 211dab380b974619a753e38ab3cd575d, type: 3}
     - m_Name: hair
-      m_Hash: 38552058
+      m_Hash: 485974297
       m_CategoryList:
       - m_Name: cosmetic.appearance.khan_ben_nuoc
-        m_Hash: 394274559
+        m_Hash: 302244749
         m_Sprite: {fileID: 21300000, guid: 2ff3337807a44ea0a7d363483b8184f3, type: 3}
   m_ModificationHash: 1
   m_Version: 1
