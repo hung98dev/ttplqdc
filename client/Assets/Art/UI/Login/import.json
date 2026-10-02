@@ -1,0 +1,29 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "login_panel.png": {
+      "nine_slice": [
+        48,
+        48,
+        48,
+        48
+      ]
+    },
+    "login_button.png": {
+      "nine_slice": [
+        24,
+        24,
+        48,
+        48
+      ]
+    },
+    "login_queued.png": {
+      "nine_slice": [
+        24,
+        24,
+        48,
+        48
+      ]
+    }
+  }
+}

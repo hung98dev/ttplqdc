@@ -1,0 +1,59 @@
+{
+  "asset_class": "ITEM_ICON",
+  "assets": {
+    "item_beast_eq_t1_ao_giap.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t1_linh_chau.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t1_vong_co.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t2_ao_giap.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t2_linh_chau.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t2_vong_co.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t3_ao_giap.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t3_linh_chau.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t3_vong_co.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t4_ao_giap.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t4_linh_chau.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t4_vong_co.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t5_ao_giap.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t5_linh_chau.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t5_vong_co.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t6_ao_giap.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t6_linh_chau.png": {
+      "cell_ref": 64
+    },
+    "item_beast_eq_t6_vong_co.png": {
+      "cell_ref": 64
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "asset_class": "VFX_SOFT",
+  "assets": {
+    "telegraph_circle.png": {
+      "soft_edges": true
+    },
+    "telegraph_rect.png": {
+      "soft_edges": true
+    },
+    "telegraph_line.png": {
+      "soft_edges": true
+    },
+    "telegraph_wall.png": {
+      "soft_edges": true
+    },
+    "telegraph_marker.png": {
+      "soft_edges": true
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "character_card.png": {
+      "nine_slice": [
+        48,
+        48,
+        48,
+        48
+      ]
+    }
+  }
+}
