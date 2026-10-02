@@ -16,6 +16,24 @@ Owning runtime/content rules remain in:
 - `progression_route.md`
 - `../02_world/dungeons.md`
 
+## Compiler Source Schema
+
+This file declares validation vectors and gate/threshold families rather than content records. The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`; labeled `text` fences carry `name = value` or `op bound` rows; `Current expected` ranges are informative derived values while every `Release guardrail`/`Hard rejects`/`REJECT` fence is a gating rule.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Progression-Gap Benchmark` / channel-allocation table + fixture paragraphs | gate `balance.progression_gap` | table `Act, act_exp_total, target_hours, <7 channels>` (grouped_int); two mandatory fixtures (seven-channel calibration, zero-bounty feasibility) | Per-channel deviation >15% rejects; zero-bounty uses the substituted 48.275862%/21.724138% shares; measured output must come from authored unit EXP × frequency, never `act_total * share`. |
+| `Synthetic PvE Reference Build` / `text` fences | reference build vector / `(class, tier endpoint)` | potential expr `4*(level-1)+bonus_potential(level)` + bonus table; split rule 50%/25%/remainder; exclusion list fence; enhancement fence `T<n> +<n>`; expected_crit_multiplier expr | Reference vectors at Lv 10..60 endpoints; element multiplier neutral 1.00. |
+| `Reference Basic Attack` | reference attack pin | class `basic_1` id set per class; `skill_level = 1` | Procs ignored for TTK; "Current expected" derived, "Release guardrail" gates. |
+| `Field NORMAL Benchmark` + `ELITE Benchmark` / `text` fences | gates `balance.ttk_normal`, `balance.ttk_elite` | `Current expected` range lines; `Release guardrail` fence `a <= TTK <= b` | NORMAL 2.0–6.0s; ELITE 8.5–24s (floor 8.5 to admit canonical 8.97s KIM endpoint). |
+| `Major-Boss Durability Benchmark` / formula fence + `Solo` + `PARTY_DEFAULT` fences | gates `balance.ttk_boss_solo`, `balance.ttk_boss_party` | `MAX_HP = floor(10000 + 300*L + 16*L*L)`; solo range fence; party scaling `3.20x / 5x` exprs | Solo 55–130s; five-player 35–85s (= solo × 0.64). |
+| `Level-60 Rotation Benchmark` / `class, active_priority` table + scheduling paragraph + windows fence | rotation benchmark + gate `balance.ttk_rotation` | table rows: class:enum, active_priority:ordered(skill ids); deterministic 50ms tick scheduler rules; window fence (solo/party × ordinary/endgame) | Actives Lv10, basic_1 Lv1, T6 +8 vector; byte-identical canonical trace per revision; windows ±15% review trigger. |
+| `Incoming Boss-Damage Benchmark` / `text` fences | gate `balance.heavy_hit` | `1.40 * boss ATTACK` hit profile; result range fence; guardrail `6% .. 18% reference MAX_HP`; legacy `>35%` review rule | Guardrail measured through canonical mitigation at reference build. |
+| `Class Spread Guardrail` / `text` fence | gate `balance.class_spread` | `max/min basic-only boss TTK <= 2.20` | Ceiling fixed; canonical result ~2.0. |
+| `New-Stat Power-Budget Validation` / `Roll-Magnitude Budget Rule` steps + `Sustain Benchmark` fence + `TTK Preservation` + `REJECT` fences | gates `balance.roll_magnitude`, `balance.lifesteal_sustain`, `balance.window_preservation` | power-unit expr `power(x)=10000*x/reference_stat` with pinned denominators; pinned reference fence (4794 / 9.08 / LIFESTEAL_HPS_CAP / hit range / ~3.0s interval); `REJECT if:` fences | Expected pool power ≤ old8 ×1.01 without balance note; sustain < boss DPS unconditionally; secondary-roll addition must not move TTK/survivability windows — windows never widen. |
+| `Skill Reach and Camera-Readability Gate` / hard-reject fence + audit fence + hurtbox-fixture paragraph | gate `balance.skill_geometry` | hard reject lines (`row count != 45`, reach caps `8.8m`/`11.0m`, separation ratio `2.50`, tag/effect mismatch); audit reference fence; boundary-fixture rule `0.001m hit / 0.002m miss` | 45 primary geometry rows enumerated; boundary fixtures per hurtbox profile. |
+| `Validation Output` / `text` fence | validator output schema | required emitted fields (one per nonblank line) | Output field list is the minimum validation report shape. |
+
 # Progression-Gap Benchmark
 Act totals under `exp_required(L) = 10000 * L * L` (×100 scale):
 

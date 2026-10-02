@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thinhthan.local/schemas/asset_source_register.schema.json",
+  "title": "Asset Source Register",
+  "description": "presentation_asset_manifest.md section 6: one row per packaged image/audio/font media file. Schema version 1; assets[] sorted by file_path ascending.",
+  "type": "object",
+  "required": ["schema_version", "assets"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": 1 },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/row" }
+    }
+  },
+  "$defs": {
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_key",
+        "file_path",
+        "content_id",
+        "source_kind",
+        "creator",
+        "source_uri",
+        "license_id",
+        "license_uri",
+        "acquired_at_utc",
+        "source_sha256",
+        "final_sha256",
+        "changes",
+        "attribution",
+        "style_pack_id",
+        "generation_record",
+        "folklore_card",
+        "inputs",
+        "review_state"
+      ],
+      "properties": {
+        "asset_key": {
+          "type": "string",
+          "description": "Stable Addressable key per client_assets.md; auxiliary files carry the parent asset's key.",
+          "minLength": 1
+        },
+        "file_path": {
+          "type": "string",
+          "description": "Normalized repo-relative path, unique within the register.",
+          "minLength": 1
+        },
+        "content_id": {
+          "type": ["string", "null"],
+          "description": "Catalog content ID if any; null for shared assets."
+        },
+        "source_kind": {
+          "enum": ["AI_CREATED", "FREE_LICENSED"]
+        },
+        "creator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_uri": {
+          "type": ["string", "null"],
+          "description": "Original source page URL; null for AI_CREATED."
+        },
+        "license_id": {
+          "enum": ["CC0-1.0", "CC-BY-4.0", "OFL-1.1", "AI_TOOL_TERMS"]
+        },
+        "license_uri": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acquired_at_utc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 UTC timestamp of acquisition or creation."
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 of the input file; equals final_sha256 when unmodified."
+        },
+        "final_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 of the file shipped in the build."
+        },
+        "changes": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Transform description; \"none\" if unchanged. Every upscale step recorded here (ART-012)."
+        },
+        "attribution": {
+          "type": ["string", "null"],
+          "description": "Release credit line; required for CC-BY-4.0."
+        },
+        "style_pack_id": {
+          "type": ["string", "null"],
+          "description": "Image-level pack identity <fragment>/<pack_id> resolving §3.8; required for every image row (including FREE_LICENSED with generation_record=null); null only for non-image media.",
+          "pattern": "^[a-z0-9_]+/[a-z0-9_]+$"
+        },
+        "generation_record": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/generation_record" }
+          ],
+          "description": "Required whenever AI created or edited the asset."
+        },
+        "folklore_card": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/folklore_card" }
+          ],
+          "description": "Required for cultural entities (ART-010)."
+        },
+        "inputs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/input" },
+          "description": "Third-party inputs used for generation/compositing; empty when none."
+        },
+        "review_state": {
+          "enum": ["PENDING", "APPROVED", "REJECTED"]
+        }
+      }
+    },
+    "generation_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tool",
+        "version",
+        "model_id",
+        "model_sha256",
+        "terms_uri",
+        "terms_snapshot_sha256",
+        "prompt",
+        "seed",
+        "parameters",
+        "workflow_sha256",
+        "reference_uris",
+        "reference_sha256",
+        "c2pa_present"
+      ],
+      "properties": {
+        "tool": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "model_id": { "type": "string", "minLength": 1 },
+        "model_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "null when the tool does not expose it."
+        },
+        "terms_uri": { "type": "string", "minLength": 1 },
+        "terms_snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "SHA-256 of the terms copy stored at client/Assets/Art/Provenance/terms/<fragment>/<sha256>.txt."
+        },
+        "prompt": { "type": "string", "minLength": 1 },
+        "seed": {
+          "type": ["string", "integer", "null"],
+          "description": "Reproducible explicit seed returned/accepted by the API; null only when the tool provides none."
+        },
+        "parameters": {
+          "type": ["object", "null"],
+          "additionalProperties": true
+        },
+        "workflow_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$",
+          "description": "null when the tool does not expose it."
+        },
+        "reference_uris": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "reference_sha256": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        },
+        "c2pa_present": { "type": "boolean" }
+      }
+    },
+    "folklore_card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_tales", "regional_variants", "motifs_checked"],
+      "properties": {
+        "source_tales": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "regional_variants": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "motifs_checked": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["creator", "source_uri", "license_id", "license_uri", "acquired_at_utc", "sha256"],
+      "properties": {
+        "creator": { "type": "string", "minLength": 1 },
+        "source_uri": { "type": "string", "minLength": 1 },
+        "license_id": { "enum": ["CC0-1.0", "CC-BY-4.0", "OFL-1.1", "AI_TOOL_TERMS"] },
+        "license_uri": { "type": "string", "minLength": 1 },
+        "acquired_at_utc": { "type": "string", "format": "date-time" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    }
+  }
+}

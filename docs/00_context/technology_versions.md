@@ -272,3 +272,9 @@ version change is an explicit reviewed repository change
 CONTENT_GRANT_NAMESPACE_UUID = f7a3d2b1-4e8c-4a2f-9b3e-6d1c5f8e7a2b (pinned immutable; never rotate)
 SERVER_JOB_NAMESPACE_UUID    = 64d34c40-8657-462b-887f-5970db9eaa5f (pinned immutable; never rotate)
 ```
+
+# Requirement IDs
+
+| ID | Requirement | Gate |
+|---|---|---|
+| `CAT-005` | `server/go.mod` declares `golang.org/x/text v0.42.0` as a direct require (no `// indirect` marker) — IMP-003 NFC normalization dependency (§ Backend) | every PR (module verification) |

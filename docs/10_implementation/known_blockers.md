@@ -27,9 +27,19 @@ issue: <ops-blocked issue URL>                       (OPS only)
 
 ## Open Blockers
 
-None.
-
 ## Resolved Blockers
+
+### `BLK-002` — `KeyGroupRule` cannot route `asset.class.<id>.prefab`; IMP-071 cannot register class actor keys canonically — RESOLVED
+opened_by: devin-imp-071 / IMP-071   opened_at: 2026-10-02T08:38:13Z
+resolved_by: spec-owner spec-change (chosen option 1)   resolved_at: 2026-10-02
+evidence: `client/Assets/Scripts/Core/Assets/KeyGroupRule.cs` `AssignCatalog` switch (lines 51-79) has cases for `monster|npc|zone|map|dungeon|instance|boss|beast|cosmetic|skill|item|equipment|status` but no `case "class"` → returns `null`; `client/Assets/Scripts/Core/Assets/Editor/AddressableBuildConfig.cs` `VerifyCatalog` (lines 185-194) reports `unmapped key '<address>'` whenever `KeyGroupRule.Assign` is null. The catalog ID is canonical (`docs/01_gameplay/classes.md` lines 9-13 `class.kim|class.moc|class.thuy|class.hoa|class.tho`), the key form is canonical (`docs/04_architecture/client_assets.md` § Stable Asset Keys `asset.<catalog_id>.<facet>` → `asset.class.<id>.prefab`), and the group residence is canonical (`client_assets.md` § Grouping `shared.local ... 5 class actor sheets + animation`; `docs/10_implementation/repository_layout.md` § Addressables Append Registry Grants row `IMP-071 | shared.local | Five class/player actor keys`). Any `asset.class.*` entry appended to `shared.local` therefore fails the IMP-063 validator's canonical-group check, and the required "class-to-key coverage" test cannot assert the mapping.
+owning spec / system: `docs/04_architecture/client_assets.md` § Stable Asset Keys + § Grouping; `client/Assets/Scripts/Core/Assets/KeyGroupRule.cs` and `client/Assets/Tests/EditMode/AddressablesValidation/AssetKeyGroupTests.cs` (IMP-063 registry domain, outside IMP-071 `owned_paths`)
+options:
+  1. Add `case "class": return AddressableGroups.SharedLocal;` in `KeyGroupRule.AssignCatalog` + an `asset.class.<id>.prefab -> shared.local` row in `AssetKeyGroupTests` — smallest fix, matches § Grouping's "5 class actor sheets + animation" residence and preserves the canonical `asset.<catalog_id>.<facet>` key form.
+  2. Register class prefabs under a non-catalog kind (e.g. `asset.prop.<name>.prefab`, which falls back to `shared.local`) — needs no registry change but abandons the canonical catalog-backed key and erases class identity from the address; contradicts the audited plan's `asset.<class_id>.prefab` output.
+  3. Route `class` to a group other than `shared.local` — no canonical group fits better; the spec already names `shared.local` as the class-actor residence.
+resolution: `docs/04_architecture/client_assets.md` § Stable Asset Keys now enumerates `class.` in the canonical catalog-kind segment list, and § Grouping explicitly routes `asset.class.<id>.<facet>` to `shared.local` (matching the declared "5 class actor sheets + animation" residence) and declares an unregistered catalog kind a canonical-group validation failure rather than a silent fallback. Regression test `TestClassCatalogKeyRoutesSharedLocal` named in IMP-071 `## Tests` (asserted from its owned `PlayerArtCoverageTests.cs`; IMP-071 `## Tests` may only name paths inside its owned_paths). The executable route (`case "class"` in `KeyGroupRule.AssignCatalog` + the `AssetKeyGroupTests` row) is IMP-063 owned-paths work dispatched by the coordinator as a gatefix, not part of this spec-change. IMP-071 returned to `NOT_STARTED`.
+blocks: IMP-071
 
 ### `BLK-001` — pgx v5.11.0 / golang-migrate v4.20.1 transitive closure undeclared in version matrix — RESOLVED
 opened_by: devin-imp-005 / IMP-005   opened_at: 2026-10-01T20:02:13Z

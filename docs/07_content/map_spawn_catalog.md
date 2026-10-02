@@ -6,6 +6,20 @@ Concrete logical spawn catalog for the six safe/social anchors and 18 adventure 
 
 This catalog defines **logical spawn anchors and groups**, not pixel coordinates. Each map asset must provide the referenced `anchor.spawn.*` nodes; static content activation fails if a required anchor is missing.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Per-map group blocks use the catalog-local spawn-group grammar declared below (header `spawn_group_id @ anchor_id` line + indented `field = value` lines); short pool tokens expand via Logical Pool Resolution.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Shared Rules` / `text` fences | spawn group contract + bands | required-field list fence (`spawn_group_id, map_id, anchor_id, monster_pool[], max_alive, respawn_seconds, activation`); respawn-band fence `KIND = lo..hi s` | Named finite rule: every FIELD map emits exactly 2 NORMAL + 1 ELITE group (54 total); NORMAL max_alive=20, ELITE=2, NIGHT_RARE=1; activation=ALWAYS for persistent groups. |
+| `Rare night encounters — 6` / defaults fence + table `spawn_group_id, map_id, anchor_id, monster` | spawn group / `spawn_group_id`; anchor / `anchor_id` | table: spawn_group_id:id; map_id:id; anchor_id:id; monster:id | 6 NIGHT_RARE groups (activation=NIGHT, max_alive=1, respawn=300s), excluded from the 54; `monster` cell expands to single `monster_id` pool; anchors are required FIXED_POINT locators outside safety envelopes; Saturated Night Availability Fixture = balance fixture, not runtime input. |
+| `Safe / Social Maps — 6` / both `text` fences | safe map roster + assertions | ID list fence (6 maps); defaults fence (`hostile_spawn_groups = 0`, `checkpoint = present`, `service_npc_anchors = required`, `portal_entry_safe_radius = no hostile spawn anchor`) | The 6 safe anchors emit zero hostile groups; checkpoint/service requirements cross-check npc_shop_catalog. |
+| `# ACT N — <name>` / each backticked `map.*` level-2 heading / `text` fence | spawn group / `spawn_group_id`; anchor / `anchor_id`; map pool / `(map_id, monster_id)` | catalog-local group grammar: `spawn.<region>.<map_key>.{normal_01\|normal_02\|elite_01} @ anchor.spawn.<map_key>.<suffix>` header, then indented `pool = token,...` (comma list of monster key tokens), `max_alive = int`, `respawn = int s` | Each map heading's fence emits its 3 groups; pool token expands `monster.<region>.<token>` under Logical Pool Resolution; ELITE two-entry pools use `selection = uniform_one_on_respawn`; season-0 variants eligible only at `season_region_index = 0`. |
+| `Logical Pool Resolution` / `text` fence + rules | pool expansion rule | expansion example fence; season-eligibility paragraph; ELITE selection rule | Shorthand token → `monster.<region>.<token>`; reject unknown after expansion; `dom_dom_nguyen,bup_lua,tinh_buoi,co_lua,vong_bien,hon_gao` removed at season_index ≠ 0. |
+| `Public Boss Placement` / `text` fence | boss anchor / `anchor.boss.<key>` | catalog-local: `boss.<id> -> map_id, anchor.<id>` mapping lines | 2 public-boss placements; boss arenas suppress overlapping persistent groups; boss groups are not in the 54. |
+| `Spirit Surge Placement` / `text` fence | event spawn rule | assignment fence: `max temporary event groups = 2`, `event group max_alive = 4`, cleanup rule | Temporary event groups use event-specific runtime IDs; excluded from persistent count; cleanup immediate after combat resolution grace. |
+
 # Shared Rules
 Safe/social anchors contain no hostile persistent spawns.
 

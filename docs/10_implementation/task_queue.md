@@ -94,12 +94,12 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-067` | Unity IL2CPP Player Build (Windows, Android) & Release Packaging | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-076, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-093, IMP-099, IMP-103 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
 | `IMP-068` | Trusted CI, Post-Merge Guard & Foundation Exit | `NOT_STARTED` | IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106 | `audit_gates.md`, `agent_execution_protocol.md` |
 | `IMP-069` | Server Composition Root and Lifecycle Wiring | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-049, IMP-050, IMP-051, IMP-054, IMP-055, IMP-062, IMP-077, IMP-084, IMP-085, IMP-086, IMP-087, IMP-089, IMP-090, IMP-092, IMP-093, IMP-103 | `../04_architecture/backend.md`, `../04_architecture/service_boundaries.md` |
-| `IMP-070` | Asset Provenance Register & Validator | `IN_PROGRESS` | IMP-063, IMP-101 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
+| `IMP-070` | Asset Provenance Register & Validator | `DONE` | IMP-063, IMP-101 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-071` | Player Character & Class Art | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md` |
 | `IMP-072` | Normal-World Environment Art & Scenes | `NOT_STARTED` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md` |
-| `IMP-073` | UI, Item, Equipment & Skill VFX Art | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-074` | Cosmetic Presentation Art | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md` |
-| `IMP-075` | SFX & Folklore BGM Production | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
+| `IMP-073` | UI, Item, Equipment & Skill VFX Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md` |
+| `IMP-074` | Cosmetic Presentation Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md` |
+| `IMP-075` | SFX & Folklore BGM Production | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-076` | Production Asset Coverage, Rights & Release Audit | `NOT_STARTED` | IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
 | `IMP-078` | Server Geometry & Deterministic Collision Core | `NOT_STARTED` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
@@ -303,10 +303,10 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/skills.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/README.md`, `../07_content/item_catalog.md`, `../07_content/progression_route.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../07_content/class_skill_catalog.md`, `../07_content/soul_catalog.md`]
+specs: [`../01_gameplay/skills.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/README.md`, `../07_content/item_catalog.md`, `../07_content/progression_route.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../07_content/class_skill_catalog.md`, `../07_content/soul_catalog.md`, `../00_context/technology_versions.md`]
 adrs: [`0001-content-revision-contract.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001, IMP-002]
-owned_paths: [`server/cmd/compiler/`, `server/internal/config/`]
+owned_paths: [`server/cmd/compiler/`, `server/internal/config/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [24 Markdown catalogs, authoring schema, stable IDs, deterministic RNG, 45 primary skill geometries, typed secondary geometries]
 contract_outputs: [CandidateSnapshot, content revision hash, compile diagnostics, compile report]
@@ -325,11 +325,14 @@ Compile static catalogs, finite expansions, references, enums, and shorthand.
 - CAT-001: all 25 Soul definitions emit the explicit owning element and exact rank distribution independently of source combat `NONE`; source/effect/acquisition references remain valid.
 - CAT-002: all 25 ACTIVE payloads resolve through the closed dispatch, including the sole barrier literal joined to its positive-lifetime primary geometry; invalid signatures/types reject before snapshot emission.
 - CAT-003: registered item display/identity-note mutations change the full revision without renaming IDs; independent source reorder and Unicode canonical equivalence preserve resolved output/revision.
+- CAT-004: every data-owning catalog under `docs/07_content/` declares a `Compiler Source Schema` registry per `content_authoring_contract.md` §1; the compiler source-field coverage report resolves through it.
+- CAT-005: `server/go.mod` declares `golang.org/x/text v0.42.0` as a direct require (no `// indirect` marker) for NFC normalization (CAT-003).
 - two-phase gate task (`agent_execution_protocol.md` §5a): the implementation PR merges with status `IN_PROGRESS`; a follow-up status PR sets `DONE` with the `evidence` artifact of its own `verify.yml` run (ADR-0068).
 
 ## Tests
 - `server/cmd/compiler/compiler_test.go`: TestCompileAllCatalogs, TestEquipmentExpansion168, TestPortalExpansion52, TestEntitySizeProfileResolution, TestPlayableSpaceGeometryIndex, TestSkillGeometryRows45, TestSkillSecondaryGeometryCompile, TestSkillDisplacementTagConsistency, TestInvalidReferenceRejection.
 - `server/cmd/compiler/compiler_test.go`: TestSoulElementBindings25, TestSoulElementDoesNotInheritMonsterNone (CAT-001); TestAllActivePayloadConstructorsResolve, TestBarrierPayloadSignatureAndGeometry (CAT-002); TestRegisteredItemStringMutationChangesRevision, TestItemSourceReorderAndUnicodeCanonicalEquivalence (CAT-003).
+- `server/cmd/compiler/compiler_test.go`: TestAllDataOwningCatalogsDeclareCompilerSourceSchema (CAT-004); TestGoModDeclaresXTextRequire (CAT-005).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -4101,7 +4104,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-067/"
 
 ## `IMP-070` — Asset Provenance Register & Validator
 id: IMP-070
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-070"
 branch: "imp/IMP-070-provenance"
 claimed_at: "2026-10-01T18:49:32Z"
@@ -4176,6 +4179,7 @@ consumers_checked: [docs/07_content/monster_catalog.md, docs/07_content/boss_cat
 
 - `client/Assets/Tests/EditMode/PlayerArtCoverage/PlayerArtCoverageTests.cs`: TestAiCreatedToolMatchesOwnerSetup (ADR-0072).
 - `client/Assets/Tests/EditMode/PlayerArtCoverage/PlayerArtCoverageTests.cs`: TestSkeletalRigLayersAndClips, TestStylePackAndPaletteGate, TestHitboxSilhouetteAlignment, TestFolkloreCards (ADR-0076).
+- `client/Assets/Tests/EditMode/PlayerArtCoverage/PlayerArtCoverageTests.cs`: TestClassCatalogKeyRoutesSharedLocal — class-to-key coverage asserts `asset.class.<id>.prefab` routes to `shared.local` through the canonical registry (BLK-002; the `case "class"` route lands via the IMP-063 gatefix).
 generated_artifacts: []
 cleanup_obligations: [Remove unused source imports and superseded placeholders from release groups.]
 evidence_location: "docs/10_implementation/evidence/IMP-071/"
@@ -4299,10 +4303,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-105/"
 
 ## `IMP-073` — UI, Item, Equipment & Skill VFX Art
 id: IMP-073
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-073"
+branch: "imp/IMP-073-ui-vfx-art"
+claimed_at: "2026-10-02T07:00:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md`, `../07_content/item_catalog.md`, `../07_content/equipment_catalog.md`, `../04_architecture/client_localization.md`]
@@ -4337,10 +4341,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-073/"
 
 ## `IMP-074` — Cosmetic Presentation Art
 id: IMP-074
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-074"
+branch: "imp/IMP-074-cosmetic-art"
+claimed_at: "2026-10-02T07:00:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md`, `../03_systems/cosmetics.md`]
@@ -4375,10 +4379,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-074/"
 
 ## `IMP-075` — SFX & Folklore BGM Production
 id: IMP-075
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-075"
+branch: "imp/IMP-075-sfx-bgm"
+claimed_at: "2026-10-02T07:00:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md`, `../00_context/constraints.md`]
