@@ -6,6 +6,21 @@ Concrete launch NPC/service/shop definitions for the six safe/social anchors. Ru
 
 NPCs are fictional inhabitants of the game world. Names/titles are ordinary Vietnamese-language presentation, not depictions of real religious or historical persons.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Service-shape fences use the catalog-local `token -> CAPABILITY(...)` grammar declared below; registered `shop.*` ancestor fences inherit into the offer tables of their section.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Shared Service Shape` / both `text` fences | NPC capability profile + defaults | catalog-local: `role_token -> CAP,CAP,...` mapping (role:enum(nguoi_dan_duong,tho_nghe,hang_quan); caps:set(enum STORY,QUEST,SERVICE,SHOP) + `SERVICE(name,...)` list); defaults fence `field = value` (movement_mode:enum(STATIC), interaction_range:string, schedule:enum(ALWAYS)) | Each safe anchor emits 3 service NPCs; defaults fence supplies movement_mode/schedule/interaction_range to all NPC records unless a section overrides. |
+| `Regional NPCs — 18` / table `map_id, Guide / checkpoint, Craft / enhance, Shop / account / auction` | NPC / `npc_id` | map_id:id; each cell `npc_id — display` (npc_id:id; display:string after em-dash) | 18 rows → 18 npc records; capabilities = Shared Service Shape role profile; display label is localization only. |
+| `Ambient NPCs — 24` / table `map_id, DAY_ONLY, NIGHT_ONLY, PATROL` | NPC / `npc_id` | map_id:id; each cell = ordered(id) list or `—` empty | 4 ambient NPCs per anchor, capabilities DIALOGUE,QUEST,DECORATIVE (no SHOP/SERVICE); schedule = column name (DAY_ONLY/NIGHT_ONLY/PATROL). |
+| `Guide Service Contract` / service list fence + `Checkpoint` fence + `Travel` cost fence | service route / `(npc_id, service_id)` | service fence: one `service.<id>` per line; checkpoint fence: one `checkpoint.<region>.<anchor>` per line (id); travel fence `T<n> cost` pairs | `*.nguoi_dan_duong` emits services set_checkpoint/travel/respec; checkpoint_id resolves world_route checkpoint; travel cost table T1=0..T6=800; dinh_lang return = 0. |
+| `Craft / Enhancement Service` / `text` fence | service route / `(npc_id, service_id)`; shop binding | service lines + `shop_id = shop.utility.bound` assignment | `*.tho_nghe` emits crafting + enhancement services and binds shop.utility.bound; recipes resolve `crafting_catalog.md`. |
+| `Bound Utility Shop — shop.utility.bound` / table `offer_id, item_id, currency, price, source binding override` + anti-laundering fence | offer / `(shop_id, offer_id)` | offer_id:id; item_id:id; currency:id; price:int; source binding override:enum(CHARACTER_BOUND) | Registered `shop_id` ancestor fence above inherits shop scope into this table; 7 offers; binding override fence emits binding=CHARACTER_BOUND, binding_trigger=ON_ACQUIRE on purchase. |
+| `Shop / Account / Auction Service` / `text` fence | service route / `(npc_id, service_id)`; shop binding | `shop_id = shop.recovery.common` + service lines | `*.hang_quan` binds shop.recovery.common + storage.account + auction; auction access gated Level 15. |
+| `Shop — shop.recovery.common` / table `offer_id, item_id, currency, buy_price, sell_back_price` | offer / `(shop_id, offer_id)` | offer_id:id; item_id:id; currency:id; buy_price:int; sell_back_price:int (explicit, not derived) | 6 offers; `can_cau_tre` purchase is CHARACTER_BOUND ON_ACQUIRE and single-ownership (rule line below table). |
+
 # Shared Service Shape
 Each progression safe anchor has exactly three persistent service NPCs:
 ```text

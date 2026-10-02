@@ -1,0 +1,111 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "boss_bar_fill.png": {
+      "nine_slice": [
+        16,
+        16,
+        64,
+        64
+      ]
+    },
+    "boss_bar_frame.png": {
+      "nine_slice": [
+        16,
+        16,
+        64,
+        64
+      ]
+    },
+    "button_attack.png": {
+      "cell_ref": 128
+    },
+    "button_jump.png": {
+      "cell_ref": 128
+    },
+    "channel_button.png": {
+      "cell_ref": 96
+    },
+    "chat_dock.png": {
+      "nine_slice": [
+        24,
+        24,
+        48,
+        48
+      ]
+    },
+    "exp_fill.png": {
+      "nine_slice": [
+        8,
+        8,
+        64,
+        64
+      ]
+    },
+    "hp_fill.png": {
+      "nine_slice": [
+        20,
+        20,
+        40,
+        40
+      ]
+    },
+    "hp_frame.png": {
+      "nine_slice": [
+        20,
+        20,
+        40,
+        40
+      ]
+    },
+    "joystick_base.png": {
+      "cell_ref": 128
+    },
+    "joystick_stick.png": {
+      "cell_ref": 64
+    },
+    "map_button.png": {
+      "cell_ref": 96
+    },
+    "menu_button.png": {
+      "cell_ref": 96
+    },
+    "mp_fill.png": {
+      "nine_slice": [
+        20,
+        20,
+        40,
+        40
+      ]
+    },
+    "ping_bars.png": {
+      "cell_ref": 64
+    },
+    "portrait_frame.png": {
+      "cell_ref": 96
+    },
+    "quest_tracker.png": {
+      "nine_slice": [
+        24,
+        24,
+        24,
+        24
+      ]
+    },
+    "skill_button.png": {
+      "cell_ref": 128
+    },
+    "skill_button_cd.png": {
+      "cell_ref": 128
+    },
+    "status_frame_round.png": {
+      "cell_ref": 64
+    },
+    "status_frame_triangle.png": {
+      "cell_ref": 64
+    },
+    "target_frame.png": {
+      "cell_ref": 64
+    }
+  }
+}

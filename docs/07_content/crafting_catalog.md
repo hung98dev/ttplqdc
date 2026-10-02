@@ -6,6 +6,19 @@ Concrete guaranteed launch recipes needed to make every equipment set reachable 
 
 No timed crafting queue, profession level, recipe rarity, or crafting skill tree is added.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. The 168 equipment recipes are a named finite expansion keyed `recipe.eq.<tier>.<set_key>.<slot>`; `->` example lines are explanatory only.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Equipment Recipe Expansion` / both `text` fences | recipe expansion domain | ID pair fence `item:`/`recipe:`; shared-fields fence (success_mode, output_quantity, enhancement_level, binding) | Finite rule: emit `recipe.eq.<tier>.<set_key>.<slot>` for every `item.eq.*` from `equipment_catalog.md` = 168 recipes; every equipment recipe GUARANTEED ×1, output +0, binding = item definition default. |
+| `Tier Material Mapping` / table `Tier, material_id, minimum level, material base, common-currency base` | tier cost base / `tier` | Tier:enum(T1..T6); material_id:id; minimum level:int; material base:int; common-currency base:int | Recipe availability opens at the tier's minimum level. |
+| `Slot Cost Weight` / table `slot, weight` + formula fence | slot weight / `slot`; recipe input / `(recipe_id, item_id)` | slot:enum(14); weight:int; formula fence `material_quantity = base * weight`, `common_currency_cost = base * weight` | Recipe inputs = `{material_base×weight mapped regional material, common_base×weight currency.common}`; no other ingredient; weights sum to 47 (full-set totals table is a derived reference, not input). |
+| `Lucky Charm Recipes` / tier-dispatch bullets + `text` fences | recipe / `recipe.utility.bua_may.<tier>` | tier-dispatch list mapping tier ranges to output item_id; ID fence; input fence `N * mapped regional material`, `common = base * k` | 6 recipes; GUARANTEED; output = tier-appropriate bua_may per ADR-0022. |
+| `Insurance Recipes` / tier-dispatch bullets + `text` fences | recipe / `recipe.utility.bua_giu_bac.<tier>` | same shape as Lucky Charm | 6 recipes; GUARANTEED. |
+| `Hearth Cooking` / table `recipe_id, inputs, output, extra_output` | recipe / `recipe_id`; inputs / `(recipe_id, item_id)` | recipe_id:id; inputs:ordered list `N item_id` joined `+`; output:id; extra_output:`N item_id` | 5 GUARANTEED hearth recipes; station `cooking_hearth.<map_id>`; `RARE_CATCH` never an input; every cook emits extra_output 1 cui_lua_trai; LIFE_SKILL side grant per `progression_route.md` act values, key `life_skill.cook.<recipe_id>.<character_id>.<operation_id>`. |
+
 # Equipment Recipe Expansion
 Every one of the 168 equipment items from `equipment_catalog.md` has exactly one guaranteed crafting recipe:
 ```text

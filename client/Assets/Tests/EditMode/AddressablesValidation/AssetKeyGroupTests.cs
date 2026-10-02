@@ -37,6 +37,8 @@ namespace ThinhThan.Tests.EditMode.AddressablesValidation
                 ("asset.boss.than_trung.portrait", AddressableGroups.DungeonFinale),
                 ("asset.beast.ho_ly.prefab", AddressableGroups.BeastShared),
                 ("asset.cosmetic.armor_linhsu.prefab", AddressableGroups.CosmeticShared),
+                ("asset.class.kim.prefab", AddressableGroups.SharedLocal),
+                ("asset.class.tho.prefab", AddressableGroups.SharedLocal),
                 ("asset.cosmetic.armor_linhsu.icon", AddressableGroups.IconsShared),
                 ("asset.skill.tiep_tam_chuong.icon", AddressableGroups.IconsShared),
                 ("asset.skill.tiep_tam_chuong.sprite", AddressableGroups.SharedLocal),

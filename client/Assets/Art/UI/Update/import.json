@@ -1,0 +1,21 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "update_bar_frame.png": {
+      "nine_slice": [
+        12,
+        12,
+        32,
+        32
+      ]
+    },
+    "update_bar_fill.png": {
+      "nine_slice": [
+        12,
+        12,
+        32,
+        32
+      ]
+    }
+  }
+}

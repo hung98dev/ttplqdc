@@ -8,6 +8,24 @@ All 168 generated item IDs have deterministic crafting paths in `crafting_catalo
 
 Presentation follows Vietnamese-folklore environments and objects; item power uses the canonical generic stat/effect system.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. The 168 equipment items are a named finite expansion: 12 set headings × 14 canonical slots. Bonus/support fences use the catalog-local `Npc [id] -> payload` grammar declared below; unqualified decimal stat modifiers are invalid.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Launch Shape` + `Canonical Slot Order` + `Concrete Item-ID Expansion` / `text` fences | expansion domain | ordered slot list `NN name` (14 slots); ID pattern `item.eq.<tier>.<set_key>.<slot>` | Finite rule: emit `item.eq.<tier>.<set_key>.<slot>` for all 12 set_key × 14 slots = 168 `item_id`; slot ordinal comes from the ordered list, never row order. |
+| `Tier Budget` / table `Tier, Levels, rarity, A, D, H, M, secondary rolls` | tier budget / `tier` | Tier:enum(T1..T6); Levels:range(int); rarity:enum(UNCOMMON,RARE,EPIC); A/D/H/M:int authoring units; secondary rolls:int 1..2 | A/D/H/M are compile-time units resolving ATTACK/DEFENSE/MAX_HP/MAX_MP per item; never persisted as stats. |
+| `Fixed Base Stats by Slot` / tables `slot, fixed base stats, enhanceable_stats` + `Tier, ring CRIT_CHANCE, charm COOLDOWN_REDUCTION` | fixed stats / `(slot, tier)` | slot:enum(14); fixed base stats:list of `coef UNIT STAT` pairs (coef:decimal; unit:enum(A,D,H,M); stat:enum token); enhanceable_stats:set(stat enum); tier utility values:decimal | Multiply each coefficient by the row's tier unit, floor after each term; utility fixed stats (ring/charm) are not enhanceable. |
+| `Secondary Roll Pool` / roll ID fence + flat-range fence + utility tables `Tier, CRIT_CHANCE/...` | roll definition / `stat_id` | roll.*:id (12 closed); flat range fence `STAT = lo UNIT .. hi UNIT`; utility tables range(decimal) per tier | Roll count from tier's `secondary rolls`; no duplicate roll_id per item; utility values FLAT_ADD to fraction stats; flat values uniform integer in inclusive floored bounds. |
+| `Element Layouts` / `Layout A` + `Layout B` `text` fences | element layout / `(layout, slot)` | catalog-local: one `slot ELEMENT` pair per line; element:enum(KIM,MOC,THUY,HOA,THO) | Each set heading declares layout A or B; emitted item element = layout[slot]. |
+| `Binding` / `text` fence | binding defaults / all set items | assignment fence: binding:enum(UNBOUND), binding_trigger:enum(ON_EQUIP), stack_limit:int | Applied to every emitted `item.eq.*`; source-level overrides (first-clear CHARACTER_BOUND) never loosen. |
+| `Typed Set-Effect Convention` / `text` fence | effect typing dispatch / rule | stat-prefix → stage mapping lines (PERCENT_ADD, FLAT_ADD, SOURCE_ADDITIVE, typed effect component) | Applies to every Bonus/support fence payload below; a payload without a matching declared stage rejects. |
+| `Tier / Set Roster` / each backticked `set.tN.*` level-3 heading / key-layout-identity lines + `Bonuses:` + `Support signature` fences | set / `set_key`; set effects / `(set_key, threshold, effect_id)`; support signature / `(set_key)` | heading supplies `set.tN.<key>`; `key:`/`layout:`/`source identity:` lines (key:id, layout:enum(A,B)); catalog-local effect grammar: `Npc [effect.set.<key>.<n>] -> <typed payload>` where Npc=2pc/4pc/6pc threshold:int, payload per Typed Set-Effect Convention; support fence: `support.set.<key> -> <typed payload>` + `support_priority = int` | Each set emits 3 threshold effects keyed `(set_key, threshold)` plus 1 support signature at 2pc; explicit effect id only on first set's fence, other sets derive `effect.set.<key>.<n>`; support_priority always 20. |
+| `Support Signature Guardrail` / bullet list | support rule / global | none | Support = 2pc-derived only; ignores rarity/rolls/enhancement/Soul level; never scales by tier. |
+| `Enhancement Base Costs` / table `Tier, base enhancement material units, base common currency` | enhancement base / `tier` | Tier:enum(T1..T6); material units:int=1; base common:int | Consumed by crafting.md attempt-cost tables; expected-cost tables below are validation references, not runtime values. |
+| `Acquisition Contract` / bullet list | acquisition rule / `(set_key)` | none (cross-catalog references only) | Every emitted item resolves ≥1 guaranteed recipe in `crafting_catalog.md`; Set A/B acceleration rows resolve in `drop_tables.md`. |
+
 # Launch Shape
 ```text
 6 tiers

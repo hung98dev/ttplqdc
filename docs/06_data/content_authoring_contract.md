@@ -139,3 +139,9 @@ hash = full canonical semantic output; table/prose presentation order is not sem
 bất kỳ lỗi nào cũng reject toàn bộ candidate revision
 invalid candidate = previous valid revision stays active
 ```
+
+## Requirement IDs
+
+| ID | Requirement | Gate |
+|---|---|---|
+| `CAT-004` | every data-owning catalog declares its `Compiler Source Schema` registry (§1); compiler coverage report resolves through the registered sections | compiler compile + activation (IMP-003, IMP-004) |

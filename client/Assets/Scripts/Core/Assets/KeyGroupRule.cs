@@ -69,6 +69,7 @@ namespace ThinhThan.Core.Assets
                     return AddressableGroups.BeastShared;
                 case "cosmetic":
                     return AddressableGroups.CosmeticShared;
+                case "class":
                 case "skill":
                 case "item":
                 case "equipment":

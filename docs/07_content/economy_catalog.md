@@ -6,6 +6,22 @@ Concrete launch currency faucets/sinks, reward bands, service prices, and econom
 
 This file owns launch-wide numeric currency bands that are reused by multiple reward systems. Domain catalogs still own their item/material/quest definitions and reference these bands instead of copying competing values.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Price fences use the catalog-local price grammar declared below (`<cosmetic_id> cost <grouped_int> <currency>` plus optional trailing `[...]` comment); offer fences use `offer.bound.<key> -> <item_id> cost <int> bound`; threshold fences use `REJECT|ALERT if: <expr>` lines.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `currency.common / Combat Faucet Bands` / three tables `Tier, common` under `### NORMAL monster` + `### ELITE monster` + `### Major boss` | faucet band / `(monster_kind, tier)` | Tier:enum(T1..T6); common:range(int) | Identical header signatures disambiguated by `###` ancestry into three band families: normal, elite, boss. Normal dungeon repeat = owning-tier boss-band minimum; Spirit Surge normal completion = owning-tier elite-band minimum; `ENDGAME_L60` uses the `9000..12000` fence. |
+| `currency.common / Common Sinks` / bullet list | sink family names | enumerated sink names | References only — the concrete offer/price rows live in domain catalogs; no durability repair/rent/upkeep sink. |
+| `currency.common / Cosmetic Sink Catalog` / per-`###` group price fences | cosmetic price / `cosmetic_id` | price grammar: `cosmetic.<id> cost <grouped_int> common`; group = `###` ancestry (Guild Stone 6, Shrine 6, Title Glow 8) | 20 common cosmetic prices; totals fence is a derived reference (2,850,000); `REFERENCE_ENDGAME_COMMON_PER_HOUR = 76,500` constant follows the same fence section. |
+| `currency.bound / Sources` / per-`###` rules + `text` fences | bound faucet / `(source_family)` | assignment fences: `bound = 10 * owning_tier` (side-quest formula); `T<n> <int>` tier→amount lines + `idempotency key = ...` assignment; `20 bound per completed match` / `50 bound per completed match` lines; tier→bound table fence for MYSTERY | Daily dungeon bound = one DAILY_FIRST per character per UTC day (`dungeon.bound.daily.<utc_date>.<character_id>`); ranked = first 5 matches/day all modes; guild war = first 3/week across membership changes; MYSTERY = 1/day. |
+| `currency.bound / Sinks` / offer fence + `Bound-Purchase Output Rule` fence | bound offer / `offer.bound.<key>` | offer grammar: `offer.bound.<family>.<tier> -> item.consumable.<id> cost <int> bound`; output-rule fence assignments `source binding override = CHARACTER_BOUND`, `binding trigger = ON_ACQUIRE` | 7 offers = complete launch bound offer set (sink surface 975); output binding applies to bound-purchased copy only. |
+| `currency.special / One-Time PvE Sources` / grant + namespace fences | special faucet / `<source_key>` | grant grammar: `character first eligible clear <boss_id> -> N special` / `character first <flag> -> N special`; namespace fence `economy.special.<key>.<character_id>` | 4 canonical sources = 20 special per character; keys must contain `character_id`. |
+| `currency.special / Launch Cosmetic Sinks` + `Extended Special Cosmetic Sink Catalog` / choice + price fences | special sink / `cosmetic_id` | choice fence `N special -> cosmetic.<id>`; price grammar `cosmetic.<id> cost <int> special [comment]`; totals fence | 2 base 20-special options + 20 extended sinks (5+5+5+3+2 at 10/20/25/50/40); surface = 545; special sinks are exclusive — nothing else purchasable. |
+| `Affordability Targets` / bullets | affordability target names | enumerated targets (+6 early, +8 normal, +10 late, +12 endgame, +13..16 aspirational) | Targets are review anchors, not gated formulas. |
+| `Inflation / Deflation Telemetry` / metric fence + per-`###` threshold fences | telemetry metrics + alert thresholds | metric fence: one name per nonblank line; threshold grammar `REJECT\|ALERT (release blocker\|escalation) if: <expr>` + optional rationale | 11 tracked metrics; 5 mandatory thresholds (sink ratio, p99 growth, auction median index with `tier_price_floor(T)` table, per-account net outflow, bound faucet/sink ratio). |
+
 # Design Targets
 Launch economy should:
 - let a first character progress and craft meaningful gear without Auction dependence,

@@ -1,0 +1,11 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "boot_logo.png": {
+      "cell_ref": 512
+    },
+    "splash_screen.png": {
+      "cell_ref": 720
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "asset_class": "ITEM_ICON",
+  "assets": {
+    "skill_hoa_active_boc_bo.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_active_cuu_hoa_lien.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_active_hoa_giap.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_active_hoa_vuc.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_active_lien_bao.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_basic_hoa_phu.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_basic_hoa_xa.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_basic_lua_tao_quan.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_basic_viem_dan.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_passive_cuong_hoa.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_passive_du_hoa.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_passive_hoa_hon.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_active_hoi_kiem.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_active_kiem_tran.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_active_nhat_kiem_dinh_hon.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_active_pha_giap.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_active_xuyen_phong.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_basic_kiem_thuc.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_basic_pha_khong_kiem.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_basic_truy_phong_kiem.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_basic_vo_song_kiem.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_passive_kiem_tam.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_passive_kiem_y_bat_diet.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_passive_lien_kiem.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_active_hoi_xuan.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_active_moc_bo.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_active_thanh_dang.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_active_van_doc.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_active_van_moc_hoi_sinh.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_basic_co_thu_kich.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_basic_linh_diep.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_basic_thao_kich.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_basic_truc_phi_tieu.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_passive_duoc_tinh.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_passive_sinh_tuc.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_passive_thao_moc_dong_hoa.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_active_dia_chan.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_active_son_bich.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_active_thach_kich.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_active_thien_son_tran.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_active_tho_giap.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_basic_dia_liet_kich.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_basic_kim_cang_quyen.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_basic_pha_thach_kich.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_basic_tran_quyen.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_passive_bat_dong.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_passive_hau_tho.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_passive_son_ha_ho_the.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_active_han_trieu.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_active_luu_bo.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_active_thien_ha.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_active_thuy_kinh.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_active_trieu_quyen.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_basic_am_luu.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_basic_bang_phien.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_basic_huyen_bang_kich.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_basic_thuy_tien.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_passive_bang_giap_tam.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_passive_han_khi.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_passive_luu_chuyen.png": {
+      "cell_ref": 64
+    }
+  }
+}

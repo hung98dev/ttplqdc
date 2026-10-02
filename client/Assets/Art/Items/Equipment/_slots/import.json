@@ -1,0 +1,47 @@
+{
+  "asset_class": "EQUIPMENT_ICON",
+  "assets": {
+    "body.png": {
+      "cell_ref": 64
+    },
+    "charm.png": {
+      "cell_ref": 64
+    },
+    "costume.png": {
+      "cell_ref": 64
+    },
+    "feet.png": {
+      "cell_ref": 64
+    },
+    "hands.png": {
+      "cell_ref": 64
+    },
+    "head.png": {
+      "cell_ref": 64
+    },
+    "jade.png": {
+      "cell_ref": 64
+    },
+    "legs.png": {
+      "cell_ref": 64
+    },
+    "necklace.png": {
+      "cell_ref": 64
+    },
+    "relic.png": {
+      "cell_ref": 64
+    },
+    "ring.png": {
+      "cell_ref": 64
+    },
+    "seal.png": {
+      "cell_ref": 64
+    },
+    "talisman.png": {
+      "cell_ref": 64
+    },
+    "weapon.png": {
+      "cell_ref": 64
+    }
+  }
+}
