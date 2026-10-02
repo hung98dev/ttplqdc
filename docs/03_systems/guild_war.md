@@ -602,3 +602,12 @@ first 3 eligible completions/character/week may grant bound currency
 personal bound amount independent of win/loss
 permanent territory = disabled
 ```
+
+# Compiler Source Schema
+
+Normative extension of `../06_data/content_authoring_contract.md` §1: these registries are compile inputs for the Guild War space (`../06_data/config.md` § Map Geometry Compile, contract §4 `Playable Space Geometry Index`). They are registered spec-section sources, not a 25th gameplay catalog (CAT-006).
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Map` / `text` fence `space_id, span, bounds, reference_extent, layout_profile` | space geometry / `space_id` | space_id:id; span:pair(decimal); bounds:range corner pair(decimal) m, min constant `(0,0)`; reference_extent:pair(int); layout_profile:enum token | `space_kind = GUILD_WAR` constant; ADR-0046 conversion `25.6x14.4m / 50px per m`; mirror parity about `x = 64.0m` within `0.001m`; the required-topology bullets are normative validation text. |
+| `Map` / `text` fence "Stable objective IDs" | space anchors / `map.guild_war.five_seal_conflict` | ordered `id` tokens `guild_war.seal.moc`, `guild_war.seal.hoa`, `guild_war.seal.tho`, `guild_war.seal.kim`, `guild_war.seal.thuy` | the space's declared logical anchor set for export parity (`../04_architecture/physics_geometry_contract.md` §6); seal order is spatial only (Ngũ Hành generation order), no class-element bonus. |
