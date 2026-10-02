@@ -1,0 +1,59 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "button_large.png": {
+      "nine_slice": [
+        24,
+        24,
+        48,
+        48
+      ]
+    },
+    "button_small.png": {
+      "nine_slice": [
+        20,
+        20,
+        40,
+        40
+      ]
+    },
+    "dialog_generic.png": {
+      "nine_slice": [
+        48,
+        48,
+        48,
+        48
+      ]
+    },
+    "divider_ornate.png": {
+      "nine_slice": [
+        8,
+        8,
+        64,
+        64
+      ]
+    },
+    "panel_generic.png": {
+      "nine_slice": [
+        64,
+        64,
+        64,
+        64
+      ]
+    },
+    "slot_equipment.png": {
+      "cell_ref": 96
+    },
+    "slot_item.png": {
+      "cell_ref": 96
+    },
+    "tooltip_generic.png": {
+      "nine_slice": [
+        32,
+        32,
+        32,
+        32
+      ]
+    }
+  }
+}

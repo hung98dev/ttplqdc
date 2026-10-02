@@ -1,0 +1,13 @@
+{
+  "asset_class": "UI_ART",
+  "assets": {
+    "error_dialog.png": {
+      "nine_slice": [
+        48,
+        48,
+        48,
+        48
+      ]
+    }
+  }
+}

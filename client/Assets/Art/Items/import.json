@@ -1,0 +1,125 @@
+{
+  "asset_class": "ITEM_ICON",
+  "assets": {
+    "book_potential.png": {
+      "cell_ref": 64
+    },
+    "book_skill.png": {
+      "cell_ref": 64
+    },
+    "consumable_bua_giu_bac_cao_cap.png": {
+      "cell_ref": 64
+    },
+    "consumable_bua_giu_bac_so_cap.png": {
+      "cell_ref": 64
+    },
+    "consumable_bua_giu_bac_trung_cap.png": {
+      "cell_ref": 64
+    },
+    "consumable_bua_may_cao_cap.png": {
+      "cell_ref": 64
+    },
+    "consumable_bua_may_sieu_cap.png": {
+      "cell_ref": 64
+    },
+    "consumable_bua_may_so_cap.png": {
+      "cell_ref": 64
+    },
+    "consumable_bua_may_trung_cap.png": {
+      "cell_ref": 64
+    },
+    "consumable_chia_khoa_co.png": {
+      "cell_ref": 64
+    },
+    "consumable_food_ca_bong_kho.png": {
+      "cell_ref": 64
+    },
+    "consumable_food_ca_chep_nuong.png": {
+      "cell_ref": 64
+    },
+    "consumable_food_tom_nuong.png": {
+      "cell_ref": 64
+    },
+    "consumable_moi_cau.png": {
+      "cell_ref": 64
+    },
+    "consumable_nuoc_la.png": {
+      "cell_ref": 64
+    },
+    "consumable_ruou_nep.png": {
+      "cell_ref": 64
+    },
+    "consumable_tra_sen.png": {
+      "cell_ref": 64
+    },
+    "material_ben_nuoc_da_song.png": {
+      "cell_ref": 64
+    },
+    "material_ca_bong.png": {
+      "cell_ref": 64
+    },
+    "material_ca_bong_den.png": {
+      "cell_ref": 64
+    },
+    "material_ca_chep.png": {
+      "cell_ref": 64
+    },
+    "material_ca_chep_hoa_rong.png": {
+      "cell_ref": 64
+    },
+    "material_ca_linh_giang.png": {
+      "cell_ref": 64
+    },
+    "material_ca_ro_dong.png": {
+      "cell_ref": 64
+    },
+    "material_ca_sam_u_minh.png": {
+      "cell_ref": 64
+    },
+    "material_ca_suong_ho.png": {
+      "cell_ref": 64
+    },
+    "material_cui_lua_trai.png": {
+      "cell_ref": 64
+    },
+    "material_deo_may_da_voi.png": {
+      "cell_ref": 64
+    },
+    "material_gung_lang.png": {
+      "cell_ref": 64
+    },
+    "material_lang_da_manh_dong.png": {
+      "cell_ref": 64
+    },
+    "material_linh_dan_cao_cap.png": {
+      "cell_ref": 64
+    },
+    "material_linh_dan_so_cap.png": {
+      "cell_ref": 64
+    },
+    "material_linh_dan_trung_cap.png": {
+      "cell_ref": 64
+    },
+    "material_nui_thieng_da_suong.png": {
+      "cell_ref": 64
+    },
+    "material_rau_ram.png": {
+      "cell_ref": 64
+    },
+    "material_thanh_co_gach_co.png": {
+      "cell_ref": 64
+    },
+    "material_tom_song.png": {
+      "cell_ref": 64
+    },
+    "material_u_minh_vo_cay.png": {
+      "cell_ref": 64
+    },
+    "material_vai_hoa_van.png": {
+      "cell_ref": 64
+    },
+    "tool_can_cau_tre.png": {
+      "cell_ref": 64
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "asset_class": "ITEM_ICON",
+  "assets": {
+    "basic_area_splash_50.png": {
+      "cell_ref": 64
+    },
+    "basic_bleed_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_burn_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_burn_true_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_crit_mark_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_freeze_1200ms.png": {
+      "cell_ref": 64
+    },
+    "basic_heal_reduction_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_poison_4s.png": {
+      "cell_ref": 64
+    },
+    "basic_poison_stack_4s.png": {
+      "cell_ref": 64
+    },
+    "basic_resist_shred_hoa_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_root_1200ms.png": {
+      "cell_ref": 64
+    },
+    "basic_slow_15_2s.png": {
+      "cell_ref": 64
+    },
+    "basic_slow_20_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_slow_25_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_stun_400ms.png": {
+      "cell_ref": 64
+    },
+    "basic_stun_500ms.png": {
+      "cell_ref": 64
+    },
+    "basic_vulnerable_8_4s.png": {
+      "cell_ref": 64
+    },
+    "basic_weaken_10_3s.png": {
+      "cell_ref": 64
+    },
+    "basic_weaken_12_3s.png": {
+      "cell_ref": 64
+    },
+    "beast_emergency_shield.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_cuong_hoa_buff.png": {
+      "cell_ref": 64
+    },
+    "skill_hoa_hoa_giap_aura.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_hoi_kiem_guard.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_kiem_tran_slow.png": {
+      "cell_ref": 64
+    },
+    "skill_kim_pha_giap_vulnerable_5s.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_root_1500ms.png": {
+      "cell_ref": 64
+    },
+    "skill_moc_thanh_dang_slow.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_airborne_800ms.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_stun_1500ms.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_thien_son_tran_shield.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_tho_giap_shield.png": {
+      "cell_ref": 64
+    },
+    "skill_tho_tho_giap_ward.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_bang_giap_guard.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_chill_3s.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_freeze_2000ms.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_freeze_han_khi.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_luu_bo_haste.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_slow_40_3s.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_thuy_kinh_shield.png": {
+      "cell_ref": 64
+    },
+    "skill_thuy_thuy_kinh_ward.png": {
+      "cell_ref": 64
+    }
+  }
+}
