@@ -108,7 +108,7 @@ var Drivers = []Driver{
 	{Catalog: "equipment_catalog.md", Compile: compileEquipment},
 	{Catalog: "item_catalog.md", Compile: compileItem},
 	{Catalog: "drop_tables.md"},
-	{Catalog: "crafting_catalog.md"},
+	{Catalog: "crafting_catalog.md", Compile: compileCrafting},
 	{Catalog: "npc_shop_catalog.md", Compile: compileNPC},
 	{Catalog: "quest_catalog.md"},
 	{Catalog: "dungeon_catalog.md", Compile: compileDungeon},
