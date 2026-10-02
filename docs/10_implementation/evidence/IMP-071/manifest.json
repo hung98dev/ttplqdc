@@ -19,7 +19,7 @@
         "-Drift"
       ],
       "exit_code": 0,
-      "wall_seconds": 1.6748123270000002
+      "wall_seconds": 1.531922673
     },
     {
       "argv": [
@@ -36,7 +36,7 @@
         "./internal/durable/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 1.145874509
+      "wall_seconds": 1.523904286
     },
     {
       "argv": [
@@ -48,7 +48,7 @@
         "./internal/durable/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 3.281799654
+      "wall_seconds": 7.800323027
     },
     {
       "argv": [
@@ -59,7 +59,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 0.681501979
+      "wall_seconds": 0.70669949
     },
     {
       "argv": [
@@ -71,7 +71,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 2.998517198
+      "wall_seconds": 1.765173396
     },
     {
       "argv": [
@@ -79,7 +79,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 3.864901832
+      "wall_seconds": 4.606653977
     },
     {
       "argv": [
@@ -88,7 +88,7 @@
         "server/"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.071836514
+      "wall_seconds": 0.076708201
     },
     {
       "argv": [
@@ -99,7 +99,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 0.123515469
+      "wall_seconds": 0.108724801
     }
   ],
   "test_summary": {
@@ -166,7 +166,7 @@
     }
   ],
   "content_revision": "none",
-  "ci_run_id": "37012725945",
+  "ci_run_id": "37016824601",
   "run_attempt": "1",
   "jobs": [
     {
