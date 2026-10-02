@@ -1,0 +1,5320 @@
+{
+ "schema_version": 1,
+ "count": 294,
+ "cosmetics": [
+  {
+   "id": "cosmetic.appearance.ao_toi_la",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Áo Tơi Lá",
+   "scope": "CHARACTER",
+   "source": "play/grant source per catalog",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/cosmetic.appearance.ao_toi_la.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/cosmetic.appearance.ao_toi_la.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.ao_toi_la.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.appearance.ao_toi_la.prefab",
+    "icon": "asset.cosmetic.appearance.ao_toi_la.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "áo tơi leaf raincoat",
+    "rural attire"
+   ]
+  },
+  {
+   "id": "cosmetic.appearance.ao_vai_hoa_van",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Áo Vải Hoa Văn",
+   "scope": "CHARACTER",
+   "source": "play/grant source per catalog",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/cosmetic.appearance.ao_vai_hoa_van.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/cosmetic.appearance.ao_vai_hoa_van.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.ao_vai_hoa_van.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.appearance.ao_vai_hoa_van.prefab",
+    "icon": "asset.cosmetic.appearance.ao_vai_hoa_van.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "patterned cloth",
+    "folk dye"
+   ]
+  },
+  {
+   "id": "cosmetic.appearance.khan_ben_nuoc",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Khăn Bến Nước",
+   "scope": "CHARACTER",
+   "source": "play/grant source per catalog",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/cosmetic.appearance.khan_ben_nuoc.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/cosmetic.appearance.khan_ben_nuoc.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.khan_ben_nuoc.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.appearance.khan_ben_nuoc.prefab",
+    "icon": "asset.cosmetic.appearance.khan_ben_nuoc.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "khăn rằn southern scarf",
+    "rural attire"
+   ]
+  },
+  {
+   "id": "cosmetic.appearance.non_la_moc",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Nón Lá Mộc",
+   "scope": "CHARACTER",
+   "source": "play/grant source per catalog",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/cosmetic.appearance.non_la_moc.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/cosmetic.appearance.non_la_moc.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.non_la_moc.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.appearance.non_la_moc.prefab",
+    "icon": "asset.cosmetic.appearance.non_la_moc.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "nón lá palm-leaf hat",
+    "rural attire"
+   ]
+  },
+  {
+   "id": "cosmetic.aura.linh_khi",
+   "category": "AURA",
+   "display": "Linh Khí",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "128x128",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/auras/cosmetic.aura.linh_khi.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.aura.linh_khi.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.aura.linh_khi.sprite",
+    "icon": "asset.cosmetic.aura.linh_khi.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "spirit aura"
+   ]
+  },
+  {
+   "id": "cosmetic.aura.quy_khi",
+   "category": "AURA",
+   "display": "Quý Khí",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "128x128",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/auras/cosmetic.aura.quy_khi.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.aura.quy_khi.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.aura.quy_khi.sprite",
+    "icon": "asset.cosmetic.aura.quy_khi.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "noble aura"
+   ]
+  },
+  {
+   "id": "cosmetic.emote.season.0.paid.chap_tay",
+   "category": "EMOTE",
+   "display": "Chắp Tay",
+   "scope": "CHARACTER",
+   "source": "paid season 0 track",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.emote.season.0.paid.chap_tay.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.emote.season.0.paid.chap_tay.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "emote gesture"
+   ]
+  },
+  {
+   "id": "cosmetic.emote.season.1.paid",
+   "category": "EMOTE",
+   "display": "Múa Nón U Minh",
+   "scope": "CHARACTER",
+   "source": "paid season 1 track",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.emote.season.1.paid.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.emote.season.1.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "emote gesture"
+   ]
+  },
+  {
+   "id": "cosmetic.emote.season.2.paid",
+   "category": "EMOTE",
+   "display": "Vẫy Đèn Bến Đền",
+   "scope": "CHARACTER",
+   "source": "paid season 2 track",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.emote.season.2.paid.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.emote.season.2.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "emote gesture"
+   ]
+  },
+  {
+   "id": "cosmetic.emote.season.3.paid",
+   "category": "EMOTE",
+   "display": "Gõ Mõ Đèo Sương",
+   "scope": "CHARACTER",
+   "source": "paid season 3 track",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.emote.season.3.paid.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.emote.season.3.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "emote gesture"
+   ]
+  },
+  {
+   "id": "cosmetic.emote.season.4.paid",
+   "category": "EMOTE",
+   "display": "Múa Quạt Thành Mưa",
+   "scope": "CHARACTER",
+   "source": "paid season 4 track",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.emote.season.4.paid.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.emote.season.4.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "emote gesture"
+   ]
+  },
+  {
+   "id": "cosmetic.emote.season.5.paid",
+   "category": "EMOTE",
+   "display": "Cúi Chào Núi Mưa",
+   "scope": "CHARACTER",
+   "source": "paid season 5 track",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.emote.season.5.paid.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.emote.season.5.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "emote gesture"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.bach_ho",
+   "category": "PROFILE_FRAME",
+   "display": "Bạch Hổ",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.bach_ho.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.bach_ho.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.bach_ho.sprite",
+    "icon": "asset.cosmetic.frame.bach_ho.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "white tiger"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.ben_da",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Bến Đa",
+   "scope": "CHARACTER",
+   "source": "quest.side.a1.chiec_non_ben_da",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.ben_da.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.ben_da.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.ben_da.sprite",
+    "icon": "asset.cosmetic.frame.ben_da.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "bến đa",
+    "nón lá"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.guild_war.chien_ky",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Chiến Kỳ",
+   "scope": "CHARACTER",
+   "source": "guild war eligible member",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.guild_war.chien_ky.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.guild_war.chien_ky.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.guild_war.chien_ky.sprite",
+    "icon": "asset.cosmetic.frame.guild_war.chien_ky.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "war banner"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.ho_tinh",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Hồ Tinh",
+   "scope": "CHARACTER",
+   "source": "boss.ho_tinh_chin_duoi clear",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.ho_tinh.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.ho_tinh.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.ho_tinh.sprite",
+    "icon": "asset.cosmetic.frame.ho_tinh.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "hồ tinh (nine-tailed fox spirit)"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.huyen_vu",
+   "category": "PROFILE_FRAME",
+   "display": "Huyền Vũ",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.huyen_vu.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.huyen_vu.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.huyen_vu.sprite",
+    "icon": "asset.cosmetic.frame.huyen_vu.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "black tortoise-serpent"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.lan_linh",
+   "category": "PROFILE_FRAME",
+   "display": "Lân Linh",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.lan_linh.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.lan_linh.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.lan_linh.sprite",
+    "icon": "asset.cosmetic.frame.lan_linh.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "kirin lân"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.nui_thieng",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Núi Thiêng",
+   "scope": "CHARACTER",
+   "source": "material/special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.nui_thieng.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.nui_thieng.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.nui_thieng.sprite",
+    "icon": "asset.cosmetic.frame.nui_thieng.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "núi thiêng (sacred mountain)"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.phuong_hoang",
+   "category": "PROFILE_FRAME",
+   "display": "Phượng Hoàng",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.phuong_hoang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.phuong_hoang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.phuong_hoang.sprite",
+    "icon": "asset.cosmetic.frame.phuong_hoang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "phoenix"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.pvp.bac",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Bạc Đấu Trường",
+   "scope": "CHARACTER",
+   "source": "pvp.tier.silver",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.pvp.bac.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.pvp.bac.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.pvp.bac.sprite",
+    "icon": "asset.cosmetic.frame.pvp.bac.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "arena rank metal"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.pvp.linh",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Linh Đấu Trường",
+   "scope": "CHARACTER",
+   "source": "pvp.tier.spirit",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.pvp.linh.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.pvp.linh.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.pvp.linh.sprite",
+    "icon": "asset.cosmetic.frame.pvp.linh.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "arena rank spirit"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.pvp.ngoc",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Ngọc Đấu Trường",
+   "scope": "CHARACTER",
+   "source": "pvp.tier.jade",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.pvp.ngoc.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.pvp.ngoc.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.pvp.ngoc.sprite",
+    "icon": "asset.cosmetic.frame.pvp.ngoc.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "arena rank jade"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.pvp.than_thoai",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Thần Thoại Đấu Trường",
+   "scope": "CHARACTER",
+   "source": "pvp.tier.mythic",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.pvp.than_thoai.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.pvp.than_thoai.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.pvp.than_thoai.sprite",
+    "icon": "asset.cosmetic.frame.pvp.than_thoai.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "arena rank mythic"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.pvp.vang",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Vàng Đấu Trường",
+   "scope": "CHARACTER",
+   "source": "pvp.tier.gold",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.pvp.vang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.pvp.vang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.pvp.vang.sprite",
+    "icon": "asset.cosmetic.frame.pvp.vang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "arena rank metal"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.rong_vang",
+   "category": "PROFILE_FRAME",
+   "display": "Rồng Vàng",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.rong_vang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.rong_vang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.rong_vang.sprite",
+    "icon": "asset.cosmetic.frame.rong_vang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "golden dragon"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.0",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Mùa Làng Đa",
+   "scope": "CHARACTER",
+   "source": "master all 10 season 0 atlas pages T3",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.0.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.0.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.0.sprite",
+    "icon": "asset.cosmetic.frame.season.0.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 0 Làng Đa motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.0.paid",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Đêm Làng Đa",
+   "scope": "CHARACTER",
+   "source": "paid season 0 track",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.0.paid.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.0.paid.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.0.paid.sprite",
+    "icon": "asset.cosmetic.frame.season.0.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "night season 0 Làng Đa motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.1",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Mùa U Minh",
+   "scope": "CHARACTER",
+   "source": "master all 10 season 1 atlas pages T3",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.1.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.1.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.1.sprite",
+    "icon": "asset.cosmetic.frame.season.1.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 1 U Minh motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.1.paid",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Đêm U Minh",
+   "scope": "CHARACTER",
+   "source": "paid season 1 track",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.1.paid.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.1.paid.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.1.paid.sprite",
+    "icon": "asset.cosmetic.frame.season.1.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "night season 1 U Minh motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.2",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Mùa Bến Đền",
+   "scope": "CHARACTER",
+   "source": "master all 10 season 2 atlas pages T3",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.2.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.2.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.2.sprite",
+    "icon": "asset.cosmetic.frame.season.2.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 2 Bến Đền motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.2.paid",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Đêm Bến Đền",
+   "scope": "CHARACTER",
+   "source": "paid season 2 track",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.2.paid.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.2.paid.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.2.paid.sprite",
+    "icon": "asset.cosmetic.frame.season.2.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "night season 2 Bến Đền motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.3",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Mùa Đèo Sương",
+   "scope": "CHARACTER",
+   "source": "master all 10 season 3 atlas pages T3",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.3.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.3.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.3.sprite",
+    "icon": "asset.cosmetic.frame.season.3.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 3 Đèo Sương motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.3.paid",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Đêm Đèo Sương",
+   "scope": "CHARACTER",
+   "source": "paid season 3 track",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.3.paid.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.3.paid.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.3.paid.sprite",
+    "icon": "asset.cosmetic.frame.season.3.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "night season 3 Đèo Sương motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.4",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Mùa Thành Mưa",
+   "scope": "CHARACTER",
+   "source": "master all 10 season 4 atlas pages T3",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.4.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.4.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.4.sprite",
+    "icon": "asset.cosmetic.frame.season.4.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 4 Thành Mưa motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.4.paid",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Đêm Thành Mưa",
+   "scope": "CHARACTER",
+   "source": "paid season 4 track",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.4.paid.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.4.paid.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.4.paid.sprite",
+    "icon": "asset.cosmetic.frame.season.4.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "night season 4 Thành Mưa motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.5",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Mùa Núi Mưa",
+   "scope": "CHARACTER",
+   "source": "master all 10 season 5 atlas pages T3",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.5.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.5.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.5.sprite",
+    "icon": "asset.cosmetic.frame.season.5.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 5 Núi Mưa motif"
+   ]
+  },
+  {
+   "id": "cosmetic.frame.season.5.paid",
+   "category": "PROFILE_FRAME",
+   "display": "Khung Đêm Núi Mưa",
+   "scope": "CHARACTER",
+   "source": "paid season 5 track",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.frame.season.5.paid.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.frame.season.5.paid.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.frame.season.5.paid.sprite",
+    "icon": "asset.cosmetic.frame.season.5.paid.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "night season 5 Núi Mưa motif"
+   ]
+  },
+  {
+   "id": "cosmetic.guild.banner.guild_war_champion",
+   "category": "GUILD_BANNER",
+   "display": "Cờ Bá Chủ Ngũ Ấn",
+   "scope": "GUILD",
+   "source": "ritual/guild-war settlement",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/guild/cosmetic.guild.banner.guild_war_champion.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.guild.banner.guild_war_champion.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.guild.banner.guild_war_champion.sprite",
+    "icon": "asset.cosmetic.guild.banner.guild_war_champion.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "champion war banner"
+   ]
+  },
+  {
+   "id": "cosmetic.guild.banner.ritual_8",
+   "category": "GUILD_BANNER",
+   "display": "Cờ Hoa Văn",
+   "scope": "GUILD",
+   "source": "ritual/guild-war settlement",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/guild/cosmetic.guild.banner.ritual_8.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.guild.banner.ritual_8.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.guild.banner.ritual_8.sprite",
+    "icon": "asset.cosmetic.guild.banner.ritual_8.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "ceremonial guild banner"
+   ]
+  },
+  {
+   "id": "cosmetic.guild.crest.ritual_4",
+   "category": "GUILD_CREST_ACCENT",
+   "display": "Nét Tre",
+   "scope": "GUILD",
+   "source": "ritual/guild-war settlement",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "128x128",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/guild/cosmetic.guild.crest.ritual_4.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.guild.crest.ritual_4.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.guild.crest.ritual_4.sprite",
+    "icon": "asset.cosmetic.guild.crest.ritual_4.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "tre bamboo crest accent"
+   ]
+  },
+  {
+   "id": "cosmetic.guild.shrine.guild_war_top10",
+   "category": "GUILD_SHRINE_VISUAL",
+   "display": "Đàn Ngũ Ấn",
+   "scope": "GUILD",
+   "source": "ritual/guild-war settlement",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.guild.shrine.guild_war_top10.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.guild.shrine.guild_war_top10.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.guild.shrine.guild_war_top10.sprite",
+    "icon": "asset.cosmetic.guild.shrine.guild_war_top10.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "đàn shrine, ngũ ấn marks"
+   ]
+  },
+  {
+   "id": "cosmetic.guild.shrine.ritual_12",
+   "category": "GUILD_SHRINE_VISUAL",
+   "display": "Đèn Hội Tụ",
+   "scope": "GUILD",
+   "source": "ritual/guild-war settlement",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.guild.shrine.ritual_12.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.guild.shrine.ritual_12.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.guild.shrine.ritual_12.sprite",
+    "icon": "asset.cosmetic.guild.shrine.ritual_12.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "gathering lantern shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.guild_stone.inscription.kim_bach",
+   "category": "GUILD_STONE_INSCRIPTION",
+   "display": "Kim Bạch",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "gold-white inscription"
+   ]
+  },
+  {
+   "id": "cosmetic.guild_stone.inscription.long_van",
+   "category": "GUILD_STONE_INSCRIPTION",
+   "display": "Long Vân",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "dragon-cloud calligraphy"
+   ]
+  },
+  {
+   "id": "cosmetic.guild_stone.inscription.ngoc_bich",
+   "category": "GUILD_STONE_INSCRIPTION",
+   "display": "Ngọc Bích",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "jade-green inscription"
+   ]
+  },
+  {
+   "id": "cosmetic.guild_stone.inscription.phuong_vi",
+   "category": "GUILD_STONE_INSCRIPTION",
+   "display": "Phượng Vĩ",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "phoenix-tail calligraphy"
+   ]
+  },
+  {
+   "id": "cosmetic.guild_stone.inscription.thien_long",
+   "category": "GUILD_STONE_INSCRIPTION",
+   "display": "Thiên Long",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "heaven-dragon inscription"
+   ]
+  },
+  {
+   "id": "cosmetic.guild_stone.inscription.trung_nguyen",
+   "category": "GUILD_STONE_INSCRIPTION",
+   "display": "Trung Nguyên",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "inscription calligraphy style"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.appearance.co_tam_truyen",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Cổ Tâm Truyện",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/cosmetic.iap.appearance.co_tam_truyen.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/cosmetic.iap.appearance.co_tam_truyen.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.co_tam_truyen.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.iap.appearance.co_tam_truyen.prefab",
+    "icon": "asset.cosmetic.iap.appearance.co_tam_truyen.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "ancient-mind archetype outfit"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.appearance.co_tien",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Cô Tiên",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/cosmetic.iap.appearance.co_tien.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/cosmetic.iap.appearance.co_tien.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.co_tien.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.iap.appearance.co_tien.prefab",
+    "icon": "asset.cosmetic.iap.appearance.co_tien.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "fairy archetype outfit"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.appearance.nu_tuong_trong_dong",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Nữ Tướng Trống Đồng",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/accessory_cape.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/cosmetic.iap.appearance.nu_tuong_trong_dong.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/cosmetic.iap.appearance.nu_tuong_trong_dong.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.nu_tuong_trong_dong.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.iap.appearance.nu_tuong_trong_dong.prefab",
+    "icon": "asset.cosmetic.iap.appearance.nu_tuong_trong_dong.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "bronze-drum female-general archetype outfit"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.appearance.vo_quan_thanh_co",
+   "category": "CHARACTER_APPEARANCE",
+   "display": "Võ Quan Thành Cổ",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "COSMETIC_APPEARANCE",
+   "cell_ref": "96x128",
+   "files": {
+    "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/preview.png",
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/torso.png"
+    ],
+    "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/cosmetic.iap.appearance.vo_quan_thanh_co.spriteLibAsset",
+    "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/cosmetic.iap.appearance.vo_quan_thanh_co.prefab",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.vo_quan_thanh_co.png"
+   },
+   "keys": {
+    "prefab": "asset.cosmetic.iap.appearance.vo_quan_thanh_co.prefab",
+    "icon": "asset.cosmetic.iap.appearance.vo_quan_thanh_co.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "ancient martial-mandarin archetype outfit"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.emote.bai_chao_lang",
+   "category": "EMOTE",
+   "display": "Bái Chào Làng",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.iap.emote.bai_chao_lang.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.iap.emote.bai_chao_lang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "village greeting bow"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.emote.ngoi_thien_dinh",
+   "category": "EMOTE",
+   "display": "Ngồi Thiền Đình",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.iap.emote.ngoi_thien_dinh.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.iap.emote.ngoi_thien_dinh.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "meditation sit"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.emote.vo_tay_thang_tran",
+   "category": "EMOTE",
+   "display": "Vỗ Tay Thắng Trận",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "ITEM_ICON",
+   "cell_ref": "64x64",
+   "files": {
+    "icon": "client/Assets/Art/Cosmetics/emotes/cosmetic.iap.emote.vo_tay_thang_tran.png"
+   },
+   "keys": {
+    "icon": "asset.cosmetic.iap.emote.vo_tay_thang_tran.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "victory clap"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.frame.thien_long",
+   "category": "PROFILE_FRAME",
+   "display": "Thiên Long",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/frames/cosmetic.iap.frame.thien_long.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.frame.thien_long.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.iap.frame.thien_long.sprite",
+    "icon": "asset.cosmetic.iap.frame.thien_long.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "heaven-dragon frame"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.nameplate.hun_thuoc_co",
+   "category": "NAMEPLATE",
+   "display": "Hồn Thuốc Cổ",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "320x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/nameplates/cosmetic.iap.nameplate.hun_thuoc_co.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.nameplate.hun_thuoc_co.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.iap.nameplate.hun_thuoc_co.sprite",
+    "icon": "asset.cosmetic.iap.nameplate.hun_thuoc_co.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "ancient-remedy spirit banner"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.title_glow.long_nhan",
+   "category": "TITLE_GLOW",
+   "display": "Long Nhan",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.iap.title_glow.long_nhan.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.title_glow.long_nhan.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.iap.title_glow.long_nhan.sprite",
+    "icon": "asset.cosmetic.iap.title_glow.long_nhan.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "dragon-visage glow"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.trail.bao_gam",
+   "category": "WEAPON_TRAIL",
+   "display": "Báo Gấm",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/trails/cosmetic.iap.trail.bao_gam.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.trail.bao_gam.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.iap.trail.bao_gam.sprite",
+    "icon": "asset.cosmetic.iap.trail.bao_gam.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "brocade-leopard trail"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.trail.long_hoa",
+   "category": "WEAPON_TRAIL",
+   "display": "Long Hoa",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/trails/cosmetic.iap.trail.long_hoa.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.trail.long_hoa.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.iap.trail.long_hoa.sprite",
+    "icon": "asset.cosmetic.iap.trail.long_hoa.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "dragon-blossom trail"
+   ]
+  },
+  {
+   "id": "cosmetic.iap.trail.phuong_hoang_vu",
+   "category": "WEAPON_TRAIL",
+   "display": "Phượng Hoàng Vũ",
+   "scope": "ACCOUNT",
+   "source": "IAP store exclusive",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/trails/cosmetic.iap.trail.phuong_hoang_vu.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.trail.phuong_hoang_vu.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.iap.trail.phuong_hoang_vu.sprite",
+    "icon": "asset.cosmetic.iap.trail.phuong_hoang_vu.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "phoenix feather trail"
+   ]
+  },
+  {
+   "id": "cosmetic.nameplate.ky_luat_vang",
+   "category": "NAMEPLATE",
+   "display": "Kỳ Luật Vàng",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "320x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/nameplates/cosmetic.nameplate.ky_luat_vang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.nameplate.ky_luat_vang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.nameplate.ky_luat_vang.sprite",
+    "icon": "asset.cosmetic.nameplate.ky_luat_vang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "golden discipline banner"
+   ]
+  },
+  {
+   "id": "cosmetic.nameplate.linh_thuyen",
+   "category": "NAMEPLATE",
+   "display": "Linh Thuyền",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "320x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/nameplates/cosmetic.nameplate.linh_thuyen.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.nameplate.linh_thuyen.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.nameplate.linh_thuyen.sprite",
+    "icon": "asset.cosmetic.nameplate.linh_thuyen.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "spirit boat"
+   ]
+  },
+  {
+   "id": "cosmetic.nameplate.son_ha",
+   "category": "NAMEPLATE",
+   "display": "Sơn Hà",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "UI_ART",
+   "cell_ref": "320x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/nameplates/cosmetic.nameplate.son_ha.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.nameplate.son_ha.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.nameplate.son_ha.sprite",
+    "icon": "asset.cosmetic.nameplate.son_ha.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "mountains-and-rivers banner"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.kim_trang",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Kim Trắng",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.kim_trang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.kim_trang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.kim_trang.sprite",
+    "icon": "asset.cosmetic.shrine.kim_trang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "metal-white shrine motif"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.linh_khoi",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Linh Khói",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.linh_khoi.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.linh_khoi.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.linh_khoi.sprite",
+    "icon": "asset.cosmetic.shrine.linh_khoi.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "spirit-smoke shrine motif"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.lua_do",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Lửa Đỏ",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.lua_do.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.lua_do.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.lua_do.sprite",
+    "icon": "asset.cosmetic.shrine.lua_do.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "flame-red shrine motif"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.moc_xanh",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Mộc Xanh",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.moc_xanh.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.moc_xanh.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.moc_xanh.sprite",
+    "icon": "asset.cosmetic.shrine.moc_xanh.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "forest-green shrine motif"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.season.0",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Mùa Làng Đa",
+   "scope": "CHARACTER",
+   "source": "T2 all 10 season 0 atlas pages",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.season.0.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.season.0.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.season.0.sprite",
+    "icon": "asset.cosmetic.shrine.season.0.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 0 Làng Đa shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.season.1",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Mùa U Minh",
+   "scope": "CHARACTER",
+   "source": "T2 all 10 season 1 atlas pages",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.season.1.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.season.1.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.season.1.sprite",
+    "icon": "asset.cosmetic.shrine.season.1.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 1 U Minh shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.season.2",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Mùa Bến Đền",
+   "scope": "CHARACTER",
+   "source": "T2 all 10 season 2 atlas pages",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.season.2.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.season.2.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.season.2.sprite",
+    "icon": "asset.cosmetic.shrine.season.2.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 2 Bến Đền shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.season.3",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Mùa Đèo Sương",
+   "scope": "CHARACTER",
+   "source": "T2 all 10 season 3 atlas pages",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.season.3.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.season.3.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.season.3.sprite",
+    "icon": "asset.cosmetic.shrine.season.3.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 3 Đèo Sương shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.season.4",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Mùa Thành Mưa",
+   "scope": "CHARACTER",
+   "source": "T2 all 10 season 4 atlas pages",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.season.4.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.season.4.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.season.4.sprite",
+    "icon": "asset.cosmetic.shrine.season.4.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 4 Thành Mưa shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.season.5",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Mùa Núi Mưa",
+   "scope": "CHARACTER",
+   "source": "T2 all 10 season 5 atlas pages",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.season.5.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.season.5.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.season.5.sprite",
+    "icon": "asset.cosmetic.shrine.season.5.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "season 5 Núi Mưa shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.tho_vang",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Thổ Vàng",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.tho_vang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.tho_vang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.tho_vang.sprite",
+    "icon": "asset.cosmetic.shrine.tho_vang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "earth-gold shrine motif"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine.thuy_ngoc",
+   "category": "CHARACTER_SHRINE",
+   "display": "Miếu Thủy Ngọc",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine.thuy_ngoc.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine.thuy_ngoc.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine.thuy_ngoc.sprite",
+    "icon": "asset.cosmetic.shrine.thuy_ngoc.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "water-jade shrine motif"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine_special.bach_ngoc",
+   "category": "CHARACTER_SHRINE",
+   "display": "Bạch Ngọc",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine_special.bach_ngoc.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine_special.bach_ngoc.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine_special.bach_ngoc.sprite",
+    "icon": "asset.cosmetic.shrine_special.bach_ngoc.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "white-jade shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine_special.cu_thach",
+   "category": "CHARACTER_SHRINE",
+   "display": "Củ Thạch",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine_special.cu_thach.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine_special.cu_thach.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine_special.cu_thach.sprite",
+    "icon": "asset.cosmetic.shrine_special.cu_thach.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "stalwart stone shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine_special.dai_hong",
+   "category": "CHARACTER_SHRINE",
+   "display": "Đại Hồng",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine_special.dai_hong.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine_special.dai_hong.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine_special.dai_hong.sprite",
+    "icon": "asset.cosmetic.shrine_special.dai_hong.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "grand-red shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine_special.hong_tran",
+   "category": "CHARACTER_SHRINE",
+   "display": "Hồng Trần",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine_special.hong_tran.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine_special.hong_tran.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine_special.hong_tran.sprite",
+    "icon": "asset.cosmetic.shrine_special.hong_tran.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "mortal-dust shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.shrine_special.ngoc_bich",
+   "category": "CHARACTER_SHRINE",
+   "display": "Ngọc Bích",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "PROP",
+   "cell_ref": "256x256",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/shrines/cosmetic.shrine_special.ngoc_bich.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.shrine_special.ngoc_bich.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.shrine_special.ngoc_bich.sprite",
+    "icon": "asset.cosmetic.shrine_special.ngoc_bich.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "jade shrine"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bach_khoa_dan_gian",
+   "category": "TITLE",
+   "display": "Atlas — bach_khoa_dan_gian",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bach_khoa_dan_gian)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bep_bong",
+   "category": "TITLE",
+   "display": "Atlas — bep_bong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bep_bong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bep_chep",
+   "category": "TITLE",
+   "display": "Atlas — bep_chep",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bep_chep)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bep_tom",
+   "category": "TITLE",
+   "display": "Atlas — bep_tom",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bep_tom)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bong_nguoi",
+   "category": "TITLE",
+   "display": "Atlas — bong_nguoi",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bong_nguoi)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bong_nuoc_ma",
+   "category": "TITLE",
+   "display": "Atlas — bong_nuoc_ma",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bong_nuoc_ma)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bong_vong",
+   "category": "TITLE",
+   "display": "Atlas — bong_vong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bong_vong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.bu_nhin_rom",
+   "category": "TITLE",
+   "display": "Atlas — bu_nhin_rom",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (bu_nhin_rom)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ca_bong2",
+   "category": "TITLE",
+   "display": "Atlas — ca_bong2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ca_bong2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ca_chep2",
+   "category": "TITLE",
+   "display": "Atlas — ca_chep2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ca_chep2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ca_chep_hoa_rong",
+   "category": "TITLE",
+   "display": "Atlas — ca_chep_hoa_rong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ca_chep_hoa_rong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ca_tinh",
+   "category": "TITLE",
+   "display": "Atlas — ca_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ca_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ca_tinh_gia",
+   "category": "TITLE",
+   "display": "Atlas — ca_tinh_gia",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ca_tinh_gia)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.can_cau",
+   "category": "TITLE",
+   "display": "Atlas — can_cau",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (can_cau)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.chia_khoa",
+   "category": "TITLE",
+   "display": "Atlas — chia_khoa",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (chia_khoa)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.coc_thanh_tinh",
+   "category": "TITLE",
+   "display": "Atlas — coc_thanh_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (coc_thanh_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.cui_lua",
+   "category": "TITLE",
+   "display": "Atlas — cui_lua",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (cui_lua)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.dai_tinh_cay",
+   "category": "TITLE",
+   "display": "Atlas — dai_tinh_cay",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (dai_tinh_cay)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.dai_vong_linh",
+   "category": "TITLE",
+   "display": "Atlas — dai_vong_linh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (dai_vong_linh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_ho_chin",
+   "category": "TITLE",
+   "display": "Atlas — di_ho_chin",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_ho_chin)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_ho_tinh",
+   "category": "TITLE",
+   "display": "Atlas — di_ho_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_ho_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_ma_da_chua",
+   "category": "TITLE",
+   "display": "Atlas — di_ma_da_chua",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_ma_da_chua)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_moc",
+   "category": "TITLE",
+   "display": "Atlas — di_moc",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_moc)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_ngu_tinh",
+   "category": "TITLE",
+   "display": "Atlas — di_ngu_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_ngu_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_quy",
+   "category": "TITLE",
+   "display": "Atlas — di_quy",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_quy)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_than_trung",
+   "category": "TITLE",
+   "display": "Atlas — di_than_trung",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_than_trung)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.di_thuong",
+   "category": "TITLE",
+   "display": "Atlas — di_thuong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (di_thuong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.dom_dom_ma",
+   "category": "TITLE",
+   "display": "Atlas — dom_dom_ma",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (dom_dom_ma)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.dom_lua",
+   "category": "TITLE",
+   "display": "Atlas — dom_lua",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (dom_lua)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ho_con_tinh",
+   "category": "TITLE",
+   "display": "Atlas — ho_con_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ho_con_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ho_tinh_dong",
+   "category": "TITLE",
+   "display": "Atlas — ho_tinh_dong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ho_tinh_dong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ho_tinh_lon",
+   "category": "TITLE",
+   "display": "Atlas — ho_tinh_lon",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ho_tinh_lon)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ho_tinh_ve",
+   "category": "TITLE",
+   "display": "Atlas — ho_tinh_ve",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ho_tinh_ve)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hoc_gia_dan_gian",
+   "category": "TITLE",
+   "display": "Atlas — hoc_gia_dan_gian",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hoc_gia_dan_gian)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_binh",
+   "category": "TITLE",
+   "display": "Atlas — hon_binh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_binh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_binh_co",
+   "category": "TITLE",
+   "display": "Atlas — hon_binh_co",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_binh_co)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_binh_suu",
+   "category": "TITLE",
+   "display": "Atlas — hon_binh_suu",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_binh_suu)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_bu_nhin",
+   "category": "TITLE",
+   "display": "Atlas — hon_bu_nhin",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_bu_nhin)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ca_tinh",
+   "category": "TITLE",
+   "display": "Atlas — hon_ca_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ca_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_chet_duoi",
+   "category": "TITLE",
+   "display": "Atlas — hon_chet_duoi",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_chet_duoi)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_chet_duoi2",
+   "category": "TITLE",
+   "display": "Atlas — hon_chet_duoi2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_chet_duoi2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_coc",
+   "category": "TITLE",
+   "display": "Atlas — hon_coc",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_coc)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_do_trang",
+   "category": "TITLE",
+   "display": "Atlas — hon_do_trang",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_do_trang)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_dom_dom",
+   "category": "TITLE",
+   "display": "Atlas — hon_dom_dom",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_dom_dom)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_dom_lua",
+   "category": "TITLE",
+   "display": "Atlas — hon_dom_lua",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_dom_lua)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ho_con",
+   "category": "TITLE",
+   "display": "Atlas — hon_ho_con",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ho_con)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ho_tinh_chin",
+   "category": "TITLE",
+   "display": "Atlas — hon_ho_tinh_chin",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ho_tinh_chin)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ho_tinh_ve",
+   "category": "TITLE",
+   "display": "Atlas — hon_ho_tinh_ve",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ho_tinh_ve)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_khi_nui",
+   "category": "TITLE",
+   "display": "Atlas — hon_khi_nui",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_khi_nui)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_co2",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_co2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_co2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_co_thu",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_co_thu",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_co_thu)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_da2",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_da2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_da2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_da_gia2",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_da_gia2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_da_gia2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_rung",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_rung",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_rung)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_tranh2",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_tranh2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_tranh2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_tranh_gia2",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_tranh_gia2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_tranh_gia2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_ma_xo2",
+   "category": "TITLE",
+   "display": "Atlas — hon_ma_xo2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_ma_xo2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_moc_tinh",
+   "category": "TITLE",
+   "display": "Atlas — hon_moc_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_moc_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_qua_tinh",
+   "category": "TITLE",
+   "display": "Atlas — hon_qua_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_qua_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_thach_ve",
+   "category": "TITLE",
+   "display": "Atlas — hon_thach_ve",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_thach_ve)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_than_trung2",
+   "category": "TITLE",
+   "display": "Atlas — hon_than_trung2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_than_trung2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_thuong_luong2",
+   "category": "TITLE",
+   "display": "Atlas — hon_thuong_luong2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_thuong_luong2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_tinh_cay",
+   "category": "TITLE",
+   "display": "Atlas — hon_tinh_cay",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_tinh_cay)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_tran_linh",
+   "category": "TITLE",
+   "display": "Atlas — hon_tran_linh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_tran_linh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_tuong",
+   "category": "TITLE",
+   "display": "Atlas — hon_tuong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_tuong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_vong_hon2",
+   "category": "TITLE",
+   "display": "Atlas — hon_vong_hon2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_vong_hon2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.hon_xo_non",
+   "category": "TITLE",
+   "display": "Atlas — hon_xo_non",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (hon_xo_non)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.khi_nui",
+   "category": "TITLE",
+   "display": "Atlas — khi_nui",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (khi_nui)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.kho_bau",
+   "category": "TITLE",
+   "display": "Atlas — kho_bau",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (kho_bau)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.linh_dan2",
+   "category": "TITLE",
+   "display": "Atlas — linh_dan2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (linh_dan2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.linh_ve",
+   "category": "TITLE",
+   "display": "Atlas — linh_ve",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (linh_ve)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_co",
+   "category": "TITLE",
+   "display": "Atlas — ma_co",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_co)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_da",
+   "category": "TITLE",
+   "display": "Atlas — ma_da",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_da)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_da_gia",
+   "category": "TITLE",
+   "display": "Atlas — ma_da_gia",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_da_gia)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_nui",
+   "category": "TITLE",
+   "display": "Atlas — ma_nui",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_nui)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_rung",
+   "category": "TITLE",
+   "display": "Atlas — ma_rung",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_rung)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_tranh",
+   "category": "TITLE",
+   "display": "Atlas — ma_tranh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_tranh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_tranh_deo",
+   "category": "TITLE",
+   "display": "Atlas — ma_tranh_deo",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_tranh_deo)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_tranh_gia",
+   "category": "TITLE",
+   "display": "Atlas — ma_tranh_gia",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_tranh_gia)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_van_dem",
+   "category": "TITLE",
+   "display": "Atlas — ma_van_dem",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_van_dem)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ma_xo",
+   "category": "TITLE",
+   "display": "Atlas — ma_xo",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ma_xo)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.moc_tinh",
+   "category": "TITLE",
+   "display": "Atlas — moc_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (moc_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ngu_tinh_song",
+   "category": "TITLE",
+   "display": "Atlas — ngu_tinh_song",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ngu_tinh_song)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.nguoi_song_co",
+   "category": "TITLE",
+   "display": "Atlas — nguoi_song_co",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (nguoi_song_co)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.nha_suu_tam",
+   "category": "TITLE",
+   "display": "Atlas — nha_suu_tam",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (nha_suu_tam)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.oan_hon_dem",
+   "category": "TITLE",
+   "display": "Atlas — oan_hon_dem",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (oan_hon_dem)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.qua_tinh",
+   "category": "TITLE",
+   "display": "Atlas — qua_tinh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (qua_tinh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.qua_tinh_lon",
+   "category": "TITLE",
+   "display": "Atlas — qua_tinh_lon",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (qua_tinh_lon)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.quy_nhap_trang_dong",
+   "category": "TITLE",
+   "display": "Atlas — quy_nhap_trang_dong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (quy_nhap_trang_dong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.quy_song_dem",
+   "category": "TITLE",
+   "display": "Atlas — quy_song_dem",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (quy_song_dem)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.ruou_nep",
+   "category": "TITLE",
+   "display": "Atlas — ruou_nep",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (ruou_nep)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.thach_ve",
+   "category": "TITLE",
+   "display": "Atlas — thach_ve",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (thach_ve)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.than_rung_dem",
+   "category": "TITLE",
+   "display": "Atlas — than_rung_dem",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (than_rung_dem)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.than_trung_dong",
+   "category": "TITLE",
+   "display": "Atlas — than_trung_dong",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (than_trung_dong)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.thuong_luong_song",
+   "category": "TITLE",
+   "display": "Atlas — thuong_luong_song",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (thuong_luong_song)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.thuy_quai",
+   "category": "TITLE",
+   "display": "Atlas — thuy_quai",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (thuy_quai)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.tinh_cay",
+   "category": "TITLE",
+   "display": "Atlas — tinh_cay",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (tinh_cay)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.tinh_nui_gia",
+   "category": "TITLE",
+   "display": "Atlas — tinh_nui_gia",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (tinh_nui_gia)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.tinh_thu",
+   "category": "TITLE",
+   "display": "Atlas — tinh_thu",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (tinh_thu)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.tom_song2",
+   "category": "TITLE",
+   "display": "Atlas — tom_song2",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (tom_song2)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.tuong_da",
+   "category": "TITLE",
+   "display": "Atlas — tuong_da",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (tuong_da)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.vong_hon",
+   "category": "TITLE",
+   "display": "Atlas — vong_hon",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (vong_hon)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.vong_hon_gia",
+   "category": "TITLE",
+   "display": "Atlas — vong_hon_gia",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (vong_hon_gia)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.vong_linh",
+   "category": "TITLE",
+   "display": "Atlas — vong_linh",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (vong_linh)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.vong_nui_gia",
+   "category": "TITLE",
+   "display": "Atlas — vong_nui_gia",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (vong_nui_gia)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.vong_rung",
+   "category": "TITLE",
+   "display": "Atlas — vong_rung",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (vong_rung)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.atlas.vong_rung_sau",
+   "category": "TITLE",
+   "display": "Atlas — vong_rung_sau",
+   "scope": "CHARACTER",
+   "source": "atlas T3 page mastery (vong_rung_sau)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "atlas folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.ban_tay_than",
+   "category": "TITLE",
+   "display": "Bàn Tay Thần",
+   "scope": "CHARACTER",
+   "source": "feat.craft.enhance_12",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.ben_nuoc",
+   "category": "TITLE",
+   "display": "Người Qua Bến Nước",
+   "scope": "CHARACTER",
+   "source": "progression.story.a3.complete",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.canh_cuoi",
+   "category": "TITLE",
+   "display": "Người Khép Canh Cuối",
+   "scope": "CHARACTER",
+   "source": "progression.story.main.complete",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.dai_hiep_lang_que",
+   "category": "TITLE",
+   "display": "Đại Hiệp Làng Quê",
+   "scope": "CHARACTER",
+   "source": "2,000 Chivalry Points",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.deo_may",
+   "category": "TITLE",
+   "display": "Người Qua Đèo Mây",
+   "scope": "CHARACTER",
+   "source": "progression.story.a4.complete",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.doi_mat_than_trung",
+   "category": "TITLE",
+   "display": "Người Đối Mặt Thần Trùng",
+   "scope": "CHARACTER",
+   "source": "first eligible clear boss.than_trung",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.dung_si_tru_ho",
+   "category": "TITLE",
+   "display": "Dũng Sĩ Trừ Hổ",
+   "scope": "CHARACTER",
+   "source": "feat.combat.slay_ho_tinh_boss",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.guild_war.hung_binh",
+   "category": "TITLE",
+   "display": "Hùng Binh Ngũ Ấn",
+   "scope": "CHARACTER",
+   "source": "guild war MMR>=1800",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.hiep_nghia_vo_song",
+   "category": "TITLE",
+   "display": "Hiệp Nghĩa Vô Song",
+   "scope": "CHARACTER",
+   "source": "5,000 Chivalry Points",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.khac_tinh_ma_da",
+   "category": "TITLE",
+   "display": "Khắc Tinh Ma Da",
+   "scope": "CHARACTER",
+   "source": "feat.combat.slay_ma_da",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.lang_da",
+   "category": "TITLE",
+   "display": "Người Qua Làng Đa",
+   "scope": "CHARACTER",
+   "source": "progression.story.a1.complete",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.ngu_ong_ben_do",
+   "category": "TITLE",
+   "display": "Ngư Ông Bến Đò",
+   "scope": "CHARACTER",
+   "source": "feat.life.catch_fish",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.pvp.than_thoai",
+   "category": "TITLE",
+   "display": "Thần Thoại Đấu Trường",
+   "scope": "CHARACTER",
+   "source": "pvp.tier.mythic settlement",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.bup_lua",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — bup_lua",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page bup_lua",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.ca_linh",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — ca_linh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page ca_linh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.co_lua",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — co_lua",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page co_lua",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.di_hon_dau",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — di_hon_dau",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page di_hon_dau",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.di_quy_xuan",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — di_quy_xuan",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page di_quy_xuan",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.dom_nguyen",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — dom_nguyen",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page dom_nguyen",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.hon_gao",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — hon_gao",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page hon_gao",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.ky_xuan",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — ky_xuan",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page ky_xuan",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.lang_da_ky_ghe",
+   "category": "TITLE",
+   "display": "Kỳ Ghé Làng Đa",
+   "scope": "CHARACTER",
+   "source": "complete all 10 season 0 atlas pages T1",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.paid.dem_lang",
+   "category": "TITLE",
+   "display": "Đêm Làng",
+   "scope": "CHARACTER",
+   "source": "paid season 0 track (account access)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.tinh_buoi",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — tinh_buoi",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page tinh_buoi",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.0.vong_bien",
+   "category": "TITLE",
+   "display": "Season 0 Atlas — vong_bien",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.0 page vong_bien",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.bong_nguoi",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — bong_nguoi",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page bong_nguoi",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.ca_sam",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — ca_sam",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page ca_sam",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.dai_tinh_cay",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — dai_tinh_cay",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page dai_tinh_cay",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.di_mieu",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — di_mieu",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page di_mieu",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.di_moc",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — di_moc",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page di_moc",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.dom_lua",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — dom_lua",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page dom_lua",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.ky_ram",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — ky_ram",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page ky_ram",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.ma_rung",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — ma_rung",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page ma_rung",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.paid",
+   "category": "TITLE",
+   "display": "Đêm U Minh",
+   "scope": "CHARACTER",
+   "source": "paid season 1 track (account access)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.tinh_cay",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — tinh_cay",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page tinh_cay",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.u_minh_suong",
+   "category": "TITLE",
+   "display": "Sương U Minh",
+   "scope": "CHARACTER",
+   "source": "complete all 10 season 1 atlas pages T1",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.1.vong_rung_sau",
+   "category": "TITLE",
+   "display": "Season 1 Atlas — vong_rung_sau",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.1 page vong_rung_sau",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.ben_den",
+   "category": "TITLE",
+   "display": "Bến Đền",
+   "scope": "CHARACTER",
+   "source": "complete all 10 season 2 atlas pages T1",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.bong_nuoc_ma",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — bong_nuoc_ma",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page bong_nuoc_ma",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.ca_bong_den",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — ca_bong_den",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page ca_bong_den",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.ca_tinh",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — ca_tinh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page ca_tinh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.ca_tinh_gia",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — ca_tinh_gia",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page ca_tinh_gia",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.di_ma_da",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — di_ma_da",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page di_ma_da",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.di_xom",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — di_xom",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page di_xom",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.hon_chet_duoi",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — hon_chet_duoi",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page hon_chet_duoi",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.ky_ben",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — ky_ben",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page ky_ben",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.ma_da",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — ma_da",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page ma_da",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.paid",
+   "category": "TITLE",
+   "display": "Đêm Bến Đền",
+   "scope": "CHARACTER",
+   "source": "paid season 2 track (account access)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.2.quy_song_dem",
+   "category": "TITLE",
+   "display": "Season 2 Atlas — quy_song_dem",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.2 page quy_song_dem",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.deo_suong",
+   "category": "TITLE",
+   "display": "Đèo Sương",
+   "scope": "CHARACTER",
+   "source": "complete all 10 season 3 atlas pages T1",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.di_hang",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — di_hang",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page di_hang",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.di_ho_ve",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — di_ho_ve",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page di_ho_ve",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.ho_con_tinh",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — ho_con_tinh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page ho_con_tinh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.ho_tinh_lon",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — ho_tinh_lon",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page ho_tinh_lon",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.khi_nui",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — khi_nui",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page khi_nui",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.ky_deo",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — ky_deo",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page ky_deo",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.ma_tranh",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — ma_tranh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page ma_tranh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.ma_van_dem",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — ma_van_dem",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page ma_van_dem",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.paid",
+   "category": "TITLE",
+   "display": "Đêm Đèo Sương",
+   "scope": "CHARACTER",
+   "source": "paid season 3 track (account access)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.ruou_nep",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — ruou_nep",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page ruou_nep",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.3.vong_rung",
+   "category": "TITLE",
+   "display": "Season 3 Atlas — vong_rung",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.3 page vong_rung",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.ca_bong_kho",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — ca_bong_kho",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page ca_bong_kho",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.di_den",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — di_den",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page di_den",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.di_thach",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — di_thach",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page di_thach",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.hon_binh",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — hon_binh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page hon_binh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.hon_tran_linh",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — hon_tran_linh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page hon_tran_linh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.ky_thanh",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — ky_thanh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page ky_thanh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.ma_co",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — ma_co",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page ma_co",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.paid",
+   "category": "TITLE",
+   "display": "Đêm Thành Mưa",
+   "scope": "CHARACTER",
+   "source": "paid season 4 track (account access)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.qua_tinh",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — qua_tinh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page qua_tinh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.qua_tinh_lon",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — qua_tinh_lon",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page qua_tinh_lon",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.thanh_mua",
+   "category": "TITLE",
+   "display": "Thành Mưa",
+   "scope": "CHARACTER",
+   "source": "complete all 10 season 4 atlas pages T1",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.4.tuong_da",
+   "category": "TITLE",
+   "display": "Season 4 Atlas — tuong_da",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.4 page tuong_da",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.ca_suong",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — ca_suong",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page ca_suong",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.dai_vong_linh",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — dai_vong_linh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page dai_vong_linh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.di_cong",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — di_cong",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page di_cong",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.di_linh_ve",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — di_linh_ve",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page di_linh_ve",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.hon_binh_co",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — hon_binh_co",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page hon_binh_co",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.ky_nui",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — ky_nui",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page ky_nui",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.ma_nui",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — ma_nui",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page ma_nui",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.nui_mua",
+   "category": "TITLE",
+   "display": "Núi Mưa",
+   "scope": "CHARACTER",
+   "source": "complete all 10 season 5 atlas pages T1",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.paid",
+   "category": "TITLE",
+   "display": "Đêm Núi Mưa",
+   "scope": "CHARACTER",
+   "source": "paid season 5 track (account access)",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.than_rung_dem",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — than_rung_dem",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page than_rung_dem",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.tinh_thu",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — tinh_thu",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page tinh_thu",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.season.5.vong_linh",
+   "category": "TITLE",
+   "display": "Season 5 Atlas — vong_linh",
+   "scope": "CHARACTER",
+   "source": "master atlas.page.season.5 page vong_linh",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "seasonal folk title"
+   ]
+  },
+  {
+   "id": "cosmetic.title.tam_giao_vien_man",
+   "category": "TITLE",
+   "display": "Tâm Giao Viên Mãn",
+   "scope": "CHARACTER",
+   "source": "Linh Thú bond 100",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.thanh_co",
+   "category": "TITLE",
+   "display": "Người Nghe Trống Thành",
+   "scope": "CHARACTER",
+   "source": "progression.story.a5.complete",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.thien_ha_de_nhat",
+   "category": "TITLE",
+   "display": "Thiên Hạ Đệ Nhất",
+   "scope": "CHARACTER",
+   "source": "feat.pvp.rank1_season",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.tho_san_thuong_luong",
+   "category": "TITLE",
+   "display": "Người Săn Thuồng Luồng",
+   "scope": "CHARACTER",
+   "source": "first eligible clear boss.thuong_luong",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.trang_si_giup_doi",
+   "category": "TITLE",
+   "display": "Tráng Sĩ Giúp Đời",
+   "scope": "CHARACTER",
+   "source": "500 Chivalry Points",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.tuyet_dinh_than_binh",
+   "category": "TITLE",
+   "display": "Tuyệt Đỉnh Thần Binh",
+   "scope": "CHARACTER",
+   "source": "feat.craft.enhance_16",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title.u_minh",
+   "category": "TITLE",
+   "display": "Người Đi U Minh",
+   "scope": "CHARACTER",
+   "source": "progression.story.a2.complete",
+   "resolution": "text",
+   "asset_class": null,
+   "cell_ref": null,
+   "files": {},
+   "keys": {},
+   "cultural": true,
+   "cultural_refs": [
+    "folk title text"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.bach_nhat",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Bạch Nhạt",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.bach_nhat.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.bach_nhat.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.bach_nhat.sprite",
+    "icon": "asset.cosmetic.title_glow.bach_nhat.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "white shimmer"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.do_quang",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Đỏ Quang",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.do_quang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.do_quang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.do_quang.sprite",
+    "icon": "asset.cosmetic.title_glow.do_quang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "red glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.hoa_quang",
+   "category": "TITLE_GLOW",
+   "display": "Hỏa Quang",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.hoa_quang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.hoa_quang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.hoa_quang.sprite",
+    "icon": "asset.cosmetic.title_glow.hoa_quang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "ember glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.hong_phuc",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Hồng Phúc",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.hong_phuc.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.hong_phuc.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.hong_phuc.sprite",
+    "icon": "asset.cosmetic.title_glow.hong_phuc.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "rose-blessing glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.kim_quang",
+   "category": "TITLE_GLOW",
+   "display": "Kim Quang",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.kim_quang.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.kim_quang.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.kim_quang.sprite",
+    "icon": "asset.cosmetic.title_glow.kim_quang.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "golden glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.linh_hoa",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Linh Hoa",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.linh_hoa.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.linh_hoa.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.linh_hoa.sprite",
+    "icon": "asset.cosmetic.title_glow.linh_hoa.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "spirit-flower glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.moc_xanh",
+   "category": "TITLE_GLOW",
+   "display": "Mộc Xanh",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.moc_xanh.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.moc_xanh.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.moc_xanh.sprite",
+    "icon": "asset.cosmetic.title_glow.moc_xanh.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "wood-green glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.thien_van",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Thiên Vân",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.thien_van.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.thien_van.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.thien_van.sprite",
+    "icon": "asset.cosmetic.title_glow.thien_van.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "celestial-cloud glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.tho_bach",
+   "category": "TITLE_GLOW",
+   "display": "Thổ Bạch",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.tho_bach.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.tho_bach.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.tho_bach.sprite",
+    "icon": "asset.cosmetic.title_glow.tho_bach.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "earth-white glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.thuy_linh",
+   "category": "TITLE_GLOW",
+   "display": "Thủy Linh",
+   "scope": "CHARACTER",
+   "source": "currency.special redemption",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.thuy_linh.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.thuy_linh.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.thuy_linh.sprite",
+    "icon": "asset.cosmetic.title_glow.thuy_linh.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "water-spirit glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.tim_nhat",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Tím Nhạt",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.tim_nhat.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.tim_nhat.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.tim_nhat.sprite",
+    "icon": "asset.cosmetic.title_glow.tim_nhat.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "soft-purple glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.vang_nhat",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Vàng Nhạt",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.vang_nhat.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.vang_nhat.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.vang_nhat.sprite",
+    "icon": "asset.cosmetic.title_glow.vang_nhat.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "pale-gold glow"
+   ]
+  },
+  {
+   "id": "cosmetic.title_glow.xanh_nhat",
+   "category": "TITLE_GLOW",
+   "display": "Ánh Xanh Nhạt",
+   "scope": "CHARACTER",
+   "source": "currency.common purchase",
+   "resolution": "art",
+   "asset_class": "VFX_SOFT",
+   "cell_ref": "256x64",
+   "files": {
+    "body": "client/Assets/Art/Cosmetics/title_glows/cosmetic.title_glow.xanh_nhat.png",
+    "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.xanh_nhat.png"
+   },
+   "keys": {
+    "body": "asset.cosmetic.title_glow.xanh_nhat.sprite",
+    "icon": "asset.cosmetic.title_glow.xanh_nhat.icon"
+   },
+   "cultural": true,
+   "cultural_refs": [
+    "light-blue glow"
+   ]
+  }
+ ]
+}

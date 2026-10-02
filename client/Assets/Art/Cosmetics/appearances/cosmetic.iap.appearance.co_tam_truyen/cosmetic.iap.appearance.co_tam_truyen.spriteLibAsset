@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: cosmetic.iap.appearance.co_tam_truyen
+  m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteLibraryAsset
+  m_Labels:
+    - m_Name: leg_back
+      m_Hash: 416313356
+      m_CategoryList:
+      - m_Name: cosmetic.iap.appearance.co_tam_truyen
+        m_Hash: 672586294
+        m_Sprite: {fileID: 21300000, guid: 9ed63f65ebda47228fcd5dd2a300cec2, type: 3}
+    - m_Name: arm_back
+      m_Hash: 3663099
+      m_CategoryList:
+      - m_Name: cosmetic.iap.appearance.co_tam_truyen
+        m_Hash: 672586294
+        m_Sprite: {fileID: 21300000, guid: a2329469311141bf8b77b01e001a31e8, type: 3}
+    - m_Name: torso
+      m_Hash: 660585605
+      m_CategoryList:
+      - m_Name: cosmetic.iap.appearance.co_tam_truyen
+        m_Hash: 672586294
+        m_Sprite: {fileID: 21300000, guid: 5d6ce5249ab6451384ce91df63df788b, type: 3}
+    - m_Name: leg_front
+      m_Hash: 256218467
+      m_CategoryList:
+      - m_Name: cosmetic.iap.appearance.co_tam_truyen
+        m_Hash: 672586294
+        m_Sprite: {fileID: 21300000, guid: d94ba6dad3764fb684d02a5eded32c99, type: 3}
+    - m_Name: arm_front
+      m_Hash: 738465096
+      m_CategoryList:
+      - m_Name: cosmetic.iap.appearance.co_tam_truyen
+        m_Hash: 672586294
+        m_Sprite: {fileID: 21300000, guid: 5332d698448442a3915af91ca5cdc8f3, type: 3}
+    - m_Name: head
+      m_Hash: 670299804
+      m_CategoryList:
+      - m_Name: cosmetic.iap.appearance.co_tam_truyen
+        m_Hash: 672586294
+        m_Sprite: {fileID: 21300000, guid: 2b29faf89d6642ff9949a377cda6bd71, type: 3}
+    - m_Name: hair
+      m_Hash: 485974297
+      m_CategoryList:
+      - m_Name: cosmetic.iap.appearance.co_tam_truyen
+        m_Hash: 672586294
+        m_Sprite: {fileID: 21300000, guid: 903ebb071f044bf3a162aeb38764dc1b, type: 3}
+  m_ModificationHash: 1
+  m_Version: 1
