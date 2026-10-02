@@ -2,12 +2,7 @@
   "asset_class": "UI_ART",
   "assets": {
     "disconnected_dialog.png": {
-      "nine_slice": [
-        48,
-        48,
-        48,
-        48
-      ]
+      "cell_ref": 280
     }
   }
 }
