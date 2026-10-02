@@ -4147,11 +4147,11 @@ evidence_location: "docs/10_implementation/evidence/IMP-070/"
 
 ## `IMP-071` — Player Character & Class Art
 id: IMP-071
-status: BLOCKED
-claimed_by: "devin-imp-071"
-branch: "imp/IMP-071-class-art"
-claimed_at: "2026-10-02T07:00:00Z"
-blocked_by: "BLK-002"
+status: NOT_STARTED
+claimed_by: ""
+branch: ""
+claimed_at: ""
+blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md`, `../04_architecture/physics_geometry_contract.md`]
 adrs: [`0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0068-implementation-packet-readiness-corrections.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0076-ai-art-pipeline-consistency-animation-and-gate-corrections.md`, `0079-readiness-contract-closure.md`]
@@ -4179,6 +4179,7 @@ consumers_checked: [docs/07_content/monster_catalog.md, docs/07_content/boss_cat
 
 - `client/Assets/Tests/EditMode/PlayerArtCoverage/PlayerArtCoverageTests.cs`: TestAiCreatedToolMatchesOwnerSetup (ADR-0072).
 - `client/Assets/Tests/EditMode/PlayerArtCoverage/PlayerArtCoverageTests.cs`: TestSkeletalRigLayersAndClips, TestStylePackAndPaletteGate, TestHitboxSilhouetteAlignment, TestFolkloreCards (ADR-0076).
+- `client/Assets/Tests/EditMode/AddressablesValidation/AssetKeyGroupTests.cs`: TestClassCatalogKeyRoutesSharedLocal — `asset.class.<id>.prefab` routes to `shared.local` (BLK-002; delivered by the IMP-063 registry gatefix under its own ownership).
 generated_artifacts: []
 cleanup_obligations: [Remove unused source imports and superseded placeholders from release groups.]
 evidence_location: "docs/10_implementation/evidence/IMP-071/"
