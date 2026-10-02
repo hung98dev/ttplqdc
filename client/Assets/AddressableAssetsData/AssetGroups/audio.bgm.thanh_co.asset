@@ -14,7 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: audio.bgm.thanh_co
   m_GUID: c42d087bdb4e3604c804ef1972453cf5
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: c0011811c26746c8bf945a7c4e67ba0f
+    m_Address: asset.map.thanh_co.cong_ngoai.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14a4bd3e194b41578756ff2ca4a7c81f
+    m_Address: asset.map.thanh_co.duong_da.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c9b812ccff1496ab8b04540f78eec40
+    m_Address: asset.map.thanh_co.hao_can.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8108a5e910a14f7fa6d427b3de38fe7a
+    m_Address: asset.map.thanh_co.den_tran.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96a92f9d1dc44820a48dd750e2fc66bb
+    m_Address: asset.bgm.thanh_co.field.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a740ae5aa4641dd97c08040748c7591
+    m_Address: asset.bgm.thanh_co.town.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 542e2a52ef2d4a8b928d2c5017e5c3f2
+    m_Address: asset.dungeon.den_tran.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

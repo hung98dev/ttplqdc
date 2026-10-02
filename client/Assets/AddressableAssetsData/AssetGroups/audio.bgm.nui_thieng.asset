@@ -14,7 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: audio.bgm.nui_thieng
   m_GUID: 752c198e18dfef34680d21f02d19005b
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: f4b2833d89f649cb8751b308e9788bca
+    m_Address: asset.map.nui_thieng.chan_nui.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba47fd292cf54a1ebfe0e8eaa14a870b
+    m_Address: asset.map.nui_thieng.rung_may.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a0c2f91c6934fd19ea3c117340e718a
+    m_Address: asset.map.nui_thieng.suon_da.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35afc20feab0402fa3b8aa2b438a50f0
+    m_Address: asset.map.nui_thieng.cong_co.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15fefdff4c02427a99c9475000b8548b
+    m_Address: asset.bgm.nui_thieng.field.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3dc4e8a3b1d42f982ee197d00244dfe
+    m_Address: asset.bgm.nui_thieng.town.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03224689afcc446288db83abc97f3334
+    m_Address: asset.instance.finale.than_trung.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

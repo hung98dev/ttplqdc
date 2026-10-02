@@ -14,7 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: audio.bgm.shared
   m_GUID: 0c84a8d7cfe72aa4bb47298cd11bc9da
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 22fb0ddbe6e7473a8dcb181eda9a58f1
+    m_Address: asset.map.pvp.duel_court.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93b9ca2ed94b496d927d6375030da3e3
+    m_Address: asset.map.pvp.five_element_arena.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6958c0471f04944b2c99a4348e4866b
+    m_Address: asset.map.guild_war.five_seal_conflict.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 91f42b484a29479b897ca76feaf75c9f
+    m_Address: asset.bgm.menu_main.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

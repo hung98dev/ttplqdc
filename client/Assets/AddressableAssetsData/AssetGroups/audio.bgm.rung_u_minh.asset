@@ -14,7 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: audio.bgm.rung_u_minh
   m_GUID: 1bda4ac81ab19b04491ae98e7e02d672
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1f8439db11fb436b80e734bae5c6eb1f
+    m_Address: asset.map.rung_u_minh.xom_rung.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56911d03f3c3497ba123489ff931ef04
+    m_Address: asset.map.rung_u_minh.loi_tram.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf27542e00e24a8f9fbc4a3be6662e12
+    m_Address: asset.map.rung_u_minh.rung_sau.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f93772950da46bd802cdacd79006964
+    m_Address: asset.map.rung_u_minh.mieu_bo_hoang.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dda92e0ed9a7446e9a8cf5fec3589bf8
+    m_Address: asset.bgm.rung_u_minh.field.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3081ce0efa94c7b9eea67b303826ba2
+    m_Address: asset.bgm.rung_u_minh.town.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 153e853aed864b8f8e93a4b8ea28178a
+    m_Address: asset.dungeon.mieu_ba_trong_rung.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:
