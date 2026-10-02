@@ -109,7 +109,7 @@ var Drivers = []Driver{
 	{Catalog: "item_catalog.md"},
 	{Catalog: "drop_tables.md"},
 	{Catalog: "crafting_catalog.md"},
-	{Catalog: "npc_shop_catalog.md"},
+	{Catalog: "npc_shop_catalog.md", Compile: compileNPC},
 	{Catalog: "quest_catalog.md"},
 	{Catalog: "dungeon_catalog.md"},
 	{Catalog: "world_route_catalog.md"},
@@ -204,12 +204,14 @@ func resolveSections(f *File, path string) []*Section {
 	if secs := f.Root.FindSections(last); len(secs) > 0 {
 		return secs
 	}
-	// prefix fallback over every heading
+	// prefix fallback over every heading (heading backticks are decoration)
 	var out []*Section
+	clean := func(s string) string { return strings.ReplaceAll(s, "`", "") }
 	var walk func(s *Section)
 	walk = func(s *Section) {
 		for _, ch := range s.Children {
-			if strings.HasPrefix(ch.Title, last) || strings.HasPrefix(last, ch.Title) {
+			ct := clean(ch.Title)
+			if strings.HasPrefix(ct, last) || strings.HasPrefix(last, ct) {
 				out = append(out, ch)
 			}
 			walk(ch)
