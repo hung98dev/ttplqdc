@@ -17,6 +17,7 @@ func compileEncounter(c *Ctx, f *File, r *Registry) {
 		path := firstPath(b)
 		switch {
 		case strings.HasPrefix(path, "Launch Budget"):
+			st.want, st.hasWant = bindingDecl4(b, reDeclEncounter)
 			st.budget = b // emitted after counting
 		case strings.HasPrefix(path, "Progression Route"):
 			encProgression(c, f, b, st)
@@ -49,10 +50,14 @@ func compileEncounter(c *Ctx, f *File, r *Registry) {
 	if st.budget != nil {
 		c.consumed(f, st.budget)
 	}
-	if st.regions != 6 || len(st.fieldMaps) != 18 || len(st.dungeons) != 5 || len(st.bosses) != 8 {
+	if st.hasWant && (int64(st.regions) != st.want[0] ||
+		int64(len(st.fieldMaps)) != st.want[1] ||
+		int64(len(st.dungeons)) != st.want[2] ||
+		int64(len(st.bosses)) != st.want[3]) {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"encounter budget regions=%d fields=%d dungeons=%d bosses=%d, want 6/18/5/8",
-			st.regions, len(st.fieldMaps), len(st.dungeons), len(st.bosses))
+			"encounter budget regions=%d fields=%d dungeons=%d bosses=%d, declared %d/%d/%d/%d",
+			st.regions, len(st.fieldMaps), len(st.dungeons), len(st.bosses),
+			st.want[0], st.want[1], st.want[2], st.want[3])
 	}
 }
 
@@ -63,6 +68,9 @@ type encState struct {
 	dungeons  []string
 	bosses    []string
 	anchors   []string
+
+	want    [4]int64
+	hasWant bool
 }
 
 var levelBandRe = regexp.MustCompile(`^(\d+)-(\d+)$`)

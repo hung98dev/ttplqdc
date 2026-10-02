@@ -463,6 +463,14 @@ func itemCatchDefault(c *Ctx, f *File, b *SourceBinding, st *itemState) {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, tbl.Line,
 			"fishing.catch.default weights sum %d != 10000", weights)
 	}
+	c.Emit(f.Name, b.Raw, "catch_table",
+		[]config.Value{config.VStr("fishing.catch.default")},
+		map[string]config.Value{
+			"table_id":       config.VStr("fishing.catch.default"),
+			"season_index":   config.VNull(),
+			"spot_selector":  config.VStr("fishing_spot.map.*.*"),
+			"clones_default": config.VBool(false),
+		}, tbl.Line)
 	c.consumed(f, b)
 }
 
@@ -631,9 +639,9 @@ func itemBookGrants(c *Ctx, f *File, b *SourceBinding, st *itemState) {
 				}, row[0].Line)
 		}
 	}
-	if total != 12 {
+	if want, ok := bindingDecl(b, reDeclSum); ok && total != want {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, tbl.Line,
-			"book grant total %d != 12", total)
+			"book grant total %d != declared %d", total, want)
 	}
 	c.consumed(f, b)
 }

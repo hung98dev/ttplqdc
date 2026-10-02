@@ -440,7 +440,10 @@ func wrFinaleEntry(c *Ctx, f *File, b *SourceBinding, st *wrState) {
 				st.emitPortal(c, f, b, pb["id"], pb["source"], dst, "", req, fb.Line+1)
 			}
 		}
-		if tbl := findTable(sec, "space_id,kind,span,bounds max,reference extent,layout_profile,required topology"); tbl != nil {
+		for _, tbl := range allTables(sec) {
+			if len(tbl.Headers) == 0 || tbl.Headers[0] != "space_id" {
+				continue
+			}
 			for ri := range tbl.Cells {
 				row := tbl.Cells[ri]
 				span, _ := pairRat(cellAt(row, 2).Scalar())

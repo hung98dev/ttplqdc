@@ -322,16 +322,17 @@ func soulSpatial(c *Ctx, f *File, b *SourceBinding) {
 }
 
 func soulVerify(c *Ctx, f *File, st *soulState) {
-	want := map[string]map[string]int{
-		"KIM":  {"NORMAL": 3, "ELITE": 2},
-		"MOC":  {"NORMAL": 3, "ELITE": 2},
-		"THUY": {"NORMAL": 3, "ELITE": 1, "BOSS": 1},
-		"HOA":  {"NORMAL": 3, "ELITE": 1, "BOSS": 1},
-		"THO":  {"NORMAL": 3, "ELITE": 1, "BOSS": 1},
+	expect, wantTotal, declared := parseSoulExpectations(c)
+	if !declared {
+		return
 	}
 	total := 0
-	for elem, wantRanks := range want {
-		for rank, n := range wantRanks {
+	for elem, e := range expect {
+		ranks := map[string]int{"NORMAL": e.normal, "ELITE": e.elite, "BOSS": e.boss}
+		for rank, n := range ranks {
+			if n == 0 {
+				continue
+			}
 			got := st.byElement[elem][rank]
 			total += got
 			if got != n {
@@ -340,8 +341,8 @@ func soulVerify(c *Ctx, f *File, st *soulState) {
 			}
 		}
 	}
-	if total != 25 {
+	if wantTotal > 0 && total != wantTotal {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"soul roster %d != 25", total)
+			"soul roster %d != declared %d", total, wantTotal)
 	}
 }

@@ -1,5 +1,7 @@
 package config
 
+import "sort"
+
 // CoverageKind classifies one coverage entry: a consumed source section, an
 // emitted output field's source, or a named finite-rule derivation.
 type CoverageKind string
@@ -38,8 +40,25 @@ func (r *CoverageReport) Add(catalog, section, family, key string, kind Coverage
 	})
 }
 
-// Bytes emits the coverage report as a canonical JSON list of entries.
+// Bytes emits the coverage report as a canonical JSON list of entries,
+// sorted by the entry tuple so emission order never leaks into output.
 func (r *CoverageReport) Bytes() []byte {
+	sort.Slice(r.Entries, func(i, j int) bool {
+		a, b := r.Entries[i], r.Entries[j]
+		if a.Catalog != b.Catalog {
+			return a.Catalog < b.Catalog
+		}
+		if a.SourceSection != b.SourceSection {
+			return a.SourceSection < b.SourceSection
+		}
+		if a.OutputFamily != b.OutputFamily {
+			return a.OutputFamily < b.OutputFamily
+		}
+		if a.Key != b.Key {
+			return a.Key < b.Key
+		}
+		return a.Kind < b.Kind
+	})
 	vals := make([]Value, len(r.Entries))
 	for i, e := range r.Entries {
 		vals[i] = VRec(map[string]Value{

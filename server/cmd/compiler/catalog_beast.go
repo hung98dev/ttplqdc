@@ -19,12 +19,20 @@ func compileBeast(c *Ctx, f *File, r *Registry) {
 		case strings.HasPrefix(path, "Passive Rules"):
 			beastPassiveRules(c, f, b, st)
 		case strings.HasPrefix(path, "Roster of 10"):
+			if v, ok := bindingDecl(b, reDeclProfiles); ok {
+				st.wantProfiles, st.hasProfilesDecl = v, true
+			}
 			beastRoster(c, f, b, st)
 		case strings.HasPrefix(path, "Detailed Beast Profiles"):
+			if v, ok := bindingDecl(b, reDeclProfiles); ok {
+				st.wantProfiles, st.hasProfilesDecl = v, true
+			}
 			beastProfiles(c, f, b, st)
 		case strings.HasPrefix(path, "Linh Đan"):
+			st.wantTransitions, st.hasTransDecl = bindingDecl(b, reDeclTransitions)
 			beastUpgradeCost(c, f, b, st)
 		case strings.HasPrefix(path, "Beast Equipment Roster"):
+			st.wantEquip, st.hasEquipDecl = bindingDecl(b, reDeclItems)
 			beastEquipment(c, f, b, st)
 		case strings.HasPrefix(path, "Power Budget Note"):
 			beastBudget(c, f, b)
@@ -33,17 +41,17 @@ func compileBeast(c *Ctx, f *File, r *Registry) {
 				"beast binding %q has no driver", b.Raw)
 		}
 	}
-	if len(st.p2rules) != 10 {
+	if st.hasProfilesDecl && int64(len(st.p2rules)) != st.wantProfiles {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"beast P2 rules = %d, want 10", len(st.p2rules))
+			"beast P2 rules = %d, declared %d", len(st.p2rules), st.wantProfiles)
 	}
-	if len(st.beasts) != 10 {
+	if st.hasProfilesDecl && int64(len(st.beasts)) != st.wantProfiles {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"beast roster = %d, want 10", len(st.beasts))
+			"beast roster = %d, declared %d", len(st.beasts), st.wantProfiles)
 	}
-	if len(st.equipment) != 18 {
+	if st.hasEquipDecl && int64(len(st.equipment)) != st.wantEquip {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"beast equipment = %d, want 18", len(st.equipment))
+			"beast equipment = %d, declared %d", len(st.equipment), st.wantEquip)
 	}
 }
 
@@ -58,6 +66,13 @@ type beastState struct {
 	p2rules   map[string]beastP2Rule
 	beasts    []string
 	equipment []string
+
+	wantProfiles    int64
+	hasProfilesDecl bool
+	wantEquip       int64
+	hasEquipDecl    bool
+	wantTransitions int64
+	hasTransDecl    bool
 }
 
 var icdRe = regexp.MustCompile(`([0-9]+)s`)
@@ -358,9 +373,9 @@ func beastUpgradeCost(c *Ctx, f *File, b *SourceBinding, st *beastState) {
 				"currency_each":      config.VInt(cc.Int),
 			}, row[0].Line)
 	}
-	if covered != 59 {
+	if st.hasTransDecl && int64(covered) != st.wantTransitions {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, tbl.Line,
-			"upgrade ranges cover %d transitions, want 59", covered)
+			"upgrade ranges cover %d transitions, declared %d", covered, st.wantTransitions)
 	}
 	// authored totals (reference check): 58 so_cap / 90 trung_cap / 120 cao_cap / 96,400
 	c.EmitParam(f.Name, b.Raw, "beast_upgrade_totals",

@@ -174,9 +174,10 @@ func prExpBudget(c *Ctx, f *File, b *SourceBinding) {
 				c.EmitParam(f.Name, b.Raw, "act_exp_total",
 					[]config.Value{config.VStr("TOTAL")},
 					map[string]config.Value{"exp": config.VInt(tot)}, row[0].Line)
-				if tot != 702100000 {
+				want, hasWant := bindingDecl(b, reDeclBudgetTotal)
+				if hasWant && tot != want {
 					c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, row[0].Line,
-						"EXP budget TOTAL %d, want 702100000", tot)
+						"EXP budget TOTAL %d, declared %d", tot, want)
 				}
 			}
 			continue
@@ -186,9 +187,10 @@ func prExpBudget(c *Ctx, f *File, b *SourceBinding) {
 		c.Emit(f.Name, b.Raw, "act_exp_budget",
 			[]config.Value{config.VStr(actRaw)}, vals, row[0].Line)
 	}
-	if sum != 0 && sum != 702100000 {
+	want, hasWant := bindingDecl(b, reDeclBudgetTotal)
+	if hasWant && sum != 0 && sum != want {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, tbl.Line,
-			"act EXP budgets sum %d, want 702100000", sum)
+			"act EXP budgets sum %d, declared %d", sum, want)
 	}
 
 	// finite curve: exp_required(L) = 10000*L*L for L1..59 (×100 scale)

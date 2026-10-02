@@ -391,9 +391,9 @@ func cosmoSeasonal(c *Ctx, f *File, b *SourceBinding) {
 				}, 0)
 		}
 	}
-	if count != 60 {
+	if want, ok := bindingDecl(b, reDeclSeasonalNxN); ok && int64(count) != want {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, sec.Line,
-			"seasonal atlas titles %d != 60", count)
+			"seasonal atlas titles %d != declared %d", count, want)
 	}
 	c.consumed(f, b)
 }

@@ -61,8 +61,26 @@ func questSection(c *Ctx, f *File, sec *Section, b *SourceBinding) {
 	for _, bl := range sec.Content {
 		for _, l := range bl.Prose {
 			l = strings.TrimSpace(l)
-			if strings.HasPrefix(l, "Rewards") {
+			if strings.HasPrefix(l, "Objective:") || strings.HasPrefix(l, "Objectives:") {
+				rest := strings.TrimSpace(strings.TrimPrefix(strings.TrimPrefix(l, "Objectives:"), "Objective:"))
+				if rest != "" {
+					for _, tok := range strings.Split(rest, ";") {
+						tok = strings.TrimSpace(strings.TrimSuffix(strings.TrimSpace(tok), "."))
+						if tok == "" {
+							continue
+						}
+						ordinal++
+						emitInlineObjective(c, f, b, qid, ordinal, tok, bl.Line)
+					}
+				}
+				continue
+			}
+			if strings.HasPrefix(l, "Rewards:") {
 				rewardsSeen = true
+				rest := strings.TrimSpace(strings.TrimPrefix(l, "Rewards:"))
+				if rest != "" {
+					emitInlineRewards(c, f, b, qid, rest, bl.Line)
+				}
 				continue
 			}
 			if strings.HasPrefix(l, "Prerequisite:") {
@@ -140,7 +158,10 @@ func emitQuestReward(c *Ctx, f *File, b *SourceBinding, qid, l string, line int)
 		v, _ := (TypeSpec{Name: "int"}).ParseValue(strings.TrimPrefix(l, "bound "))
 		slot, fields["bound"] = "bound", v
 	default:
-		if m := questRewardRe.FindStringSubmatch(l); m != nil {
+		if strings.HasPrefix(l, "beast_grant") {
+			slot = "beast_grant"
+			fields["grant"] = config.VStr(l)
+		} else if m := questRewardRe.FindStringSubmatch(l); m != nil {
 			q, _ := (TypeSpec{Name: "int"}).ParseValue(m[1])
 			slot = "item." + m[2]
 			fields["item_id"] = config.VStr(m[2])
@@ -537,21 +558,18 @@ func questBoardGen(c *Ctx, f *File, b *SourceBinding) {
 	// finite anchor expansion: 18 FIELD maps from world_route
 	wr := c.Catalogs["world_route_catalog.md"]
 	if wr != nil {
-		var fieldKeys []string
-		for _, m := range regexp.MustCompile("`(map\\.[a-z0-9_.]+)`").FindAllStringSubmatch(flattenText(wr), -1) {
-			id := m[1]
-			// FIELD maps: region third segment
-			if len(strings.Split(id, ".")) == 3 && !strings.Contains(id, "dungeon") {
-				fieldKeys = append(fieldKeys, id)
-			}
-		}
-		// de-dup
-		seen := map[string]bool{}
 		var keys []string
-		for _, k := range fieldKeys {
-			if !seen[k] {
-				seen[k] = true
-				keys = append(keys, k)
+		for _, sec := range wr.Root.Children {
+			for _, bl := range sec.Content {
+				if bl.Kind != BlockTable || !hasHeaders(bl, "type") {
+					continue
+				}
+				for ri := range bl.Cells {
+					row := bl.Cells[ri]
+					if strings.EqualFold(cellAt(row, 1).Scalar(), "FIELD") {
+						keys = append(keys, cellAt(row, 0).Scalar())
+					}
+				}
 			}
 		}
 		count := 0
@@ -644,3 +662,92 @@ func questSurgeEvent(c *Ctx, f *File, b *SourceBinding) {
 
 // strconv alias guard
 var _ = strconv.Itoa
+
+var questVerbRe = regexp.MustCompile(`(TURN_IN|INTERACT|REACH|KILL|TALK|DUNGEON|BOSS|CHOOSE|EXPLORE)`)
+var questIDRe = regexp.MustCompile(`([a-z_]+\.[a-z0-9_.]+)`)
+
+func emitInlineObjective(c *Ctx, f *File, b *SourceBinding, qid string, ordinal int, tok string, line int) {
+	det := strings.ReplaceAll(tok, "`", "")
+	verb := ""
+	if m := questVerbRe.FindStringSubmatch(det); m != nil {
+		verb = m[1]
+	}
+	if verb == "" {
+		verb = "SPECIAL"
+	}
+	fields := map[string]config.Value{
+		"quest_id": config.VStr(qid),
+		"ordinal":  config.VInt(int64(ordinal)),
+		"verb":     config.VStr(verb),
+		"detail":   config.VStr(det),
+	}
+	if km := regexp.MustCompile(`any\s+([0-9]+)\s+of\s+(.+)$`).FindStringSubmatch(det); km != nil {
+		fields["count"] = config.VStr(km[1])
+		var tg []config.Value
+		for _, t := range strings.Split(km[2], "|") {
+			tg = append(tg, config.VStr(strings.TrimSpace(t)))
+		}
+		fields["targets"] = config.VSet(tg...)
+	} else if km := regexp.MustCompile(`KILL\s+([0-9]+)\s+(.+)`).FindStringSubmatch(det); km != nil {
+		fields["count"] = config.VStr(km[1])
+		fields["target"] = config.VStr(km[2])
+	} else if km := regexp.MustCompile(`KILL\s+(.+)$`).FindStringSubmatch(det); km != nil {
+		fields["target"] = config.VStr(km[1])
+	} else if m := questIDRe.FindStringSubmatch(det); m != nil {
+		fields["target"] = config.VStr(m[1])
+	}
+	c.Emit(f.Name, b.Raw, "quest_objective",
+		[]config.Value{config.VStr(qid), config.VInt(int64(ordinal))}, fields, line)
+}
+
+var questZoneByAct = map[string]string{
+	"a1": "lang_da", "a2": "rung_u_minh", "a3": "ben_nuoc_den",
+	"a4": "deo_may", "a5": "thanh_co", "a6": "nui_thieng",
+}
+
+var inlineRewardRe = regexp.MustCompile("(EXP|common|material|bound|flag|item)\\s*`?([^`,]+)`?")
+
+func emitInlineRewards(c *Ctx, f *File, b *SourceBinding, qid, rest string, line int) {
+	for _, m := range inlineRewardRe.FindAllStringSubmatch(rest, -1) {
+		kind := m[1]
+		val := strings.TrimSpace(m[2])
+		switch kind {
+		case "EXP":
+			v, _ := (TypeSpec{Name: "int"}).ParseValue(strings.ReplaceAll(val, ",", ""))
+			emitQuestRewardRec(c, f, b, qid, "exp", map[string]config.Value{"exp": v}, line)
+		case "common":
+			v, _ := (TypeSpec{Name: "int"}).ParseValue(strings.ReplaceAll(val, ",", ""))
+			emitQuestRewardRec(c, f, b, qid, "common", map[string]config.Value{"common": v}, line)
+		case "bound":
+			v, _ := (TypeSpec{Name: "int"}).ParseValue(strings.ReplaceAll(val, ",", ""))
+			emitQuestRewardRec(c, f, b, qid, "bound", map[string]config.Value{"bound": v}, line)
+		case "material":
+			v, _ := (TypeSpec{Name: "int"}).ParseValue(strings.ReplaceAll(val, ",", ""))
+			zone := questZoneByAct[questAct(qid)]
+			emitQuestRewardRec(c, f, b, qid, "material", map[string]config.Value{
+				"kind":     config.VStr("regional_material"),
+				"region":   config.VStr(zone),
+				"quantity": v,
+			}, line)
+		case "flag":
+			emitQuestRewardRec(c, f, b, qid, "flag."+val, map[string]config.Value{
+				"flag":  config.VStr(val),
+				"value": config.VStr("true"),
+			}, line)
+		}
+	}
+}
+
+func emitQuestRewardRec(c *Ctx, f *File, b *SourceBinding, qid, slot string, fields map[string]config.Value, line int) {
+	fields["quest_id"] = config.VStr(qid)
+	fields["reward_slot"] = config.VStr(slot)
+	c.Emit(f.Name, b.Raw, "quest_reward",
+		[]config.Value{config.VStr(qid), config.VStr(slot)}, fields, line)
+}
+
+func questAct(qid string) string {
+	if i := strings.Index(qid, ".a"); i >= 0 && i+2 < len(qid) {
+		return qid[i+1 : i+3]
+	}
+	return ""
+}

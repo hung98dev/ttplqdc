@@ -36,8 +36,10 @@ func compileMonster(c *Ctx, f *File, r *Registry) {
 		case strings.HasPrefix(path, "Canonical Entity Size Resolution"):
 			monSizeResolution(c, f, b, st)
 		case strings.HasPrefix(path, "Launch Roster"):
+			st.wantN, st.wantE, st.hasLaunchDecl = bindingDecl2(b, reDeclNE)
 			monRoster(c, f, b, st, true)
 		case strings.HasPrefix(path, "Season 0"):
+			st.wantS0, st.hasS0Decl = bindingDecl(b, reDeclExactlyNorm)
 			monRoster(c, f, b, st, false)
 		case strings.HasPrefix(path, "Typed Attack Expansion"):
 			monAttackProfiles(c, f, b, st)
@@ -101,6 +103,12 @@ type monsterState struct {
 	smallRoster  map[string]bool
 	moveProfiles map[string]map[string]config.Value
 	combatProse  map[string]string
+
+	wantN         int64
+	wantE         int64
+	hasLaunchDecl bool
+	wantS0        int64
+	hasS0Decl     bool
 }
 
 var rosterSig = "monster_id,rank,Lv,element,movement,combat,special,base_exp,drop_table_id"
@@ -685,9 +693,13 @@ func monEmit(c *Ctx, f *File, st *monsterState) {
 			le++
 		}
 	}
-	if ln != 46 || le != 12 || s0 != 6 {
+	if st.hasLaunchDecl && (int64(ln) != st.wantN || int64(le) != st.wantE) {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"monster roster NORMAL=%d ELITE=%d season0=%d, want 46/12/6", ln, le, s0)
+			"monster roster NORMAL=%d ELITE=%d, declared %d/%d", ln, le, st.wantN, st.wantE)
+	}
+	if st.hasS0Decl && int64(s0) != st.wantS0 {
+		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
+			"monster season-0 rows %d, declared %d", s0, st.wantS0)
 	}
 }
 

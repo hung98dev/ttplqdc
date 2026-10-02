@@ -18,6 +18,7 @@ func compileBoss(c *Ctx, f *File, r *Registry) {
 		case strings.HasPrefix(path, "Base Stat Formula"):
 			bossFormula(c, f, b, st)
 		case strings.HasPrefix(path, "Roster"):
+			st.wantRoster, st.hasRosterDecl = bindingDecl(b, reDeclRows)
 			bossRoster(c, f, b, st)
 		case strings.HasPrefix(path, "Numeric Mechanic Payloads"):
 			bossMechanics(c, f, b)
@@ -36,6 +37,9 @@ func compileBoss(c *Ctx, f *File, r *Registry) {
 type bossState struct {
 	formula map[string]*config.ExprNode
 	roster  []*bossRow
+
+	wantRoster    int64
+	hasRosterDecl bool
 }
 
 type bossRow struct {
@@ -159,10 +163,11 @@ var phaseHeadRe = regexp.MustCompile(`^Phase\s+(\d+)\s*(?:\(([^)]*)\))?`)
 func bossMechanics(c *Ctx, f *File, b *SourceBinding) {
 	for _, sec := range bindingSections(c, f, b) {
 		for _, ch := range sec.Children {
-			bossID := strings.Trim(ch.Title, "` ")
-			if !strings.HasPrefix(bossID, "boss.") {
+			m := regexp.MustCompile("^`?(boss[.][a-z0-9_.]+)`?").FindStringSubmatch(ch.Title)
+			if m == nil {
 				continue
 			}
+			bossID := m[1]
 			curPhase := ""
 			threshold := ""
 			var pendingHead *Block
@@ -334,10 +339,11 @@ func bossRewards(c *Ctx, f *File, b *SourceBinding) {
 				map[string]config.Value{"rules": config.VList(rules...)}, sec.Line)
 		}
 		for _, ch := range sec.Children {
-			bossID := strings.Trim(ch.Title, "` ")
-			if !strings.HasPrefix(bossID, "boss.") {
+			m := regexp.MustCompile("^`?(boss[.][a-z0-9_.]+)`?").FindStringSubmatch(ch.Title)
+			if m == nil {
 				continue
 			}
+			bossID := m[1]
 			var key, exp string
 			for _, bl := range ch.Content {
 				if bl.Kind != BlockFence {
@@ -375,8 +381,8 @@ func bossRewards(c *Ctx, f *File, b *SourceBinding) {
 
 // bossVerify — exactly 8 roster rows.
 func bossVerify(c *Ctx, f *File, st *bossState) {
-	if len(st.roster) != 8 {
+	if st.hasRosterDecl && int64(len(st.roster)) != st.wantRoster {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"boss roster = %d, want 8", len(st.roster))
+			"boss roster = %d, declared %d", len(st.roster), st.wantRoster)
 	}
 }

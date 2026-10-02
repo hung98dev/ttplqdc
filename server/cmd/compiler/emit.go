@@ -16,7 +16,7 @@ func emitSnapshot(c *Ctx) (*config.CandidateSnapshot, error) {
 	snap := &config.CandidateSnapshot{
 		AuthoringSchemaVersion: config.AuthoringSchemaVersion,
 		ContentSchemaVersion:   config.ContentSchemaVersion,
-		RuleVersions:           c.Rules,
+		RuleVersions:           ruleVersions(c),
 		Definitions:            c.Defs.Families,
 		ValidationParameters:   params,
 		Geometry:               geom,
@@ -52,9 +52,33 @@ func paramsFamily(c *Ctx) *config.Family {
 			}))
 		}
 		out.Put([]config.Value{config.VStr(name)}, map[string]config.Value{
+			"family":      config.VStr(name),
 			"key_columns": config.VStrs(f.KeyColumns...),
 			"records":     config.VList(recs...),
 		})
+	}
+	return out
+}
+
+// ruleVersions folds the emitted rule_versions params family into the
+// snapshot's integer map (name -> version).
+func ruleVersions(c *Ctx) map[string]int {
+	out := map[string]int{}
+	if f := c.Params.Families["rule_versions"]; f != nil {
+		for k, rec := range f.Records {
+			name := k
+			if len(rec.Key) > 0 {
+				name = rec.Key[0].Str
+			}
+			if v, ok := rec.Fields["version"]; ok {
+				out[name] = int(v.Int)
+			} else {
+				out[name] = 1
+			}
+		}
+	}
+	for k, v := range c.Rules {
+		out[k] = v
 	}
 	return out
 }

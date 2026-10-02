@@ -23,8 +23,10 @@ func compileBuild(c *Ctx, f *File, r *Registry) {
 		case strings.HasPrefix(path, "Shared Rules"):
 			buildSharedRules(c, f, b)
 		case strings.HasPrefix(path, "Meridian"):
+			st.wantRes, st.hasResDecl = bindingDecl(b, reDeclMeridian)
 			buildMeridian(c, f, b, st)
 		case strings.HasPrefix(path, "Formations"):
+			st.wantForm, st.hasFormDecl = bindingDecl(b, reDeclFormations)
 			buildFormations(c, f, b, st)
 		case strings.HasPrefix(path, "Reachability Validation"):
 			// compile-time enumeration runs in buildVerifyReachable;
@@ -773,6 +775,11 @@ type buildState struct {
 	formationSlots []string
 	formationDom   map[string][2]string
 	groups         []config.Value
+
+	wantRes     int64
+	hasResDecl  bool
+	wantForm    int64
+	hasFormDecl bool
 }
 
 // ---- reachability validation ----------------------------------------------
@@ -825,13 +832,13 @@ func selectWinner(defs []*buildDef, seq []string, rels []string) *buildDef {
 }
 
 func buildVerifyReachable(c *Ctx, f *File, st *buildState) {
-	if len(st.resonances) != 15 {
+	if st.hasResDecl && int64(len(st.resonances)) != st.wantRes {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"Meridian definitions %d != 15", len(st.resonances))
+			"Meridian definitions %d != declared %d", len(st.resonances), st.wantRes)
 	}
-	if len(st.formations) != 12 {
+	if st.hasFormDecl && int64(len(st.formations)) != st.wantForm {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"Formation definitions %d != 12", len(st.formations))
+			"Formation definitions %d != declared %d", len(st.formations), st.wantForm)
 	}
 	if len(st.meridianSlots) == 0 || len(st.formationSlots) == 0 {
 		return

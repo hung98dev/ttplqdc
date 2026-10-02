@@ -20,11 +20,13 @@ func compileCrafting(c *Ctx, f *File, r *Registry) {
 		path := firstPath(b)
 		switch {
 		case strings.HasPrefix(path, "Equipment Recipe Expansion"):
+			st.wantRecipes, st.hasRecipesDecl = bindingDecl(b, reDeclRecipes)
 			st.expanded = true
 			c.consumed(f, b) // expansion runs after tier/slot tables
 		case strings.HasPrefix(path, "Tier Material Mapping"):
 			craftTierMaterial(c, f, b, st)
 		case strings.HasPrefix(path, "Slot Cost Weight"):
+			st.wantWeightSum, st.hasWeightDecl = bindingDecl(b, reDeclSumTo)
 			craftSlotWeights(c, f, b, st)
 		case strings.HasPrefix(path, "Lucky Charm Recipes"):
 			craftUtilityRecipes(c, f, b, st, "bua_may", 6, 2,
@@ -56,6 +58,11 @@ type craftState struct {
 	tierMat  map[string]map[string]config.Value // tier -> {material_id, material_base, common_base, min_level}
 	slotWt   map[string]int64
 	expanded bool
+
+	wantRecipes    int64
+	hasRecipesDecl bool
+	wantWeightSum  int64
+	hasWeightDecl  bool
 }
 
 func craftTierMaterial(c *Ctx, f *File, b *SourceBinding, st *craftState) {
@@ -142,9 +149,9 @@ func craftSlotWeights(c *Ctx, f *File, b *SourceBinding, st *craftState) {
 			}
 		}
 	}
-	if sum != 47 {
+	if st.hasWeightDecl && int64(sum) != st.wantWeightSum {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, sec.Line,
-			"slot weights sum %d != 47", sum)
+			"slot weights sum %d != declared %d", sum, st.wantWeightSum)
 	}
 	c.consumed(f, b)
 }
@@ -198,9 +205,9 @@ func craftExpandEquipment(c *Ctx, f *File, st *craftState) {
 			}, 0)
 		count++
 	}
-	if count != 168 {
+	if st.hasRecipesDecl && int64(count) != st.wantRecipes {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"recipe expansion %d != 168", count)
+			"recipe expansion %d != declared %d", count, st.wantRecipes)
 	}
 }
 

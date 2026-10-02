@@ -2,6 +2,7 @@ package main
 
 import (
 	"regexp"
+	"strconv"
 	"strings"
 
 	"thinhthan/internal/config"
@@ -94,28 +95,62 @@ func atlasTierModel(c *Ctx, f *File, b *SourceBinding) {
 			}
 		}
 	}
-	// faucet totals + LIFE_SKILL
-	acts := []int64{6417, 8283, 6332, 7047, 9448, 10494}
+	// faucet totals + LIFE_SKILL — magnitudes are bundle declarations:
+	// tier rates `T1=a/T2=b/T3=c special` + `max M` in the binding defaults,
+	// page total = sum of declared atlas_budget family counts, act values from
+	// the section's `I n, II n, ...` LIFE_SKILL line.
+	declText := b.Raw + " | " + b.DefaultsText
+	pages := int64(0)
+	if fam := c.Params.Families["atlas_budget"]; fam != nil {
+		for _, rec := range fam.Records {
+			pages += rec.Fields["pages"].Int
+		}
+	}
+	if m := reDeclTierSpecial.FindStringSubmatch(declText); m != nil && pages > 0 {
+		r1, _ := strconv.ParseInt(m[1], 10, 64)
+		r2, _ := strconv.ParseInt(m[2], 10, 64)
+		r3, _ := strconv.ParseInt(m[3], 10, 64)
+		maxSp := pages*r1 + pages*r2 + pages*r3
+		if mm := reDeclMaxSpecial.FindStringSubmatch(declText); mm != nil {
+			v, _ := strconv.ParseInt(mm[1], 10, 64)
+			maxSp = v
+		}
+		c.EmitParam(f.Name, b.Raw, "atlas_faucet",
+			[]config.Value{config.VStr("total")},
+			map[string]config.Value{
+				"tier1_special": config.VInt(pages * r1),
+				"tier2_special": config.VInt(pages * r2),
+				"tier3_special": config.VInt(pages * r3),
+				"max_special":   config.VInt(maxSp),
+			}, sec.Line)
+	}
+	acts := map[string]int64{}
+	var actOrder []string
+	for _, bl := range sec.Content {
+		for _, l := range append(append([]string{}, bl.FLines...), bl.Prose...) {
+			for _, m := range reDeclActValue.FindAllStringSubmatch(l, -1) {
+				v, _ := strconv.ParseInt(m[2], 10, 64)
+				if _, seen := acts[m[1]]; !seen {
+					actOrder = append(actOrder, m[1])
+				}
+				acts[m[1]] = v
+			}
+		}
+	}
 	var vals []config.Value
-	for i, v := range acts {
+	for i, act := range actOrder {
 		vals = append(vals, config.VRec(map[string]config.Value{
-			"act": config.VInt(int64(i + 1)), "life_skill": config.VInt(v),
+			"act": config.VInt(int64(i + 1)), "life_skill": config.VInt(acts[act]),
 		}))
 	}
-	c.EmitParam(f.Name, b.Raw, "atlas_faucet",
-		[]config.Value{config.VStr("total")},
-		map[string]config.Value{
-			"tier1_special": config.VInt(104),
-			"tier2_special": config.VInt(208),
-			"tier3_special": config.VInt(208),
-			"max_special":   config.VInt(520),
-		}, sec.Line)
-	c.EmitParam(f.Name, b.Raw, "life_skill_atlas",
-		[]config.Value{config.VStr("tier_up")},
-		map[string]config.Value{
-			"act_values":   config.VList(vals...),
-			"key_template": config.VStr("life_skill.atlas.<atlas_page_id>.<tier>.<character_id>"),
-		}, sec.Line)
+	if len(vals) > 0 {
+		c.EmitParam(f.Name, b.Raw, "life_skill_atlas",
+			[]config.Value{config.VStr("tier_up")},
+			map[string]config.Value{
+				"act_values":   config.VList(vals...),
+				"key_template": config.VStr("life_skill.atlas.<atlas_page_id>.<tier>.<character_id>"),
+			}, sec.Line)
+	}
 	c.consumed(f, b)
 }
 
@@ -217,7 +252,7 @@ func atlasRewardsDetailed(c *Ctx, f *File, b *SourceBinding) {
 	msRe := regexp.MustCompile("^([0-9]+) pages mastered\\s*\u2192\\s*`?(cosmetic\\.[a-z0-9_.]+)`?")
 	for _, bl := range sec.Content {
 		for j, l := range bl.Prose {
-			l = strings.TrimSpace(l)
+			l = strings.TrimSpace(strings.TrimLeft(strings.TrimSpace(l), "-* "))
 			if m := msRe.FindStringSubmatch(l); m != nil {
 				n, _ := (TypeSpec{Name: "int"}).ParseValue(m[1])
 				c.Emit(f.Name, b.Raw, "atlas_milestone",
@@ -258,7 +293,7 @@ func atlasSeasonTables(c *Ctx, f *File, b *SourceBinding) {
 		c.consumed(f, b)
 		return
 	}
-	relicRe := regexp.MustCompile("`(relic\\.season\\.[0-9]\\.[a-z0-9_]+)`\\s*@\\s*`([^`]+)`\\s*(.*)")
+	relicRe := regexp.MustCompile("`(relic\\.season\\.[0-9]\\.[a-z0-9_]+)`")
 	for _, sub := range seasons.Children {
 		if !strings.HasPrefix(sub.Title, "Season ") {
 			continue
@@ -305,13 +340,24 @@ func atlasSeasonTables(c *Ctx, f *File, b *SourceBinding) {
 				}
 			}
 			for j, l := range bl.Prose {
-				if m := relicRe.FindStringSubmatch(strings.TrimSpace(l)); m != nil {
+				line := strings.TrimSpace(l)
+				locs := relicRe.FindAllStringSubmatchIndex(line, -1)
+				for i, loc := range locs {
+					rest := line[loc[1]:]
+					if i+1 < len(locs) {
+						rest = rest[:locs[i+1][0]-loc[1]]
+					}
+					mapID := ""
+					if mm := regexp.MustCompile("^ *@ *`([^`]+)`").FindStringSubmatch(rest); mm != nil {
+						mapID = mm[1]
+						rest = rest[len(mm[0]):]
+					}
 					c.Emit(f.Name, b.Raw, "season_relic",
-						[]config.Value{config.VStr(m[1])},
+						[]config.Value{config.VStr(line[loc[2]:loc[3]])},
 						map[string]config.Value{
-							"relic_id": config.VStr(m[1]),
-							"map_id":   config.VStr(m[2]),
-							"trigger":  config.VStr(strings.TrimSpace(m[3])),
+							"relic_id": config.VStr(line[loc[2]:loc[3]]),
+							"map_id":   config.VStr(mapID),
+							"trigger":  config.VStr(strings.TrimSpace(rest)),
 						}, bl.Line+1+j)
 				}
 			}

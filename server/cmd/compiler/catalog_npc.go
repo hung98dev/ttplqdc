@@ -18,8 +18,10 @@ func compileNPC(c *Ctx, f *File, r *Registry) {
 		case strings.HasPrefix(path, "Shared Service Shape"):
 			npcServiceShape(c, f, b, st)
 		case strings.HasPrefix(path, "Regional NPCs"):
+			st.wantRegional, st.hasRegionalDecl = bindingDecl(b, reDeclDashN)
 			npcRegional(c, f, b, st)
 		case strings.HasPrefix(path, "Ambient NPCs"):
+			st.wantAmbient, st.hasAmbientDecl = bindingDecl(b, reDeclDashN)
 			npcAmbient(c, f, b, st)
 		case strings.HasPrefix(path, "Guide Service Contract"):
 			npcGuideServices(c, f, b, st)
@@ -36,13 +38,17 @@ func compileNPC(c *Ctx, f *File, r *Registry) {
 				"npc binding %q has no driver", b.Raw)
 		}
 	}
-	if len(st.guides) != 6 || len(st.regional) != 18 {
+	if st.hasRegionalDecl && int64(len(st.regional)) != st.wantRegional {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"regional NPCs = %d (guides %d), want 18 (6)", len(st.regional), len(st.guides))
+			"regional NPCs = %d, declared %d", len(st.regional), st.wantRegional)
 	}
-	if len(st.ambient) != 24 {
+	if want, ok := fileDeclN(c, "world_route_catalog.md", reDeclCheckpoints); ok && int64(len(st.guides)) != want {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"ambient NPCs = %d, want 24", len(st.ambient))
+			"guide NPCs = %d, declared checkpoints %d", len(st.guides), want)
+	}
+	if st.hasAmbientDecl && int64(len(st.ambient)) != st.wantAmbient {
+		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
+			"ambient NPCs = %d, declared %d", len(st.ambient), st.wantAmbient)
 	}
 }
 
@@ -54,6 +60,11 @@ type npcState struct {
 	mapNPCs  map[string][]string
 	ambient  []string
 	byRole   map[string][]string // role token -> npc ids
+
+	wantRegional    int64
+	hasRegionalDecl bool
+	wantAmbient     int64
+	hasAmbientDecl  bool
 }
 
 var npcArrowRe = regexp.MustCompile(`^([a-z_]+)\s*->\s*(.+)$`)

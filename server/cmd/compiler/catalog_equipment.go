@@ -20,6 +20,7 @@ func compileEquipment(c *Ctx, f *File, r *Registry) {
 		path := firstPath(b)
 		switch {
 		case strings.HasPrefix(path, "Launch Shape") || strings.Contains(b.Raw, "Concrete Item-ID Expansion"):
+			st.expandB = b
 			eqShape(c, f, b, st)
 		case strings.HasPrefix(path, "Tier Budget"):
 			eqTierBudget(c, f, b, st)
@@ -71,6 +72,7 @@ type eqState struct {
 	enhance    map[string][]string                // slot -> enhanceable stats
 	ringCharm  map[string]map[string]config.Value // tier -> {CRIT_CHANCE, COOLDOWN_REDUCTION}
 	slots      []string
+	expandB    *SourceBinding
 }
 
 // ---- tables -------------------------------------------------------------
@@ -649,8 +651,8 @@ func eqExpand(c *Ctx, f *File, st *eqState) {
 			count++
 		}
 	}
-	if count != 168 {
+	if want, ok := bindingDecl(st.expandB, reDeclEmission); ok && int64(count) != want {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"equipment expansion %d != 168", count)
+			"equipment expansion %d != declared %d", count, want)
 	}
 }

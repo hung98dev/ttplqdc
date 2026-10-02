@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sort"
 
 	"thinhthan/internal/config"
 )
@@ -10,6 +11,24 @@ import (
 // run executes the compile pipeline: catalogs → CandidateSnapshot →
 // canonical payload + revision → coverage → content_compile_report.json.
 // Exit 0 only when diagnostics carry zero errors and zero warnings.
+// sortDiags orders diagnostics canonically (file, line, code, message) so
+// report bytes and stderr never depend on map-iteration emit order.
+func sortDiags(ds *config.Diagnostics) {
+	sort.SliceStable(*ds, func(i, j int) bool {
+		a, b := (*ds)[i], (*ds)[j]
+		if a.File != b.File {
+			return a.File < b.File
+		}
+		if a.Line != b.Line {
+			return a.Line < b.Line
+		}
+		if a.Code != b.Code {
+			return a.Code < b.Code
+		}
+		return a.Message < b.Message
+	})
+}
+
 func run(dir, report, payload, coverage string) int {
 	c := &Ctx{
 		Defs:     &FamilyStore{},
@@ -25,6 +44,8 @@ func run(dir, report, payload, coverage string) int {
 		Dir:      dir,
 	}
 	err := runPipeline(c)
+	sortDiags(c.Diags)
+	sortDiags(c.Warnings)
 
 	var snap *config.CandidateSnapshot
 	var revErr error

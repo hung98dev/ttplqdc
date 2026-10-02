@@ -399,8 +399,15 @@ func dropNormalTemplate(c *Ctx, f *File, st *dropState, tier, soulID string) []m
 }
 
 func dropNormalTables(c *Ctx, f *File, b *SourceBinding, st *dropState) {
-	count := 0
-	for _, sub := range f.Root.Children {
+	parent := f.Root.SectionAt("Normal Monster Template")
+	var subs []*Section
+	if parent != nil {
+		subs = parent.Children
+	}
+	if len(subs) == 0 {
+		subs = f.Root.Children
+	}
+	for _, sub := range subs {
 		if !strings.HasSuffix(sub.Title, "Normal Tables") {
 			continue
 		}
@@ -427,11 +434,9 @@ func dropNormalTables(c *Ctx, f *File, b *SourceBinding, st *dropState) {
 				fields["soul_id"] = config.VStr(soul)
 				dropEmitSlots(c, f, b, tid, fields,
 					dropNormalTemplate(c, f, st, tier, soul), row[0].Line)
-				count++
 			}
 		}
 	}
-	_ = count
 	c.consumed(f, b)
 }
 
@@ -1086,6 +1091,33 @@ func dropWeeklyHighlight(c *Ctx, f *File, b *SourceBinding, st *dropState) {
 					"item_id":  config.VStr(m[2]),
 					"quantity": q,
 				}))
+			}
+			c.Emit(f.Name, b.Raw, "drop_table",
+				[]config.Value{config.VStr(rtid)},
+				map[string]config.Value{
+					"drop_table_id": config.VStr(rtid),
+					"kind":          config.VStr("WEEKLY_HIGHLIGHT"),
+					"dungeon_id":    config.VStr(did),
+					"key_template":  config.VStr("weekly_highlight.<utc_week_number>.<dungeon_id>.<character_id>"),
+				}, row[0].Line)
+			slot := 0
+			for _, cv := range contents {
+				slot++
+				rec := cv.Rec
+				slotID := "slot_" + string(rune('a'+slot-1))
+				c.Emit(f.Name, b.Raw, "drop_slot",
+					[]config.Value{config.VStr(rtid), config.VStr(slotID)},
+					map[string]config.Value{
+						"drop_table_id": config.VStr(rtid),
+						"reward_slot":   config.VStr(slotID),
+						"roll_kind":     config.VStr("GUARANTEED"),
+						"ordinal":       config.VInt(int64(slot)),
+						"reward": config.VRec(map[string]config.Value{
+							"type":     config.VStr("ITEM"),
+							"item_id":  rec["item_id"],
+							"quantity": rec["quantity"],
+						}),
+					}, row[0].Line)
 			}
 			c.Emit(f.Name, b.Raw, "weekly_highlight",
 				[]config.Value{config.VStr(did)},

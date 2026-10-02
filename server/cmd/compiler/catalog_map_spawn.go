@@ -23,10 +23,12 @@ func compileMapSpawn(c *Ctx, f *File, r *Registry) {
 		path := firstPath(b)
 		switch {
 		case strings.HasPrefix(path, "Shared Rules"):
+			st.wantGroups, st.hasGroupsDecl = bindingDecl(b, reDeclTotal)
 			msSharedRules(c, f, b)
 		case strings.HasPrefix(path, "Rare night encounters"):
 			msRare(c, f, b)
 		case strings.HasPrefix(path, "Safe / Social Maps"):
+			st.wantSafe, st.hasSafeDecl = bindingDecl(b, reDeclDashN)
 			msSafeMaps(c, f, b, st)
 		case strings.Contains(path, "ACT"):
 			msActMaps(c, f, b, st)
@@ -49,6 +51,11 @@ type msState struct {
 	safe      map[string]bool
 	season0   map[string]bool // season-0 variant monster keys
 	poolCount map[string]int  // map_id -> emitted pool entries
+
+	wantGroups    int64
+	hasGroupsDecl bool
+	wantSafe      int64
+	hasSafeDecl   bool
 }
 
 var bandRe = regexp.MustCompile(`^([A-Z_]+)\s*=\s*([0-9]+)\.\.([0-9]+)s`)
@@ -351,12 +358,12 @@ func msSurge(c *Ctx, f *File, b *SourceBinding) {
 }
 
 func msVerify(c *Ctx, f *File, st *msState) {
-	if st.groups != 54 {
+	if st.hasGroupsDecl && int64(st.groups) != st.wantGroups {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"persistent spawn groups %d != 54", st.groups)
+			"persistent spawn groups %d != declared %d", st.groups, st.wantGroups)
 	}
-	if len(st.safe) != 6 {
+	if st.hasSafeDecl && int64(len(st.safe)) != st.wantSafe {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"safe maps %d != 6", len(st.safe))
+			"safe maps %d != declared %d", len(st.safe), st.wantSafe)
 	}
 }

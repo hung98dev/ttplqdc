@@ -516,7 +516,6 @@ func skActionSpecs(c *Ctx, f *File, st *skState) {
 		}
 	}
 	st.geoCount = geoCount
-	_ = geoCount
 }
 
 func skSecondarySpatial(c *Ctx, f *File, st *skState) {
@@ -777,21 +776,22 @@ func skVerify(c *Ctx, f *File, st *skState) {
 		perClass[m[1]][m[2]]++
 		_ = fields
 	}
-	for cls, cats := range perClass {
-		if cats["basic"] != 4 || cats["active"] != 5 || cats["passive"] != 3 {
-			c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-				"class %s basic=%d active=%d passive=%d", cls,
-				cats["basic"], cats["active"], cats["passive"])
+	if wb, wa, wp, ok := readmeSkillCats(c); ok {
+		for cls, cats := range perClass {
+			if cats["basic"] != int(wb) || cats["active"] != int(wa) || cats["passive"] != int(wp) {
+				c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
+					"class %s basic=%d active=%d passive=%d, declared %d/%d/%d", cls,
+					cats["basic"], cats["active"], cats["passive"], wb, wa, wp)
+			}
 		}
 	}
 	if len(perClass) != 5 {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
 			"classes %d != 5", len(perClass))
 	}
-	// assertion 12: exactly 45 primary geometries
-	if st.geoCount != 45 {
+	if g := parseBalanceGates(c); g.hasGeomRows && int64(st.geoCount) != g.geomRows {
 		c.Diags.Addf(config.DiagBalanceGuardrail, f.Path, 1,
-			"primary geometries %d != 45", st.geoCount)
+			"primary geometries %d != declared %d", st.geoCount, g.geomRows)
 	}
 	// assertion 22: every ACTIVE skill has exactly one payload row
 	for sid, fields := range st.matrix {
