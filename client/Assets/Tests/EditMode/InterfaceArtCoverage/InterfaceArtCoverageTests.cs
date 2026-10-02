@@ -508,7 +508,8 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                             if (indexToLocFormat == 0)
                             {
                                 _loca.Add(U16(off + g * 2) * 2L);
-                            } else
+                            }
+                            else
                             {
                                 _loca.Add(U32(off + g * 4));
                             }
@@ -541,7 +542,8 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                         if (ro == 0)
                         {
                             g = (c + delta) & 0xFFFF;
-                        } else
+                        }
+                        else
                         {
                             long addr = idRange + i * 2 + ro + (c - start) * 2;
                             int v = U16(addr);
