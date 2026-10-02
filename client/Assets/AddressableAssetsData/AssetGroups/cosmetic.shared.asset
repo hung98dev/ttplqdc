@@ -14,7 +14,407 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: cosmetic.shared
   m_GUID: a2545d146bf877f40b5bb57d909b0145
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 3f088f853aae4fab865310aa26af42c1
+    m_Address: asset.cosmetic.appearance.ao_toi_la.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 152720239332446aaefca839732dd715
+    m_Address: asset.cosmetic.appearance.ao_vai_hoa_van.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0157ee08e9844fc1b0b95f570bb94e41
+    m_Address: asset.cosmetic.appearance.khan_ben_nuoc.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb37fcf85f4349ed8686d1d2844cc6b7
+    m_Address: asset.cosmetic.appearance.non_la_moc.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: faf5ef8026e040e1997f48344d02aa4c
+    m_Address: asset.cosmetic.aura.linh_khi.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f43ef726a234420ab6d3514f2a09f4f2
+    m_Address: asset.cosmetic.aura.quy_khi.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 193ab56d456646e796e1724532d79e08
+    m_Address: asset.cosmetic.frame.bach_ho.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90395ac2f9b246649d3fe698c66c5265
+    m_Address: asset.cosmetic.frame.ben_da.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2699b93420cc4d158236de23686d7edd
+    m_Address: asset.cosmetic.frame.guild_war.chien_ky.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89ca1804d7094d6ca118bc5061d85c2f
+    m_Address: asset.cosmetic.frame.ho_tinh.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9aea8fc938f645eab0281a0bc55583e8
+    m_Address: asset.cosmetic.frame.huyen_vu.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 653891ef95f34f84ae8a620ac8f3a483
+    m_Address: asset.cosmetic.frame.lan_linh.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61d3d678306b46ef859f0b8ba5d7340b
+    m_Address: asset.cosmetic.frame.nui_thieng.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1afb5791a84a4ee398001e2653703062
+    m_Address: asset.cosmetic.frame.phuong_hoang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03af13e9d6ff449ea81307f76d131da8
+    m_Address: asset.cosmetic.frame.pvp.bac.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0172ee0f27834de4ba84c1b503025d62
+    m_Address: asset.cosmetic.frame.pvp.linh.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 116b11d432fe47db80c644316ad93842
+    m_Address: asset.cosmetic.frame.pvp.ngoc.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54487bb5b64e42b3a21a160ed8decb53
+    m_Address: asset.cosmetic.frame.pvp.than_thoai.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0edd04dfc003478695281bcd5ce3a0c2
+    m_Address: asset.cosmetic.frame.pvp.vang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52b498c61e7b4017a2e1380ff936a1a2
+    m_Address: asset.cosmetic.frame.rong_vang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dccac09a8304867ad0f4bfecf0dac96
+    m_Address: asset.cosmetic.frame.season.0.paid.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc4ad17ae2bb4b9a9c545e66f1552c81
+    m_Address: asset.cosmetic.frame.season.0.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55f7ab353d464066b316b2447cbdca7d
+    m_Address: asset.cosmetic.frame.season.1.paid.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f30ba77423104453a1476dc37f90f64c
+    m_Address: asset.cosmetic.frame.season.1.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4501d77ed2db436eadb735ede47c3fda
+    m_Address: asset.cosmetic.frame.season.2.paid.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55d9178550f94560b7d5b8240a34f090
+    m_Address: asset.cosmetic.frame.season.2.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97e0258c3cc846b0ae8d1fa3f4f9eb4e
+    m_Address: asset.cosmetic.frame.season.3.paid.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07ff5f742feb4062a80b71ff3d799f03
+    m_Address: asset.cosmetic.frame.season.3.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 615e7e935b3842b6ad5e306ca3974c02
+    m_Address: asset.cosmetic.frame.season.4.paid.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f2dd422c0a24e139bc14673e56119f5
+    m_Address: asset.cosmetic.frame.season.4.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a15b1696ab9c418f856611def92d5dbe
+    m_Address: asset.cosmetic.frame.season.5.paid.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7b72905752645d5b0c9f17239a6fb95
+    m_Address: asset.cosmetic.frame.season.5.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44bdd281ee6f42318f99321d8b396fb6
+    m_Address: asset.cosmetic.guild.banner.guild_war_champion.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f9586f85674402a8274c18e99a2a9e6
+    m_Address: asset.cosmetic.guild.banner.ritual_8.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eaf879562e7c4d8db0cbbaf71d873942
+    m_Address: asset.cosmetic.guild.crest.ritual_4.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc898d676cb1449f98a0dc2e64d2bcee
+    m_Address: asset.cosmetic.guild.shrine.guild_war_top10.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85c24bef8a0a48489e833901068cf86b
+    m_Address: asset.cosmetic.guild.shrine.ritual_12.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9813861e2fd4a90a76efb5bab3304c7
+    m_Address: asset.cosmetic.iap.appearance.co_tam_truyen.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7d09b5fba6f4516a47da39d50402555
+    m_Address: asset.cosmetic.iap.appearance.co_tien.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1491b0728ee45239e6c6051151262ae
+    m_Address: asset.cosmetic.iap.appearance.nu_tuong_trong_dong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5555ec48ce09477188e6f4824a3cad57
+    m_Address: asset.cosmetic.iap.appearance.vo_quan_thanh_co.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7131ccf144fc496ca9a90a79f73c2452
+    m_Address: asset.cosmetic.iap.frame.thien_long.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b121b869220b43519c15f45f87207026
+    m_Address: asset.cosmetic.iap.nameplate.hun_thuoc_co.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8cdbddb33f584dba83559da906e7680b
+    m_Address: asset.cosmetic.iap.title_glow.long_nhan.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8eb5eba4e55f4f8499b522773a209cc8
+    m_Address: asset.cosmetic.iap.trail.bao_gam.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f6ddb9cc9834591887548720daa9f48
+    m_Address: asset.cosmetic.iap.trail.long_hoa.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 637588c0aac64ba1b01e55ec34c0d3c6
+    m_Address: asset.cosmetic.iap.trail.phuong_hoang_vu.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ad8d0cc3a7e4216af3d14dcf74bcc04
+    m_Address: asset.cosmetic.nameplate.ky_luat_vang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4708d487f0bc419cac8fb5edd4dc32ba
+    m_Address: asset.cosmetic.nameplate.linh_thuyen.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09386217e8dd4836911e7503b38ecc86
+    m_Address: asset.cosmetic.nameplate.son_ha.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03b5790670ff4f75b9c154d812e34e76
+    m_Address: asset.cosmetic.shrine.kim_trang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 901a46ead4c04f208ade6546d23504ed
+    m_Address: asset.cosmetic.shrine.linh_khoi.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a0b78ae6bd5413b92a7c11fe8ebcdbe
+    m_Address: asset.cosmetic.shrine.lua_do.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36974a8f8dff43299f09f1a4f7a82382
+    m_Address: asset.cosmetic.shrine.moc_xanh.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57131bc5e2a4438fadfa16ca2c57fbda
+    m_Address: asset.cosmetic.shrine.season.0.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c516fae14f0d40529a2a200d1ec74010
+    m_Address: asset.cosmetic.shrine.season.1.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7376ebd7b5fa4228a5acdc1354937603
+    m_Address: asset.cosmetic.shrine.season.2.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89d0b82158584e0eb1c91a25af40f406
+    m_Address: asset.cosmetic.shrine.season.3.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8760ddb2a9a14c9ba629c665883a6415
+    m_Address: asset.cosmetic.shrine.season.4.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 738051bc6875431d9c08c82765ea556e
+    m_Address: asset.cosmetic.shrine.season.5.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9494bec0cc9a4468a87afc054d3e3ad8
+    m_Address: asset.cosmetic.shrine.tho_vang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2551df00c50c4fb68807e95c994d7a2d
+    m_Address: asset.cosmetic.shrine.thuy_ngoc.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38c00ff1f804471fa365958b5b96af51
+    m_Address: asset.cosmetic.shrine_special.bach_ngoc.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b53379d44e9b463284cb8bb6e29a594e
+    m_Address: asset.cosmetic.shrine_special.cu_thach.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 309fed9fedf54dd48c979366da26d667
+    m_Address: asset.cosmetic.shrine_special.dai_hong.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d87e3242fc9043bf990e52d195603361
+    m_Address: asset.cosmetic.shrine_special.hong_tran.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ce002342ae745b0a3ed7b3b16a1d271
+    m_Address: asset.cosmetic.shrine_special.ngoc_bich.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70206f8b6c4b431584d2703a94026187
+    m_Address: asset.cosmetic.title_glow.bach_nhat.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46700c878b1a4799ac67ea084f8b1db6
+    m_Address: asset.cosmetic.title_glow.do_quang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8c8737d90ade415eb9c5633e23c8013c
+    m_Address: asset.cosmetic.title_glow.hoa_quang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c97e386daf141fc8efe59dc3428658d
+    m_Address: asset.cosmetic.title_glow.hong_phuc.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 403d10c3ab544242b1c21f618a6026c8
+    m_Address: asset.cosmetic.title_glow.kim_quang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e97e2ec6d41c409fb770672cf353959c
+    m_Address: asset.cosmetic.title_glow.linh_hoa.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de10ab7d8e1a45ee8612285073aa4125
+    m_Address: asset.cosmetic.title_glow.moc_xanh.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ded9cb81e8c47c79464ccce322a7698
+    m_Address: asset.cosmetic.title_glow.thien_van.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec41c91384214f1f91d86645e9360e07
+    m_Address: asset.cosmetic.title_glow.tho_bach.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6fb322e64fc54fca8287b08cfb618ee1
+    m_Address: asset.cosmetic.title_glow.thuy_linh.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7618b5210904b26ac8e3ee5b6ab677a
+    m_Address: asset.cosmetic.title_glow.tim_nhat.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d86d949229b94871869ef2eb01ceb1da
+    m_Address: asset.cosmetic.title_glow.vang_nhat.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83f23a5b90f4419fb5a78bd08caa6631
+    m_Address: asset.cosmetic.title_glow.xanh_nhat.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:
