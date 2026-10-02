@@ -22,6 +22,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"slices"
 	"strings"
 	"testing"
 	"time"
@@ -60,9 +61,26 @@ func (s *Server) DumpSchema(ctx context.Context, dbName string) (string, error) 
 	if err != nil {
 		return "", err
 	}
-	argv := append(append([]string{}, s.pgDump...),
+	host, port := u.Host, fmt.Sprint(u.Port)
+	argv := append([]string{}, s.pgDump...)
+	if argv[0] == "docker" {
+		// pg_dump runs inside the container: connect to its own
+		// localhost:5432 (the DSN's mapped port is host-side), and inject
+		// the password via -e — cmd.Env only reaches the docker client.
+		host, port = "localhost", "5432"
+		hasPE := false
+		for _, a := range argv {
+			if strings.HasPrefix(a, "PGPASSWORD=") {
+				hasPE = true
+			}
+		}
+		if !hasPE {
+			argv = slices.Insert(argv, 2, "-e", "PGPASSWORD="+u.Password)
+		}
+	}
+	argv = append(argv,
 		"--schema-only", "--no-owner", "--no-privileges",
-		"-h", u.Host, "-p", fmt.Sprint(u.Port), "-U", u.User, "-d", dbName)
+		"-h", host, "-p", port, "-U", u.User, "-d", dbName)
 	cmd := exec.CommandContext(ctx, argv[0], argv[1:]...)
 	cmd.Env = append(os.Environ(), "PGPASSWORD="+u.Password)
 	out, err := cmd.Output()
