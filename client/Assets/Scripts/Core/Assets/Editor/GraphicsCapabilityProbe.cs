@@ -171,9 +171,13 @@ namespace ThinhThan.Core.Assets.Editor
         }
 
         /// <summary>
-        /// Windows platform diagnostics: enumerate the initialized adapter's
-        /// PNP ID (which encodes VEN_/DEV_) and confirm it is the software
-        /// Basic Render Driver. Non-Windows or ambiguous output fails.
+        /// Windows platform diagnostics: the initialized adapter must be the
+        /// software Basic Render Driver. When SystemInfo already reports the
+        /// Microsoft WARP VID/DID (0x1414/0x008c) that identity is itself the
+        /// proof — WARP is a software device, so Win32_VideoController PNP
+        /// enumeration never contains it. Any other device must match an
+        /// enumerated adapter's VEN_/DEV_ PNP ID. Non-Windows or ambiguous
+        /// output fails.
         /// </summary>
         private static GraphicsAdapterInfo ObserveAdapter()
         {
@@ -182,6 +186,14 @@ namespace ThinhThan.Core.Assets.Editor
                 throw new GraphicsProbeException("probe requires the native Windows editor");
             }
             var info = new GraphicsAdapterInfo();
+            if (SystemInfo.graphicsDeviceVendorID == 0x1414 && SystemInfo.graphicsDeviceID == 0x008c)
+            {
+                info.Name = SystemInfo.graphicsDeviceName;
+                info.VendorId = SystemInfo.graphicsDeviceVendorID;
+                info.DeviceId = SystemInfo.graphicsDeviceID;
+                info.SoftwareFlag = true;
+                return info;
+            }
             string output = RunDiagnostics(
                 "powershell.exe",
                 "-NoProfile -Command \"Get-CimInstance Win32_VideoController | " +
