@@ -34,6 +34,17 @@ namespace ThinhThan.Tests.EditMode.AudioAssetCoverage
             "quest_complete", "map_transfer",
         };
 
+        private static readonly Dictionary<string, string[]> ZoneMapTable =
+            new Dictionary<string, string[]>
+            {
+                { "lang_da", new[] { "dinh_lang", "bo_ruong", "ben_da", "go_ma" } },
+                { "rung_u_minh", new[] { "xom_rung", "loi_tram", "rung_sau", "mieu_bo_hoang" } },
+                { "ben_nuoc_den", new[] { "cho_ben", "bai_lau", "duong_ngap", "ben_do_cu" } },
+                { "deo_may", new[] { "ban_chan_deo", "duong_rung", "khe_da", "rung_cam" } },
+                { "thanh_co", new[] { "cong_ngoai", "duong_da", "hao_can", "den_tran" } },
+                { "nui_thieng", new[] { "chan_nui", "rung_may", "suon_da", "cong_co" } },
+            };
+
         // All 33 release spaces and their owning audio.bgm.* group.
         private static readonly (string space, string group)[] Scenes = BuildScenes();
 
@@ -58,17 +69,6 @@ namespace ThinhThan.Tests.EditMode.AudioAssetCoverage
             list.Add(("map.guild_war.five_seal_conflict", AddressableGroups.AudioBgmShared));
             return list.ToArray();
         }
-
-        private static readonly Dictionary<string, string[]> ZoneMapTable =
-            new Dictionary<string, string[]>
-            {
-                { "lang_da", new[] { "dinh_lang", "bo_ruong", "ben_da", "go_ma" } },
-                { "rung_u_minh", new[] { "xom_rung", "loi_tram", "rung_sau", "mieu_bo_hoang" } },
-                { "ben_nuoc_den", new[] { "cho_ben", "bai_lau", "duong_ngap", "ben_do_cu" } },
-                { "deo_may", new[] { "ban_chan_deo", "duong_rung", "khe_da", "rung_cam" } },
-                { "thanh_co", new[] { "cong_ngoai", "duong_da", "hao_can", "den_tran" } },
-                { "nui_thieng", new[] { "chan_nui", "rung_may", "suon_da", "cong_co" } },
-            };
 
         private static string[] ZoneMaps(string zone)
         {
