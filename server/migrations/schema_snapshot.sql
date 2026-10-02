@@ -1,3 +1,7 @@
+-- PostgreSQL database dump
+
+
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -1377,6 +1381,14 @@ CREATE TABLE public.reward_claims (
 );
 
 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+
+CREATE TABLE public.schema_migrations (
+    version bigint NOT NULL,
+    dirty boolean NOT NULL
+);
+
+
 -- Name: trade_settlement_records; Type: TABLE; Schema: public; Owner: -
 
 CREATE TABLE public.trade_settlement_records (
@@ -2046,6 +2058,12 @@ ALTER TABLE ONLY public.reward_claim_lines
 
 ALTER TABLE ONLY public.reward_claims
     ADD CONSTRAINT reward_claims_pkey PRIMARY KEY (reward_claim_id);
+
+
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
 
 
 -- Name: trade_settlement_records trade_settlement_records_pkey; Type: CONSTRAINT; Schema: public; Owner: -
@@ -3090,5 +3108,6 @@ ALTER TABLE ONLY public.trade_settlement_records
 
 
 -- PostgreSQL database dump complete
+
 
 
