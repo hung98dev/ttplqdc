@@ -104,7 +104,7 @@ type Driver struct {
 var Drivers = []Driver{
 	{Catalog: "monster_catalog.md", Compile: compileMonster},
 	{Catalog: "boss_catalog.md", Compile: compileBoss},
-	{Catalog: "class_skill_catalog.md"},
+	{Catalog: "class_skill_catalog.md", Compile: compileClassSkill},
 	{Catalog: "equipment_catalog.md"},
 	{Catalog: "item_catalog.md"},
 	{Catalog: "drop_tables.md"},
