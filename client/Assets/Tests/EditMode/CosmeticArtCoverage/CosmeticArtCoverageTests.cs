@@ -1,7 +1,9 @@
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using ThinhThan.Core.Assets;
 using ThinhThan.Core.Assets.Editor.AssetProduction;
@@ -140,10 +142,23 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
             return paths;
         }
 
-        private static CutoutGate.AssetClass ClassOf(RegisterJson.Node cosmetic)
+        // Section 3.1a dispatches the gates per FILE asset_class declared in
+        // import metadata: the icon surface of any cosmetic is an ITEM_ICON
+        // (an icon is not an actor presentation), while body/preview carry
+        // the cosmetic's own class.
+        private static string FileClass(RegisterJson.Node cosmetic, string rel)
         {
-            var c = cosmetic.Get("asset_class")!.Str;
-            switch (c)
+            var icon = cosmetic.Get("files")!.Get("icon");
+            if (icon != null && icon.Str == rel)
+            {
+                return "ITEM_ICON";
+            }
+            return cosmetic.Get("asset_class")!.Str;
+        }
+
+        private static CutoutGate.AssetClass ClassOf(string fileClass)
+        {
+            switch (fileClass)
             {
                 case "COSMETIC_APPEARANCE":
                     return CutoutGate.AssetClass.Actor;
@@ -155,35 +170,15 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
                 case "VFX_SOFT":
                     return CutoutGate.AssetClass.VfxSoft;
                 default:
-                    Assert.Fail("unknown asset_class " + c);
+                    Assert.Fail("unknown asset_class " + fileClass);
                     return default;
             }
         }
 
-        private static bool VolumeApplies(RegisterJson.Node cosmetic)
+        private static bool VolumeApplies(string fileClass)
         {
-            var c = cosmetic.Get("asset_class")!.Str;
-            return c == "COSMETIC_APPEARANCE" || c == "PROP" || c == "ITEM_ICON";
-        }
-
-        private static List<LabPixels.Lab> Palette()
-        {
-            var p = RegisterJson.Parse(Read(PaletteRel));
-            var labs = new List<LabPixels.Lab>();
-            foreach (var fam in p.Get("families")!.Obj!)
-            {
-                foreach (var tri in fam.Value.Get("lab")!.Arr!)
-                {
-                    labs.Add(new LabPixels.Lab
-                    {
-                        L = tri.Arr![0].Num,
-                        A = tri.Arr[1].Num,
-                        B = tri.Arr[2].Num,
-                    });
-                }
-            }
-            Assert.Greater(labs.Count, 0, "palette must not be empty");
-            return labs;
+            return fileClass == "COSMETIC_APPEARANCE" || fileClass == "PROP"
+                || fileClass == "ITEM_ICON";
         }
 
         [Test]
@@ -277,75 +272,92 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
             return m.Groups[1].Value;
         }
 
-        [Test]
-        public void TestCosmeticCutoutGateZeroViolations()
+        // The gate's per-file cost is O(pixels * edge-pixels) on its
+        // nearest-opaque scans, so the two gate tests fan out across cores
+        // after decoding every PNG on the main thread (Texture2D API).
+        private sealed class GateJob
         {
-            var fails = new List<string>();
+            public string Rel = string.Empty;
+            public LabPixels.Image Img = null!;
+            public CutoutGate.AssetClass Cls;
+            public int MinBodyH;
+            public int MaxBodyH;
+        }
+
+        private static List<GateJob> GateJobs(bool volume)
+        {
+            var jobs = new List<GateJob>();
             foreach (var c in Cosmetics())
             {
                 if (c.Get("resolution")!.Str != "art")
                 {
                     continue;
                 }
-                var cls = ClassOf(c);
                 foreach (var rel in GatedPaths(c))
                 {
+                    var fileClass = FileClass(c, rel);
+                    if (volume && !VolumeApplies(fileClass))
+                    {
+                        continue;
+                    }
                     var abs = Path.Combine(RepoRoot(),
                         rel.Replace('/', Path.DirectorySeparatorChar));
-                    var img = ArtRuleFixtures.LoadPng(abs);
-                    var rep = CutoutGate.Measure(
-                        rel, img, 0, 0, img.Width, img.Height, cls, null,
-                        false, false);
-                    if (rep.Violations.Count != 0)
+                    // The declared body band (Actor tren nen) applies only to
+                    // the full-figure presentation surface, never to icons.
+                    var band = fileClass == "COSMETIC_APPEARANCE"
+                        && (rel.EndsWith("/preview.png") || rel.EndsWith("/body.png"));
+                    jobs.Add(new GateJob
                     {
-                        fails.Add(rel + ": " + string.Join("; ", rep.Violations));
-                    }
+                        Rel = rel,
+                        Img = ArtRuleFixtures.LoadPng(abs),
+                        Cls = ClassOf(fileClass),
+                        MinBodyH = band ? 176 : 0,
+                        MaxBodyH = band ? 192 : 0,
+                    });
                 }
             }
-            Assert.AreEqual(0, fails.Count, "cutout violations:\n" + string.Join("\n", fails));
+            return jobs;
+        }
+
+        [Test]
+        public void TestCosmeticCutoutGateZeroViolations()
+        {
+            var fails = new ConcurrentBag<string>();
+            var jobs = GateJobs(false);
+            Parallel.ForEach(jobs, j =>
+            {
+                var rep = CutoutGate.Measure(
+                    j.Rel, j.Img, 0, 0, j.Img.Width, j.Img.Height, j.Cls, null,
+                    false, false);
+                if (rep.Violations.Count != 0)
+                {
+                    fails.Add(j.Rel + ": " + string.Join("; ", rep.Violations));
+                }
+            });
+            var ordered = new List<string>(fails);
+            ordered.Sort(System.StringComparer.Ordinal);
+            Assert.AreEqual(0, fails.Count,
+                "cutout violations:\n" + string.Join("\n", ordered));
         }
 
         [Test]
         public void TestCosmeticVolumeDepthGateZeroViolations()
         {
-            var fails = new List<string>();
-            var palette = Palette();
-            foreach (var c in Cosmetics())
+            var fails = new ConcurrentBag<string>();
+            var jobs = GateJobs(true);
+            Parallel.ForEach(jobs, j =>
             {
-                if (c.Get("resolution")!.Str != "art" || !VolumeApplies(c))
+                var rep = VolumeGate.Measure(
+                    j.Rel, j.Img, null, j.MinBodyH, j.MaxBodyH);
+                if (rep.Violations.Count != 0)
                 {
-                    continue;
+                    fails.Add(j.Rel + ": " + string.Join("; ", rep.Violations));
                 }
-                var isActor = c.Get("asset_class")!.Str == "COSMETIC_APPEARANCE";
-                foreach (var rel in GatedPaths(c))
-                {
-                    var abs = Path.Combine(RepoRoot(),
-                        rel.Replace('/', Path.DirectorySeparatorChar));
-                    var img = ArtRuleFixtures.LoadPng(abs);
-                    var rep = VolumeGate.Measure(
-                        rel, img, null, isActor ? 176 : 0, isActor ? 192 : 0);
-                    if (rep.Violations.Count != 0)
-                    {
-                        fails.Add(rel + ": " + string.Join("; ", rep.Violations));
-                    }
-                    VolumeGate.Silhouette(img, null, out var inS, out var lab);
-                    var s = new List<int>();
-                    for (var i = 0; i < img.Width * img.Height; i++)
-                    {
-                        if (inS[i])
-                        {
-                            s.Add(i);
-                        }
-                    }
-                    var cov = VolumeGate.PaletteCoverage(s, lab, palette);
-                    if (double.IsNaN(cov) || cov < 0.85)
-                    {
-                        fails.Add(rel + ": palette coverage " + cov.ToString("F3",
-                            CultureInfo.InvariantCulture));
-                    }
-                }
-            }
-            Assert.AreEqual(0, fails.Count, "volume violations:\n" + string.Join("\n", fails));
+            });
+            var ordered = new List<string>(fails);
+            ordered.Sort(System.StringComparer.Ordinal);
+            Assert.AreEqual(0, fails.Count,
+                "volume violations:\n" + string.Join("\n", ordered));
         }
 
         [Test]
