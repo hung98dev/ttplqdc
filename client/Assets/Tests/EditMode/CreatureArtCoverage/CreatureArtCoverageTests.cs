@@ -1116,14 +1116,14 @@ NPC_HUMANOID|64|96|96|128|";
                 Assert.AreEqual(
                     "Direct AI Generation (In-Session Multimodal)",
                     Str(gen!, "tool"), Str(row, "file_path"));
-                var model = Str(gen, "model_id");
+                var model = Str(gen!, "model_id");
                 Assert.IsNotNull(model, "model_id missing");
                 Assert.IsTrue(model!.Length > 0);
-                var termsUri = Str(gen, "terms_uri");
+                var termsUri = Str(gen!, "terms_uri");
                 Assert.IsNotNull(termsUri, "terms_uri missing");
                 Assert.IsTrue(termsUri!.StartsWith("https://",
                     StringComparison.Ordinal));
-                var snap = Str(gen, "terms_snapshot_sha256");
+                var snap = Str(gen!, "terms_snapshot_sha256");
                 Assert.IsNotNull(snap, "terms_snapshot_sha256 missing");
                 var pack = Str(row, "style_pack_id");
                 Assert.IsNotNull(pack, "style_pack_id missing");
@@ -1134,7 +1134,7 @@ NPC_HUMANOID|64|96|96|128|";
                     "terms snapshot missing " + snapPath);
                 Assert.AreEqual(snap, Sha256File(Abs(snapPath)),
                     "terms snapshot hash mismatch");
-                var prompt = Str(gen, "prompt") ?? string.Empty;
+                var prompt = Str(gen!, "prompt") ?? string.Empty;
                 Assert.IsTrue(prompt.Contains("volume")
                     || prompt.Contains("light"),
                     Str(row, "file_path") + " prompt lacks §3.5 directives");
