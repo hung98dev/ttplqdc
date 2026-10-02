@@ -44,14 +44,6 @@ var GoModulePins = map[string]string{
 	"golang.org/x/text":                                                 "v0.42.0",
 	"golang.org/x/crypto":                                               "v0.57.0",
 	"github.com/clipperhouse/uax29/v2":                                  "v2.7.0",
-	// Matrix-declared transitive require-closure of the pinned pgx/migrate
-	// modules (technology_versions.md § Backend); the exact commit
-	// pseudo-versions below are approved pins, not floating versions.
-	"github.com/jackc/pgerrcode":     "v0.0.0-20220416144525-469b46aa5efa",
-	"github.com/jackc/pgpassfile":    "v1.0.0",
-	"github.com/jackc/pgservicefile": "v0.0.0-20240606120523-5a60cdf6a761",
-	"github.com/jackc/puddle/v2":     "v2.2.2",
-	"golang.org/x/sync":              "v0.23.0",
 }
 
 // TransitiveModuleAllowlist records the only non-direct modules the approved

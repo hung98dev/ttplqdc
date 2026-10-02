@@ -983,7 +983,7 @@ blocked_by: ""
 specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../06_data/data_model.md`, `../06_data/migrations.md`, `../06_data/physical_schema_contract.md`, `../07_security/personal_data_register.md`, `../06_data/ids.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`]
 adrs: [`0011-postgresql-relational-persistence.md`, `0040-world-consequence-durable-aggregate.md`, `0048-character-update-timestamp.md`, `0053-durable-contract-reconciliation.md`, `0058-public-repo-github-hosted-linux-and-windows-runners.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001]
-owned_paths: [`server/internal/durable/idempotency/`, `server/internal/durable/db/`, `server/internal/durable/schema/`, `server/migrations/`, `server/cmd/migrate/`, `server/internal/testing/pgtest/`, `server/go.mod`, `server/go.sum`, `server/internal/stackpin/pins.go`, `server/internal/stackpin/versions_test.go`]
+owned_paths: [`server/internal/durable/idempotency/`, `server/internal/durable/db/`, `server/internal/durable/schema/`, `server/migrations/`, `server/cmd/migrate/`, `server/internal/testing/pgtest/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/internal/sim/`, `client/Assets/Scripts/`]
 contract_inputs: [operation ID, canonical payload hash, transaction callback, schema contract]
 contract_outputs: [single committed operation record, replayable result, baseline migrations]
@@ -1026,7 +1026,7 @@ IMP-005 is the only migration owner. No other packet adds a migration; a later s
 - `server/internal/durable/schema/privacy_schema_test.go`: TestReportEvidenceSchemaAndIndependentPurge (PRIV-004), TestDisabledOperatorCredentialAndRetentionConstraints (PRIV-005), TestErasureIntentCompletionConstraintAndPurgeIndex (PRIV-006).
 - `server/internal/durable/idempotency/replay_horizon_test.go`: TestReplayBeforeMutablePreconditions, TestOwnerFingerprintMismatchCannotReplay, TestRetryAt180DayBoundaryExpired, TestPurgedUuidCannotExecuteAgain, TestFutureTimestampOver60SecondsMalformed, TestPurgeNeverBeforeReplayUntil, TestServerNaturalKeyDedupAfterOperationPurge.
 - `server/internal/durable/schema/adr0079_schema_test.go`: TestContentRevisionHex64Check, TestOperationReplayUntilAndPurgeIndex.
-- `server/internal/stackpin/versions_test.go`: TestGoModuleClosureDeclaredInMatrix (BLK-001).
+- `server/internal/durable/schema/versions_closure_test.go`: TestGoModuleClosureDeclaredInMatrix (BLK-001).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]

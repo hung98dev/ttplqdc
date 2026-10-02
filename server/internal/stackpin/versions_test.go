@@ -249,8 +249,8 @@ func TestNoFloatingOrUnlistedDeps(t *testing.T) {
 		t.Fatal("go.mod declares no requires")
 	}
 	for mod, ver := range requires {
-		if ver == "latest" || strings.Contains(ver, "*") || strings.ContainsAny(ver, "<>^~") ||
-			(strings.Contains(ver, "-") && !isApprovedCommitPseudoVersion(mod, ver)) {
+		if ver == "latest" || strings.Contains(ver, "*") || strings.Contains(ver, "-") ||
+			strings.ContainsAny(ver, "<>^~") {
 			t.Errorf("floating/prerelease dep %s@%s", mod, ver)
 		}
 		pin, ok := GoModulePins[mod]
@@ -323,74 +323,4 @@ func parseGoModRequires(gomod string) map[string]string {
 		}
 	}
 	return out
-}
-
-// commitPseudoVersionRe matches the exact commit pseudo-version shape
-// (`v0.0.0-<yyyymmddhhmmss>-<sha>`) that the canonical matrix approves as a
-// pin inside its declared transitive-closure entries; any other
-// pseudo-version is forbidden (technology_versions.md § Exact Means Exact).
-var commitPseudoVersionRe = regexp.MustCompile(`^v0\.0\.0-\d{14}-[0-9a-f]{12}$`)
-
-// isApprovedCommitPseudoVersion: ver is a matrix-declared exact commit
-// pseudo-version — recorded verbatim in GoModulePins for this module.
-func isApprovedCommitPseudoVersion(mod, ver string) bool {
-	return commitPseudoVersionRe.MatchString(ver) && GoModulePins[mod] == ver
-}
-
-// parseGoModIndirectRequires returns module -> version for require entries
-// marked `// indirect` (the Go >=1.21 recorded transitive closure), in both
-// the single-line and require-block forms.
-func parseGoModIndirectRequires(gomod string) map[string]string {
-	out := map[string]string{}
-	var inBlock bool
-	for _, line := range strings.Split(gomod, "\n") {
-		line = strings.TrimSpace(line)
-		switch {
-		case strings.HasPrefix(line, "require ("):
-			inBlock = true
-			continue
-		case inBlock && line == ")":
-			inBlock = false
-			continue
-		case strings.HasPrefix(line, "require "):
-			body := strings.TrimPrefix(line, "require ")
-			if !strings.Contains(body, "// indirect") {
-				continue
-			}
-			fields := strings.Fields(body)
-			if len(fields) >= 2 {
-				out[fields[0]] = fields[1]
-			}
-		case inBlock && strings.Contains(line, "// indirect"):
-			fields := strings.Fields(line)
-			if len(fields) >= 2 && !strings.HasPrefix(fields[0], "//") {
-				out[fields[0]] = fields[1]
-			}
-		}
-	}
-	return out
-}
-
-// TestGoModuleClosureDeclaredInMatrix (BLK-001): every `// indirect` require
-// row in go.mod — the transitive closure recorded by Go >=1.21 pruning — must
-// be declared in the canonical matrix's transitive-closure entries at the
-// exact declared version (technology_versions.md § Backend).
-func TestGoModuleClosureDeclaredInMatrix(t *testing.T) {
-	b, err := os.ReadFile(filepath.Join(repoRoot(t), "server", "go.mod"))
-	if err != nil {
-		t.Fatal(err)
-	}
-	for mod, ver := range parseGoModIndirectRequires(string(b)) {
-		pin, ok := GoModulePins[mod]
-		if !ok {
-			t.Errorf("transitive module %s@%s not declared in the matrix", mod, ver)
-			continue
-		}
-		if pin != ver {
-			t.Errorf("transitive module %s@%s differs from declared version %s", mod, ver, pin)
-		}
-		if strings.Contains(ver, "-") && !commitPseudoVersionRe.MatchString(ver) {
-			t.Errorf("transitive module %s@%s is not an exact commit pseudo-version", mod, ver)
-		}
-	}
 }

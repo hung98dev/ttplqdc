@@ -22,6 +22,11 @@ import (
 // dominates; tests isolate by fresh random operation IDs).
 var sharedDSN string
 
+// setupErr records a provisioning failure on an existing postgres path —
+// distinct from "no postgres path" (pgtest.ErrUnavailable): the former fails
+// tests loudly, only the latter defers local-missing.
+var setupErr error
+
 func repoRoot() string {
 	wd, err := os.Getwd()
 	if err != nil {
@@ -33,22 +38,25 @@ func repoRoot() string {
 func TestMain(m *testing.M) {
 	ctx := context.Background()
 	srv, err := pgtest.Ensure(ctx)
-	if err == nil {
+	switch {
+	case errors.Is(err, pgtest.ErrUnavailable):
+		fmt.Fprintf(os.Stderr, "pgtest ensure: %v\n", err)
+	case err != nil:
+		setupErr = err
+	default:
 		defer srv.Close()
 		name := "idempotency_tests_" + time.Now().Format("20060102150405")
 		dsn, cleanup, e2 := srv.NewDB(ctx, name)
 		if e2 != nil {
-			fmt.Fprintf(os.Stderr, "pgtest newdb: %v\n", e2)
+			setupErr = e2
 		} else {
 			defer cleanup()
 			if e3 := schema.Migrate(ctx, dsn, schema.MigrationsDir(repoRoot()), "up"); e3 != nil {
-				fmt.Fprintf(os.Stderr, "pgtest migrate: %v\n", e3)
+				setupErr = e3
 			} else {
 				sharedDSN = dsn
 			}
 		}
-	} else {
-		fmt.Fprintf(os.Stderr, "pgtest ensure: %v\n", err)
 	}
 	os.Exit(m.Run())
 }
@@ -56,6 +64,9 @@ func TestMain(m *testing.M) {
 func newStore(t *testing.T, clock func() time.Time) (*Store, *pgxpool.Pool) {
 	t.Helper()
 	if sharedDSN == "" {
+		if setupErr != nil {
+			t.Fatalf("postgres provisioning failed: %v", setupErr)
+		}
 		t.Skip("DEFERRED(local-missing): no postgres")
 	}
 	pool, err := pgxpool.New(context.Background(), sharedDSN)

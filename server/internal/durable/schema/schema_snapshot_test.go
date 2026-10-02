@@ -4,6 +4,7 @@ import (
 	"context"
 	crand "crypto/rand"
 	"encoding/hex"
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -21,6 +22,11 @@ import (
 // rolled-back transactions so tests stay isolated.
 var sharedPool *pgxpool.Pool
 
+// setupErr records a provisioning failure on an existing postgres path —
+// distinct from "no postgres path" (pgtest.ErrUnavailable): the former fails
+// tests loudly, only the latter defers local-missing.
+var setupErr error
+
 func testRepoRoot() string {
 	wd, err := os.Getwd()
 	if err != nil {
@@ -32,23 +38,28 @@ func testRepoRoot() string {
 func TestMain(m *testing.M) {
 	ctx := context.Background()
 	srv, err := pgtest.Ensure(ctx)
-	if err == nil {
+	switch {
+	case errors.Is(err, pgtest.ErrUnavailable):
+		fmt.Fprintf(os.Stderr, "pgtest ensure: %v\n", err)
+	case err != nil:
+		setupErr = err
+	default:
 		defer srv.Close()
 		name := "schema_tests_" + time.Now().Format("20060102150405")
 		dsn, cleanup, e2 := srv.NewDB(ctx, name)
 		if e2 != nil {
-			fmt.Fprintf(os.Stderr, "pgtest newdb: %v\n", e2)
+			setupErr = e2
 		} else {
 			defer cleanup()
 			if e3 := Migrate(ctx, dsn, MigrationsDir(testRepoRoot()), "up"); e3 != nil {
-				fmt.Fprintf(os.Stderr, "pgtest migrate: %v\n", e3)
-			} else if p, e4 := pgxpool.New(ctx, dsn); e4 == nil {
+				setupErr = e3
+			} else if p, e4 := pgxpool.New(ctx, dsn); e4 != nil {
+				setupErr = e4
+			} else {
 				defer p.Close()
 				sharedPool = p
 			}
 		}
-	} else {
-		fmt.Fprintf(os.Stderr, "pgtest ensure: %v\n", err)
 	}
 	os.Exit(m.Run())
 }
@@ -56,6 +67,9 @@ func TestMain(m *testing.M) {
 func pool(t *testing.T) *pgxpool.Pool {
 	t.Helper()
 	if sharedPool == nil {
+		if setupErr != nil {
+			t.Fatalf("postgres provisioning failed: %v", setupErr)
+		}
 		t.Skip("DEFERRED(local-missing): no postgres")
 	}
 	return sharedPool
@@ -130,7 +144,7 @@ func indexDef(t *testing.T, indexName string) string {
 
 func liveCatalog(t *testing.T) *LiveCatalog {
 	t.Helper()
-	cat, err := LoadCatalog(context.Background(), sharedPool.Config().ConnString())
+	cat, err := LoadCatalog(context.Background(), pool(t).Config().ConnString())
 	if err != nil {
 		t.Fatalf("catalog: %v", err)
 	}
@@ -227,8 +241,11 @@ func (p *probe) mkRewardClaim() string {
 func TestBaselineApplyDownApply(t *testing.T) {
 	ctx := context.Background()
 	srv, err := pgtest.Ensure(ctx)
-	if err != nil {
+	if errors.Is(err, pgtest.ErrUnavailable) {
 		t.Skipf("DEFERRED(local-missing): %v", err)
+	}
+	if err != nil {
+		t.Fatalf("ensure: %v", err)
 	}
 	defer srv.Close()
 	dsn, cleanup, err := srv.NewDB(ctx, "schema_applydown_"+randSuffix())
