@@ -117,7 +117,7 @@ var Drivers = []Driver{
 	{Catalog: "atlas_catalog.md"},
 	{Catalog: "cosmetic_catalog.md"},
 	{Catalog: "soul_catalog.md", Compile: compileSoul},
-	{Catalog: "build_catalog.md"},
+	{Catalog: "build_catalog.md", Compile: compileBuild},
 	{Catalog: "spirit_beast_catalog.md", Compile: compileBeast},
 	{Catalog: "economy_catalog.md"},
 	{Catalog: "world_event_catalog.md"},
