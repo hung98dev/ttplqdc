@@ -269,8 +269,12 @@ namespace ThinhThan.Tests.EditMode.PlayerArtCoverage
                 Assert.IsTrue(group.Contains("m_Address: " + key),
                     "shared.local lacks address " + key);
                 string guid = MetaGuid(PlayersRoot + "/" + c + "/" + c + ".prefab");
-                Assert.IsTrue(group.Contains("m_GUID: " + guid),
-                    "shared.local lacks GUID row for " + key);
+                // In group entries the m_GUID line immediately precedes its
+                // m_Address — asserting the adjacent pair catches a rotation
+                // where every GUID is present but bound to the wrong key.
+                Assert.IsTrue(group.Contains(
+                        "m_GUID: " + guid + "\n    m_Address: " + key),
+                    key + " bound to wrong GUID in shared.local");
             }
         }
 

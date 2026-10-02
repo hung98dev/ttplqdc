@@ -695,27 +695,27 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6524c185952e82e4cae6dfd638af2ee3
+  - m_GUID: c99c51df243e0954ca3a791489263dbb
     m_Address: asset.class.kim.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 45f762ac8765ed44d9b5097762b90397
+  - m_GUID: 6524c185952e82e4cae6dfd638af2ee3
     m_Address: asset.class.moc.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3a87a07b655575d42a4f585b7f9c0627
+  - m_GUID: 45f762ac8765ed44d9b5097762b90397
     m_Address: asset.class.thuy.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c99c51df243e0954ca3a791489263dbb
+  - m_GUID: 204967ac860c6674fbecec403911a1e2
     m_Address: asset.class.hoa.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 204967ac860c6674fbecec403911a1e2
+  - m_GUID: 3a87a07b655575d42a4f585b7f9c0627
     m_Address: asset.class.tho.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
