@@ -31,7 +31,7 @@ type TypeSpec struct {
 var (
 	idRe         = regexp.MustCompile(`^[a-z0-9_]+(\.[a-z0-9_]+)*$`)
 	intRe        = regexp.MustCompile(`^-?[0-9]+$`)
-	groupedIntRe = regexp.MustCompile(`^[0-9]{1,3}(,[0-9]{3})+$`)
+	groupedIntRe = regexp.MustCompile(`^[0-9]{1,3}(,[0-9]{3})*$`)
 	decimalRe    = regexp.MustCompile(`^-?[0-9]+(\.[0-9]+)?$`)
 	percentRe    = regexp.MustCompile(`^-?[0-9]+(\.[0-9]+)?%$`)
 )

@@ -149,11 +149,15 @@ func parseInputToken(tok string) (string, TypeSpec, bool) {
 	}
 	name := strings.TrimSpace(tok[:ci])
 	rest := strings.TrimSpace(tok[ci+1:])
-	// field names may be dotted ids or plain words; reject prose tokens
+	// field names are column names — words with spaces or `A/B` compound
+	// pairs (each side becomes a spec); reject anything else.
 	for _, c := range name {
-		if !(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_' || c == '.') {
+		if !(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9' || c == '_' || c == '.' || c == ' ' || c == '/') {
 			return "", TypeSpec{}, false
 		}
+	}
+	if len(strings.Fields(name)) > 3 || strings.Contains(name, " —") {
+		return "", TypeSpec{}, false
 	}
 	spec := TypeSpec{}
 	if strings.HasPrefix(rest, "enum(") && strings.Contains(rest, ")") {

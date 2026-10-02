@@ -103,7 +103,7 @@ type Driver struct {
 // driver lands (a nil Compile is a SOURCE_SCHEMA_MISSING diagnostic).
 var Drivers = []Driver{
 	{Catalog: "monster_catalog.md", Compile: compileMonster},
-	{Catalog: "boss_catalog.md"},
+	{Catalog: "boss_catalog.md", Compile: compileBoss},
 	{Catalog: "class_skill_catalog.md"},
 	{Catalog: "equipment_catalog.md"},
 	{Catalog: "item_catalog.md"},

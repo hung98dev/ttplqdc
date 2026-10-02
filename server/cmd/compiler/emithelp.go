@@ -60,7 +60,10 @@ func (c *Ctx) consumed(f *File, b *SourceBinding) {
 func inputTypes(b *SourceBinding) map[string]TypeSpec {
 	out := map[string]TypeSpec{}
 	for name, ts := range b.InputSpecs {
-		out[fieldName(name)] = ts
+		// `A/B` compound input names declare one type for each column.
+		for _, n := range strings.Split(name, "/") {
+			out[fieldName(n)] = ts
+		}
 	}
 	return out
 }
