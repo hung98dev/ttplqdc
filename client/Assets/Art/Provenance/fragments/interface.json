@@ -12347,7 +12347,7 @@
   {
    "asset_key": "asset.ui.hud.boss_bar_fill.sprite",
    "file_path": "client/Assets/Art/UI/Hud/boss_bar_fill.png",
-   "content_id": "sha256:a191a4613026d8bbcad528441e9d4263f0e5472cff8524867a5c742a2d451f1d",
+   "content_id": "sha256:51553f65e12dbdf54b51dc6010ef76d24b8e02a25e021e39adcda1fd75885648",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -12355,7 +12355,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a191a4613026d8bbcad528441e9d4263f0e5472cff8524867a5c742a2d451f1d",
-   "final_sha256": "a191a4613026d8bbcad528441e9d4263f0e5472cff8524867a5c742a2d451f1d",
+   "final_sha256": "51553f65e12dbdf54b51dc6010ef76d24b8e02a25e021e39adcda1fd75885648",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x64",
@@ -12389,7 +12389,7 @@
   {
    "asset_key": "asset.ui.hud.boss_bar_frame.sprite",
    "file_path": "client/Assets/Art/UI/Hud/boss_bar_frame.png",
-   "content_id": "sha256:deb950dee9b2bd0f366ab6b71f9be0d3f7cb8be1c9ea18d48b3f001538dfb52e",
+   "content_id": "sha256:1d634083ba34f2a09fe5ce667f57452e9c6e1cf3d39c6e8b5438b099fac1acc4",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -12397,7 +12397,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "deb950dee9b2bd0f366ab6b71f9be0d3f7cb8be1c9ea18d48b3f001538dfb52e",
-   "final_sha256": "deb950dee9b2bd0f366ab6b71f9be0d3f7cb8be1c9ea18d48b3f001538dfb52e",
+   "final_sha256": "1d634083ba34f2a09fe5ce667f57452e9c6e1cf3d39c6e8b5438b099fac1acc4",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x64",
@@ -12639,7 +12639,7 @@
   {
    "asset_key": "asset.ui.hud.hp_fill.sprite",
    "file_path": "client/Assets/Art/UI/Hud/hp_fill.png",
-   "content_id": "sha256:1047b744d63c9a64247f57868790bf214b1aaf5f320a686397937d278531f086",
+   "content_id": "sha256:915072fd67f2e7ab69f2d09c438d74acd58fdab1392cb8431c698977435151d7",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -12647,7 +12647,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ba7f9f6ccde258bcd34e9baca83ea00ee4a1789c8801c798ec0f19160dd8372a",
-   "final_sha256": "1047b744d63c9a64247f57868790bf214b1aaf5f320a686397937d278531f086",
+   "final_sha256": "915072fd67f2e7ab69f2d09c438d74acd58fdab1392cb8431c698977435151d7",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x96",
@@ -12682,7 +12682,7 @@
   {
    "asset_key": "asset.ui.hud.hp_frame.sprite",
    "file_path": "client/Assets/Art/UI/Hud/hp_frame.png",
-   "content_id": "sha256:daaf719728e01104ffd12c2cde6d6cdcb600f18a3c674ad22623b8131f445761",
+   "content_id": "sha256:2738b1c30f1699cc630a07a16be3f6dd90da9852d0c3998a8c22ba14e4fff1a7",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -12690,7 +12690,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ca0fb1e0d7ba164975f0ace7f139a0b6c082129177d02d87c44044d911accc4c",
-   "final_sha256": "daaf719728e01104ffd12c2cde6d6cdcb600f18a3c674ad22623b8131f445761",
+   "final_sha256": "2738b1c30f1699cc630a07a16be3f6dd90da9852d0c3998a8c22ba14e4fff1a7",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x96",
@@ -12889,7 +12889,7 @@
   {
    "asset_key": "asset.ui.hud.mp_fill.sprite",
    "file_path": "client/Assets/Art/UI/Hud/mp_fill.png",
-   "content_id": "sha256:b6c1bba9f0975fb1e0105f99d1b86c1e3f965d4827113e4c4ded0b02f02d31b3",
+   "content_id": "sha256:4866bf18ede4d32c6485266ce88b7239b324c3f64802e9a3945602bccfc252dc",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -12897,7 +12897,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "fbfbe137e08c3275b81ec1e1441ccb35c8fc13442d866851e8fde7da810256ca",
-   "final_sha256": "b6c1bba9f0975fb1e0105f99d1b86c1e3f965d4827113e4c4ded0b02f02d31b3",
+   "final_sha256": "4866bf18ede4d32c6485266ce88b7239b324c3f64802e9a3945602bccfc252dc",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x96",
@@ -18402,7 +18402,7 @@
   {
    "asset_key": "asset.ui.login.button.sprite",
    "file_path": "client/Assets/Art/UI/Login/login_button.png",
-   "content_id": "sha256:0ca2325479e301688491d45c74b0b85b586a3678038e043c29dcccd9b2ce31e9",
+   "content_id": "sha256:cc9887447f6039f5ce7ce80ffb43f15f4c558efbdaedb9082d02841cb21dc081",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -18410,7 +18410,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "e8b9907b861d6c5a515df39a8468a2d8257d2604124382bc3e5a81ef53ee1acd",
-   "final_sha256": "0ca2325479e301688491d45c74b0b85b586a3678038e043c29dcccd9b2ce31e9",
+   "final_sha256": "cc9887447f6039f5ce7ce80ffb43f15f4c558efbdaedb9082d02841cb21dc081",
    "changes": [
     "magenta background keying",
     "canvas finish to 400x112",
@@ -18531,7 +18531,7 @@
   {
    "asset_key": "asset.ui.button.large.sprite",
    "file_path": "client/Assets/Art/UI/Shared/button_large.png",
-   "content_id": "sha256:5e0b3a0a4262e8db8a0f4597dc5e77a73bc309b3a355ab4a10411a52859c7a93",
+   "content_id": "sha256:0f0920872cda2ce1be3e1c40efde36d96523884b3c3dea2c191d9774ac6dd037",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -18539,7 +18539,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "01eaf3ddfb969659edf17806abc4968be79d8f6157174dc925316bb2497eab6e",
-   "final_sha256": "5e0b3a0a4262e8db8a0f4597dc5e77a73bc309b3a355ab4a10411a52859c7a93",
+   "final_sha256": "0f0920872cda2ce1be3e1c40efde36d96523884b3c3dea2c191d9774ac6dd037",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x128",
@@ -18574,7 +18574,7 @@
   {
    "asset_key": "asset.ui.button.small.sprite",
    "file_path": "client/Assets/Art/UI/Shared/button_small.png",
-   "content_id": "sha256:abe513889714ff172b244067feedc43acd8bf0da36af51939b994ea866e32c00",
+   "content_id": "sha256:98ed5f6d67888efd761006825b567d80a3d73e012bfec62ea5d675a56ba98324",
    "source_kind": "AI_CREATED",
    "creator": "Devin (in-session multimodal generation)",
    "source_uri": null,
@@ -18582,7 +18582,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "70b4dd3aeead81f95a30069ca831fecd4235767273ef21a6c2a27053b632b063",
-   "final_sha256": "abe513889714ff172b244067feedc43acd8bf0da36af51939b994ea866e32c00",
+   "final_sha256": "98ed5f6d67888efd761006825b567d80a3d73e012bfec62ea5d675a56ba98324",
    "changes": [
     "magenta background keying",
     "canvas finish to 320x96",
