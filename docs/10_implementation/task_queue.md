@@ -1026,7 +1026,7 @@ IMP-005 is the only migration owner. No other packet adds a migration; a later s
 - `server/internal/durable/schema/privacy_schema_test.go`: TestReportEvidenceSchemaAndIndependentPurge (PRIV-004), TestDisabledOperatorCredentialAndRetentionConstraints (PRIV-005), TestErasureIntentCompletionConstraintAndPurgeIndex (PRIV-006).
 - `server/internal/durable/idempotency/replay_horizon_test.go`: TestReplayBeforeMutablePreconditions, TestOwnerFingerprintMismatchCannotReplay, TestRetryAt180DayBoundaryExpired, TestPurgedUuidCannotExecuteAgain, TestFutureTimestampOver60SecondsMalformed, TestPurgeNeverBeforeReplayUntil, TestServerNaturalKeyDedupAfterOperationPurge.
 - `server/internal/durable/schema/adr0079_schema_test.go`: TestContentRevisionHex64Check, TestOperationReplayUntilAndPurgeIndex.
-- `server/internal/stackpin/versions_test.go`: TestGoModuleClosureDeclaredInMatrix (BLK-001).
+- `server/internal/durable/schema/versions_closure_test.go`: TestGoModuleClosureDeclaredInMatrix (BLK-001).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]

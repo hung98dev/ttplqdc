@@ -26,7 +26,9 @@ func CheckPins(root string) []string {
 }
 
 // checkGoModPins: every direct require in server/go.mod must match
-// stackpin.GoModulePins exactly; the go directive must match GoVersion.
+// stackpin.GoModulePins exactly; `// indirect` requires must match
+// GoModulePins or the TransitiveModuleAllowlist (the matrix-declared
+// require-closure); the go directive must match GoVersion.
 func checkGoModPins(root string) []string {
 	b, err := os.ReadFile(filepath.Join(root, "server", "go.mod"))
 	if err != nil {
@@ -35,6 +37,7 @@ func checkGoModPins(root string) []string {
 	var errs []string
 	var module, gover string
 	reqs := map[string]string{}
+	indirect := map[string]bool{}
 	var inBlock bool
 	for _, line := range strings.Split(string(b), "\n") {
 		l := strings.TrimSpace(line)
@@ -48,9 +51,9 @@ func checkGoModPins(root string) []string {
 		case inBlock && l == ")":
 			inBlock = false
 		case strings.HasPrefix(l, "require ") && !inBlock:
-			addReq(reqs, strings.TrimPrefix(l, "require "))
+			addReq(reqs, indirect, strings.TrimPrefix(l, "require "))
 		case inBlock:
-			addReq(reqs, l)
+			addReq(reqs, indirect, l)
 		}
 	}
 	if module != stackpin.GoModuleName {
@@ -60,30 +63,44 @@ func checkGoModPins(root string) []string {
 		errs = append(errs, fmt.Sprintf("go.mod go directive %q, want %q", gover, stackpin.GoVersion))
 	}
 	for mod, v := range reqs {
-		want, ok := stackpin.GoModulePins[mod]
-		if !ok {
-			errs = append(errs, fmt.Sprintf("go.mod requires unlisted module %s %s", mod, v))
+		if want, ok := stackpin.GoModulePins[mod]; ok {
+			if v != want {
+				errs = append(errs, fmt.Sprintf("go.mod %s %s, want %s", mod, v, want))
+			}
 			continue
 		}
-		if v != want {
-			errs = append(errs, fmt.Sprintf("go.mod %s %s, want %s", mod, v, want))
+		if indirect[mod] {
+			want, ok := stackpin.TransitiveModuleAllowlist[mod]
+			if !ok {
+				errs = append(errs, fmt.Sprintf("go.mod requires unlisted transitive module %s %s", mod, v))
+				continue
+			}
+			if v != want {
+				errs = append(errs, fmt.Sprintf("go.mod transitive %s %s, want %s", mod, v, want))
+			}
+			continue
 		}
+		errs = append(errs, fmt.Sprintf("go.mod requires unlisted module %s %s", mod, v))
 	}
 	sort.Strings(errs)
 	return errs
 }
 
-func addReq(reqs map[string]string, l string) {
+func addReq(reqs map[string]string, indirect map[string]bool, l string) {
 	l = strings.TrimSpace(l)
 	if l == "" || strings.HasPrefix(l, "//") {
 		return
 	}
+	isIndirect := strings.Contains(l, "// indirect")
 	if i := strings.Index(l, "//"); i >= 0 {
 		l = strings.TrimSpace(l[:i])
 	}
 	parts := strings.Fields(l)
 	if len(parts) >= 2 {
 		reqs[parts[0]] = parts[1]
+		if isIndirect {
+			indirect[parts[0]] = true
+		}
 	}
 }
 
