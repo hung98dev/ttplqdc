@@ -1,0 +1,3 @@
+syntax = "proto3";
+package thinhthan.v1;
+message Good {}

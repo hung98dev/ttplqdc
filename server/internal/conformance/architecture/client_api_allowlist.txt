@@ -1,0 +1,7 @@
+# Q4 client API fence exceptions (architecture_conformance.md §4 rule 13).
+# Grammar: `path:symbol  reason` — two spaces before a non-empty reason.
+# Entries without a reason fail the gate.
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:Update  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:FixedUpdate  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:LateUpdate  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
+client/Assets/Scripts/Core/Runtime/FrameLoop.cs:OnGUI  FrameLoop is the single Unity callback owner driving IFrameSystem.Tick (PERF-020)
