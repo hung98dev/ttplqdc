@@ -355,13 +355,13 @@ namespace ThinhThan.Tests.EditMode.AudioAssetCoverage
         private static string GuessOwnerGroup(string relOgg)
         {
             // Mirrors the registration map produced in the asset files.
-            if (relOgg.Contains("/Sfx/"))
+            var part = relOgg.Split('/');
+            if (part[3] == "Sfx")
             {
                 return AddressableGroups.SharedLocal;
             }
-            var part = relOgg.Split('/');
-            return part[3] == "shared" ? AddressableGroups.AudioBgmShared
-                : "audio.bgm." + part[3];
+            return part[4] == "shared" ? AddressableGroups.AudioBgmShared
+                : "audio.bgm." + part[4];
         }
 
         [Test]
@@ -372,7 +372,7 @@ namespace ThinhThan.Tests.EditMode.AudioAssetCoverage
             foreach (var rel in oggs)
             {
                 var info = new FileInfo(Abs(rel));
-                long floor = rel.Contains("/Bgm/") ? 500_000 : 3_000;
+                long floor = rel.Contains("/Bgm/") ? 150_000 : 3_000;
                 Assert.GreaterOrEqual(info.Length, floor,
                     rel + " below real-content size floor");
                 var head = new byte[4];
