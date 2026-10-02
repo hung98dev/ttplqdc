@@ -204,12 +204,12 @@ Mỗi FIELD/dungeon phải có một main route liên tục từ entry đến ex
                      ONE_WAY_PLATFORM chỉ chặn khi rơi từ trên xuống (§4.2 bước 6); |dốc| <= 5°
    segment           x1 < x2 (WALL: x1 = x2 và y1 < y2 được phép); mọi điểm trong bounds; không có hai segment trùng nhau
    camera_regions    §6.2
-   anchors           mọi ID logic mà catalog đặt trong space này (spawn.*, anchor.*, checkpoint.*, portal ID, chest.hidden.*,
+   anchors           mọi ID logic mà registered compile source đặt trong space này (spawn.*, anchor.*, checkpoint.*, portal ID, chest.hidden.*,
                      bonfire.*, cooking_hearth.*, fishing_spot.*, marker.*, điểm đặt NPC, anchor bảng nhiệm vụ ngày);
                      id duy nhất; điểm neo ở chân (y = mặt sàn đứng được)
    ```
 4. **Bất biến:** Server Go chỉ đọc file `.geom.json` này; tuyệt đối không import Unity runtime DLLs hay phụ thuộc vào file binary của Unity. Client prediction đọc cùng file qua port hình học dùng chung.
-5. Export và content compile fail nếu: `space_id`, `space_kind`, `layout_profile` hoặc bounds không khớp catalog; tập `anchors[].id` khác tập anchor catalog yêu cầu cho `space_id` đó (thiếu hoặc thừa); segment, anchor hoặc camera region nằm ngoài bounds; camera region nhỏ hơn viewport hoặc hợp các region không phủ mọi segment đi được; anchor không nằm trên đường đi hợp lệ của `CHARACTER`; hay một FIELD/dungeon mất main route.
+5. Export và content compile fail nếu: `space_id`, `space_kind`, `layout_profile` hoặc bounds không khớp registered compile source; tập `anchors[].id` khác tập anchor registered compile source yêu cầu cho `space_id` đó (thiếu hoặc thừa); segment, anchor hoặc camera region nằm ngoài bounds; camera region nhỏ hơn viewport hoặc hợp các region không phủ mọi segment đi được; anchor không nằm trên đường đi hợp lệ của `CHARACTER`; hay một FIELD/dungeon mất main route.
 
 ## Invariants
 

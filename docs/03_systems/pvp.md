@@ -816,3 +816,12 @@ global healing received multiplier = 0.80 applies to lifesteal heals
 global shield/absorb multiplier = 0.80 applies to absorb-generated shields
 sudden-death healing received multiplier = 0.50 stacks multiplicatively with global 0.80
 ```
+
+# Compiler Source Schema
+
+Normative extension of `../06_data/content_authoring_contract.md` §1: these registries are compile inputs for the competitive spaces (`../06_data/config.md` § Map Geometry Compile, contract §4 `Playable Space Geometry Index`). They are registered spec-section sources, not a 25th gameplay catalog (CAT-006).
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Competitive Space Geometry` / table `modes, space_id, span (screens), bounds max (m), reference extent (px), layout_profile, required topology` | space geometry / `space_id` | modes:set(enum(DUEL, RANKED_DUEL, FIVE_ELEMENT_ARENA)); space_id:id; span:pair(decimal); bounds max:pair(decimal); reference extent:pair(int); layout_profile:enum token; required topology:string | `space_kind = PVP` constant; ADR-0046 conversion `25.6x14.4m / 50px per m`; `SPARRING_RING` has no separate scene — excluded from the space set; ranked spaces mirror about `x = max_x/2` within `0.001m`. |
+| `Five Element Arena` / `text` fence `altar.*` lines ("The arena contains") | space anchors / `map.pvp.five_element_arena` | ordered `id` tokens `altar.left`, `altar.center`, `altar.right` | the space's declared logical anchor set for export parity (`../04_architecture/physics_geometry_contract.md` §6); `map.pvp.duel_court` declares no logical anchors. |

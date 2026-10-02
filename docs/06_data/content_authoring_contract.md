@@ -3,13 +3,13 @@ status: LOCKED
 
 ## Scope
 
-Hợp đồng quy định cú pháp nguồn, schema trường, kiểu dữ liệu, quy tắc mở rộng hữu hạn (finite expansion), hàm băm phiên bản (content hash) và vòng đời kích hoạt nguyên tử (atomic activation) cho toàn bộ 24 catalogs trong `docs/07_content/`.
+Hợp đồng quy định cú pháp nguồn, schema trường, kiểu dữ liệu, quy tắc mở rộng hữu hạn (finite expansion), hàm băm phiên bản (content hash) và vòng đời kích hoạt nguyên tử (atomic activation) cho toàn bộ 24 catalogs trong `docs/07_content/` và các registered competitive-space source sections trong `../03_systems/pvp.md` + `../03_systems/guild_war.md` (§3).
 
 Tài liệu này là đặc tả đầu vào duy nhất cho Content Compiler (`IMP-003`, `server/cmd/compiler/`) và Activation Gate (`IMP-004`, `server/internal/config/`).
 
 ## 1. Canonical Markdown Source Grammar
 
-The only hand-authored catalog source is the 24 Markdown files in §3. The source is **not tables-only**: registered heading identities, inherited `text` assignment fences, typed tables and named finite rules are legal. No second JSON/YAML catalog or private scraper is permitted. Generated snapshots are compiler outputs, not authoring inputs.
+The only hand-authored catalog source is the 24 Markdown files in §3, plus two registered spec sections: `../03_systems/pvp.md` (§ Competitive Space Geometry table + § Five Element Arena anchor fence) and `../03_systems/guild_war.md` (§ Map geometry and objective-ID fences). Each declares its own `Compiler Source Schema` under this grammar and emits `space_geometry`/space-anchor bindings only; they are registered spec-section compile sources, not catalogs. The source is **not tables-only**: registered heading identities, inherited `text` assignment fences, typed tables and named finite rules are legal. No second JSON/YAML catalog or private scraper is permitted. Generated snapshots are compiler outputs, not authoring inputs.
 
 Every data-owning catalog has a named `Compiler Source Schema` section. Its source registry uses `source_section | output / key | typed inputs | defaults / finite rule`. A source locator is an exact heading ancestry and, for a table, its exact header signature; repeated headers are disambiguated by ancestry. Case/punctuation aliases are legal only when that registry explicitly lists them (`Tier` is not globally rewritten to `tier`). A family can have several tables; a catalog never has one universal primary key.
 
@@ -73,7 +73,7 @@ Expressions have literals, declared field references, parentheses, unary `-`, bi
 | 23 | `integration_validation.md` | checks `rule_id` | Named check registry and compiled owning parameters; no invented table PK and no runtime entities. |
 | 24 | `README.md` | manifest `catalog_file`; required status | This exact finite manifest and status contract, not a prose scraper; budget narrative cross-checks owning typed counts. |
 
-Per-section source registries live in the same owning files and are normative extensions of §1, not independent catalogs. Unmapped old operative prose has no fallback interpretation. The last three validation/index files are required compile inputs but do not create gameplay records. `presentation_asset_manifest.md` is a separate client asset manifest; scene geometry is a registered build artifact under `physics_geometry_contract.md`, not a 25th gameplay catalog.
+Per-section source registries live in the same owning files and are normative extensions of §1, not independent catalogs. Unmapped old operative prose has no fallback interpretation. The last three validation/index files are required compile inputs but do not create gameplay records. The registered competitive-space sections of `../03_systems/pvp.md` and `../03_systems/guild_war.md` are likewise required compile inputs — spec-section sources under §1, not additional catalogs. `presentation_asset_manifest.md` is a separate client asset manifest; scene geometry is a registered build artifact under `physics_geometry_contract.md`, not a 25th gameplay catalog.
 
 ## 4. Quy tắc Mở rộng Hữu hạn (Finite Expansions)
 
@@ -82,7 +82,7 @@ Compiler chịu trách nhiệm mở rộng tự động các bảng dẫn xuất
 2. **Portal Graph Expansion (52 cổng chuyển vùng):** Mở rộng thành đồ thị 2 chiều (bản đồ nguồn, tọa độ lối vào, bản đồ đích, tọa độ xuất hiện) từ `world_route_catalog.md`.
 3. **Persistent Spawn Groups Expansion (54 nhóm quái):** Mở rộng thành các điểm spawn thực thể với bán kính leash, số lượng quái và thời gian hồi sinh từ `map_spawn_catalog.md`.
 4. **Entity Size Resolution:** Resolve toàn bộ monster/boss thành đúng một `size_profile` từ `monster_catalog.md` / `boss_catalog.md`; không suy ra từ sprite, tên hoặc Transform scale.
-5. **Playable Space Geometry Index:** Resolve `space_id`, `space_kind`, exact bounds, `layout_profile`, scene key và geometry export cho 24 world maps, 5 dungeons, finale, duel, arena và Guild War. `1280x720` chỉ là viewport; normal-world width phải là `2.0..5.0` screens.
+5. **Playable Space Geometry Index:** Resolve `space_id`, `space_kind`, exact bounds, `layout_profile`, scene key và geometry export cho 24 world maps, 5 dungeons, finale, duel, arena và Guild War (registered sources: `world_route_catalog.md`, `dungeon_catalog.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`). `1280x720` chỉ là viewport; normal-world width phải là `2.0..5.0` screens.
 6. **Skill Geometry Resolution:** Resolve exactly 45 primary action geometries (20 basics + 25 actives), every explicit `secondary_geometries[]` row, role-band/envelope checks, and tag/effect parity from `class_skill_catalog.md` under ADR-0047. Prose, animation, sprite bounds, or client distance cannot create geometry.
 
 ## 5. Semantic Content Revision and Canonical Ordering
@@ -145,3 +145,4 @@ invalid candidate = previous valid revision stays active
 | ID | Requirement | Gate |
 |---|---|---|
 | `CAT-004` | every data-owning catalog declares its `Compiler Source Schema` registry (§1); compiler coverage report resolves through the registered sections | compiler compile + activation (IMP-003, IMP-004) |
+| `CAT-006` | the competitive-space sections of `../03_systems/pvp.md` and `../03_systems/guild_war.md` declare `Compiler Source Schema` registries (§1) emitting `space_geometry` (`space_kind` `PVP`/`GUILD_WAR`) and their declared logical anchors; the compiled space index covers all 33 playable spaces | compiler compile + geometry parity (IMP-003, IMP-062) |
