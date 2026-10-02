@@ -14,7 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: audio.bgm.lang_da
   m_GUID: 7d6adfd62cafc8348b363384ccd2b8bc
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: cdbca75dc2a34b7a95e214c484a00c09
+    m_Address: asset.map.lang_da.dinh_lang.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8aa58540f996474982e5c95b494beedc
+    m_Address: asset.map.lang_da.bo_ruong.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c156b34eea5e450d8dd8362b543516e8
+    m_Address: asset.map.lang_da.ben_da.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ddd0c580ef947f8bc3079d599fac676
+    m_Address: asset.map.lang_da.go_ma.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 806e163f2dae4c2bad977658b1f8c947
+    m_Address: asset.bgm.lang_da.field.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85ea30db58d6460395566a4b4ba2e12b
+    m_Address: asset.bgm.lang_da.town.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2298b1080be48019beda187cb18c408
+    m_Address: asset.dungeon.dinh_lang_bo_hoang.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

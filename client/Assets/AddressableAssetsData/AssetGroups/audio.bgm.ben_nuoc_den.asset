@@ -14,7 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: audio.bgm.ben_nuoc_den
   m_GUID: 74746b19d60219240b70c570b635183c
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: ad805cc7ebbc412caadf7745be5bab0d
+    m_Address: asset.map.ben_nuoc_den.cho_ben.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec224d2dfbfc44449e70140e4dd88292
+    m_Address: asset.map.ben_nuoc_den.bai_lau.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6020172f120b44789e9f3aaf06e15b88
+    m_Address: asset.map.ben_nuoc_den.duong_ngap.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c56faed813240c5bc7ed0f33bcddddd
+    m_Address: asset.map.ben_nuoc_den.ben_do_cu.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8fcbe253760d4b0e91394e0c7f8eed40
+    m_Address: asset.bgm.ben_nuoc_den.field.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bf0592b0fa949a5b0496626edd11214
+    m_Address: asset.bgm.ben_nuoc_den.town.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6515b36aa4ae4551ae001dd1300ecc72
+    m_Address: asset.dungeon.xom_chim.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

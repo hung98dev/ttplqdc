@@ -14,7 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: audio.bgm.deo_may
   m_GUID: 21dd1c7a6739c6f4aa8f0471beebbe27
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 9fb80fd533df488396d4dd44d71516cf
+    m_Address: asset.map.deo_may.ban_chan_deo.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d74288c76ad842058e9152ba9f337a9b
+    m_Address: asset.map.deo_may.duong_rung.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f5edc795d6941c28196376ee5f36edb
+    m_Address: asset.map.deo_may.khe_da.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d23e114efc94960b779f3e467a40407
+    m_Address: asset.map.deo_may.rung_cam.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6b80e9c33744757bb238473e9c75c98
+    m_Address: asset.bgm.deo_may.field.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba41496c858e43d0af48fd5ffae3ac97
+    m_Address: asset.bgm.deo_may.town.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fb4db8432d84ee39393e3184d720bf6
+    m_Address: asset.dungeon.hang_ma_tranh.bgm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:
