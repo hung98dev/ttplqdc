@@ -1,0 +1,3308 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/hoa/hoa.psb",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "ca6e52c04945a426ba4c6ab3749c9fc0578331a844d8ad880305a75eed3b0419",
+      "final_sha256": "80d3519395a5f1a2dcc37933a58366ceea9cb337de5b20274593f972a486178e",
+      "changes": "layered PSD document authored from AI-generated part images: chroma-key cutout, despill, despeckle, fit-to-slot Lanczos scale, palette quantize, placed at rig positions",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "8 fixed rig layers of hoa: head, hair, torso, arm, leg, weapon — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/head.png",
+          "/home/ubuntu/imp071/gen/hoa/hair.png",
+          "/home/ubuntu/imp071/gen/hoa/torso.png",
+          "/home/ubuntu/imp071/gen/hoa/arm.png",
+          "/home/ubuntu/imp071/gen/hoa/leg.png",
+          "/home/ubuntu/imp071/gen/hoa/weapon.png"
+        ],
+        "reference_sha256": [
+          "e34c1f66ab22cec05cffd048d19f5fc3a226dc3038ee52c064cb402abab484b7",
+          "3042cf13860eb241ab56e85c3edf50e6b5991ba8fa14b14368c09d4e790e674b",
+          "8cc89e20aaaddc18d0db2b9ae5b72d0a2c0c7c0345121cba1bbaaef38a643c9d",
+          "798d10bfc70ba5e99edbe085110d001b226dc97de781ae5d433cc3cf1d8f501c",
+          "2789dd3993e5d43179113f1675cf9dde6cd8b57d362cae5ec5525ea71aa8c903",
+          "96d1a6e8ac471574f207d9eaea6110599c27a97eed2b6dbcbb85fa1b6166dbb7"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "e34c1f66ab22cec05cffd048d19f5fc3a226dc3038ee52c064cb402abab484b7"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "3042cf13860eb241ab56e85c3edf50e6b5991ba8fa14b14368c09d4e790e674b"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8cc89e20aaaddc18d0db2b9ae5b72d0a2c0c7c0345121cba1bbaaef38a643c9d"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "798d10bfc70ba5e99edbe085110d001b226dc97de781ae5d433cc3cf1d8f501c"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "2789dd3993e5d43179113f1675cf9dde6cd8b57d362cae5ec5525ea71aa8c903"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "96d1a6e8ac471574f207d9eaea6110599c27a97eed2b6dbcbb85fa1b6166dbb7"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/hoa/hoa_sheet.png",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "ca6e52c04945a426ba4c6ab3749c9fc0578331a844d8ad880305a75eed3b0419",
+      "final_sha256": "3d4390cdc254ba44106c26e772d48177da2939065d182edcfdb4994d1bc99452",
+      "changes": "flattened 2x sheet composite of finished parts; cutout/volume gates applied",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "composite sheet of hoa parts — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/head.png",
+          "/home/ubuntu/imp071/gen/hoa/hair.png",
+          "/home/ubuntu/imp071/gen/hoa/torso.png",
+          "/home/ubuntu/imp071/gen/hoa/arm.png",
+          "/home/ubuntu/imp071/gen/hoa/leg.png",
+          "/home/ubuntu/imp071/gen/hoa/weapon.png"
+        ],
+        "reference_sha256": [
+          "e34c1f66ab22cec05cffd048d19f5fc3a226dc3038ee52c064cb402abab484b7",
+          "3042cf13860eb241ab56e85c3edf50e6b5991ba8fa14b14368c09d4e790e674b",
+          "8cc89e20aaaddc18d0db2b9ae5b72d0a2c0c7c0345121cba1bbaaef38a643c9d",
+          "798d10bfc70ba5e99edbe085110d001b226dc97de781ae5d433cc3cf1d8f501c",
+          "2789dd3993e5d43179113f1675cf9dde6cd8b57d362cae5ec5525ea71aa8c903",
+          "96d1a6e8ac471574f207d9eaea6110599c27a97eed2b6dbcbb85fa1b6166dbb7"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "e34c1f66ab22cec05cffd048d19f5fc3a226dc3038ee52c064cb402abab484b7"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "3042cf13860eb241ab56e85c3edf50e6b5991ba8fa14b14368c09d4e790e674b"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8cc89e20aaaddc18d0db2b9ae5b72d0a2c0c7c0345121cba1bbaaef38a643c9d"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "798d10bfc70ba5e99edbe085110d001b226dc97de781ae5d433cc3cf1d8f501c"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "2789dd3993e5d43179113f1675cf9dde6cd8b57d362cae5ec5525ea71aa8c903"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "96d1a6e8ac471574f207d9eaea6110599c27a97eed2b6dbcbb85fa1b6166dbb7"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/hoa/turnarounds/back.png",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "6ae92acd5260fcb024598d57034934007bce228a7afcd7c9cd2f3820ec35e135",
+      "final_sha256": "3c32de5811c8cdae1ed1ce1c146f2267de4181fd03d7dbef9ed06b10e5915edf",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround back part of bright-eyed Vietnamese charm-weaver (Phu Su): ember-red tunic with dark trim, stacks of yellow paper talismans at the belt, peach-wood charm sword with small paper tags tied on it, lively warm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/hero.png",
+          "/home/ubuntu/imp071/gen/hoa/turn_back.png"
+        ],
+        "reference_sha256": [
+          "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67",
+          "6ae92acd5260fcb024598d57034934007bce228a7afcd7c9cd2f3820ec35e135"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "6ae92acd5260fcb024598d57034934007bce228a7afcd7c9cd2f3820ec35e135"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/hoa/turnarounds/front.png",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "96c2fb181f0179af2612149bead8ffb3c6926dc503eaa22eeac17442205538b8",
+      "final_sha256": "02c0d0308dd84c1222f8892d4df10b9916f81ec9f97752edf01f51924145484f",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround front part of bright-eyed Vietnamese charm-weaver (Phu Su): ember-red tunic with dark trim, stacks of yellow paper talismans at the belt, peach-wood charm sword with small paper tags tied on it, lively warm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/hero.png",
+          "/home/ubuntu/imp071/gen/hoa/turn_front.png"
+        ],
+        "reference_sha256": [
+          "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67",
+          "96c2fb181f0179af2612149bead8ffb3c6926dc503eaa22eeac17442205538b8"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "96c2fb181f0179af2612149bead8ffb3c6926dc503eaa22eeac17442205538b8"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/hoa/turnarounds/side.png",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "72695361f77cdf3b6186a9db8d746bcfe50fd12b9c88dd857e470027813785c5",
+      "final_sha256": "c0644c028970716dfd337820b91d7ba10a733a03665a22b5ab7bd7d3eccd8be9",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround side part of bright-eyed Vietnamese charm-weaver (Phu Su): ember-red tunic with dark trim, stacks of yellow paper talismans at the belt, peach-wood charm sword with small paper tags tied on it, lively warm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/hero.png",
+          "/home/ubuntu/imp071/gen/hoa/turn_side.png"
+        ],
+        "reference_sha256": [
+          "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67",
+          "72695361f77cdf3b6186a9db8d746bcfe50fd12b9c88dd857e470027813785c5"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "72695361f77cdf3b6186a9db8d746bcfe50fd12b9c88dd857e470027813785c5"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/hoa/turnarounds/threequarter.png",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67",
+      "final_sha256": "82405cde3a51041e6ec083b0e963cef777907d7841f1faef273f05e3e415b886",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround threequarter part of bright-eyed Vietnamese charm-weaver (Phu Su): ember-red tunic with dark trim, stacks of yellow paper talismans at the belt, peach-wood charm sword with small paper tags tied on it, lively warm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/hero.png"
+        ],
+        "reference_sha256": [
+          "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/kim/kim.psb",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "1c9f872da84ff817fc73110ab8cada59ed41360967c418f7aabe51ff9ec023ed",
+      "final_sha256": "1a6c823304026c9ecd4e258027aeebf56db73830efe1c1c83a8dcd7a060bd491",
+      "changes": "layered PSD document authored from AI-generated part images: chroma-key cutout, despill, despeckle, fit-to-slot Lanczos scale, palette quantize, placed at rig positions",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "8 fixed rig layers of kim: head, hair, torso, arm, leg, weapon — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/head.png",
+          "/home/ubuntu/imp071/gen/kim/hair.png",
+          "/home/ubuntu/imp071/gen/kim/torso.png",
+          "/home/ubuntu/imp071/gen/kim/arm.png",
+          "/home/ubuntu/imp071/gen/kim/leg.png",
+          "/home/ubuntu/imp071/gen/kim/weapon.png"
+        ],
+        "reference_sha256": [
+          "9661c7226fd35a4ad07e07a9df6a2acca602c0c6b6244ac6797e16f7827da653",
+          "128932277cf31da703ad1d016f217bd1330c00321f56b479f45950fb28259a89",
+          "4bdc5609f6a1b09594217bb0321ab389ed6271576c5806cf8c8443bf9fbe5eef",
+          "c305a7ac98c64c95e5d4a041a2074b985810b275fc7598a4d86bc579c942fb11",
+          "e916fbe2378bbbc2530fe8cef6467a5a37cbf9beb6036dfb83cccda097fa8e8e",
+          "423c28968d313d1464464fbba64dfb0ea2395b78cc32a1a38989048246dfb622"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "9661c7226fd35a4ad07e07a9df6a2acca602c0c6b6244ac6797e16f7827da653"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "128932277cf31da703ad1d016f217bd1330c00321f56b479f45950fb28259a89"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4bdc5609f6a1b09594217bb0321ab389ed6271576c5806cf8c8443bf9fbe5eef"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "c305a7ac98c64c95e5d4a041a2074b985810b275fc7598a4d86bc579c942fb11"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "e916fbe2378bbbc2530fe8cef6467a5a37cbf9beb6036dfb83cccda097fa8e8e"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "423c28968d313d1464464fbba64dfb0ea2395b78cc32a1a38989048246dfb622"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/kim/kim_sheet.png",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "1c9f872da84ff817fc73110ab8cada59ed41360967c418f7aabe51ff9ec023ed",
+      "final_sha256": "958a0e9e81f35af5381c594b2696148d1fb8c32582378d5ef34ceee633d49afd",
+      "changes": "flattened 2x sheet composite of finished parts; cutout/volume gates applied",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "composite sheet of kim parts — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/head.png",
+          "/home/ubuntu/imp071/gen/kim/hair.png",
+          "/home/ubuntu/imp071/gen/kim/torso.png",
+          "/home/ubuntu/imp071/gen/kim/arm.png",
+          "/home/ubuntu/imp071/gen/kim/leg.png",
+          "/home/ubuntu/imp071/gen/kim/weapon.png"
+        ],
+        "reference_sha256": [
+          "9661c7226fd35a4ad07e07a9df6a2acca602c0c6b6244ac6797e16f7827da653",
+          "128932277cf31da703ad1d016f217bd1330c00321f56b479f45950fb28259a89",
+          "4bdc5609f6a1b09594217bb0321ab389ed6271576c5806cf8c8443bf9fbe5eef",
+          "c305a7ac98c64c95e5d4a041a2074b985810b275fc7598a4d86bc579c942fb11",
+          "e916fbe2378bbbc2530fe8cef6467a5a37cbf9beb6036dfb83cccda097fa8e8e",
+          "423c28968d313d1464464fbba64dfb0ea2395b78cc32a1a38989048246dfb622"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "9661c7226fd35a4ad07e07a9df6a2acca602c0c6b6244ac6797e16f7827da653"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "128932277cf31da703ad1d016f217bd1330c00321f56b479f45950fb28259a89"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4bdc5609f6a1b09594217bb0321ab389ed6271576c5806cf8c8443bf9fbe5eef"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "c305a7ac98c64c95e5d4a041a2074b985810b275fc7598a4d86bc579c942fb11"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "e916fbe2378bbbc2530fe8cef6467a5a37cbf9beb6036dfb83cccda097fa8e8e"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "423c28968d313d1464464fbba64dfb0ea2395b78cc32a1a38989048246dfb622"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/kim/turnarounds/back.png",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "a40c88d06d5087a12dbf43a3b1688757d1aab2fdfae57b9718ca30da576aa1b2",
+      "final_sha256": "5dbb3193d82544c3e6f38210854285e912f0f247a6b33dd2c6180c0cff675d71",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround back part of young Vietnamese wandering swordsman (Kiem Khach): indigo-blue travel tunic and trousers, woven bamboo conical hat hanging on his back, cord belt, straight slender iron sword held loosely pointing down-forward, calm sharp eyes. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/hero.png",
+          "/home/ubuntu/imp071/gen/kim/turn_back.png"
+        ],
+        "reference_sha256": [
+          "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823",
+          "a40c88d06d5087a12dbf43a3b1688757d1aab2fdfae57b9718ca30da576aa1b2"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "a40c88d06d5087a12dbf43a3b1688757d1aab2fdfae57b9718ca30da576aa1b2"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/kim/turnarounds/front.png",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "b7e9e34903b9955bd2e6e695dd86eee29b283cf5671fdbe3e1bb37ed285c02cd",
+      "final_sha256": "2d81b5779eab2eb3627e32d938fcdd7eca657ebf276264fef723f4078d1979d9",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround front part of young Vietnamese wandering swordsman (Kiem Khach): indigo-blue travel tunic and trousers, woven bamboo conical hat hanging on his back, cord belt, straight slender iron sword held loosely pointing down-forward, calm sharp eyes. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/hero.png",
+          "/home/ubuntu/imp071/gen/kim/turn_front.png"
+        ],
+        "reference_sha256": [
+          "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823",
+          "b7e9e34903b9955bd2e6e695dd86eee29b283cf5671fdbe3e1bb37ed285c02cd"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b7e9e34903b9955bd2e6e695dd86eee29b283cf5671fdbe3e1bb37ed285c02cd"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/kim/turnarounds/side.png",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "ce91c9393551be43dc6e8c656b9e53b910aea681ba398e8dc435916bde95e749",
+      "final_sha256": "6b38eea869dae59cc30004acadb8cc3f5ece8a70311109faa28843803e80199c",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround side part of young Vietnamese wandering swordsman (Kiem Khach): indigo-blue travel tunic and trousers, woven bamboo conical hat hanging on his back, cord belt, straight slender iron sword held loosely pointing down-forward, calm sharp eyes. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/hero.png",
+          "/home/ubuntu/imp071/gen/kim/turn_side.png"
+        ],
+        "reference_sha256": [
+          "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823",
+          "ce91c9393551be43dc6e8c656b9e53b910aea681ba398e8dc435916bde95e749"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "ce91c9393551be43dc6e8c656b9e53b910aea681ba398e8dc435916bde95e749"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/kim/turnarounds/threequarter.png",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823",
+      "final_sha256": "2188b0909414e0d97b0ae2d15613ea1c33b81fb96ef5cfd860951170de349c10",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround threequarter part of young Vietnamese wandering swordsman (Kiem Khach): indigo-blue travel tunic and trousers, woven bamboo conical hat hanging on his back, cord belt, straight slender iron sword held loosely pointing down-forward, calm sharp eyes. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/hero.png"
+        ],
+        "reference_sha256": [
+          "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/moc/moc.psb",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "f154ca66454a99df4a52f1c2cf3e827d696719abb9c86499902b84b4ab45d667",
+      "final_sha256": "e7b7de5591f2bfe94095bd2cec126573bb7da88992a1047fdc41ee38daac34cd",
+      "changes": "layered PSD document authored from AI-generated part images: chroma-key cutout, despill, despeckle, fit-to-slot Lanczos scale, palette quantize, placed at rig positions",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "8 fixed rig layers of moc: head, hair, torso, arm, leg, weapon — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/head.png",
+          "/home/ubuntu/imp071/gen/moc/hair.png",
+          "/home/ubuntu/imp071/gen/moc/torso.png",
+          "/home/ubuntu/imp071/gen/moc/arm.png",
+          "/home/ubuntu/imp071/gen/moc/leg.png",
+          "/home/ubuntu/imp071/gen/moc/weapon.png"
+        ],
+        "reference_sha256": [
+          "f653a07d755df2e4f30a4752cb6976adc4ff86e334994b7e1efcc9b45752ddfd",
+          "a563265281f7998044b6b0f8587bd97777185b704f3ffa75eb2fbe2f57ba2bfb",
+          "61b821bb22cca7f34113ee3d4b83e0e1683863bd3649b6d5ef44a647e59ff2c3",
+          "4324c173f3a0b91b6739f9ce28c6f969cf5b0580ef5fbe6704eb3fffb130cc2f",
+          "9e768c404e4f99830d15df18bbdc36f0e90ae4184bfa2e916eeb684d0d1efe5f",
+          "fd641235e0e0a2b3f2267c8201250b348c8a5373581546778dc5794ce1655637"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "f653a07d755df2e4f30a4752cb6976adc4ff86e334994b7e1efcc9b45752ddfd"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "a563265281f7998044b6b0f8587bd97777185b704f3ffa75eb2fbe2f57ba2bfb"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "61b821bb22cca7f34113ee3d4b83e0e1683863bd3649b6d5ef44a647e59ff2c3"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4324c173f3a0b91b6739f9ce28c6f969cf5b0580ef5fbe6704eb3fffb130cc2f"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "9e768c404e4f99830d15df18bbdc36f0e90ae4184bfa2e916eeb684d0d1efe5f"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "fd641235e0e0a2b3f2267c8201250b348c8a5373581546778dc5794ce1655637"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/moc/moc_sheet.png",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "f154ca66454a99df4a52f1c2cf3e827d696719abb9c86499902b84b4ab45d667",
+      "final_sha256": "f8bfa72733b2bafbbeda45b8306080ded87401ea44af98b9eb92b448a2e7f0f7",
+      "changes": "flattened 2x sheet composite of finished parts; cutout/volume gates applied",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "composite sheet of moc parts — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/head.png",
+          "/home/ubuntu/imp071/gen/moc/hair.png",
+          "/home/ubuntu/imp071/gen/moc/torso.png",
+          "/home/ubuntu/imp071/gen/moc/arm.png",
+          "/home/ubuntu/imp071/gen/moc/leg.png",
+          "/home/ubuntu/imp071/gen/moc/weapon.png"
+        ],
+        "reference_sha256": [
+          "f653a07d755df2e4f30a4752cb6976adc4ff86e334994b7e1efcc9b45752ddfd",
+          "a563265281f7998044b6b0f8587bd97777185b704f3ffa75eb2fbe2f57ba2bfb",
+          "61b821bb22cca7f34113ee3d4b83e0e1683863bd3649b6d5ef44a647e59ff2c3",
+          "4324c173f3a0b91b6739f9ce28c6f969cf5b0580ef5fbe6704eb3fffb130cc2f",
+          "9e768c404e4f99830d15df18bbdc36f0e90ae4184bfa2e916eeb684d0d1efe5f",
+          "fd641235e0e0a2b3f2267c8201250b348c8a5373581546778dc5794ce1655637"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "f653a07d755df2e4f30a4752cb6976adc4ff86e334994b7e1efcc9b45752ddfd"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "a563265281f7998044b6b0f8587bd97777185b704f3ffa75eb2fbe2f57ba2bfb"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "61b821bb22cca7f34113ee3d4b83e0e1683863bd3649b6d5ef44a647e59ff2c3"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4324c173f3a0b91b6739f9ce28c6f969cf5b0580ef5fbe6704eb3fffb130cc2f"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "9e768c404e4f99830d15df18bbdc36f0e90ae4184bfa2e916eeb684d0d1efe5f"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "fd641235e0e0a2b3f2267c8201250b348c8a5373581546778dc5794ce1655637"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/moc/turnarounds/back.png",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "c4bd2b7025c901535b1f85253dd76af984f4f89f97a7e4d72757a0b9ca116a15",
+      "final_sha256": "bfab9a30fd2dea833a9116c872daaadaa6886524a82eccd0183d998d1f28c25c",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround back part of gentle Vietnamese herbalist (Duoc Su): jade-green robe over cloth trousers, bundle of dried herbs at the belt, gnarled wooden staff with a small gourd and fresh herbs tied to it, kind expression. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/hero.png",
+          "/home/ubuntu/imp071/gen/moc/turn_back.png"
+        ],
+        "reference_sha256": [
+          "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b",
+          "c4bd2b7025c901535b1f85253dd76af984f4f89f97a7e4d72757a0b9ca116a15"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "c4bd2b7025c901535b1f85253dd76af984f4f89f97a7e4d72757a0b9ca116a15"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/moc/turnarounds/front.png",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "bfe6a69e32884becc19c43b247d861f585d2afe98f239c39db8f8cf61c02c3fb",
+      "final_sha256": "4228db28d2eb025362cad096b00fb5712692257e4c2e9c7c3f179e2a7d605d95",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround front part of gentle Vietnamese herbalist (Duoc Su): jade-green robe over cloth trousers, bundle of dried herbs at the belt, gnarled wooden staff with a small gourd and fresh herbs tied to it, kind expression. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/hero.png",
+          "/home/ubuntu/imp071/gen/moc/turn_front.png"
+        ],
+        "reference_sha256": [
+          "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b",
+          "bfe6a69e32884becc19c43b247d861f585d2afe98f239c39db8f8cf61c02c3fb"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "bfe6a69e32884becc19c43b247d861f585d2afe98f239c39db8f8cf61c02c3fb"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/moc/turnarounds/side.png",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "8e1bf49ab8caddd03326ccee6bab53c218279a3efa488f676fcd7ae3f93d60cf",
+      "final_sha256": "77a1d37e3a4960632fcdd6646578e06319f4deec717895df943305adf8365b76",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround side part of gentle Vietnamese herbalist (Duoc Su): jade-green robe over cloth trousers, bundle of dried herbs at the belt, gnarled wooden staff with a small gourd and fresh herbs tied to it, kind expression. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/hero.png",
+          "/home/ubuntu/imp071/gen/moc/turn_side.png"
+        ],
+        "reference_sha256": [
+          "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b",
+          "8e1bf49ab8caddd03326ccee6bab53c218279a3efa488f676fcd7ae3f93d60cf"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8e1bf49ab8caddd03326ccee6bab53c218279a3efa488f676fcd7ae3f93d60cf"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/moc/turnarounds/threequarter.png",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b",
+      "final_sha256": "73d6c3fb4992fd4989fb0639fe462ce811f1b3b359be2c8e47bc9b2f5e294381",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround threequarter part of gentle Vietnamese herbalist (Duoc Su): jade-green robe over cloth trousers, bundle of dried herbs at the belt, gnarled wooden staff with a small gourd and fresh herbs tied to it, kind expression. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/hero.png"
+        ],
+        "reference_sha256": [
+          "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/tho/tho.psb",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "0318994f577c8c67d56b6225e57fc1a50a71fcfce3de012681c500a2905d77f7",
+      "final_sha256": "acfc22d7ff70d17b77b250dff10a2a10e0912c65142753d62367ab96ba35bdb7",
+      "changes": "layered PSD document authored from AI-generated part images: chroma-key cutout, despill, despeckle, fit-to-slot Lanczos scale, palette quantize, placed at rig positions",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "8 fixed rig layers of tho: head, hair, torso, arm, leg, weapon — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/head.png",
+          "/home/ubuntu/imp071/gen/tho/hair.png",
+          "/home/ubuntu/imp071/gen/tho/torso.png",
+          "/home/ubuntu/imp071/gen/tho/arm.png",
+          "/home/ubuntu/imp071/gen/tho/leg.png",
+          "/home/ubuntu/imp071/gen/tho/weapon.png"
+        ],
+        "reference_sha256": [
+          "8d923e88c4f6685c32f117559b6b5aa08c88b2f8bc129195d504e9012e9908cf",
+          "b0798a65689d3b85e5face4ccc8c39def5080b41bf6cf5c19b8637f67896362f",
+          "1359c54a4d04400523ee1cae11adf7fcba2296959fef9c16b3e582a4572ec11e",
+          "51a064067f732bc2008432c8976743e2750904ffa89c9c639383094f37e81b81",
+          "5a7943d23182410c720000c1cb0baad31cb3d3b45a8c6db43c59ddde4007468b",
+          "96100df6e5cff3d4e4aadd230855b6ddcea3124ca02c0939c896ab2777d1d51f"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8d923e88c4f6685c32f117559b6b5aa08c88b2f8bc129195d504e9012e9908cf"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b0798a65689d3b85e5face4ccc8c39def5080b41bf6cf5c19b8637f67896362f"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "1359c54a4d04400523ee1cae11adf7fcba2296959fef9c16b3e582a4572ec11e"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "51a064067f732bc2008432c8976743e2750904ffa89c9c639383094f37e81b81"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "5a7943d23182410c720000c1cb0baad31cb3d3b45a8c6db43c59ddde4007468b"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "96100df6e5cff3d4e4aadd230855b6ddcea3124ca02c0939c896ab2777d1d51f"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/tho/tho_sheet.png",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "0318994f577c8c67d56b6225e57fc1a50a71fcfce3de012681c500a2905d77f7",
+      "final_sha256": "a0d62298c370710688a391dafc43cc13d67569d1887b0756ccbca7a31fc686ad",
+      "changes": "flattened 2x sheet composite of finished parts; cutout/volume gates applied",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "composite sheet of tho parts — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/head.png",
+          "/home/ubuntu/imp071/gen/tho/hair.png",
+          "/home/ubuntu/imp071/gen/tho/torso.png",
+          "/home/ubuntu/imp071/gen/tho/arm.png",
+          "/home/ubuntu/imp071/gen/tho/leg.png",
+          "/home/ubuntu/imp071/gen/tho/weapon.png"
+        ],
+        "reference_sha256": [
+          "8d923e88c4f6685c32f117559b6b5aa08c88b2f8bc129195d504e9012e9908cf",
+          "b0798a65689d3b85e5face4ccc8c39def5080b41bf6cf5c19b8637f67896362f",
+          "1359c54a4d04400523ee1cae11adf7fcba2296959fef9c16b3e582a4572ec11e",
+          "51a064067f732bc2008432c8976743e2750904ffa89c9c639383094f37e81b81",
+          "5a7943d23182410c720000c1cb0baad31cb3d3b45a8c6db43c59ddde4007468b",
+          "96100df6e5cff3d4e4aadd230855b6ddcea3124ca02c0939c896ab2777d1d51f"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8d923e88c4f6685c32f117559b6b5aa08c88b2f8bc129195d504e9012e9908cf"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b0798a65689d3b85e5face4ccc8c39def5080b41bf6cf5c19b8637f67896362f"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "1359c54a4d04400523ee1cae11adf7fcba2296959fef9c16b3e582a4572ec11e"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "51a064067f732bc2008432c8976743e2750904ffa89c9c639383094f37e81b81"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "5a7943d23182410c720000c1cb0baad31cb3d3b45a8c6db43c59ddde4007468b"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "96100df6e5cff3d4e4aadd230855b6ddcea3124ca02c0939c896ab2777d1d51f"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/tho/turnarounds/back.png",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "51c39892508e488e8c6a15d416749c5dd995cea5a425646b3e92d7439d1fd5c4",
+      "final_sha256": "adb9fe3872f870595fda8076ece7630c76403ba1c0904b22af733b4e6fb34ac0",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround back part of sturdy Vietnamese temple guardian (Ho Phap): bronze-and-hide layered vest over thick cloth, wide shoulders, heavy bronze club resting low, stern square face, hair tied up. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/hero.png",
+          "/home/ubuntu/imp071/gen/tho/turn_back.png"
+        ],
+        "reference_sha256": [
+          "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238",
+          "51c39892508e488e8c6a15d416749c5dd995cea5a425646b3e92d7439d1fd5c4"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "51c39892508e488e8c6a15d416749c5dd995cea5a425646b3e92d7439d1fd5c4"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/tho/turnarounds/front.png",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "c7541c9d299a9382383106d0b7999e0ec823b278d2064178b58e08d1627a0117",
+      "final_sha256": "867d2fbc47b36a7d7ec781c6fc97a66342e8a7ae6b19903e325f1b492a6671b9",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround front part of sturdy Vietnamese temple guardian (Ho Phap): bronze-and-hide layered vest over thick cloth, wide shoulders, heavy bronze club resting low, stern square face, hair tied up. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/hero.png",
+          "/home/ubuntu/imp071/gen/tho/turn_front.png"
+        ],
+        "reference_sha256": [
+          "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238",
+          "c7541c9d299a9382383106d0b7999e0ec823b278d2064178b58e08d1627a0117"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "c7541c9d299a9382383106d0b7999e0ec823b278d2064178b58e08d1627a0117"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/tho/turnarounds/side.png",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "f2dce62662ae35342c7e95cf0dd027af04906b494283d573ff0939c79ef9d16b",
+      "final_sha256": "b35c78646ffa872beb9cb1b0d96cc4da8b4ed962c264ceb8a8732ec2d7d386eb",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround side part of sturdy Vietnamese temple guardian (Ho Phap): bronze-and-hide layered vest over thick cloth, wide shoulders, heavy bronze club resting low, stern square face, hair tied up. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/hero.png",
+          "/home/ubuntu/imp071/gen/tho/turn_side.png"
+        ],
+        "reference_sha256": [
+          "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238",
+          "f2dce62662ae35342c7e95cf0dd027af04906b494283d573ff0939c79ef9d16b"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "f2dce62662ae35342c7e95cf0dd027af04906b494283d573ff0939c79ef9d16b"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/tho/turnarounds/threequarter.png",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238",
+      "final_sha256": "e5afa0bf9e9ea1d5dcdce3dc3280938a635090ce58c095ad3809eaad9bb96ca9",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround threequarter part of sturdy Vietnamese temple guardian (Ho Phap): bronze-and-hide layered vest over thick cloth, wide shoulders, heavy bronze club resting low, stern square face, hair tied up. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/hero.png"
+        ],
+        "reference_sha256": [
+          "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/thuy/thuy.psb",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "368c30e20cac4c7fcf969fc14412799cbe571808691e2bce1ac833e2c4e3f07d",
+      "final_sha256": "e3234b223ec5414f5471dc6cdd9abab9027d06851913452c6afbddcbe9c363a8",
+      "changes": "layered PSD document authored from AI-generated part images: chroma-key cutout, despill, despeckle, fit-to-slot Lanczos scale, palette quantize, placed at rig positions",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "8 fixed rig layers of thuy: head, hair, torso, arm, leg, weapon — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/head.png",
+          "/home/ubuntu/imp071/gen/thuy/hair.png",
+          "/home/ubuntu/imp071/gen/thuy/torso.png",
+          "/home/ubuntu/imp071/gen/thuy/arm.png",
+          "/home/ubuntu/imp071/gen/thuy/leg.png",
+          "/home/ubuntu/imp071/gen/thuy/weapon.png"
+        ],
+        "reference_sha256": [
+          "4b854c10485fe0e9369ca4ccffa936caa64910bedb3b9ec119069a162851fe8b",
+          "8784c0f3f4ad78e03073a74f023e366c84d5760fe603b10855b911b71820377c",
+          "0f69e994bd72f33adca93835b2fb38f6420da88a86b9d626edee1b213ffeec70",
+          "a5c3a63933acae620ee1b09f1cfb47ce5efbc35d370a62e94996110960111c02",
+          "9b540a542b2b449e100563e89dce2bbf178f682cd9a1364e156bdf3faefe0978",
+          "8b3443400a8abd0b8f943b387bab86de7d8d698ba723b3c718a596e2d0a667ea"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4b854c10485fe0e9369ca4ccffa936caa64910bedb3b9ec119069a162851fe8b"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8784c0f3f4ad78e03073a74f023e366c84d5760fe603b10855b911b71820377c"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "0f69e994bd72f33adca93835b2fb38f6420da88a86b9d626edee1b213ffeec70"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "a5c3a63933acae620ee1b09f1cfb47ce5efbc35d370a62e94996110960111c02"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "9b540a542b2b449e100563e89dce2bbf178f682cd9a1364e156bdf3faefe0978"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8b3443400a8abd0b8f943b387bab86de7d8d698ba723b3c718a596e2d0a667ea"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/thuy/thuy_sheet.png",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "368c30e20cac4c7fcf969fc14412799cbe571808691e2bce1ac833e2c4e3f07d",
+      "final_sha256": "cd976743c0f9a5e02dd925768941e7b7d118439ab635b9a678db17d7efb2e853",
+      "changes": "flattened 2x sheet composite of finished parts; cutout/volume gates applied",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "composite sheet of thuy parts — 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/head.png",
+          "/home/ubuntu/imp071/gen/thuy/hair.png",
+          "/home/ubuntu/imp071/gen/thuy/torso.png",
+          "/home/ubuntu/imp071/gen/thuy/arm.png",
+          "/home/ubuntu/imp071/gen/thuy/leg.png",
+          "/home/ubuntu/imp071/gen/thuy/weapon.png"
+        ],
+        "reference_sha256": [
+          "4b854c10485fe0e9369ca4ccffa936caa64910bedb3b9ec119069a162851fe8b",
+          "8784c0f3f4ad78e03073a74f023e366c84d5760fe603b10855b911b71820377c",
+          "0f69e994bd72f33adca93835b2fb38f6420da88a86b9d626edee1b213ffeec70",
+          "a5c3a63933acae620ee1b09f1cfb47ce5efbc35d370a62e94996110960111c02",
+          "9b540a542b2b449e100563e89dce2bbf178f682cd9a1364e156bdf3faefe0978",
+          "8b3443400a8abd0b8f943b387bab86de7d8d698ba723b3c718a596e2d0a667ea"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/head.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4b854c10485fe0e9369ca4ccffa936caa64910bedb3b9ec119069a162851fe8b"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hair.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8784c0f3f4ad78e03073a74f023e366c84d5760fe603b10855b911b71820377c"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/torso.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "0f69e994bd72f33adca93835b2fb38f6420da88a86b9d626edee1b213ffeec70"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/arm.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "a5c3a63933acae620ee1b09f1cfb47ce5efbc35d370a62e94996110960111c02"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/leg.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "9b540a542b2b449e100563e89dce2bbf178f682cd9a1364e156bdf3faefe0978"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/weapon.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "8b3443400a8abd0b8f943b387bab86de7d8d698ba723b3c718a596e2d0a667ea"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/thuy/turnarounds/back.png",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "27d2eac3a65283831994a59f9241789ba70d19df07494f226fccb39cd56ca993",
+      "final_sha256": "d74de57c6e52d83f8c3a94028e3dbf5566e262b4dccb944b4675ec2198d8d914",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround back part of serene Vietnamese river-controller (Thuy Su): teal-blue layered tunic, wave-knotted cords at the waist, small gourd flask, smooth water staff capped with a carved wooden wave, soft calm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/hero.png",
+          "/home/ubuntu/imp071/gen/thuy/turn_back.png"
+        ],
+        "reference_sha256": [
+          "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1",
+          "27d2eac3a65283831994a59f9241789ba70d19df07494f226fccb39cd56ca993"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "27d2eac3a65283831994a59f9241789ba70d19df07494f226fccb39cd56ca993"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/thuy/turnarounds/front.png",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "b2712c83f42aca9b5faa538b001da87c2cde5ba1e62fedcbc9e6e8d86cbfe7ec",
+      "final_sha256": "b139238ff915cc3dd6587346bac07591e7780baa155d251f65c68eb41582e9ba",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround front part of serene Vietnamese river-controller (Thuy Su): teal-blue layered tunic, wave-knotted cords at the waist, small gourd flask, smooth water staff capped with a carved wooden wave, soft calm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/hero.png",
+          "/home/ubuntu/imp071/gen/thuy/turn_front.png"
+        ],
+        "reference_sha256": [
+          "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1",
+          "b2712c83f42aca9b5faa538b001da87c2cde5ba1e62fedcbc9e6e8d86cbfe7ec"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b2712c83f42aca9b5faa538b001da87c2cde5ba1e62fedcbc9e6e8d86cbfe7ec"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/thuy/turnarounds/side.png",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "9c76af388f06a8fd81e55845864f59f69973161492ff1b6f6e62ba1de599976a",
+      "final_sha256": "c92114c3f1db4b0fbad4f2ccbf8d90c210afb21e8766579d7de0792085962493",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround side part of serene Vietnamese river-controller (Thuy Su): teal-blue layered tunic, wave-knotted cords at the waist, small gourd flask, smooth water staff capped with a carved wooden wave, soft calm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/hero.png",
+          "/home/ubuntu/imp071/gen/thuy/turn_side.png"
+        ],
+        "reference_sha256": [
+          "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1",
+          "9c76af388f06a8fd81e55845864f59f69973161492ff1b6f6e62ba1de599976a"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/turn_side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "9c76af388f06a8fd81e55845864f59f69973161492ff1b6f6e62ba1de599976a"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/Actors/Players/thuy/turnarounds/threequarter.png",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1",
+      "final_sha256": "f50cfd2b783656f804e6ae3de0360882503cfbf5a017561b30dcf87933a067d7",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "turnaround threequarter part of serene Vietnamese river-controller (Thuy Su): teal-blue layered tunic, wave-knotted cords at the waist, small gourd flask, smooth water staff capped with a carved wooden wave, soft calm face. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/hero.png"
+        ],
+        "reference_sha256": [
+          "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/hoa_hero.png",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67",
+      "final_sha256": "82405cde3a51041e6ec083b0e963cef777907d7841f1faef273f05e3e415b886",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "Full-body portrait of a bright-eyed Vietnamese charm-weaver (Phu Su): ember-red tunic with dark trim, stacks of yellow paper talismans at the belt, peach-wood charm sword with small paper tags tied on it, lively warm face. Relaxed idle stance, 3/4 view facing right. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/hero.png"
+        ],
+        "reference_sha256": [
+          "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b876edd92de889173cdc4c77530080fab3bbb5e35f59b41bfbb407bc6ba3ad67"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.hoa.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/hoa_turnaround.png",
+      "content_id": "class.hoa",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "4b682ff192210077589d87c9df698da3d8f8c62047b25647436cdc3494b659d6",
+      "final_sha256": "b767a62a8d4e82aa3415a4dd359c37ee9fff6b674df5bcc3f49b071cb7394d1b",
+      "changes": "four-view turnaround strip composed from the class turnaround references on paper background",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "4-view turnaround strip of hoa assembled from generated views",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/hoa/head.png",
+          "/home/ubuntu/imp071/gen/hoa/hair.png",
+          "/home/ubuntu/imp071/gen/hoa/torso.png",
+          "/home/ubuntu/imp071/gen/hoa/arm.png",
+          "/home/ubuntu/imp071/gen/hoa/leg.png",
+          "/home/ubuntu/imp071/gen/hoa/weapon.png"
+        ],
+        "reference_sha256": [
+          "e34c1f66ab22cec05cffd048d19f5fc3a226dc3038ee52c064cb402abab484b7",
+          "3042cf13860eb241ab56e85c3edf50e6b5991ba8fa14b14368c09d4e790e674b",
+          "8cc89e20aaaddc18d0db2b9ae5b72d0a2c0c7c0345121cba1bbaaef38a643c9d",
+          "798d10bfc70ba5e99edbe085110d001b226dc97de781ae5d433cc3cf1d8f501c",
+          "2789dd3993e5d43179113f1675cf9dde6cd8b57d362cae5ec5525ea71aa8c903",
+          "96d1a6e8ac471574f207d9eaea6110599c27a97eed2b6dbcbb85fa1b6166dbb7"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "phu su charm-weaver archetype in Vietnamese temple-side folk practice"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "yellow paper talisman tags",
+          "peach-wood charm sword",
+          "ember-red tunic",
+          "red-cord topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/threequarter.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "82405cde3a51041e6ec083b0e963cef777907d7841f1faef273f05e3e415b886"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "02c0d0308dd84c1222f8892d4df10b9916f81ec9f97752edf01f51924145484f"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "c0644c028970716dfd337820b91d7ba10a733a03665a22b5ab7bd7d3eccd8be9"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "3c32de5811c8cdae1ed1ce1c146f2267de4181fd03d7dbef9ed06b10e5915edf"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/kim_hero.png",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823",
+      "final_sha256": "2188b0909414e0d97b0ae2d15613ea1c33b81fb96ef5cfd860951170de349c10",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "Full-body portrait of a young Vietnamese wandering swordsman (Kiem Khach): indigo-blue travel tunic and trousers, woven bamboo conical hat hanging on his back, cord belt, straight slender iron sword held loosely pointing down-forward, calm sharp eyes. Relaxed idle stance, 3/4 view facing right. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/hero.png"
+        ],
+        "reference_sha256": [
+          "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "63a05df488b72026137a3caca95b97f0bd0d85f156fa4de2967c80cf59e31823"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.kim.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/kim_turnaround.png",
+      "content_id": "class.kim",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "d43e7a7773a9f5b68043711618e7fb7d681c6767a1cda216ec221955cf712616",
+      "final_sha256": "ed022c85a338f37e236a1768117d71943711b80fec9c2f29e0742c2549756852",
+      "changes": "four-view turnaround strip composed from the class turnaround references on paper background",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "4-view turnaround strip of kim assembled from generated views",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/kim/head.png",
+          "/home/ubuntu/imp071/gen/kim/hair.png",
+          "/home/ubuntu/imp071/gen/kim/torso.png",
+          "/home/ubuntu/imp071/gen/kim/arm.png",
+          "/home/ubuntu/imp071/gen/kim/leg.png",
+          "/home/ubuntu/imp071/gen/kim/weapon.png"
+        ],
+        "reference_sha256": [
+          "9661c7226fd35a4ad07e07a9df6a2acca602c0c6b6244ac6797e16f7827da653",
+          "128932277cf31da703ad1d016f217bd1330c00321f56b479f45950fb28259a89",
+          "4bdc5609f6a1b09594217bb0321ab389ed6271576c5806cf8c8443bf9fbe5eef",
+          "c305a7ac98c64c95e5d4a041a2074b985810b275fc7598a4d86bc579c942fb11",
+          "e916fbe2378bbbc2530fe8cef6467a5a37cbf9beb6036dfb83cccda097fa8e8e",
+          "423c28968d313d1464464fbba64dfb0ea2395b78cc32a1a38989048246dfb622"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "kiem khach wandering swordsman archetype in Vietnamese truyen ky folk literature",
+          "sword-bearing folk hero motif of Lam Son and village militia tales"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bamboo conical hat",
+          "indigo woven tunic",
+          "cord belt",
+          "slender iron sword",
+          "straw sandals"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/threequarter.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "2188b0909414e0d97b0ae2d15613ea1c33b81fb96ef5cfd860951170de349c10"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "2d81b5779eab2eb3627e32d938fcdd7eca657ebf276264fef723f4078d1979d9"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "6b38eea869dae59cc30004acadb8cc3f5ece8a70311109faa28843803e80199c"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "5dbb3193d82544c3e6f38210854285e912f0f247a6b33dd2c6180c0cff675d71"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/moc_hero.png",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b",
+      "final_sha256": "73d6c3fb4992fd4989fb0639fe462ce811f1b3b359be2c8e47bc9b2f5e294381",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "Full-body portrait of a gentle Vietnamese herbalist (Duoc Su): jade-green robe over cloth trousers, bundle of dried herbs at the belt, gnarled wooden staff with a small gourd and fresh herbs tied to it, kind expression. Relaxed idle stance, 3/4 view facing right. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/hero.png"
+        ],
+        "reference_sha256": [
+          "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "a83109ea480e8534d6b756a9996b752265a457c016a09268018c82b1ae25693b"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.moc.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/moc_turnaround.png",
+      "content_id": "class.moc",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "2a03d3b08871f3559d5d83cab77fba7d7e8062240f62ca6b13782038a16054af",
+      "final_sha256": "4e5dfa1fd543db900243ae23894da9bcfd967e3dde12f6e7bf3a470d35238d2c",
+      "changes": "four-view turnaround strip composed from the class turnaround references on paper background",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "4-view turnaround strip of moc assembled from generated views",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/moc/head.png",
+          "/home/ubuntu/imp071/gen/moc/hair.png",
+          "/home/ubuntu/imp071/gen/moc/torso.png",
+          "/home/ubuntu/imp071/gen/moc/arm.png",
+          "/home/ubuntu/imp071/gen/moc/leg.png",
+          "/home/ubuntu/imp071/gen/moc/weapon.png"
+        ],
+        "reference_sha256": [
+          "f653a07d755df2e4f30a4752cb6976adc4ff86e334994b7e1efcc9b45752ddfd",
+          "a563265281f7998044b6b0f8587bd97777185b704f3ffa75eb2fbe2f57ba2bfb",
+          "61b821bb22cca7f34113ee3d4b83e0e1683863bd3649b6d5ef44a647e59ff2c3",
+          "4324c173f3a0b91b6739f9ce28c6f969cf5b0580ef5fbe6704eb3fffb130cc2f",
+          "9e768c404e4f99830d15df18bbdc36f0e90ae4184bfa2e916eeb684d0d1efe5f",
+          "fd641235e0e0a2b3f2267c8201250b348c8a5373581546778dc5794ce1655637"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "herb-gathering village physician archetype in Vietnamese folk tales (Lang Ong tradition)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "gnarled wooden staff",
+          "gourd flask",
+          "dried herb bundle",
+          "jade-green robe",
+          "topknot with headband"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/threequarter.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "73d6c3fb4992fd4989fb0639fe462ce811f1b3b359be2c8e47bc9b2f5e294381"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4228db28d2eb025362cad096b00fb5712692257e4c2e9c7c3f179e2a7d605d95"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "77a1d37e3a4960632fcdd6646578e06319f4deec717895df943305adf8365b76"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "bfab9a30fd2dea833a9116c872daaadaa6886524a82eccd0183d998d1f28c25c"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/tho_hero.png",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238",
+      "final_sha256": "e5afa0bf9e9ea1d5dcdce3dc3280938a635090ce58c095ad3809eaad9bb96ca9",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "Full-body portrait of a sturdy Vietnamese temple guardian (Ho Phap): bronze-and-hide layered vest over thick cloth, wide shoulders, heavy bronze club resting low, stern square face, hair tied up. Relaxed idle stance, 3/4 view facing right. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/hero.png"
+        ],
+        "reference_sha256": [
+          "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "e8ae5fcd563c75ca333c9ad947ea6bbce410338f8f7703d94ee329e161290238"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.tho.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/tho_turnaround.png",
+      "content_id": "class.tho",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "cde96ed628e70c9924551fd68c880e6c6c861c2486570dc5e3341474750049e7",
+      "final_sha256": "da50c73cb8514ba800ae1680eeeb6f8651e0ed3e76fb370e2dc4b9fe4caddb0b",
+      "changes": "four-view turnaround strip composed from the class turnaround references on paper background",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "4-view turnaround strip of tho assembled from generated views",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/tho/head.png",
+          "/home/ubuntu/imp071/gen/tho/hair.png",
+          "/home/ubuntu/imp071/gen/tho/torso.png",
+          "/home/ubuntu/imp071/gen/tho/arm.png",
+          "/home/ubuntu/imp071/gen/tho/leg.png",
+          "/home/ubuntu/imp071/gen/tho/weapon.png"
+        ],
+        "reference_sha256": [
+          "8d923e88c4f6685c32f117559b6b5aa08c88b2f8bc129195d504e9012e9908cf",
+          "b0798a65689d3b85e5face4ccc8c39def5080b41bf6cf5c19b8637f67896362f",
+          "1359c54a4d04400523ee1cae11adf7fcba2296959fef9c16b3e582a4572ec11e",
+          "51a064067f732bc2008432c8976743e2750904ffa89c9c639383094f37e81b81",
+          "5a7943d23182410c720000c1cb0baad31cb3d3b45a8c6db43c59ddde4007468b",
+          "96100df6e5cff3d4e4aadd230855b6ddcea3124ca02c0939c896ab2777d1d51f"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "temple guardian warden archetype of Vietnamese village temples (ho phap, generic)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "bronze studded club",
+          "hide-and-bronze layered vest",
+          "leather cords",
+          "tied-up topknot"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/threequarter.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "e5afa0bf9e9ea1d5dcdce3dc3280938a635090ce58c095ad3809eaad9bb96ca9"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "867d2fbc47b36a7d7ec781c6fc97a66342e8a7ae6b19903e325f1b492a6671b9"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b35c78646ffa872beb9cb1b0d96cc4da8b4ed962c264ceb8a8732ec2d7d386eb"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "adb9fe3872f870595fda8076ece7630c76403ba1c0904b22af733b4e6fb34ac0"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/thuy_hero.png",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1",
+      "final_sha256": "f50cfd2b783656f804e6ae3de0360882503cfbf5a017561b30dcf87933a067d7",
+      "changes": "chromatic-key cutout, crop, Lanczos scale to reference height, palette quantize",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "Full-body portrait of a serene Vietnamese river-controller (Thuy Su): teal-blue layered tunic, wave-knotted cords at the waist, small gourd flask, smooth water staff capped with a carved wooden wave, soft calm face. Relaxed idle stance, 3/4 view facing right. 2D game sprite art, chibi proportions (large head, about one third of total body height), flat painted cel shading, exactly three value tiers (lit, mid, shade), single key light from top-front-left, soft warm rim light on the shadow edge, colored dark-brown outline (never pure black), Vietnamese rural folklore materials only (woven cloth, bamboo, wood, bronze, iron, paper, cord, herbs - no armor plates, no glowing crystal, no Western or Chinese court robes), isolated on a solid flat pure magenta #FF00FF background, no shadow on the ground, no text, no watermark",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/hero.png"
+        ],
+        "reference_sha256": [
+          "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hero.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "84579509e2a80563cfed5d4611f4f16e2c03eaf9cf75a86c146b695109da31d1"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.class.thuy.prefab",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/thuy_turnaround.png",
+      "content_id": "class.thuy",
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "b1caf19c4eec9df5d5a886dd6fbdfbf7ded0c886bc8313f3ed3dd423a90d06ec",
+      "final_sha256": "3ec6ee0cd3e4848eaa3e3fcde56599445adbe9b73b67e4c8380c156c015170aa",
+      "changes": "four-view turnaround strip composed from the class turnaround references on paper background",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "4-view turnaround strip of thuy assembled from generated views",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "/home/ubuntu/imp071/gen/thuy/head.png",
+          "/home/ubuntu/imp071/gen/thuy/hair.png",
+          "/home/ubuntu/imp071/gen/thuy/torso.png",
+          "/home/ubuntu/imp071/gen/thuy/arm.png",
+          "/home/ubuntu/imp071/gen/thuy/leg.png",
+          "/home/ubuntu/imp071/gen/thuy/weapon.png"
+        ],
+        "reference_sha256": [
+          "4b854c10485fe0e9369ca4ccffa936caa64910bedb3b9ec119069a162851fe8b",
+          "8784c0f3f4ad78e03073a74f023e366c84d5760fe603b10855b911b71820377c",
+          "0f69e994bd72f33adca93835b2fb38f6420da88a86b9d626edee1b213ffeec70",
+          "a5c3a63933acae620ee1b09f1cfb47ce5efbc35d370a62e94996110960111c02",
+          "9b540a542b2b449e100563e89dce2bbf178f682cd9a1364e156bdf3faefe0978",
+          "8b3443400a8abd0b8f943b387bab86de7d8d698ba723b3c718a596e2d0a667ea"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": {
+        "source_tales": [
+          "river-controller water archetype in Vietnamese coastal village folklore",
+          "rain-and-river supplication folk practice (secular village motif)"
+        ],
+        "regional_variants": [],
+        "motifs_checked": [
+          "carved wooden wave staff",
+          "wave-knotted waist cords",
+          "gourd flask",
+          "teal layered tunic"
+        ]
+      },
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/threequarter.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "f50cfd2b783656f804e6ae3de0360882503cfbf5a017561b30dcf87933a067d7"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/front.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b139238ff915cc3dd6587346bac07591e7780baa155d251f65c68eb41582e9ba"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/side.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "c92114c3f1db4b0fbad4f2ccbf8d90c210afb21e8766579d7de0792085962493"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/back.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "d74de57c6e52d83f8c3a94028e3dbf5566e262b4dccb944b4675ec2198d8d914"
+        }
+      ],
+      "review_state": "PENDING"
+    },
+    {
+      "asset_key": "asset.styleref.actors_players.vn_class_chibi_v1.sprite",
+      "file_path": "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/turnaround_sheet.png",
+      "content_id": null,
+      "source_kind": "AI_CREATED",
+      "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+      "source_uri": null,
+      "license_id": "AI_TOOL_TERMS",
+      "license_uri": "https://openai.com/policies/terms-of-use/",
+      "acquired_at_utc": "2026-10-01T10:30:00Z",
+      "source_sha256": "780a22f71267ea84336504a3fc3e501ac99bf3f7401cdb9cd8d266302a70bdea",
+      "final_sha256": "ae088d56c160a984bfd55d4acb6035cba25e4d9854788e072039e0a1f68b18b1",
+      "changes": "5x4 class turnaround grid composed from the class strips on paper background",
+      "attribution": null,
+      "style_pack_id": "actors_players/vn_class_chibi_v1",
+      "generation_record": {
+        "tool": "devin.generate_image",
+        "version": "devin-session",
+        "model_id": "gpt-image-2.5-flare",
+        "model_sha256": null,
+        "terms_uri": "https://openai.com/policies/terms-of-use/",
+        "terms_snapshot_sha256": "f336fb0521c94a965706f67bb7dcd56785cb06e0dda3d74fb3f0d694dac11f4f",
+        "prompt": "combined class turnaround sheet assembled from generated views",
+        "seed": null,
+        "parameters": {
+          "size": "1024x1024",
+          "background": "opaque #FF00FF",
+          "n": 1
+        },
+        "workflow_sha256": "c476ad6c68936527a33bdfbda8145238daf0fe9639deb87ce8565123604637cb",
+        "reference_uris": [
+          "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/kim_turnaround.png",
+          "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/moc_turnaround.png",
+          "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/thuy_turnaround.png",
+          "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/hoa_turnaround.png",
+          "client/Assets/Art/StyleRef/actors_players/vn_class_chibi_v1/anchors/tho_turnaround.png"
+        ],
+        "reference_sha256": [
+          "ed022c85a338f37e236a1768117d71943711b80fec9c2f29e0742c2549756852",
+          "4e5dfa1fd543db900243ae23894da9bcfd967e3dde12f6e7bf3a470d35238d2c",
+          "3ec6ee0cd3e4848eaa3e3fcde56599445adbe9b73b67e4c8380c156c015170aa",
+          "b767a62a8d4e82aa3415a4dd359c37ee9fff6b674df5bcc3f49b071cb7394d1b",
+          "da50c73cb8514ba800ae1680eeeb6f8651e0ed3e76fb370e2dc4b9fe4caddb0b"
+        ],
+        "c2pa_present": false
+      },
+      "folklore_card": null,
+      "inputs": [
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/kim_turnaround.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "ed022c85a338f37e236a1768117d71943711b80fec9c2f29e0742c2549756852"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/moc_turnaround.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "4e5dfa1fd543db900243ae23894da9bcfd967e3dde12f6e7bf3a470d35238d2c"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/thuy_turnaround.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "3ec6ee0cd3e4848eaa3e3fcde56599445adbe9b73b67e4c8380c156c015170aa"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/hoa_turnaround.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "b767a62a8d4e82aa3415a4dd359c37ee9fff6b674df5bcc3f49b071cb7394d1b"
+        },
+        {
+          "creator": "Devin (Cognition AI) session devin-143eb378f60d4788961596a2543f2ce9",
+          "source_uri": "devin-session://generate_image/tho_turnaround.png",
+          "license_id": "AI_TOOL_TERMS",
+          "license_uri": "https://openai.com/policies/terms-of-use/",
+          "acquired_at_utc": "2026-10-01T10:30:00Z",
+          "sha256": "da50c73cb8514ba800ae1680eeeb6f8651e0ed3e76fb370e2dc4b9fe4caddb0b"
+        }
+      ],
+      "review_state": "PENDING"
+    }
+  ]
+}
