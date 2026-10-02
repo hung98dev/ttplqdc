@@ -241,7 +241,12 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: client/Library
-          key: unity-library-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}-${{ hashFiles('client/Packages/manifest.json', 'client/Packages/packages-lock.json', 'client/ProjectSettings/**', 'client/Assets/**/csc.rsp') }}
+          # Source-scoped: Library holds compiled assemblies and importer
+          # metadata derived from the whole client tree, so the key hashes
+          # every source path it derives from. No restore-keys — a prefix
+          # match would restore another branch's Library (stale
+          # ScriptAssemblies, drift-check .meta diffs).
+          key: unity-library-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}-${{ hashFiles('client/Packages/manifest.json', 'client/Packages/packages-lock.json', 'client/ProjectSettings/**', 'client/Assets/**/csc.rsp', 'client/Assets/**') }}
 
       - name: Telemetry unity-library
         if: steps.plan.outputs.scope == 'full'
