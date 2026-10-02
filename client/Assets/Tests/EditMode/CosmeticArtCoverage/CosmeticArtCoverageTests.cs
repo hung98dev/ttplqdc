@@ -319,7 +319,11 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
             return jobs;
         }
 
+        // The cutout gate's boundary scans are O(pixels * opaque px) per
+        // file; ~170 textures need ~13 min even fanning out, well past the
+        // UTF default 180 s per-test timeout.
         [Test]
+        [Timeout(1200000)]
         public void TestCosmeticCutoutGateZeroViolations()
         {
             var fails = new ConcurrentBag<string>();
@@ -442,7 +446,7 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
         private static HashSet<(int, int)> ParseResolvers(string prefabYaml)
         {
             var set = new HashSet<(int, int)>();
-            var rx = new Regex(@"m_CategoryHash: (-?[0-9.eE+]+)\n\s+m_labelHash: (-?[0-9.eE+]+)");
+            var rx = new Regex(@"m_CategoryHash: (-?[0-9.eE+-]+)\n\s+m_labelHash: (-?[0-9.eE+-]+)");
             foreach (Match m in rx.Matches(prefabYaml))
             {
                 var c = float.Parse(m.Groups[1].Value, CultureInfo.InvariantCulture);
