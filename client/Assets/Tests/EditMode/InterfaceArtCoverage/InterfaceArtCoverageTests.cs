@@ -311,10 +311,16 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                     if (ls.Count > 1)
                     {
                         double mean = 0;
-                        foreach (var v in ls) { mean += v; }
+                        foreach (var v in ls)
+                        {
+                            mean += v;
+                        }
                         mean /= ls.Count;
                         double var_ = 0;
-                        foreach (var v in ls) { var_ += (v - mean) * (v - mean); }
+                        foreach (var v in ls)
+                        {
+                            var_ += (v - mean) * (v - mean);
+                        }
                         double std = Math.Sqrt(var_ / ls.Count);
                         Assert.LessOrEqual(std, 2.0,
                             rel + " stretch-band L* std " + std.ToString("F2",
@@ -397,8 +403,14 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
             private readonly List<long> _loca = new List<long>();
             private long _glyf;
 
-            private ushort U16(long o) { return (ushort)((_b[o] << 8) | _b[o + 1]); }
-            private short S16(long o) { return (short)((_b[o] << 8) | _b[o + 1]); }
+            private ushort U16(long o)
+            {
+                return (ushort)((_b[o] << 8) | _b[o + 1]);
+            }
+            private short S16(long o)
+            {
+                return (short)((_b[o] << 8) | _b[o + 1]);
+            }
             private uint U32(long o)
             {
                 return (uint)((_b[o] << 24) | (_b[o + 1] << 16)
@@ -415,13 +427,36 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                     long rec = 12 + i * 16;
                     var tag = Encoding.ASCII.GetString(_b, (int)rec, 4);
                     long off = U32(rec + 8);
-                    if (tag == "cmap") { cmap = off; }
-                    if (tag == "head") { head = off; }
-                    if (tag == "hhea") { hhea = off; }
-                    if (tag == "OS/2") { os2 = off; }
-                    if (tag == "maxp") { maxp = off; }
-                    if (tag == "loca") { _loca.Clear(); _loca.Add(off); _loca.Add(U32(rec + 12)); }
-                    if (tag == "glyf") { _glyf = off; }
+                    if (tag == "cmap")
+                    {
+                        cmap = off;
+                    }
+                    if (tag == "head")
+                    {
+                        head = off;
+                    }
+                    if (tag == "hhea")
+                    {
+                        hhea = off;
+                    }
+                    if (tag == "OS/2")
+                    {
+                        os2 = off;
+                    }
+                    if (tag == "maxp")
+                    {
+                        maxp = off;
+                    }
+                    if (tag == "loca")
+                    {
+                        _loca.Clear();
+                        _loca.Add(off);
+                        _loca.Add(U32(rec + 12));
+                    }
+                    if (tag == "glyf")
+                    {
+                        _glyf = off;
+                    }
                 }
                 Assert.AreNotEqual(0, cmap, "no cmap in " + path);
                 UnitsPerEm = U16(head + 18);
@@ -449,7 +484,14 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                     }
                 }
                 Assert.AreNotEqual(0, chosen, "no usable cmap subtable");
-                if (fmt == 4) { ParseFmt4(chosen); } else { ParseFmt12(chosen); }
+                if (fmt == 4)
+                {
+                    ParseFmt4(chosen);
+                }
+                else
+                {
+                    ParseFmt12(chosen);
+                }
                 // loca offsets
                 int count = numGlyphs + 1;
                 _loca.Clear();
@@ -466,8 +508,7 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                             if (indexToLocFormat == 0)
                             {
                                 _loca.Add(U16(off + g * 2) * 2L);
-                            }
-                            else
+                            } else
                             {
                                 _loca.Add(U32(off + g * 4));
                             }
@@ -489,7 +530,10 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                     int start = U16(startCodes + i * 2);
                     int delta = S16(idDelta + i * 2);
                     int ro = S16(idRange + i * 2);
-                    if (start == 0xFFFF) { continue; }
+                    if (start == 0xFFFF)
+                    {
+                        continue;
+                    }
                     for (int c = start; c <= end; c++)
                     {
                         Glyphs.Add(c);
@@ -497,8 +541,7 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                         if (ro == 0)
                         {
                             g = (c + delta) & 0xFFFF;
-                        }
-                        else
+                        } else
                         {
                             long addr = idRange + i * 2 + ro + (c - start) * 2;
                             int v = U16(addr);
@@ -537,12 +580,16 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
                 {
                     return int.MinValue;
                 }
-                if (g + 1 >= _loca.Count) { return int.MinValue; }
+                if (g + 1 >= _loca.Count)
+                {
+                    return int.MinValue;
+                }
                 long start = _glyf + _loca[g];
                 long end = _glyf + _loca[g + 1];
                 if (end - start < 10)
                 {
-                    return int.MinValue; // empty glyph
+                    return int.MinValue;
+                    // empty glyph
                 }
                 return S16(start + 8);
             }
@@ -558,15 +605,42 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
         {
             // presentation_asset_manifest.md §5 Vietnamese coverage set
             var set = new List<int>();
-            for (int c = 0x0020; c <= 0x007E; c++) { set.Add(c); }
-            for (int c = 0x00A0; c <= 0x00FF; c++) { set.Add(c); }
-            for (int c = 0x0102; c <= 0x0103; c++) { set.Add(c); }
-            for (int c = 0x0110; c <= 0x0111; c++) { set.Add(c); }
-            for (int c = 0x0128; c <= 0x0129; c++) { set.Add(c); }
-            for (int c = 0x0168; c <= 0x0169; c++) { set.Add(c); }
-            for (int c = 0x01A0; c <= 0x01A1; c++) { set.Add(c); }
-            for (int c = 0x01AF; c <= 0x01B0; c++) { set.Add(c); }
-            for (int c = 0x1EA0; c <= 0x1EF9; c++) { set.Add(c); }
+            for (int c = 0x0020; c <= 0x007E; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x00A0; c <= 0x00FF; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x0102; c <= 0x0103; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x0110; c <= 0x0111; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x0128; c <= 0x0129; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x0168; c <= 0x0169; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x01A0; c <= 0x01A1; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x01AF; c <= 0x01B0; c++)
+            {
+                set.Add(c);
+            }
+            for (int c = 0x1EA0; c <= 0x1EF9; c++)
+            {
+                set.Add(c);
+            }
             set.Add(0x20AB);
             return set.ToArray();
         }
