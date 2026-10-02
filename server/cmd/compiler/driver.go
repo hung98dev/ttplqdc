@@ -201,6 +201,8 @@ func resolveSections(f *File, path string) []*Section {
 	if i := strings.LastIndex(path, ">"); i >= 0 {
 		last = strings.TrimSpace(path[i+1:])
 	}
+	// `#`/`##` heading marks in registry paths are decoration
+	last = strings.TrimSpace(strings.TrimLeft(last, "#"))
 	if secs := f.Root.FindSections(last); len(secs) > 0 {
 		return secs
 	}
