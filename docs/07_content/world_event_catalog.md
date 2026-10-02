@@ -6,6 +6,23 @@ Concrete launch definition for the recurring `SPIRIT_SURGE` event owned generica
 
 The event is optional social/open-world content. It must not become a mandatory hourly power appointment.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. All `text` fences are registered assignment/pattern grammars: `field = value`, `index <id>` ordered lists, `ELEMENT -> <payload>` dispatch lines, and `N. <step>` ordered chain steps.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Event Identity` / `text` fences | event / `event.spirit_surge` | assignment fence: `event_id`,`schedule`,`duration` + `H = floor(unix_seconds / 3600)` expr; region-order + element-order indexed lists; slot-selection assignments (`region_slot_0`,`pair_index`,`pairs` tuple list, `field_slot_*`,`element_slot_*` mod exprs) | Hourly 15m event; all selection derived from `H` alone (no persisted state); 3 concurrent regions (region 0 always + pair from 5-pair cycle); field/element slots per region from `(H + i) mod` formulas. |
+| `Event Identity` / access + recommendation paragraph + `H mod 5` table | access/recommendation rule | table `H mod 5, active region indices, Act-I eligible/recommended index`; filter rule `<= highest_unlocked_region` | Normal region/map access applies; recommended = highest-index active region unlocked; per-act eligibility guaranteed by the table. |
+| `Eligible Field Order` / table `region, field 0, field 1, field 2` | event field candidates / `(region, slot)` | region:id; field 0..2:id | 6 regions × 3 fields; safe/social anchors excluded; `field_slot_N` picks column index mod 3. |
+| `Surge Variant` / `text` fences | surge variant rules | multiplier fence (`MAX_HP`,`ATTACK`,`DEFENSE`,`base_exp`,`normal drop table`); cooldown/telegraph mins; element payload grammar `ELEMENT -> <payload desc + coefficient>` | Variant inherits base family; exactly one element attack; cooldown ≥8s, telegraph ≥0.80s; payloads per element with typed coefficients (0.50-0.65 ATTACK + status). |
+| `Temporary Spawn Groups` / `text` fence | spawn-group budget | `2 temporary event groups`, `max_alive per group = 4` | Max 2 temp groups/channel using the field's normal pool + event anchors; separate from the 54 persistent groups. |
+| `Elite Event Chain` / numbered `event.spirit_surge.wave.*` list | event chain steps / `event.spirit_surge.wave.0N` | ordered chain: `event.<id>` + `defeat <n> <kind> variants`/`activate <n> markers` steps | 3 waves; one chain per map channel; 90s local cooldown; `chain_id` = durable UUID v4 per ADR-0062; no major boss required. |
+| `Participation` / `text` fences | contribution rules | points grammar `damage\|healing\|protection\|marker interaction: <expr>`; eligibility fence `contribution_points >= 10 AND ...` | Per-enemy cap 100 points; eligibility ≥10 + presence at wave.03 commit; presence alone = 0. |
+| `Rewards` / `text` fences | reward grants / `drop.event.spirit_surge.*` | grant grammar `drop.event.spirit_surge.<tier>.completion\|daily_first  key <idempotency_key>`; EXP fence `Act <roman> <int>` | Completion ≤1/character/UTC hour (`surge.completion.drop.<utc_hour>.<character_id>`); daily_first 1/day; WORLD_EVENT EXP per character_act (6 values) keyed `surge.completion.exp.<utc_hour>.<character_id>`. |
+| `Restart / Idempotency` / `text` fence | instance key | `spirit_surge.<UTC-hour-start>.<map_id>.<channel_id>` | Restart recomputes selection from UTC; committed keys persist; same hour = same region/element. |
+| `Validation` + `Invariants` | validation rules | enumerated reject rules + invariant counts | Reference only; counted invariants (1 event, 3 regions, coverage 100%/40%). |
+
 # Event Identity
 ```text
 event_id = event.spirit_surge

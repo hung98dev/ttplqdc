@@ -6,6 +6,18 @@ Concrete runtime values for the eight launch major bosses. Encounter identity/me
 
 This file owns boss level, mode, element, base stats, EXP, drop table, party/public scaling reference, canonical space, entity size profile, and numeric damage coefficients for the named encounter mechanics.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Mechanic order/safe-zone layout stays in `encounter_catalog.md`; this file emits runtime combat values only. Per-phase `NAME -> payload` fences use the catalog-local mechanic grammar declared below; they are not assignment fences.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Base Stat Formula` / `text` fence | stat formula / `(boss_id)` | MAX_HP/ATTACK/DEFENSE exprs over L:int; base_exp reference rule | Named finite rule applied per roster row; `base HP` column must equal the formula result exactly (grouped_int formatting only); `base_exp` is kill EXP for PUBLIC rows, reference-only for INSTANCED rows; MAX_MP=0. |
+| `Roster` / table `boss_id, Lv, mode, space_id, size_profile, element, base HP, ATTACK, DEFENSE, base_exp, scaling, drop_table_id` | boss / `boss_id`; phases / `(boss_id, phase_number)` | boss_id:id; Lv:int; mode:enum(INSTANCED,PUBLIC); space_id:id; size_profile:enum(BOSS_LARGE,WORLD_BOSS); element:enum(KIM,MOC,THUY,HOA,THO,NONE); base HP:grouped_int; ATTACK/DEFENSE:grouped_int; base_exp:int; scaling:enum(PARTY_DEFAULT,PUBLIC_DEFAULT); drop_table_id:id | Exactly 8 rows; PUBLIC uses PUBLIC_DEFAULT only, INSTANCED uses PARTY_DEFAULT only; PUBLIC → WORLD_BOSS profile. |
+| `Numeric Mechanic Payloads` / each backticked `boss.*` level-2 heading / `Phase N:` `text` fences | mechanic payload / `(boss_id, mechanic_id)` | catalog-local mechanic grammar: `NAME -> coeff desc` lines; NAME:id token (mechanic_id); `->` separator; payload = ordered decimal coefficients, `Xm ATTACK [element]`, status token + duration, tell/startup seconds; element:enum(KIM,MOC,THUY,HOA,THO,NONE,physical); phase threshold prose line e.g. `Phase 2 (below 50% HP)` supplies phase_number + hp_threshold | Each phase fence emits records under `(boss_id, phase_number)`; `boss.than_trung` thresholds 70%/35% (ADR-0061) override default 50%. Status tokens WEAKEN/ROOT/STUN/SLOW/BURN/VULNERABLE resolve canonical status rules; add/fragment stat blocks inside a boss section (e.g. `Fragments:` fence) inherit the boss heading scope. |
+| `Boss Add Rules` / bullet list | add reward rule / `(boss_id)` | none (fixed defaults) | Boss-created adds/fragments/summons: no EXP/loot, no Soul drop table, despawn on reset, excluded from field population, `BOSS_SLOTS` cap 7 alive. |
+| `Reward Semantics` / bullet list + `boss.than_trung` sub-section `text` fences | first-clear reward / `boss.than_trung` | reward key fence `reward.first_progression_clear.<source_id>.<character_id>`; EXP fence = grouped_int character EXP | Repeat rewards resolve via roster drop_table_id; Boss Soul first-clear in `drop_tables.md`; `boss.than_trung` grants exactly 1,091,400 EXP once per character (Act-VI 0.4% STORY_ONCE slot). |
+
 # Base Stat Formula
 For boss level `L`:
 ```text

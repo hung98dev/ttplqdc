@@ -292,6 +292,8 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `CAT-001` | `07_content/soul_catalog.md` | IMP-003, IMP-004, IMP-031 |
 | `CAT-002` | `07_content/class_skill_catalog.md` | IMP-003, IMP-004, IMP-015 |
 | `CAT-003` | `07_content/item_catalog.md` | IMP-003, IMP-004 |
+| `CAT-004` | `06_data/content_authoring_contract.md` | IMP-003, IMP-004 |
+| `CAT-005` | `00_context/technology_versions.md` | IMP-003 |
 | `PRIV-001` | `07_security/data_protection.md` | IMP-056, IMP-103 |
 | `PRIV-002` | `07_security/data_protection.md` | IMP-056, IMP-103 |
 | `PRIV-003` | `07_security/data_protection.md` | IMP-077, IMP-103 |

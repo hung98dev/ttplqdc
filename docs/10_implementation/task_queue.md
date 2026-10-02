@@ -303,10 +303,10 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/skills.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/README.md`, `../07_content/item_catalog.md`, `../07_content/progression_route.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../07_content/class_skill_catalog.md`, `../07_content/soul_catalog.md`]
+specs: [`../01_gameplay/skills.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/README.md`, `../07_content/item_catalog.md`, `../07_content/progression_route.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../07_content/class_skill_catalog.md`, `../07_content/soul_catalog.md`, `../00_context/technology_versions.md`]
 adrs: [`0001-content-revision-contract.md`, `0016-twelve-skill-pool-upgradeable-basics.md`, `0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0047-skill-reach-budget-and-collider-aware-resolution.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001, IMP-002]
-owned_paths: [`server/cmd/compiler/`, `server/internal/config/`]
+owned_paths: [`server/cmd/compiler/`, `server/internal/config/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/cmd/server/`]
 contract_inputs: [24 Markdown catalogs, authoring schema, stable IDs, deterministic RNG, 45 primary skill geometries, typed secondary geometries]
 contract_outputs: [CandidateSnapshot, content revision hash, compile diagnostics, compile report]
@@ -325,11 +325,14 @@ Compile static catalogs, finite expansions, references, enums, and shorthand.
 - CAT-001: all 25 Soul definitions emit the explicit owning element and exact rank distribution independently of source combat `NONE`; source/effect/acquisition references remain valid.
 - CAT-002: all 25 ACTIVE payloads resolve through the closed dispatch, including the sole barrier literal joined to its positive-lifetime primary geometry; invalid signatures/types reject before snapshot emission.
 - CAT-003: registered item display/identity-note mutations change the full revision without renaming IDs; independent source reorder and Unicode canonical equivalence preserve resolved output/revision.
+- CAT-004: every data-owning catalog under `docs/07_content/` declares a `Compiler Source Schema` registry per `content_authoring_contract.md` §1; the compiler source-field coverage report resolves through it.
+- CAT-005: `server/go.mod` declares `golang.org/x/text v0.42.0` as a direct require (no `// indirect` marker) for NFC normalization (CAT-003).
 - two-phase gate task (`agent_execution_protocol.md` §5a): the implementation PR merges with status `IN_PROGRESS`; a follow-up status PR sets `DONE` with the `evidence` artifact of its own `verify.yml` run (ADR-0068).
 
 ## Tests
 - `server/cmd/compiler/compiler_test.go`: TestCompileAllCatalogs, TestEquipmentExpansion168, TestPortalExpansion52, TestEntitySizeProfileResolution, TestPlayableSpaceGeometryIndex, TestSkillGeometryRows45, TestSkillSecondaryGeometryCompile, TestSkillDisplacementTagConsistency, TestInvalidReferenceRejection.
 - `server/cmd/compiler/compiler_test.go`: TestSoulElementBindings25, TestSoulElementDoesNotInheritMonsterNone (CAT-001); TestAllActivePayloadConstructorsResolve, TestBarrierPayloadSignatureAndGeometry (CAT-002); TestRegisteredItemStringMutationChangesRevision, TestItemSourceReorderAndUnicodeCanonicalEquivalence (CAT-003).
+- `server/cmd/compiler/compiler_test.go`: TestAllDataOwningCatalogsDeclareCompilerSourceSchema (CAT-004); TestGoModDeclaresXTextRequire (CAT-005).
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
