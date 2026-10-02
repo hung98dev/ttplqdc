@@ -110,7 +110,7 @@ var Drivers = []Driver{
 	{Catalog: "drop_tables.md", Compile: compileDropTables},
 	{Catalog: "crafting_catalog.md", Compile: compileCrafting},
 	{Catalog: "npc_shop_catalog.md", Compile: compileNPC},
-	{Catalog: "quest_catalog.md"},
+	{Catalog: "quest_catalog.md", Compile: compileQuest},
 	{Catalog: "dungeon_catalog.md", Compile: compileDungeon},
 	{Catalog: "world_route_catalog.md", Compile: compileWorldRoute},
 	{Catalog: "map_spawn_catalog.md", Compile: compileMapSpawn},
