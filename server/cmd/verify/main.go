@@ -108,6 +108,7 @@ func main() {
 	default:
 		fatal(fmt.Errorf("unknown phase %q", *phase))
 	}
+	runner.Close()
 	fatal(err)
 
 	if *reportOut != "" {
