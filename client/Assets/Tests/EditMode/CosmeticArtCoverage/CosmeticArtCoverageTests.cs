@@ -6,6 +6,8 @@ using NUnit.Framework;
 using ThinhThan.Core.Assets;
 using ThinhThan.Core.Assets.Editor.AssetProduction;
 using UnityEngine;
+using CutoutGate = ThinhThan.Core.Assets.Editor.AssetProduction.CutoutQualityGate;
+using VolumeGate = ThinhThan.Core.Assets.Editor.AssetProduction.VolumeDepthGate;
 
 namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
 {
@@ -138,20 +140,20 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
             return paths;
         }
 
-        private static CutoutQualityGate.AssetClass ClassOf(RegisterJson.Node cosmetic)
+        private static CutoutGate.AssetClass ClassOf(RegisterJson.Node cosmetic)
         {
             var c = cosmetic.Get("asset_class")!.Str;
             switch (c)
             {
                 case "COSMETIC_APPEARANCE":
-                    return CutoutQualityGate.AssetClass.Actor;
+                    return CutoutGate.AssetClass.Actor;
                 case "PROP":
                 case "ITEM_ICON":
-                    return CutoutQualityGate.AssetClass.Prop;
+                    return CutoutGate.AssetClass.Prop;
                 case "UI_ART":
-                    return CutoutQualityGate.AssetClass.UiArt;
+                    return CutoutGate.AssetClass.UiArt;
                 case "VFX_SOFT":
-                    return CutoutQualityGate.AssetClass.VfxSoft;
+                    return CutoutGate.AssetClass.VfxSoft;
                 default:
                     Assert.Fail("unknown asset_class " + c);
                     return default;
@@ -291,7 +293,7 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
                     var abs = Path.Combine(RepoRoot(),
                         rel.Replace('/', Path.DirectorySeparatorChar));
                     var img = ArtRuleFixtures.LoadPng(abs);
-                    var rep = CutoutQualityGate.Measure(
+                    var rep = CutoutGate.Measure(
                         rel, img, 0, 0, img.Width, img.Height, cls, null,
                         false, false);
                     if (rep.Violations.Count != 0)
@@ -320,13 +322,13 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
                     var abs = Path.Combine(RepoRoot(),
                         rel.Replace('/', Path.DirectorySeparatorChar));
                     var img = ArtRuleFixtures.LoadPng(abs);
-                    var rep = VolumeDepthGate.Measure(
+                    var rep = VolumeGate.Measure(
                         rel, img, null, isActor ? 176 : 0, isActor ? 192 : 0);
                     if (rep.Violations.Count != 0)
                     {
                         fails.Add(rel + ": " + string.Join("; ", rep.Violations));
                     }
-                    VolumeDepthGate.Silhouette(img, null, out var inS, out var lab);
+                    VolumeGate.Silhouette(img, null, out var inS, out var lab);
                     var s = new List<int>();
                     for (var i = 0; i < img.Width * img.Height; i++)
                     {
@@ -335,7 +337,7 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
                             s.Add(i);
                         }
                     }
-                    var cov = VolumeDepthGate.PaletteCoverage(s, lab, palette);
+                    var cov = VolumeGate.PaletteCoverage(s, lab, palette);
                     if (double.IsNaN(cov) || cov < 0.85)
                     {
                         fails.Add(rel + ": palette coverage " + cov.ToString("F3",
