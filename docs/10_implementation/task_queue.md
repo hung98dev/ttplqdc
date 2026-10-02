@@ -98,7 +98,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-071` | Player Character & Class Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md` |
 | `IMP-072` | Normal-World Environment Art & Scenes | `NOT_STARTED` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md` |
 | `IMP-073` | UI, Item, Equipment & Skill VFX Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-074` | Cosmetic Presentation Art | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md` |
+| `IMP-074` | Cosmetic Presentation Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-075` | SFX & Folklore BGM Production | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-076` | Production Asset Coverage, Rights & Release Audit | `NOT_STARTED` | IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
@@ -4337,10 +4337,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-073/"
 
 ## `IMP-074` — Cosmetic Presentation Art
 id: IMP-074
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-074"
+branch: "imp/IMP-074-cosmetic-art"
+claimed_at: "2026-10-02T07:00:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md`, `../03_systems/cosmetics.md`]
