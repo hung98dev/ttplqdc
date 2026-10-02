@@ -38,6 +38,33 @@ if ($env:UNITY_EDITOR_PATH -and $env:UNITY_EDITOR_PATH -notlike '*6000.6.1f1*') 
     throw "UNITY_EDITOR_PATH must reference the pinned editor 6000.6.1f1: $env:UNITY_EDITOR_PATH"
 }
 
+function Ensure-PgRolePostgres {
+    # The test DSN authenticates as `postgres`, but an initdb without -U makes
+    # the OS account the bootstrap superuser — clusters initialized by earlier
+    # revisions or restored from the EDB cache lack the `postgres` role.
+    # -A trust lets either superuser connect, so try both candidates and then
+    # prove `postgres` itself accepts a session.
+    param([string]$ToolsPg, [string]$Port)
+    foreach ($u in @('postgres', $env:USERNAME)) {
+        if ([string]::IsNullOrEmpty($u)) { continue }
+        $p = Start-Process -FilePath (Join-Path $ToolsPg 'bin/createuser.exe') `
+            -ArgumentList ('-h localhost -p {0} -U {1} -s postgres' -f $Port, $u) `
+            -NoNewWindow -PassThru `
+            -RedirectStandardOutput (Join-Path $ToolsPg 'createuser-out.log') `
+            -RedirectStandardError (Join-Path $ToolsPg 'createuser-err.log')
+        $p | Wait-Process -Timeout 30 -ErrorAction SilentlyContinue
+        $v = Start-Process -FilePath (Join-Path $ToolsPg 'bin/psql.exe') `
+            -ArgumentList ('-h localhost -p {0} -U postgres -d postgres -tAc "SELECT 1"' -f $Port) `
+            -NoNewWindow -PassThru `
+            -RedirectStandardOutput (Join-Path $ToolsPg 'psql-out.log') `
+            -RedirectStandardError (Join-Path $ToolsPg 'psql-err.log')
+        $v | Wait-Process -Timeout 30 -ErrorAction SilentlyContinue
+        if ($v.HasExited -and $v.ExitCode -eq 0) { return }
+    }
+    $err = Get-Content (Join-Path $ToolsPg 'psql-err.log') -Raw -ErrorAction SilentlyContinue
+    throw "postgres role ensure failed on port $Port`: $err"
+}
+
 function Resolve-TestPgDsn {
     if ($env:THINHTHAN_TEST_PG_DSN) { return $env:THINHTHAN_TEST_PG_DSN }
     $toolsPg = Join-Path $RepoRoot 'tools/pgsql'
@@ -87,6 +114,7 @@ function Resolve-TestPgDsn {
                 -RedirectStandardError (Join-Path $toolsPg 'isready-err.log')
             $p | Wait-Process -Timeout 20 -ErrorAction SilentlyContinue
             if ($p.HasExited -and $p.ExitCode -eq 0) {
+                Ensure-PgRolePostgres -ToolsPg $toolsPg -Port $savedPort
                 Write-Host "verify: postgres already running on port $savedPort"
                 return "postgres://postgres@localhost:$savedPort/postgres?sslmode=disable"
             }
@@ -94,7 +122,7 @@ function Resolve-TestPgDsn {
         if (-not (Test-Path $data)) {
             Write-Host "verify: initdb $data"
             $p = Start-Process -FilePath (Join-Path $toolsPg 'bin/initdb.exe') `
-                -ArgumentList ('-D "{0}" -E UTF8 -A trust' -f $data) `
+                -ArgumentList ('-D "{0}" -E UTF8 -A trust -U postgres' -f $data) `
                 -NoNewWindow -PassThru `
                 -RedirectStandardOutput (Join-Path $toolsPg 'initdb-out.log') `
                 -RedirectStandardError (Join-Path $toolsPg 'initdb-err.log')
@@ -127,6 +155,7 @@ function Resolve-TestPgDsn {
             throw "pg_ctl exit $($p.ExitCode): $err`n$pg"
         }
         Set-Content -Path $portFile -Value $port -NoNewline
+        Ensure-PgRolePostgres -ToolsPg $toolsPg -Port $port
         Write-Host "verify: postgres started"
         return "postgres://postgres@localhost:$port/postgres?sslmode=disable"
     }
