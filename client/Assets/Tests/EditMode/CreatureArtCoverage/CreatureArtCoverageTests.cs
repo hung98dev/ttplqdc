@@ -297,8 +297,8 @@ NPC_HUMANOID|64|96|96|128|";
             var text = File.ReadAllText(path);
             var rx = new System.Text.RegularExpressions.Regex(
                 @"m_GUID: ([0-9a-f]{32})\s*\n\s*m_Address: (\S+)");
-            foreach (System.Text.RegularExpressions.Match m in
-                     rx.Matches(text))
+            foreach (System.Text.RegularExpressions.Match m
+                in rx.Matches(text))
             {
                 list.Add((m.Groups[1].Value, m.Groups[2].Value));
             }
@@ -625,8 +625,8 @@ NPC_HUMANOID|64|96|96|128|";
                 @"\s*pivot: \{x: ([\d.eE+-]+), y: ([\d.eE+-]+)\}.*?" +
                 @"internalID: (-?\d+)",
                 System.Text.RegularExpressions.RegexOptions.Singleline);
-            foreach (System.Text.RegularExpressions.Match m in
-                     rx.Matches(text))
+            foreach (System.Text.RegularExpressions.Match m
+                in rx.Matches(text))
             {
                 var s = new SpriteRow();
                 s.Name = m.Groups[1].Value;
@@ -702,9 +702,12 @@ NPC_HUMANOID|64|96|96|128|";
                             s.Name + " sprite name prefix != " + r.Short);
                         names.Add(s.Name.Substring(r.Short.Length + 1));
                     }
-                    foreach (var part in new[] { "head", "hair", "torso",
-                        "arm_front", "arm_back", "leg_front", "leg_back",
-                        "accessory_tail", "weapon" })
+                    var parts = new[]
+                    {
+                        "head", "hair", "torso", "arm_front", "arm_back",
+                        "leg_front", "leg_back", "accessory_tail", "weapon",
+                    };
+                    foreach (var part in parts)
                     {
                         Assert.IsTrue(names.Contains(part),
                             png + " missing PSB part " + part);
