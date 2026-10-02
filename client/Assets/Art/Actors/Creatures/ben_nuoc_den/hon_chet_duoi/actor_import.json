@@ -1,0 +1,33 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_MEDIUM",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_shot",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    96,
+    128
+  ],
+  "texture_ref": [
+    192,
+    256
+  ],
+  "assets": {
+    "hon_chet_duoi_parts.png": {
+      "profile": "MONSTER_MEDIUM",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

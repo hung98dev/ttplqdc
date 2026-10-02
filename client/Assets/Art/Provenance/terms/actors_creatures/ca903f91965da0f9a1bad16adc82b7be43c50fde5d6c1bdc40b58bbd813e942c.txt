@@ -1,0 +1,111 @@
+Source: https://openai.com/policies/terms-of-use/
+Fetched-UTC: 2026-10-02T13:09:46Z
+Note: Europe Terms of Use page text; Output ownership clause included.
+
+## Page 1: Europe Terms of Use | OpenAI
+URL: https://openai.com/policies/terms-of-use/
+
+Europe Terms of Use | OpenAI
+
+…
+
+Updated: January 16, 2026
+
+# Europe Terms of Use
+
+(Previous version⁠⁠)
+
+Thank you for using OpenAI!
+
+These Terms of Use apply if you reside in the European Economic Area (EEA), Switzerland, or UK. If you live outside of the EEA, Switzerland, or UK, these Terms of Use⁠⁠ apply to you.
+
+These Terms of Use (“Terms”) apply to your use of ChatGPT, DALL·E, and OpenAI’s other services for individuals, along with any associated software applications, technology and websites (“Services”), including personal, non-commercial use of our Services by consumers. You form a contract with us when you confirm that you accept these Terms or when you otherwise use the Services.
+
+Our Business Terms⁠⁠ govern use of ChatGPT Enterprise, our APIs, and our other services for businesses and developers.
+
+Our Privacy Policy⁠⁠ explains how we collect and use personal information. Although it does not form part of these Terms, it is an important document that you should read.
+
+## Who we are
+
+OpenAI is an AI research and deployment company. Our mission is to ensure that artificial general intelligence benefits all of humanity. For more information about OpenAI, please visit https://openai.com/about⁠. Our Services are provided to you by:
+
+- OpenAI Ireland Ltd, a company incorporated in the Republic of Ireland with its registered office at 1st Floor, The Liffey Trust Centre, 117-126 Sheriff Street Upper, Dublin 1, D01 YC43, Ireland and company number 737350, if you are resident in the EEA or Switzerland.
+- OpenAI OpCo, LLC, a Delaware company with its registered office at 1455 3rd Street, San Francisco, CA 94158, United States and company number 7063675, if you are resident in the UK.
+
+## Additional Service-specific Terms
+
+Depending on the specific Service or features you use, additional Service-specific terms and policies may apply to your use of our Services. The key ones to be aware of, and which form part of these Terms, are described below:
+
+- Usage Policies⁠⁠: these policies explain how you may use our Services and Content,
+- Service Terms⁠⁠: these terms apply when you use certain Services or features;
+- Sharing & Publication Policy:⁠⁠ this policy sets out rules for when you share Content;⁠⁠⁠
+- Service Credit Terms⁠⁠: these terms govern the purchase and use of service credits on our Services; and
+- Brand Guidelines⁠⁠: these guidelines explain how you may use our name and logo.
+
+For more information on our moderation and enforcement processes, see our Transparency & Content Moderation page⁠.
+
+## Registration and access
+
+Minimum age. You must be at least 13 years old or the minimum age required in your country to consent to use the Services. If you are under 18, you must have your parent or legal guardian’s permission to use the Services and ask them to read these Terms with you.
+
+Registration. You must provide accurate and complete information to register for an account to use our Services. You may not share your account credentials or make your account available to anyone else and are responsible for all activities that occur under your account. If you create an account or use the Services on behalf of another person or entity, you must have the authority to accept these Terms on their behalf.
+
+## Using our Services
+
+What you can do. Subject to your compliance with these Terms, you may access and use our Services. In using our Services, you must comply with all applicable laws as well as the Service-specific terms and policies listed above.
+
+What you cannot do. You may not use our Services for any illegal, harmful, or abusive activity. For example, you are prohibited from:
+
+- Using our Services in a way that infringes, misappropriates or violates anyone’s rights.
+- Misusing our reporting or appeals processes, including providing manifestly unfounded submissions.
+- Modifying, copying, leasing, selling or distributing any of our Services.
+- Attempting to or assisting anyone to reverse engineer, decompile or discover the source code or underlying components of our Services, including our models, algorithms, or systems (except to the extent this restriction is prohibited by applicable law).
+- Automatically or programmatically extracting data or Output (defined below).
+- Representing that Output was human-generated when it was not.
+- Interfering with or disrupting our Services, including circumventing any rate limits or restrictions or bypassing any protective measures or safety mitigations we put on our Services.
+- Using Output to develop models that compete with OpenAI.
+
+Software. Our Services may allow you to download software, such as mobile applications, which may update automatically to ensure you’re using the latest version. Our software may include open source software that is governed by its own licences that we’ve made available to you.
+
+Corporate domains. If you create an account using an email address owned by an organisation (for example, your employer), that account may be added to the organisation's business account with us, in which case we will provide notice to you so that you can help facilitate the transfer of your account (unless your organisation has already provided notice to you that it may monitor and control your account). Once your account is transferred, the organisation’s administrator will be able to control your account, including being able to access Content (defined below) and restrict or remove your access to the account.
+
+Third party Services. Our services may include third party software, products, or services, (“Third Party Services”) and some parts of our Services, like our browse feature, may include output from those services (“Third Party Output”). Third Party Services and Third Party Output are subject to their own terms, and we are not responsible for them.
+
+Feedback. We appreciate your feedback about our Services, but you agree that we may use it to provide, maintain, develop, and improve our Services, without compensation to you.
+
+## Content
+
+Your content. You may provide input to the Services (“Input”), and receive output from the Services based on the Input (“Output”). Input and Output are collectively “Content”. You are responsible for Content, including ensuring that it does not violate any applicable law or these Terms. You represent and warrant that you have all rights, licences, and permissions needed to provide Input to our Services.
+
+Ownership of content. As between you and OpenAI, and to the extent permitted by applicable law, you (a) retain your ownership rights in Input and (b) own the Output. We hereby assign to you all our right, title, and interest, if any, in and to Output.
+
+Similarity of content. Due to the nature of our Services and artificial intelligence generally, Output may not be unique and other users may receive similar output from our Services. Our assignment above does not extend to other users’ output or any Third Party Output.
+
+Our use of content. We can use your Content worldwide to provide, maintain, develop, and improve our Services, comply with applicable law, enforce our terms and policies and keep our Services safe. If you're using ChatGPT through Apple's integrations, see this Help Center article⁠ for how we handle your Content.
+
+Content moderation. We use automated systems and human review to identify and address content that violates our Terms, including our Usage Policies. If we become aware of violations, we may remove or restrict content, limit your access to features, or suspend or terminate your account.For more details on our content moderation process and complaint procedures, see our Transparency & Content Moderation page⁠⁠.
+
+Opt out. If you do not want us to use your Content to train our models, you have the option to opt out by updating your account settings. Further information can be found in this article⁠⁠. Please note that in some cases this may limit the ability of our Services to better address your specific use case.
+
+Accuracy. Artificial intelligence and machine learning are rapidly evolving fields of study. We are constantly working to improve our Services to make them more accurate, reliable, safe, and beneficial. Given the probabilistic nature of machine learning, use of our Services may in some situations result in Output that does not accurately reflect real people, places, or facts.
+
+When you use our Services you understand and agree:
+
+- Output may not always be accurate. You should not rely on Output from our Services as a sole source of truth or factual information, or as a substitute for professional advice.
+- You must evaluate Output for accuracy and appropriateness for your use case, including using human review as appropriate, before using or sharing Output from the Services.
+- You must not use any Output relating to a person for any purpose that could have a legal or material impact on that person, such as making credit, educational, employment, housing, insurance, legal, medical, or other important decisions about them.
+- Our Services may provide incomplete, incorrect, or offensive Output that does not represent OpenAI’s views. If Output references any third party products or services, it doesn’t mean the third party endorses or is affiliated with OpenAI.
+
+## Our IP rights
+
+We and our affiliates own all rights, title, and interest in and to the Services. You may only use our name and logo in accordance with our Brand Guidelines⁠⁠⁠.
+
+## Paid accounts
+
+Paid subscriptions. Some of our Services allow you to purchase paid subscriptions to benefit from enhanced features and functionalities (the “Benefits”). The exact nature of the Benefits differs between Services and will be made clear to you before purchase. You can manage your paid subscription from your account settings.
+
+Fees: All charges, including subscription fees, will be made clear to you before purchase.
+
+Billing. If you sign-up for a paid subscription or purchase any Services, you will provide complete and accurate billing information, inclu
+
+---

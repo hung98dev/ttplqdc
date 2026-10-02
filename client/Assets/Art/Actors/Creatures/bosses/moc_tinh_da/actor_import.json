@@ -1,0 +1,43 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "BOSS_LARGE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_re_gia",
+    "attack_mam_am",
+    "attack_thu_than",
+    "attack_bung_no",
+    "attack_thuc_tinh",
+    "hit",
+    "defeat",
+    "phase_transition_2"
+  ],
+  "cell_ref": [
+    256,
+    256
+  ],
+  "texture_ref": [
+    512,
+    512
+  ],
+  "assets": {
+    "moc_tinh_da_parts.png": {
+      "profile": "BOSS_LARGE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_re_gia",
+        "attack_mam_am",
+        "attack_thu_than",
+        "attack_bung_no",
+        "attack_thuc_tinh",
+        "hit",
+        "defeat",
+        "phase_transition_2"
+      ]
+    }
+  }
+}

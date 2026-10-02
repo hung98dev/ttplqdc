@@ -1,0 +1,642 @@
+[
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#040104",
+    "hex": "#040104",
+    "lab": [
+      0.61,
+      1.09,
+      -0.51
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#0A0603",
+    "hex": "#0A0603",
+    "lab": [
+      1.93,
+      0.53,
+      1.48
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#1C1007",
+    "hex": "#1C1007",
+    "lab": [
+      5.62,
+      4.4,
+      5.42
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#322A24",
+    "hex": "#322A24",
+    "lab": [
+      17.77,
+      2.22,
+      5.61
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#23170B",
+    "hex": "#23170B",
+    "lab": [
+      8.77,
+      4.33,
+      8.86
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#372310",
+    "hex": "#372310",
+    "lab": [
+      15.66,
+      6.92,
+      15.94
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#2C1C0E",
+    "hex": "#2C1C0E",
+    "lab": [
+      11.98,
+      5.55,
+      11.8
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#301A0C",
+    "hex": "#301A0C",
+    "lab": [
+      11.81,
+      9.57,
+      12.88
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#3E2310",
+    "hex": "#3E2310",
+    "lab": [
+      16.77,
+      10.87,
+      17.81
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#734B29",
+    "hex": "#734B29",
+    "lab": [
+      35.66,
+      13.26,
+      26.72
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#130907",
+    "hex": "#130907",
+    "lab": [
+      3.26,
+      2.95,
+      2.21
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#472C11",
+    "hex": "#472C11",
+    "lab": [
+      20.59,
+      9.57,
+      21.64
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#43342B",
+    "hex": "#43342B",
+    "lab": [
+      23.16,
+      5.24,
+      8.56
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#573819",
+    "hex": "#573819",
+    "lab": [
+      26.47,
+      10.86,
+      24.24
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#756451",
+    "hex": "#756451",
+    "lab": [
+      43.59,
+      3.48,
+      13.49
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#93826D",
+    "hex": "#93826D",
+    "lab": [
+      55.39,
+      3.02,
+      13.61
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#8D5526",
+    "hex": "#8D5526",
+    "lab": [
+      41.63,
+      18.9,
+      35.94
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#5E3314",
+    "hex": "#5E3314",
+    "lab": [
+      26.23,
+      16.72,
+      27.48
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#5B534B",
+    "hex": "#5B534B",
+    "lab": [
+      35.82,
+      2.15,
+      5.57
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#E208C2",
+    "hex": "#E208C2",
+    "lab": [
+      52.19,
+      84.91,
+      -39.66
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#27130B",
+    "hex": "#27130B",
+    "lab": [
+      8.22,
+      9.49,
+      8.13
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#140F07",
+    "hex": "#140F07",
+    "lab": [
+      4.62,
+      0.38,
+      4.03
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#4B2611",
+    "hex": "#4B2611",
+    "lab": [
+      19.74,
+      15.73,
+      21.36
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#423E38",
+    "hex": "#423E38",
+    "lab": [
+      26.31,
+      0.97,
+      3.89
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#936C47",
+    "hex": "#936C47",
+    "lab": [
+      48.88,
+      10.69,
+      26.91
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#394611",
+    "hex": "#394611",
+    "lab": [
+      27.55,
+      -14.35,
+      28.9
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#4B3320",
+    "hex": "#4B3320",
+    "lab": [
+      23.46,
+      8.24,
+      16.06
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#773815",
+    "hex": "#773815",
+    "lab": [
+      31.31,
+      25.05,
+      33.0
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#241E1A",
+    "hex": "#241E1A",
+    "lab": [
+      11.81,
+      2.09,
+      4.04
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#4F4531",
+    "hex": "#4F4531",
+    "lab": [
+      29.91,
+      0.62,
+      13.74
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#2D2412",
+    "hex": "#2D2412",
+    "lab": [
+      14.85,
+      1.19,
+      13.33
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#514E12",
+    "hex": "#514E12",
+    "lab": [
+      32.49,
+      -6.85,
+      34.07
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#505E12",
+    "hex": "#505E12",
+    "lab": [
+      37.47,
+      -16.41,
+      38.68
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#38390E",
+    "hex": "#38390E",
+    "lab": [
+      23.03,
+      -7.36,
+      25.48
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#352D10",
+    "hex": "#352D10",
+    "lab": [
+      18.63,
+      -0.53,
+      19.67
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#634635",
+    "hex": "#634635",
+    "lab": [
+      32.52,
+      10.19,
+      15.36
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#B9A78C",
+    "hex": "#B9A78C",
+    "lab": [
+      69.41,
+      2.18,
+      16.18
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#1A180A",
+    "hex": "#1A180A",
+    "lab": [
+      8.06,
+      -1.74,
+      7.76
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#4D3D15",
+    "hex": "#4D3D15",
+    "lab": [
+      26.73,
+      1.84,
+      26.81
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#756B19",
+    "hex": "#756B19",
+    "lab": [
+      44.68,
+      -5.6,
+      44.04
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#20220C",
+    "hex": "#20220C",
+    "lab": [
+      12.58,
+      -5.52,
+      13.31
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#273110",
+    "hex": "#273110",
+    "lab": [
+      18.51,
+      -10.63,
+      19.31
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#BD9A65",
+    "hex": "#BD9A65",
+    "lab": [
+      65.54,
+      6.15,
+      32.71
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#C07D3A",
+    "hex": "#C07D3A",
+    "lab": [
+      58.18,
+      20.08,
+      45.98
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#A39622",
+    "hex": "#A39622",
+    "lab": [
+      61.31,
+      -7.84,
+      57.69
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#737D19",
+    "hex": "#737D19",
+    "lab": [
+      49.97,
+      -16.81,
+      48.88
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#A24517",
+    "hex": "#A24517",
+    "lab": [
+      41.16,
+      36.37,
+      44.18
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#6B4D17",
+    "hex": "#6B4D17",
+    "lab": [
+      34.96,
+      7.29,
+      35.09
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#3A180D",
+    "hex": "#3A180D",
+    "lab": [
+      13.16,
+      16.11,
+      14.57
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#D56E18",
+    "hex": "#D56E18",
+    "lab": [
+      57.43,
+      35.24,
+      60.13
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#F8DF53",
+    "hex": "#F8DF53",
+    "lab": [
+      88.5,
+      -6.68,
+      68.84
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#E8B75A",
+    "hex": "#E8B75A",
+    "lab": [
+      77.09,
+      7.59,
+      52.88
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#F5AA1A",
+    "hex": "#F5AA1A",
+    "lab": [
+      74.93,
+      17.28,
+      74.8
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#9A6925",
+    "hex": "#9A6925",
+    "lab": [
+      48.39,
+      12.95,
+      44.28
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#F8E9BB",
+    "hex": "#F8E9BB",
+    "lab": [
+      92.6,
+      -2.22,
+      24.25
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#5C2012",
+    "hex": "#5C2012",
+    "lab": [
+      21.51,
+      26.73,
+      23.28
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#1E0910",
+    "hex": "#1E0910",
+    "lab": [
+      4.54,
+      9.79,
+      0.05
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#8F0C8C",
+    "hex": "#8F0C8C",
+    "lab": [
+      33.89,
+      61.73,
+      -37.31
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#2D303A",
+    "hex": "#2D303A",
+    "lab": [
+      19.91,
+      1.57,
+      -7.16
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#3F063F",
+    "hex": "#3F063F",
+    "lab": [
+      12.99,
+      33.58,
+      -20.7
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#1B0B21",
+    "hex": "#1B0B21",
+    "lab": [
+      5.39,
+      11.89,
+      -11.1
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#2F4170",
+    "hex": "#2F4170",
+    "lab": [
+      28.34,
+      8.0,
+      -29.5
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#421421",
+    "hex": "#421421",
+    "lab": [
+      14.26,
+      23.92,
+      3.05
+    ]
+  },
+  {
+    "region": "boss_moc_tinh_da",
+    "name": "#BA4667",
+    "hex": "#BA4667",
+    "lab": [
+      46.83,
+      49.66,
+      5.73
+    ]
+  }
+]

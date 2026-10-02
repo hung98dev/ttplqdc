@@ -1,0 +1,35 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "NPC_HUMANOID",
+  "technique": "frame_by_frame",
+  "clips": [
+    "idle",
+    "interact"
+  ],
+  "cell_ref": [
+    96,
+    128
+  ],
+  "texture_ref": [
+    192,
+    256
+  ],
+  "assets": {
+    "ambient_night_idle.png": {
+      "profile": "NPC_HUMANOID",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "interact"
+      ]
+    },
+    "ambient_night_interact.png": {
+      "profile": "NPC_HUMANOID",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "interact"
+      ]
+    }
+  }
+}

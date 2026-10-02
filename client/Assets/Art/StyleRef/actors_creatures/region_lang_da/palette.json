@@ -1,0 +1,962 @@
+[
+  {
+    "region": "region_lang_da",
+    "name": "#7B461B",
+    "hex": "#7B461B",
+    "lab": [
+      35.2,
+      19.06,
+      34.14
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#612E11",
+    "hex": "#612E11",
+    "lab": [
+      25.45,
+      21.09,
+      28.4
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#553319",
+    "hex": "#553319",
+    "lab": [
+      24.8,
+      13.11,
+      22.49
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#16100C",
+    "hex": "#16100C",
+    "lab": [
+      5.2,
+      1.64,
+      2.65
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#945C24",
+    "hex": "#945C24",
+    "lab": [
+      44.35,
+      17.83,
+      40.51
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#3A1F10",
+    "hex": "#3A1F10",
+    "lab": [
+      15.07,
+      11.37,
+      15.39
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#2E1D11",
+    "hex": "#2E1D11",
+    "lab": [
+      12.6,
+      6.3,
+      11.0
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#1A1B28",
+    "hex": "#1A1B28",
+    "lab": [
+      10.21,
+      3.2,
+      -9.0
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#21130C",
+    "hex": "#21130C",
+    "lab": [
+      7.48,
+      5.75,
+      6.17
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#2E2F38",
+    "hex": "#2E2F38",
+    "lab": [
+      19.83,
+      1.66,
+      -5.59
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#49230F",
+    "hex": "#49230F",
+    "lab": [
+      18.79,
+      16.06,
+      21.06
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#09080A",
+    "hex": "#09080A",
+    "lab": [
+      2.33,
+      0.69,
+      -0.76
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#B1C4DE",
+    "hex": "#B1C4DE",
+    "lab": [
+      78.49,
+      -0.62,
+      -15.39
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#432E17",
+    "hex": "#432E17",
+    "lab": [
+      20.76,
+      6.52,
+      18.18
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#843B15",
+    "hex": "#843B15",
+    "lab": [
+      34.08,
+      28.99,
+      36.5
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#8690AE",
+    "hex": "#8690AE",
+    "lab": [
+      59.81,
+      3.14,
+      -17.08
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#B46E2A",
+    "hex": "#B46E2A",
+    "lab": [
+      52.99,
+      22.06,
+      47.66
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#623E1A",
+    "hex": "#623E1A",
+    "lab": [
+      29.7,
+      12.08,
+      28.12
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#A14C1B",
+    "hex": "#A14C1B",
+    "lab": [
+      42.59,
+      32.01,
+      43.44
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#373E58",
+    "hex": "#373E58",
+    "lab": [
+      26.53,
+      4.65,
+      -16.61
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#57462A",
+    "hex": "#57462A",
+    "lab": [
+      30.77,
+      3.48,
+      19.61
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#424849",
+    "hex": "#424849",
+    "lab": [
+      29.94,
+      -1.86,
+      -1.82
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#D9882F",
+    "hex": "#D9882F",
+    "lab": [
+      63.8,
+      24.45,
+      57.64
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#8D8E8A",
+    "hex": "#8D8E8A",
+    "lab": [
+      58.76,
+      -1.17,
+      2.05
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#26274D",
+    "hex": "#26274D",
+    "lab": [
+      17.48,
+      11.33,
+      -23.96
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#373C19",
+    "hex": "#373C19",
+    "lab": [
+      24.15,
+      -8.29,
+      20.64
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#784930",
+    "hex": "#784930",
+    "lab": [
+      35.87,
+      17.12,
+      22.92
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#2A2421",
+    "hex": "#2A2421",
+    "lab": [
+      14.79,
+      2.04,
+      2.76
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#626464",
+    "hex": "#626464",
+    "lab": [
+      42.1,
+      -0.38,
+      -0.43
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#5A6381",
+    "hex": "#5A6381",
+    "lab": [
+      42.28,
+      3.91,
+      -17.55
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#C86023",
+    "hex": "#C86023",
+    "lab": [
+      52.81,
+      37.69,
+      51.69
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#4F4E19",
+    "hex": "#4F4E19",
+    "lab": [
+      32.28,
+      -7.72,
+      30.42
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#B7BFB0",
+    "hex": "#B7BFB0",
+    "lab": [
+      76.31,
+      -5.26,
+      6.46
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#ABA957",
+    "hex": "#ABA957",
+    "lab": [
+      67.81,
+      -11.06,
+      42.28
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#ECB24A",
+    "hex": "#ECB24A",
+    "lab": [
+      76.24,
+      10.95,
+      59.34
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#9D6C40",
+    "hex": "#9D6C40",
+    "lab": [
+      49.85,
+      14.64,
+      32.19
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#DBEBF4",
+    "hex": "#DBEBF4",
+    "lab": [
+      92.14,
+      -3.64,
+      -6.2
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#DAA45F",
+    "hex": "#DAA45F",
+    "lab": [
+      71.06,
+      12.28,
+      43.22
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#732610",
+    "hex": "#732610",
+    "lab": [
+      26.95,
+      32.53,
+      31.32
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#45382E",
+    "hex": "#45382E",
+    "lab": [
+      24.76,
+      3.82,
+      8.47
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#7D644A",
+    "hex": "#7D644A",
+    "lab": [
+      44.24,
+      5.85,
+      18.41
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#2A2912",
+    "hex": "#2A2912",
+    "lab": [
+      15.97,
+      -3.46,
+      14.68
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#857831",
+    "hex": "#857831",
+    "lab": [
+      50.19,
+      -3.9,
+      39.62
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#48578E",
+    "hex": "#48578E",
+    "lab": [
+      37.99,
+      10.41,
+      -32.45
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#B29069",
+    "hex": "#B29069",
+    "lab": [
+      62.13,
+      7.2,
+      25.54
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#2D120D",
+    "hex": "#2D120D",
+    "lab": [
+      9.11,
+      12.95,
+      8.68
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#725423",
+    "hex": "#725423",
+    "lab": [
+      37.84,
+      7.3,
+      32.55
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#EE6A12",
+    "hex": "#EE6A12",
+    "lab": [
+      60.4,
+      47.27,
+      65.57
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#64803D",
+    "hex": "#64803D",
+    "lab": [
+      50.09,
+      -21.68,
+      32.63
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#551C0E",
+    "hex": "#551C0E",
+    "lab": [
+      19.1,
+      25.86,
+      22.36
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#45592A",
+    "hex": "#45592A",
+    "lab": [
+      35.23,
+      -16.69,
+      24.57
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#F7E5AE",
+    "hex": "#F7E5AE",
+    "lab": [
+      91.18,
+      -1.71,
+      28.99
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#AD8A27",
+    "hex": "#AD8A27",
+    "lab": [
+      59.18,
+      3.52,
+      54.37
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#FA9C14",
+    "hex": "#FA9C14",
+    "lab": [
+      72.37,
+      26.29,
+      74.22
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#6D2B7D",
+    "hex": "#6D2B7D",
+    "lab": [
+      30.55,
+      42.34,
+      -33.48
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#FDDA32",
+    "hex": "#FDDA32",
+    "lab": [
+      87.56,
+      -3.37,
+      79.42
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#8E9DDA",
+    "hex": "#8E9DDA",
+    "lab": [
+      65.7,
+      8.89,
+      -32.52
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#5B373C",
+    "hex": "#5B373C",
+    "lab": [
+      27.64,
+      16.74,
+      3.71
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#A7340B",
+    "hex": "#A7340B",
+    "lab": [
+      39.07,
+      45.47,
+      47.14
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#DA18DB",
+    "hex": "#DA18DB",
+    "lab": [
+      52.48,
+      85.13,
+      -53.26
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#3E150C",
+    "hex": "#3E150C",
+    "lab": [
+      13.19,
+      19.48,
+      15.29
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#F9E87C",
+    "hex": "#F9E87C",
+    "lab": [
+      91.3,
+      -7.72,
+      53.87
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#D17D7B",
+    "hex": "#D17D7B",
+    "lab": [
+      61.38,
+      32.04,
+      15.35
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#8E5968",
+    "hex": "#8E5968",
+    "lab": [
+      43.99,
+      23.93,
+      0.62
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#C2D6E7",
+    "hex": "#C2D6E7",
+    "lab": [
+      84.69,
+      -3.47,
+      -10.64
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#788EBA",
+    "hex": "#788EBA",
+    "lab": [
+      58.96,
+      3.07,
+      -25.55
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#A17CD6",
+    "hex": "#A17CD6",
+    "lab": [
+      58.83,
+      32.41,
+      -41.1
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#453B5F",
+    "hex": "#453B5F",
+    "lab": [
+      27.48,
+      12.94,
+      -19.52
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#8F938B",
+    "hex": "#8F938B",
+    "lab": [
+      60.46,
+      -3.11,
+      3.9
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#BBD0B1",
+    "hex": "#BBD0B1",
+    "lab": [
+      81.12,
+      -12.49,
+      12.8
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#434946",
+    "hex": "#434946",
+    "lab": [
+      30.31,
+      -2.97,
+      0.67
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#954393",
+    "hex": "#954393",
+    "lab": [
+      42.07,
+      45.69,
+      -28.59
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#746D78",
+    "hex": "#746D78",
+    "lab": [
+      46.98,
+      5.0,
+      -5.15
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#6F428E",
+    "hex": "#6F428E",
+    "lab": [
+      36.39,
+      33.97,
+      -34.61
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#BAB5B8",
+    "hex": "#BAB5B8",
+    "lab": [
+      74.29,
+      2.11,
+      -0.95
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#412339",
+    "hex": "#412339",
+    "lab": [
+      18.46,
+      18.17,
+      -8.04
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#6786BC",
+    "hex": "#6786BC",
+    "lab": [
+      55.67,
+      3.78,
+      -31.95
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#9DA1A9",
+    "hex": "#9DA1A9",
+    "lab": [
+      66.17,
+      0.23,
+      -4.63
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#313568",
+    "hex": "#313568",
+    "lab": [
+      24.37,
+      13.93,
+      -30.39
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#775DBD",
+    "hex": "#775DBD",
+    "lab": [
+      46.2,
+      32.53,
+      -47.04
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#B4D6F1",
+    "hex": "#B4D6F1",
+    "lab": [
+      84.08,
+      -5.61,
+      -16.8
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#837FC1",
+    "hex": "#837FC1",
+    "lab": [
+      56.03,
+      16.42,
+      -33.64
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#B39B9B",
+    "hex": "#B39B9B",
+    "lab": [
+      66.04,
+      9.02,
+      3.41
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#383759",
+    "hex": "#383759",
+    "lab": [
+      24.68,
+      9.69,
+      -20.21
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#8D9089",
+    "hex": "#8D9089",
+    "lab": [
+      59.43,
+      -2.76,
+      3.47
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#BCCEB1",
+    "hex": "#BCCEB1",
+    "lab": [
+      80.69,
+      -11.21,
+      12.33
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#414142",
+    "hex": "#414142",
+    "lab": [
+      27.58,
+      -0.11,
+      -0.27
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#90428E",
+    "hex": "#90428E",
+    "lab": [
+      40.91,
+      44.07,
+      -27.58
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#828C7B",
+    "hex": "#828C7B",
+    "lab": [
+      56.94,
+      -7.02,
+      7.74
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#404A46",
+    "hex": "#404A46",
+    "lab": [
+      30.56,
+      -4.88,
+      0.99
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#CDC7B5",
+    "hex": "#CDC7B5",
+    "lab": [
+      80.17,
+      -0.71,
+      9.45
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#9E5098",
+    "hex": "#9E5098",
+    "lab": [
+      46.15,
+      42.54,
+      -25.22
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#6F7269",
+    "hex": "#6F7269",
+    "lab": [
+      47.64,
+      -3.01,
+      4.59
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#A8B59F",
+    "hex": "#A8B59F",
+    "lab": [
+      72.21,
+      -8.68,
+      10.03
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#232A2B",
+    "hex": "#232A2B",
+    "lab": [
+      16.3,
+      -2.87,
+      -1.79
+    ]
+  },
+  {
+    "region": "region_lang_da",
+    "name": "#A1559B",
+    "hex": "#A1559B",
+    "lab": [
+      47.54,
+      41.58,
+      -24.81
+    ]
+  }
+]

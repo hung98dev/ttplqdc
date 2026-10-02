@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: dungeon.hang_ma_tranh
   m_GUID: 8847c4f10c037014bb20c018fc68f965
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 31b239062b3c41a8bec095931afbc489
+    m_Address: asset.boss.ho_tinh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
+  m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: 4862dd4d9d769c940b78ca9e1e4b3de4, type: 2}

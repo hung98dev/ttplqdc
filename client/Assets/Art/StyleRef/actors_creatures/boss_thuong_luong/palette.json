@@ -1,0 +1,642 @@
+[
+  {
+    "region": "boss_thuong_luong",
+    "name": "#07050A",
+    "hex": "#07050A",
+    "lab": [
+      1.64,
+      0.97,
+      -1.47
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#032A4F",
+    "hex": "#032A4F",
+    "lab": [
+      16.56,
+      3.29,
+      -26.27
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#073B66",
+    "hex": "#073B66",
+    "lab": [
+      24.15,
+      1.55,
+      -29.55
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#06447D",
+    "hex": "#06447D",
+    "lab": [
+      28.53,
+      5.68,
+      -37.53
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#033366",
+    "hex": "#033366",
+    "lab": [
+      21.33,
+      7.14,
+      -34.07
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#032240",
+    "hex": "#032240",
+    "lab": [
+      12.92,
+      1.99,
+      -22.02
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#041324",
+    "hex": "#041324",
+    "lab": [
+      5.65,
+      0.38,
+      -13.31
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#032551",
+    "hex": "#032551",
+    "lab": [
+      15.25,
+      7.74,
+      -30.16
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#05314E",
+    "hex": "#05314E",
+    "lab": [
+      19.0,
+      -1.76,
+      -21.93
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#041E35",
+    "hex": "#041E35",
+    "lab": [
+      10.76,
+      -0.18,
+      -17.42
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#060615",
+    "hex": "#060615",
+    "lab": [
+      2.11,
+      2.6,
+      -6.97
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#E79A39",
+    "hex": "#E79A39",
+    "lab": [
+      69.78,
+      20.59,
+      59.78
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#0A3A4D",
+    "hex": "#0A3A4D",
+    "lab": [
+      22.34,
+      -7.73,
+      -16.23
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#2E8478",
+    "hex": "#2E8478",
+    "lab": [
+      50.14,
+      -28.78,
+      -0.91
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#0A4665",
+    "hex": "#0A4665",
+    "lab": [
+      27.69,
+      -5.47,
+      -23.49
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#085397",
+    "hex": "#085397",
+    "lab": [
+      34.94,
+      6.51,
+      -43.04
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#174852",
+    "hex": "#174852",
+    "lab": [
+      28.04,
+      -12.87,
+      -10.63
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#127181",
+    "hex": "#127181",
+    "lab": [
+      43.55,
+      -19.74,
+      -16.15
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#0C5567",
+    "hex": "#0C5567",
+    "lab": [
+      32.89,
+      -13.63,
+      -16.76
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#77401A",
+    "hex": "#77401A",
+    "lab": [
+      33.25,
+      20.45,
+      32.36
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#196261",
+    "hex": "#196261",
+    "lab": [
+      37.67,
+      -21.85,
+      -5.76
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#031837",
+    "hex": "#031837",
+    "lab": [
+      8.44,
+      5.73,
+      -22.61
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#AECBAE",
+    "hex": "#AECBAE",
+    "lab": [
+      79.0,
+      -15.24,
+      11.15
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#082736",
+    "hex": "#082736",
+    "lab": [
+      14.21,
+      -4.91,
+      -13.26
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#B06121",
+    "hex": "#B06121",
+    "lab": [
+      49.23,
+      27.35,
+      47.66
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#87A593",
+    "hex": "#87A593",
+    "lab": [
+      65.09,
+      -14.15,
+      6.11
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#3EB5AB",
+    "hex": "#3EB5AB",
+    "lab": [
+      67.17,
+      -34.91,
+      -4.56
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#115887",
+    "hex": "#115887",
+    "lab": [
+      35.61,
+      -2.79,
+      -31.98
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#116587",
+    "hex": "#116587",
+    "lab": [
+      39.73,
+      -10.63,
+      -25.5
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#06121A",
+    "hex": "#06121A",
+    "lab": [
+      5.06,
+      -1.92,
+      -6.47
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#446166",
+    "hex": "#446166",
+    "lab": [
+      39.17,
+      -9.32,
+      -6.11
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#22959E",
+    "hex": "#22959E",
+    "lab": [
+      56.36,
+      -27.16,
+      -13.58
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#F3C76A",
+    "hex": "#F3C76A",
+    "lab": [
+      82.32,
+      4.89,
+      51.83
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#42604D",
+    "hex": "#42604D",
+    "lab": [
+      37.89,
+      -15.16,
+      7.11
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#61827C",
+    "hex": "#61827C",
+    "lab": [
+      51.68,
+      -12.87,
+      -0.71
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#523320",
+    "hex": "#523320",
+    "lab": [
+      24.68,
+      11.68,
+      17.61
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#10333A",
+    "hex": "#10333A",
+    "lab": [
+      19.28,
+      -10.33,
+      -7.63
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#044B98",
+    "hex": "#044B98",
+    "lab": [
+      32.56,
+      12.05,
+      -47.47
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#0F639F",
+    "hex": "#0F639F",
+    "lab": [
+      40.33,
+      -0.28,
+      -38.9
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#1D4741",
+    "hex": "#1D4741",
+    "lab": [
+      26.99,
+      -16.15,
+      -1.03
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#F3E1B3",
+    "hex": "#F3E1B3",
+    "lab": [
+      89.94,
+      -1.05,
+      24.93
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#B78846",
+    "hex": "#B78846",
+    "lab": [
+      60.07,
+      10.91,
+      41.65
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#0A6CB7",
+    "hex": "#0A6CB7",
+    "lab": [
+      44.46,
+      3.59,
+      -46.76
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#776E60",
+    "hex": "#776E60",
+    "lab": [
+      46.75,
+      1.04,
+      8.67
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#063575",
+    "hex": "#063575",
+    "lab": [
+      23.33,
+      12.45,
+      -40.67
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#1E82BC",
+    "hex": "#1E82BC",
+    "lab": [
+      51.64,
+      -6.53,
+      -38.38
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#776138",
+    "hex": "#776138",
+    "lab": [
+      42.38,
+      3.5,
+      26.58
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#D6BC9D",
+    "hex": "#D6BC9D",
+    "lab": [
+      77.54,
+      4.63,
+      18.92
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#2C8FB2",
+    "hex": "#2C8FB2",
+    "lab": [
+      55.59,
+      -16.53,
+      -26.18
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#0D2224",
+    "hex": "#0D2224",
+    "lab": [
+      11.81,
+      -7.6,
+      -3.97
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#5E7F5D",
+    "hex": "#5E7F5D",
+    "lab": [
+      49.94,
+      -18.87,
+      15.1
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#54514B",
+    "hex": "#54514B",
+    "lab": [
+      34.69,
+      -0.13,
+      4.23
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#60B18C",
+    "hex": "#60B18C",
+    "lab": [
+      66.25,
+      -33.47,
+      11.25
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#E805EE",
+    "hex": "#E805EE",
+    "lab": [
+      55.42,
+      91.94,
+      -59.35
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#343934",
+    "hex": "#343934",
+    "lab": [
+      23.28,
+      -3.24,
+      2.41
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#110621",
+    "hex": "#110621",
+    "lab": [
+      3.25,
+      9.48,
+      -14.82
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#9D8C6C",
+    "hex": "#9D8C6C",
+    "lab": [
+      59.09,
+      1.32,
+      19.37
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#291E18",
+    "hex": "#291E18",
+    "lab": [
+      12.47,
+      4.39,
+      6.0
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#AEAD6C",
+    "hex": "#AEAD6C",
+    "lab": [
+      69.39,
+      -9.35,
+      33.46
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#371018",
+    "hex": "#371018",
+    "lab": [
+      10.76,
+      20.41,
+      4.29
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#A13198",
+    "hex": "#A13198",
+    "lab": [
+      41.26,
+      57.43,
+      -32.86
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#2F0D47",
+    "hex": "#2F0D47",
+    "lab": [
+      11.67,
+      28.63,
+      -29.09
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#CACAD1",
+    "hex": "#CACAD1",
+    "lab": [
+      81.48,
+      1.12,
+      -3.31
+    ]
+  },
+  {
+    "region": "boss_thuong_luong",
+    "name": "#7E2427",
+    "hex": "#7E2427",
+    "lab": [
+      28.89,
+      38.93,
+      20.57
+    ]
+  }
+]

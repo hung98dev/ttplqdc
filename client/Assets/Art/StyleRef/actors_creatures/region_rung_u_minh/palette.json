@@ -1,0 +1,882 @@
+[
+  {
+    "region": "region_rung_u_minh",
+    "name": "#1D1325",
+    "hex": "#1D1325",
+    "lab": [
+      7.75,
+      9.54,
+      -10.74
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#2F1A40",
+    "hex": "#2F1A40",
+    "lab": [
+      13.77,
+      19.42,
+      -20.4
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#0D090D",
+    "hex": "#0D090D",
+    "lab": [
+      2.78,
+      1.84,
+      -1.15
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#442817",
+    "hex": "#442817",
+    "lab": [
+      19.41,
+      10.92,
+      16.9
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#59341A",
+    "hex": "#59341A",
+    "lab": [
+      25.75,
+      13.68,
+      22.85
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#71431F",
+    "hex": "#71431F",
+    "lab": [
+      33.08,
+      16.31,
+      29.5
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#12120C",
+    "hex": "#12120C",
+    "lab": [
+      5.38,
+      -1.43,
+      3.15
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#332014",
+    "hex": "#332014",
+    "lab": [
+      14.32,
+      7.99,
+      11.51
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#21130D",
+    "hex": "#21130D",
+    "lab": [
+      7.38,
+      6.07,
+      5.94
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#F9E356",
+    "hex": "#F9E356",
+    "lab": [
+      89.78,
+      -8.49,
+      69.14
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#551D75",
+    "hex": "#551D75",
+    "lab": [
+      23.9,
+      41.34,
+      -39.38
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#471B10",
+    "hex": "#471B10",
+    "lab": [
+      16.22,
+      20.36,
+      17.41
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#E94E06",
+    "hex": "#E94E06",
+    "lab": [
+      54.94,
+      57.66,
+      64.22
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#FDC22E",
+    "hex": "#FDC22E",
+    "lab": [
+      81.66,
+      8.41,
+      75.49
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#D74408",
+    "hex": "#D74408",
+    "lab": [
+      50.2,
+      55.39,
+      59.46
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#2B3817",
+    "hex": "#2B3817",
+    "lab": [
+      21.49,
+      -12.04,
+      18.39
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#424F17",
+    "hex": "#424F17",
+    "lab": [
+      31.29,
+      -14.24,
+      30.25
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#607021",
+    "hex": "#607021",
+    "lab": [
+      44.36,
+      -17.59,
+      39.88
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#F76108",
+    "hex": "#F76108",
+    "lab": [
+      60.25,
+      54.33,
+      68.09
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C68A46",
+    "hex": "#C68A46",
+    "lab": [
+      62.16,
+      16.46,
+      44.56
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#72250D",
+    "hex": "#72250D",
+    "lab": [
+      26.36,
+      32.82,
+      32.29
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#9F642D",
+    "hex": "#9F642D",
+    "lab": [
+      47.76,
+      18.74,
+      39.66
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#FCA41B",
+    "hex": "#FCA41B",
+    "lab": [
+      74.34,
+      23.44,
+      74.35
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C23909",
+    "hex": "#C23909",
+    "lab": [
+      44.75,
+      52.65,
+      54.01
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#1A211C",
+    "hex": "#1A211C",
+    "lab": [
+      11.87,
+      -4.8,
+      2.5
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#352D17",
+    "hex": "#352D17",
+    "lab": [
+      18.84,
+      -0.42,
+      15.26
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#1C2715",
+    "hex": "#1C2715",
+    "lab": [
+      14.31,
+      -9.34,
+      10.48
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#BE22D2",
+    "hex": "#BE22D2",
+    "lab": [
+      47.83,
+      77.36,
+      -55.87
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#FD8B11",
+    "hex": "#FD8B11",
+    "lab": [
+      68.93,
+      36.58,
+      72.6
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#591D0D",
+    "hex": "#591D0D",
+    "lab": [
+      20.22,
+      26.97,
+      24.76
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#DE7047",
+    "hex": "#DE7047",
+    "lab": [
+      59.41,
+      40.04,
+      42.01
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#AF340A",
+    "hex": "#AF340A",
+    "lab": [
+      40.58,
+      48.12,
+      49.16
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#8A5A30",
+    "hex": "#8A5A30",
+    "lab": [
+      42.6,
+      15.31,
+      31.6
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#333B30",
+    "hex": "#333B30",
+    "lab": [
+      23.83,
+      -5.59,
+      5.58
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#4A5648",
+    "hex": "#4A5648",
+    "lab": [
+      35.17,
+      -7.48,
+      6.51
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#F4A140",
+    "hex": "#F4A140",
+    "lab": [
+      72.93,
+      22.89,
+      60.71
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#33130C",
+    "hex": "#33130C",
+    "lab": [
+      10.47,
+      15.33,
+      11.06
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#737C6C",
+    "hex": "#737C6C",
+    "lab": [
+      50.73,
+      -6.52,
+      7.51
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#463E1A",
+    "hex": "#463E1A",
+    "lab": [
+      26.34,
+      -2.44,
+      23.07
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#9C2D0B",
+    "hex": "#9C2D0B",
+    "lab": [
+      36.03,
+      44.57,
+      44.13
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#241F13",
+    "hex": "#241F13",
+    "lab": [
+      11.87,
+      -0.09,
+      9.11
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#86280A",
+    "hex": "#86280A",
+    "lab": [
+      30.94,
+      39.11,
+      38.98
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#939721",
+    "hex": "#939721",
+    "lab": [
+      60.36,
+      -15.44,
+      56.65
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#F2BB54",
+    "hex": "#F2BB54",
+    "lab": [
+      79.11,
+      9.09,
+      58.17
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#879978",
+    "hex": "#879978",
+    "lab": [
+      61.17,
+      -12.92,
+      15.51
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#F8750D",
+    "hex": "#F8750D",
+    "lab": [
+      63.89,
+      45.86,
+      69.58
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#665D2B",
+    "hex": "#665D2B",
+    "lab": [
+      39.22,
+      -3.33,
+      29.5
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C65E4B",
+    "hex": "#C65E4B",
+    "lab": [
+      52.52,
+      39.97,
+      30.81
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#415C36",
+    "hex": "#415C36",
+    "lab": [
+      36.02,
+      -17.86,
+      18.59
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#BCBEAA",
+    "hex": "#BCBEAA",
+    "lab": [
+      76.43,
+      -4.3,
+      10.18
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#F38B47",
+    "hex": "#F38B47",
+    "lab": [
+      68.07,
+      34.13,
+      52.56
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#D75A16",
+    "hex": "#D75A16",
+    "lab": [
+      53.79,
+      46.1,
+      57.98
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#924818",
+    "hex": "#924818",
+    "lab": [
+      39.29,
+      28.14,
+      41.1
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#83762A",
+    "hex": "#83762A",
+    "lab": [
+      49.57,
+      -4.62,
+      42.42
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#B6D9A2",
+    "hex": "#B6D9A2",
+    "lab": [
+      82.98,
+      -21.25,
+      23.29
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#EE7533",
+    "hex": "#EE7533",
+    "lab": [
+      62.63,
+      42.47,
+      55.77
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#E9851E",
+    "hex": "#E9851E",
+    "lab": [
+      65.06,
+      32.23,
+      65.33
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#614B33",
+    "hex": "#614B33",
+    "lab": [
+      33.53,
+      5.87,
+      17.58
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#B8641B",
+    "hex": "#B8641B",
+    "lab": [
+      51.19,
+      28.89,
+      52.43
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#3E333C",
+    "hex": "#3E333C",
+    "lab": [
+      22.69,
+      7.16,
+      -3.94
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#1E3537",
+    "hex": "#1E3537",
+    "lab": [
+      20.6,
+      -8.66,
+      -3.97
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#622557",
+    "hex": "#622557",
+    "lab": [
+      25.51,
+      34.65,
+      -16.99
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#917690",
+    "hex": "#917690",
+    "lab": [
+      52.84,
+      15.32,
+      -10.01
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C062B4",
+    "hex": "#C062B4",
+    "lab": [
+      55.34,
+      48.47,
+      -26.72
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#B0B59A",
+    "hex": "#B0B59A",
+    "lab": [
+      72.56,
+      -6.31,
+      12.87
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#626258",
+    "hex": "#626258",
+    "lab": [
+      41.17,
+      -1.54,
+      5.64
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#885A80",
+    "hex": "#885A80",
+    "lab": [
+      44.39,
+      24.96,
+      -13.39
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#D515D6",
+    "hex": "#D515D6",
+    "lab": [
+      51.35,
+      84.03,
+      -52.31
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#858670",
+    "hex": "#858670",
+    "lab": [
+      55.39,
+      -4.48,
+      11.93
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C4CFB4",
+    "hex": "#C4CFB4",
+    "lab": [
+      81.52,
+      -8.4,
+      12.12
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#654D5F",
+    "hex": "#654D5F",
+    "lab": [
+      35.9,
+      13.29,
+      -6.23
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#CD22CB",
+    "hex": "#CD22CB",
+    "lab": [
+      50.06,
+      79.04,
+      -48.44
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#899275",
+    "hex": "#899275",
+    "lab": [
+      59.25,
+      -8.83,
+      14.39
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#635460",
+    "hex": "#635460",
+    "lab": [
+      37.44,
+      8.61,
+      -4.73
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#DBD3BF",
+    "hex": "#DBD3BF",
+    "lab": [
+      84.79,
+      -0.95,
+      10.95
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#BE2CBC",
+    "hex": "#BE2CBC",
+    "lab": [
+      47.47,
+      71.56,
+      -43.97
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#8C8A7B",
+    "hex": "#8C8A7B",
+    "lab": [
+      57.32,
+      -1.84,
+      8.2
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C9D4B3",
+    "hex": "#C9D4B3",
+    "lab": [
+      83.43,
+      -9.55,
+      15.17
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#4C3C46",
+    "hex": "#4C3C46",
+    "lab": [
+      27.33,
+      8.88,
+      -3.67
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#B731B0",
+    "hex": "#B731B0",
+    "lab": [
+      46.1,
+      66.61,
+      -39.26
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C1C3AE",
+    "hex": "#C1C3AE",
+    "lab": [
+      78.12,
+      -4.05,
+      10.09
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#7E8666",
+    "hex": "#7E8666",
+    "lab": [
+      54.41,
+      -8.8,
+      16.24
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#625260",
+    "hex": "#625260",
+    "lab": [
+      37.01,
+      9.18,
+      -5.18
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C62DC5",
+    "hex": "#C62DC5",
+    "lab": [
+      49.33,
+      74.07,
+      -45.94
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#92987E",
+    "hex": "#92987E",
+    "lab": [
+      61.66,
+      -6.98,
+      12.61
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#635460",
+    "hex": "#635460",
+    "lab": [
+      37.46,
+      8.69,
+      -4.61
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#E8E4C7",
+    "hex": "#E8E4C7",
+    "lab": [
+      90.12,
+      -3.3,
+      14.36
+    ]
+  },
+  {
+    "region": "region_rung_u_minh",
+    "name": "#C62DC5",
+    "hex": "#C62DC5",
+    "lab": [
+      49.33,
+      74.07,
+      -45.94
+    ]
+  }
+]

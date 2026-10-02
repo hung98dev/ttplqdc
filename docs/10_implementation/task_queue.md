@@ -95,9 +95,9 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-068` | Trusted CI, Post-Merge Guard & Foundation Exit | `NOT_STARTED` | IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106 | `audit_gates.md`, `agent_execution_protocol.md` |
 | `IMP-069` | Server Composition Root and Lifecycle Wiring | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-049, IMP-050, IMP-051, IMP-054, IMP-055, IMP-062, IMP-077, IMP-084, IMP-085, IMP-086, IMP-087, IMP-089, IMP-090, IMP-092, IMP-093, IMP-103 | `../04_architecture/backend.md`, `../04_architecture/service_boundaries.md` |
 | `IMP-070` | Asset Provenance Register & Validator | `DONE` | IMP-063, IMP-101 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
-| `IMP-071` | Player Character & Class Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md` |
+| `IMP-071` | Player Character & Class Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md` |
 | `IMP-072` | Normal-World Environment Art & Scenes | `NOT_STARTED` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md` |
-| `IMP-073` | UI, Item, Equipment & Skill VFX Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md` |
+| `IMP-073` | UI, Item, Equipment & Skill VFX Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-074` | Cosmetic Presentation Art | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-075` | SFX & Folklore BGM Production | `IN_PROGRESS` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-076` | Production Asset Coverage, Rights & Release Audit | `NOT_STARTED` | IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
@@ -128,7 +128,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-101` | URP 2D Rendering & Lighting Setup | `DONE` | IMP-000 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
 | `IMP-102` | Entitlement Claims & Store Client | `NOT_STARTED` | IMP-010, IMP-053, IMP-066 | `../03_systems/account_storage.md`, `../03_systems/monetization.md` |
 | `IMP-103` | Account Deletion & Data Export API / Account UI | `NOT_STARTED` | IMP-056, IMP-066 | `../07_security/data_protection.md`, `../07_security/auth.md` |
-| `IMP-104` | Monster, Boss & Spirit Beast Art | `NOT_STARTED` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md` |
+| `IMP-104` | Monster, Boss & Spirit Beast Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md` |
 | `IMP-105` | Dungeon, Finale & Competitive Environment Art | `NOT_STARTED` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md` |
 | `IMP-106` | Verify CI Wall-Time Reduction via Caching | `DONE` | IMP-000 | `audit_gates.md`, `agent_execution_protocol.md` |
 
@@ -4147,7 +4147,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-070/"
 
 ## `IMP-071` — Player Character & Class Art
 id: IMP-071
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-071"
 branch: "imp/IMP-071-class-art"
 claimed_at: "2026-10-02T10:14:13Z"
@@ -4186,10 +4186,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-071/"
 
 ## `IMP-104` — Monster, Boss & Spirit Beast Art
 id: IMP-104
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: DONE
+claimed_by: "devin-imp-104"
+branch: "imp/IMP-104-creature-art"
+claimed_at: "2026-10-02T11:00:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md`, `../07_content/boss_catalog.md`, `../07_content/spirit_beast_catalog.md`, `../04_architecture/physics_geometry_contract.md`]
@@ -4303,7 +4303,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-105/"
 
 ## `IMP-073` — UI, Item, Equipment & Skill VFX Art
 id: IMP-073
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-073"
 branch: "imp/IMP-073-ui-vfx-art"
 claimed_at: "2026-10-02T07:00:00Z"

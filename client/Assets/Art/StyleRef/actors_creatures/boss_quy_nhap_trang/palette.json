@@ -1,0 +1,642 @@
+[
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#2E323F",
+    "hex": "#2E323F",
+    "lab": [
+      21.01,
+      1.59,
+      -8.35
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#191C25",
+    "hex": "#191C25",
+    "lab": [
+      10.44,
+      0.9,
+      -6.1
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#1E222D",
+    "hex": "#1E222D",
+    "lab": [
+      13.4,
+      1.19,
+      -7.4
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#3F4350",
+    "hex": "#3F4350",
+    "lab": [
+      28.6,
+      1.59,
+      -8.15
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#101218",
+    "hex": "#101218",
+    "lab": [
+      5.61,
+      0.67,
+      -4.23
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#09080A",
+    "hex": "#09080A",
+    "lab": [
+      2.39,
+      0.43,
+      -0.36
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#ACABAC",
+    "hex": "#ACABAC",
+    "lab": [
+      70.18,
+      0.19,
+      -0.16
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#020203",
+    "hex": "#020203",
+    "lab": [
+      0.56,
+      0.28,
+      -0.38
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#272B34",
+    "hex": "#272B34",
+    "lab": [
+      17.6,
+      0.86,
+      -6.44
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#4B4F5A",
+    "hex": "#4B4F5A",
+    "lab": [
+      33.5,
+      1.22,
+      -7.12
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#616571",
+    "hex": "#616571",
+    "lab": [
+      42.86,
+      1.12,
+      -7.22
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#969AA3",
+    "hex": "#969AA3",
+    "lab": [
+      63.41,
+      0.51,
+      -5.41
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#0D0E12",
+    "hex": "#0D0E12",
+    "lab": [
+      4.03,
+      0.47,
+      -1.9
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#777C8C",
+    "hex": "#777C8C",
+    "lab": [
+      52.16,
+      1.54,
+      -9.08
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#383B44",
+    "hex": "#383B44",
+    "lab": [
+      25.01,
+      0.91,
+      -5.82
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#12151F",
+    "hex": "#12151F",
+    "lab": [
+      6.87,
+      1.74,
+      -7.19
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#89898C",
+    "hex": "#89898C",
+    "lab": [
+      57.24,
+      0.53,
+      -1.65
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#242837",
+    "hex": "#242837",
+    "lab": [
+      16.37,
+      2.2,
+      -10.11
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#353B4D",
+    "hex": "#353B4D",
+    "lab": [
+      24.98,
+      2.67,
+      -11.91
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#53596D",
+    "hex": "#53596D",
+    "lab": [
+      38.16,
+      2.43,
+      -12.23
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#17191D",
+    "hex": "#17191D",
+    "lab": [
+      8.7,
+      0.61,
+      -3.36
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#616D87",
+    "hex": "#616D87",
+    "lab": [
+      45.87,
+      1.94,
+      -16.22
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#424A60",
+    "hex": "#424A60",
+    "lab": [
+      31.41,
+      2.68,
+      -14.17
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#747275",
+    "hex": "#747275",
+    "lab": [
+      48.29,
+      1.32,
+      -1.29
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#181B2B",
+    "hex": "#181B2B",
+    "lab": [
+      10.23,
+      3.4,
+      -11.08
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#BDC1C5",
+    "hex": "#BDC1C5",
+    "lab": [
+      77.74,
+      -0.42,
+      -2.6
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#8590A7",
+    "hex": "#8590A7",
+    "lab": [
+      59.65,
+      0.93,
+      -13.35
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#232428",
+    "hex": "#232428",
+    "lab": [
+      14.19,
+      0.82,
+      -2.76
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#363E5D",
+    "hex": "#363E5D",
+    "lab": [
+      26.81,
+      5.51,
+      -19.34
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#59595B",
+    "hex": "#59595B",
+    "lab": [
+      37.84,
+      0.82,
+      -1.47
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#D0D2D1",
+    "hex": "#D0D2D1",
+    "lab": [
+      84.05,
+      -1.07,
+      0.2
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#2C3047",
+    "hex": "#2C3047",
+    "lab": [
+      20.52,
+      4.34,
+      -14.49
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#2E2F59",
+    "hex": "#2E2F59",
+    "lab": [
+      21.37,
+      11.91,
+      -25.38
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#1A1313",
+    "hex": "#1A1313",
+    "lab": [
+      6.78,
+      3.14,
+      1.43
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#333235",
+    "hex": "#333235",
+    "lab": [
+      21.09,
+      1.23,
+      -1.65
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#4C4340",
+    "hex": "#4C4340",
+    "lab": [
+      29.31,
+      2.79,
+      3.26
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#7488AB",
+    "hex": "#7488AB",
+    "lab": [
+      56.37,
+      1.31,
+      -20.95
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#07040D",
+    "hex": "#07040D",
+    "lab": [
+      1.43,
+      2.25,
+      -3.31
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#A2AEC4",
+    "hex": "#A2AEC4",
+    "lab": [
+      70.9,
+      0.33,
+      -12.31
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#485477",
+    "hex": "#485477",
+    "lab": [
+      36.18,
+      4.41,
+      -21.24
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#20243F",
+    "hex": "#20243F",
+    "lab": [
+      15.19,
+      6.4,
+      -17.43
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#3A2F28",
+    "hex": "#3A2F28",
+    "lab": [
+      20.33,
+      3.39,
+      6.6
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#695644",
+    "hex": "#695644",
+    "lab": [
+      37.92,
+      5.35,
+      13.28
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#281F1B",
+    "hex": "#281F1B",
+    "lab": [
+      12.6,
+      3.46,
+      4.32
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#5D6E99",
+    "hex": "#5D6E99",
+    "lab": [
+      46.6,
+      5.25,
+      -25.78
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#88735E",
+    "hex": "#88735E",
+    "lab": [
+      49.84,
+      4.87,
+      14.54
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#B09E8B",
+    "hex": "#B09E8B",
+    "lab": [
+      66.14,
+      3.34,
+      12.25
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#523B2D",
+    "hex": "#523B2D",
+    "lab": [
+      27.0,
+      8.2,
+      12.86
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#52477F",
+    "hex": "#52477F",
+    "lab": [
+      33.55,
+      18.52,
+      -30.09
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#4C2970",
+    "hex": "#4C2970",
+    "lab": [
+      24.69,
+      31.09,
+      -34.79
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#171026",
+    "hex": "#171026",
+    "lab": [
+      6.14,
+      9.29,
+      -13.71
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#7A3991",
+    "hex": "#7A3991",
+    "lab": [
+      36.01,
+      42.84,
+      -36.84
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#B78E61",
+    "hex": "#B78E61",
+    "lab": [
+      61.85,
+      9.62,
+      29.9
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#381B21",
+    "hex": "#381B21",
+    "lab": [
+      14.04,
+      15.27,
+      2.57
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#120717",
+    "hex": "#120717",
+    "lab": [
+      3.14,
+      6.39,
+      -7.09
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#36194E",
+    "hex": "#36194E",
+    "lab": [
+      15.78,
+      25.66,
+      -27.21
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#24173A",
+    "hex": "#24173A",
+    "lab": [
+      11.14,
+      15.91,
+      -20.26
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#E9E7E0",
+    "hex": "#E9E7E0",
+    "lab": [
+      91.54,
+      -0.27,
+      3.38
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#5E2836",
+    "hex": "#5E2836",
+    "lab": [
+      24.19,
+      25.98,
+      2.94
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#9A20A7",
+    "hex": "#9A20A7",
+    "lab": [
+      39.14,
+      64.18,
+      -45.2
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#A97EBB",
+    "hex": "#A97EBB",
+    "lab": [
+      58.95,
+      28.07,
+      -25.86
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#8A4838",
+    "hex": "#8A4838",
+    "lab": [
+      38.31,
+      26.57,
+      21.79
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#322731",
+    "hex": "#322731",
+    "lab": [
+      17.22,
+      7.58,
+      -4.66
+    ]
+  },
+  {
+    "region": "boss_quy_nhap_trang",
+    "name": "#E80DEA",
+    "hex": "#E80DEA",
+    "lab": [
+      55.41,
+      90.91,
+      -57.48
+    ]
+  }
+]
