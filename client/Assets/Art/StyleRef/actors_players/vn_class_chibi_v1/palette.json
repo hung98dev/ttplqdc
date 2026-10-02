@@ -1,0 +1,27 @@
+{
+  "pack_id": "actors_players/vn_class_chibi_v1",
+  "version": 1,
+  "lighting_frame": "top-front-left key; 3 value tiers + occlusion; warm rim; colored outline",
+  "colors": [
+    { "id": "bone",      "hex": "#F4EFE3", "role": "light-highlight / eyes-teeth / paper-lit" },
+    { "id": "paper",     "hex": "#EAD9B4", "role": "talisman paper / light cloth" },
+    { "id": "skin_hi",   "hex": "#F0C8A0", "role": "skin key-lit" },
+    { "id": "skin",      "hex": "#E2A87E", "role": "skin mid" },
+    { "id": "skin_sh",   "hex": "#B97A56", "role": "skin shade" },
+    { "id": "metal",     "hex": "#9AA3AE", "role": "iron/steel lit" },
+    { "id": "metal_sh",  "hex": "#5D646E", "role": "iron/steel shade" },
+    { "id": "kim_main",  "hex": "#3E4E6E", "role": "KIM cloth (indigo)" },
+    { "id": "kim_sh",    "hex": "#28334B", "role": "KIM cloth shade" },
+    { "id": "moc_main",  "hex": "#4E7D5B", "role": "MOC cloth (herb jade)" },
+    { "id": "moc_sh",    "hex": "#2F5340", "role": "MOC cloth shade" },
+    { "id": "thuy_main", "hex": "#3F8B99", "role": "THUY cloth (river teal)" },
+    { "id": "thuy_sh",   "hex": "#275863", "role": "THUY cloth shade" },
+    { "id": "hoa_main",  "hex": "#A9442F", "role": "HOA cloth (ember red)" },
+    { "id": "hoa_sh",    "hex": "#6E2B1E", "role": "HOA cloth shade" },
+    { "id": "tho_main",  "hex": "#8C6B38", "role": "THO cloth (earth bronze)" },
+    { "id": "tho_sh",    "hex": "#5C4524", "role": "THO cloth shade / leather" },
+    { "id": "hair",      "hex": "#241C18", "role": "hair / ink-dark features" },
+    { "id": "hair_hi",   "hex": "#4A3428", "role": "hair rim / warm dark cloth" },
+    { "id": "outline",   "hex": "#3B2A24", "role": "colored outline (never black)" }
+  ]
+}
