@@ -1,0 +1,275 @@
+package main
+
+import (
+	"fmt"
+	"path/filepath"
+	"strings"
+
+	"thinhthan/internal/config"
+)
+
+// FamilyStore indexes emitted definition families by name.
+type FamilyStore struct {
+	Families map[string]*config.Family
+}
+
+// Get returns (creating) the named family. Families are declared with their
+// composite key columns on first use.
+func (s *FamilyStore) Get(name string, keyCols ...string) *config.Family {
+	if s.Families == nil {
+		s.Families = map[string]*config.Family{}
+	}
+	f, ok := s.Families[name]
+	if !ok {
+		f = config.NewFamily(name, keyCols...)
+		s.Families[name] = f
+	}
+	return f
+}
+
+// Ctx is the compile-time context drivers share.
+type Ctx struct {
+	Defs     *FamilyStore
+	Params   *FamilyStore // validation_parameters families
+	Geom     *FamilyStore // geometry family
+	Diags    *config.Diagnostics
+	Cov      *config.CoverageReport
+	Refs     *NamespaceIndex
+	Rules    map[string]int
+	Catalogs map[string]*File
+	Dir      string
+
+	// Warnings are emitted into the report alongside errors; the contract
+	// requires zero of both for PASS, so drivers use them only for
+	// documented count anomalies that a later stage resolves.
+	Warnings *config.Diagnostics
+}
+
+// Emit inserts a record and records its coverage; duplicate keys produce
+// DUPLICATE_PRIMARY_KEY with both locations.
+func (c *Ctx) Emit(cat string, section string, fam string, key []config.Value, fields map[string]config.Value, line int) {
+	f := c.Defs.Get(fam)
+	if dup, old := f.Put(key, fields); dup {
+		c.Diags.Addf(config.DiagDuplicatePrimaryKey, cat, line,
+			"family %s key %s duplicates earlier row", fam, config.KeyString(key))
+		_ = old
+		return
+	}
+	if c.Cov != nil {
+		c.Cov.Add(cat, section, fam, config.KeyString(key), config.CoverageEmittedField)
+	}
+}
+
+// EmitParam emits into validation_parameters families.
+func (c *Ctx) EmitParam(cat, section, fam string, key []config.Value, fields map[string]config.Value, line int) {
+	f := c.Params.Get(fam)
+	if dup, _ := f.Put(key, fields); dup {
+		c.Diags.Addf(config.DiagDuplicatePrimaryKey, cat, line,
+			"params family %s key %s duplicates earlier row", fam, config.KeyString(key))
+		return
+	}
+	if c.Cov != nil {
+		c.Cov.Add(cat, section, "validation_parameters."+fam, config.KeyString(key), config.CoverageEmittedField)
+	}
+}
+
+// EmitGeom emits into the geometry family.
+func (c *Ctx) EmitGeom(cat, section string, key []config.Value, fields map[string]config.Value, line int) {
+	f := c.Geom.Get("spaces", "space_id")
+	if dup, _ := f.Put(key, fields); dup {
+		c.Diags.Addf(config.DiagDuplicatePrimaryKey, cat, line,
+			"geometry spaces key %s duplicates earlier row", config.KeyString(key))
+		return
+	}
+	if c.Cov != nil {
+		c.Cov.Add(cat, section, "geometry.spaces", config.KeyString(key), config.CoverageEmittedField)
+	}
+}
+
+// Driver compiles one catalog file.
+type Driver struct {
+	Catalog string
+	// Compile consumes the file's registered sections and emits records.
+	Compile func(c *Ctx, f *File, r *Registry)
+	// NoRegistryTable marks README (manifest contract is prose-declared).
+	NoRegistryTable bool
+}
+
+// Drivers in contract §3 manifest order; each Compile is assigned as its
+// driver lands (a nil Compile is a SOURCE_SCHEMA_MISSING diagnostic).
+var Drivers = []Driver{
+	{Catalog: "monster_catalog.md"},
+	{Catalog: "boss_catalog.md"},
+	{Catalog: "class_skill_catalog.md"},
+	{Catalog: "equipment_catalog.md"},
+	{Catalog: "item_catalog.md"},
+	{Catalog: "drop_tables.md"},
+	{Catalog: "crafting_catalog.md"},
+	{Catalog: "npc_shop_catalog.md"},
+	{Catalog: "quest_catalog.md"},
+	{Catalog: "dungeon_catalog.md"},
+	{Catalog: "world_route_catalog.md"},
+	{Catalog: "map_spawn_catalog.md"},
+	{Catalog: "atlas_catalog.md"},
+	{Catalog: "cosmetic_catalog.md"},
+	{Catalog: "soul_catalog.md"},
+	{Catalog: "build_catalog.md"},
+	{Catalog: "spirit_beast_catalog.md"},
+	{Catalog: "economy_catalog.md"},
+	{Catalog: "world_event_catalog.md"},
+	{Catalog: "encounter_catalog.md"},
+	{Catalog: "progression_route.md"},
+	{Catalog: "balance_validation.md"},
+	{Catalog: "integration_validation.md"},
+	{Catalog: "README.md", Compile: compileManifest, NoRegistryTable: true},
+}
+
+// runPipeline loads all manifest catalogs, parses registries, runs drivers,
+// resolves references, runs validation, emits snapshot.
+func runPipeline(c *Ctx) error {
+	// load files
+	for _, d := range Drivers {
+		path := filepath.Join(c.Dir, d.Catalog)
+		f, err := LoadFile(path, c.Diags)
+		if err != nil {
+			continue // diagnostic already recorded
+		}
+		c.Catalogs[d.Catalog] = f
+	}
+	if c.Diags.HasErrors() {
+		return fmt.Errorf("load failed")
+	}
+
+	// registries
+	regs := map[string]*Registry{}
+	for _, d := range Drivers {
+		f := c.Catalogs[d.Catalog]
+		r, err := LoadRegistry(f)
+		if err != nil {
+			if !d.NoRegistryTable {
+				continue
+			}
+			r = &Registry{Catalog: f.Name}
+		}
+		regs[d.Catalog] = r
+	}
+
+	// drivers in manifest order (README last: budget cross-check needs
+	// emitted counts — run manifest structural pass first, budget later)
+	for _, d := range Drivers {
+		if d.Compile == nil {
+			c.Diags.Addf(config.DiagSourceSchemaMissing, c.Dir, 0,
+				"no driver registered for %s", d.Catalog)
+			continue
+		}
+		d.Compile(c, c.Catalogs[d.Catalog], regs[d.Catalog])
+	}
+	if c.Diags.HasErrors() {
+		return fmt.Errorf("driver compile failed")
+	}
+
+	// expansions (S12), references (S13), validation (S14)
+	runExpansions(c)
+	if c.Diags.HasErrors() {
+		return fmt.Errorf("expansion failed")
+	}
+	if err := resolveReferences(c); err != nil {
+		return err
+	}
+	runValidation(c)
+	return nil
+}
+
+// ---------------------------------------------------------------------
+// shared section/table resolution helpers
+// ---------------------------------------------------------------------
+
+// resolveSections resolves a binding's section path against f. When the
+// path contains '/', each part is tried as a heading ancestry step.
+func resolveSections(f *File, path string) []*Section {
+	// path uses ' > ' ancestry or a single title
+	if sec := f.Root.SectionAt(path); sec != nil {
+		return []*Section{sec}
+	}
+	// try last path segment anywhere
+	last := path
+	if i := strings.LastIndex(path, ">"); i >= 0 {
+		last = strings.TrimSpace(path[i+1:])
+	}
+	return f.Root.FindSections(last)
+}
+
+// tableInSection finds the table whose header signature matches sig
+// (comma-separated header names) inside sec (descendants included).
+func tableInSection(sec *Section, sig string, f *File, line int, diags *config.Diagnostics) *Block {
+	var hits []*Block
+	var walk func(s *Section)
+	walk = func(s *Section) {
+		for _, b := range s.Content {
+			if b.Kind != BlockTable {
+				continue
+			}
+			if headerSig(b) == sig {
+				hits = append(hits, b)
+			}
+		}
+		for _, c := range s.Children {
+			walk(c)
+		}
+	}
+	walk(sec)
+	if len(hits) == 0 {
+		diags.Addf(config.DiagSourceSchemaMissing, f.Path, sec.Line,
+			"no table with signature %q under %q", sig, sec.Title)
+		return nil
+	}
+	if len(hits) > 1 {
+		diags.Addf(config.DiagAmbiguousSource, f.Path, hits[1].Line,
+			"%d tables match signature %q under %q", len(hits), sig, sec.Title)
+	}
+	return hits[0]
+}
+
+func headerSig(b *Block) string {
+	parts := make([]string, len(b.Headers))
+	for i, h := range b.Headers {
+		parts[i] = strings.TrimSpace(h)
+	}
+	return strings.Join(parts, ",")
+}
+
+// allTables returns every table under sec (descendants included).
+func allTables(sec *Section) []*Block {
+	var out []*Block
+	var walk func(s *Section)
+	walk = func(s *Section) {
+		for _, b := range s.Content {
+			if b.Kind == BlockTable {
+				out = append(out, b)
+			}
+		}
+		for _, c := range s.Children {
+			walk(c)
+		}
+	}
+	walk(sec)
+	return out
+}
+
+// allFences returns every fence under sec (descendants included).
+func allFences(sec *Section, lang string) []*Block {
+	var out []*Block
+	var walk func(s *Section)
+	walk = func(s *Section) {
+		for _, b := range s.Content {
+			if b.Kind == BlockFence && (lang == "" || b.Lang == lang) {
+				out = append(out, b)
+			}
+		}
+		for _, c := range s.Children {
+			walk(c)
+		}
+	}
+	walk(sec)
+	return out
+}
