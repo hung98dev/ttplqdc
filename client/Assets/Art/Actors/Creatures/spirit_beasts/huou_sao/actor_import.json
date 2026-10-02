@@ -1,0 +1,47 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "SPIRIT_BEAST",
+  "technique": "frame_by_frame",
+  "clips": [
+    "idle",
+    "move",
+    "cast"
+  ],
+  "cell_ref": [
+    64,
+    64
+  ],
+  "texture_ref": [
+    128,
+    128
+  ],
+  "assets": {
+    "huou_sao_idle.png": {
+      "profile": "SPIRIT_BEAST",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "cast"
+      ]
+    },
+    "huou_sao_move.png": {
+      "profile": "SPIRIT_BEAST",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "cast"
+      ]
+    },
+    "huou_sao_cast.png": {
+      "profile": "SPIRIT_BEAST",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "cast"
+      ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "WORLD_BOSS",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_quet_nuoc",
+    "attack_manh_vay",
+    "attack_fragment",
+    "attack_phun_mau_vay",
+    "attack_cuoc_bung",
+    "hit",
+    "defeat",
+    "phase_transition_2"
+  ],
+  "cell_ref": [
+    320,
+    320
+  ],
+  "texture_ref": [
+    640,
+    640
+  ],
+  "assets": {
+    "ngu_tinh_parts.png": {
+      "profile": "WORLD_BOSS",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_quet_nuoc",
+        "attack_manh_vay",
+        "attack_fragment",
+        "attack_phun_mau_vay",
+        "attack_cuoc_bung",
+        "hit",
+        "defeat",
+        "phase_transition_2"
+      ]
+    }
+  }
+}

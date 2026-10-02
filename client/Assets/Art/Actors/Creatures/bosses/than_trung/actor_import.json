@@ -1,0 +1,47 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "WORLD_BOSS",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_lang_da",
+    "attack_rung_u_minh",
+    "attack_ben_nuoc_den",
+    "attack_deo_may",
+    "attack_thanh_co",
+    "attack_nui_thieng",
+    "hit",
+    "defeat",
+    "phase_transition_2",
+    "phase_transition_3"
+  ],
+  "cell_ref": [
+    320,
+    320
+  ],
+  "texture_ref": [
+    640,
+    640
+  ],
+  "assets": {
+    "than_trung_parts.png": {
+      "profile": "WORLD_BOSS",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_lang_da",
+        "attack_rung_u_minh",
+        "attack_ben_nuoc_den",
+        "attack_deo_may",
+        "attack_thanh_co",
+        "attack_nui_thieng",
+        "hit",
+        "defeat",
+        "phase_transition_2",
+        "phase_transition_3"
+      ]
+    }
+  }
+}

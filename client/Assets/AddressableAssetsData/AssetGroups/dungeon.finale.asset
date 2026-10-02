@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: dungeon.finale
   m_GUID: c01e8f1b81a0a2e459acf08c37a8bc9b
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1656741c9ad74bb8b94305f2b4b692bf
+    m_Address: asset.boss.than_trung.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

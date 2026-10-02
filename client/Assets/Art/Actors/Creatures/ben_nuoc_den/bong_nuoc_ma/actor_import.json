@@ -1,0 +1,95 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_SMALL",
+  "technique": "frame_by_frame",
+  "clips": [
+    "idle",
+    "move",
+    "attack_shot",
+    "attack_burst",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    64,
+    64
+  ],
+  "texture_ref": [
+    128,
+    128
+  ],
+  "assets": {
+    "bong_nuoc_ma_idle.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "attack_burst",
+        "hit",
+        "defeat"
+      ]
+    },
+    "bong_nuoc_ma_move.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "attack_burst",
+        "hit",
+        "defeat"
+      ]
+    },
+    "bong_nuoc_ma_attack_shot.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "attack_burst",
+        "hit",
+        "defeat"
+      ]
+    },
+    "bong_nuoc_ma_attack_burst.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "attack_burst",
+        "hit",
+        "defeat"
+      ]
+    },
+    "bong_nuoc_ma_hit.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "attack_burst",
+        "hit",
+        "defeat"
+      ]
+    },
+    "bong_nuoc_ma_defeat.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "attack_burst",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

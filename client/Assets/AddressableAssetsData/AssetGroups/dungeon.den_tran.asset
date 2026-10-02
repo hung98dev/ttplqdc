@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: dungeon.den_tran
   m_GUID: ab0a72cc378fc7f4abc43da340765b66
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 93443d6800504e17a2adb1e4ac6109b6
+    m_Address: asset.boss.ho_tinh_chin_duoi.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

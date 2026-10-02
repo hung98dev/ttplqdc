@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: dungeon.mieu_ba_trong_rung
   m_GUID: f010fa3b9468afd49bedb41e96c8ab85
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 9ba311b02d584987be0b90265238d875
+    m_Address: asset.boss.moc_tinh_da.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

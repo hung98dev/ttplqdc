@@ -1,0 +1,682 @@
+[
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#0E2746",
+    "hex": "#0E2746",
+    "lab": [
+      15.35,
+      2.93,
+      -22.07
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#050509",
+    "hex": "#050509",
+    "lab": [
+      1.53,
+      0.62,
+      -1.57
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#13355A",
+    "hex": "#13355A",
+    "lab": [
+      21.8,
+      2.07,
+      -25.75
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#0D1D35",
+    "hex": "#0D1D35",
+    "lab": [
+      10.64,
+      2.85,
+      -17.77
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#10253A",
+    "hex": "#10253A",
+    "lab": [
+      13.89,
+      -0.18,
+      -16.18
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#123563",
+    "hex": "#123563",
+    "lab": [
+      22.4,
+      5.69,
+      -30.66
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#195576",
+    "hex": "#195576",
+    "lab": [
+      34.12,
+      -6.77,
+      -24.19
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#307886",
+    "hex": "#307886",
+    "lab": [
+      46.77,
+      -17.76,
+      -14.36
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#10254F",
+    "hex": "#10254F",
+    "lab": [
+      15.43,
+      8.45,
+      -28.04
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#184D77",
+    "hex": "#184D77",
+    "lab": [
+      31.39,
+      -1.17,
+      -29.18
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#266760",
+    "hex": "#266760",
+    "lab": [
+      39.52,
+      -22.22,
+      -2.48
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#0F1F2B",
+    "hex": "#0F1F2B",
+    "lab": [
+      10.78,
+      -2.12,
+      -10.42
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#11314D",
+    "hex": "#11314D",
+    "lab": [
+      19.29,
+      -0.81,
+      -20.58
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#154363",
+    "hex": "#154363",
+    "lab": [
+      27.02,
+      -3.51,
+      -23.09
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#0E1D3F",
+    "hex": "#0E1D3F",
+    "lab": [
+      11.64,
+      6.95,
+      -23.25
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#193942",
+    "hex": "#193942",
+    "lab": [
+      22.12,
+      -8.8,
+      -9.02
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#112E3E",
+    "hex": "#112E3E",
+    "lab": [
+      17.48,
+      -4.61,
+      -13.73
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#496160",
+    "hex": "#496160",
+    "lab": [
+      39.15,
+      -8.72,
+      -2.84
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#1E485A",
+    "hex": "#1E485A",
+    "lab": [
+      28.67,
+      -8.68,
+      -14.66
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#215D6D",
+    "hex": "#215D6D",
+    "lab": [
+      36.38,
+      -13.59,
+      -14.68
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#1E4C51",
+    "hex": "#1E4C51",
+    "lab": [
+      29.65,
+      -14.18,
+      -7.41
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#687562",
+    "hex": "#687562",
+    "lab": [
+      47.7,
+      -8.71,
+      8.75
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#A3BB9A",
+    "hex": "#A3BB9A",
+    "lab": [
+      73.22,
+      -14.2,
+      14.11
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#091120",
+    "hex": "#091120",
+    "lab": [
+      5.1,
+      1.73,
+      -11.26
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#090D17",
+    "hex": "#090D17",
+    "lab": [
+      3.68,
+      0.9,
+      -6.18
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#143B51",
+    "hex": "#143B51",
+    "lab": [
+      23.13,
+      -5.28,
+      -17.53
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#226885",
+    "hex": "#226885",
+    "lab": [
+      41.01,
+      -11.31,
+      -22.37
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#368B87",
+    "hex": "#368B87",
+    "lab": [
+      53.08,
+      -26.35,
+      -5.35
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#3899AA",
+    "hex": "#3899AA",
+    "lab": [
+      58.68,
+      -22.59,
+      -17.12
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#49A789",
+    "hex": "#49A789",
+    "lab": [
+      62.36,
+      -35.25,
+      7.28
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#0B1429",
+    "hex": "#0B1429",
+    "lab": [
+      6.72,
+      3.85,
+      -15.59
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#144577",
+    "hex": "#144577",
+    "lab": [
+      28.67,
+      3.66,
+      -33.39
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#49BABB",
+    "hex": "#49BABB",
+    "lab": [
+      69.66,
+      -31.43,
+      -9.72
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#799A91",
+    "hex": "#799A91",
+    "lab": [
+      60.89,
+      -13.09,
+      0.82
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#E3DB9C",
+    "hex": "#E3DB9C",
+    "lab": [
+      86.71,
+      -6.84,
+      32.05
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#6EDABF",
+    "hex": "#6EDABF",
+    "lab": [
+      80.4,
+      -37.61,
+      3.68
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#222D2F",
+    "hex": "#222D2F",
+    "lab": [
+      17.61,
+      -4.11,
+      -2.78
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#745F41",
+    "hex": "#745F41",
+    "lab": [
+      41.68,
+      4.29,
+      20.21
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#4B3F2A",
+    "hex": "#4B3F2A",
+    "lab": [
+      27.3,
+      1.9,
+      14.44
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#172E64",
+    "hex": "#172E64",
+    "lab": [
+      20.3,
+      11.8,
+      -34.44
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#2C82A4",
+    "hex": "#2C82A4",
+    "lab": [
+      50.98,
+      -14.15,
+      -25.23
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#3A7C5D",
+    "hex": "#3A7C5D",
+    "lab": [
+      47.01,
+      -28.76,
+      10.19
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#E2EDC6",
+    "hex": "#E2EDC6",
+    "lab": [
+      92.19,
+      -10.21,
+      17.64
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#206795",
+    "hex": "#206795",
+    "lab": [
+      41.65,
+      -5.38,
+      -31.15
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#859566",
+    "hex": "#859566",
+    "lab": [
+      59.31,
+      -13.9,
+      22.97
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#AA8A5B",
+    "hex": "#AA8A5B",
+    "lab": [
+      59.53,
+      5.7,
+      29.77
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#2E4A3B",
+    "hex": "#2E4A3B",
+    "lab": [
+      28.73,
+      -14.34,
+      5.39
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#4C4345",
+    "hex": "#4C4345",
+    "lab": [
+      29.34,
+      4.28,
+      0.26
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#7AD08E",
+    "hex": "#7AD08E",
+    "lab": [
+      76.74,
+      -39.82,
+      24.57
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#CEE4E1",
+    "hex": "#CEE4E1",
+    "lab": [
+      89.05,
+      -8.09,
+      -0.94
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#352A25",
+    "hex": "#352A25",
+    "lab": [
+      18.18,
+      4.09,
+      5.14
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#0D1331",
+    "hex": "#0D1331",
+    "lab": [
+      7.02,
+      8.33,
+      -20.58
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#1A5C97",
+    "hex": "#1A5C97",
+    "lab": [
+      38.08,
+      1.99,
+      -38.21
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#1A4281",
+    "hex": "#1A4281",
+    "lab": [
+      28.64,
+      10.28,
+      -39.62
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#D3D578",
+    "hex": "#D3D578",
+    "lab": [
+      83.26,
+      -13.95,
+      45.25
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#358DCC",
+    "hex": "#358DCC",
+    "lab": [
+      56.29,
+      -5.26,
+      -39.72
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#1A1918",
+    "hex": "#1A1918",
+    "lab": [
+      8.96,
+      -0.12,
+      0.88
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#58BEE6",
+    "hex": "#58BEE6",
+    "lab": [
+      72.61,
+      -17.94,
+      -28.85
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#1965BA",
+    "hex": "#1965BA",
+    "lab": [
+      42.91,
+      9.7,
+      -50.9
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#890993",
+    "hex": "#890993",
+    "lab": [
+      33.24,
+      62.43,
+      -42.91
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#E20AE7",
+    "hex": "#E20AE7",
+    "lab": [
+      54.2,
+      89.71,
+      -57.36
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#7D6F85",
+    "hex": "#7D6F85",
+    "lab": [
+      48.82,
+      9.59,
+      -9.76
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#3C0F49",
+    "hex": "#3C0F49",
+    "lab": [
+      14.26,
+      31.64,
+      -26.2
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#342B77",
+    "hex": "#342B77",
+    "lab": [
+      22.96,
+      26.58,
+      -42.06
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#464737",
+    "hex": "#464737",
+    "lab": [
+      29.53,
+      -3.28,
+      9.39
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#899E59",
+    "hex": "#899E59",
+    "lab": [
+      62.13,
+      -19.25,
+      33.73
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#82B5D1",
+    "hex": "#82B5D1",
+    "lab": [
+      71.11,
+      -9.66,
+      -19.6
+    ]
+  },
+  {
+    "region": "boss_ngu_tinh",
+    "name": "#BDE4D1",
+    "hex": "#BDE4D1",
+    "lab": [
+      87.45,
+      -16.42,
+      5.27
+    ]
+  }
+]

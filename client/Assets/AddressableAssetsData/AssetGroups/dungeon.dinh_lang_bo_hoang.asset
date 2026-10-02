@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: dungeon.dinh_lang_bo_hoang
   m_GUID: 06ab3485c2329f1408f48f6b36dfc3cf
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: b7e312e590e84b2b9391030d09f8a806
+    m_Address: asset.boss.quy_nhap_trang.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

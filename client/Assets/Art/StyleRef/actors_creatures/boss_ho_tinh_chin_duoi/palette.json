@@ -1,0 +1,642 @@
+[
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#D7BDCE",
+    "hex": "#D7BDCE",
+    "lab": [
+      79.11,
+      12.21,
+      -5.42
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#0C0408",
+    "hex": "#0C0408",
+    "lab": [
+      1.57,
+      2.7,
+      -0.81
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#BD2625",
+    "hex": "#BD2625",
+    "lab": [
+      41.72,
+      58.24,
+      39.47
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#826C89",
+    "hex": "#826C89",
+    "lab": [
+      48.53,
+      14.42,
+      -12.7
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#FDF1E9",
+    "hex": "#FDF1E9",
+    "lab": [
+      95.78,
+      2.95,
+      5.3
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#FCE6DA",
+    "hex": "#FCE6DA",
+    "lab": [
+      92.78,
+      5.45,
+      8.72
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#C9AEC4",
+    "hex": "#C9AEC4",
+    "lab": [
+      73.93,
+      13.52,
+      -7.48
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#917A9C",
+    "hex": "#917A9C",
+    "lab": [
+      54.47,
+      15.13,
+      -15.0
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#F7DDD8",
+    "hex": "#F7DDD8",
+    "lab": [
+      90.03,
+      8.23,
+      5.64
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#8D1B1C",
+    "hex": "#8D1B1C",
+    "lab": [
+      30.76,
+      46.79,
+      30.09
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#705E7B",
+    "hex": "#705E7B",
+    "lab": [
+      42.48,
+      13.45,
+      -13.75
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#BC9494",
+    "hex": "#BC9494",
+    "lab": [
+      64.92,
+      15.43,
+      5.4
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#B08C9C",
+    "hex": "#B08C9C",
+    "lab": [
+      62.03,
+      16.37,
+      -3.05
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#E4B99D",
+    "hex": "#E4B99D",
+    "lab": [
+      78.32,
+      11.63,
+      19.94
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#A57C70",
+    "hex": "#A57C70",
+    "lab": [
+      55.74,
+      14.19,
+      12.96
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#645377",
+    "hex": "#645377",
+    "lab": [
+      38.22,
+      14.86,
+      -17.97
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#FCE9E4",
+    "hex": "#FCE9E4",
+    "lab": [
+      93.64,
+      5.52,
+      4.79
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#927286",
+    "hex": "#927286",
+    "lab": [
+      51.75,
+      15.99,
+      -5.75
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#EBD0BB",
+    "hex": "#EBD0BB",
+    "lab": [
+      85.29,
+      5.99,
+      13.88
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#E83626",
+    "hex": "#E83626",
+    "lab": [
+      51.75,
+      66.12,
+      51.3
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#9D869D",
+    "hex": "#9D869D",
+    "lab": [
+      58.6,
+      13.06,
+      -9.21
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#B69BB2",
+    "hex": "#B69BB2",
+    "lab": [
+      67.05,
+      13.99,
+      -8.05
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#DDC1AF",
+    "hex": "#DDC1AF",
+    "lab": [
+      79.96,
+      7.24,
+      12.47
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#7E6B91",
+    "hex": "#7E6B91",
+    "lab": [
+      48.11,
+      15.32,
+      -18.17
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#C7A99C",
+    "hex": "#C7A99C",
+    "lab": [
+      71.5,
+      8.6,
+      10.79
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#F3D1C9",
+    "hex": "#F3D1C9",
+    "lab": [
+      86.49,
+      10.38,
+      8.36
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#896667",
+    "hex": "#896667",
+    "lab": [
+      46.89,
+      14.16,
+      5.05
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#6B1B18",
+    "hex": "#6B1B18",
+    "lab": [
+      23.73,
+      35.09,
+      22.64
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#7E5D6D",
+    "hex": "#7E5D6D",
+    "lab": [
+      43.35,
+      16.19,
+      -3.88
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#E8CED5",
+    "hex": "#E8CED5",
+    "lab": [
+      85.07,
+      10.47,
+      -0.21
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#E0BEBD",
+    "hex": "#E0BEBD",
+    "lab": [
+      79.79,
+      12.02,
+      5.18
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#511017",
+    "hex": "#511017",
+    "lab": [
+      16.37,
+      29.93,
+      13.75
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#DFB1A8",
+    "hex": "#DFB1A8",
+    "lab": [
+      75.99,
+      15.85,
+      10.69
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#A27D83",
+    "hex": "#A27D83",
+    "lab": [
+      56.12,
+      14.94,
+      2.57
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#592D2E",
+    "hex": "#592D2E",
+    "lab": [
+      24.26,
+      20.29,
+      8.65
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#C89983",
+    "hex": "#C89983",
+    "lab": [
+      66.94,
+      14.55,
+      18.41
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#CEA8AD",
+    "hex": "#CEA8AD",
+    "lab": [
+      72.33,
+      14.83,
+      2.88
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#1E0E1A",
+    "hex": "#1E0E1A",
+    "lab": [
+      5.97,
+      10.3,
+      -4.87
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#35222B",
+    "hex": "#35222B",
+    "lab": [
+      15.97,
+      10.62,
+      -2.07
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#FDF9F6",
+    "hex": "#FDF9F6",
+    "lab": [
+      98.16,
+      0.6,
+      2.16
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#421B35",
+    "hex": "#421B35",
+    "lab": [
+      16.66,
+      22.73,
+      -8.11
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#F3DFCA",
+    "hex": "#F3DFCA",
+    "lab": [
+      89.82,
+      3.94,
+      12.5
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#883038",
+    "hex": "#883038",
+    "lab": [
+      33.22,
+      38.49,
+      15.12
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#594559",
+    "hex": "#594559",
+    "lab": [
+      32.1,
+      12.55,
+      -8.65
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#350F13",
+    "hex": "#350F13",
+    "lab": [
+      10.15,
+      19.74,
+      6.85
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#A48CAF",
+    "hex": "#A48CAF",
+    "lab": [
+      61.49,
+      15.52,
+      -14.77
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#67484B",
+    "hex": "#67484B",
+    "lab": [
+      34.05,
+      13.83,
+      3.34
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#D59D97",
+    "hex": "#D59D97",
+    "lab": [
+      69.76,
+      19.92,
+      11.29
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#B4363A",
+    "hex": "#B4363A",
+    "lab": [
+      42.35,
+      50.83,
+      27.39
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#EFC4B8",
+    "hex": "#EFC4B8",
+    "lab": [
+      82.58,
+      13.35,
+      11.99
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#7F4E41",
+    "hex": "#7F4E41",
+    "lab": [
+      38.54,
+      18.96,
+      16.59
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#BEA9B0",
+    "hex": "#BEA9B0",
+    "lab": [
+      71.16,
+      8.81,
+      -1.08
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#9D5126",
+    "hex": "#9D5126",
+    "lab": [
+      43.13,
+      28.25,
+      38.52
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#EF8535",
+    "hex": "#EF8535",
+    "lab": [
+      66.19,
+      34.93,
+      58.47
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#4A395D",
+    "hex": "#4A395D",
+    "lab": [
+      27.38,
+      15.68,
+      -18.68
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#C07A6D",
+    "hex": "#C07A6D",
+    "lab": [
+      58.18,
+      25.62,
+      18.66
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#D9695C",
+    "hex": "#D9695C",
+    "lab": [
+      57.78,
+      42.65,
+      28.44
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#FCE1A9",
+    "hex": "#FCE1A9",
+    "lab": [
+      90.44,
+      1.26,
+      30.84
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#E69F6E",
+    "hex": "#E69F6E",
+    "lab": [
+      71.33,
+      21.39,
+      35.99
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#F8BD57",
+    "hex": "#F8BD57",
+    "lab": [
+      80.19,
+      11.19,
+      58.33
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#FDF5D8",
+    "hex": "#FDF5D8",
+    "lab": [
+      96.38,
+      -1.77,
+      14.64
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#A35765",
+    "hex": "#A35765",
+    "lab": [
+      46.36,
+      32.57,
+      6.13
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#DF14DC",
+    "hex": "#DF14DC",
+    "lab": [
+      53.29,
+      86.7,
+      -52.84
+    ]
+  },
+  {
+    "region": "boss_ho_tinh_chin_duoi",
+    "name": "#952883",
+    "hex": "#952883",
+    "lab": [
+      37.1,
+      54.47,
+      -26.29
+    ]
+  }
+]

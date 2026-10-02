@@ -1,0 +1,722 @@
+[
+  {
+    "region": "region_thanh_co",
+    "name": "#120F10",
+    "hex": "#120F10",
+    "lab": [
+      4.72,
+      1.29,
+      -0.16
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#0D0908",
+    "hex": "#0D0908",
+    "lab": [
+      2.74,
+      0.82,
+      0.88
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#171518",
+    "hex": "#171518",
+    "lab": [
+      7.2,
+      1.19,
+      -1.74
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#1E1C20",
+    "hex": "#1E1C20",
+    "lab": [
+      10.73,
+      1.97,
+      -2.47
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#302F35",
+    "hex": "#302F35",
+    "lab": [
+      19.78,
+      1.76,
+      -3.44
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#2B1D3F",
+    "hex": "#2B1D3F",
+    "lab": [
+      14.03,
+      15.91,
+      -19.36
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#916237",
+    "hex": "#916237",
+    "lab": [
+      45.82,
+      14.28,
+      31.86
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#20162C",
+    "hex": "#20162C",
+    "lab": [
+      9.44,
+      10.98,
+      -13.45
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#B47739",
+    "hex": "#B47739",
+    "lab": [
+      55.26,
+      17.86,
+      42.68
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#795C3D",
+    "hex": "#795C3D",
+    "lab": [
+      41.33,
+      7.73,
+      22.57
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#26252C",
+    "hex": "#26252C",
+    "lab": [
+      15.11,
+      2.39,
+      -4.68
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#292424",
+    "hex": "#292424",
+    "lab": [
+      14.89,
+      2.3,
+      0.89
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#351A53",
+    "hex": "#351A53",
+    "lab": [
+      16.12,
+      25.93,
+      -29.66
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#5F462B",
+    "hex": "#5F462B",
+    "lab": [
+      31.72,
+      7.28,
+      20.1
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#33322D",
+    "hex": "#33322D",
+    "lab": [
+      20.69,
+      -0.93,
+      3.38
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#DB9441",
+    "hex": "#DB9441",
+    "lab": [
+      66.87,
+      19.27,
+      53.13
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#171120",
+    "hex": "#171120",
+    "lab": [
+      6.22,
+      7.02,
+      -9.41
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#AE8653",
+    "hex": "#AE8653",
+    "lab": [
+      58.68,
+      9.2,
+      33.45
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#4F3725",
+    "hex": "#4F3725",
+    "lab": [
+      25.4,
+      7.9,
+      15.47
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#473B31",
+    "hex": "#473B31",
+    "lab": [
+      25.73,
+      3.56,
+      8.01
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#724325",
+    "hex": "#724325",
+    "lab": [
+      33.29,
+      17.27,
+      26.59
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#3E3D44",
+    "hex": "#3E3D44",
+    "lab": [
+      26.08,
+      2.34,
+      -4.32
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#392B1B",
+    "hex": "#392B1B",
+    "lab": [
+      18.63,
+      4.38,
+      12.66
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#625142",
+    "hex": "#625142",
+    "lab": [
+      35.71,
+      4.27,
+      11.52
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#040303",
+    "hex": "#040303",
+    "lab": [
+      0.81,
+      0.24,
+      -0.0
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#2A1F16",
+    "hex": "#2A1F16",
+    "lab": [
+      12.8,
+      3.5,
+      8.27
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#110D18",
+    "hex": "#110D18",
+    "lab": [
+      4.22,
+      3.61,
+      -5.66
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#4A4945",
+    "hex": "#4A4945",
+    "lab": [
+      31.05,
+      -0.66,
+      2.64
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#562785",
+    "hex": "#562785",
+    "lab": [
+      27.04,
+      40.68,
+      -44.17
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#09090F",
+    "hex": "#09090F",
+    "lab": [
+      2.68,
+      0.97,
+      -2.5
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#1F1916",
+    "hex": "#1F1916",
+    "lab": [
+      9.28,
+      2.08,
+      3.41
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#8C4820",
+    "hex": "#8C4820",
+    "lab": [
+      38.44,
+      25.91,
+      35.64
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#EDBD67",
+    "hex": "#EDBD67",
+    "lab": [
+      79.3,
+      7.26,
+      49.25
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#6A6764",
+    "hex": "#6A6764",
+    "lab": [
+      43.73,
+      0.55,
+      1.73
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#94785F",
+    "hex": "#94785F",
+    "lab": [
+      52.57,
+      6.89,
+      18.28
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#542C16",
+    "hex": "#542C16",
+    "lab": [
+      22.7,
+      16.62,
+      21.99
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#445663",
+    "hex": "#445663",
+    "lab": [
+      35.49,
+      -3.23,
+      -9.8
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#253143",
+    "hex": "#253143",
+    "lab": [
+      19.88,
+      0.81,
+      -13.21
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#1C2525",
+    "hex": "#1C2525",
+    "lab": [
+      13.77,
+      -3.86,
+      -1.61
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#151C28",
+    "hex": "#151C28",
+    "lab": [
+      10.13,
+      0.42,
+      -8.81
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#3D1F16",
+    "hex": "#3D1F16",
+    "lab": [
+      15.58,
+      13.57,
+      12.39
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#CAA67D",
+    "hex": "#CAA67D",
+    "lab": [
+      70.48,
+      7.29,
+      26.3
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#94C1E3",
+    "hex": "#94C1E3",
+    "lab": [
+      76.14,
+      -7.07,
+      -21.36
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#97958B",
+    "hex": "#97958B",
+    "lab": [
+      61.43,
+      -1.04,
+      5.25
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#B96426",
+    "hex": "#B96426",
+    "lab": [
+      51.22,
+      29.86,
+      48.01
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#3A2A27",
+    "hex": "#3A2A27",
+    "lab": [
+      18.79,
+      6.74,
+      5.07
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#472036",
+    "hex": "#472036",
+    "lab": [
+      18.57,
+      21.95,
+      -5.85
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#261312",
+    "hex": "#261312",
+    "lab": [
+      8.24,
+      9.68,
+      4.08
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#141411",
+    "hex": "#141411",
+    "lab": [
+      6.36,
+      -0.76,
+      1.93
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#2A3F43",
+    "hex": "#2A3F43",
+    "lab": [
+      25.17,
+      -7.07,
+      -5.25
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#5B7C9C",
+    "hex": "#5B7C9C",
+    "lab": [
+      50.83,
+      -3.2,
+      -20.91
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#972BC5",
+    "hex": "#972BC5",
+    "lab": [
+      41.83,
+      65.77,
+      -58.75
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#CDC8BC",
+    "hex": "#CDC8BC",
+    "lab": [
+      80.62,
+      -0.03,
+      6.62
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#5E4675",
+    "hex": "#5E4675",
+    "lab": [
+      34.04,
+      20.25,
+      -23.37
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#4E7F83",
+    "hex": "#4E7F83",
+    "lab": [
+      50.02,
+      -15.3,
+      -7.66
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#D9DBA6",
+    "hex": "#D9DBA6",
+    "lab": [
+      86.14,
+      -9.11,
+      25.79
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#5D94D6",
+    "hex": "#5D94D6",
+    "lab": [
+      60.11,
+      1.26,
+      -39.28
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#2E4B6E",
+    "hex": "#2E4B6E",
+    "lab": [
+      31.12,
+      0.85,
+      -23.72
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#732E3A",
+    "hex": "#732E3A",
+    "lab": [
+      29.17,
+      31.51,
+      8.05
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#9C71CE",
+    "hex": "#9C71CE",
+    "lab": [
+      55.31,
+      35.64,
+      -42.15
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#606A53",
+    "hex": "#606A53",
+    "lab": [
+      43.36,
+      -8.55,
+      11.71
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#8DC0AB",
+    "hex": "#8DC0AB",
+    "lab": [
+      73.85,
+      -21.12,
+      5.15
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#AB8CB8",
+    "hex": "#AB8CB8",
+    "lab": [
+      62.36,
+      19.95,
+      -18.39
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#726522",
+    "hex": "#726522",
+    "lab": [
+      42.72,
+      -2.91,
+      38.3
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#5B82B7",
+    "hex": "#5B82B7",
+    "lab": [
+      53.56,
+      1.45,
+      -31.95
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#88716F",
+    "hex": "#88716F",
+    "lab": [
+      49.82,
+      8.61,
+      4.91
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#B7CDD8",
+    "hex": "#B7CDD8",
+    "lab": [
+      81.18,
+      -5.44,
+      -7.83
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#8850BA",
+    "hex": "#8850BA",
+    "lab": [
+      44.89,
+      43.94,
+      -47.35
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#838E98",
+    "hex": "#838E98",
+    "lab": [
+      58.57,
+      -2.0,
+      -6.31
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#5965AA",
+    "hex": "#5965AA",
+    "lab": [
+      44.69,
+      14.62,
+      -38.59
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#8D655E",
+    "hex": "#8D655E",
+    "lab": [
+      46.69,
+      15.47,
+      10.2
+    ]
+  },
+  {
+    "region": "region_thanh_co",
+    "name": "#A7D1F1",
+    "hex": "#A7D1F1",
+    "lab": [
+      81.93,
+      -6.23,
+      -20.45
+    ]
+  }
+]

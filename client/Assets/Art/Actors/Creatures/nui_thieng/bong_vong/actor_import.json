@@ -1,0 +1,35 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_ELITE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_basic",
+    "attack_control_hit",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    160,
+    192
+  ],
+  "texture_ref": [
+    320,
+    384
+  ],
+  "assets": {
+    "bong_vong_parts.png": {
+      "profile": "MONSTER_ELITE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_basic",
+        "attack_control_hit",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

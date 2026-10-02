@@ -1,0 +1,77 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_SMALL",
+  "technique": "frame_by_frame",
+  "clips": [
+    "idle",
+    "move",
+    "attack_shot",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    64,
+    64
+  ],
+  "texture_ref": [
+    128,
+    128
+  ],
+  "assets": {
+    "coc_thanh_tinh_idle.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "hit",
+        "defeat"
+      ]
+    },
+    "coc_thanh_tinh_move.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "hit",
+        "defeat"
+      ]
+    },
+    "coc_thanh_tinh_attack_shot.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "hit",
+        "defeat"
+      ]
+    },
+    "coc_thanh_tinh_hit.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "hit",
+        "defeat"
+      ]
+    },
+    "coc_thanh_tinh_defeat.png": {
+      "profile": "MONSTER_SMALL",
+      "technique": "frame_by_frame",
+      "clips": [
+        "idle",
+        "move",
+        "attack_shot",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

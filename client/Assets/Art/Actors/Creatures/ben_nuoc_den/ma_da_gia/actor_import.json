@@ -1,0 +1,37 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_ELITE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_basic",
+    "attack_control_hit",
+    "attack_slam",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    160,
+    192
+  ],
+  "texture_ref": [
+    320,
+    384
+  ],
+  "assets": {
+    "ma_da_gia_parts.png": {
+      "profile": "MONSTER_ELITE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_basic",
+        "attack_control_hit",
+        "attack_slam",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

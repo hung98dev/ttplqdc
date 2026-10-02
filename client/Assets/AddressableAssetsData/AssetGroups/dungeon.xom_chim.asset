@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: dungeon.xom_chim
   m_GUID: c80513f59065488448213e933882be2f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 86d8d257c9d04be0a60b90906243adaa
+    m_Address: asset.boss.thuong_luong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

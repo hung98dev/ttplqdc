@@ -1,0 +1,35 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_MEDIUM",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_basic",
+    "attack_zone",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    96,
+    128
+  ],
+  "texture_ref": [
+    192,
+    256
+  ],
+  "assets": {
+    "vong_nui_gia_parts.png": {
+      "profile": "MONSTER_MEDIUM",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_basic",
+        "attack_zone",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

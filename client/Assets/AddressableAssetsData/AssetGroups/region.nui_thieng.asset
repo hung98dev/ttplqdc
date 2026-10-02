@@ -14,7 +14,113 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: region.nui_thieng
   m_GUID: 22b066f0155ca89408a179c68ba6a033
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 4f39d58de9e0461eb72b5ce4fd7ef073
+    m_Address: asset.boss.ngu_tinh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0202c32db76b48c6956ca54c8e308c75
+    m_Address: asset.monster.nui_thieng.bong_vong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a167db6c16df4ba58c8d0e6bff21f8e0
+    m_Address: asset.monster.nui_thieng.dai_vong_linh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8802e02601914ef58707229065b7d18f
+    m_Address: asset.monster.nui_thieng.hon_binh_co.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a140b98694d946b991c208490ac4d154
+    m_Address: asset.monster.nui_thieng.linh_ve.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4aef74d256d74cf38a6169794e894430
+    m_Address: asset.monster.nui_thieng.ma_nui.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c973e7ca333449b6af63e13ba219a168
+    m_Address: asset.monster.nui_thieng.ngu_tinh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3087794e128246408ffba1e2ff0c5a28
+    m_Address: asset.monster.nui_thieng.than_rung_dem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19234e52d0344562b9d6991d902d2acd
+    m_Address: asset.monster.nui_thieng.than_trung.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89ec49ed890f4cea810c94ea4a456272
+    m_Address: asset.monster.nui_thieng.tinh_nui_gia.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f3c5af9ec2f494cb6ecbf4071529dcc
+    m_Address: asset.monster.nui_thieng.tinh_thu.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd24071f076f42f0b5fe5ea91b8f0089
+    m_Address: asset.monster.nui_thieng.vong_linh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13b6b145f881467e9127a23003a72970
+    m_Address: asset.npc.nui_thieng.ambient_day.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee2b78093db34ea8bcadfb7fa7ff1325
+    m_Address: asset.npc.nui_thieng.ambient_night.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b826f1b9ce6e496f980b650e9e905640
+    m_Address: asset.npc.nui_thieng.cho_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee00a298c7464fa192aa38ff94061b1f
+    m_Address: asset.npc.nui_thieng.cho_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a35437c5053a49109b216e640ed824ee
+    m_Address: asset.npc.nui_thieng.dem_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69bd93b44cf3464c88a5880e8bf85359
+    m_Address: asset.npc.nui_thieng.dem_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2983864aefc34f7980aa48b26a0fda5a
+    m_Address: asset.npc.nui_thieng.hang_quan.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30a02e61707a4d31913f953e46d7ac99
+    m_Address: asset.npc.nui_thieng.nguoi_dan_duong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92a1546e1ffe436cb364c28eeb1e6efb
+    m_Address: asset.npc.nui_thieng.tho_nghe.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:
