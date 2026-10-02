@@ -8,6 +8,7 @@ tools/
 artifacts/
 verify-report*.json
 verify-pre-unity*.json
+content_compile_report.json
 *.csproj
 *.sln
 *.suo
