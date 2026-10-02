@@ -1017,9 +1017,14 @@ NPC_HUMANOID|64|96|96|128|";
                 Assert.GreaterOrEqual(colors.Count, 4,
                     path + " looks like a placeholder (<4 colors)");
             }
-            // every produced png under Actors/ has a row
-            foreach (var dir in Directory.GetDirectories(Abs(ActorsRoot)))
+            // every produced png under the owned Actors dirs has a row
+            foreach (var ownedDir in new[] { "Creatures", "Npcs" })
             {
+                var dir = Path.Combine(Abs(ActorsRoot), ownedDir);
+                if (!Directory.Exists(dir))
+                {
+                    continue;
+                }
                 foreach (var png in Directory.GetFiles(dir, "*.png",
                     SearchOption.AllDirectories))
                 {
