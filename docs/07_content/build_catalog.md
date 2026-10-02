@@ -8,6 +8,25 @@ The visible naming/visual language follows Vietnamese village, craft, landscape,
 
 No resonance or Formation is an inventory collectible. They unlock as derived patterns when the owning level requirement is met and equipped elements/relations satisfy the matcher.
 
+## Compiler Source Schema
+
+The source below uses the registered Markdown grammar in `../06_data/content_authoring_contract.md`. Matcher fences use the catalog-local match grammar declared below (`PATTERN`, `RELATION >= N`, element subsequences `A -> B -> ...`); `priority:` lines and `Effect:` bullet lists under a definition heading are registered fields; witness bitstrings are validation records. Effect text follows the typed stat/effect stages from `../01_gameplay/stats.md`.
+
+| source_section | output / key | typed inputs | defaults / finite rule |
+|---|---|---|---|
+| `Shared Rules` / `text` fence + bullets | unlock + selection rules | assignment fence: `Meridian unlock = Level 20`, `Formation unlock = Level 25`; selection rule (priority desc, then stable ID lexical asc) | Patterns read equipment state, never mutate it; coexistence = at most one winner per group; FULL_RING suppresses EXPLICIT. |
+| `Meridian — 15 Resonances` / ring fence + `Meridian — 15 Resonances / Launch Equipment Domain` fence + `Meridian — 15 Resonances / Coexistence Groups` fence | ring topology + domain | ring fence: ordered `slot -> slot -> ... -> first` cycle; domain fence `slot SetA_element SetB_element` rows; group list fence | 8-BASIC-slot ring; 2^8=256 legal sequences per tier; 4 coexistence groups THEME/FLOW/EXPLICIT/FULL_RING. |
+| `Meridian — 15 Resonances / THEME — 5` / table `resonance_id, Display, priority, Matcher, Effect` + witness fence | resonance / `resonance_id` | resonance_id:id; Display:string; priority:int; Matcher:catalog-local `ELEMENT >= N` (element:enum, N:int); Effect:typed payload text | 5 THEME resonances; witness fence `ELEMENT bitstring` = required selected-winner fixture (0=Set A,1=Set B, canonical BASIC order). |
+| `Meridian — 15 Resonances / FLOW — 5` / table + witness fence | resonance / `resonance_id` | same; Matcher:`RELATION chain >= N` or `total DONG_HE links >= N` (relation:enum SINH_OUT,SINH_IN,KHAC_OUT,KHAC_IN,DONG_HE) | 5 FLOW resonances; witnesses per flow relation. |
+| `Meridian — 15 Resonances / EXPLICIT — 3` / table `resonance_id, Display, priority, Required subsequence, Effect` + witness fence | resonance / `resonance_id` | Required subsequence:ordered(relation) (cyclic, may wrap .08→.01) | 3 EXPLICIT resonances; witness valid only after FULL_RING suppression. |
+| `Meridian — 15 Resonances / FULL_RING — 2` / each backticked `resonance.full_ring.*` heading / `priority:` line + matcher fence + `Effect:` bullets | resonance / `resonance_id` | priority:int inline; catalog-local matcher fence: `FULL_RING` tag + `RELATION [+ RELATION] link count >= N` / `<= N` lines; `Effect:` bullet list typed payload lines | 2 FULL_RING resonances; all 8 BASIC slots required; canonical witness bitstring per heading. |
+| `Formations — 12` / ring fence + `Formations — 12 / Launch Equipment Domain` fence | ring topology + domain | ring fence: 6-slot cycle `costume -> ... -> costume`; domain fence same shape | 6-ADVANCED-slot ring; 2^6=64 legal sequences; only one Formation active per loadout. |
+| `Formations — 12 / Element Emphasis — 5` / table `formation_id, Display, priority, Matcher, Effect` + witness fence | formation / `formation_id` | formation_id:id; Matcher:`ELEMENT >= N`; witness `ELEMENT 6-bit string` (0=A,1=B) | 5 emphasis formations. |
+| `Formations — 12 / Generation Relation Patterns — 2` + `Formations — 12 / Control Relation Patterns — 2` + `Formations — 12 / Paired Motifs — 2` / each backticked `formation.*` heading / `priority` line + matcher fence + `Effect:` bullets | formation / `formation_id` | matcher fence: `RELATION_COUNT_PATTERN` lines (`REL >= N`, `REL = 0`) or paired `ELEMENT >= N` lines; Effect bullets typed | 2+2+2 formations; each carries canonical witness bitstring. |
+| `Formations — 12 / Rare Explicit — 1` / `formation.trong_dong_sau_canh` heading / `priority` line + sequence fence + `Effect:` bullets | formation / `formation_id` | catalog-local sequence fence: `ELEMENT -> ELEMENT -> ...` (6 terms) + `allow_rotation = bool` + `allow_reflection = bool` | EXPLICIT_SEQUENCE on the 6-slot ring; canonical witness `111001`. |
+| `Reachability Validation` / `text` fence | reachability assertion | `for every resonance_id: selected_group_witness_count >= 1`; same for formation selected_winner | Static enumeration of 256 BASIC + 64 ADVANCED sequences through the real selection algorithm; unreachable/always-shadowed matcher fails activation. |
+| `Power Budget Verification — ADR-0037` / `Meridian:` + `Formation:` + totals blocks | budget verification records | re-point rows (old slot text → new slot text); totals statements | Verification records only; no new slots; ≤10% unconditional global final-damage budget. |
+
 ## Shared Rules
 ```text
 Meridian unlock = Level 20

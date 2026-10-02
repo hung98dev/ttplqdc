@@ -349,7 +349,9 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
         with:
           path: client/Library
-          key: unity-library-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}-${{ hashFiles('client/Packages/manifest.json', 'client/Packages/packages-lock.json', 'client/ProjectSettings/**', 'client/Assets/**/csc.rsp') }}
+          # Source-scoped like verify.yml — no restore-keys; a prefix match
+          # would restore another branch's Library.
+          key: unity-library-${{ runner.os }}-${{ env.UNITY_WINDOWS_EDITOR_SHA256 }}-${{ hashFiles('client/Packages/manifest.json', 'client/Packages/packages-lock.json', 'client/ProjectSettings/**', 'client/Assets/**/csc.rsp', 'client/Assets/**') }}
           # push: lookup-only (no download; miss -> materialize + save).
           # schedule: full restore keeps the 7-day eviction from firing.
           lookup-only: ${{ github.event_name == 'push' }}
