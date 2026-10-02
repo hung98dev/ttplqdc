@@ -123,8 +123,8 @@ var Drivers = []Driver{
 	{Catalog: "world_event_catalog.md", Compile: compileWorldEvent},
 	{Catalog: "encounter_catalog.md", Compile: compileEncounter},
 	{Catalog: "progression_route.md", Compile: compileProgressionRoute},
-	{Catalog: "balance_validation.md"},
-	{Catalog: "integration_validation.md"},
+	{Catalog: "balance_validation.md", Compile: compileBalanceValidation},
+	{Catalog: "integration_validation.md", Compile: compileIntegrationValidation},
 	{Catalog: "README.md", Compile: compileManifest, NoRegistryTable: true},
 }
 
