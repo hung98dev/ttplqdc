@@ -3,6 +3,8 @@ package pgtest
 import (
 	"context"
 	"errors"
+	"fmt"
+	"os"
 	"strings"
 	"testing"
 	"time"
@@ -44,7 +46,7 @@ func TestStartsEdbBinariesWhenDsnUnset(t *testing.T) {
 	if !strings.HasPrefix(srv.DSN(), "postgres://") {
 		t.Fatalf("unexpected DSN %q", srv.DSN())
 	}
-	dsn, cleanup, err := srv.NewDB(ctx, "pgtest_smoke_"+time.Now().Format("150405"))
+	dsn, cleanup, err := srv.NewDB(ctx, fmt.Sprintf("pgtest_smoke_%d_%d", time.Now().UnixNano(), os.Getpid()))
 	if err != nil {
 		t.Fatalf("newdb: %v", err)
 	}

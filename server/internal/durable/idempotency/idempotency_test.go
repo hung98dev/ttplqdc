@@ -41,24 +41,30 @@ func TestMain(m *testing.M) {
 	switch {
 	case errors.Is(err, pgtest.ErrUnavailable):
 		fmt.Fprintf(os.Stderr, "pgtest ensure: %v\n", err)
+		os.Exit(m.Run())
 	case err != nil:
 		setupErr = err
-	default:
-		defer srv.Close()
-		name := "idempotency_tests_" + time.Now().Format("20060102150405")
-		dsn, cleanup, e2 := srv.NewDB(ctx, name)
-		if e2 != nil {
-			setupErr = e2
-		} else {
-			defer cleanup()
-			if e3 := schema.Migrate(ctx, dsn, schema.MigrationsDir(repoRoot()), "up"); e3 != nil {
-				setupErr = e3
-			} else {
-				sharedDSN = dsn
-			}
-		}
+		os.Exit(m.Run())
 	}
-	os.Exit(m.Run())
+	// Unique per run: parallel go test / -race invocations in the same second
+	// must not collide on the database name.
+	name := fmt.Sprintf("idempotency_tests_%d_%d", time.Now().UnixNano(), os.Getpid())
+	dsn, cleanup, err := srv.NewDB(ctx, name)
+	if err != nil {
+		setupErr = err
+		os.Exit(m.Run())
+	}
+	if err := schema.Migrate(ctx, dsn, schema.MigrationsDir(repoRoot()), "up"); err != nil {
+		setupErr = err
+	} else {
+		sharedDSN = dsn
+	}
+	code := m.Run()
+	// os.Exit skips deferred calls: close and drop explicitly so a failed run
+	// leaves no scratch database behind.
+	cleanup()
+	srv.Close()
+	os.Exit(code)
 }
 
 func newStore(t *testing.T, clock func() time.Time) (*Store, *pgxpool.Pool) {
