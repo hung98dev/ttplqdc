@@ -39,6 +39,10 @@ type Ctx struct {
 	Catalogs map[string]*File
 	Dir      string
 
+	// Data carries driver-collected state into the expansion/reference/
+	// validation passes (rosters, profile tables, portal edges, ...).
+	Data map[string]any
+
 	// Warnings are emitted into the report alongside errors; the contract
 	// requires zero of both for PASS, so drivers use them only for
 	// documented count anomalies that a later stage resolves.
@@ -98,7 +102,7 @@ type Driver struct {
 // Drivers in contract §3 manifest order; each Compile is assigned as its
 // driver lands (a nil Compile is a SOURCE_SCHEMA_MISSING diagnostic).
 var Drivers = []Driver{
-	{Catalog: "monster_catalog.md"},
+	{Catalog: "monster_catalog.md", Compile: compileMonster},
 	{Catalog: "boss_catalog.md"},
 	{Catalog: "class_skill_catalog.md"},
 	{Catalog: "equipment_catalog.md"},

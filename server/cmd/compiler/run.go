@@ -21,6 +21,7 @@ func run(dir, report, payload, coverage string) int {
 		Refs:     NewNamespaceIndex(),
 		Rules:    map[string]int{},
 		Catalogs: map[string]*File{},
+		Data:     map[string]any{},
 		Dir:      dir,
 	}
 	err := runPipeline(c)
