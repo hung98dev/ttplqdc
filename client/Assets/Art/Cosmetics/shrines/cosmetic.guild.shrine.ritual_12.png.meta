@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: 85c24bef8a0a48489e833901068cf86b
 TextureImporter:
   internalIDToNameTable: []
-  externalObjects: {{}}
+  externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
@@ -100,9 +100,9 @@ TextureImporter:
         autoID: []
         boneWeights: []
       importersWithScriptedAnimation: []
-    nameFileIdTable: {{}}
+    nameFileIdTable: {}
   mipmapLimitGroupName:
   pSDRemoveMatte: 0
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
