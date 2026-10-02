@@ -13,7 +13,15 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/cosmetic.appearance.ao_toi_la.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_toi_la/cosmetic.appearance.ao_toi_la.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.ao_toi_la.png"
@@ -39,7 +47,15 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/cosmetic.appearance.ao_vai_hoa_van.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.ao_vai_hoa_van/cosmetic.appearance.ao_vai_hoa_van.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.ao_vai_hoa_van.png"
@@ -65,7 +81,15 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/cosmetic.appearance.khan_ben_nuoc.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.khan_ben_nuoc/cosmetic.appearance.khan_ben_nuoc.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.khan_ben_nuoc.png"
@@ -91,7 +115,15 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/cosmetic.appearance.non_la_moc.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.appearance.non_la_moc/cosmetic.appearance.non_la_moc.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.appearance.non_la_moc.png"
@@ -120,7 +152,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.aura.linh_khi.png"
    },
    "keys": {
-    "body": "asset.cosmetic.aura.linh_khi.vfx",
+    "body": "asset.cosmetic.aura.linh_khi.sprite",
     "icon": "asset.cosmetic.aura.linh_khi.icon"
    },
    "cultural": true,
@@ -142,7 +174,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.aura.quy_khi.png"
    },
    "keys": {
-    "body": "asset.cosmetic.aura.quy_khi.vfx",
+    "body": "asset.cosmetic.aura.quy_khi.sprite",
     "icon": "asset.cosmetic.aura.quy_khi.icon"
    },
    "cultural": true,
@@ -1060,7 +1092,15 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/cosmetic.iap.appearance.co_tam_truyen.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tam_truyen/cosmetic.iap.appearance.co_tam_truyen.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.co_tam_truyen.png"
@@ -1085,7 +1125,15 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/cosmetic.iap.appearance.co_tien.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.co_tien/cosmetic.iap.appearance.co_tien.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.co_tien.png"
@@ -1110,7 +1158,16 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/accessory_cape.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/cosmetic.iap.appearance.nu_tuong_trong_dong.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.nu_tuong_trong_dong/cosmetic.iap.appearance.nu_tuong_trong_dong.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.nu_tuong_trong_dong.png"
@@ -1135,7 +1192,15 @@
    "cell_ref": "96x128",
    "files": {
     "preview": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/preview.png",
-    "parts": [],
+    "parts": [
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/arm_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/arm_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/hair.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/head.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/leg_back.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/leg_front.png",
+     "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/parts/torso.png"
+    ],
     "sprite_lib": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/cosmetic.iap.appearance.vo_quan_thanh_co.spriteLibAsset",
     "prefab": "client/Assets/Art/Cosmetics/appearances/cosmetic.iap.appearance.vo_quan_thanh_co/cosmetic.iap.appearance.vo_quan_thanh_co.prefab",
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.appearance.vo_quan_thanh_co.png"
@@ -1267,7 +1332,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.title_glow.long_nhan.png"
    },
    "keys": {
-    "body": "asset.cosmetic.iap.title_glow.long_nhan.vfx",
+    "body": "asset.cosmetic.iap.title_glow.long_nhan.sprite",
     "icon": "asset.cosmetic.iap.title_glow.long_nhan.icon"
    },
    "cultural": true,
@@ -1289,7 +1354,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.trail.bao_gam.png"
    },
    "keys": {
-    "body": "asset.cosmetic.iap.trail.bao_gam.vfx",
+    "body": "asset.cosmetic.iap.trail.bao_gam.sprite",
     "icon": "asset.cosmetic.iap.trail.bao_gam.icon"
    },
    "cultural": true,
@@ -1311,7 +1376,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.trail.long_hoa.png"
    },
    "keys": {
-    "body": "asset.cosmetic.iap.trail.long_hoa.vfx",
+    "body": "asset.cosmetic.iap.trail.long_hoa.sprite",
     "icon": "asset.cosmetic.iap.trail.long_hoa.icon"
    },
    "cultural": true,
@@ -1333,7 +1398,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.iap.trail.phuong_hoang_vu.png"
    },
    "keys": {
-    "body": "asset.cosmetic.iap.trail.phuong_hoang_vu.vfx",
+    "body": "asset.cosmetic.iap.trail.phuong_hoang_vu.sprite",
     "icon": "asset.cosmetic.iap.trail.phuong_hoang_vu.icon"
    },
    "cultural": true,
@@ -4979,7 +5044,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.bach_nhat.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.bach_nhat.vfx",
+    "body": "asset.cosmetic.title_glow.bach_nhat.sprite",
     "icon": "asset.cosmetic.title_glow.bach_nhat.icon"
    },
    "cultural": true,
@@ -5001,7 +5066,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.do_quang.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.do_quang.vfx",
+    "body": "asset.cosmetic.title_glow.do_quang.sprite",
     "icon": "asset.cosmetic.title_glow.do_quang.icon"
    },
    "cultural": true,
@@ -5023,7 +5088,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.hoa_quang.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.hoa_quang.vfx",
+    "body": "asset.cosmetic.title_glow.hoa_quang.sprite",
     "icon": "asset.cosmetic.title_glow.hoa_quang.icon"
    },
    "cultural": true,
@@ -5045,7 +5110,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.hong_phuc.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.hong_phuc.vfx",
+    "body": "asset.cosmetic.title_glow.hong_phuc.sprite",
     "icon": "asset.cosmetic.title_glow.hong_phuc.icon"
    },
    "cultural": true,
@@ -5067,7 +5132,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.kim_quang.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.kim_quang.vfx",
+    "body": "asset.cosmetic.title_glow.kim_quang.sprite",
     "icon": "asset.cosmetic.title_glow.kim_quang.icon"
    },
    "cultural": true,
@@ -5089,7 +5154,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.linh_hoa.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.linh_hoa.vfx",
+    "body": "asset.cosmetic.title_glow.linh_hoa.sprite",
     "icon": "asset.cosmetic.title_glow.linh_hoa.icon"
    },
    "cultural": true,
@@ -5111,7 +5176,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.moc_xanh.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.moc_xanh.vfx",
+    "body": "asset.cosmetic.title_glow.moc_xanh.sprite",
     "icon": "asset.cosmetic.title_glow.moc_xanh.icon"
    },
    "cultural": true,
@@ -5133,7 +5198,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.thien_van.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.thien_van.vfx",
+    "body": "asset.cosmetic.title_glow.thien_van.sprite",
     "icon": "asset.cosmetic.title_glow.thien_van.icon"
    },
    "cultural": true,
@@ -5155,7 +5220,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.tho_bach.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.tho_bach.vfx",
+    "body": "asset.cosmetic.title_glow.tho_bach.sprite",
     "icon": "asset.cosmetic.title_glow.tho_bach.icon"
    },
    "cultural": true,
@@ -5177,7 +5242,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.thuy_linh.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.thuy_linh.vfx",
+    "body": "asset.cosmetic.title_glow.thuy_linh.sprite",
     "icon": "asset.cosmetic.title_glow.thuy_linh.icon"
    },
    "cultural": true,
@@ -5199,7 +5264,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.tim_nhat.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.tim_nhat.vfx",
+    "body": "asset.cosmetic.title_glow.tim_nhat.sprite",
     "icon": "asset.cosmetic.title_glow.tim_nhat.icon"
    },
    "cultural": true,
@@ -5221,7 +5286,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.vang_nhat.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.vang_nhat.vfx",
+    "body": "asset.cosmetic.title_glow.vang_nhat.sprite",
     "icon": "asset.cosmetic.title_glow.vang_nhat.icon"
    },
    "cultural": true,
@@ -5243,7 +5308,7 @@
     "icon": "client/Assets/Art/Cosmetics/icons/cosmetic.title_glow.xanh_nhat.png"
    },
    "keys": {
-    "body": "asset.cosmetic.title_glow.xanh_nhat.vfx",
+    "body": "asset.cosmetic.title_glow.xanh_nhat.sprite",
     "icon": "asset.cosmetic.title_glow.xanh_nhat.icon"
    },
    "cultural": true,

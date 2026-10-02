@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: cosmetic.appearance.ao_toi_la
+  m_EditorClassIdentifier: Unity.U2D.Animation::UnityEngine.U2D.Animation.SpriteLibraryAsset
+  m_Labels:
+    - m_Name: leg_back
+      m_Hash: 277822884
+      m_CategoryList:
+      - m_Name: cosmetic.appearance.ao_toi_la
+        m_Hash: 65711493
+        m_Sprite: {fileID: 21300000, guid: ac975dd4f644419498803cdbb3da83d1, type: 3}
+    - m_Name: arm_back
+      m_Hash: 814547248
+      m_CategoryList:
+      - m_Name: cosmetic.appearance.ao_toi_la
+        m_Hash: 65711493
+        m_Sprite: {fileID: 21300000, guid: f95601ef51754431965afe741437b4a8, type: 3}
+    - m_Name: torso
+      m_Hash: 149302099
+      m_CategoryList:
+      - m_Name: cosmetic.appearance.ao_toi_la
+        m_Hash: 65711493
+        m_Sprite: {fileID: 21300000, guid: a758a14ef39f43f7b346b273bf4ab48e, type: 3}
+    - m_Name: leg_front
+      m_Hash: 592096645
+      m_CategoryList:
+      - m_Name: cosmetic.appearance.ao_toi_la
+        m_Hash: 65711493
+        m_Sprite: {fileID: 21300000, guid: cb7136681c9e4a60bd2e341a490ae9f2, type: 3}
+    - m_Name: arm_front
+      m_Hash: 419986974
+      m_CategoryList:
+      - m_Name: cosmetic.appearance.ao_toi_la
+        m_Hash: 65711493
+        m_Sprite: {fileID: 21300000, guid: 0e85c615b3b3460394e224243f8206ff, type: 3}
+    - m_Name: head
+      m_Hash: 1008649291
+      m_CategoryList:
+      - m_Name: cosmetic.appearance.ao_toi_la
+        m_Hash: 65711493
+        m_Sprite: {fileID: 21300000, guid: 3ab23f3995e2441795de0be2a09976f6, type: 3}
+    - m_Name: hair
+      m_Hash: 1050876773
+      m_CategoryList:
+      - m_Name: cosmetic.appearance.ao_toi_la
+        m_Hash: 65711493
+        m_Sprite: {fileID: 21300000, guid: 54f9e27c225a496eb30109e31518b2fa, type: 3}
+  m_ModificationHash: 1
+  m_Version: 1
