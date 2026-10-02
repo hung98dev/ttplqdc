@@ -133,7 +133,7 @@ func TestEvidenceManifestJobMergesBothReports(t *testing.T) {
 			{ID: "Q3.unity.editmode", OS: "windows", Owner: "IMP-000", Result: ResultPass},
 		},
 	}
-	m, errs := MergeReports(reportFile(t, dir, "linux.json", lr), reportFile(t, dir, "windows.json", wr))
+	m, errs := MergeReports(reportFile(t, dir, "linux.json", lr), reportFile(t, dir, "windows.json", wr), "")
 	if len(errs) != 0 {
 		t.Fatalf("merge: %v", errs)
 	}
@@ -154,7 +154,7 @@ func TestEvidenceManifestJobMergesBothReports(t *testing.T) {
 	}
 	// Hash mismatch must fail.
 	lr.SourceTreeHash = "h-other"
-	m, errs = MergeReports(reportFile(t, dir, "linux2.json", lr), reportFile(t, dir, "windows.json", wr))
+	m, errs = MergeReports(reportFile(t, dir, "linux2.json", lr), reportFile(t, dir, "windows.json", wr), "")
 	if len(errs) == 0 || m.Result != "FAILED" {
 		t.Fatal("CI-004 hash mismatch must fail the merge")
 	}

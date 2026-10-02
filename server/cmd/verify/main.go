@@ -63,7 +63,7 @@ func main() {
 		if outPath == "" {
 			outPath = "artifacts/evidence/manifest.json"
 		}
-		code := runMerge(resolve(*linux), resolve(*windows), resolve(outPath))
+		code := runMerge(resolve(*linux), resolve(*windows), resolve(gates.CompileReportName), resolve(outPath))
 		os.Exit(code)
 	}
 	ctx, err := buildContext(r, *localDefer)
@@ -387,8 +387,8 @@ func writeFileParents(path string, b []byte) error {
 }
 
 // runMerge executes -merge: read both reports, write the evidence manifest.
-func runMerge(linuxPath, windowsPath, outPath string) int {
-	m, errs := gates.MergeReports(linuxPath, windowsPath)
+func runMerge(linuxPath, windowsPath, compileReportPath, outPath string) int {
+	m, errs := gates.MergeReports(linuxPath, windowsPath, compileReportPath)
 	m.TaskID = taskIDFromBranch()
 	if outPath == "" {
 		outPath = "artifacts/evidence/manifest.json"
