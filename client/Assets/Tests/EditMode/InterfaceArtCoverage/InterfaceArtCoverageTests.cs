@@ -783,17 +783,18 @@ namespace ThinhThan.Tests.EditMode.InterfaceArtCoverage
             Assert.IsTrue(Directory.Exists(prefabDir));
             var entries = ReadGroupEntries();
             int skills = 0;
-            foreach (var row in Rows())
+            var skillKeys = new List<string>();
+            foreach (var key in entries["shared.local"].Keys)
             {
-                var key = Str(row, "asset_key");
-                if (key == null || !key.StartsWith("asset.skill.", StringComparison.Ordinal))
+                if (key.StartsWith("asset.skill.", StringComparison.Ordinal)
+                    && key.EndsWith(".vfx", StringComparison.Ordinal))
                 {
-                    continue;
+                    skillKeys.Add(key);
                 }
-                if (key.EndsWith(".icon", StringComparison.Ordinal))
-                {
-                    continue;
-                }
+            }
+            skillKeys.Sort(StringComparer.Ordinal);
+            foreach (var key in skillKeys)
+            {
                 skills++;
                 var name = key.Substring("asset.".Length);
                 name = name.Substring(0, name.Length - ".vfx".Length)

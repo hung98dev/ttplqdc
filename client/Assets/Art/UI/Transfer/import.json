@@ -1,4 +1,8 @@
 {
   "asset_class": "UI_ART",
-  "assets": {}
+  "assets": {
+    "transfer_overlay.png": {
+      "cell_ref": 512
+    }
+  }
 }

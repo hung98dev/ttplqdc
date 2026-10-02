@@ -316,157 +316,157 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: db5b2e376510570596c4e65ad6793fd7
-    m_Address: asset.ui.button.large
+    m_Address: asset.ui.button.large.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b88c03bab954586ab16dc6b613a191bd
-    m_Address: asset.ui.button.small
+    m_Address: asset.ui.button.small.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: adbcb954331d5e50983ccc4563aea224
-    m_Address: asset.ui.character_select.card
+    m_Address: asset.ui.character_select.card.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e1aa22e839a35f5b9b5ffd826dfc7733
-    m_Address: asset.ui.dialog.generic
+    m_Address: asset.ui.dialog.generic.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cc8decd6134754e6b66cd55b9b5f666f
-    m_Address: asset.ui.disconnected.dialog
+    m_Address: asset.ui.disconnected.dialog.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2eeff6b8ca195c13b2aa393e33162bdf
-    m_Address: asset.ui.divider.ornate
+    m_Address: asset.ui.divider.ornate.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dddae2ddd6e15518a160266eec56e816
-    m_Address: asset.ui.hud.boss_bar_fill
+    m_Address: asset.ui.hud.boss_bar_fill.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7e71b8d831055001adb1114ee29dbb98
-    m_Address: asset.ui.hud.boss_bar_frame
+    m_Address: asset.ui.hud.boss_bar_frame.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 400fa403d9665ef8a588f5b469b1bbf7
-    m_Address: asset.ui.hud.button_attack
+    m_Address: asset.ui.hud.button_attack.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ee5f8de2521f5d99873a63cc335fb68e
-    m_Address: asset.ui.hud.button_jump
+    m_Address: asset.ui.hud.button_jump.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 53efb32ba1b5555383335aae8ea25ed1
-    m_Address: asset.ui.hud.channel_button
+    m_Address: asset.ui.hud.channel_button.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 83d6dd4e3f2750ea92e47652796031df
-    m_Address: asset.ui.hud.chat_dock
+    m_Address: asset.ui.hud.chat_dock.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: be600303c2435cf5a7ba5a0dc7528196
-    m_Address: asset.ui.hud.exp_fill
+    m_Address: asset.ui.hud.exp_fill.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b16d5c5bfe651988f8c635b7589d51e
-    m_Address: asset.ui.hud.hp_fill
+    m_Address: asset.ui.hud.hp_fill.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99d915feba6458278b722d3a8a544f40
-    m_Address: asset.ui.hud.hp_frame
+    m_Address: asset.ui.hud.hp_frame.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b55133c182c505186b7c6c1e9a18b6c
-    m_Address: asset.ui.hud.joystick_base
+    m_Address: asset.ui.hud.joystick_base.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3af333b86a0d54179d4b9efd093c26d2
-    m_Address: asset.ui.hud.joystick_stick
+    m_Address: asset.ui.hud.joystick_stick.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4f0ad35b390551f5854721339872cbea
-    m_Address: asset.ui.hud.map_button
+    m_Address: asset.ui.hud.map_button.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff327ab0ad075bff958a5f199d31b44c
-    m_Address: asset.ui.hud.menu_button
+    m_Address: asset.ui.hud.menu_button.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 32e9180ceb555e76ac1f53fe2303b91b
-    m_Address: asset.ui.hud.mp_fill
+    m_Address: asset.ui.hud.mp_fill.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7390b30f0a9a5552a1ccdbe798554a58
-    m_Address: asset.ui.hud.ping_bars
+    m_Address: asset.ui.hud.ping_bars.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef67a020f1065c5591c170c25a43a2b2
-    m_Address: asset.ui.hud.portrait_frame
+    m_Address: asset.ui.hud.portrait_frame.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8b27a13ddb5051afa0e46b34bce5e6c8
-    m_Address: asset.ui.hud.quest_tracker
+    m_Address: asset.ui.hud.quest_tracker.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 181ca7f54bbb50a0905163ae1abd21f7
-    m_Address: asset.ui.hud.skill_button
+    m_Address: asset.ui.hud.skill_button.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b62370e5b9cb5667b0db5666b0c609e8
-    m_Address: asset.ui.hud.skill_button_cd
+    m_Address: asset.ui.hud.skill_button_cd.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5f4d1f8fd0a6551796d13b28fbd2aa18
-    m_Address: asset.ui.hud.status_frame_round
+    m_Address: asset.ui.hud.status_frame_round.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 37d31585f8985b53937e0a43ef0d5a72
-    m_Address: asset.ui.hud.status_frame_triangle
+    m_Address: asset.ui.hud.status_frame_triangle.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 26c9f8f65a265128acd5ff7a585bd754
-    m_Address: asset.ui.hud.target_frame
+    m_Address: asset.ui.hud.target_frame.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 16c9a6825a8c59de8e618b826b0611bd
-    m_Address: asset.ui.panel.generic
+    m_Address: asset.ui.panel.generic.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 50f0421a37e25c138741c2df54183ff7
-    m_Address: asset.ui.slot.equipment
+    m_Address: asset.ui.slot.equipment.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 09d99b4c7bae5d239260b7b3b37ad16f
-    m_Address: asset.ui.slot.item
+    m_Address: asset.ui.slot.item.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -511,12 +511,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d66fd513d03650068ee587b497bae935
-    m_Address: asset.ui.tooltip.generic
+    m_Address: asset.ui.tooltip.generic.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9c28e920bd635fb98a664c9301da2ca7
-    m_Address: asset.ui.transfer.overlay
+    m_Address: asset.ui.transfer.overlay.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
