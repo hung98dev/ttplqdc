@@ -1,0 +1,45 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "WORLD_BOSS",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_song_day",
+    "attack_keo_chim",
+    "attack_tran_nuoc",
+    "attack_thuy_trieu",
+    "attack_song_than",
+    "attack_cuon_nuoc",
+    "hit",
+    "defeat",
+    "phase_transition_2"
+  ],
+  "cell_ref": [
+    320,
+    320
+  ],
+  "texture_ref": [
+    640,
+    640
+  ],
+  "assets": {
+    "ma_da_chua_parts.png": {
+      "profile": "WORLD_BOSS",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_song_day",
+        "attack_keo_chim",
+        "attack_tran_nuoc",
+        "attack_thuy_trieu",
+        "attack_song_than",
+        "attack_cuon_nuoc",
+        "hit",
+        "defeat",
+        "phase_transition_2"
+      ]
+    }
+  }
+}

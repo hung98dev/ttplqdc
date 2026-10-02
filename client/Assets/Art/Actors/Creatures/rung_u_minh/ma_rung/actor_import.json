@@ -1,0 +1,35 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_MEDIUM",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_basic",
+    "attack_rush",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    96,
+    128
+  ],
+  "texture_ref": [
+    192,
+    256
+  ],
+  "assets": {
+    "ma_rung_parts.png": {
+      "profile": "MONSTER_MEDIUM",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_basic",
+        "attack_rush",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

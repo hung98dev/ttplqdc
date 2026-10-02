@@ -1,0 +1,43 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "BOSS_LARGE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_cuu_anh",
+    "attack_lua_ma",
+    "attack_lo_chan_than",
+    "attack_hoi_phuc",
+    "attack_chay_rua",
+    "hit",
+    "defeat",
+    "phase_transition_2"
+  ],
+  "cell_ref": [
+    256,
+    256
+  ],
+  "texture_ref": [
+    512,
+    512
+  ],
+  "assets": {
+    "ho_tinh_chin_duoi_parts.png": {
+      "profile": "BOSS_LARGE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_cuu_anh",
+        "attack_lua_ma",
+        "attack_lo_chan_than",
+        "attack_hoi_phuc",
+        "attack_chay_rua",
+        "hit",
+        "defeat",
+        "phase_transition_2"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "MONSTER_ELITE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_basic",
+    "attack_zone",
+    "hit",
+    "defeat"
+  ],
+  "cell_ref": [
+    160,
+    192
+  ],
+  "texture_ref": [
+    320,
+    384
+  ],
+  "assets": {
+    "thuy_quai_parts.png": {
+      "profile": "MONSTER_ELITE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_basic",
+        "attack_zone",
+        "hit",
+        "defeat"
+      ]
+    }
+  }
+}

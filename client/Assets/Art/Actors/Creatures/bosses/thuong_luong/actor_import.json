@@ -1,0 +1,43 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "BOSS_LARGE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_quet_duoi",
+    "attack_nuoc_dang",
+    "attack_cuon_song",
+    "attack_vung_du",
+    "attack_cuon_nuoc",
+    "hit",
+    "defeat",
+    "phase_transition_2"
+  ],
+  "cell_ref": [
+    256,
+    256
+  ],
+  "texture_ref": [
+    512,
+    512
+  ],
+  "assets": {
+    "thuong_luong_parts.png": {
+      "profile": "BOSS_LARGE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_quet_duoi",
+        "attack_nuoc_dang",
+        "attack_cuon_song",
+        "attack_vung_du",
+        "attack_cuon_nuoc",
+        "hit",
+        "defeat",
+        "phase_transition_2"
+      ]
+    }
+  }
+}

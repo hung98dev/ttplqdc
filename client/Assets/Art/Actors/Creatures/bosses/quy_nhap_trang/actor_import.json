@@ -1,0 +1,41 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "BOSS_LARGE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_bat_day",
+    "attack_duoi_den",
+    "attack_bat_day_gian",
+    "attack_chiem_hon",
+    "hit",
+    "defeat",
+    "phase_transition_2"
+  ],
+  "cell_ref": [
+    256,
+    256
+  ],
+  "texture_ref": [
+    512,
+    512
+  ],
+  "assets": {
+    "quy_nhap_trang_parts.png": {
+      "profile": "BOSS_LARGE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_bat_day",
+        "attack_duoi_den",
+        "attack_bat_day_gian",
+        "attack_chiem_hon",
+        "hit",
+        "defeat",
+        "phase_transition_2"
+      ]
+    }
+  }
+}

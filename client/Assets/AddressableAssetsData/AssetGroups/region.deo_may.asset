@@ -14,9 +14,104 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: region.deo_may
   m_GUID: 819d6e67dda71fa4e8c0beb33d626335
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1db78ccecf124843a5d4e2e1ea0914d9
+    m_Address: asset.monster.deo_may.ho_tinh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2cc9adc9491d40d3b9aa3503b2e3c42b
+    m_Address: asset.npc.deo_may.dem_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45a43cb3ff914c9a9e4e7bfdcd45afd8
+    m_Address: asset.monster.deo_may.ma_van_dem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a8f97456a264766b8859f806c2c1d31
+    m_Address: asset.monster.deo_may.vong_nui_gia.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61a9dd3ccb5840eb8887cb735989c844
+    m_Address: asset.npc.deo_may.cho_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6363cad709954b9bbcccde96e7a9e80f
+    m_Address: asset.monster.deo_may.ho_con_tinh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e129b9b89ff4340a37ebb94a026e263
+    m_Address: asset.monster.deo_may.vong_rung.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84faf34f78b842c2b4aee25b52e57ded
+    m_Address: asset.npc.deo_may.ambient_day.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92810db222884c8ebdc2887563bc3794
+    m_Address: asset.npc.deo_may.cho_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c32c10291e644c8b2864907ffa9c55c
+    m_Address: asset.npc.deo_may.hang_quan.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a49b7aeefb7848d9a28911e420bae4f9
+    m_Address: asset.monster.deo_may.khi_nui.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c358cf542581402e89af306ad4067b97
+    m_Address: asset.monster.deo_may.ma_tranh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4b9d8b9a0664723a422d92c7287cab4
+    m_Address: asset.npc.deo_may.tho_nghe.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c63414d87e914ad6964d2654cb207633
+    m_Address: asset.monster.deo_may.ma_tranh_gia.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce88f5c3938548508e734f5d35cdbb45
+    m_Address: asset.npc.deo_may.ambient_night.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ced1c4ebe0fd401383ca816e6c465080
+    m_Address: asset.npc.deo_may.dem_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eab39c2d145c42d084f376e5fa47d626
+    m_Address: asset.monster.deo_may.ho_tinh_ve.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eac923a9b8bd47b49bcc63fe7a8801a9
+    m_Address: asset.monster.deo_may.ho_tinh_lon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f94c8fc12f7c4577a5ab02b54f8892bb
+    m_Address: asset.npc.deo_may.nguoi_dan_duong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
+  m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: a163deee4c09a83479f80db7c1c1ae12, type: 2}

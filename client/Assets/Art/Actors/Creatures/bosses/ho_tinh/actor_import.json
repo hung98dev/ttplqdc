@@ -1,0 +1,43 @@
+{
+  "asset_class": "ACTOR",
+  "profile": "BOSS_LARGE",
+  "technique": "skeletal",
+  "clips": [
+    "idle",
+    "move",
+    "attack_vet_vuot",
+    "attack_vo_moi",
+    "attack_uy_son",
+    "attack_lan_vo_moi",
+    "attack_chay_tan",
+    "hit",
+    "defeat",
+    "phase_transition_2"
+  ],
+  "cell_ref": [
+    256,
+    256
+  ],
+  "texture_ref": [
+    512,
+    512
+  ],
+  "assets": {
+    "ho_tinh_parts.png": {
+      "profile": "BOSS_LARGE",
+      "technique": "skeletal",
+      "clips": [
+        "idle",
+        "move",
+        "attack_vet_vuot",
+        "attack_vo_moi",
+        "attack_uy_son",
+        "attack_lan_vo_moi",
+        "attack_chay_tan",
+        "hit",
+        "defeat",
+        "phase_transition_2"
+      ]
+    }
+  }
+}

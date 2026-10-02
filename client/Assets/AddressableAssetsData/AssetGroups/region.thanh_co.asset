@@ -14,9 +14,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: region.thanh_co
   m_GUID: fc1785213471d794b91a469c47dfea23
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 01d1a59c6cc547eb8761f7a196ec589e
+    m_Address: asset.npc.thanh_co.ambient_night.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 150189b36e944c8c9817282a8559f815
+    m_Address: asset.npc.thanh_co.dem_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a3b3bbe66da413c82f575090e5eb476
+    m_Address: asset.monster.thanh_co.ma_co.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30b3ae0be9e04a76b6ed1677b967cf4b
+    m_Address: asset.npc.thanh_co.cho_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 491067a9e5794792aa52cda80a35d923
+    m_Address: asset.monster.thanh_co.thach_ve.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88828d01039848c280c7ca16538e12eb
+    m_Address: asset.monster.thanh_co.oan_hon_dem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fd3fc8d0e3a44979f7782ad05914632
+    m_Address: asset.monster.thanh_co.hon_tran_linh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a27ebcf63a4c4664b7cd852fa5144313
+    m_Address: asset.npc.thanh_co.cho_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac95dcd2eba54d9187b62689ac54ef99
+    m_Address: asset.npc.thanh_co.tho_nghe.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1248947256949978fc7e9059d3c6e22
+    m_Address: asset.monster.thanh_co.qua_tinh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b175c4f4b8b9426b8a8463bde0b598fa
+    m_Address: asset.npc.thanh_co.nguoi_dan_duong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b46a51de896f4a8cb956462e6ee3557c
+    m_Address: asset.monster.thanh_co.tuong_da.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6c1e2aa68bb41e08e96d28c46a2f202
+    m_Address: asset.monster.thanh_co.qua_tinh_lon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7329486267144eebe9afca91cfa5635
+    m_Address: asset.npc.thanh_co.dem_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9a9cbf903dd425eac1a0454fd3688cf
+    m_Address: asset.npc.thanh_co.hang_quan.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da050d8bb8154cddbd64b44f580d01d9
+    m_Address: asset.monster.thanh_co.hon_tuong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef8636a0323645afbad1839581ab47aa
+    m_Address: asset.npc.thanh_co.ambient_day.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdfddcc6f2894ac18b45c121a4e1eb33
+    m_Address: asset.monster.thanh_co.hon_binh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
+  m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: 5a090399e4965af479c401341ffb6122, type: 2}

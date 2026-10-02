@@ -1,0 +1,762 @@
+[
+  {
+    "region": "region_deo_may",
+    "name": "#0B0707",
+    "hex": "#0B0707",
+    "lab": [
+      2.22,
+      0.75,
+      0.52
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#8377A7",
+    "hex": "#8377A7",
+    "lab": [
+      52.64,
+      15.21,
+      -24.17
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#753D1A",
+    "hex": "#753D1A",
+    "lab": [
+      32.22,
+      21.41,
+      31.48
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#592D14",
+    "hex": "#592D14",
+    "lab": [
+      23.85,
+      18.16,
+      24.66
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#442111",
+    "hex": "#442111",
+    "lab": [
+      17.28,
+      14.83,
+      18.19
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#362215",
+    "hex": "#362215",
+    "lab": [
+      15.34,
+      8.02,
+      12.31
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#27160F",
+    "hex": "#27160F",
+    "lab": [
+      9.49,
+      7.35,
+      7.82
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#1B110E",
+    "hex": "#1B110E",
+    "lab": [
+      5.94,
+      4.48,
+      3.27
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#915123",
+    "hex": "#915123",
+    "lab": [
+      41.39,
+      22.93,
+      37.61
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#3C3357",
+    "hex": "#3C3357",
+    "lab": [
+      23.71,
+      13.25,
+      -20.06
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#425C4E",
+    "hex": "#425C4E",
+    "lab": [
+      36.57,
+      -12.82,
+      4.99
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#9388B6",
+    "hex": "#9388B6",
+    "lab": [
+      59.23,
+      13.78,
+      -22.37
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#726899",
+    "hex": "#726899",
+    "lab": [
+      46.78,
+      14.77,
+      -24.9
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#B36C2F",
+    "hex": "#B36C2F",
+    "lab": [
+      52.36,
+      23.06,
+      44.79
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#342B49",
+    "hex": "#342B49",
+    "lab": [
+      19.75,
+      12.08,
+      -17.6
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#66856B",
+    "hex": "#66856B",
+    "lab": [
+      52.5,
+      -16.22,
+      10.23
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#323C20",
+    "hex": "#323C20",
+    "lab": [
+      23.61,
+      -9.59,
+      15.84
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#453B64",
+    "hex": "#453B64",
+    "lab": [
+      27.71,
+      14.27,
+      -22.64
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#684524",
+    "hex": "#684524",
+    "lab": [
+      32.4,
+      11.37,
+      25.44
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#263A37",
+    "hex": "#263A37",
+    "lab": [
+      22.7,
+      -8.81,
+      -0.42
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#4D341F",
+    "hex": "#4D341F",
+    "lab": [
+      24.19,
+      7.97,
+      17.86
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#2C233B",
+    "hex": "#2C233B",
+    "lab": [
+      15.62,
+      10.6,
+      -14.17
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#605686",
+    "hex": "#605686",
+    "lab": [
+      39.43,
+      15.23,
+      -25.14
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#4D5928",
+    "hex": "#4D5928",
+    "lab": [
+      35.74,
+      -13.55,
+      26.67
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#B3916E",
+    "hex": "#B3916E",
+    "lab": [
+      62.45,
+      7.86,
+      23.62
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#D4954E",
+    "hex": "#D4954E",
+    "lab": [
+      66.52,
+      16.45,
+      45.98
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#98B69D",
+    "hex": "#98B69D",
+    "lab": [
+      71.24,
+      -14.92,
+      9.16
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#1B2317",
+    "hex": "#1B2317",
+    "lab": [
+      12.71,
+      -6.84,
+      7.03
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#695D93",
+    "hex": "#695D93",
+    "lab": [
+      42.73,
+      17.24,
+      -27.63
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#493F6E",
+    "hex": "#493F6E",
+    "lab": [
+      29.68,
+      16.08,
+      -25.56
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#524A78",
+    "hex": "#524A78",
+    "lab": [
+      34.02,
+      15.15,
+      -25.48
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#7C5E4A",
+    "hex": "#7C5E4A",
+    "lab": [
+      42.43,
+      9.35,
+      16.09
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#362727",
+    "hex": "#362727",
+    "lab": [
+      17.53,
+      6.93,
+      2.66
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#916839",
+    "hex": "#916839",
+    "lab": [
+      47.3,
+      10.79,
+      32.61
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#C65513",
+    "hex": "#C65513",
+    "lab": [
+      50.08,
+      41.95,
+      55.02
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#E9CB9D",
+    "hex": "#E9CB9D",
+    "lab": [
+      83.26,
+      3.75,
+      26.98
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#903412",
+    "hex": "#903412",
+    "lab": [
+      34.93,
+      37.25,
+      39.52
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#563E38",
+    "hex": "#563E38",
+    "lab": [
+      28.71,
+      9.87,
+      7.54
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#B198C1",
+    "hex": "#B198C1",
+    "lab": [
+      66.18,
+      17.19,
+      -18.07
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#D2BBD9",
+    "hex": "#D2BBD9",
+    "lab": [
+      78.69,
+      13.56,
+      -12.0
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#221728",
+    "hex": "#221728",
+    "lab": [
+      10.03,
+      9.49,
+      -9.23
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#81679F",
+    "hex": "#81679F",
+    "lab": [
+      47.97,
+      22.03,
+      -26.51
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#5C4E84",
+    "hex": "#5C4E84",
+    "lab": [
+      36.89,
+      18.4,
+      -27.96
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#6F8131",
+    "hex": "#6F8131",
+    "lab": [
+      50.94,
+      -19.04,
+      39.9
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#E0862B",
+    "hex": "#E0862B",
+    "lab": [
+      64.28,
+      28.13,
+      59.95
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#95DAB6",
+    "hex": "#95DAB6",
+    "lab": [
+      81.76,
+      -29.05,
+      10.61
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#191C20",
+    "hex": "#191C20",
+    "lab": [
+      10.08,
+      -0.05,
+      -3.62
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#631D11",
+    "hex": "#631D11",
+    "lab": [
+      22.25,
+      30.85,
+      24.94
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#F6C159",
+    "hex": "#F6C159",
+    "lab": [
+      80.93,
+      8.26,
+      58.24
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#5D457C",
+    "hex": "#5D457C",
+    "lab": [
+      34.18,
+      22.38,
+      -27.23
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#371111",
+    "hex": "#371111",
+    "lab": [
+      11.01,
+      19.16,
+      9.28
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#EFE9EF",
+    "hex": "#EFE9EF",
+    "lab": [
+      93.01,
+      2.98,
+      -2.23
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#5A4E73",
+    "hex": "#5A4E73",
+    "lab": [
+      35.77,
+      13.13,
+      -19.13
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#6E4F91",
+    "hex": "#6E4F91",
+    "lab": [
+      39.48,
+      26.78,
+      -31.49
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#842090",
+    "hex": "#842090",
+    "lab": [
+      33.91,
+      55.85,
+      -39.79
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#611F70",
+    "hex": "#611F70",
+    "lab": [
+      25.85,
+      41.88,
+      -32.66
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#EB09ED",
+    "hex": "#EB09ED",
+    "lab": [
+      56.17,
+      92.18,
+      -57.87
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#473B4D",
+    "hex": "#473B4D",
+    "lab": [
+      26.66,
+      9.39,
+      -8.79
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#B319B8",
+    "hex": "#B319B8",
+    "lab": [
+      43.74,
+      72.94,
+      -47.4
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#462D64",
+    "hex": "#462D64",
+    "lab": [
+      24.08,
+      23.92,
+      -28.39
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#410E3C",
+    "hex": "#410E3C",
+    "lab": [
+      14.14,
+      30.51,
+      -16.76
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#82828F",
+    "hex": "#82828F",
+    "lab": [
+      54.63,
+      2.95,
+      -6.97
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#6D2C44",
+    "hex": "#6D2C44",
+    "lab": [
+      28.15,
+      31.48,
+      -0.41
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#B972BC",
+    "hex": "#B972BC",
+    "lab": [
+      57.91,
+      39.95,
+      -27.6
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#99A16B",
+    "hex": "#99A16B",
+    "lab": [
+      64.38,
+      -11.74,
+      27.28
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#5F683B",
+    "hex": "#5F683B",
+    "lab": [
+      42.38,
+      -11.53,
+      24.1
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#AEB8AE",
+    "hex": "#AEB8AE",
+    "lab": [
+      73.71,
+      -5.3,
+      4.02
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#494332",
+    "hex": "#494332",
+    "lab": [
+      28.54,
+      -0.34,
+      10.97
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#465750",
+    "hex": "#465750",
+    "lab": [
+      35.53,
+      -8.32,
+      2.09
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#64A195",
+    "hex": "#64A195",
+    "lab": [
+      62.09,
+      -22.68,
+      0.15
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#C0E3D1",
+    "hex": "#C0E3D1",
+    "lab": [
+      87.32,
+      -15.03,
+      4.98
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#78965B",
+    "hex": "#78965B",
+    "lab": [
+      58.69,
+      -21.68,
+      27.87
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#577C6D",
+    "hex": "#577C6D",
+    "lab": [
+      48.91,
+      -16.59,
+      4.24
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#72A06F",
+    "hex": "#72A06F",
+    "lab": [
+      61.42,
+      -25.5,
+      20.74
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#3F4944",
+    "hex": "#3F4944",
+    "lab": [
+      30.04,
+      -5.0,
+      1.61
+    ]
+  },
+  {
+    "region": "region_deo_may",
+    "name": "#A5CCC2",
+    "hex": "#A5CCC2",
+    "lab": [
+      79.13,
+      -14.93,
+      0.85
+    ]
+  }
+]

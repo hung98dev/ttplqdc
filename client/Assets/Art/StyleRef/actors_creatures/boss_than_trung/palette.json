@@ -1,0 +1,682 @@
+[
+  {
+    "region": "boss_than_trung",
+    "name": "#070306",
+    "hex": "#070306",
+    "lab": [
+      1.22,
+      1.38,
+      -0.75
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#130F0C",
+    "hex": "#130F0C",
+    "lab": [
+      4.5,
+      1.29,
+      1.91
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#643F1C",
+    "hex": "#643F1C",
+    "lab": [
+      30.12,
+      12.65,
+      27.15
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#4B391D",
+    "hex": "#4B391D",
+    "lab": [
+      25.17,
+      4.06,
+      19.98
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#C48530",
+    "hex": "#C48530",
+    "lab": [
+      60.69,
+      16.76,
+      53.22
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#1F1E18",
+    "hex": "#1F1E18",
+    "lab": [
+      11.03,
+      -0.71,
+      4.03
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#E6802A",
+    "hex": "#E6802A",
+    "lab": [
+      63.71,
+      33.88,
+      59.95
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#522E1B",
+    "hex": "#522E1B",
+    "lab": [
+      23.12,
+      14.16,
+      19.22
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#3B2718",
+    "hex": "#3B2718",
+    "lab": [
+      17.62,
+      7.34,
+      13.51
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#F9D249",
+    "hex": "#F9D249",
+    "lab": [
+      85.25,
+      -0.04,
+      69.55
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#2D2E1E",
+    "hex": "#2D2E1E",
+    "lab": [
+      18.59,
+      -3.94,
+      10.58
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#EE9F3B",
+    "hex": "#EE9F3B",
+    "lab": [
+      71.66,
+      21.3,
+      61.15
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#3A2B35",
+    "hex": "#3A2B35",
+    "lab": [
+      19.47,
+      9.37,
+      -3.99
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#F3B136",
+    "hex": "#F3B136",
+    "lab": [
+      76.64,
+      13.64,
+      67.85
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#82421D",
+    "hex": "#82421D",
+    "lab": [
+      35.36,
+      24.66,
+      33.65
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#2B1B15",
+    "hex": "#2B1B15",
+    "lab": [
+      11.53,
+      7.26,
+      6.86
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#292E31",
+    "hex": "#292E31",
+    "lab": [
+      18.62,
+      -1.54,
+      -2.33
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#E914D8",
+    "hex": "#E914D8",
+    "lab": [
+      54.87,
+      87.9,
+      -48.07
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#9C6A28",
+    "hex": "#9C6A28",
+    "lab": [
+      49.04,
+      13.7,
+      43.47
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#AE5E1F",
+    "hex": "#AE5E1F",
+    "lab": [
+      48.49,
+      28.22,
+      47.74
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#1D1C24",
+    "hex": "#1D1C24",
+    "lab": [
+      10.51,
+      2.71,
+      -5.39
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#F0BF63",
+    "hex": "#F0BF63",
+    "lab": [
+      79.9,
+      7.34,
+      52.21
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#7D5321",
+    "hex": "#7D5321",
+    "lab": [
+      39.09,
+      12.33,
+      35.47
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#F7E46E",
+    "hex": "#F7E46E",
+    "lab": [
+      90.01,
+      -7.63,
+      59.02
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#3C3F1E",
+    "hex": "#3C3F1E",
+    "lab": [
+      25.59,
+      -7.5,
+      19.88
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#A03C21",
+    "hex": "#A03C21",
+    "lab": [
+      39.22,
+      40.15,
+      37.06
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#D75728",
+    "hex": "#D75728",
+    "lab": [
+      53.47,
+      48.2,
+      50.99
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#251E34",
+    "hex": "#251E34",
+    "lab": [
+      13.08,
+      8.97,
+      -13.28
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#2F4255",
+    "hex": "#2F4255",
+    "lab": [
+      27.19,
+      -1.95,
+      -13.62
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#4A3E3B",
+    "hex": "#4A3E3B",
+    "lab": [
+      27.38,
+      4.6,
+      4.09
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#622716",
+    "hex": "#622716",
+    "lab": [
+      24.08,
+      25.65,
+      24.2
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#5F5321",
+    "hex": "#5F5321",
+    "lab": [
+      35.44,
+      -1.79,
+      30.46
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#5E2E37",
+    "hex": "#5E2E37",
+    "lab": [
+      25.7,
+      22.84,
+      4.24
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#3E1616",
+    "hex": "#3E1616",
+    "lab": [
+      13.68,
+      19.37,
+      10.09
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#200E15",
+    "hex": "#200E15",
+    "lab": [
+      6.04,
+      10.46,
+      -1.24
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#37534B",
+    "hex": "#37534B",
+    "lab": [
+      33.05,
+      -12.83,
+      1.3
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#643880",
+    "hex": "#643880",
+    "lab": [
+      32.02,
+      33.78,
+      -33.48
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#934071",
+    "hex": "#934071",
+    "lab": [
+      39.62,
+      40.78,
+      -11.41
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#A79234",
+    "hex": "#A79234",
+    "lab": [
+      60.81,
+      -2.82,
+      50.64
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#32335A",
+    "hex": "#32335A",
+    "lab": [
+      22.84,
+      11.24,
+      -24.1
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#492145",
+    "hex": "#492145",
+    "lab": [
+      19.79,
+      24.74,
+      -14.11
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#F6E999",
+    "hex": "#F6E999",
+    "lab": [
+      91.78,
+      -6.8,
+      40.55
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#755C50",
+    "hex": "#755C50",
+    "lab": [
+      41.33,
+      8.03,
+      10.93
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#76712E",
+    "hex": "#76712E",
+    "lab": [
+      46.75,
+      -7.38,
+      36.97
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#465B2C",
+    "hex": "#465B2C",
+    "lab": [
+      35.87,
+      -16.86,
+      24.4
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#843533",
+    "hex": "#843533",
+    "lab": [
+      33.34,
+      33.81,
+      18.33
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#4D778A",
+    "hex": "#4D778A",
+    "lab": [
+      47.64,
+      -8.83,
+      -15.17
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#D6B687",
+    "hex": "#D6B687",
+    "lab": [
+      75.92,
+      4.81,
+      28.67
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#9E7E59",
+    "hex": "#9E7E59",
+    "lab": [
+      54.98,
+      7.52,
+      24.62
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#D9845D",
+    "hex": "#D9845D",
+    "lab": [
+      63.44,
+      28.64,
+      34.81
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#668D51",
+    "hex": "#668D51",
+    "lab": [
+      54.59,
+      -25.27,
+      27.87
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#6A5172",
+    "hex": "#6A5172",
+    "lab": [
+      37.98,
+      17.18,
+      -15.11
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#575A43",
+    "hex": "#575A43",
+    "lab": [
+      37.36,
+      -5.4,
+      13.09
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#6FAF9E",
+    "hex": "#6FAF9E",
+    "lab": [
+      66.9,
+      -24.24,
+      2.1
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#436CAC",
+    "hex": "#436CAC",
+    "lab": [
+      45.4,
+      5.99,
+      -38.44
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#918784",
+    "hex": "#918784",
+    "lab": [
+      57.11,
+      3.4,
+      2.95
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#CF4E5F",
+    "hex": "#CF4E5F",
+    "lab": [
+      51.36,
+      52.41,
+      17.85
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#C16B73",
+    "hex": "#C16B73",
+    "lab": [
+      55.11,
+      35.05,
+      10.41
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#F0EED2",
+    "hex": "#F0EED2",
+    "lab": [
+      93.64,
+      -3.93,
+      13.91
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#A147C7",
+    "hex": "#A147C7",
+    "lab": [
+      47.37,
+      57.02,
+      -50.74
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#E749AC",
+    "hex": "#E749AC",
+    "lab": [
+      56.86,
+      69.21,
+      -19.69
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#68B8D6",
+    "hex": "#68B8D6",
+    "lab": [
+      71.03,
+      -16.5,
+      -22.66
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#88BB57",
+    "hex": "#88BB57",
+    "lab": [
+      70.46,
+      -33.57,
+      44.84
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#C891C9",
+    "hex": "#C891C9",
+    "lab": [
+      67.16,
+      29.9,
+      -20.59
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#4A4F58",
+    "hex": "#4A4F58",
+    "lab": [
+      33.34,
+      0.08,
+      -6.05
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#9E8F58",
+    "hex": "#9E8F58",
+    "lab": [
+      59.37,
+      -2.27,
+      31.23
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#9B51BA",
+    "hex": "#9B51BA",
+    "lab": [
+      47.53,
+      48.12,
+      -42.98
+    ]
+  },
+  {
+    "region": "boss_than_trung",
+    "name": "#9EBEE3",
+    "hex": "#9EBEE3",
+    "lab": [
+      75.69,
+      -2.26,
+      -22.0
+    ]
+  }
+]
