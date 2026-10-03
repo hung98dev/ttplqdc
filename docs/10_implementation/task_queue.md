@@ -74,7 +74,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-047` | Migration / Backup / Restore Rehearsal | `NOT_STARTED` | IMP-005, IMP-043 | `../08_scale_ops/backup_recovery.md`, `../08_scale_ops/deployment.md` |
 | `IMP-048` | Launch Candidate Gate | `NOT_STARTED` | IMP-044, IMP-045, IMP-046, IMP-047, IMP-096 | `definition_of_done.md`, `milestones.md` |
 | `IMP-049` | TTK, Survivability, and Skill-Reach Re-verification | `NOT_STARTED` | IMP-004, IMP-026 | `../07_content/balance_validation.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-050` | Spirit Beast Passive Budget Compile Validation | `IN_PROGRESS` | IMP-003, IMP-004 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
+| `IMP-050` | Spirit Beast Passive Budget Compile Validation | `DONE` | IMP-003, IMP-004 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
 | `IMP-051` | Drop Table Coverage Invariant for Monster Roster Growth | `NOT_STARTED` | IMP-003, IMP-019 | `../07_content/drop_tables.md`, `../07_content/monster_catalog.md` |
 | `IMP-052` | Seasons Infrastructure | `NOT_STARTED` | IMP-021, IMP-036, IMP-038, IMP-040, IMP-060, IMP-091, IMP-102 | `../03_systems/seasons.md`, `../03_systems/atlas.md` |
 | `IMP-053` | IAP Receipt Verification & Entitlement Grants | `NOT_STARTED` | IMP-038, IMP-100 | `../03_systems/monetization.md`, `../03_systems/account_storage.md` |
@@ -3813,7 +3813,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-049/"
 
 ## `IMP-050` — Spirit Beast Passive Budget Compile Validation
 id: IMP-050
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-050"
 branch: "imp/IMP-050-beast-budget"
 claimed_at: "2026-10-03T12:59:16Z"
