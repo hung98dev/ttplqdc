@@ -18,7 +18,7 @@ jobs:
     uses: ./.github/workflows/verify.yml
     secrets: inherit
     with:
-      run_unity: false
+      skip_unity: true
 
   # The guard re-verifies the pushed main commit through the same two
   # verification jobs, then acts on the outcome: a non-infrastructure
@@ -90,8 +90,9 @@ jobs:
       - name: Classify guard action
         id: classify
         shell: bash
-        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/trusted/cmd/guardaction \
-          -jobs "$RUNNER_TEMP/guard-jobs.json" -merged-ref "${{ steps.merged-ref.outputs.ref }}"
+        run: |
+          go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/trusted/cmd/guardaction \
+            -jobs "$RUNNER_TEMP/guard-jobs.json" -merged-ref "${{ steps.merged-ref.outputs.ref }}"
 
       - name: Checkout for revert
         if: steps.classify.outputs.action == 'revert-pr'
