@@ -1,7 +1,6 @@
 name: verify
 
 on:
-  pull_request:
   pull_request_target:
   workflow_call:
     inputs:
