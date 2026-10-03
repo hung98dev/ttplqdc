@@ -691,11 +691,21 @@ jobs:
 
       - name: Gate A — open blockers
         shell: bash
-        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
+        run: |
+          set -euo pipefail
+          VS="$RUNNER_TEMP/verifier-src/server"
+          # Bootstrap: IMP-068 ships these tools; until it lands, main lacks
+          # the package and the gate runs from the tested tree. Self-closing.
+          [ -d "$VS/internal/conformance/trusted/cmd/precheck" ] || VS="$GITHUB_WORKSPACE/server"
+          go -C "$VS" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
 
       - name: Gate C — gate ratchet
         shell: bash
-        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
+        run: |
+          set -euo pipefail
+          VS="$RUNNER_TEMP/verifier-src/server"
+          [ -d "$VS/internal/conformance/ratchet" ] || VS="$GITHUB_WORKSPACE/server"
+          go -C "$VS" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
 
       - name: Resolve pins
         shell: bash
@@ -1026,11 +1036,21 @@ jobs:
 
       - name: Gate A — open blockers
         shell: bash
-        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
+        run: |
+          set -euo pipefail
+          VS="$RUNNER_TEMP/verifier-src/server"
+          # Bootstrap: IMP-068 ships these tools; until it lands, main lacks
+          # the package and the gate runs from the tested tree. Self-closing.
+          [ -d "$VS/internal/conformance/trusted/cmd/precheck" ] || VS="$GITHUB_WORKSPACE/server"
+          go -C "$VS" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
 
       - name: Gate C — gate ratchet
         shell: bash
-        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
+        run: |
+          set -euo pipefail
+          VS="$RUNNER_TEMP/verifier-src/server"
+          [ -d "$VS/internal/conformance/ratchet" ] || VS="$GITHUB_WORKSPACE/server"
+          go -C "$VS" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
 
       - name: Resolve pins
         shell: bash
