@@ -28,7 +28,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-001` | Stable IDs / Revisions | `DONE` | IMP-000 | `../06_data/ids.md`, `../06_data/config.md` |
 | `IMP-002` | Deterministic RNG Interface | `DONE` | IMP-001 | `../04_architecture/concurrency.md`, `../06_data/config.md` |
 | `IMP-003` | Content Compiler | `DONE` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
-| `IMP-004` | Integration / Balance Activation Gate | `NOT_STARTED` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
+| `IMP-004` | Integration / Balance Activation Gate | `IN_PROGRESS` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-005` | Operation Idempotency Primitive | `DONE` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-006` | Account Auth, Session & Login Queue | `NOT_STARTED` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `NOT_STARTED` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
@@ -341,10 +341,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-003/"
 
 ## `IMP-004` — Integration / Balance Activation Gate
 id: IMP-004
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-004"
+branch: "imp/IMP-004-activation-gate"
+claimed_at: "2026-10-03T01:46:45Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md`, `../07_content/integration_validation.md`, `../07_content/balance_validation.md`, `../06_data/config.md`, `../06_data/content_authoring_contract.md`, `../07_content/progression_route.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/soul_catalog.md`, `../07_content/item_catalog.md`]
