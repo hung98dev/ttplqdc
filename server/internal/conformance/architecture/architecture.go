@@ -34,7 +34,10 @@ var allowedToolMains = map[string]bool{
 	"server/cmd/compiler": true,
 	"server/cmd/verify":   true,
 	"server/cmd/migrate":  true,
-	"server/internal/conformance/caching/cmd/cachemerge": true,
+	"server/internal/conformance/caching/cmd/cachemerge":  true,
+	"server/internal/conformance/ratchet/cmd/ratchet":     true,
+	"server/internal/conformance/trusted/cmd/precheck":    true,
+	"server/internal/conformance/trusted/cmd/guardaction": true,
 }
 
 // sqlOwners are the packages allowed to import database/sql or pgx (rule 2).
