@@ -3824,15 +3824,16 @@ adrs: [`0019-spirit-beast-companion-system.md`, `0037-reflect-lifesteal-absorb-h
 depends_on: [IMP-003, IMP-004]
 owned_paths: [`server/internal/config/validation/beast/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
-contract_inputs: [compiled spirit-beast definitions and passive budget rules]
-contract_outputs: [deterministic passive-budget diagnostics and compile rejection/pass]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+contract_inputs: [compiled spirit-beast definitions, emitted `beast_budget_check` flat-stat/resonance budget parameters, and passive budget rules]
+contract_outputs: [deterministic flat-stat and passive budget diagnostics and compile rejection/pass]
+consumers_checked: [docs/01_gameplay/stats.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
 
 ## Change
-Implement the compile-time evaluation for all Spirit Beast passive budgets (Rules A–D declared in `../03_systems/spirit_beasts.md`) against the pinned reference stats in `../01_gameplay/stats.md`. Evaluation must run at content-activation time alongside the flat-stat budget check.
+Implement the compile-time evaluation for all Spirit Beast passive budgets (Rules A–D declared in `../03_systems/spirit_beasts.md`) against the pinned reference stats in `../01_gameplay/stats.md`. Evaluation must run at content-activation time and also evaluates the emitted `beast_budget_check` parameters: every beast's resonance-adjusted flat-stat total (base + equipment) per stat must be ≤ `0.12 × reference_lv60_*` (4794 / 724 / 426 in `stats.md`).
 
 ## Acceptance
 - pipeline evaluates every beast Passive 1 against Rules A / B / C / D at Lv60 for all 10 launch beasts,
+- every emitted `beast_budget_check` parameter set is evaluated data-driven: resonance-adjusted flat-stat total for MAX_HP, ATTACK and DEFENSE must be ≤ `0.12 ×` the corresponding `reference_lv60_*` value (4794 / 724 / 426); a violation or an unparseable parameter record is a compile error,
 - a missing reference stat value in stats.md is a compile error that blocks activation,
 - any beast whose Passive 1 exceeds its applicable ceiling at Lv60 is rejected with the offending rule and value cited,
 - ICD ladder check rejects any Passive 2 ladder where two tiers compile to the same effective ICD value (clamp to [45s, 90s]) — OBJ-SBB-003 class defect,
@@ -3843,6 +3844,7 @@ Implement the compile-time evaluation for all Spirit Beast passive budgets (Rule
 ## Tests
 - `server/internal/config/validation/beast/beast_budget_test.go`: TestBeastPassiveBudgetRulesAD, TestTenLaunchBeastsPassiveValidation, TestResourceRestoreCaps.
 - `server/internal/config/validation/beast/beast_budget_test.go`: TestPassive2LegalTypeAndFixedPayload, TestPassive2AuthoredIcdLadderDistinct, TestPassive2RiderRejected.
+- `server/internal/config/validation/beast/beast_budget_test.go`: TestBeastBudgetCheckFlatStatBudget, TestBeastBudgetCheckResonanceAdjusted, TestBeastBudgetCheckViolationRejects.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]

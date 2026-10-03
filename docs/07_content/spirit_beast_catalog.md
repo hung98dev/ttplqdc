@@ -277,13 +277,13 @@ Faucet: `item.beast_eq.*` acquisition is independent RARE_ROLL on dungeon `.norm
 All beast base stat values and all beast equipment stat values in this catalog have been scaled by **1/6** (floor applied per value) from the original draft figures to bring the Spirit Beast power budget within the 12% cap declared in `../03_systems/spirit_beasts.md`. The reference values used are:
 ```text
 reference_lv60_max_hp  = 4,794  (THO class, pinned in stats.md)
-reference_lv60_attack  =   723  (KIM class, pinned in stats.md)
+reference_lv60_attack  =   724  (KIM class, pinned in stats.md)
 reference_lv60_defense =   426  (THO class, pinned in stats.md)
 ```
 Worst-case post-scale budget consumption (flat stats + equipment, Tương Sinh resonance ×1.08):
 ```text
 MAX_HP : coc_than Lv60 base+250, t6 ao_giap+233 → floor((250+233)×1.08) = 521  / 4,794 = 10.9% ≤ 12% ✓
-ATTACK : ga_than  Lv60 base+22,  t6 vong_co+25  → floor(( 22+ 25)×1.08) =  50  /   723 =  6.9% ≤ 12% ✓
+ATTACK : ga_than  Lv60 base+22,  t6 vong_co+25  → floor(( 22+ 25)×1.08) =  50  /   724 =  6.9% ≤ 12% ✓
 DEFENSE: trau_dong Lv60 base+20, t6 ao_giap+27  → floor(( 20+ 27)×1.08) =  50  /   426 = 11.7% ≤ 12% ✓
 ```
 (Note: previous draft cited rua_than +18 DEFENSE as worst case; trau_dong +20 is the actual worst case.)
@@ -295,7 +295,7 @@ DEFENSE: trau_dong Lv60 base+20, t6 ao_giap+27  → floor(( 20+ 27)×1.08) =  50
 4. Any beast level `< 1` or `> 60`.
 5. Beast level exceeding character level.
 6. Missing `item.material.linh_dan.*` item definitions in `item_catalog.md`.
-7. Any beast+equipment+resonance combination where `resonance_adjusted_total(MAX_HP) / 4794 > 0.12` or `resonance_adjusted_total(ATTACK) / 723 > 0.12` or `resonance_adjusted_total(DEFENSE) / 426 > 0.12`.
+7. Any beast+equipment+resonance combination where `resonance_adjusted_total(MAX_HP) / 4794 > 0.12` or `resonance_adjusted_total(ATTACK) / 724 > 0.12` or `resonance_adjusted_total(DEFENSE) / 426 > 0.12`.
 8. **Passive budget — Rule A**: Any beast whose Passive 1 grants a percentage bonus to MAX_HP, ATTACK, or DEFENSE exceeding `8.0%` at Lv60.
 9. **Passive budget — Rule B**: Any beast whose Passive 1 grants DAMAGE_REDUCTION > `10.0%`, DODGE_CHANCE > `10.0%`, ACCURACY > `10.0%`, CRIT_CHANCE > `15.0%`, or COOLDOWN_REDUCTION > `8.75%` at Lv60.
 10. **Passive budget — Rule C**: Any beast whose Passive 1 grants ATTACK_SPEED > `8.0%` at Lv60.
