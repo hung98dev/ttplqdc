@@ -2,6 +2,13 @@ name: verify
 
 on:
   pull_request:
+  pull_request_target:
+  workflow_call:
+    inputs:
+      run_unity:
+        description: run the Unity (Windows) job and its downstream merge steps
+        type: boolean
+        default: true
 
 concurrency:
   group: verify-${{ github.event.pull_request.number || github.ref }}
@@ -17,6 +24,7 @@ env:
 jobs:
   unity-windows:
     name: Unity (Windows)
+    if: inputs.run_unity != false
     runs-on: windows-2022
     timeout-minutes: 120
     steps:
@@ -34,6 +42,7 @@ jobs:
           esac
 
       - name: Freeze check
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
         shell: bash
         env:
           FROZEN: ${{ vars.AUTO_MERGE_FROZEN }}
@@ -103,25 +112,44 @@ jobs:
           echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
           echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Checkout target (head)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           lfs: false
           fetch-depth: 0
+
+      - name: Clone verifier source (main)
+        shell: bash
+        run: git clone --depth 1 --branch main "https://github.com/${{ github.repository }}.git" "$RUNNER_TEMP/verifier-src"
 
       - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
         with:
           go-version: '1.27.1'
           cache: false
 
+      - name: Build verifier (from main)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/verify-bin"
+          go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/verify" ./cmd/verify
+          go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/cachemerge" ./internal/conformance/caching/cmd/cachemerge
+          VB="$RUNNER_TEMP/verify-bin/verify"; [ -f "$VB.exe" ] && VB="$VB.exe"
+          CM="$RUNNER_TEMP/verify-bin/cachemerge"; [ -f "$CM.exe" ] && CM="$CM.exe"
+          echo "VERIFY_BIN=$VB" >> "$GITHUB_ENV"
+          echo "CACHEMERGE_BIN=$CM" >> "$GITHUB_ENV"
+          echo "THINHTHAN_VERIFIER_ROOT=$RUNNER_TEMP/verifier-src" >> "$GITHUB_ENV"
+
       - name: Resolve pins
         shell: bash
         run: |
           set -euo pipefail
-          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
-          echo "UNITY_WINDOWS_EDITOR_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-url)" >> "$GITHUB_ENV"
-          echo "UNITY_WINDOWS_EDITOR_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-sha256)" >> "$GITHUB_ENV"
-          echo "UNITY_EDITOR_VERSION_PIN=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-editor-version)" >> "$GITHUB_ENV"
-          echo "UNITY_EDITOR_CHANGESET=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin unity-editor-changeset)" >> "$GITHUB_ENV"
+          echo "GO_VERSION=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_URL=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-url)" >> "$GITHUB_ENV"
+          echo "UNITY_WINDOWS_EDITOR_SHA256=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin unity-installer-sha256)" >> "$GITHUB_ENV"
+          echo "UNITY_EDITOR_VERSION_PIN=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin unity-editor-version)" >> "$GITHUB_ENV"
+          echo "UNITY_EDITOR_CHANGESET=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin unity-editor-changeset)" >> "$GITHUB_ENV"
 
       - name: Unity scope + mode plan
         id: plan
@@ -129,7 +157,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p artifacts
-          go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -plan-unity artifacts/unity-plan.json
+          "$VERIFY_BIN" -repo-root "$GITHUB_WORKSPACE" -plan-unity artifacts/unity-plan.json
           cat artifacts/unity-plan.json
           for k in scope editmode playmode visual_review performance graphical_load; do
             echo "$k=$(jq -r ".$k" artifacts/unity-plan.json)" >> "$GITHUB_OUTPUT"
@@ -154,7 +182,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          . .devin/scripts/cache_telemetry.sh
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
           cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
@@ -186,7 +214,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          . .devin/scripts/cache_telemetry.sh
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
           cache_telemetry_emit lfs-objects '${{ steps.cache-lfs.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
@@ -213,7 +241,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          . .devin/scripts/cache_telemetry.sh
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
           cache_telemetry_emit unity-editor '${{ steps.cache-editor.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
@@ -253,7 +281,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          . .devin/scripts/cache_telemetry.sh
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
           cache_telemetry_emit unity-library '${{ steps.cache-library.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
@@ -566,6 +594,7 @@ jobs:
           esac
 
       - name: Freeze check
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
         shell: bash
         env:
           FROZEN: ${{ vars.AUTO_MERGE_FROZEN }}
@@ -631,23 +660,50 @@ jobs:
           echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
           echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Checkout target (head)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           lfs: false
           fetch-depth: 0
+
+      - name: Clone verifier source (main)
+        shell: bash
+        run: git clone --depth 1 --branch main "https://github.com/${{ github.repository }}.git" "$RUNNER_TEMP/verifier-src"
 
       - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
         with:
           go-version: '1.27.1'
           cache: false
 
+      - name: Build verifier (from main)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/verify-bin"
+          go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/verify" ./cmd/verify
+          go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/cachemerge" ./internal/conformance/caching/cmd/cachemerge
+          VB="$RUNNER_TEMP/verify-bin/verify"; [ -f "$VB.exe" ] && VB="$VB.exe"
+          CM="$RUNNER_TEMP/verify-bin/cachemerge"; [ -f "$CM.exe" ] && CM="$CM.exe"
+          echo "VERIFY_BIN=$VB" >> "$GITHUB_ENV"
+          echo "CACHEMERGE_BIN=$CM" >> "$GITHUB_ENV"
+          echo "THINHTHAN_VERIFIER_ROOT=$RUNNER_TEMP/verifier-src" >> "$GITHUB_ENV"
+
+      - name: Gate A — open blockers
+        shell: bash
+        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
+
+      - name: Gate C — gate ratchet
+        shell: bash
+        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
+
       - name: Resolve pins
         shell: bash
         run: |
           set -euo pipefail
-          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
-          echo "EDB_ZIP_SHA256=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-sha256)" >> "$GITHUB_ENV"
-          echo "EDB_URL=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin edb-url)" >> "$GITHUB_ENV"
+          echo "GO_VERSION=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "EDB_ZIP_SHA256=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin edb-sha256)" >> "$GITHUB_ENV"
+          echo "EDB_URL=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin edb-url)" >> "$GITHUB_ENV"
 
       - name: Cache timer go-build
         shell: bash
@@ -668,7 +724,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          . .devin/scripts/cache_telemetry.sh
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
           cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
@@ -687,7 +743,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          . .devin/scripts/cache_telemetry.sh
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
           cache_telemetry_emit edb '${{ steps.edb-cache.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
@@ -722,30 +778,48 @@ jobs:
         run: go install honnef.co/go/tools/cmd/staticcheck@v0.8.1
 
       - name: Pre-Unity verify
-        shell: pwsh
+        id: pre-unity
+        shell: bash
         continue-on-error: true
         timeout-minutes: 30
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: |
-          pwsh -NoProfile -File scripts/verify.ps1 -Phase pre-unity -ReportOut "$env:RUNNER_TEMP\verify-pre-unity.json"
+          set -uo pipefail
+          start=$(date +%s.%N)
+          "$VERIFY_BIN" -repo-root "$GITHUB_WORKSPACE" -phase pre-unity -report-out "$RUNNER_TEMP/verify-pre-unity.json"
+          rc=$?
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
+          wall=$(awk -v n="$(date +%s.%N)" -v t="$start" 'BEGIN{printf "%.3f", n - t}')
+          res=miss; [ "${THINHTHAN_CACHE_HIT_GO:-}" = "true" ] && res=hit
+          cache_telemetry_emit verify-pre-unity "$res" "$wall" || true
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: Check Pre-Unity conclusion (no unity run)
+        if: inputs.run_unity == false
+        shell: bash
+        run: test "${{ steps.pre-unity.outputs.rc }}" = "0"
 
       - name: Wait for Unity (Windows)
+        if: inputs.run_unity != false
         id: wait-unity
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WAIT_JOB: Unity (Windows)
-        run: bash .devin/scripts/wait_job.sh
+        run: bash "$RUNNER_TEMP/verifier-src/.devin/scripts/wait_job.sh"
 
       - name: Check Unity (Windows) conclusion
+        if: inputs.run_unity != false
         shell: bash
         run: |
           set -euo pipefail
           [ "${{ steps.wait-unity.outputs.conclusion }}" = "success" ]
 
       - name: Download unity-test-results-windows
+        if: inputs.run_unity != false
         continue-on-error: true
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
@@ -753,6 +827,7 @@ jobs:
           path: unity-results/
 
       - name: Download visual-review
+        if: inputs.run_unity != false
         continue-on-error: true
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
@@ -760,6 +835,7 @@ jobs:
           path: artifacts/visual-review/
 
       - name: Fold unity cache telemetry
+        if: inputs.run_unity != false
         shell: bash
         run: |
           set -euo pipefail
@@ -770,53 +846,76 @@ jobs:
           fi
 
       - name: Unity phase verify
-        shell: pwsh
+        if: inputs.run_unity != false
+        shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
         run: |
-          pwsh -NoProfile -File scripts/verify.ps1 -Phase unity `
-            -PreReport "$env:RUNNER_TEMP\verify-pre-unity.json" `
-            -UnityResultsDir unity-results `
-            -ReportOut artifacts/verify-report-windows.json
+          set -uo pipefail
+          start=$(date +%s.%N)
+          "$VERIFY_BIN" -repo-root "$GITHUB_WORKSPACE" -phase unity \
+            -pre-report "$RUNNER_TEMP/verify-pre-unity.json" \
+            -unity-results-dir unity-results \
+            -report-out artifacts/verify-report-windows.json
+          rc=$?
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
+          wall=$(awk -v n="$(date +%s.%N)" -v t="$start" 'BEGIN{printf "%.3f", n - t}')
+          res=miss; [ "${THINHTHAN_CACHE_HIT_GO:-}" = "true" ] && res=hit
+          cache_telemetry_emit verify "$res" "$wall" || true
+          "$CACHEMERGE_BIN" -report "$GITHUB_WORKSPACE/artifacts/verify-report-windows.json" || true
+          exit "$rc"
 
       - name: Upload verify-report-windows
-        if: always()
+        if: always() && (inputs.run_unity != false)
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: verify-report-windows
           path: artifacts/verify-report-windows.json
 
       - name: Wait for Q0-Q6 verify (Linux)
+        if: inputs.run_unity != false
         id: wait-linux
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WAIT_JOB: Q0-Q6 verify (Linux)
-        run: bash .devin/scripts/wait_job.sh
+        run: bash "$RUNNER_TEMP/verifier-src/.devin/scripts/wait_job.sh"
 
       - name: Check Q0-Q6 verify (Linux) conclusion
+        if: inputs.run_unity != false
         shell: bash
         run: |
           set -euo pipefail
           [ "${{ steps.wait-linux.outputs.conclusion }}" = "success" ]
 
       - name: Download verify-report-linux
+        if: inputs.run_unity != false
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: verify-report-linux
           path: linux-report/
 
       - name: Merge evidence
-        shell: pwsh
+        if: inputs.run_unity != false
+        shell: bash
         run: |
-          pwsh -NoProfile -File scripts/verify.ps1 -MergeReports `
-            -LinuxReport linux-report/verify-report-linux.json `
-            -WindowsReport artifacts/verify-report-windows.json `
-            -OutManifest artifacts/evidence/manifest.json
+          set -euo pipefail
+          branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME:-}}"
+          if [ -z "$branch" ]; then branch=$(git -C "$GITHUB_WORKSPACE" branch --show-current || true); fi
+          if ! [[ "$branch" =~ IMP-[0-9]+ ]]; then
+            echo "verify merge: head '$branch' has no IMP-N task — skipping manifest generation"
+            test -f linux-report/verify-report-linux.json
+            test -f artifacts/verify-report-windows.json
+            exit 0
+          fi
+          "$VERIFY_BIN" -repo-root "$GITHUB_WORKSPACE" -merge \
+            -linux linux-report/verify-report-linux.json \
+            -windows artifacts/verify-report-windows.json \
+            -out artifacts/evidence/manifest.json
 
       - name: Upload evidence
-        if: always()
+        if: always() && (inputs.run_unity != false)
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: evidence
@@ -855,6 +954,7 @@ jobs:
           esac
 
       - name: Freeze check
+        if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
         shell: bash
         env:
           FROZEN: ${{ vars.AUTO_MERGE_FROZEN }}
@@ -895,21 +995,48 @@ jobs:
           echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
           echo "$RUNNER_TEMP/tools/pwsh" >> "$GITHUB_PATH"
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Checkout target (head)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           lfs: false
           fetch-depth: 0
+
+      - name: Clone verifier source (main)
+        shell: bash
+        run: git clone --depth 1 --branch main "https://github.com/${{ github.repository }}.git" "$RUNNER_TEMP/verifier-src"
 
       - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
         with:
           go-version: '1.27.1'
           cache: false
 
+      - name: Build verifier (from main)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/verify-bin"
+          go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/verify" ./cmd/verify
+          go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/cachemerge" ./internal/conformance/caching/cmd/cachemerge
+          VB="$RUNNER_TEMP/verify-bin/verify"; [ -f "$VB.exe" ] && VB="$VB.exe"
+          CM="$RUNNER_TEMP/verify-bin/cachemerge"; [ -f "$CM.exe" ] && CM="$CM.exe"
+          echo "VERIFY_BIN=$VB" >> "$GITHUB_ENV"
+          echo "CACHEMERGE_BIN=$CM" >> "$GITHUB_ENV"
+          echo "THINHTHAN_VERIFIER_ROOT=$RUNNER_TEMP/verifier-src" >> "$GITHUB_ENV"
+
+      - name: Gate A — open blockers
+        shell: bash
+        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
+
+      - name: Gate C — gate ratchet
+        shell: bash
+        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
+
       - name: Resolve pins
         shell: bash
         run: |
           set -euo pipefail
-          echo "GO_VERSION=$(go -C server run ./cmd/verify -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
+          echo "GO_VERSION=$($VERIFY_BIN -repo-root "$GITHUB_WORKSPACE" -print-pin go-version)" >> "$GITHUB_ENV"
 
       - name: Cache timer go-build
         shell: bash
@@ -930,7 +1057,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          . .devin/scripts/cache_telemetry.sh
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
           wall=$(awk -v n="$(date +%s.%N)" -v t="${CT0:-0}" 'BEGIN{printf "%.3f", (t > 0) ? n - t : 0}')
           cache_telemetry_emit go-build '${{ steps.cache-go-build.outputs.cache-hit == 'true' && 'hit' || 'miss' }}' "$wall"
 
@@ -949,11 +1076,21 @@ jobs:
         run: go install honnef.co/go/tools/cmd/staticcheck@v0.8.1
 
       - name: Verify
-        shell: pwsh
+        shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           THINHTHAN_CACHE_HIT_GO: ${{ steps.cache-go-build.outputs.cache-hit }}
-        run: pwsh -NoProfile -File scripts/verify.ps1 -ReportOut artifacts/verify-report-linux.json
+        run: |
+          set -uo pipefail
+          start=$(date +%s.%N)
+          "$VERIFY_BIN" -repo-root "$GITHUB_WORKSPACE" -phase all -report-out artifacts/verify-report-linux.json
+          rc=$?
+          . "$RUNNER_TEMP/verifier-src/.devin/scripts/cache_telemetry.sh"
+          wall=$(awk -v n="$(date +%s.%N)" -v t="$start" 'BEGIN{printf "%.3f", n - t}')
+          res=miss; [ "${THINHTHAN_CACHE_HIT_GO:-}" = "true" ] && res=hit
+          cache_telemetry_emit verify "$res" "$wall" || true
+          "$CACHEMERGE_BIN" -report "$GITHUB_WORKSPACE/artifacts/verify-report-linux.json" || true
+          exit "$rc"
 
       - name: Upload verify-report-linux
         if: always()

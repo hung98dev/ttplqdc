@@ -1,0 +1,60 @@
+{
+  "captured_at": "2026-10-03",
+  "captured_by": "imp/IMP-068-trusted-ci (agent token, installation-scoped)",
+  "verified": {
+    "repo": {
+      "full_name": "hung98dev/ttplqdc",
+      "visibility": "public",
+      "default_branch": "main",
+      "source": "repo.json (GET /repos/hung98dev/ttplqdc)"
+    },
+    "rulesets": {
+      "count": 1,
+      "active": ["main-protection (id 24253182, target branch)"],
+      "source": "rulesets.json (GET /repos/hung98dev/ttplqdc/rulesets)"
+    },
+    "policy_review_app_attribution": {
+      "check_run": "policy-review",
+      "app_id": 5063873,
+      "app_slug": "thinhthan-policy-reviewer",
+      "verify_jobs_app_slug": "github-actions",
+      "source": "check-runs-pr83.json (GET /repos/.../commits/831311c/check-runs)",
+      "note": "policy-review is an App check run, not a workflow job"
+    }
+  },
+  "expected_by_spec": {
+    "comment": "Required by audit_gates.md Owner Setup; the agent installation token cannot read these endpoints (403/401 below) — owner confirms on the Apps/secrets settings pages",
+    "secret_names": [
+      "GUARD_APP_ID",
+      "GUARD_APP_KEY",
+      "UNITY_LICENSE",
+      "UNITY_EMAIL",
+      "UNITY_PASSWORD",
+      "UNITY_SERIAL"
+    ],
+    "variable_names": ["AUTO_MERGE_FROZEN"],
+    "apps": [
+      {
+        "slug": "thinhthan-policy-reviewer",
+        "app_id": 5063873,
+        "permissions": { "checks": "write", "metadata": "read" }
+      },
+      {
+        "slug": "thinhthan-merge-guard",
+        "permissions": {
+          "contents": "write",
+          "pull_requests": "write",
+          "issues": "write",
+          "variables": "write"
+        }
+      }
+    ]
+  },
+  "unverifiable_endpoints": [
+    "GET /repos/hung98dev/ttplqdc/actions/secrets — 403 Resource not accessible by integration",
+    "GET /repos/hung98dev/ttplqdc/actions/variables — 403 Resource not accessible by integration",
+    "GET /repos/hung98dev/ttplqdc/installation — 401 (requires App JWT, not installation token)",
+    "GET /apps/thinhthan-policy-reviewer — 403 Resource not accessible by integration",
+    "GET /apps/thinhthan-merge-guard — 403 Resource not accessible by integration"
+  ]
+}

@@ -1,0 +1,159 @@
+name: post-merge-guard
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: post-merge-guard-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+    secrets: inherit
+    with:
+      run_unity: false
+
+  # The guard re-verifies the pushed main commit through the same two
+  # verification jobs, then acts on the outcome: a non-infrastructure
+  # failure opens revert/<sha> and flags dependents; a failing revert or an
+  # infrastructure failure freezes auto-merge (AUTO_MERGE_FROZEN=true) and
+  # opens an ops-blocked issue; a green ops/ merge clears the freeze.
+  guard:
+    name: Post-merge guard
+    needs: verify
+    if: always()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Mint merge-guard App token
+        id: app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1
+        with:
+          app-id: ${{ secrets.GUARD_APP_ID }}
+          private-key: ${{ secrets.GUARD_APP_KEY }}
+
+      - name: Install pinned CLI tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/tools/bin"
+          curl -fsSL -o "$RUNNER_TEMP/gh.tgz" \
+            "https://github.com/cli/cli/releases/download/v2.101.0/gh_2.101.0_linux_amd64.tar.gz"
+          echo "9bca2d1c16825f109907a23307628a2f0698fbf99662b73a5cf0b020293072b8  $RUNNER_TEMP/gh.tgz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/tools/gh" && tar -xzf "$RUNNER_TEMP/gh.tgz" -C "$RUNNER_TEMP/tools/gh"
+          cp "$(find "$RUNNER_TEMP/tools/gh" -type f -name gh | head -1)" "$RUNNER_TEMP/tools/bin/gh"
+          curl -fsSL -o "$RUNNER_TEMP/tools/bin/jq" \
+            "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-linux-amd64"
+          echo "b1c22172dd303f3be49e935aa56aa48a8b7a46e0bc838b4997d3bb451495870f  $RUNNER_TEMP/tools/bin/jq" | sha256sum -c -
+          chmod +x "$RUNNER_TEMP/tools/bin/"*
+          echo "$RUNNER_TEMP/tools/bin" >> "$GITHUB_PATH"
+
+      - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34
+        with:
+          go-version: '1.27.1'
+          cache: false
+
+      - name: Clone verifier source (main)
+        shell: bash
+        run: git clone --depth 1 --branch main "https://github.com/${{ github.repository }}.git" "$RUNNER_TEMP/verifier-src"
+
+      - name: Resolve pushed commit's merged ref
+        id: merged-ref
+        shell: bash
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          ref=$(gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/pulls" \
+            --jq '[.[] | select(.merged_at != null)] | .[0].head.ref // empty' || true)
+          echo "merged_ref=$ref"
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+
+      - name: Collect verification job results
+        shell: bash
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs?per_page=100" \
+            --jq '[.jobs[] | select(.name | test("verify"; "i")) | {name, conclusion}]' \
+            > "$RUNNER_TEMP/guard-jobs.json"
+          cat "$RUNNER_TEMP/guard-jobs.json"
+
+      - name: Classify guard action
+        id: classify
+        shell: bash
+        run: go -C "$RUNNER_TEMP/verifier-src/server" run ./internal/conformance/trusted/cmd/guardaction \
+          -jobs "$RUNNER_TEMP/guard-jobs.json" -merged-ref "${{ steps.merged-ref.outputs.ref }}"
+
+      - name: Checkout for revert
+        if: steps.classify.outputs.action == 'revert-pr'
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          token: ${{ steps.app.outputs.token }}
+          fetch-depth: 0
+
+      - name: Open revert PR and flag dependents
+        if: steps.classify.outputs.action == 'revert-pr'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          sha="${{ github.sha }}"
+          short="${sha:0:8}"
+          git config user.name "thinhthan-merge-guard[bot]"
+          git config user.email "thinhthan-merge-guard[bot]@users.noreply.github.com"
+          git checkout -b "revert/$short"
+          if ! git revert --no-edit "$sha"; then
+            git revert --abort
+            echo "revert of $sha conflicts — freezing instead" >&2
+            gh api -X PATCH "repos/${{ github.repository }}/actions/variables/AUTO_MERGE_FROZEN" -f value=true
+            exit 1
+          fi
+          git push origin "revert/$short"
+          gh pr create --repo "${{ github.repository }}" --base main --head "revert/$short" \
+            --title "revert($short): auto-revert failing merge $sha" \
+            --body "Post-merge guard: verification failed for main push \`$sha\` (run ${{ github.run_id }}). This revert was opened automatically; dependents are BLOCKED until it merges."
+          gh api "repos/${{ github.repository }}/pulls?state=open&per_page=100" \
+            --jq '.[] | select(.base.ref == "main") | .number' | while read -r pr; do
+            gh api "repos/${{ github.repository }}/issues/$pr/comments" \
+              -f body="post-merge guard: verification failed for main push \`$sha\` — \`revert/$short\` pending; this PR is BLOCKED until the revert merges." || true
+          done
+
+      - name: Freeze auto-merge on infra or revert failure
+        if: steps.classify.outputs.action == 'freeze'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          gh api -X PATCH "repos/${{ github.repository }}/actions/variables/AUTO_MERGE_FROZEN" -f value=true \
+            || gh api -X POST "repos/${{ github.repository }}/actions/variables" -f name=AUTO_MERGE_FROZEN -f value=true
+          gh api -X POST "repos/${{ github.repository }}/labels" -f name=ops-blocked -f color=B60205 || true
+          gh api -X POST "repos/${{ github.repository }}/issues" \
+            -f title="ops-blocked: post-merge guard froze auto-merge (${{ github.sha }})" \
+            -f body="Verification for main push \`${{ github.sha }}\` ended in an infrastructure or revert failure (run ${{ github.run_id }}). AUTO_MERGE_FROZEN=true is set; only revert/ and ops/ branches may proceed. Resolve via an ops/ PR." \
+            -f "labels[]=ops-blocked"
+
+      - name: Clear freeze on ops/ resolution
+        if: steps.classify.outputs.action == 'clear-freeze'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          # A green push that merged the resolving ops/ PR unfreezes the queue.
+          gh api -X PATCH "repos/${{ github.repository }}/actions/variables/AUTO_MERGE_FROZEN" -f value=false
+
+      - name: Guard verdict
+        shell: bash
+        run: |
+          echo "post-merge guard action for ${{ github.sha }}: ${{ steps.classify.outputs.action }} (merged ref '${{ steps.merged-ref.outputs.ref }}')"
