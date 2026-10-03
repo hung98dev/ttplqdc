@@ -74,7 +74,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-047` | Migration / Backup / Restore Rehearsal | `NOT_STARTED` | IMP-005, IMP-043 | `../08_scale_ops/backup_recovery.md`, `../08_scale_ops/deployment.md` |
 | `IMP-048` | Launch Candidate Gate | `NOT_STARTED` | IMP-044, IMP-045, IMP-046, IMP-047, IMP-096 | `definition_of_done.md`, `milestones.md` |
 | `IMP-049` | TTK, Survivability, and Skill-Reach Re-verification | `NOT_STARTED` | IMP-004, IMP-026 | `../07_content/balance_validation.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-050` | Spirit Beast Passive Budget Compile Validation | `NOT_STARTED` | IMP-003, IMP-004 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
+| `IMP-050` | Spirit Beast Passive Budget Compile Validation | `IN_PROGRESS` | IMP-003, IMP-004 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
 | `IMP-051` | Drop Table Coverage Invariant for Monster Roster Growth | `NOT_STARTED` | IMP-003, IMP-019 | `../07_content/drop_tables.md`, `../07_content/monster_catalog.md` |
 | `IMP-052` | Seasons Infrastructure | `NOT_STARTED` | IMP-021, IMP-036, IMP-038, IMP-040, IMP-060, IMP-091, IMP-102 | `../03_systems/seasons.md`, `../03_systems/atlas.md` |
 | `IMP-053` | IAP Receipt Verification & Entitlement Grants | `NOT_STARTED` | IMP-038, IMP-100 | `../03_systems/monetization.md`, `../03_systems/account_storage.md` |
@@ -92,7 +92,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-066` | Unity Input Action Mapping & Core UI/HUD State Machine | `NOT_STARTED` | IMP-013, IMP-065 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-067` | Unity IL2CPP Player Build (Windows, Android) & Release Packaging | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-076, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-093, IMP-099, IMP-103 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
-| `IMP-068` | Trusted CI, Post-Merge Guard & Foundation Exit | `NOT_STARTED` | IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106 | `audit_gates.md`, `agent_execution_protocol.md` |
+| `IMP-068` | Trusted CI, Post-Merge Guard & Foundation Exit | `IN_PROGRESS` | IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106 | `audit_gates.md`, `agent_execution_protocol.md` |
 | `IMP-069` | Server Composition Root and Lifecycle Wiring | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-049, IMP-050, IMP-051, IMP-054, IMP-055, IMP-062, IMP-077, IMP-084, IMP-085, IMP-086, IMP-087, IMP-089, IMP-090, IMP-092, IMP-093, IMP-103 | `../04_architecture/backend.md`, `../04_architecture/service_boundaries.md` |
 | `IMP-070` | Asset Provenance Register & Validator | `DONE` | IMP-063, IMP-101 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-071` | Player Character & Class Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md` |
@@ -624,10 +624,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-083/"
 
 ## `IMP-068` — Trusted CI, Post-Merge Guard & Foundation Exit
 id: IMP-068
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-068"
+branch: "imp/IMP-068-trusted-ci"
+claimed_at: "2026-10-03T12:59:13Z"
 blocked_by: ""
 
 specs: [`audit_gates.md`, `agent_execution_protocol.md`, `known_blockers.md`, `../00_context/technology_versions.md`, `../07_security/external_integrations.md`, `../08_scale_ops/deployment.md`, `../09_testing/test_and_release_evidence.md`]
@@ -3813,10 +3813,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-049/"
 
 ## `IMP-050` — Spirit Beast Passive Budget Compile Validation
 id: IMP-050
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-050"
+branch: "imp/IMP-050-beast-budget"
+claimed_at: "2026-10-03T12:59:16Z"
 blocked_by: ""
 
 specs: [`../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md`]
@@ -3824,15 +3824,16 @@ adrs: [`0019-spirit-beast-companion-system.md`, `0037-reflect-lifesteal-absorb-h
 depends_on: [IMP-003, IMP-004]
 owned_paths: [`server/internal/config/validation/beast/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
-contract_inputs: [compiled spirit-beast definitions and passive budget rules]
-contract_outputs: [deterministic passive-budget diagnostics and compile rejection/pass]
-consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
+contract_inputs: [compiled spirit-beast definitions, emitted `beast_budget_check` flat-stat/resonance budget parameters, and passive budget rules]
+contract_outputs: [deterministic flat-stat and passive budget diagnostics and compile rejection/pass]
+consumers_checked: [docs/01_gameplay/stats.md, docs/10_implementation/milestones.md, docs/10_implementation/dependency_graph.md]
 
 ## Change
-Implement the compile-time evaluation for all Spirit Beast passive budgets (Rules A–D declared in `../03_systems/spirit_beasts.md`) against the pinned reference stats in `../01_gameplay/stats.md`. Evaluation must run at content-activation time alongside the flat-stat budget check.
+Implement the compile-time evaluation for all Spirit Beast passive budgets (Rules A–D declared in `../03_systems/spirit_beasts.md`) against the pinned reference stats in `../01_gameplay/stats.md`. Evaluation must run at content-activation time and also evaluates the emitted `beast_budget_check` parameters: every beast's resonance-adjusted flat-stat total (base + equipment) per stat must be ≤ `0.12 × reference_lv60_*` (4794 / 724 / 426 in `stats.md`).
 
 ## Acceptance
 - pipeline evaluates every beast Passive 1 against Rules A / B / C / D at Lv60 for all 10 launch beasts,
+- every emitted `beast_budget_check` parameter set is evaluated data-driven: resonance-adjusted flat-stat total for MAX_HP, ATTACK and DEFENSE must be ≤ `0.12 ×` the corresponding `reference_lv60_*` value (4794 / 724 / 426); a violation or an unparseable parameter record is a compile error,
 - a missing reference stat value in stats.md is a compile error that blocks activation,
 - any beast whose Passive 1 exceeds its applicable ceiling at Lv60 is rejected with the offending rule and value cited,
 - ICD ladder check rejects any Passive 2 ladder where two tiers compile to the same effective ICD value (clamp to [45s, 90s]) — OBJ-SBB-003 class defect,
@@ -3843,6 +3844,7 @@ Implement the compile-time evaluation for all Spirit Beast passive budgets (Rule
 ## Tests
 - `server/internal/config/validation/beast/beast_budget_test.go`: TestBeastPassiveBudgetRulesAD, TestTenLaunchBeastsPassiveValidation, TestResourceRestoreCaps.
 - `server/internal/config/validation/beast/beast_budget_test.go`: TestPassive2LegalTypeAndFixedPayload, TestPassive2AuthoredIcdLadderDistinct, TestPassive2RiderRejected.
+- `server/internal/config/validation/beast/beast_budget_test.go`: TestBeastBudgetCheckFlatStatBudget, TestBeastBudgetCheckResonanceAdjusted, TestBeastBudgetCheckViolationRejects.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
