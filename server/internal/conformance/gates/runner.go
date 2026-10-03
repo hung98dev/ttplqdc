@@ -166,6 +166,8 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details = taskgraph.CheckDag(r.Root)
 	case "Q0.req.coverage":
 		details = taskgraph.CheckReqCoverage(r.Root)
+	case "Q0.ratchet", "Q6.ratchet":
+		details, missing = r.gateRatchet()
 	case "Q1.pins":
 		details = append(CheckPins(r.Root), checkProtobufDLL(r.Root)...)
 	case "Q1.forbidden_deps":
