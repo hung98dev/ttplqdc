@@ -624,7 +624,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-083/"
 
 ## `IMP-068` — Trusted CI, Post-Merge Guard & Foundation Exit
 id: IMP-068
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-068"
 branch: "imp/IMP-068-trusted-ci"
 claimed_at: "2026-10-03T12:59:13Z"
@@ -3813,7 +3813,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-049/"
 
 ## `IMP-050` — Spirit Beast Passive Budget Compile Validation
 id: IMP-050
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-050"
 branch: "imp/IMP-050-beast-budget"
 claimed_at: "2026-10-03T12:59:16Z"
