@@ -469,6 +469,21 @@ func TestBeastBudgetCheckViolationRejects(t *testing.T) {
 	}
 }
 
+// TestBeastCheckActivationHook: Gate.RegisterCheck wires beast.Check into
+// Gate.Activate — an over-budget candidate is rejected at activation time.
+// (validation/beast imports config, so config cannot import it back; the
+// registration seam is the only direction Go allows.)
+func TestBeastCheckActivationHook(t *testing.T) {
+	g := config.NewGate()
+	g.RegisterCheck(Check)
+	c := beastCandidate(t)
+	setBaseStat(t, c, "beast.tho.coc_than", "MAX_HP", 900, 1)
+	d := g.Activate(c, config.ActivationMeta{})
+	if !hasDiag(d, config.DiagBalanceGuardrail) {
+		t.Fatalf("want activation rejection via beast check, got %v", d)
+	}
+}
+
 // TestResourceRestoreCaps: Kill/Assist Resource Restore payload pct must be
 // <= 0.03 of MAX_MP or MAX_HP.
 func TestResourceRestoreCaps(t *testing.T) {
