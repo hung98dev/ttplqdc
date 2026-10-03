@@ -1,6 +1,40 @@
 {
   "captured_at": "2026-10-03",
   "captured_by": "imp/IMP-068-trusted-ci (agent token, installation-scoped)",
+  "owner_setup": {
+    "repo": {
+      "full_name": "hung98dev/ttplqdc",
+      "visibility": "public",
+      "default_branch": "main"
+    },
+    "secret_names": [
+      "GUARD_APP_ID",
+      "GUARD_APP_KEY",
+      "UNITY_LICENSE",
+      "UNITY_EMAIL",
+      "UNITY_PASSWORD",
+      "UNITY_SERIAL"
+    ],
+    "variable_names": ["AUTO_MERGE_FROZEN"],
+    "apps": [
+      {
+        "slug": "thinhthan-policy-reviewer",
+        "app_id": 5063873,
+        "permissions": { "checks": "write", "metadata": "read" }
+      },
+      {
+        "slug": "thinhthan-merge-guard",
+        "app_id": 0,
+        "permissions": {
+          "contents": "write",
+          "pull_requests": "write",
+          "issues": "write",
+          "variables": "write"
+        }
+      }
+    ],
+    "rulesets": 1
+  },
   "verified": {
     "repo": {
       "full_name": "hung98dev/ttplqdc",

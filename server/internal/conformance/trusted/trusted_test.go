@@ -121,9 +121,35 @@ func TestOpenBlkFailsGateA(t *testing.T) {
 	if len(got) != 1 || got[0] != "BLK-009" {
 		t.Fatalf("OpenBlockers = %v, want [BLK-009] (OPS and resolved excluded)", got)
 	}
+	// Gate A is scoped to the ref's task: BLK-009 blocks IMP-009 only.
+	if d := GateAFailures(blockersFixture, "imp/IMP-009-x"); len(d) == 0 {
+		t.Fatal("open BLK covering the branch task must fail Gate A")
+	}
+	if d := GateAFailures(blockersFixture, "imp/IMP-050-y"); len(d) != 0 {
+		t.Fatalf("unrelated task must pass: %v", d)
+	}
+	// OPS-001 blocks ALL but is an ops entry — Gate D territory.
+	if d := GateAFailures(blockersFixture, "imp/IMP-100-z"); len(d) != 0 {
+		t.Fatalf("OPS entries must not gate A: %v", d)
+	}
+	// Resolution lanes are never gated — they carry the fix.
+	for _, lane := range []string{"block/IMP-009", "spec/BLK-009-fix", "ops/clear-freeze", "revert/abc123", "fix/IMP-000-x", ""} {
+		if d := GateAFailures(blockersFixture, lane); len(d) != 0 {
+			t.Fatalf("lane %q must never be gated by open BLKs: %v", lane, d)
+		}
+	}
+	// A BLK with no blocks: field fails closed — it gates every imp/ ref.
+	scopedDoc := "## Open Blockers\n\n### `BLK-077` — unscoped\nblocks: <IMP-007>\n"
+	if d := GateAFailures(scopedDoc, "imp/IMP-007-a"); len(d) == 0 {
+		t.Fatal("explicit blocks: <IMP-007> must gate IMP-007 branches")
+	}
+	unscopedDoc := "## Open Blockers\n\n### `BLK-088` — unscoped\nopened_by: x\n"
+	if d := GateAFailures(unscopedDoc, "imp/IMP-100-z"); len(d) == 0 {
+		t.Fatal("open BLK without blocks: must fail closed on imp/ refs")
+	}
 	// The real register currently has no open BLK entries — Gate A is green.
-	if d := OpenBlockers(readRepoFile(t, "docs/10_implementation/known_blockers.md")); len(d) != 0 {
-		t.Fatalf("Gate A must be green on main: %v", d)
+	if d := GateAFailures(readRepoFile(t, "docs/10_implementation/known_blockers.md"), "imp/IMP-068-trusted-ci"); len(d) != 0 {
+		t.Fatalf("Gate A must be green on the real register: %v", d)
 	}
 }
 

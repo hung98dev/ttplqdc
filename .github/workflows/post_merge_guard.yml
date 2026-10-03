@@ -115,7 +115,13 @@ jobs:
           if ! git revert --no-edit "$sha"; then
             git revert --abort
             echo "revert of $sha conflicts — freezing instead" >&2
-            gh api -X PATCH "repos/${{ github.repository }}/actions/variables/AUTO_MERGE_FROZEN" -f value=true
+            gh api -X PATCH "repos/${{ github.repository }}/actions/variables/AUTO_MERGE_FROZEN" -f value=true \
+              || gh api -X POST "repos/${{ github.repository }}/actions/variables" -f name=AUTO_MERGE_FROZEN -f value=true
+            gh api -X POST "repos/${{ github.repository }}/labels" -f name=ops-blocked -f color=B60205 || true
+            gh api -X POST "repos/${{ github.repository }}/issues" \
+              -f title="ops-blocked: auto-revert of $sha conflicts (${short})" \
+              -f body="Post-merge guard could not auto-revert main push \`$sha\` — the revert conflicts (run ${{ github.run_id }}). AUTO_MERGE_FROZEN=true is set; resolve via an ops/ PR." \
+              -f "labels[]=ops-blocked" || true
             exit 1
           fi
           git push origin "revert/$short"

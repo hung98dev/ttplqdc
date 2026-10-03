@@ -1,9 +1,8 @@
-// Command precheck is the Gate A blocker check: it reads known_blockers.md
-// and fails while any BLK-xxx entry is open (audit_gates.md: an open BLK
-// blocks merge). Run against the verifier (base) checkout's canonical
-// register.
-//
-// Usage: precheck -doc docs/10_implementation/known_blockers.md
+// Command precheck is Gate A: it fails when the tested tree's
+// known_blockers.md contains an open BLK entry whose blocks: scope covers the
+// ref under test (explicit IMP id, ALL, or no scope field — fail closed).
+// Non-implementation refs (block/, spec/, ops/, revert/) are the lanes that
+// declare and resolve blockers and are never gated.
 package main
 
 import (
@@ -15,21 +14,27 @@ import (
 )
 
 func main() {
-	doc := flag.String("doc", "docs/10_implementation/known_blockers.md",
-		"path to known_blockers.md (canonical register on base)")
+	doc := flag.String("doc", "docs/10_implementation/known_blockers.md", "path to known_blockers.md")
+	ref := flag.String("ref", "", "branch/ref under test (falls back to GITHUB_HEAD_REF then GITHUB_REF_NAME)")
 	flag.Parse()
-	b, err := os.ReadFile(*doc)
+
+	r := *ref
+	if r == "" {
+		r = os.Getenv("GITHUB_HEAD_REF")
+	}
+	if r == "" {
+		r = os.Getenv("GITHUB_REF_NAME")
+	}
+
+	data, err := os.ReadFile(*doc)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "precheck: read %s: %v\n", *doc, err)
-		os.Exit(2)
-	}
-	open := trusted.OpenBlockers(string(b))
-	for _, id := range open {
-		fmt.Println("precheck FAIL: open blocker", id)
-	}
-	if len(open) > 0 {
-		fmt.Fprintf(os.Stderr, "precheck: Gate A fails — %d open BLK entries\n", len(open))
 		os.Exit(1)
 	}
-	fmt.Println("precheck: no open BLK entries")
+	if d := trusted.GateAFailures(string(data), r); len(d) != 0 {
+		for _, line := range d {
+			fmt.Fprintf(os.Stderr, "precheck FAIL: %s\n", line)
+		}
+		os.Exit(1)
+	}
 }

@@ -697,7 +697,9 @@ jobs:
           # Bootstrap: IMP-068 ships these tools; until it lands, main lacks
           # the package and the gate runs from the tested tree. Self-closing.
           [ -d "$VS/internal/conformance/trusted/cmd/precheck" ] || VS="$GITHUB_WORKSPACE/server"
-          go -C "$VS" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
+          go -C "$VS" run ./internal/conformance/trusted/cmd/precheck \
+            -doc "$GITHUB_WORKSPACE/docs/10_implementation/known_blockers.md" \
+            -ref "${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}"
 
       - name: Gate C — gate ratchet
         shell: bash
@@ -1042,7 +1044,9 @@ jobs:
           # Bootstrap: IMP-068 ships these tools; until it lands, main lacks
           # the package and the gate runs from the tested tree. Self-closing.
           [ -d "$VS/internal/conformance/trusted/cmd/precheck" ] || VS="$GITHUB_WORKSPACE/server"
-          go -C "$VS" run ./internal/conformance/trusted/cmd/precheck -doc "$RUNNER_TEMP/verifier-src/docs/10_implementation/known_blockers.md"
+          go -C "$VS" run ./internal/conformance/trusted/cmd/precheck \
+            -doc "$GITHUB_WORKSPACE/docs/10_implementation/known_blockers.md" \
+            -ref "${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}"
 
       - name: Gate C — gate ratchet
         shell: bash
