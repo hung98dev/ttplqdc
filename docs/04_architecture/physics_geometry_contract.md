@@ -142,7 +142,7 @@ Mỗi playable space khai báo:
 
 ```text
 space_id
-space_kind = WORLD | DUNGEON | FINALE | PVP | GUILD_WAR
+space_kind = FIELD_OR_TOWN | DUNGEON | FINALE | PVP | GUILD_WAR
 bounds_m = { min_x=0, min_y=0, max_x, max_y }
 reference_span = { width_screens, height_screens }
 layout_profile
@@ -178,7 +178,7 @@ Mỗi FIELD/dungeon phải có một main route liên tục từ entry đến ex
    {
      "schema_version": 1,
      "space_id": "map.lang_da.bo_ruong",
-     "space_kind": "WORLD",
+     "space_kind": "FIELD_OR_TOWN",
      "layout_profile": "IRRIGATION_BRAID",
      "content_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
      "bounds_mm": { "max_x": 76800, "max_y": 18000 },
