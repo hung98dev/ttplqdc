@@ -10,7 +10,10 @@ on:
         default: true
 
 concurrency:
-  group: verify-${{ github.event.pull_request.number || github.ref }}
+  # Event-scoped: while both PR triggers are live, the pull_request run (head
+  # workflow) and the pull_request_target run (base workflow) share a PR
+  # number — one group would have them cancel each other on every push.
+  group: verify-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
 
 permissions:
@@ -131,6 +134,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Isolated caches: the verifier toolchain must not populate the
+          # tested tree's go-build/mod dirs before actions/cache restores
+          # them (read-only mod dirs -> tar "File exists" -> restore fails).
+          export GOMODCACHE="$RUNNER_TEMP/gomodcache" GOCACHE="$RUNNER_TEMP/gocache"
           mkdir -p "$RUNNER_TEMP/verify-bin"
           go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/verify" ./cmd/verify
           go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/cachemerge" ./internal/conformance/caching/cmd/cachemerge
@@ -679,6 +686,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Isolated caches: the verifier toolchain must not populate the
+          # tested tree's go-build/mod dirs before actions/cache restores
+          # them (read-only mod dirs -> tar "File exists" -> restore fails).
+          export GOMODCACHE="$RUNNER_TEMP/gomodcache" GOCACHE="$RUNNER_TEMP/gocache"
           mkdir -p "$RUNNER_TEMP/verify-bin"
           go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/verify" ./cmd/verify
           go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/cachemerge" ./internal/conformance/caching/cmd/cachemerge
@@ -692,6 +703,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Isolated caches: the verifier toolchain must not populate the
+          # tested tree's go-build/mod dirs before actions/cache restores
+          # them (read-only mod dirs -> tar "File exists" -> restore fails).
+          export GOMODCACHE="$RUNNER_TEMP/gomodcache" GOCACHE="$RUNNER_TEMP/gocache"
           VS="$RUNNER_TEMP/verifier-src/server"
           # Bootstrap: IMP-068 ships these tools; until it lands, main lacks
           # the package and the gate runs from the tested tree. Self-closing.
@@ -704,6 +719,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Isolated caches: the verifier toolchain must not populate the
+          # tested tree's go-build/mod dirs before actions/cache restores
+          # them (read-only mod dirs -> tar "File exists" -> restore fails).
+          export GOMODCACHE="$RUNNER_TEMP/gomodcache" GOCACHE="$RUNNER_TEMP/gocache"
           VS="$RUNNER_TEMP/verifier-src/server"
           [ -d "$VS/internal/conformance/ratchet" ] || VS="$GITHUB_WORKSPACE/server"
           go -C "$VS" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
@@ -1026,6 +1045,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Isolated caches: the verifier toolchain must not populate the
+          # tested tree's go-build/mod dirs before actions/cache restores
+          # them (read-only mod dirs -> tar "File exists" -> restore fails).
+          export GOMODCACHE="$RUNNER_TEMP/gomodcache" GOCACHE="$RUNNER_TEMP/gocache"
           mkdir -p "$RUNNER_TEMP/verify-bin"
           go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/verify" ./cmd/verify
           go -C "$RUNNER_TEMP/verifier-src/server" build -o "$RUNNER_TEMP/verify-bin/cachemerge" ./internal/conformance/caching/cmd/cachemerge
@@ -1039,6 +1062,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Isolated caches: the verifier toolchain must not populate the
+          # tested tree's go-build/mod dirs before actions/cache restores
+          # them (read-only mod dirs -> tar "File exists" -> restore fails).
+          export GOMODCACHE="$RUNNER_TEMP/gomodcache" GOCACHE="$RUNNER_TEMP/gocache"
           VS="$RUNNER_TEMP/verifier-src/server"
           # Bootstrap: IMP-068 ships these tools; until it lands, main lacks
           # the package and the gate runs from the tested tree. Self-closing.
@@ -1051,6 +1078,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Isolated caches: the verifier toolchain must not populate the
+          # tested tree's go-build/mod dirs before actions/cache restores
+          # them (read-only mod dirs -> tar "File exists" -> restore fails).
+          export GOMODCACHE="$RUNNER_TEMP/gomodcache" GOCACHE="$RUNNER_TEMP/gocache"
           VS="$RUNNER_TEMP/verifier-src/server"
           [ -d "$VS/internal/conformance/ratchet" ] || VS="$GITHUB_WORKSPACE/server"
           go -C "$VS" run ./internal/conformance/ratchet/cmd/ratchet -base "$RUNNER_TEMP/verifier-src" -head "$GITHUB_WORKSPACE"
