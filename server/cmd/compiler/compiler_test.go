@@ -280,7 +280,7 @@ func TestPlayableSpaceGeometryIndex(t *testing.T) {
 // Competitive-space compile inputs (CAT-006, ADR-0080): pvp.md's geometry
 // table emits the PVP rows; guild_war.md's canonical fence emits the
 // GUILD_WAR row; declared anchor sets ride on each row's `anchors` field.
-func TestCompetitiveSpaceGeometry(t *testing.T) {
+func TestCompetitiveSpaceGeometryIndex(t *testing.T) {
 	_, snap := compileClean(t, realCatalogDir)
 	get := func(id string) config.Record {
 		for _, k := range snap.Geometry.SortedKeys() {
