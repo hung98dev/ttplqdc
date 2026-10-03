@@ -5,7 +5,7 @@ package config
 // Bounds are quantized integer millimeters; spans are exact screen rationals.
 type SpaceRecord struct {
 	SpaceID       string
-	SpaceKind     string // WORLD | DUNGEON | FINALE
+	SpaceKind     string // FIELD_OR_TOWN | DUNGEON | FINALE | PVP | GUILD_WAR
 	LayoutProfile string
 	SceneKey      string
 	BoundsMM      struct {

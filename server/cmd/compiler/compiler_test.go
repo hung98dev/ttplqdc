@@ -90,6 +90,27 @@ func copyBundle(t *testing.T, dir string) string {
 			t.Fatal(err)
 		}
 	}
+	// CAT-006 spec-section sources resolve at ../03_systems beside the
+	// catalogs dir — replicate that layout beside the temp copy.
+	specSrc := filepath.Join(dir, "..", "03_systems")
+	if se, err := os.ReadDir(specSrc); err == nil {
+		specDst := filepath.Join(out, "..", "03_systems")
+		if err := os.MkdirAll(specDst, 0o755); err != nil {
+			t.Fatal(err)
+		}
+		for _, e := range se {
+			if !strings.HasSuffix(e.Name(), ".md") {
+				continue
+			}
+			b, err := os.ReadFile(filepath.Join(specSrc, e.Name()))
+			if err != nil {
+				t.Fatal(err)
+			}
+			if err := os.WriteFile(filepath.Join(specDst, e.Name()), b, 0o644); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
 	return out
 }
 
@@ -124,8 +145,8 @@ func TestCompileAllCatalogs(t *testing.T) {
 		t.Fatalf("content_revision %q is not a SHA-256 hex string", snap.ContentRevision)
 	}
 	rep := buildReport(c, snap)
-	if got := len(rep.CatalogsEvaluated); got != 24 {
-		t.Fatalf("catalogs_evaluated = %d, want 24", got)
+	if got := len(rep.CatalogsEvaluated); got != len(Drivers) {
+		t.Fatalf("catalogs_evaluated = %d, want %d", got, len(Drivers))
 	}
 	if rep.ContentRevisionHash != snap.ContentRevision {
 		t.Fatalf("report hash %q != snapshot revision %q", rep.ContentRevisionHash, snap.ContentRevision)
@@ -253,6 +274,77 @@ func TestPlayableSpaceGeometryIndex(t *testing.T) {
 		if !want[id] {
 			t.Fatalf("geometry.spaces carries undeclared space %q", id)
 		}
+	}
+}
+
+// Competitive-space compile inputs (CAT-006, ADR-0080): pvp.md's geometry
+// table emits the PVP rows; guild_war.md's canonical fence emits the
+// GUILD_WAR row; declared anchor sets ride on each row's `anchors` field.
+func TestCompetitiveSpaceGeometry(t *testing.T) {
+	_, snap := compileClean(t, realCatalogDir)
+	get := func(id string) config.Record {
+		for _, k := range snap.Geometry.SortedKeys() {
+			r := snap.Geometry.Records[config.KeyString(k)]
+			if fStr(r, "space_id") == id {
+				return r
+			}
+		}
+		t.Fatalf("geometry.spaces missing %q", id)
+		return config.Record{}
+	}
+	anchors := func(r config.Record) []string {
+		v, ok := r.Fields["anchors"]
+		if !ok || v.Kind != config.KindList {
+			return nil
+		}
+		out := []string{}
+		for _, e := range v.Elems {
+			out = append(out, e.Str)
+		}
+		return out
+	}
+	modes := func(r config.Record) []string {
+		v, ok := r.Fields["modes"]
+		if !ok || v.Kind != config.KindList {
+			return nil
+		}
+		out := []string{}
+		for _, e := range v.Elems {
+			out = append(out, e.Str)
+		}
+		return out
+	}
+	join := func(ss []string) string { return strings.Join(ss, ",") }
+
+	court := get("map.pvp.duel_court")
+	if fStr(court, "kind") != "PVP" {
+		t.Fatalf("duel_court kind %q, want PVP", fStr(court, "kind"))
+	}
+	if got := join(modes(court)); got != "DUEL,RANKED_DUEL" {
+		t.Fatalf("duel_court modes %q, want DUEL,RANKED_DUEL", got)
+	}
+	if n := len(anchors(court)); n != 0 {
+		t.Fatalf("duel_court declares %d anchors, want none", n)
+	}
+
+	arena := get("map.pvp.five_element_arena")
+	if got := join(anchors(arena)); got != "altar.left,altar.center,altar.right" {
+		t.Fatalf("arena anchors %q, want altar.left,altar.center,altar.right", got)
+	}
+	if got := join(modes(arena)); got != "FIVE_ELEMENT_ARENA" {
+		t.Fatalf("arena modes %q, want FIVE_ELEMENT_ARENA", got)
+	}
+
+	war := get("map.guild_war.five_seal_conflict")
+	if fStr(war, "kind") != "GUILD_WAR" {
+		t.Fatalf("five_seal_conflict kind %q, want GUILD_WAR", fStr(war, "kind"))
+	}
+	if got := join(anchors(war)); got !=
+		"guild_war.seal.moc,guild_war.seal.hoa,guild_war.seal.tho,guild_war.seal.kim,guild_war.seal.thuy" {
+		t.Fatalf("five_seal_conflict anchors %q", got)
+	}
+	if fStr(war, "required_topology") == "" || fStr(war, "layout_profile") == "" {
+		t.Fatalf("five_seal_conflict missing topology/profile fields")
 	}
 }
 

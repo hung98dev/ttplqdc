@@ -99,8 +99,10 @@ type Driver struct {
 	NoRegistryTable bool
 }
 
-// Drivers in contract §3 manifest order; each Compile is assigned as its
-// driver lands (a nil Compile is a SOURCE_SCHEMA_MISSING diagnostic).
+// Drivers in contract §3 manifest order (the two CAT-006 spec-section
+// sources follow the 24 catalogs; README stays last for the budget
+// cross-check). Each Compile is assigned as its driver lands (a nil
+// Compile is a SOURCE_SCHEMA_MISSING diagnostic).
 var Drivers = []Driver{
 	{Catalog: "monster_catalog.md", Compile: compileMonster},
 	{Catalog: "boss_catalog.md", Compile: compileBoss},
@@ -125,6 +127,10 @@ var Drivers = []Driver{
 	{Catalog: "progression_route.md", Compile: compileProgressionRoute},
 	{Catalog: "balance_validation.md", Compile: compileBalanceValidation},
 	{Catalog: "integration_validation.md", Compile: compileIntegrationValidation},
+	// CAT-006 spec-section sources (ADR-0080): registered compile inputs
+	// outside the 24-file §3 manifest, resolved relative to the catalog dir.
+	{Catalog: "../03_systems/pvp.md", Compile: compilePvp},
+	{Catalog: "../03_systems/guild_war.md", Compile: compileGuildWar},
 	{Catalog: "README.md", Compile: compileManifest, NoRegistryTable: true},
 }
 
