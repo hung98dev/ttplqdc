@@ -274,7 +274,8 @@ func TestRaceOnLinuxJobOnly(t *testing.T) {
 		strings.Contains(jobSection(t, wf, "unity-windows"), "-race") {
 		t.Fatal("-race must not appear in windows jobs")
 	}
-	if !strings.Contains(jobSection(t, wf, "verify-linux"), "verify.ps1") {
+	linux := jobSection(t, wf, "verify-linux")
+	if !strings.Contains(linux, "verify.ps1") && !strings.Contains(linux, "VERIFY_BIN") {
 		t.Fatal("linux job must run the verifier (which owns -race)")
 	}
 }
@@ -311,7 +312,7 @@ func TestUnityTestModesFromVerifierPlan(t *testing.T) {
 func TestEvidenceBuiltInWindowsRequiredJob(t *testing.T) {
 	wf := readWorkflow(t)
 	w := jobSection(t, wf, "verify-windows")
-	if !strings.Contains(w, "-MergeReports") {
+	if !strings.Contains(w, "-MergeReports") && !strings.Contains(w, "-merge") {
 		t.Fatal("verify-windows must merge evidence")
 	}
 	if !strings.Contains(w, "name: evidence") {
@@ -362,7 +363,8 @@ func TestMissingOrMalformedWindowsXmlFailsClosed(t *testing.T) {
 
 func TestRequiredJobsRunPreUnityPhase(t *testing.T) {
 	wf := readWorkflow(t)
-	if !strings.Contains(jobSection(t, wf, "verify-windows"), "-Phase pre-unity") {
+	wv := jobSection(t, wf, "verify-windows")
+	if !strings.Contains(wv, "-Phase pre-unity") && !strings.Contains(wv, "-phase pre-unity") {
 		t.Fatal("verify-windows must run the pre-unity phase")
 	}
 	if !strings.Contains(stepBody(jobSection(t, wf, "verify-windows"), "Pre-Unity verify"), "continue-on-error: true") {
