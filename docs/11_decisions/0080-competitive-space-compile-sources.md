@@ -3,7 +3,7 @@ status: ACCEPTED
 
 ## Context
 
-`physics_geometry_contract.md` §6.1 enumerates five `space_kind` values (`WORLD | DUNGEON | FINALE | PVP | GUILD_WAR`), `config.md` § Map Geometry Compile names `../03_systems/pvp.md` and `../03_systems/guild_war.md` as playable-space compile sources, `content_authoring_contract.md` §4.5 resolves a playable-space index of 33 spaces (24 world + 5 dungeon + finale + duel + arena + Guild War), and `integration_validation.md` requires every listed competitive `space_id` to resolve exact bounds + layout profile + export. `IMP-062` Acceptance commits collision scenes for three competitive spaces and `TestAnchorSetMatchesCatalog`/`TestCompetitiveMirrorParity` parity.
+`physics_geometry_contract.md` §6.1 enumerates five `space_kind` values (`FIELD_OR_TOWN | DUNGEON | FINALE | PVP | GUILD_WAR`), `config.md` § Map Geometry Compile names `../03_systems/pvp.md` and `../03_systems/guild_war.md` as playable-space compile sources, `content_authoring_contract.md` §4.5 resolves a playable-space index of 33 spaces (24 world + 5 dungeon + finale + duel + arena + Guild War), and `integration_validation.md` requires every listed competitive `space_id` to resolve exact bounds + layout profile + export. `IMP-062` Acceptance commits collision scenes for three competitive spaces and `TestAnchorSetMatchesCatalog`/`TestCompetitiveMirrorParity` parity.
 
 Yet the contract's compile-input set covered only the 24 catalogs in `docs/07_content/`: the three competitive spaces were declared only in `03_systems/` system specs with no `Compiler Source Schema` registry, so the compiler could not ingest them. The wave-3 audit flagged the resulting 30-vs-33 space coverage gap (finding F-2.2).
 
