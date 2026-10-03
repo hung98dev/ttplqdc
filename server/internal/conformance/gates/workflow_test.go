@@ -376,7 +376,11 @@ func TestRequiredJobsRunPreUnityPhase(t *testing.T) {
 
 func TestPrRunCancellationGroup(t *testing.T) {
 	wf := readWorkflow(t)
-	if !strings.Contains(wf, "group: verify-${{ github.event.pull_request.number || github.ref }}") {
+	// Event-scoped during the trigger-cutover window: pull_request (head
+	// workflow) and pull_request_target (base workflow) runs must not cancel
+	// each other. Accept either group form until pull_request is removed.
+	if !strings.Contains(wf, "group: verify-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}") &&
+		!strings.Contains(wf, "group: verify-${{ github.event.pull_request.number || github.ref }}") {
 		t.Fatal("concurrency group must key on PR number")
 	}
 	if !strings.Contains(wf, "cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}") {

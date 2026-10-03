@@ -11,7 +11,10 @@ on:
         default: true
 
 concurrency:
-  group: verify-${{ github.event.pull_request.number || github.ref }}
+  # Event-scoped: while both PR triggers are live, the pull_request run (head
+  # workflow) and the pull_request_target run (base workflow) share a PR
+  # number — one group would have them cancel each other on every push.
+  group: verify-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
 
 permissions:
