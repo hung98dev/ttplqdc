@@ -84,7 +84,7 @@ budget: resonance_adjusted_total(stat) / reference_lv60_character_stat(stat) <= 
 
 ```text
 reference_lv60_max_hp  = 4,794   (THO class)
-reference_lv60_attack  =   723   (KIM class)
+reference_lv60_attack  =   724   (KIM class)
 reference_lv60_defense =   426   (THO class)
 ```
 
@@ -93,7 +93,7 @@ reference_lv60_defense =   426   (THO class)
 | Stat | Old max beast base (Lv60) | Old t6 equipment | Old total | Reference (geared) | Old resonance ceiling | Old budget ratio |
 |---|---:|---:|---:|---:|---:|---|
 | `MAX_HP` | +1,500 (`beast.tho.coc_than`) | +1,400 (t6 ao_giap) | +2,900 | 4,794 | floor(2,900×1.08)=3,132 | **65.3% — VIOLATED 12% by 5.4×** |
-| `ATTACK` | +135 (`beast.hoa.ga_than`) | +150 (t6 vong_co) | +285 | 723 | floor(285×1.08)=307 | **42.5% — VIOLATED 12% by 3.5×** |
+| `ATTACK` | +135 (`beast.hoa.ga_than`) | +150 (t6 vong_co) | +285 | 724 | floor(285×1.08)=307 | **42.4% — VIOLATED 12% by 3.5×** |
 
 > **BUDGET VERDICT — CATALOG HAS BEEN SCALED**: The 12% budget was violated by 5–8× for MAX_HP and ATTACK. The catalog (`../07_content/spirit_beast_catalog.md`) was corrected by scaling all beast base stats and all beast-equipment stats by **1/6** (floor applied per value). Post-scaling worst cases:
 >
@@ -332,7 +332,7 @@ beast passive trigger depth <= 3
 transferred stats are server-authoritative
 -- Flat-stat budget (base + equipment) --
 resonance_adjusted_total(MAX_HP) / reference_lv60_max_hp <= 0.12   (reference = 4,794)
-resonance_adjusted_total(ATTACK) / reference_lv60_attack <= 0.12   (reference = 723)
+resonance_adjusted_total(ATTACK) / reference_lv60_attack <= 0.12   (reference = 724)
 resonance_adjusted_total(DEFENSE) / reference_lv60_defense <= 0.12 (reference = 426)
 reference_lv60_character_stat means synthetic fully-geared Lv60 reference (balance_validation.md)
 power budget applies to floor(transferred_total * 1.08) when Tuong Sinh resonance is active
