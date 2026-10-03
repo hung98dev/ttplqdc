@@ -160,8 +160,10 @@ func TestNoUnityOnLinuxJobs(t *testing.T) {
 func TestPullRequestTriggerBeforeCutover(t *testing.T) {
 	wf := readWorkflow(t)
 	head := wf[:strings.Index(wf, "jobs:")]
-	if !strings.Contains(head, "on:\n  pull_request:") {
-		t.Fatal("verify.yml must trigger on pull_request (IMP-068 cutover adds push)")
+	// Shape-tolerant across the IMP-068 cutover: pre-cutover verify.yml
+	// triggers on pull_request, post-cutover on pull_request_target only.
+	if !strings.Contains(head, "\n  pull_request:") && !strings.Contains(head, "\n  pull_request_target:") {
+		t.Fatal("verify.yml must trigger on pull_request or pull_request_target")
 	}
 	if strings.Contains(head, "push:") {
 		t.Fatal("push trigger is IMP-068's, not IMP-000's")
