@@ -49,10 +49,19 @@ type revisionEntry struct {
 // Gate is the activation store: retained revisions keyed by content
 // revision, the active/previous pair, and every live pin reference.
 type Gate struct {
-	revisions map[string]*revisionEntry
-	pins      map[string]PinRef // ref ID -> pin
-	active    string
-	previous  string
+	revisions   map[string]*revisionEntry
+	pins        map[string]PinRef // ref ID -> pin
+	active      string
+	previous    string
+	extraChecks []func(*CandidateSnapshot) Diagnostics
+}
+
+// RegisterCheck appends a candidate check suite that runs inside every
+// Activate after the core rejection suite. Content-validation packages
+// under internal/config/validation/ import config, so config cannot import
+// them back — the composition root registers their Check here instead.
+func (g *Gate) RegisterCheck(fn func(*CandidateSnapshot) Diagnostics) {
+	g.extraChecks = append(g.extraChecks, fn)
 }
 
 // NewGate returns an empty activation gate.
@@ -81,6 +90,9 @@ func (g *Gate) ActiveRevision() string { return g.active }
 // revision remains active unchanged (revision_activation = REJECTED).
 func (g *Gate) Activate(c *CandidateSnapshot, m ActivationMeta) Diagnostics {
 	d := runActivationChecks(c, g.revisions[g.active], m)
+	for _, fn := range g.extraChecks {
+		d = append(d, fn(c)...)
+	}
 	if d.HasErrors() {
 		return d
 	}
