@@ -153,7 +153,7 @@ func validatePlayableSpaces(c *Ctx) {
 	}
 	if expected != nil && len(spaces.Records) != len(expected) {
 		c.Diags.Addf(config.DiagIntegrationCheck, "", 0,
-			"geometry.spaces row count %d != %d declared playable PvE spaces",
+			"geometry.spaces row count %d != %d declared playable spaces",
 			len(spaces.Records), len(expected))
 	}
 	for _, k := range spaces.SortedKeys() {

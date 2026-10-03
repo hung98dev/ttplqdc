@@ -236,10 +236,11 @@ func parseSoulExpectations(c *Ctx) (map[string]soulExpectation, int, bool) {
 	return out, total, found
 }
 
-// expectedSpaceIDs derives the playable PvE space set from bundle content:
-// every world map, every dungeon, and every boss whose space is an
-// `instance.*` arena. Returns nil when the bundle declares no space
-// sources.
+// expectedSpaceIDs derives the playable space set from bundle content:
+// every world map, every dungeon, every boss whose space is an
+// `instance.*` arena, and every competitive space declared by the
+// CAT-006 spec-section sources. Returns nil when the bundle declares no
+// space sources.
 func expectedSpaceIDs(c *Ctx) map[string]bool {
 	out := map[string]bool{}
 	for _, r := range famRecs(c, "world_map") {
@@ -251,6 +252,11 @@ func expectedSpaceIDs(c *Ctx) map[string]bool {
 	for _, r := range famRecs(c, "boss") {
 		if sp := fStr(r, "space_id"); strings.HasPrefix(sp, "instance.") {
 			out[sp] = true
+		}
+	}
+	if comp, _ := c.Data["competitive.spaces"].(map[string]bool); comp != nil {
+		for id := range comp {
+			out[id] = true
 		}
 	}
 	if len(out) == 0 {
