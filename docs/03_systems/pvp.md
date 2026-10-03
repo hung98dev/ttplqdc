@@ -409,7 +409,7 @@ S_pvp = R * clamp(compressed_ratio, 0.75, 1.35)
 ```
 
 ## PvP Reference Vectors
-Reference vectors are versioned competitive data (`pvp.reference.v1`) and represent a healthy Level-60 build, not a live population average. They are the synthetic fully-geared Lv60 reference build of `../01_gameplay/stats.md` § Spirit Beast Power Budget Reference Values (`../07_content/balance_validation.md` § Synthetic PvE Reference Build) evaluated for every class: Level-1 base + 59 levels of class growth, potential 356 = 178 offensive primary / 89 VIT / 89 AGI, 14 T6 base lines at +8 (`floor(floor(k × unit) × 1.20)` per line); each component rounds down separately, regen keeps two decimals.
+Reference vectors are versioned competitive data (`pvp.reference.v1`) and represent a healthy Level-60 build, not a live population average. They are the synthetic fully-geared Lv60 reference build of `../01_gameplay/stats.md` § Spirit Beast Power Budget Reference Values (`../07_content/balance_validation.md` § Synthetic PvE Reference Build) evaluated for every class: Level-1 base + 59 levels of class growth, potential 356 = 178 offensive primary / 89 VIT / 89 AGI, 14 T6 base lines at +8 (`floor(floor(k × unit) × 1.20)` per line); components carry fractional internal values (shown floored) and each cell rounds down once at the end per `../01_gameplay/stats.md` convention; regen keeps two decimals.
 
 ```text
 component                         KIM    MOC    THUY   HOA    THO
@@ -431,11 +431,11 @@ MP_REGEN 3 + 0.10 x 59            8.90   8.90   8.90   8.90   8.90
 
 | class | MAX_HP | MAX_MP | ATTACK | DEFENSE | HP_REGEN | MP_REGEN |
 |---|---:|---:|---:|---:|---:|---:|
-| `class.kim` | 4086 | 859 | 723 | 367 | 9.08 | 8.90 |
+| `class.kim` | 4086 | 859 | 724 | 367 | 9.08 | 8.90 |
 | `class.moc` | 4322 | 1273 | 682 | 378 | 9.08 | 8.90 |
 | `class.thuy` | 4086 | 1273 | 694 | 361 | 9.08 | 8.90 |
-| `class.hoa` | 3968 | 1391 | 723 | 355 | 9.08 | 8.90 |
-| `class.tho` | 4794 | 859 | 658 | 426 | 9.08 | 8.90 |
+| `class.hoa` | 3968 | 1391 | 724 | 355 | 9.08 | 8.90 |
+| `class.tho` | 4794 | 859 | 659 | 426 | 9.08 | 8.90 |
 
 The THO MAX_HP/DEFENSE and KIM ATTACK cells equal the pinned `reference_lv60_*` values in `stats.md`. A content revision that changes class growth, potential rules, T6 base lines or the +8 multiplier recomputes this table in the same change; the content compiler rejects a mismatch (`pvp.reference_vector_mismatch`).
 
