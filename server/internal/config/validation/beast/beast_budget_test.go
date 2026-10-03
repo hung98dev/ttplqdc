@@ -222,7 +222,7 @@ func beastCandidate(t *testing.T) *config.CandidateSnapshot {
 			"key": config.VList(config.VStr("fence"), config.VInt(1)),
 			"fields": config.VRec(map[string]config.Value{
 				"reference_lv60_max_hp":  config.VInt(4794),
-				"reference_lv60_attack":  config.VInt(723),
+				"reference_lv60_attack":  config.VInt(724),
 				"reference_lv60_defense": config.VInt(426),
 			}),
 		})),
