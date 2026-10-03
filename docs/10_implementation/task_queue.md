@@ -74,7 +74,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-047` | Migration / Backup / Restore Rehearsal | `NOT_STARTED` | IMP-005, IMP-043 | `../08_scale_ops/backup_recovery.md`, `../08_scale_ops/deployment.md` |
 | `IMP-048` | Launch Candidate Gate | `NOT_STARTED` | IMP-044, IMP-045, IMP-046, IMP-047, IMP-096 | `definition_of_done.md`, `milestones.md` |
 | `IMP-049` | TTK, Survivability, and Skill-Reach Re-verification | `NOT_STARTED` | IMP-004, IMP-026 | `../07_content/balance_validation.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-050` | Spirit Beast Passive Budget Compile Validation | `NOT_STARTED` | IMP-003, IMP-004 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
+| `IMP-050` | Spirit Beast Passive Budget Compile Validation | `IN_PROGRESS` | IMP-003, IMP-004 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
 | `IMP-051` | Drop Table Coverage Invariant for Monster Roster Growth | `NOT_STARTED` | IMP-003, IMP-019 | `../07_content/drop_tables.md`, `../07_content/monster_catalog.md` |
 | `IMP-052` | Seasons Infrastructure | `NOT_STARTED` | IMP-021, IMP-036, IMP-038, IMP-040, IMP-060, IMP-091, IMP-102 | `../03_systems/seasons.md`, `../03_systems/atlas.md` |
 | `IMP-053` | IAP Receipt Verification & Entitlement Grants | `NOT_STARTED` | IMP-038, IMP-100 | `../03_systems/monetization.md`, `../03_systems/account_storage.md` |
@@ -92,7 +92,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-066` | Unity Input Action Mapping & Core UI/HUD State Machine | `NOT_STARTED` | IMP-013, IMP-065 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-067` | Unity IL2CPP Player Build (Windows, Android) & Release Packaging | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-076, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-093, IMP-099, IMP-103 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
-| `IMP-068` | Trusted CI, Post-Merge Guard & Foundation Exit | `NOT_STARTED` | IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106 | `audit_gates.md`, `agent_execution_protocol.md` |
+| `IMP-068` | Trusted CI, Post-Merge Guard & Foundation Exit | `IN_PROGRESS` | IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106 | `audit_gates.md`, `agent_execution_protocol.md` |
 | `IMP-069` | Server Composition Root and Lifecycle Wiring | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-049, IMP-050, IMP-051, IMP-054, IMP-055, IMP-062, IMP-077, IMP-084, IMP-085, IMP-086, IMP-087, IMP-089, IMP-090, IMP-092, IMP-093, IMP-103 | `../04_architecture/backend.md`, `../04_architecture/service_boundaries.md` |
 | `IMP-070` | Asset Provenance Register & Validator | `DONE` | IMP-063, IMP-101 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-071` | Player Character & Class Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md` |
@@ -624,10 +624,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-083/"
 
 ## `IMP-068` — Trusted CI, Post-Merge Guard & Foundation Exit
 id: IMP-068
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-068"
+branch: "imp/IMP-068-trusted-ci"
+claimed_at: "2026-10-03T12:59:13Z"
 blocked_by: ""
 
 specs: [`audit_gates.md`, `agent_execution_protocol.md`, `known_blockers.md`, `../00_context/technology_versions.md`, `../07_security/external_integrations.md`, `../08_scale_ops/deployment.md`, `../09_testing/test_and_release_evidence.md`]
@@ -3813,10 +3813,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-049/"
 
 ## `IMP-050` — Spirit Beast Passive Budget Compile Validation
 id: IMP-050
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-050"
+branch: "imp/IMP-050-beast-budget"
+claimed_at: "2026-10-03T12:59:16Z"
 blocked_by: ""
 
 specs: [`../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md`]
