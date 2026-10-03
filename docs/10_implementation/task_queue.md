@@ -624,7 +624,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-083/"
 
 ## `IMP-068` — Trusted CI, Post-Merge Guard & Foundation Exit
 id: IMP-068
-status: DONE
+status: IN_PROGRESS
 claimed_by: "devin-imp-068"
 branch: "imp/IMP-068-trusted-ci"
 claimed_at: "2026-10-03T12:59:13Z"
