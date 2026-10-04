@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "space_id": "field_flat_01",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "flat_field",
+  "content_revision": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "bounds_mm": { "max_x": 51200, "max_y": 28800 },
+  "segments": [
+    { "id": 1, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 51200, "y2": 4000 },
+    { "id": 2, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 28800 },
+    { "id": 3, "kind": "WALL", "x1": 51200, "y1": 4000, "x2": 51200, "y2": 28800 },
+    { "id": 4, "kind": "CEILING", "x1": 0, "y1": 28000, "x2": 51200, "y2": 28000 },
+    { "id": 5, "kind": "ONE_WAY_PLATFORM", "x1": 10000, "y1": 8000, "x2": 16000, "y2": 8000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 51200, "max_y": 28800 }
+  ],
+  "anchors": [
+    { "id": "spawn_a", "x": 5000, "y": 4000 },
+    { "id": "spawn_b", "x": 12000, "y": 8000 }
+  ]
+}
