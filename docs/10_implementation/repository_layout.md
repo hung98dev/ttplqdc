@@ -76,7 +76,7 @@ server/
     ├── global/            # runtime IMP-080 (in-process single writer); feature subpackages
     ├── protocol/v1/       # IMP-061 generated .pb.go; never hand-edit
     ├── sim/               # runtime, aoi, replication IMP-079; feature subpackages
-    │   └── spatial/       # geometry, collision IMP-078; maps, parity IMP-062; capacity IMP-055
+    │   └── spatial/       # geometry, collision IMP-078; maps, parity, testdata IMP-062; capacity IMP-055
     └── testing/           # pgtest IMP-005, protocol IMP-061, fault IMP-044, load IMP-046, migration IMP-047, release IMP-048
 ```
 
@@ -716,6 +716,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `server/internal/sim/spatial/geometry/` | IMP-078 |
 | `server/internal/sim/spatial/maps/` | IMP-062 |
 | `server/internal/sim/spatial/parity/` | IMP-062 |
+| `server/internal/sim/spatial/testdata/` | IMP-062 |
 | `server/internal/sim/spawning/` | IMP-019 |
 | `server/internal/sim/trade/` | IMP-029 |
 | `server/internal/sim/travel/` | IMP-020 |
