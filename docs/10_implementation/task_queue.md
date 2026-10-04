@@ -1047,7 +1047,7 @@ blocked_by: ""
 specs: [`../04_architecture/authority.md`, `../06_data/data_model.md`, `../07_security/auth.md`, `../07_security/session.md`, `../07_security/external_integrations.md`, `../07_security/rate_limits.md`, `../05_network/errors.md`, `../06_data/physical_schema_contract.md`, `../05_network/protocol.md`]
 adrs: [`0009-account-session-credentials.md`, `0030-one-account-one-live-session.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-068, IMP-081, IMP-082, IMP-097]
-owned_paths: [`server/cmd/server/`, `server/internal/durable/account/`, `server/internal/edge/auth/`, `server/internal/edge/session/`, `server/internal/edge/router/`]
+owned_paths: [`server/cmd/server/`, `server/internal/durable/account/`, `server/internal/edge/auth/`, `server/internal/edge/session/`, `server/internal/edge/router/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [verified provider credential or gameplay ticket, account/character intents, current epoch]
 contract_outputs: [canonical account rows, session epoch, attach/detach result, durable-intent router, minimal server main]
