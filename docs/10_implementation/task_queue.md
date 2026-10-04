@@ -102,7 +102,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-075` | SFX & Folklore BGM Production | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-076` | Production Asset Coverage, Rights & Release Audit | `NOT_STARTED` | IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
-| `IMP-078` | Server Geometry & Deterministic Collision Core | `NOT_STARTED` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
+| `IMP-078` | Server Geometry & Deterministic Collision Core | `IN_PROGRESS` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
 | `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `NOT_STARTED` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
 | `IMP-080` | Global Runtime (In-Process Single Writer) | `NOT_STARTED` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
 | `IMP-081` | Edge Listener, Framing & Heartbeat | `NOT_STARTED` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
@@ -833,10 +833,10 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../05_network/protocol.md`, `../05_network/versioning.md`, `../05_network/errors.md`, `../07_security/rate_limits.md`, `../04_architecture/service_boundaries.md`, `../00_context/technology_versions.md`, `../08_scale_ops/capacity.md`, `engineering_conventions.md`]
+specs: [`../05_network/protocol.md`, `../05_network/versioning.md`, `../05_network/messages.md`, `../05_network/errors.md`, `../07_security/rate_limits.md`, `../07_security/external_integrations.md`, `../04_architecture/service_boundaries.md`, `../00_context/technology_versions.md`, `../08_scale_ops/capacity.md`, `engineering_conventions.md`]
 adrs: [`0008-client-network-transport-protocol.md`, `0038-discrete-movement-edge-input-message.md`, `0044-launch-topology-single-binary-role-modes.md`, `0051-first-party-username-password-login.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-061, IMP-068, IMP-098]
-owned_paths: [`server/internal/edge/listener/`, `server/internal/edge/heartbeat/`]
+owned_paths: [`server/internal/edge/listener/`, `server/internal/edge/heartbeat/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/sim/`, `server/internal/durable/`]
 contract_inputs: [TLS/WSS connections, envelope frames, protocol version]
 contract_outputs: [validated frames, per-session RTT samples, disconnect events]
@@ -940,10 +940,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-079/"
 
 ## `IMP-078` — Server Geometry & Deterministic Collision Core
 id: IMP-078
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-078"
+branch: "imp/IMP-078-spatial-collision"
+claimed_at: "2026-10-04T09:50:22Z"
 blocked_by: ""
 
 specs: [`../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../06_data/config.md`, `../05_network/synchronization.md`, `../05_network/messages.md`]
