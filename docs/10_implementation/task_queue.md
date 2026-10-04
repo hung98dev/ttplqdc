@@ -727,7 +727,7 @@ blocked_by: ""
 specs: [`../08_scale_ops/observability.md`, `../04_architecture/backend.md`, `../00_context/technology_versions.md`]
 adrs: [`0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001, IMP-068]
-owned_paths: [`server/internal/observability/core/`]
+owned_paths: [`server/internal/observability/core/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/cmd/server/`]
 contract_inputs: [operation/source/revision context, typed events]
 contract_outputs: [structured logger, bounded metric registry, correlation context]
