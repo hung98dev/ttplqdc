@@ -16,7 +16,7 @@ while :; do
     echo "wait_job timed out waiting for ${WAIT_JOB} after ${timeout_s}s" >&2
     exit 1
   fi
-  resp=$(gh api "$url" --jq ".jobs[] | select(.name == \"${WAIT_JOB}\") | .status + \" \" + (.conclusion // \"\")" 2>&1 || true)
+  resp=$(gh api "$url" --jq ".jobs[] | select(.name == \"${WAIT_JOB}\" or (.name | endswith(\"/ ${WAIT_JOB}\"))) | .status + \" \" + (.conclusion // \"\")" 2>&1 || true)
   if [[ "$resp" =~ (rate.limit|API.rate.limit|403|429) ]]; then
     echo "wait_job: rate limit encountered, backing off 30s..." >&2
     sleep 30

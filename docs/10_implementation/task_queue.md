@@ -122,7 +122,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-095` | Client Performance Budgets & Quality Presets (every PR) | `NOT_STARTED` | IMP-063, IMP-065, IMP-066, IMP-101 | `../04_architecture/client_performance.md`, `../04_architecture/client.md` |
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
 | `IMP-097` | Aggregate Lock-Order Helper | `NOT_STARTED` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
-| `IMP-098` | Observability Core | `NOT_STARTED` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
+| `IMP-098` | Observability Core | `IN_PROGRESS` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
 | `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `NOT_STARTED` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
 | `IMP-100` | Character Lifecycle | `NOT_STARTED` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
 | `IMP-101` | URP 2D Rendering & Lighting Setup | `DONE` | IMP-000 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
@@ -718,16 +718,16 @@ evidence_location: "docs/10_implementation/evidence/IMP-106/"
 
 ## `IMP-098` — Observability Core
 id: IMP-098
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-098"
+branch: "imp/IMP-098-observability-core"
+claimed_at: "2026-10-04T04:33:38Z"
 blocked_by: ""
 
 specs: [`../08_scale_ops/observability.md`, `../04_architecture/backend.md`, `../00_context/technology_versions.md`]
 adrs: [`0010-exact-technology-version-pinning.md`, `0040-world-consequence-durable-aggregate.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-001, IMP-068]
-owned_paths: [`server/internal/observability/core/`]
+owned_paths: [`server/internal/observability/core/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/cmd/server/`]
 contract_inputs: [operation/source/revision context, typed events]
 contract_outputs: [structured logger, bounded metric registry, correlation context]
