@@ -27,6 +27,16 @@ issue: <ops-blocked issue URL>                       (OPS only)
 
 ## Open Blockers
 
+### `BLK-003` — `map.pvp.duel_court` must export `anchors: []` but `geometry.Validate` rejects empty anchor sets; instanced-boss arena anchors have no emitted IDs
+opened_by: devin-imp-062 / IMP-062   opened_at: 2026-10-04T22:22:40Z
+evidence: `docs/03_systems/pvp.md` § Compiler Source Schema (`Five Element Arena` row, ~L827) declares `map.pvp.duel_court` "declares no logical anchors" — the compiled payload emits `geometry.spaces[map.pvp.duel_court].anchors = []`, so `physics_geometry_contract.md` §7.5 (`tập anchors[].id` phải bằng tập anchor registered compile source yêu cầu, "thiếu hoặc thừa" đều fail) forces the committed `server/internal/sim/spatial/maps/map.pvp.duel_court.geom.json` to carry `"anchors": []`. But `server/internal/sim/spatial/geometry/validate.go:293` unconditionally fails `len(g.Anchors)==0` ("at least one anchor required") and `parse.go:182` runs `Validate` inside `Parse` — the spec-required file cannot be parsed by any `maps/` loader or the parity suite, while any non-empty anchor id fails `anchor %q not in registered space anchors`. The same derivation leaves `instance.finale.than_trung` with an empty required set: `docs/07_content/dungeon_catalog.md:60` requires "boss ... anchors" inside bounds on a legal `CHARACTER` path and `boss.than_trung` is placed via `boss.space_id`, yet no emitted family supplies an anchor ID for instanced bosses (`anchor.boss.<key>` covers only the 2 public bosses per `docs/07_content/map_spawn_catalog.md` Public Boss Placement). PvP duel rules also presume mirrored team spawn positions (`pvp.md` ~L86-91, ~L138 "approved spawn positions restored") with no declared anchor IDs. Both resolutions (declaring anchor IDs, or relaxing the ≥1 rule) sit outside IMP-062 `owned_paths`.
+owning spec / system: `docs/03_systems/pvp.md` competitive-space anchor registry; `docs/07_content/{map_spawn_catalog,dungeon_catalog,world_route_catalog}.md` instanced-anchor conventions; `docs/04_architecture/physics_geometry_contract.md` §7 schema / §7.5 fail conditions; `server/internal/sim/spatial/geometry/validate.go` (IMP-078 scope, forbidden to IMP-062)
+options:
+  1. Declare the missing anchor IDs in the owning specs — duel team-spawn anchors for `map.pvp.duel_court` (mirrored pair per `pvp.md` topology; ordered-id precedent of `altar.*`/`guild_war.seal.*`) and an instanced-boss arena-anchor convention (e.g. `anchor.boss.<key>` keyed by `boss.space_id`, extending the public-boss rule) emitted or explicitly derivable per space — keeps the ≥1 invariant meaningful and supplies the spawn positions PvP/dungeon respawn actually need.
+  2. Relax `validateAnchors` to require ≥1 anchor only when `rec.Anchors` is non-empty — smallest diff; but leaves the duel arena and the finale with no declared spawn/arena anchors for gameplay, and still needs option-1-style conventions for instanced boss placement.
+  3. Amend the packet/contract to exempt `PVP`-kind (and empty-required) spaces from the ≥1 rule — arbitrary carve-out with the same gameplay downside as 2.
+blocks: IMP-062
+
 ## Resolved Blockers
 
 ### `BLK-002` — `KeyGroupRule` cannot route `asset.class.<id>.prefab`; IMP-071 cannot register class actor keys canonically — RESOLVED
