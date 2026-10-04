@@ -103,7 +103,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-076` | Production Asset Coverage, Rights & Release Audit | `NOT_STARTED` | IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
 | `IMP-078` | Server Geometry & Deterministic Collision Core | `DONE` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
-| `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `IN_PROGRESS` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
+| `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `DONE` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
 | `IMP-080` | Global Runtime (In-Process Single Writer) | `NOT_STARTED` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
 | `IMP-081` | Edge Listener, Framing & Heartbeat | `IN_PROGRESS` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
 | `IMP-082` | Durable Command Queue & Backpressure | `IN_PROGRESS` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
@@ -897,7 +897,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-080/"
 
 ## `IMP-079` — Sim Runtime: Fixed-Step Tick, AOI & Replication
 id: IMP-079
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-079"
 branch: "imp/IMP-079-sim-runtime"
 claimed_at: "2026-10-04T10:42:54Z"
