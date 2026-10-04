@@ -58,7 +58,7 @@ Addressables `2.11.2` is the canonical content-delivery package for this launch 
 | Go toolchain | `1.27.1` | Exact CI/developer/server build toolchain. |
 | PostgreSQL | `18.6` | Production stable database. PostgreSQL 19 beta/prerelease is forbidden for launch. |
 | pgx | `github.com/jackc/pgx/v5 v5.11.0` | Canonical PostgreSQL driver/pool. Prefer native pgx/pgxpool. Transitive require-closure of `pgx/v5`: `github.com/jackc/pgpassfile v1.0.0`, `github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761`, `github.com/jackc/puddle/v2 v2.2.2` — `pgservicefile` ships no tagged release; its exact commit pseudo-version is an approved pin (ADR-0010). `golang.org/x/text v0.42.0` is already pinned in this matrix. |
-| WebSocket | `github.com/coder/websocket v1.8.15` | Canonical Go WSS library. Do not substitute Gorilla/random WS package. |
+| WebSocket | `github.com/coder/websocket v1.8.15` | Canonical Go WSS library. Do not substitute Gorilla/random WS package. Transitive require-closure: none — the module's `go.mod` carries only its `go 1.23` toolchain directive and no `require` entries, so the pin adds no `// indirect` modules. |
 | DB migrations | `github.com/golang-migrate/migrate/v4 v4.20.1` | Canonical schema migration tool/library. Transitive require-closure of `migrate/v4`: `github.com/jackc/pgerrcode v0.0.0-20220416144525-469b46aa5efa` — ships no tagged release; its exact commit pseudo-version is an approved pin (ADR-0010) — and shared `golang.org/x/sync v0.23.0`. |
 | Protocol Buffers Go runtime | `google.golang.org/protobuf v1.36.12` | Canonical protobuf runtime. |
 | Protocol Buffers Go generator | `protoc-gen-go v1.36.12` | Generator must match this pin. |
