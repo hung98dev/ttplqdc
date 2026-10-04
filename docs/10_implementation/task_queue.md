@@ -86,7 +86,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `NOT_STARTED` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
 | `IMP-060` | Atlas Journal Runtime | `NOT_STARTED` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
-| `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `BLOCKED` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
+| `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `IN_PROGRESS` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
 | `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `DONE` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
@@ -436,11 +436,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-061/"
 
 ## `IMP-062` — Unity Geometry Exporter & Map Geometry Parity
 id: IMP-062
-status: BLOCKED
+status: IN_PROGRESS
 claimed_by: "devin-imp-062"
 branch: "imp/IMP-062-geometry-exporter"
 claimed_at: "2026-10-04T21:43:13Z"
-blocked_by: "BLK-003"
 
 specs: [`../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/physics_geometry_contract.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../09_testing/network.md`]
 adrs: [`0005-skill-action-timing-geometry.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
