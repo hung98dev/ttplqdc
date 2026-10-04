@@ -243,11 +243,13 @@ func TestPreHelloFrameClose(t *testing.T) {
 	if r == nil || !r.Close || r.CloseStatus != wsCloseProtocol {
 		t.Fatalf("pre-HELLO frame: got %+v", r)
 	}
-	// Second HELLO after handshake also violates.
+	// A second HELLO post-handshake is phase-illegal, not a protocol
+	// violation: MESSAGE_NOT_ALLOWED_IN_STATE, no close (phase table —
+	// id 1 dispatches only in PRE_HELLO).
 	st2 := testState(PhaseCharacterSelect, 9)
 	r2 := Validate(env(1, 9, 2), st2)
-	if r2 == nil || !r2.Close || r2.CloseStatus != wsCloseProtocol {
-		t.Fatalf("second HELLO: got %+v", r2)
+	if r2 == nil || r2.Close || r2.ErrCode != protocolv1.ErrorCode_ERROR_CODE_MESSAGE_NOT_ALLOWED_IN_STATE {
+		t.Fatalf("second HELLO: want MNAS no-close, got %+v", r2)
 	}
 }
 

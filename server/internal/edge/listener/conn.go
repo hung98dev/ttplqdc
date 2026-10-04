@@ -108,13 +108,21 @@ func (c *Conn) Send(env proto.Message, class DeliveryClass) error {
 // Called with c.mu held.
 func (c *Conn) noteOutbound(msgID uint32) {
 	switch msgID {
-	case 7: // S2C_CHARACTER_ATTACH_OK
+	case 7: // S2C_CHARACTER_ATTACH_OK — exits PLACEMENT_PENDING too
 		c.attachOK.Store(true)
 		c.st.Attached = true
 		c.maybeEnterWorld()
+		if c.st.Phase == PhasePlacementPending && !c.baselineSeen.Load() {
+			c.st.Phase = PhaseCharacterSelect
+		}
 	case 300: // S2C_WORLD_BASELINE
 		c.baselineSeen.Store(true)
 		c.maybeEnterWorld()
+	case 11: // S2C_CHARACTER_DETACH_OK — spec also enters CHARACTER_SELECT
+		c.st.Phase = PhaseCharacterSelect
+		c.st.Attached = false
+		c.attachOK.Store(false)
+		c.baselineSeen.Store(false)
 	case 15: // S2C_PLACEMENT_PENDING
 		c.st.Phase = PhasePlacementPending
 	case 105: // S2C_TRANSFER_PREPARE
@@ -129,14 +137,12 @@ func (c *Conn) noteOutbound(msgID uint32) {
 
 // maybeEnterWorld promotes to IN_WORLD once both the attach ack and the
 // world baseline have been delivered (protocol.md § Phase Legality:
-// IN_WORLD = entered by 7 + baseline received).
+// IN_WORLD = entered by 7 + baseline (300) received). Until then the
+// connection stays in CHARACTER_SELECT — the attach window dispatches
+// the CHARACTER_SELECT set {4, 6, 12}.
 func (c *Conn) maybeEnterWorld() {
 	if c.attachOK.Load() && c.baselineSeen.Load() {
 		c.st.Phase = PhaseInWorld
-		return
-	}
-	if c.attachOK.Load() && c.st.Phase != PhaseDead && c.st.Phase != PhaseTransfer {
-		c.st.Phase = PhaseAttaching
 	}
 }
 

@@ -123,13 +123,6 @@ func phaseVerdictFor(e *registryEntry, st *ConnState) phaseVerdict {
 		case 4, 6, 12:
 			return dispatchOK
 		}
-	case PhaseAttaching:
-		// HELLO_OK/ATTACH_OK sent, world baseline not yet received:
-		// heartbeat and chat only, pending attach window.
-		switch e.row.id {
-		case 4, 600:
-			return dispatchOK
-		}
 	case PhaseInWorld:
 		if e.row.c2s && e.row.id != 1 && e.row.id != 12 {
 			return dispatchOK

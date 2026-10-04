@@ -11,12 +11,12 @@ import (
 // S2C messages that carry the session through the lifecycle.
 type Phase int
 
+// Phases are exactly the rows of protocol.md § Phase Legality (ADR-0069):
+// the gap between ATTACH_OK and the world baseline is still
+// CHARACTER_SELECT — there is no attaching phase.
 const (
 	PhasePreHello Phase = iota
 	PhaseCharacterSelect
-	// PhaseAttaching: HELLO_OK and ATTACH_OK sent, world baseline (300) not
-	// yet delivered. Only heartbeat and chat are legal.
-	PhaseAttaching
 	PhaseInWorld
 	PhaseDead
 	PhaseTransfer
@@ -29,8 +29,6 @@ func (p Phase) String() string {
 		return "PRE_HELLO"
 	case PhaseCharacterSelect:
 		return "CHARACTER_SELECT"
-	case PhaseAttaching:
-		return "ATTACHING"
 	case PhaseInWorld:
 		return "IN_WORLD"
 	case PhaseDead:
@@ -138,12 +136,6 @@ func Validate(env *protocolv1.Envelope, st *ConnState) *Reject {
 	// Row (d): server_seq != 0 or an S2C-only message_id from the client
 	// closes PROTOCOL_VIOLATION.
 	if env.ServerSeq != 0 || (ent != nil && !ent.row.c2s) {
-		return &Reject{Close: true, CloseStatus: wsCloseProtocol, CloseReason: "PROTOCOL_VIOLATION"}
-	}
-
-	// HELLO re-arms: exactly one HELLO per connection. A second HELLO (or
-	// HELLO after HELLO_OK) violates the handshake.
-	if env.MessageId == 1 && st.Phase != PhasePreHello {
 		return &Reject{Close: true, CloseStatus: wsCloseProtocol, CloseReason: "PROTOCOL_VIOLATION"}
 	}
 
