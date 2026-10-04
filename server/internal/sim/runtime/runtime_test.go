@@ -103,8 +103,9 @@ func TestSingleOwnerMailbox(t *testing.T) {
 	if e.Checkpoint.HeldHorizontalIntent != protocolv1.HeldHorizontalIntent_HELD_HORIZONTAL_INTENT_RIGHT {
 		t.Fatalf("held coalesce kept %v, want RIGHT", e.Checkpoint.HeldHorizontalIntent)
 	}
-	if e.pendingEdge != 0x21 || e.lastClientSeq != 4 {
-		t.Fatalf("edge=%x seq=%d, want 0x21/4", e.pendingEdge, e.lastClientSeq)
+	if e.pendingEdgeN != 1 || e.pendingEdges[0] != 0x21 || e.lastClientSeq != 4 {
+		t.Fatalf("edges=%x n=%d seq=%d, want [0x21]/1/4",
+			e.pendingEdges[:e.pendingEdgeN], e.pendingEdgeN, e.lastClientSeq)
 	}
 
 	// Stale resends and out-of-order intents never regress the applied seq.
@@ -112,8 +113,9 @@ func TestSingleOwnerMailbox(t *testing.T) {
 	_ = p.SubmitIntent(Intent{Kind: IntentMovementEdge, EntityID: pid, ClientSeq: 5, Edge: 0x33})
 	_ = p.SubmitIntent(Intent{Kind: IntentMovementEdge, EntityID: pid, ClientSeq: 4, Edge: 0x44})
 	p.stepUntil(2 * Step)
-	if e.pendingEdge != 0x33 {
-		t.Fatalf("edge = %x, want 0x33 (stale resends rejected)", e.pendingEdge)
+	if e.pendingEdgeN != 1 || e.pendingEdges[0] != 0x33 {
+		t.Fatalf("edges = %x, want [0x33] (stale resends rejected)",
+			e.pendingEdges[:e.pendingEdgeN])
 	}
 	if e.lastClientSeq != 5 {
 		t.Fatalf("lastClientSeq = %d, want 5", e.lastClientSeq)
@@ -123,11 +125,21 @@ func TestSingleOwnerMailbox(t *testing.T) {
 		t.Fatalf("rejects = %v", p.rejected[:p.rejectedN])
 	}
 
+	// Two valid edge events in the same tick must never coalesce
+	// (ADR-0038): both apply in receive order.
+	_ = p.SubmitIntent(Intent{Kind: IntentMovementEdge, EntityID: pid, ClientSeq: 6, Edge: 0xa1})
+	_ = p.SubmitIntent(Intent{Kind: IntentMovementEdge, EntityID: pid, ClientSeq: 7, Edge: 0xa2})
+	p.stepUntil(3 * Step)
+	edges := e.PendingEdges()
+	if len(edges) != 2 || edges[0] != 0xa1 || edges[1] != 0xa2 {
+		t.Fatalf("edges = %x, want [0xa1 0xa2]", edges)
+	}
+
 	// The per-character discrete queue rejects past its cap of 8.
 	for i := uint64(10); i < 10+DiscreteCap+1; i++ {
 		_ = p.SubmitIntent(Intent{Kind: IntentAction, EntityID: pid, ClientSeq: i})
 	}
-	p.stepUntil(3 * Step)
+	p.stepUntil(4 * Step)
 	last := p.rejected[p.rejectedN-1]
 	if last.Code != RejectDiscreteFull {
 		t.Fatalf("discrete overflow reject = %v, want RejectDiscreteFull", last.Code)
@@ -139,7 +151,7 @@ func TestSingleOwnerMailbox(t *testing.T) {
 		t.Fatalf("Admit monster: %v", err)
 	}
 	_ = p.SubmitIntent(Intent{Kind: IntentAction, EntityID: mid, ClientSeq: 1})
-	p.stepUntil(4 * Step)
+	p.stepUntil(5 * Step)
 	found := false
 	for i := 0; i < p.rejectedN; i++ {
 		if p.rejected[i].Code == RejectNotPlayer {

@@ -189,10 +189,14 @@ func (p *Partition) applyInboxes() {
 			}
 			ib.hasHeld = false
 		}
+		// Edges are tick-scoped inputs: this tick's consumer drains them
+		// before the next ingest resets the queue.
+		e.pendingEdgeN = 0
 		for k := 0; k < ib.discreteN; k++ {
 			d := &ib.discrete[k]
 			if d.Kind == IntentMovementEdge {
-				e.pendingEdge = d.Edge
+				e.pendingEdges[e.pendingEdgeN] = d.Edge
+				e.pendingEdgeN++
 			}
 			if d.ClientSeq > maxSeq {
 				maxSeq = d.ClientSeq

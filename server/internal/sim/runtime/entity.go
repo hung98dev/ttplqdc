@@ -101,11 +101,17 @@ type Entity struct {
 	// removed.
 	Dead bool
 
-	// Input bookkeeping (player entities).
+	// Input bookkeeping (player entities). Edge events are a FIFO —
+	// ADR-0038 forbids coalescing them; the movement system drains the
+	// queue in receive order each tick.
 	lastClientSeq uint64
-	pendingEdge   uint8
+	pendingEdges  [DiscreteCap]uint8
+	pendingEdgeN  int
 	hasHeld       bool
 }
+
+// PendingEdges returns queued movement-edge events in receive order.
+func (e *Entity) PendingEdges() []uint8 { return e.pendingEdges[:e.pendingEdgeN] }
 
 func slotOf(id uint64) int { return int(id >> 20) }
 

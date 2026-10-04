@@ -9,6 +9,9 @@ import (
 // every replicated entity changing in one delta.
 const (
 	MaxEntitiesPerView = aoi.MaxVisible
+	// MaxChannelEntities bounds lifecycle bursts: attach/resync/leave
+	// can touch every live entity, beyond the per-viewer cap.
+	MaxChannelEntities = aoi.ChannelEntityCap
 	MaxStatuses        = 16
 	MaxCosmetics       = 8
 	MaxEncounters      = 16
@@ -134,13 +137,13 @@ type BaselineParams struct {
 // synchronously inside the BUILD phase, so the rule holds by construction.
 type Builder struct {
 	baseline protocolv1.S2CWorldBaseline
-	spawn    [MaxEntitiesPerView]protocolv1.S2CEntitySpawn
-	despawn  [MaxEntitiesPerView]protocolv1.S2CEntityDespawn
+	spawn    [MaxChannelEntities]protocolv1.S2CEntitySpawn
+	despawn  [MaxChannelEntities]protocolv1.S2CEntityDespawn
 	deltaMsg protocolv1.S2CStateDelta
 	resync   protocolv1.S2CBaselineResyncResult
 
 	ent   [MaxEntitiesPerView]protocolv1.EntityState
-	entSp [MaxEntitiesPerView]protocolv1.EntityState
+	entSp [MaxChannelEntities]protocolv1.EntityState
 	entP  [MaxEntitiesPerView]*protocolv1.EntityState
 	enc   [MaxEncounters]protocolv1.EncounterState
 	encP  [MaxEncounters]*protocolv1.EncounterState
