@@ -145,6 +145,17 @@ func TestCanonicalOrder(t *testing.T) {
 	if gs[0].Table != "character_currencies" || gs[1].priority != GuildStorage {
 		t.Fatalf("guild-storage placement broken: %+v", gs)
 	}
+	// The priority-13 probe must lock guild-scoped rows, not item rows.
+	sql, arg, err := gs[1].statement()
+	if err != nil {
+		t.Fatalf("GuildStorageLock statement: %v", err)
+	}
+	if !strings.Contains(sql, `"guild_id"`) || !strings.Contains(sql, "location_kind = 'GUILD_STORAGE'") {
+		t.Fatalf("guild-storage probe wrong: %s", sql)
+	}
+	if arg != b.String() {
+		t.Fatalf("guild-storage arg = %v, want guild %v", arg, b.String())
+	}
 	// PriorityOf resolves first occurrence; item_locations = priority 5.
 	if p, ok := PriorityOf("item_locations"); !ok || p != Items {
 		t.Fatalf("PriorityOf(item_locations) = %d,%v want 50,true", p, ok)
@@ -378,6 +389,69 @@ func TestNoDeadlockConcurrentTransfers(t *testing.T) {
 	}
 	if sum != int64(len(chars))*1000 {
 		t.Fatalf("balance conservation broken: %d", sum)
+	}
+
+	// The priority-13 guild-storage tier must serialize real rows: a
+	// held GuildStorageLock blocks a writer to that guild's storage.
+	acct, gchar, g, gitem := uuid(0x9a), uuid(0x9b), uuid(0x9c), uuid(0x9d)
+	if _, err := pool.Exec(ctx, `INSERT INTO accounts (account_id) VALUES ($1)`, acct.String()); err != nil {
+		t.Fatalf("seed gs account: %v", err)
+	}
+	if _, err := pool.Exec(ctx,
+		`INSERT INTO characters (character_id, account_id, name, name_key, class_id) VALUES ($1,$2,$3,$4,'class.kim')`,
+		gchar.String(), acct.String(), "gschar", "gschar"); err != nil {
+		t.Fatalf("seed gs character: %v", err)
+	}
+	if _, err := pool.Exec(ctx,
+		`INSERT INTO guilds (guild_id, name, name_key, state, recruitment_mode, guild_revision, guild_storage_revision, created_at)
+		 VALUES ($1,'gsguild','gsguild','DISBANDED','CLOSED',0,0,now())`, g.String()); err != nil {
+		t.Fatalf("seed gs guild: %v", err)
+	}
+	if _, err := pool.Exec(ctx,
+		`INSERT INTO item_instances (item_instance_id, item_id, quantity, effective_binding, created_at) VALUES ($1,'item.lock.gs',1,'UNBOUND',now())`,
+		gitem.String()); err != nil {
+		t.Fatalf("seed gs item: %v", err)
+	}
+	if _, err := pool.Exec(ctx,
+		`INSERT INTO item_locations (item_instance_id, location_kind, guild_id, slot, depositor_character_id, depositor_account_id, updated_at)
+		 VALUES ($1,'GUILD_STORAGE',$2,'01',$3,$4,now())`,
+		gitem.String(), g.String(), gchar.String(), acct.String()); err != nil {
+		t.Fatalf("seed gs location: %v", err)
+	}
+
+	txA, err := pool.Begin(ctx)
+	if err != nil {
+		t.Fatalf("txA: %v", err)
+	}
+	defer txA.Rollback(ctx)
+	if err := Acquire(ctx, txA, GuildStorageLock(g)); err != nil {
+		t.Fatalf("txA acquire: %v", err)
+	}
+	txB, err := pool.Begin(ctx)
+	if err != nil {
+		t.Fatalf("txB: %v", err)
+	}
+	defer txB.Rollback(ctx)
+	done := make(chan error, 1)
+	go func() {
+		_, werr := txB.Exec(ctx, `UPDATE item_locations SET updated_at = now() WHERE item_instance_id = $1`, gitem.String())
+		done <- werr
+	}()
+	select {
+	case werr := <-done:
+		t.Fatalf("writer did not block on held guild-storage lock: %v", werr)
+	case <-time.After(200 * time.Millisecond):
+	}
+	if err := txA.Rollback(ctx); err != nil {
+		t.Fatalf("txA rollback: %v", err)
+	}
+	select {
+	case werr := <-done:
+		if werr != nil {
+			t.Fatalf("writer after release: %v", werr)
+		}
+	case <-time.After(5 * time.Second):
+		t.Fatal("writer still blocked after lock release")
 	}
 }
 

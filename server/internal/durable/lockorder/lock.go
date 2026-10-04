@@ -55,6 +55,15 @@ type Lock struct {
 	Key      []byte
 	Mode     LockMode
 	priority Priority
+	pred     *rowPredicate
+}
+
+// rowPredicate overrides a row lock's probe — used when one canonical
+// table locks through different predicates at different priorities.
+type rowPredicate struct {
+	column string
+	tail   string // literal AND-clause, e.g. "AND location_kind = 'GUILD_STORAGE'"
+	uuid   bool
 }
 
 // RowLock returns an exclusive row lock on table's registered lock
@@ -76,9 +85,17 @@ func AdvisoryLock(table string, key []byte) Lock {
 
 // GuildStorageLock addresses the priority-13 guild-storage subset of
 // item_locations — the dual-priority table of database.md § Lock Order.
+// It probes the guild-scoped rows (guild_id + location_kind), not the
+// item-instance lock column.
 func GuildStorageLock(guild id.UUID) Lock {
 	k := guild.Bytes()
-	return Lock{Table: "item_locations", Key: k[:], Mode: RowUpdate, priority: GuildStorage}
+	return Lock{
+		Table:    "item_locations",
+		Key:      k[:],
+		Mode:     RowUpdate,
+		priority: GuildStorage,
+		pred:     &rowPredicate{column: "guild_id", tail: " AND location_kind = 'GUILD_STORAGE'", uuid: true},
+	}
 }
 
 // effectivePriority resolves the lock's canonical priority.
@@ -265,13 +282,19 @@ var lockColumns = map[string]lockColumn{
 func (l Lock) statement() (string, any, error) {
 	switch l.Mode {
 	case RowUpdate, RowShare:
-		c, ok := lockColumns[l.Table]
-		if !ok {
-			return "", nil, fmt.Errorf("lockorder: table %q has no registered lock column — use Advisory mode", l.Table)
+		column, uuidCol, tail := "", false, ""
+		if l.pred != nil {
+			column, uuidCol, tail = l.pred.column, l.pred.uuid, l.pred.tail
+		} else {
+			c, ok := lockColumns[l.Table]
+			if !ok {
+				return "", nil, fmt.Errorf("lockorder: table %q has no registered lock column — use Advisory mode", l.Table)
+			}
+			column, uuidCol = c.column, c.uuid
 		}
 		var arg any
 		cast := ""
-		if c.uuid {
+		if uuidCol {
 			if len(l.Key) != 16 {
 				return "", nil, fmt.Errorf("lockorder: %s lock key must be a 16-byte UUID, got %d bytes", l.Table, len(l.Key))
 			}
@@ -286,7 +309,7 @@ func (l Lock) statement() (string, any, error) {
 		if l.Mode == RowShare {
 			mode = "SHARE"
 		}
-		return fmt.Sprintf(`SELECT 1 FROM %q WHERE %q = $1%s FOR %s`, l.Table, c.column, cast, mode), arg, nil
+		return fmt.Sprintf(`SELECT 1 FROM %q WHERE %q = $1%s%s FOR %s`, l.Table, column, cast, tail, mode), arg, nil
 	case Advisory, AdvisoryShared:
 		key := append([]byte(l.Table+"\x00"), l.Key...)
 		fn := "pg_advisory_xact_lock"
