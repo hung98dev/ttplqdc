@@ -95,6 +95,26 @@ func TestSlopeStepTransitions(t *testing.T) {
 	if r.Final.MinY != 7000 || !r.VyZeroed || r.GroundSegment != 3 {
 		t.Fatalf("landing: %+v", r)
 	}
+
+	// 6) Leftward sweep against a sloped wall stops at the wall's maximum x
+	// inside the y-overlap — never tunnels through.
+	sloped := worldOf([2]int64{10000, 10000},
+		geometry.Segment{ID: 1, Kind: geometry.Wall, X1: 0, Y1: 0, X2: 50, Y2: 100})
+	got, stopped := sloped.SweepX(AABB{MinX: 100, MinY: 0, MaxX: 200, MaxY: 40}, -100, moveOpts)
+	if !stopped || got.MinX != 20 {
+		t.Fatalf("left sweep vs sloped wall: %+v stopped=%v", got, stopped)
+	}
+	// Symmetric rightward sweep stops at the minimum x.
+	got2, stopped2 := sloped.SweepX(AABB{MinX: 300, MinY: 0, MaxX: 400, MaxY: 40}, 100, moveOpts)
+	if stopped2 { // wall x in [0,50], box already right of it
+		t.Fatalf("right sweep unexpected stop: %+v", got2)
+	}
+	// Rightward sweep onto the same wall: y-overlap [60,100] gives
+	// x_wall(60)=30 as the first contact point.
+	got3, stopped3 := sloped.SweepX(AABB{MinX: -80, MinY: 60, MaxX: 0, MaxY: 140}, 80, moveOpts)
+	if !stopped3 || got3.MaxX != 30 {
+		t.Fatalf("right sweep vs sloped wall: %+v stopped=%v", got3, stopped3)
+	}
 }
 
 // TestOneWayLedgeDrop covers one-way platform semantics: they stop falls only

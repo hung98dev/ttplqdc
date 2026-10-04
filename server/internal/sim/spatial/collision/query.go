@@ -179,8 +179,9 @@ func (w *World) sweepX(box AABB, dx int64, opts MoveOpts, res *Result) (AABB, bo
 		}
 		wallTop := max64(wall.Y1, wall.Y2)
 		step := wallTop - cur.MinY
-		if step > 0 && step <= opts.StepHeightMM {
-			// Ledge within step height: mount it and continue the sweep.
+		// A mountable ledge needs walkable support at the wall's top within
+		// step height — a bare wall top is not a stair.
+		if step > 0 && step <= opts.StepHeightMM && w.hasSupport(cur, wallTop) {
 			cur.MinY += step
 			cur.MaxY += step
 			res.Contacts = append(res.Contacts, Contact{
@@ -228,7 +229,7 @@ func (w *World) xContact(box AABB, dx int64) (int64, geometry.Segment, bool, boo
 		if s.X1 == s.X2 {
 			xw = s.X1
 		} else {
-			xw = wallXAtBoxSpan(s, box)
+			xw = wallXAtBoxSpan(s, box, dx)
 		}
 		var dist int64
 		if dx > 0 {
@@ -237,8 +238,11 @@ func (w *World) xContact(box AABB, dx int64) (int64, geometry.Segment, bool, boo
 			dist = box.MinX - xw
 		}
 		if dist < 0 {
-			// Leading edge already past the wall line: penetrating input.
-			if best < 0 || s.ID < wall.ID {
+			// Edge past the wall line: only a penetration when the wall still
+			// lies inside the box span. A wall fully behind the moving box
+			// does not block it.
+			inside := xw > box.MinX && xw < box.MaxX
+			if inside && (best < 0 || s.ID < wall.ID) {
 				best, wall, pen = 0, s, true
 			}
 			return
@@ -260,14 +264,32 @@ func (w *World) xContact(box AABB, dx int64) (int64, geometry.Segment, bool, boo
 // box first meets it: for dx>0 the minimum wall x over the y-overlap, for
 // dx<0 the maximum. x(y) is linear in y, so the extremum is at an interval
 // endpoint; each endpoint is quantized via RoundDiv.
-func wallXAtBoxSpan(s geometry.Segment, box AABB) int64 {
+func wallXAtBoxSpan(s geometry.Segment, box AABB, dx int64) int64 {
 	yLo := max64(min64(s.Y1, s.Y2), box.MinY)
 	yHi := min64(max64(s.Y1, s.Y2), box.MaxY)
 	dy := s.Y2 - s.Y1
 	xAt := func(y int64) int64 {
 		return s.X1 + geometry.RoundDiv((y-s.Y1)*(s.X2-s.X1), dy)
 	}
-	return min64(xAt(yLo), xAt(yHi))
+	if dx > 0 {
+		return min64(xAt(yLo), xAt(yHi))
+	}
+	return max64(xAt(yLo), xAt(yHi))
+}
+
+// hasSupport reports whether a walkable surface exists at ~y (±1mm) under
+// the box's foot span — the ledge condition for auto step-up.
+func (w *World) hasSupport(box AABB, y int64) bool {
+	found := false
+	w.forEach(box, func(s geometry.Segment) {
+		if found || !s.Kind.IsWalkable() || s.X1 == s.X2 {
+			return
+		}
+		if top, ok := surfaceMax(s, box.MinX, box.MaxX); ok && top >= y-1 && top <= y+1 {
+			found = true
+		}
+	})
+	return found
 }
 
 // edgeX is the leading-edge x for a box after travel `remaining` is consumed:
