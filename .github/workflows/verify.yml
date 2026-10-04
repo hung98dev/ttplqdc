@@ -4,10 +4,10 @@ on:
   pull_request_target:
   workflow_call:
     inputs:
-      run_unity:
-        description: run the Unity (Windows) job and its downstream merge steps
+      skip_unity:
+        description: skip the Unity (Windows) job and its downstream merge steps
         type: boolean
-        default: true
+        default: false
 
 concurrency:
   # Event-scoped: while both PR triggers are live, the pull_request run (head
@@ -26,7 +26,7 @@ env:
 jobs:
   unity-windows:
     name: Unity (Windows)
-    if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+    if: ${{ !inputs.skip_unity }}
     runs-on: windows-2022
     timeout-minutes: 120
     steps:
@@ -828,12 +828,12 @@ jobs:
           exit "$rc"
 
       - name: Check Pre-Unity conclusion (no unity run)
-        if: (github.event_name == 'workflow_call' && inputs.run_unity == false)
+        if: ${{ inputs.skip_unity }}
         shell: bash
         run: test "${{ steps.pre-unity.outputs.rc }}" = "0"
 
       - name: Wait for Unity (Windows)
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         id: wait-unity
         shell: bash
         env:
@@ -842,14 +842,14 @@ jobs:
         run: bash "$RUNNER_TEMP/verifier-src/.devin/scripts/wait_job.sh"
 
       - name: Check Unity (Windows) conclusion
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         shell: bash
         run: |
           set -euo pipefail
           [ "${{ steps.wait-unity.outputs.conclusion }}" = "success" ]
 
       - name: Download unity-test-results-windows
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         continue-on-error: true
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
@@ -857,7 +857,7 @@ jobs:
           path: unity-results/
 
       - name: Download visual-review
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         continue-on-error: true
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
@@ -865,7 +865,7 @@ jobs:
           path: artifacts/visual-review/
 
       - name: Fold unity cache telemetry
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         shell: bash
         run: |
           set -euo pipefail
@@ -876,7 +876,7 @@ jobs:
           fi
 
       - name: Unity phase verify
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -897,14 +897,14 @@ jobs:
           exit "$rc"
 
       - name: Upload verify-report-windows
-        if: always() && ((github.event_name != 'workflow_call' || inputs.run_unity != false))
+        if: ${{ always() && !inputs.skip_unity }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: verify-report-windows
           path: artifacts/verify-report-windows.json
 
       - name: Wait for Q0-Q6 verify (Linux)
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         id: wait-linux
         shell: bash
         env:
@@ -913,21 +913,21 @@ jobs:
         run: bash "$RUNNER_TEMP/verifier-src/.devin/scripts/wait_job.sh"
 
       - name: Check Q0-Q6 verify (Linux) conclusion
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         shell: bash
         run: |
           set -euo pipefail
           [ "${{ steps.wait-linux.outputs.conclusion }}" = "success" ]
 
       - name: Download verify-report-linux
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: verify-report-linux
           path: linux-report/
 
       - name: Merge evidence
-        if: (github.event_name != 'workflow_call' || inputs.run_unity != false)
+        if: ${{ !inputs.skip_unity }}
         shell: bash
         run: |
           set -euo pipefail
@@ -945,7 +945,7 @@ jobs:
             -out artifacts/evidence/manifest.json
 
       - name: Upload evidence
-        if: always() && ((github.event_name != 'workflow_call' || inputs.run_unity != false))
+        if: ${{ always() && !inputs.skip_unity }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: evidence
