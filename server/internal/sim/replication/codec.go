@@ -83,23 +83,23 @@ type PrivateSnapshot struct {
 // CheckpointSnapshot is the flat value form of pb.MovementCheckpoint with
 // EffectiveMovementParameters inlined.
 type CheckpointSnapshot struct {
-	X, Y                     int32
-	Vx, Vy                   int32
-	Facing                   protocolv1.Facing
-	MovementState            protocolv1.MovementState
-	PlatformID               uint64
-	IsGrounded               bool
-	JumpCount                uint32
-	DropIgnorePlatformID     uint64
-	DropIgnoreUntilTick      uint64
-	HeldHorizontalIntent     protocolv1.HeldHorizontalIntent
-	RunSpeedMmS              uint32
-	FirstJumpMmS             uint32
-	SecondJumpMmS            uint32
-	GravityMmS2              uint32
-	MaxFallMmS               uint32
-	AirControlBp             uint32
-	MaxStepHeightMm          uint32
+	X, Y                 int32
+	Vx, Vy               int32
+	Facing               protocolv1.Facing
+	MovementState        protocolv1.MovementState
+	PlatformID           uint64
+	IsGrounded           bool
+	JumpCount            uint32
+	DropIgnorePlatformID uint64
+	DropIgnoreUntilTick  uint64
+	HeldHorizontalIntent protocolv1.HeldHorizontalIntent
+	RunSpeedMmS          uint32
+	FirstJumpMmS         uint32
+	SecondJumpMmS        uint32
+	GravityMmS2          uint32
+	MaxFallMmS           uint32
+	AirControlBp         uint32
+	MaxStepHeightMm      uint32
 }
 
 // View is everything one replication client sees at one tick. The caller
@@ -139,16 +139,17 @@ type Builder struct {
 	deltaMsg protocolv1.S2CStateDelta
 	resync   protocolv1.S2CBaselineResyncResult
 
-	ent  [MaxEntitiesPerView]protocolv1.EntityState
-	entP [MaxEntitiesPerView]*protocolv1.EntityState
-	enc  [MaxEncounters]protocolv1.EncounterState
-	encP [MaxEncounters]*protocolv1.EncounterState
-	mech [MaxEncounters * MaxMechanics]protocolv1.ActiveMechanicState
+	ent   [MaxEntitiesPerView]protocolv1.EntityState
+	entSp [MaxEntitiesPerView]protocolv1.EntityState
+	entP  [MaxEntitiesPerView]*protocolv1.EntityState
+	enc   [MaxEncounters]protocolv1.EncounterState
+	encP  [MaxEncounters]*protocolv1.EncounterState
+	mech  [MaxEncounters * MaxMechanics]protocolv1.ActiveMechanicState
 	mechP [MaxEncounters * MaxMechanics]*protocolv1.ActiveMechanicState
-	st   [MaxEntitiesPerView * MaxStatuses]protocolv1.EntityStatus
-	stP  [MaxEntitiesPerView * MaxStatuses]*protocolv1.EntityStatus
-	cs   [MaxEntitiesPerView * MaxCosmetics]protocolv1.EquippedCosmetic
-	csP  [MaxEntitiesPerView * MaxCosmetics]*protocolv1.EquippedCosmetic
+	st    [MaxEntitiesPerView * MaxStatuses]protocolv1.EntityStatus
+	stP   [MaxEntitiesPerView * MaxStatuses]*protocolv1.EntityStatus
+	cs    [MaxEntitiesPerView * MaxCosmetics]protocolv1.EquippedCosmetic
+	csP   [MaxEntitiesPerView * MaxCosmetics]*protocolv1.EquippedCosmetic
 
 	delta  [MaxEntitiesPerView]protocolv1.EntityDelta
 	deltaP [MaxEntitiesPerView]*protocolv1.EntityDelta
@@ -166,16 +167,16 @@ type Builder struct {
 	dCs    [MaxEntitiesPerView * MaxCosmetics]protocolv1.EquippedCosmetic
 	dCsP   [MaxEntitiesPerView * MaxCosmetics]*protocolv1.EquippedCosmetic
 
-	self    protocolv1.EntityState
-	selfP   protocolv1.SelfPrivateState
-	selfPD  protocolv1.SelfPrivateDelta
-	ack     protocolv1.SelfAck
-	cp      protocolv1.MovementCheckpoint
-	emp     protocolv1.EffectiveMovementParameters
+	self   protocolv1.EntityState
+	selfP  protocolv1.SelfPrivateState
+	selfPD protocolv1.SelfPrivateDelta
+	ack    protocolv1.SelfAck
+	cp     protocolv1.MovementCheckpoint
+	emp    protocolv1.EffectiveMovementParameters
 
-	spawnN, despawnN, entN, encN, mechN, stN, csN int
-	deltaN, i32N, i64N, u32N, u64N, strN, facN, mvN int
-	slN, clN, dStN, dCsN int
+	spawnN, despawnN, entN, entSpN, encN, mechN, stN, csN int
+	deltaN, i32N, i64N, u32N, u64N, strN, facN, mvN       int
+	slN, clN, dStN, dCsN                                  int
 }
 
 // NewBuilder returns a ready pooled builder.
@@ -184,7 +185,7 @@ func NewBuilder() *Builder { return &Builder{} }
 // Reset returns every arena to empty. Callers invoke it once per emitted
 // batch before reusing the builder.
 func (b *Builder) Reset() {
-	b.spawnN, b.despawnN, b.entN, b.encN, b.mechN, b.stN, b.csN = 0, 0, 0, 0, 0, 0, 0
+	b.spawnN, b.despawnN, b.entN, b.entSpN, b.encN, b.mechN, b.stN, b.csN = 0, 0, 0, 0, 0, 0, 0, 0
 	b.deltaN, b.i32N, b.i64N, b.u32N, b.u64N, b.strN, b.facN, b.mvN = 0, 0, 0, 0, 0, 0, 0, 0
 	b.slN, b.clN, b.dStN, b.dCsN = 0, 0, 0, 0
 }
@@ -383,15 +384,15 @@ func (b *Builder) fillBaseline(v *View, p *BaselineParams, out *protocolv1.S2CWo
 // It reports false when the per-build spawn arena is exhausted; that cannot
 // happen when callers spawn at most the visible set.
 func (b *Builder) NewSpawn(baselineID, tick uint64, s *EntitySnapshot) (*protocolv1.S2CEntitySpawn, bool) {
-	if b.spawnN >= len(b.spawn) || b.entN >= len(b.ent) {
+	if b.spawnN >= len(b.spawn) || b.entSpN >= len(b.entSp) {
 		return nil, false
 	}
 	msg := &b.spawn[b.spawnN]
 	b.spawnN++
 	msg.BaselineId = baselineID
 	msg.ServerTick = tick
-	ent := &b.ent[b.entN]
-	b.entN++
+	ent := &b.entSp[b.entSpN]
+	b.entSpN++
 	b.fillEntity(ent, s)
 	msg.Entity = ent
 	return msg, true
@@ -441,64 +442,86 @@ func cosmeticsEqual(p, c *EntitySnapshot) bool {
 // ADR-0064: every mutable EntityState field is a proto3 optional that is
 // absent when unchanged; identity fields are never sent; statuses and
 // equipped_cosmetics are wrapped lists that replace fully when present.
-func (b *Builder) fillDelta(dst *protocolv1.EntityDelta, prev, cur *EntitySnapshot) {
+// It reports false when nothing changed — an unchanged entity carries no
+// delta at all.
+func (b *Builder) fillDelta(dst *protocolv1.EntityDelta, prev, cur *EntitySnapshot) bool {
 	dst.EntityId = cur.ID
+	changed := false
 	if prev.DisplayName != cur.DisplayName {
 		dst.DisplayName = b.allocStr(cur.DisplayName)
+		changed = true
 	}
 	if prev.Level != cur.Level {
 		dst.Level = b.allocU32(cur.Level)
+		changed = true
 	}
 	if prev.OwnerEntityID != cur.OwnerEntityID {
 		dst.OwnerEntityId = b.allocU64(cur.OwnerEntityID)
+		changed = true
 	}
 	if prev.X != cur.X {
 		dst.XMm = b.allocI32(cur.X)
+		changed = true
 	}
 	if prev.Y != cur.Y {
 		dst.YMm = b.allocI32(cur.Y)
+		changed = true
 	}
 	if prev.Vx != cur.Vx {
 		dst.VxMmS = b.allocI32(cur.Vx)
+		changed = true
 	}
 	if prev.Vy != cur.Vy {
 		dst.VyMmS = b.allocI32(cur.Vy)
+		changed = true
 	}
 	if prev.Facing != cur.Facing {
 		dst.Facing = b.allocFacing(cur.Facing)
+		changed = true
 	}
 	if prev.MovementState != cur.MovementState {
 		dst.MovementState = b.allocMove(cur.MovementState)
+		changed = true
 	}
 	if prev.HP != cur.HP {
 		dst.Hp = b.allocI64(cur.HP)
+		changed = true
 	}
 	if prev.MaxHP != cur.MaxHP {
 		dst.MaxHp = b.allocI64(cur.MaxHP)
+		changed = true
 	}
 	if prev.Shield != cur.Shield {
 		dst.Shield = b.allocI64(cur.Shield)
+		changed = true
 	}
 	if prev.Flags != cur.Flags {
 		dst.Flags = b.allocU32(cur.Flags)
+		changed = true
 	}
 	if prev.EncounterID != cur.EncounterID {
 		dst.EncounterId = b.allocU64(cur.EncounterID)
+		changed = true
 	}
 	if prev.Stats[0] != cur.Stats[0] {
 		dst.StatLifesteal = b.allocU32(cur.Stats[0])
+		changed = true
 	}
 	if prev.Stats[1] != cur.Stats[1] {
 		dst.StatReflect = b.allocU32(cur.Stats[1])
+		changed = true
 	}
 	if prev.Stats[2] != cur.Stats[2] {
 		dst.StatAbsorb = b.allocU32(cur.Stats[2])
+		changed = true
 	}
 	if prev.Stats[3] != cur.Stats[3] {
 		dst.StatHealReduction = b.allocU32(cur.Stats[3])
+		changed = true
 	}
 	if prev.Stats[4] != cur.Stats[4] {
 		dst.StatHealingReceived = b.allocU32(cur.Stats[4])
+		changed = true
 	}
 	if !statusesEqual(prev, cur) {
 		sl := &b.sl[b.slN]
@@ -512,6 +535,7 @@ func (b *Builder) fillDelta(dst *protocolv1.EntityDelta, prev, cur *EntitySnapsh
 		}
 		sl.Entries = b.dStP[b.dStN-n : b.dStN]
 		dst.Statuses = sl
+		changed = true
 	}
 	if !cosmeticsEqual(prev, cur) {
 		cl := &b.cl[b.clN]
@@ -525,7 +549,9 @@ func (b *Builder) fillDelta(dst *protocolv1.EntityDelta, prev, cur *EntitySnapsh
 		}
 		cl.Entries = b.dCsP[b.dCsN-n : b.dCsN]
 		dst.EquippedCosmetics = cl
+		changed = true
 	}
+	return changed
 }
 
 // NewDelta returns the pooled S2C_STATE_DELTA for cur diffed against prev.
@@ -581,8 +607,10 @@ func (b *Builder) Delta(prev, cur *View, out *protocolv1.S2CStateDelta) {
 			continue // new entrant: spawn carries its full state
 		}
 		d := &b.delta[b.deltaN]
+		if !b.fillDelta(d, prevEnt, c) {
+			continue // unchanged: absence is the delta
+		}
 		b.deltaN++
-		b.fillDelta(d, prevEnt, c)
 		b.deltaP[n] = d
 		n++
 	}

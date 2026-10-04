@@ -49,10 +49,10 @@ type Intent struct {
 	ClientSeq uint64
 
 	Held       protocolv1.HeldHorizontalIntent // IntentMovementHeld
-	Edge       uint8                            // IntentMovementEdge
-	BaselineID uint64                           // IntentBaselineAck
-	RequestID  uint64                           // IntentBaselineResync
-	Reason     protocolv1.ResyncReason          // IntentBaselineResync
+	Edge       uint8                           // IntentMovementEdge
+	BaselineID uint64                          // IntentBaselineAck
+	RequestID  uint64                          // IntentBaselineResync
+	Reason     protocolv1.ResyncReason         // IntentBaselineResync
 
 	// QueuedAt stamps mailbox entry for the queue-wait metric; the
 	// partition sets it, callers leave it zero.
@@ -63,9 +63,9 @@ type Intent struct {
 type RejectCode uint8
 
 const (
-	RejectNotPlayer   RejectCode = iota + 1 // target entity missing or not a player
-	RejectStaleSeq                          // client_seq not newer than last processed
-	RejectDiscreteFull                      // per-character discrete queue at cap
+	RejectNotPlayer    RejectCode = iota + 1 // target entity missing or not a player
+	RejectStaleSeq                           // client_seq not newer than last processed
+	RejectDiscreteFull                       // per-character discrete queue at cap
 )
 
 // Rejected is one input dropped at ingest, surfaced for observability.
@@ -138,11 +138,23 @@ func (p *Partition) routeIntent(i Intent, rejected *[RejectCap]Rejected, rejecte
 		return
 	}
 
-	if i.ClientSeq <= e.lastClientSeq {
+	// Client seq dedup runs against the greatest seq already applied or
+	// still queued this tick, so an out-of-order resend inside one
+	// mailbox drain can never regress lastClientSeq.
+	ib := &p.inboxes[e.Slot]
+	maxSeq := e.lastClientSeq
+	if ib.hasHeld && ib.heldSeq > maxSeq {
+		maxSeq = ib.heldSeq
+	}
+	for k := 0; k < ib.discreteN; k++ {
+		if ib.discrete[k].ClientSeq > maxSeq {
+			maxSeq = ib.discrete[k].ClientSeq
+		}
+	}
+	if i.ClientSeq <= maxSeq {
 		reject(RejectStaleSeq)
 		return
 	}
-	ib := &p.inboxes[e.Slot]
 	switch i.Kind {
 	case IntentMovementHeld:
 		// Coalesce slot: newest pending held value wins.
@@ -168,10 +180,13 @@ func (p *Partition) applyInboxes() {
 		}
 		e := &p.ent[slot]
 		ib := &p.inboxes[slot]
+		maxSeq := e.lastClientSeq
 		if ib.hasHeld {
 			e.Checkpoint.HeldHorizontalIntent = ib.held
 			e.hasHeld = true
-			e.lastClientSeq = ib.heldSeq
+			if ib.heldSeq > maxSeq {
+				maxSeq = ib.heldSeq
+			}
 			ib.hasHeld = false
 		}
 		for k := 0; k < ib.discreteN; k++ {
@@ -179,8 +194,11 @@ func (p *Partition) applyInboxes() {
 			if d.Kind == IntentMovementEdge {
 				e.pendingEdge = d.Edge
 			}
-			e.lastClientSeq = d.ClientSeq
+			if d.ClientSeq > maxSeq {
+				maxSeq = d.ClientSeq
+			}
 		}
+		e.lastClientSeq = maxSeq
 		ib.discreteN = 0
 	}
 }

@@ -56,15 +56,15 @@ const (
 // at-least-once dedup identity; SourceEvent is the canonical sim source
 // name for the producing event.
 type DurableCommand struct {
-	Kind          DurableKind
-	Family        string
-	OwnerKind     DurableOwnerKind
-	Owner         id.UUID
-	OperationID   id.UUID
-	Fingerprint   [32]byte
-	SourceEvent   string
+	Kind            DurableKind
+	Family          string
+	OwnerKind       DurableOwnerKind
+	Owner           id.UUID
+	OperationID     id.UUID
+	Fingerprint     [32]byte
+	SourceEvent     string
 	ContentRevision string
-	Tick          uint64
+	Tick            uint64
 }
 
 // EmitPort consumes durable commands in emission order. An error means the

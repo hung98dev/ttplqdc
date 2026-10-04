@@ -61,19 +61,19 @@ const (
 // replClient is one player's replication session: AOI viewer state, the
 // message builder, baseline bookkeeping and the last-sent entity view.
 type replClient struct {
-	attached       bool
-	viewer         aoi.Viewer
-	builder        *replication.Builder
-	baselineID     uint64
-	baselineAcked  bool
+	attached        bool
+	viewer          aoi.Viewer
+	builder         *replication.Builder
+	baselineID      uint64
+	baselineAcked   bool
 	pendingBaseline bool
-	resyncPending  bool
-	resyncReq      uint64
-	resyncReason   protocolv1.ResyncReason
-	prevEnt        [replication.MaxEntitiesPerView]replication.EntitySnapshot
-	prevN          int
-	prevPriv       replication.PrivateSnapshot
-	curEnt         [replication.MaxEntitiesPerView]replication.EntitySnapshot
+	resyncPending   bool
+	resyncReq       uint64
+	resyncReason    protocolv1.ResyncReason
+	prevEnt         [replication.MaxEntitiesPerView]replication.EntitySnapshot
+	prevN           int
+	prevPriv        replication.PrivateSnapshot
+	curEnt          [replication.MaxEntitiesPerView]replication.EntitySnapshot
 }
 
 // prevIdx locates id in the client's last-sent entity list.
@@ -143,6 +143,7 @@ type Partition struct {
 	removedN  int
 
 	systems [12][]func(*Partition, *TickContext)
+	tc      TickContext
 
 	tickN   uint64
 	simTime time.Duration
@@ -150,10 +151,10 @@ type Partition struct {
 
 	nextBaseline uint64
 
-	tickRuntime      *observability.Instrument
-	queueWait        *observability.Instrument
-	overrunTicks     *observability.Instrument
-	intentsRejected  *observability.Instrument
+	tickRuntime     *observability.Instrument
+	queueWait       *observability.Instrument
+	overrunTicks    *observability.Instrument
+	intentsRejected *observability.Instrument
 
 	resultHandler func(*Partition, *Result)
 }
@@ -280,7 +281,7 @@ func (p *Partition) applyLoaded(st *PartitionState) {
 		}
 		e, _ := p.Entity(id)
 		e.Snap.ContentID = c.RelicID
-		e.Snap.Kind = 0
+		e.Snap.Kind = protocolv1.EntityKind_ENTITY_KIND_OBJECT
 		e.ExpiresAtTick = c.ExpiresAtTick
 		e.Objective = true
 	}
@@ -346,15 +347,18 @@ drained:
 
 	p.tickN++
 	p.simTime += Step
-	tc := TickContext{Tick: p.tickN, SimTime: p.simTime, Now: start}
+	p.tc.Tick, p.tc.SimTime, p.tc.Now = p.tickN, p.simTime, start
 	for ph := PhaseID(0); ph < phaseCount; ph++ {
-		p.runBuiltin(ph, &tc)
+		p.runBuiltin(ph, &p.tc)
 		for _, fn := range p.systems[ph] {
-			fn(p, &tc)
+			fn(p, &p.tc)
+		}
+		if ph == PhaseReplication {
+			// The BUILD phase consumed the removed log for this tick's
+			// despawn events; removals after it (CLEANUP or external
+			// calls between ticks) accumulate for the next build.
+			p.removedN = 0
 		}
 	}
 	p.emitMetrics(start, qWaitSum, qWaitN)
-	// The removed log is consumed by this tick's BUILD phase; removals
-	// outside a tick (disconnects, tests) persist into the next one.
-	p.removedN = 0
 }
