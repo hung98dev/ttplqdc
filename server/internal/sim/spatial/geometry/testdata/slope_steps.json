@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "space_id": "slope_town_01",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "slope_steps",
+  "content_revision": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+  "bounds_mm": { "max_x": 51200, "max_y": 28800 },
+  "segments": [
+    { "id": 1, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 10000, "y2": 4000 },
+    { "id": 2, "kind": "SLOPE", "x1": 10000, "y1": 4000, "x2": 16000, "y2": 7000 },
+    { "id": 3, "kind": "SOLID_GROUND", "x1": 16000, "y1": 7000, "x2": 26000, "y2": 7000 },
+    { "id": 4, "kind": "WALL", "x1": 30000, "y1": 4000, "x2": 30000, "y2": 4250 },
+    { "id": 5, "kind": "SOLID_GROUND", "x1": 26000, "y1": 4000, "x2": 30000, "y2": 4000 },
+    { "id": 6, "kind": "SOLID_GROUND", "x1": 30000, "y1": 4250, "x2": 40000, "y2": 4250 },
+    { "id": 7, "kind": "WALL", "x1": 40000, "y1": 4250, "x2": 40000, "y2": 5000 },
+    { "id": 9, "kind": "ONE_WAY_PLATFORM", "x1": 16000, "y1": 11000, "x2": 22000, "y2": 11000 },
+    { "id": 10, "kind": "SLOPE", "x1": 40000, "y1": 5000, "x2": 46000, "y2": 2000 },
+    { "id": 11, "kind": "SOLID_GROUND", "x1": 46000, "y1": 2000, "x2": 51200, "y2": 2000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 30000, "max_y": 28800 },
+    { "id": 2, "min_x": 24000, "min_y": 0, "max_x": 51200, "max_y": 28800 }
+  ],
+  "anchors": [
+    { "id": "spawn_low", "x": 5000, "y": 4000 },
+    { "id": "spawn_mid", "x": 13000, "y": 5500 },
+    { "id": "spawn_top", "x": 20000, "y": 7000 }
+  ]
+}
