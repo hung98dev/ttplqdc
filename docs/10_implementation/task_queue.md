@@ -104,7 +104,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
 | `IMP-078` | Server Geometry & Deterministic Collision Core | `DONE` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
 | `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `DONE` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
-| `IMP-080` | Global Runtime (In-Process Single Writer) | `NOT_STARTED` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
+| `IMP-080` | Global Runtime (In-Process Single Writer) | `IN_PROGRESS` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
 | `IMP-081` | Edge Listener, Framing & Heartbeat | `DONE` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
 | `IMP-082` | Durable Command Queue & Backpressure | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-083` | Task-Graph & Architecture Conformance (Q0/Q4) | `DONE` | IMP-000, IMP-061 | `architecture_conformance.md`, `repository_layout.md` |
@@ -865,10 +865,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-081/"
 
 ## `IMP-080` — Global Runtime (In-Process Single Writer)
 id: IMP-080
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-080"
+branch: "imp/IMP-080-global-runtime"
+claimed_at: "2026-10-04T21:43:22Z"
 blocked_by: ""
 
 specs: [`../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md`, `../04_architecture/system_overview.md`, `../04_architecture/backend.md`]
