@@ -105,7 +105,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-078` | Server Geometry & Deterministic Collision Core | `IN_PROGRESS` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
 | `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `NOT_STARTED` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
 | `IMP-080` | Global Runtime (In-Process Single Writer) | `NOT_STARTED` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
-| `IMP-081` | Edge Listener, Framing & Heartbeat | `NOT_STARTED` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
+| `IMP-081` | Edge Listener, Framing & Heartbeat | `IN_PROGRESS` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
 | `IMP-082` | Durable Command Queue & Backpressure | `NOT_STARTED` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-083` | Task-Graph & Architecture Conformance (Q0/Q4) | `DONE` | IMP-000, IMP-061 | `architecture_conformance.md`, `repository_layout.md` |
 | `IMP-084` | Death / Respawn | `NOT_STARTED` | IMP-014, IMP-016, IMP-018 | `../01_gameplay/death_respawn.md`, `../01_gameplay/combat.md` |
@@ -827,10 +827,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-097/"
 
 ## `IMP-081` — Edge Listener, Framing & Heartbeat
 id: IMP-081
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-081"
+branch: "imp/IMP-081-edge-listener"
+claimed_at: "2026-10-04T10:42:57Z"
 blocked_by: ""
 
 specs: [`../05_network/protocol.md`, `../05_network/versioning.md`, `../05_network/messages.md`, `../05_network/errors.md`, `../07_security/rate_limits.md`, `../07_security/external_integrations.md`, `../04_architecture/service_boundaries.md`, `../00_context/technology_versions.md`, `../08_scale_ops/capacity.md`, `engineering_conventions.md`]
