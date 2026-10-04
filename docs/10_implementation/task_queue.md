@@ -106,7 +106,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `IN_PROGRESS` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
 | `IMP-080` | Global Runtime (In-Process Single Writer) | `NOT_STARTED` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
 | `IMP-081` | Edge Listener, Framing & Heartbeat | `IN_PROGRESS` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
-| `IMP-082` | Durable Command Queue & Backpressure | `NOT_STARTED` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
+| `IMP-082` | Durable Command Queue & Backpressure | `IN_PROGRESS` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-083` | Task-Graph & Architecture Conformance (Q0/Q4) | `DONE` | IMP-000, IMP-061 | `architecture_conformance.md`, `repository_layout.md` |
 | `IMP-084` | Death / Respawn | `NOT_STARTED` | IMP-014, IMP-016, IMP-018 | `../01_gameplay/death_respawn.md`, `../01_gameplay/combat.md` |
 | `IMP-085` | Folklore Feats & Titles | `NOT_STARTED` | IMP-019, IMP-022, IMP-027, IMP-038, IMP-040, IMP-042, IMP-058 | `../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md` |
@@ -752,10 +752,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-098/"
 
 ## `IMP-082` — Durable Command Queue & Backpressure
 id: IMP-082
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-082"
+branch: "imp/IMP-082-durable-queue"
+claimed_at: "2026-10-04T10:43:01Z"
 blocked_by: ""
 
 specs: [`../06_data/database.md`, `../06_data/save_rules.md`, `../04_architecture/concurrency.md`, `../08_scale_ops/capacity.md`, `../06_data/ids.md`, `../05_network/protobuf_conventions.md`, `../08_scale_ops/deployment.md`, `../07_security/personal_data_register.md`, `../07_security/data_protection.md`, `../08_scale_ops/backup_recovery.md`]
