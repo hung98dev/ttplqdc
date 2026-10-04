@@ -67,7 +67,7 @@ var TransitiveModuleAllowlist = map[string]string{
 	"go.opentelemetry.io/auto/sdk":                      "v1.2.1",
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace": "v1.46.0",
 	"golang.org/x/net":                                  "v0.58.0",
-	"golang.org/x/sys":                                  "v0.47.0",
+	"golang.org/x/sys":                                  "v0.48.0", // x/crypto v0.57.0 (argon2) closure resolves over the OTel v0.47.0 pin
 	"google.golang.org/genproto/googleapis/api":         "v0.0.0-20260819154853-08b0e4226688",
 	"google.golang.org/genproto/googleapis/rpc":         "v0.0.0-20260819154853-08b0e4226688",
 	"github.com/jackc/pgerrcode":                        "v0.0.0-20220416144525-469b46aa5efa", // via migrate/v4
