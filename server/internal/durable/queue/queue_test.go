@@ -334,7 +334,8 @@ func newFixture(t *testing.T, capacity, workers int, gate idempotency.QueueGate)
 	q := queue.New(capacity, store, queue.Deps{
 		Pool:       pool,
 		Workers:    workers,
-		RetryDelay: time.Millisecond,
+		BackoffMin: time.Millisecond,
+		BackoffMax: 8 * time.Millisecond,
 		Gate:       gate,
 	})
 	for _, k := range []queue.ProducerKind{
@@ -626,7 +627,8 @@ func TestNoEnqueueWithoutClientReceipt(t *testing.T) {
 	pool2.Close()
 	rec2 := clientRec(charOwner(), "inventory.mutate", "b")
 	q2 := queue.New(8, idempotency.NewStore(newPool(t)), queue.Deps{
-		Pool: pool2, Workers: 1, Gate: gate2, RetryDelay: time.Millisecond})
+		Pool: pool2, Workers: 1, Gate: gate2,
+		BackoffMin: time.Millisecond, BackoffMax: 8 * time.Millisecond})
 	defer func() { _ = q2.Shutdown(context.Background()) }()
 	if err := q2.Submit(context.Background(), rec2); !errors.Is(err, queue.ErrAdmissionFailed) {
 		t.Fatalf("outage: want ErrAdmissionFailed, got %v", err)

@@ -39,8 +39,11 @@ type Deps struct {
 	Gate idempotency.QueueGate
 	// Workers is the fixed executor pool size; <=0 uses 4.
 	Workers int
-	// RetryDelay is the transient-failure redispatch delay; <=0 uses 25ms.
-	RetryDelay time.Duration
+	// BackoffMin/BackoffMax bound the transient-failure retry backoff:
+	// min(BackoffMin * 2^attempt, BackoffMax) per record per save_rules
+	// (100ms .. 5s during DB outage). <=0 defaults to 100ms/5s.
+	BackoffMin time.Duration
+	BackoffMax time.Duration
 }
 
 // Queue is the bounded durable command queue.
@@ -51,7 +54,8 @@ type Queue struct {
 	now        func() time.Time
 	gate       idempotency.QueueGate
 	workers    int
-	retryDelay time.Duration
+	backoffMin time.Duration
+	backoffMax time.Duration
 	metrics    *queueMetrics
 
 	executors map[ProducerKind]Executor
@@ -89,8 +93,11 @@ func New(capacity int, store *idempotency.Store, deps Deps) *Queue {
 	if deps.Workers <= 0 {
 		deps.Workers = 4
 	}
-	if deps.RetryDelay <= 0 {
-		deps.RetryDelay = 25 * time.Millisecond
+	if deps.BackoffMin <= 0 {
+		deps.BackoffMin = 100 * time.Millisecond
+	}
+	if deps.BackoffMax <= 0 {
+		deps.BackoffMax = 5 * time.Second
 	}
 	ctx, cancel := context.WithCancel(context.Background())
 	q := &Queue{
@@ -100,7 +107,8 @@ func New(capacity int, store *idempotency.Store, deps Deps) *Queue {
 		now:        deps.Now,
 		gate:       deps.Gate,
 		workers:    deps.Workers,
-		retryDelay: deps.RetryDelay,
+		backoffMin: deps.BackoffMin,
+		backoffMax: deps.BackoffMax,
 		executors:  make(map[ProducerKind]Executor),
 		slots:      make(chan struct{}, capacity),
 		work:       make(chan *recordState, deps.Workers),
@@ -525,9 +533,23 @@ func (q *Queue) resolveLocked(st *recordState) {
 	q.finishHeadLocked(st)
 	st.refs &^= refInflight
 	st.resolved = true
+	st.attempts = 0
 	q.disposeCheckLocked(st)
 	q.retryDeferredLocked()
 	q.pumpLanesLocked()
+}
+
+// backoff is the save_rules Database Outage schedule: min(BackoffMin *
+// 2^(attempt-1), BackoffMax) — 100ms doubling to 5s during a DB outage.
+func (q *Queue) backoff(attempt int) time.Duration {
+	d := q.backoffMin
+	for i := 1; i < attempt; i++ {
+		d *= 2
+		if d >= q.backoffMax {
+			return q.backoffMax
+		}
+	}
+	return d
 }
 
 // requeueLocked keeps a transiently failed record at its lane head and
@@ -546,11 +568,12 @@ func (q *Queue) requeueLocked(st *recordState) {
 	}
 	st.refs &^= refInflight
 	st.refs |= refQueued
-	st.retryNotBefore = time.Now().Add(q.retryDelay)
+	st.attempts++
+	delay := q.backoff(st.attempts)
+	st.retryNotBefore = time.Now().Add(delay)
 	if l := q.lanes[st.agg]; l != nil {
 		l.running = false
 	}
-	delay := q.retryDelay
 	time.AfterFunc(delay, func() {
 		q.mu.Lock()
 		if _, ok := q.records[st.key]; ok && st.refs&refQueued != 0 {

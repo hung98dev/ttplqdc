@@ -46,6 +46,9 @@ type recordState struct {
 	resolved bool   // execution resolved (committed or terminally rejected)
 	release  func() // admission-gate slot release (CLIENT), freed on dispatch
 	slotHeld bool   // capacity semaphore held until full disposal
+	// attempts counts consecutive transient retries for the exponential
+	// backoff schedule; reset on resolution.
+	attempts int
 	// retryNotBefore holds redispatch until a transient retry delay elapses.
 	retryNotBefore time.Time
 }
