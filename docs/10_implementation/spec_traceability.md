@@ -75,7 +75,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `04_architecture/service_boundaries.md` | IMP-022, IMP-025, IMP-069, IMP-080, IMP-081 |
 | `04_architecture/system_overview.md` | IMP-000, IMP-069, IMP-080 |
 | `05_network/errors.md` | IMP-006, IMP-061, IMP-065, IMP-081, IMP-100 |
-| `05_network/messages.md` | IMP-009, IMP-010, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-087, IMP-100, IMP-103 |
+| `05_network/messages.md` | IMP-009, IMP-010, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-081, IMP-087, IMP-100, IMP-103 |
 | `05_network/protobuf_conventions.md` | IMP-001, IMP-005, IMP-010, IMP-018, IMP-020, IMP-021, IMP-022, IMP-023, IMP-025, IMP-027, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-038, IMP-040, IMP-041, IMP-042, IMP-052, IMP-053, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-069, IMP-077, IMP-082, IMP-084, IMP-085, IMP-086, IMP-089, IMP-091, IMP-093, IMP-094, IMP-100, IMP-102 |
 | `05_network/protocol.md` | IMP-006, IMP-014, IMP-061, IMP-065, IMP-081 |
 | `05_network/reconnect.md` | IMP-065, IMP-069 |
@@ -118,7 +118,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `07_security/anti_cheat.md` | IMP-037, IMP-045, IMP-054 |
 | `07_security/auth.md` | IMP-006, IMP-045, IMP-065, IMP-077, IMP-099, IMP-103 |
 | `07_security/data_protection.md` | IMP-056, IMP-069, IMP-077, IMP-082, IMP-094, IMP-103 |
-| `07_security/external_integrations.md` | IMP-006, IMP-045, IMP-053, IMP-068 |
+| `07_security/external_integrations.md` | IMP-006, IMP-045, IMP-053, IMP-068, IMP-081 |
 | `07_security/personal_data_register.md` | IMP-005, IMP-043, IMP-056, IMP-069, IMP-077, IMP-082, IMP-094, IMP-103 |
 | `07_security/rate_limits.md` | IMP-006, IMP-045, IMP-081 |
 | `07_security/session.md` | IMP-006, IMP-045, IMP-065, IMP-099 |

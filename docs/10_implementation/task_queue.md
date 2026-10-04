@@ -833,10 +833,10 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../05_network/protocol.md`, `../05_network/versioning.md`, `../05_network/errors.md`, `../07_security/rate_limits.md`, `../04_architecture/service_boundaries.md`, `../00_context/technology_versions.md`, `../08_scale_ops/capacity.md`, `engineering_conventions.md`]
+specs: [`../05_network/protocol.md`, `../05_network/versioning.md`, `../05_network/messages.md`, `../05_network/errors.md`, `../07_security/rate_limits.md`, `../07_security/external_integrations.md`, `../04_architecture/service_boundaries.md`, `../00_context/technology_versions.md`, `../08_scale_ops/capacity.md`, `engineering_conventions.md`]
 adrs: [`0008-client-network-transport-protocol.md`, `0038-discrete-movement-edge-input-message.md`, `0044-launch-topology-single-binary-role-modes.md`, `0051-first-party-username-password-login.md`, `0053-durable-contract-reconciliation.md`, `0054-wire-message-completion.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0068-implementation-packet-readiness-corrections.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0072-executable-merge-pipeline-for-ai-agents.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-061, IMP-068, IMP-098]
-owned_paths: [`server/internal/edge/listener/`, `server/internal/edge/heartbeat/`]
+owned_paths: [`server/internal/edge/listener/`, `server/internal/edge/heartbeat/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/migrations/`, `client/`, `server/internal/sim/`, `server/internal/durable/`]
 contract_inputs: [TLS/WSS connections, envelope frames, protocol version]
 contract_outputs: [validated frames, per-session RTT samples, disconnect events]
