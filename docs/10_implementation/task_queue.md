@@ -121,7 +121,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-094` | Chat Moderation & chat_messages | `NOT_STARTED` | IMP-034, IMP-080 | `../03_systems/social.md`, `../06_data/data_model.md` |
 | `IMP-095` | Client Performance Budgets & Quality Presets (every PR) | `NOT_STARTED` | IMP-063, IMP-065, IMP-066, IMP-101 | `../04_architecture/client_performance.md`, `../04_architecture/client.md` |
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
-| `IMP-097` | Aggregate Lock-Order Helper | `IN_PROGRESS` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
+| `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
 | `IMP-098` | Observability Core | `DONE` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
 | `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `NOT_STARTED` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
 | `IMP-100` | Character Lifecycle | `NOT_STARTED` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
@@ -789,7 +789,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-082/"
 
 ## `IMP-097` — Aggregate Lock-Order Helper
 id: IMP-097
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-097"
 branch: "imp/IMP-097-lock-order"
 claimed_at: "2026-10-04T09:50:25Z"
