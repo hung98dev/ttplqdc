@@ -121,7 +121,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-094` | Chat Moderation & chat_messages | `NOT_STARTED` | IMP-034, IMP-080 | `../03_systems/social.md`, `../06_data/data_model.md` |
 | `IMP-095` | Client Performance Budgets & Quality Presets (every PR) | `NOT_STARTED` | IMP-063, IMP-065, IMP-066, IMP-101 | `../04_architecture/client_performance.md`, `../04_architecture/client.md` |
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
-| `IMP-097` | Aggregate Lock-Order Helper | `IN_PROGRESS` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
+| `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
 | `IMP-098` | Observability Core | `DONE` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
 | `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `NOT_STARTED` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
 | `IMP-100` | Character Lifecycle | `NOT_STARTED` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
@@ -445,7 +445,7 @@ blocked_by: ""
 specs: [`../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/physics_geometry_contract.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../09_testing/network.md`]
 adrs: [`0005-skill-action-timing-geometry.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-078, IMP-079]
-owned_paths: [`client/Assets/Scripts/Core/Geometry/`, `client/Assets/Scenes/Collision/`, `client/Assets/Tests/EditMode/GeometryExporter/`, `server/internal/sim/spatial/maps/`, `server/internal/sim/spatial/parity/`]
+owned_paths: [`client/Assets/Scripts/Core/Geometry/`, `client/Assets/Scenes/Collision/`, `client/Assets/Tests/EditMode/GeometryExporter/`, `server/internal/sim/spatial/maps/`, `server/internal/sim/spatial/parity/`, `server/internal/sim/spatial/testdata/`]
 forbidden_paths: [`server/cmd/server/`, `server/internal/durable/`, `server/migrations/`]
 contract_inputs: [tagged Unity geometry, space ID/kind, catalog bounds/layout profile, logical anchors, content revision, quantization contract]
 contract_outputs: [deterministic geom JSON, Go collision data, cross-runtime golden vectors]
@@ -789,7 +789,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-082/"
 
 ## `IMP-097` — Aggregate Lock-Order Helper
 id: IMP-097
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-097"
 branch: "imp/IMP-097-lock-order"
 claimed_at: "2026-10-04T09:50:25Z"
