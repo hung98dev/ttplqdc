@@ -201,8 +201,8 @@ namespace ThinhThan.Core.Geometry
 
             bool GroundAtInternal(Aabb box, ulong tick, long ignoreId, out long best, out GeometryData.Segment hit)
             {
-                best = -1;
-                hit = default(GeometryData.Segment);
+                long acc = -1;
+                GeometryData.Segment accSeg = default(GeometryData.Segment);
                 ForEach(FootSpan(box), delegate (GeometryData.Segment s)
                 {
                     if (!GeometryData.IsWalkable(s.Kind) || s.X1 == s.X2)
@@ -222,13 +222,15 @@ namespace ThinhThan.Core.Geometry
                     {
                         return;
                     }
-                    if (top > best || (top == best && s.Id < hit.Id))
+                    if (top > acc || (top == acc && s.Id < accSeg.Id))
                     {
-                        best = top;
-                        hit = s;
+                        acc = top;
+                        accSeg = s;
                     }
                 });
-                return best >= 0;
+                best = acc;
+                hit = accSeg;
+                return acc >= 0;
             }
 
             static Aabb FootSpan(Aabb b)
@@ -295,9 +297,9 @@ namespace ThinhThan.Core.Geometry
             void XContact(Aabb box, long dx, out long best, out GeometryData.Segment wall, out bool hit, out bool pen)
             {
                 long adir = Math.Abs(dx);
-                best = -1;
-                wall = default(GeometryData.Segment);
-                pen = false;
+                long acc = -1;
+                GeometryData.Segment accSeg = default(GeometryData.Segment);
+                bool accPen = false;
                 Aabb probe = box.Translate(dx, 0);
                 Aabb probeBox = new Aabb(
                     Math.Min(box.MinX, probe.MinX), box.MinY - 1,
@@ -325,11 +327,11 @@ namespace ThinhThan.Core.Geometry
                     if (dist < 0)
                     {
                         bool inside = xw > box.MinX && xw < box.MaxX;
-                        if (inside && (best < 0 || s.Id < wall.Id))
+                        if (inside && (acc < 0 || s.Id < accSeg.Id))
                         {
-                            best = 0;
-                            wall = s;
-                            pen = true;
+                            acc = 0;
+                            accSeg = s;
+                            accPen = true;
                         }
                         return;
                     }
@@ -337,19 +339,23 @@ namespace ThinhThan.Core.Geometry
                     {
                         return;
                     }
-                    if (best < 0 || dist < best || (dist == best && s.Id < wall.Id))
+                    if (acc < 0 || dist < acc || (dist == acc && s.Id < accSeg.Id))
                     {
-                        best = dist;
-                        wall = s;
-                        pen = false;
+                        acc = dist;
+                        accSeg = s;
+                        accPen = false;
                     }
                 });
-                hit = best >= 0;
+                hit = acc >= 0;
                 if (!hit)
                 {
-                    wall = default(GeometryData.Segment);
-                    pen = false;
+                    accSeg = default(GeometryData.Segment);
+                    accPen = false;
                 }
+                best = acc;
+                wall = accSeg;
+                pen = accPen;
+            }
             }
 
             static long WallXAtBoxSpan(GeometryData.Segment s, Aabb box, long dx)
@@ -485,8 +491,8 @@ namespace ThinhThan.Core.Geometry
 
             bool PenetratingSurface(Aabb box, MoveOpts opts, out long best, out GeometryData.Segment seg)
             {
-                best = -1;
-                seg = default(GeometryData.Segment);
+                long acc = -1;
+                GeometryData.Segment accSeg = default(GeometryData.Segment);
                 ForEach(box, delegate (GeometryData.Segment s)
                 {
                     if (!GeometryData.IsWalkable(s.Kind) || s.X1 == s.X2)
@@ -506,13 +512,15 @@ namespace ThinhThan.Core.Geometry
                     {
                         return;
                     }
-                    if (best < 0 || top > best || (top == best && s.Id < seg.Id))
+                    if (acc < 0 || top > acc || (top == acc && s.Id < accSeg.Id))
                     {
-                        best = top;
-                        seg = s;
+                        acc = top;
+                        accSeg = s;
                     }
                 });
-                return best >= 0;
+                best = acc;
+                seg = accSeg;
+                return acc >= 0;
             }
 
             static bool OneWayIgnored(GeometryData.Segment s, MoveOpts opts)

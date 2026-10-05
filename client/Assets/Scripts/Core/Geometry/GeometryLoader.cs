@@ -676,7 +676,7 @@ namespace ThinhThan.Core.Geometry
                 if (s.Substring(p).StartsWith("null"))
                 {
                     p += 4;
-                    return null;
+                    return null!;
                 }
                 throw Fail("bad literal at offset " + p);
             }
