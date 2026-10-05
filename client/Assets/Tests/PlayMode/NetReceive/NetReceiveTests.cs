@@ -25,12 +25,12 @@ namespace ThinhThan.Tests.PlayMode.NetReceive
                 Path.Combine(Application.dataPath, FixturePath));
         }
 
-        private static DecodedFrame NewListFrame(int accountedBytes)
+        private static DecodedFrame NewDeltaFrame(int accountedBytes)
         {
             return new DecodedFrame
             {
-                MessageId = WireIds.S2CCharacterList,
-                Payload = new S2CCharacterList(),
+                MessageId = WireIds.S2CStateDelta,
+                Payload = new S2CStateDelta(),
                 AccountedBytes = accountedBytes,
             };
         }
@@ -43,20 +43,20 @@ namespace ThinhThan.Tests.PlayMode.NetReceive
             queue.Exhausted += () => exhausted++;
             for (int i = 0; i < ReceiveQueue.MaxFrames; i++)
             {
-                Assert.IsTrue(queue.TryEnqueue(NewListFrame(16)));
+                Assert.IsTrue(queue.TryEnqueue(NewDeltaFrame(16)));
             }
 
-            Assert.IsFalse(queue.TryEnqueue(NewListFrame(16)));
+            Assert.IsFalse(queue.TryEnqueue(NewDeltaFrame(16)));
             Assert.AreEqual(1, exhausted);
 
             var bytesQueue = new ReceiveQueue();
             int each = ReceiveQueue.MaxBytes / 8;
             for (int i = 0; i < 8; i++)
             {
-                Assert.IsTrue(bytesQueue.TryEnqueue(NewListFrame(each)));
+                Assert.IsTrue(bytesQueue.TryEnqueue(NewDeltaFrame(each)));
             }
 
-            Assert.IsFalse(bytesQueue.TryEnqueue(NewListFrame(1)));
+            Assert.IsFalse(bytesQueue.TryEnqueue(NewDeltaFrame(1)));
         }
 
         [Test]
