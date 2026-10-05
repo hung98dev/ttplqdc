@@ -89,13 +89,17 @@ func NewStore(pool *pgxpool.Pool) *Store {
 	return &Store{pool: pool}
 }
 
+// Tx is the transaction handle InTx hands its callback. The alias keeps
+// edge callers free of direct pgx imports (pgx lives in durable only).
+type Tx = pgx.Tx
+
 // Pool exposes the underlying pool for composition (queue/store wiring).
 func (s *Store) Pool() *pgxpool.Pool {
 	return s.pool
 }
 
 // InTx runs fn inside one transaction.
-func (s *Store) InTx(ctx context.Context, fn func(tx pgx.Tx) error) error {
+func (s *Store) InTx(ctx context.Context, fn func(tx Tx) error) error {
 	tx, err := s.pool.Begin(ctx)
 	if err != nil {
 		return err

@@ -12,8 +12,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/jackc/pgx/v5"
-
 	"thinhthan/internal/core/id"
 	"thinhthan/internal/durable/account"
 	"thinhthan/internal/edge/session"
@@ -225,7 +223,7 @@ func ipDeviceScope(ip net.IP, deviceID string) string {
 
 // recordLogin writes one login-history row (success only; refresh
 // excluded by the callers).
-func (s *Service) recordLogin(ctx context.Context, tx pgx.Tx, accountID id.UUID, meta LoginMeta) (isNewOrigin bool, err error) {
+func (s *Service) recordLogin(ctx context.Context, tx account.Tx, accountID id.UUID, meta LoginMeta) (isNewOrigin bool, err error) {
 	devHash := s.cfg.Salt.DeviceIDHash([]byte(meta.DeviceID))
 	ipHash := s.cfg.Salt.IPPrefixHash(meta.IP)
 	now := s.cfg.Now()
@@ -244,7 +242,7 @@ func (s *Service) recordLogin(ctx context.Context, tx pgx.Tx, accountID id.UUID,
 }
 
 // newFamily creates the session family + first refresh generation.
-func (s *Service) newFamily(ctx context.Context, tx pgx.Tx, accountID id.UUID,
+func (s *Service) newFamily(ctx context.Context, tx account.Tx, accountID id.UUID,
 	providerID string, meta LoginMeta) (family account.FamilyRow, refreshCred string, err error) {
 	now := s.cfg.Now()
 	devHash := s.cfg.Salt.DeviceIDHash([]byte(meta.DeviceID))
@@ -351,7 +349,7 @@ func (s *Service) Register(ctx context.Context, username, email, password string
 
 	now := s.cfg.Now()
 	accountID := id.NewV7(now)
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		if taken, err := s.store.UsernameKeyTaken(ctx, tx, ukey); err != nil {
 			return err
 		} else if taken {
@@ -466,7 +464,7 @@ func (s *Service) PasswordLogin(ctx context.Context, username, password string,
 		}
 	}
 
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		if err := account.LockAccount(ctx, tx, cred.AccountID); err != nil {
 			return err
 		}
@@ -541,7 +539,7 @@ func (s *Service) FederatedLogin(ctx context.Context, providerID, providerToken,
 	if err != nil {
 		return resp, err
 	}
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		ident, err := s.store.GetIdentity(ctx, tx, providerID, subject)
 		var accountID id.UUID
 		isNew := false
@@ -613,7 +611,7 @@ func (s *Service) Refresh(ctx context.Context, refreshToken, deviceID string) (T
 	}
 
 	var reuseDetected bool
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		fam, err := s.store.GetFamily(ctx, tx, row.SessionFamilyID)
 		if err != nil {
 			return err
@@ -711,7 +709,7 @@ func (s *Service) Logout(ctx context.Context, accessToken, scope string) error {
 		return err
 	}
 	now := s.cfg.Now()
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
@@ -776,7 +774,7 @@ func (s *Service) PasswordChange(ctx context.Context, accessToken,
 		claims.accountID.String(), 5, time.Hour); err != nil {
 		return resp, err
 	}
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
@@ -878,7 +876,7 @@ func (s *Service) PasswordChange(ctx context.Context, accessToken,
 // applyTakeoverIfRecentNewOrigin arms the takeover rule when the account
 // saw an is_new_origin login within the last hour (anti_cheat.md
 // § Account takeover).
-func (s *Service) applyTakeoverIfRecentNewOrigin(ctx context.Context, tx pgx.Tx,
+func (s *Service) applyTakeoverIfRecentNewOrigin(ctx context.Context, tx account.Tx,
 	accountID, keepFamily id.UUID, now time.Time) error {
 	hit, err := s.store.RecentNewOriginLogin(ctx, tx, accountID, now.Add(-TakeoverWindow))
 	if err != nil {
@@ -932,7 +930,7 @@ func (s *Service) Link(ctx context.Context, accessToken, providerID,
 		return nil, err
 	}
 	var out []ProviderLink
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
@@ -975,7 +973,7 @@ func (s *Service) Unlink(ctx context.Context, accessToken, providerID,
 		return nil, err
 	}
 	var out []ProviderLink
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
@@ -1043,7 +1041,7 @@ func providerLinks(rows []account.IdentityRow) []ProviderLink {
 // current password.
 func (s *Service) checkCredentialGuard(ctx context.Context, accountID id.UUID,
 	currentPassword string) error {
-	return s.store.InTx(ctx, func(tx pgx.Tx) error {
+	return s.store.InTx(ctx, func(tx account.Tx) error {
 		return s.checkCredentialGuardTx(ctx, tx, accountID, currentPassword, "", "")
 	})
 }
@@ -1051,7 +1049,7 @@ func (s *Service) checkCredentialGuard(ctx context.Context, accountID id.UUID,
 // checkCredentialGuardTx is the tx-scoped guard: passes when the guard is
 // inactive or a valid current_password / fresh other-provider token is
 // supplied.
-func (s *Service) checkCredentialGuardTx(ctx context.Context, tx pgx.Tx, accountID id.UUID,
+func (s *Service) checkCredentialGuardTx(ctx context.Context, tx account.Tx, accountID id.UUID,
 	currentPassword, providerToken, nonce string) error {
 	arow, err := s.store.GetAccount(ctx, tx, accountID)
 	if err != nil {
@@ -1181,7 +1179,7 @@ func (s *Service) DeleteAccount(ctx context.Context, accessToken,
 	if err != nil {
 		return err
 	}
-	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx account.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
@@ -1222,7 +1220,7 @@ func (s *Service) DeleteAccount(ctx context.Context, accessToken,
 }
 
 // reAuthenticate verifies the deletion re-auth credential.
-func (s *Service) reAuthenticate(ctx context.Context, tx pgx.Tx, accountID id.UUID,
+func (s *Service) reAuthenticate(ctx context.Context, tx account.Tx, accountID id.UUID,
 	currentPassword, providerToken, nonce string) (bool, error) {
 	if currentPassword != "" {
 		cred, err := s.store.GetPasswordByAccount(ctx, tx, accountID)
@@ -1280,7 +1278,7 @@ func (s *Service) CancelDeletion(ctx context.Context, accessToken string) error 
 		claims.accountID.String(), 10, time.Hour); err != nil {
 		return err
 	}
-	return s.store.InTx(ctx, func(tx pgx.Tx) error {
+	return s.store.InTx(ctx, func(tx account.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
