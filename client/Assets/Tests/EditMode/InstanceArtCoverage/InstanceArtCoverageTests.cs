@@ -544,10 +544,8 @@ namespace ThinhThan.Tests.EditMode.InstanceArtCoverage
                     rel + " style_pack_id fragment must be instances/");
                 var abs = Path.Combine(RepoRoot(),
                     rel.Replace('/', Path.DirectorySeparatorChar));
-                var sha = Convert.ToHexString(
-                    System.Security.Cryptography.SHA256.HashData(
-                        File.ReadAllBytes(abs))).ToLowerInvariant();
-                Assert.AreEqual(sha, r.Get("final_sha256")!.Str,
+                Assert.AreEqual(ProvenanceValidator.Sha256File(abs),
+                    r.Get("final_sha256")!.Str,
                     rel + " final_sha256 mismatch");
                 var terms = "client/Assets/Art/Provenance/terms/instances/"
                     + r.Get("generation_record")!.Get("terms_snapshot_sha256")!.Str
