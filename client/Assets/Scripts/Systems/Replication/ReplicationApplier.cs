@@ -145,7 +145,7 @@ namespace ThinhThan.Systems.Replication
                 return state == null ? (0.0, 0.0) : (state.XMm, state.YMm);
             }
 
-            return buffer.Sample(_nowSeconds());
+            return buffer.Interpolate(_nowSeconds());
         }
 
         /// <summary>Requests a resync if the rate gate allows it.</summary>

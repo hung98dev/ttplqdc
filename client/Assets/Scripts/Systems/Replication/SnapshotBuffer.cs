@@ -79,7 +79,7 @@ namespace ThinhThan.Systems.Replication
         /// at most <see cref="ExtrapolationLimitSeconds"/> past the newest
         /// sample, then freezes.
         /// </summary>
-        public (double XMm, double YMm) Sample(double nowSeconds)
+        public (double XMm, double YMm) Interpolate(double nowSeconds)
         {
             if (_count == 0)
             {

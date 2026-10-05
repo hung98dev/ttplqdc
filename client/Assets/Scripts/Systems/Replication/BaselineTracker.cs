@@ -1,4 +1,5 @@
 using System;
+using ThinhThan.Net;
 
 namespace ThinhThan.Systems.Replication
 {
