@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using NUnit.Framework;
 using ThinhThan.Core.Runtime;
+using ThinhThan.Protocol.V1;
 using ThinhThan.Systems.Replication;
 using UnityEngine;
 

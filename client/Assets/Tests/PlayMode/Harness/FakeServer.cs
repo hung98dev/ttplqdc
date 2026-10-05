@@ -413,7 +413,7 @@ namespace ThinhThan.Tests.PlayMode.Harness
             }
         }
 
-        private async Task HandleHttp(HttpListenerContext context, string path)
+        private Task HandleHttp(HttpListenerContext context, string path)
         {
             string method = context.Request.HttpMethod;
             if (method == "POST" && path == "/api/v1/gameplay/ticket")
@@ -428,7 +428,7 @@ namespace ThinhThan.Tests.PlayMode.Harness
                         "\"queue_position\":" + position + "," +
                         "\"safe_message_key\":\"error.server_overloaded\"," +
                         "\"close_after\":false}");
-                    return;
+                    return Task.CompletedTask;
                 }
 
                 WriteJson(context, 200,
@@ -441,7 +441,7 @@ namespace ThinhThan.Tests.PlayMode.Harness
                     "\"protocol_minor_min\":0," +
                     "\"client_build_min\":0," +
                     "\"content_revision\":\"test\"}");
-                return;
+                return Task.CompletedTask;
             }
 
             if (method == "POST" && path == "/api/v1/auth/refresh")
@@ -454,7 +454,7 @@ namespace ThinhThan.Tests.PlayMode.Harness
                     Guid.NewGuid().ToString("N") + "\"," +
                     "\"refresh_expires_at\":\"" +
                     DateTimeOffset.UtcNow.AddDays(30).ToString("o") + "\"}");
-                return;
+                return Task.CompletedTask;
             }
 
             if (method == "GET" && path == "/api/v1/account")
@@ -467,19 +467,20 @@ namespace ThinhThan.Tests.PlayMode.Harness
                     "\"pending_deletion\":false," +
                     "\"created_at\":\"" +
                     DateTimeOffset.UtcNow.ToString("o") + "\"}");
-                return;
+                return Task.CompletedTask;
             }
 
             if (method == "POST" && path == "/api/v1/auth/logout")
             {
                 context.Response.StatusCode = 204;
                 context.Response.Close();
-                return;
+                return Task.CompletedTask;
             }
 
             WriteJson(context, 404,
                 "{\"error_code\":\"MESSAGE_UNKNOWN\"," +
                 "\"retryability\":\"FATAL\",\"close_after\":false}");
+            return Task.CompletedTask;
         }
 
         private static void WriteJson(
