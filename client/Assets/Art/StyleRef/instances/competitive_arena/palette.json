@@ -1,0 +1,54 @@
+{
+ "pack_id": "instances/competitive_arena",
+ "fragment": "instances",
+ "colorspace": "CIELAB D65 2deg",
+ "delta_e00_max": 8.0,
+ "gate_min_coverage": 0.85,
+ "families": {
+  "arena_neutral": [
+   "#101319",
+   "#1f2530",
+   "#343d4d",
+   "#4f5b6e",
+   "#728094",
+   "#9aa6b6",
+   "#c4cdd8"
+  ],
+  "kim": [
+   "#241c08",
+   "#4f3c12",
+   "#85621f",
+   "#b98f31",
+   "#dfb957"
+  ],
+  "moc": [
+   "#0a1c0c",
+   "#173a1a",
+   "#2a5e2c",
+   "#488948",
+   "#6fb26b"
+  ],
+  "thuy": [
+   "#08141e",
+   "#11293d",
+   "#1e4866",
+   "#306e96",
+   "#5398bf"
+  ],
+  "hoa": [
+   "#200b07",
+   "#431711",
+   "#722a1e",
+   "#a84431",
+   "#d16a4f"
+  ],
+  "tho": [
+   "#1c140a",
+   "#3d2c15",
+   "#664d22",
+   "#937233",
+   "#bd9750"
+  ]
+ },
+ "scope": "competitive"
+}

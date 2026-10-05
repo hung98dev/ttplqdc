@@ -1,0 +1,41 @@
+{
+ "pack_id": "instances/finale_omen",
+ "fragment": "instances",
+ "colorspace": "CIELAB D65 2deg",
+ "delta_e00_max": 8.0,
+ "gate_min_coverage": 0.85,
+ "families": {
+  "void_indigo": [
+   "#05060f",
+   "#0d1024",
+   "#1a1e42",
+   "#2c3168",
+   "#46498f",
+   "#696da8"
+  ],
+  "corruption_red": [
+   "#170206",
+   "#3a0713",
+   "#6f1126",
+   "#a91f3f",
+   "#d54461",
+   "#f07f8f"
+  ],
+  "bone_pale": [
+   "#23201c",
+   "#4b443b",
+   "#7a7061",
+   "#a99d8b",
+   "#d3c8b4",
+   "#f2ead9"
+  ],
+  "spirit_cyan": [
+   "#03151a",
+   "#0a3038",
+   "#145260",
+   "#237b8a",
+   "#41a8b5"
+  ]
+ },
+ "scope": "finale"
+}

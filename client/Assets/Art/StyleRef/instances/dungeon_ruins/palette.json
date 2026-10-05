@@ -1,0 +1,49 @@
+{
+ "pack_id": "instances/dungeon_ruins",
+ "fragment": "instances",
+ "colorspace": "CIELAB D65 2deg",
+ "delta_e00_max": 8.0,
+ "gate_min_coverage": 0.85,
+ "families": {
+  "neutral_stone": [
+   "#0e0c10",
+   "#1d1a20",
+   "#322c36",
+   "#4a4350",
+   "#6d6472",
+   "#968e9b",
+   "#b9b3ba"
+  ],
+  "earth_moss": [
+   "#141208",
+   "#26230f",
+   "#3f3a1a",
+   "#5c5526",
+   "#7d7440",
+   "#a09458"
+  ],
+  "lamp_amber": [
+   "#1c0e04",
+   "#3d1e07",
+   "#6e3a10",
+   "#a8621e",
+   "#d68f38",
+   "#f2bd6d"
+  ],
+  "seal_crimson": [
+   "#160509",
+   "#3a0d18",
+   "#6d1a2c",
+   "#a32f45",
+   "#cf5f6f"
+  ],
+  "water_murky": [
+   "#07110f",
+   "#0f2422",
+   "#1c403c",
+   "#2e615b",
+   "#4d8880"
+  ]
+ },
+ "scope": "dungeon"
+}
