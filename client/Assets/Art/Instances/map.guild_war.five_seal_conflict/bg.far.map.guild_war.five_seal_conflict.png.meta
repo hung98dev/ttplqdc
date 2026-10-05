@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 3bc184fcdb9d4fc1af858380e4b90d26
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2788912470017670034
+    second: bg.far.map.guild_war.five_seal_conflict_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,12 +100,34 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: bg.far.map.guild_war.five_seal_conflict_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1536
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6480f282eacb49d0800000000000000
+      internalID: -2788912470017670034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

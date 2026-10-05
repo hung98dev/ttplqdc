@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: fffea3c3c5e84e16a280cc2520c1582f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7053137116017006720
+    second: prop.monolith.instance.finale.than_trung_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,12 +100,34 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: prop.monolith.instance.finale.than_trung_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 329
+        height: 926
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087eeaf79293e1e90800000000000000
+      internalID: -7053137116017006720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

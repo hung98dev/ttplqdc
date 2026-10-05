@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: f88d8cce7b364a64a44d1f67c96c9cf7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3096521350866950280
+    second: prop.drum.dungeon.den_tran_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,12 +100,34 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: prop.drum.dungeon.den_tran_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 461
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 877a92acc32f605d0800000000000000
+      internalID: -3096521350866950280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
