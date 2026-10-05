@@ -30,7 +30,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-003` | Content Compiler | `DONE` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
 | `IMP-004` | Integration / Balance Activation Gate | `DONE` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-005` | Operation Idempotency Primitive | `DONE` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
-| `IMP-006` | Account Auth, Session & Login Queue | `NOT_STARTED` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
+| `IMP-006` | Account Auth, Session & Login Queue | `IN_PROGRESS` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `IN_PROGRESS` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `IN_PROGRESS` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `NOT_STARTED` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
@@ -1038,10 +1038,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-005/"
 
 ## `IMP-006` — Account Auth, Session & Login Queue
 id: IMP-006
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-006"
+branch: "imp/IMP-006-auth-session"
+claimed_at: "2026-10-04T23:59:53Z"
 blocked_by: ""
 
 specs: [`../04_architecture/authority.md`, `../06_data/data_model.md`, `../07_security/auth.md`, `../07_security/session.md`, `../07_security/external_integrations.md`, `../07_security/rate_limits.md`, `../05_network/errors.md`, `../06_data/physical_schema_contract.md`, `../05_network/protocol.md`]
