@@ -19,8 +19,10 @@ import (
 type DurableRouter interface {
 	// Handles reports whether message id is in the durable-intent set.
 	Handles(id uint32) bool
-	// Dispatch routes the inbound intent to its registered handler.
-	Dispatch(ctx context.Context, c *listener.Conn, in listener.Inbound) error
+	// Dispatch routes the inbound intent to its registered handler,
+	// carrying the immutable session view resolved under the adapter
+	// lock (ADR-0081).
+	Dispatch(ctx context.Context, v router.View, in listener.Inbound) error
 }
 
 // SetRouter wires the durable-intent router (late binding: cmd/server
@@ -48,6 +50,15 @@ func (r *Registry) Enqueue(ctx context.Context, c *listener.Conn, f listener.Inb
 		delete(r.unboundLive, c)
 		bind = true
 	}
+	// Immutable session view for durable dispatch: conn/account/epoch
+	// always present; character fields follow the attach state.
+	view := router.View{
+		Conn:           s.conn,
+		AccountID:      s.accountID,
+		SessionEpoch:   s.epoch,
+		CharacterID:    s.charID,
+		OwnershipEpoch: s.ownershipEpoch,
+	}
 	r.mu.Unlock()
 
 	if bind && s.charID == nil {
@@ -70,7 +81,7 @@ func (r *Registry) Enqueue(ctx context.Context, c *listener.Conn, f listener.Inb
 		err = r.detach(ctx, s, &protocolv1.C2SCharacterDetach{})
 	default:
 		if r.router != nil && r.router.Handles(f.MessageID) {
-			err = r.router.Dispatch(ctx, c, f)
+			err = r.router.Dispatch(ctx, view, f)
 		}
 		// Non-durable ids without a registered handler are consumed
 		// silently — no owning feature has landed yet.

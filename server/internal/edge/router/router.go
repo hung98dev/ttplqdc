@@ -12,6 +12,7 @@ import (
 	"strings"
 	"sync"
 
+	"thinhthan/internal/core/id"
 	"thinhthan/internal/edge/listener"
 	protocolv1 "thinhthan/internal/protocol/v1"
 )
@@ -27,8 +28,24 @@ type Route struct {
 	Inbound listener.Inbound
 }
 
-// Handler processes one durable intent. Registered per MsgID.
-type Handler func(ctx context.Context, c *listener.Conn, r Route) error
+// View is the immutable session snapshot the session adapter injects
+// at dispatch (service_boundaries.md § Edge/Session, ADR-0081). A
+// handler fills JournalClientCommand identity fields from it and never
+// re-resolves session state. CharacterID/OwnershipEpoch are absent
+// while the session is unattached.
+type View struct {
+	// Conn is the session's bound connection.
+	Conn *listener.Conn
+	// AccountID is always present for a live session.
+	AccountID      id.UUID
+	SessionEpoch   uint64
+	CharacterID    *id.UUID
+	OwnershipEpoch uint64
+}
+
+// Handler processes one durable intent against the injected session
+// view. Registered per MsgID.
+type Handler func(ctx context.Context, v View, r Route) error
 
 var (
 	// ErrNotDurableIntent: MsgID is outside the closed §7 set.
@@ -186,7 +203,7 @@ func (r *Registry) Handles(msgID uint32) bool { return IsDurableIntent(msgID) }
 // Dispatch classifies the inbound intent and calls its handler. Unknown
 // durable intents are rejected with MESSAGE_NOT_ALLOWED_IN_STATE; a
 // non-durable id returns ErrNotDurableIntent for the caller to ignore.
-func (r *Registry) Dispatch(ctx context.Context, c *listener.Conn, in listener.Inbound) error {
+func (r *Registry) Dispatch(ctx context.Context, v View, in listener.Inbound) error {
 	fam, ok := FamilyFor(in.MessageID, in.Payload)
 	if !ok {
 		if IsDurableIntent(in.MessageID) {
@@ -200,5 +217,5 @@ func (r *Registry) Dispatch(ctx context.Context, c *listener.Conn, in listener.I
 	if !ok {
 		return &RejectError{Code: protocolv1.ErrorCode_ERROR_CODE_OPERATION_REJECTED}
 	}
-	return h(ctx, c, Route{MsgID: in.MessageID, Family: fam, Inbound: in})
+	return h(ctx, v, Route{MsgID: in.MessageID, Family: fam, Inbound: in})
 }
