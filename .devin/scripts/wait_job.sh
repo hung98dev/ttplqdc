@@ -3,10 +3,10 @@
 # write its conclusion to $GITHUB_OUTPUT (ADR-0075, ADR-0078). Used by
 # Q0-Q6 verify (Windows) to join Unity (Windows) and Q0-Q6 verify (Linux) for the
 # evidence manifest. Polls every 10 s (GITHUB_TOKEN budget: ~1000 requests/hour/repository).
-# Bounded by WAIT_TIMEOUT_SECONDS (default 2700 = 45 min) to prevent hanging.
+# Bounded by WAIT_TIMEOUT_SECONDS (default 6000 = 100 min) to prevent hanging.
 set -euo pipefail
 : "${WAIT_JOB:?WAIT_JOB is required}"
-timeout_s="${WAIT_TIMEOUT_SECONDS:-2700}"
+timeout_s="${WAIT_TIMEOUT_SECONDS:-6000}"
 start_ts=$(date +%s)
 url="repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/attempts/${GITHUB_RUN_ATTEMPT}/jobs?per_page=100"
 state=""
