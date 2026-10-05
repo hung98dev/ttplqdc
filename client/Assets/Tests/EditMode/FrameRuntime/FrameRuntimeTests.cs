@@ -90,17 +90,14 @@ namespace ThinhThan.Tests.EditMode.FrameRuntime
         {
             var go = new GameObject("loop");
             FrameLoop loop = go.AddComponent<FrameLoop>();
-            var go2 = new GameObject("loop2");
-            FrameLoop other = go2.AddComponent<FrameLoop>();
             loop.Register(FramePhase.Input, new Recorder());
             loop.Register(FramePhase.Camera, new Recorder());
-            var blocker = new RegisterDuringTick(other);
+            var blocker = new RegisterDuringTick(loop);
             loop.Register(FramePhase.NetReceive, blocker);
             var time = new FrameTime(0.016f, 0.0, 0);
             Assert.Throws<InvalidOperationException>(
                 () => loop.TickUpdatePhases(in time));
             UnityEngine.Object.DestroyImmediate(go);
-            UnityEngine.Object.DestroyImmediate(go2);
         }
 
         private sealed class RegisterDuringTick : IFrameSystem
