@@ -135,10 +135,10 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
                 Assert.AreEqual(12800, g.Anchors[0].X);
                 Assert.AreEqual(4000, g.Anchors[0].Y);
                 Assert.AreEqual(1, g.CameraRegions.Length);
-                Assert.AreEqual(12800, g.CameraRegions[0].MinX);
-                Assert.AreEqual(7200, g.CameraRegions[0].MinY);
-                Assert.AreEqual(38400, g.CameraRegions[0].MaxX);
-                Assert.AreEqual(21600, g.CameraRegions[0].MaxY);
+                Assert.AreEqual(0, g.CameraRegions[0].MinX);
+                Assert.AreEqual(0, g.CameraRegions[0].MinY);
+                Assert.AreEqual(51200, g.CameraRegions[0].MaxX);
+                Assert.AreEqual(28800, g.CameraRegions[0].MaxY);
             }
             finally
             {
@@ -322,7 +322,7 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
             r.transform.SetParent(regRoot.transform, false);
             BoxCollider2D bc = r.AddComponent<BoxCollider2D>();
             bc.offset = new Vector2(25.6f, 14.4f);
-            bc.size = new Vector2(25.6f, 14.4f);
+            bc.size = new Vector2(51.2f, 28.8f);
         }
 
         private static Scene BuildMinimalScene()
