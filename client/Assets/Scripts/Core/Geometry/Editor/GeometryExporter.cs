@@ -127,7 +127,7 @@ namespace ThinhThan.Core.Geometry.Editor
                     continue;
                 }
                 string token = go.name.StartsWith("seg.") ? go.name.Substring(4) : "";
-                string kindName = KindForToken(token);
+                string? kindName = KindForToken(token);
                 if (kindName == null)
                 {
                     res.Errors.Add(go.name + ": unknown kind token in name");
@@ -149,7 +149,7 @@ namespace ThinhThan.Core.Geometry.Editor
                     long t = q.X1; q.X1 = q.X2; q.X2 = t;
                     t = q.Y1; q.Y1 = q.Y2; q.Y2 = t;
                 }
-                string slopeErr = CheckKindSlope(kindName, q.X1, q.Y1, q.X2, q.Y2);
+                string? slopeErr = CheckKindSlope(kindName, q.X1, q.Y1, q.X2, q.Y2);
                 if (slopeErr != null)
                 {
                     res.Errors.Add(go.name + ": " + slopeErr);
