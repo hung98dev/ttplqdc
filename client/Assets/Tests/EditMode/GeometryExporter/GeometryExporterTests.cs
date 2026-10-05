@@ -8,7 +8,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace ThinhThan.Tests.EditMode.GeometryExporterSuite
+namespace ThinhThan.Tests.EditMode.GeometryExporter
 {
     /// <summary>
     /// Edit-mode coverage for the Unity-side geometry exporter: every authored
@@ -31,17 +31,26 @@ namespace ThinhThan.Tests.EditMode.GeometryExporterSuite
 
         private static string MapsDir
         {
-            get { return Path.Combine(RepoRoot, "server", "internal", "sim", "spatial", "maps"); }
+            get
+            {
+                return Path.Combine(RepoRoot, "server", "internal", "sim", "spatial", "maps");
+            }
         }
 
         private static string ScenesDir
         {
-            get { return Path.Combine(Application.dataPath, "Scenes", "Collision"); }
+            get
+            {
+                return Path.Combine(Application.dataPath, "Scenes", "Collision");
+            }
         }
 
         private static string VectorsDir
         {
-            get { return Path.Combine(RepoRoot, "server", "internal", "sim", "spatial", "parity", "testdata"); }
+            get
+            {
+                return Path.Combine(RepoRoot, "server", "internal", "sim", "spatial", "parity", "testdata");
+            }
         }
 
         [Test]

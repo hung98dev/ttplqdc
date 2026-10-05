@@ -134,7 +134,10 @@ namespace ThinhThan.Core.Geometry
 
             public GeometryData Geometry
             {
-                get { return g; }
+                get
+                {
+                    return g;
+                }
             }
 
             // forEach equivalent: visit every segment whose bounding box
