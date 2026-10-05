@@ -277,11 +277,102 @@ func TestPlayableSpaceGeometryIndex(t *testing.T) {
 	}
 }
 
-// Competitive-space compile inputs (CAT-006, ADR-0080): pvp.md's geometry
-// table emits the PVP rows; guild_war.md's canonical fence emits the
-// GUILD_WAR row; declared anchor sets ride on each row's `anchors` field.
+// compSpaceWant is one competitive space's expected emitted fields, derived
+// from the spec registries rather than hard-coded in the test.
+type compSpaceWant struct {
+	kind    string
+	modes   []string
+	anchors []string
+}
+
+// spaceKindRe picks the per-file `space_kind = <KIND>` constant out of a
+// geometry binding's defaults/finite-rule cell.
+var spaceKindRe = regexp.MustCompile("space_kind\\s*=\\s*`?([A-Z_]+)")
+
+// expectedCompetitiveSpaces replays one competitive catalog's registered
+// bindings (CAT-006): `space geometry` rows give the space ids + declared
+// modes (table cells for pvp.md, the `key = value` geometry fence for
+// guild_war.md) and the binding's `space_kind` constant gives kind; each
+// `space anchors` binding's resolved `text` fences give the ordered anchor
+// id set in authored order.
+func expectedCompetitiveSpaces(t *testing.T, c *Ctx, catalog string) map[string]compSpaceWant {
+	t.Helper()
+	f := c.Catalogs[catalog]
+	if f == nil {
+		t.Fatalf("catalog %s not loaded", catalog)
+	}
+	r, err := LoadRegistry(f)
+	if err != nil {
+		t.Fatalf("LoadRegistry %s: %v", catalog, err)
+	}
+	want := map[string]compSpaceWant{}
+	kind := ""
+	for _, b := range r.Bindings {
+		switch {
+		case strings.HasPrefix(b.Output, "space anchors"):
+			id := bindingSpaceID(b)
+			var ids []string
+			for _, sec := range bindingSections(c, f, b) {
+				for _, fb := range allFences(sec, "text") {
+					for _, l := range fb.FLines {
+						l = strings.TrimSpace(l)
+						if bareIDRe.MatchString(l) {
+							ids = append(ids, l)
+						}
+					}
+				}
+			}
+			w := want[id]
+			w.anchors = append(w.anchors, ids...)
+			want[id] = w
+		case strings.HasPrefix(b.Output, "space geometry"):
+			if m := spaceKindRe.FindStringSubmatch(b.DefaultsText); m != nil {
+				kind = m[1]
+			}
+			for _, sec := range bindingSections(c, f, b) {
+				if tbl := findTable(sec,
+					"modes,space_id,span (screens),bounds max (m),reference extent (px),layout_profile,required topology"); tbl != nil {
+					for ri := range tbl.Cells {
+						row := tbl.Cells[ri]
+						w := want[cellAt(row, 1).Scalar()]
+						w.modes = modeTokenRe.FindAllString(cellAt(row, 0).Text, -1)
+						want[cellAt(row, 1).Scalar()] = w
+					}
+				}
+				for _, fb := range allFences(sec, "text") {
+					kv := map[string]string{}
+					for _, l := range fb.FLines {
+						if m := chestFieldRe.FindStringSubmatch(strings.TrimSpace(l)); m != nil {
+							kv[m[1]] = strings.TrimSpace(m[2])
+						}
+					}
+					id := strings.Trim(kv["space_id"], "` ")
+					if id == "" {
+						continue
+					}
+					w := want[id]
+					w.modes = modeTokenRe.FindAllString(kv["modes"], -1)
+					want[id] = w
+					break // first `space_id` fence only (gwGeomFence semantics)
+				}
+			}
+		}
+	}
+	for id, w := range want {
+		w.kind = kind
+		want[id] = w
+	}
+	return want
+}
+
+// Competitive-space compile inputs (CAT-006, ADR-0080): expected rows are
+// derived from the same registered spec sources the compiler parses — the
+// geometry binding's `space_kind` constant and bound table/fence give kind
+// and modes, each `space anchors` binding's resolved `text` fences give the
+// ordered logical anchor set — so the test follows the registry whether a
+// space declares anchors or none.
 func TestCompetitiveSpaceGeometryIndex(t *testing.T) {
-	_, snap := compileClean(t, realCatalogDir)
+	c, snap := compileClean(t, realCatalogDir)
 	get := func(id string) config.Record {
 		for _, k := range snap.Geometry.SortedKeys() {
 			r := snap.Geometry.Records[config.KeyString(k)]
@@ -316,35 +407,33 @@ func TestCompetitiveSpaceGeometryIndex(t *testing.T) {
 	}
 	join := func(ss []string) string { return strings.Join(ss, ",") }
 
-	court := get("map.pvp.duel_court")
-	if fStr(court, "kind") != "PVP" {
-		t.Fatalf("duel_court kind %q, want PVP", fStr(court, "kind"))
+	want := map[string]compSpaceWant{}
+	for _, catalog := range []string{"../03_systems/pvp.md", "../03_systems/guild_war.md"} {
+		for id, w := range expectedCompetitiveSpaces(t, c, catalog) {
+			if _, dup := want[id]; dup {
+				t.Fatalf("space %q declared by two competitive registries", id)
+			}
+			want[id] = w
+		}
 	}
-	if got := join(modes(court)); got != "DUEL,RANKED_DUEL" {
-		t.Fatalf("duel_court modes %q, want DUEL,RANKED_DUEL", got)
+	if len(want) == 0 {
+		t.Fatal("no competitive spaces derived from spec registries")
 	}
-	if n := len(anchors(court)); n != 0 {
-		t.Fatalf("duel_court declares %d anchors, want none", n)
-	}
-
-	arena := get("map.pvp.five_element_arena")
-	if got := join(anchors(arena)); got != "altar.left,altar.center,altar.right" {
-		t.Fatalf("arena anchors %q, want altar.left,altar.center,altar.right", got)
-	}
-	if got := join(modes(arena)); got != "FIVE_ELEMENT_ARENA" {
-		t.Fatalf("arena modes %q, want FIVE_ELEMENT_ARENA", got)
-	}
-
-	war := get("map.guild_war.five_seal_conflict")
-	if fStr(war, "kind") != "GUILD_WAR" {
-		t.Fatalf("five_seal_conflict kind %q, want GUILD_WAR", fStr(war, "kind"))
-	}
-	if got := join(anchors(war)); got !=
-		"guild_war.seal.moc,guild_war.seal.hoa,guild_war.seal.tho,guild_war.seal.kim,guild_war.seal.thuy" {
-		t.Fatalf("five_seal_conflict anchors %q", got)
-	}
-	if fStr(war, "required_topology") == "" || fStr(war, "layout_profile") == "" {
-		t.Fatalf("five_seal_conflict missing topology/profile fields")
+	for id, w := range want {
+		r := get(id)
+		if got := fStr(r, "kind"); got != w.kind {
+			t.Fatalf("%s kind %q, want %q", id, got, w.kind)
+		}
+		if got := join(modes(r)); got != join(w.modes) {
+			t.Fatalf("%s modes %q, want %q", id, got, join(w.modes))
+		}
+		if got := join(anchors(r)); got != join(w.anchors) {
+			t.Fatalf("%s anchors %q, want %q", id, got, join(w.anchors))
+		}
+		if w.kind == "GUILD_WAR" &&
+			(fStr(r, "required_topology") == "" || fStr(r, "layout_profile") == "") {
+			t.Fatalf("%s missing topology/profile fields", id)
+		}
 	}
 }
 

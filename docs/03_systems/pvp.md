@@ -88,7 +88,14 @@ One reference screen is `25.6m x 14.4m` (`1280x720` at `50 px/m`, ADR-0046). Com
 
 `SPARRING_RING` has no separate scene: it uses `sparring_ring.<map_id>` in each safe-anchor map and therefore inherits that world map's bounds/layout.
 
-Ranked geometry is mirrored about the vertical line `x = max_x/2`. Team spawn-to-center path length, platform count, usable route width and line-of-sight blockers must match after mirroring within `0.001m`. Altar IDs map left-to-right to `altar.left`, `altar.center`, `altar.right`. Static activation rejects mismatched bounds/profile, asymmetric legal paths, or an objective/spawn outside bounds.
+Ranked geometry is mirrored about the vertical line `x = max_x/2`. Team spawn-to-center path length, platform count, usable route width and line-of-sight blockers must match after mirroring within `0.001m`. Altar IDs map left-to-right to `altar.left`, `altar.center`, `altar.right`. The duel court declares two mirrored team-spawn anchors (`x < max_x/2` is `left`): TEAM_A spawns at `spawn.duel.left`, TEAM_B at `spawn.duel.right`.
+
+```text
+spawn.duel.left
+spawn.duel.right
+```
+
+Static activation rejects mismatched bounds/profile, asymmetric legal paths, or an objective/spawn outside bounds.
 
 ## Open Sparring Ring (Lôi Đài Tỷ Thí Đình Làng)
 Casual, zero-stake 1v1 duels hosted directly on the central wooden platform in Safe Anchors under ADR-0023:
@@ -824,4 +831,5 @@ Normative extension of `../06_data/content_authoring_contract.md` §1: these reg
 | source_section | output / key | typed inputs | defaults / finite rule |
 |---|---|---|---|
 | `Competitive Space Geometry` / table `modes, space_id, span (screens), bounds max (m), reference extent (px), layout_profile, required topology` | space geometry / `space_id` | modes:set(enum(DUEL, RANKED_DUEL, FIVE_ELEMENT_ARENA)); space_id:id; span:pair(decimal); bounds max:pair(decimal); reference extent:pair(int); layout_profile:enum token; required topology:string | `space_kind = PVP` constant; ADR-0046 conversion `25.6x14.4m / 50px per m`; `SPARRING_RING` has no separate scene — excluded from the space set; ranked spaces mirror about `x = max_x/2` within `0.001m`. |
-| `Five Element Arena` / `text` fence `altar.*` lines ("The arena contains") | space anchors / `map.pvp.five_element_arena` | ordered `id` tokens `altar.left`, `altar.center`, `altar.right` | the space's declared logical anchor set for export parity (`../04_architecture/physics_geometry_contract.md` §6); `map.pvp.duel_court` declares no logical anchors. |
+| `Five Element Arena` / `text` fence `altar.*` lines ("The arena contains") | space anchors / `map.pvp.five_element_arena` | ordered `id` tokens `altar.left`, `altar.center`, `altar.right` | the space's declared logical anchor set for export parity (`../04_architecture/physics_geometry_contract.md` §6). |
+| `Competitive Space Geometry` / `text` fence `spawn.duel.*` lines | space anchors / `map.pvp.duel_court` | ordered `id` tokens `spawn.duel.left`, `spawn.duel.right` | the space's declared logical anchor set for export parity (`../04_architecture/physics_geometry_contract.md` §6); TEAM_A spawns at `spawn.duel.left`, TEAM_B at `spawn.duel.right`. |

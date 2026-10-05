@@ -30,7 +30,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-003` | Content Compiler | `DONE` | IMP-001, IMP-002 | `../01_gameplay/skills.md`, `../06_data/config.md` |
 | `IMP-004` | Integration / Balance Activation Gate | `DONE` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-005` | Operation Idempotency Primitive | `DONE` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
-| `IMP-006` | Account Auth, Session & Login Queue | `NOT_STARTED` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
+| `IMP-006` | Account Auth, Session & Login Queue | `IN_PROGRESS` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `IN_PROGRESS` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `IN_PROGRESS` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `NOT_STARTED` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
@@ -104,7 +104,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
 | `IMP-078` | Server Geometry & Deterministic Collision Core | `DONE` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
 | `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `DONE` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
-| `IMP-080` | Global Runtime (In-Process Single Writer) | `IN_PROGRESS` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
+| `IMP-080` | Global Runtime (In-Process Single Writer) | `DONE` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
 | `IMP-081` | Edge Listener, Framing & Heartbeat | `DONE` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
 | `IMP-082` | Durable Command Queue & Backpressure | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-083` | Task-Graph & Architecture Conformance (Q0/Q4) | `DONE` | IMP-000, IMP-061 | `architecture_conformance.md`, `repository_layout.md` |
@@ -439,7 +439,7 @@ id: IMP-062
 status: IN_PROGRESS
 claimed_by: "devin-imp-062"
 branch: "imp/IMP-062-geometry-exporter"
-claimed_at: "2026-10-04T21:43:13Z"
+claimed_at: "2026-10-05T00:26:08Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/physics_geometry_contract.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../09_testing/network.md`]
@@ -865,7 +865,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-081/"
 
 ## `IMP-080` — Global Runtime (In-Process Single Writer)
 id: IMP-080
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-080"
 branch: "imp/IMP-080-global-runtime"
 claimed_at: "2026-10-04T21:43:22Z"
@@ -1038,16 +1038,16 @@ evidence_location: "docs/10_implementation/evidence/IMP-005/"
 
 ## `IMP-006` — Account Auth, Session & Login Queue
 id: IMP-006
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-006"
+branch: "imp/IMP-006-auth-session"
+claimed_at: "2026-10-04T23:59:53Z"
 blocked_by: ""
 
 specs: [`../04_architecture/authority.md`, `../06_data/data_model.md`, `../07_security/auth.md`, `../07_security/session.md`, `../07_security/external_integrations.md`, `../07_security/rate_limits.md`, `../05_network/errors.md`, `../06_data/physical_schema_contract.md`, `../05_network/protocol.md`]
 adrs: [`0009-account-session-credentials.md`, `0030-one-account-one-live-session.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0054-wire-message-completion.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-068, IMP-081, IMP-082, IMP-097]
-owned_paths: [`server/cmd/server/`, `server/internal/durable/account/`, `server/internal/edge/auth/`, `server/internal/edge/session/`, `server/internal/edge/router/`]
+owned_paths: [`server/cmd/server/`, `server/internal/durable/account/`, `server/internal/edge/auth/`, `server/internal/edge/session/`, `server/internal/edge/router/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/internal/sim/`]
 contract_inputs: [verified provider credential or gameplay ticket, account/character intents, current epoch]
 contract_outputs: [canonical account rows, session epoch, attach/detach result, durable-intent router, minimal server main]

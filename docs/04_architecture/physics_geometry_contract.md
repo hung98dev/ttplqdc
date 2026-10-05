@@ -206,6 +206,8 @@ Mỗi FIELD/dungeon phải có một main route liên tục từ entry đến ex
    camera_regions    §6.2
    anchors           mọi ID logic mà registered compile source đặt trong space này (spawn.*, anchor.*, checkpoint.*, portal ID, chest.hidden.*,
                      bonfire.*, cooking_hearth.*, fishing_spot.*, marker.*, điểm đặt NPC, anchor bảng nhiệm vụ ngày);
+                     tập required của mỗi space derive từ compiled payload — hợp mọi anchor-bearing record ID keyed tới map/space đó
+                     (`space_geometry` chỉ emit `anchors` cho PVP/GUILD_WAR spaces; 30 PvE spaces derive);
                      id duy nhất; điểm neo ở chân (y = mặt sàn đứng được)
    ```
 4. **Bất biến:** Server Go chỉ đọc file `.geom.json` này; tuyệt đối không import Unity runtime DLLs hay phụ thuộc vào file binary của Unity. Client prediction đọc cùng file qua port hình học dùng chung.
