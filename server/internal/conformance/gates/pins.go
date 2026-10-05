@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -75,8 +76,8 @@ func checkGoModPins(root string) []string {
 				errs = append(errs, fmt.Sprintf("go.mod requires unlisted transitive module %s %s", mod, v))
 				continue
 			}
-			if v != want {
-				errs = append(errs, fmt.Sprintf("go.mod transitive %s %s, want %s", mod, v, want))
+			if !slices.Contains(want, v) {
+				errs = append(errs, fmt.Sprintf("go.mod transitive %s %s, want one of %s", mod, v, strings.Join(want, "/")))
 			}
 			continue
 		}
