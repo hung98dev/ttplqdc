@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "space_id": "map.rung_u_minh.loi_tram",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "TRAM_CANAL_WEAVE",
+  "content_revision": "c55a6c034abf48b26bbf46c0ac668dfbb34a631cc94d63f04c8ba65421070ad5",
+  "bounds_mm": { "max_x": 89600, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 89600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 13440, "y1": 4000, "x2": 19440, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 19440, "y1": 8000, "x2": 27440, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 27440, "y1": 8000, "x2": 33440, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 53760, "y1": 6500, "x2": 61760, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 62719, "y1": 10500, "x2": 70719, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 89600, "y1": 4000, "x2": 89600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 89600, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.rung_u_minh.loi_tram.p1", "x": 7168, "y": 4000 },
+    { "id": "anchor.daily.rung_u_minh.loi_tram.p2", "x": 20608, "y": 4000 },
+    { "id": "anchor.quest.a2_nguoi_di_rung_muon.moc_gia_01", "x": 34048, "y": 4000 },
+    { "id": "anchor.quest.a2_nguoi_di_rung_muon.moc_gia_02", "x": 24640, "y": 8000 },
+    { "id": "anchor.quest.a2_nguoi_di_rung_muon.moc_gia_03", "x": 15540, "y": 5400 },
+    { "id": "anchor.quest.a2_nguoi_di_rung_muon.moc_that", "x": 74368, "y": 4000 },
+    { "id": "anchor.spawn.loi_tram.01", "x": 87807, "y": 4000 },
+    { "id": "anchor.spawn.loi_tram.02", "x": 89400, "y": 4000 },
+    { "id": "anchor.spawn.loi_tram.elite", "x": 15540, "y": 5400 },
+    { "id": "area.daily.rung_u_minh.loi_tram.side", "x": 57360, "y": 6500 },
+    { "id": "chest.hidden.map.rung_u_minh.loi_tram.01", "x": 89400, "y": 4000 },
+    { "id": "chest.hidden.map.rung_u_minh.loi_tram.02", "x": 89400, "y": 4000 },
+    { "id": "chest.hidden.season.1.u_minh.01", "x": 89400, "y": 4000 },
+    { "id": "fishing_spot.map.rung_u_minh.loi_tram.01", "x": 57360, "y": 6500 },
+    { "id": "marker.daily.rung_u_minh.loi_tram.1", "x": 30740, "y": 5800 },
+    { "id": "marker.daily.rung_u_minh.loi_tram.2", "x": 89400, "y": 4000 },
+    { "id": "portal.rung_u_minh.loi_tram.to.rung_u_minh.rung_sau", "x": 89400, "y": 4000 },
+    { "id": "portal.rung_u_minh.loi_tram.to.rung_u_minh.xom_rung", "x": 89400, "y": 4000 },
+    { "id": "spawn.entry.rung_u_minh.loi_tram", "x": 30740, "y": 5800 }
+  ]
+}

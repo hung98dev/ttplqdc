@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "space_id": "map.lang_da.dinh_lang",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "COURTYARD_RING",
+  "content_revision": "8f96a20de2f9ba7e3ec58d866fb554466988fc133cc9ac7ca2267a6c5ba53f92",
+  "bounds_mm": { "max_x": 51200, "max_y": 14400 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 51200, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 7680, "y1": 4000, "x2": 13680, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 13680, "y1": 8000, "x2": 21680, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 21680, "y1": 8000, "x2": 27680, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 30720, "y1": 6500, "x2": 38720, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 35840, "y1": 10500, "x2": 43840, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 51200, "y1": 4000, "x2": 51200, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 51200, "max_y": 14400 }
+  ],
+  "anchors": [
+    { "id": "anchor.quest.a1_luy_tre.cot_tre_gia_01", "x": 4096, "y": 4000 },
+    { "id": "anchor.quest.a1_luy_tre.cot_tre_gia_02", "x": 11776, "y": 4000 },
+    { "id": "anchor.quest.a1_luy_tre.huong_an_that", "x": 19456, "y": 4000 },
+    { "id": "bonfire.map.lang_da.dinh_lang", "x": 18880, "y": 8000 },
+    { "id": "checkpoint.lang_da.dinh_lang", "x": 9780, "y": 5400 },
+    { "id": "cooking_hearth.map.lang_da.dinh_lang", "x": 42496, "y": 4000 },
+    { "id": "fishing_spot.map.lang_da.dinh_lang.01", "x": 50175, "y": 4000 },
+    { "id": "npc.lang_da.cho_1", "x": 51000, "y": 4000 },
+    { "id": "npc.lang_da.cho_2", "x": 9780, "y": 5400 },
+    { "id": "npc.lang_da.dem_1", "x": 34320, "y": 6500 },
+    { "id": "npc.lang_da.dem_2", "x": 51000, "y": 4000 },
+    { "id": "npc.lang_da.hang_quan", "x": 51000, "y": 4000 },
+    { "id": "npc.lang_da.nguoi_dan_duong", "x": 51000, "y": 4000 },
+    { "id": "npc.lang_da.tho_nghe", "x": 34320, "y": 6500 },
+    { "id": "portal.lang_da.dinh_lang.to.lang_da.bo_ruong", "x": 24980, "y": 5800 },
+    { "id": "sparring_ring.map.lang_da.dinh_lang", "x": 51000, "y": 4000 },
+    { "id": "spawn.entry.lang_da.dinh_lang", "x": 51000, "y": 4000 }
+  ]
+}

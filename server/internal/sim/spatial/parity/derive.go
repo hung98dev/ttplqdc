@@ -71,23 +71,22 @@ type SceneAnchor struct {
 // ---- Unity scene YAML subset parser ----------------------------------------
 
 var (
-	docHeaderRe  = regexp.MustCompile(`^--- !u!(\d+) &(\d+)`)
-	gameObjectRe = regexp.MustCompile(`^GameObject:`)
-	mNameRe      = regexp.MustCompile(`^  m_Name: (.*)$`)
-	mTagRe       = regexp.MustCompile(`^  m_TagString: (.*)$`)
-	mGObjRe      = regexp.MustCompile(`^  m_GameObject: \{fileID: (\d+)\}`)
-	mFatherRe    = regexp.MustCompile(`^  m_Father: \{fileID: (\d+)\}`)
-	mPosRe       = regexp.MustCompile(`^  m_LocalPosition: \{x: ([^,]+), y: ([^,]+), z: [^}]+\}`)
-	mOffsetRe    = regexp.MustCompile(`^  m_Offset: \{x: ([^,]+), y: ([^}]+)\}`)
-	mSizeRe      = regexp.MustCompile(`^  m_Size: \{x: ([^,]+), y: ([^}]+)\}`)
-	mPointsRe    = regexp.MustCompile(`^  m_Points:`)
-	pointItemRe  = regexp.MustCompile(`^  - \{x: ([^,]+), y: ([^}]+)\}`)
-	mScriptRe    = regexp.MustCompile(`^  m_Script: \{fileID: \d+, guid: ([0-9a-f]+), type: \d+\}`)
-	spaceIDRe    = regexp.MustCompile(`^  spaceId: (.*)$`)
-	spaceKindRe  = regexp.MustCompile(`^  spaceKind: (.*)$`)
-	layoutRe     = regexp.MustCompile(`^  layoutProfile: (.*)$`)
-	boundsXRe    = regexp.MustCompile(`^  boundsMaxX: (.*)$`)
-	boundsYRe    = regexp.MustCompile(`^  boundsMaxY: (.*)$`)
+	docHeaderRe = regexp.MustCompile(`^--- !u!(\d+) &(\d+)`)
+	mNameRe     = regexp.MustCompile(`^  m_Name: (.*)$`)
+	mTagRe      = regexp.MustCompile(`^  m_TagString: (.*)$`)
+	mGObjRe     = regexp.MustCompile(`^  m_GameObject: \{fileID: (\d+)\}`)
+	mFatherRe   = regexp.MustCompile(`^  m_Father: \{fileID: (\d+)\}`)
+	mPosRe      = regexp.MustCompile(`^  m_LocalPosition: \{x: ([^,]+), y: ([^,]+), z: [^}]+\}`)
+	mOffsetRe   = regexp.MustCompile(`^  m_Offset: \{x: ([^,]+), y: ([^}]+)\}`)
+	mSizeRe     = regexp.MustCompile(`^  m_Size: \{x: ([^,]+), y: ([^}]+)\}`)
+	mPointsRe   = regexp.MustCompile(`^  m_Points:`)
+	pointItemRe = regexp.MustCompile(`^  - \{x: ([^,]+), y: ([^}]+)\}`)
+	mScriptRe   = regexp.MustCompile(`^  m_Script: \{fileID: \d+, guid: ([0-9a-f]+), type: \d+\}`)
+	spaceIDRe   = regexp.MustCompile(`^  spaceId: (.*)$`)
+	spaceKindRe = regexp.MustCompile(`^  spaceKind: (.*)$`)
+	layoutRe    = regexp.MustCompile(`^  layoutProfile: (.*)$`)
+	boundsXRe   = regexp.MustCompile(`^  boundsMaxX: (.*)$`)
+	boundsYRe   = regexp.MustCompile(`^  boundsMaxY: (.*)$`)
 )
 
 type yamlDoc struct {
@@ -222,7 +221,11 @@ func ParseScene(data []byte) (*SceneModel, error) {
 		case 114: // MonoBehaviour
 			var mf monoF
 			mf.fields = map[string]string{}
+			hasScript := false
 			for _, ln := range d.lines {
+				if mScriptRe.MatchString(ln) {
+					hasScript = true
+				}
 				if m := mGObjRe.FindStringSubmatch(ln); m != nil {
 					mf.goid, _ = strconv.ParseInt(m[1], 10, 64)
 				}
@@ -232,7 +235,9 @@ func ParseScene(data []byte) (*SceneModel, error) {
 					}
 				}
 			}
-			metas = append(metas, mf)
+			if hasScript {
+				metas = append(metas, mf)
+			}
 		}
 	}
 
@@ -687,7 +692,7 @@ func contentRevision(spaceID, kind, profile string, maxX, maxY int64, segs []qSe
 // DeadEndAnchors returns leaf walkable endpoints whose unique branch path
 // exceeds 0.5 reference screens (12.8 m) and must terminate in a content
 // anchor (§6.1 main-route rule).
-func DeadEndViolations(g *geometry.Geometry, anchors map[string][2]int64) []string {
+func DeadEndViolations(g *geometry.Geometry, anchors map[string][2]int64, maxX, maxY int64) []string {
 	// Build node graph over walkable segments: nodes are quantized endpoints;
 	// an endpoint lying strictly inside another walkable segment is a
 	// T-junction merged onto that segment.
@@ -698,39 +703,64 @@ func DeadEndViolations(g *geometry.Geometry, anchors map[string][2]int64) []stri
 			segs = append(segs, s)
 		}
 	}
+	// T-junctions: an endpoint lying strictly inside another walkable
+	// segment is a junction; split that segment's adjacency at the point so
+	// leaf walks stop there instead of crossing it.
+	eps := map[node]struct{}{}
+	for _, s := range segs {
+		eps[node{s.X1, s.Y1}] = struct{}{}
+		eps[node{s.X2, s.Y2}] = struct{}{}
+	}
+	junction := map[node]bool{}
+	inside := map[geometry.Segment][]node{}
+	for _, s := range segs {
+		for n := range eps {
+			if (n.x == s.X1 && n.y == s.Y1) || (n.x == s.X2 && n.y == s.Y2) {
+				continue
+			}
+			if n.x > s.X1 && n.x < s.X2 && geometry.SurfaceHeight(s, n.x) == n.y {
+				junction[n] = true
+				inside[s] = append(inside[s], n)
+			}
+		}
+	}
 	deg := map[node]int{}
 	adj := map[node][]node{}
 	for _, s := range segs {
-		a, b := node{s.X1, s.Y1}, node{s.X2, s.Y2}
-		deg[a]++
-		deg[b]++
-		adj[a] = append(adj[a], b)
-		adj[b] = append(adj[b], a)
+		pts := append([]node{{s.X1, s.Y1}, {s.X2, s.Y2}}, inside[s]...)
+		sort.Slice(pts, func(i, j int) bool { return pts[i].x < pts[j].x })
+		for i := 0; i+1 < len(pts); i++ {
+			a, b := pts[i], pts[i+1]
+			deg[a]++
+			deg[b]++
+			adj[a] = append(adj[a], b)
+			adj[b] = append(adj[b], a)
+		}
 	}
-	// T-junctions: endpoint strictly inside another walkable segment raises
-	// that point to a junction.
-	junction := map[node]bool{}
 	for n, d := range deg {
 		if d >= 3 {
 			junction[n] = true
 		}
 	}
-	for _, s := range segs {
-		for n := range deg {
-			if (n.x == s.X1 && n.y == s.Y1) || (n.x == s.X2 && n.y == s.Y2) {
-				continue
-			}
-			if n.x > s.X1 && n.x < s.X2 {
-				y := geometry.SurfaceHeight(s, n.x)
-				if y == n.y {
-					junction[n] = true
-				}
-			}
-		}
-	}
 	var violations []string
 	for n, d := range deg {
-		if d != 1 {
+		if d != 1 || junction[n] {
+			continue
+		}
+		// Map-boundary leaves are entries/exits, not dead-end branches; a
+		// one-way platform tip is never a cul-de-sac (character drops off).
+		if n.x == 0 || n.x == maxX || n.y == 0 || n.y == maxY {
+			continue
+		}
+		onewayTip := false
+		for _, s := range segs {
+			if s.Kind == geometry.OneWayPlatform &&
+				((s.X1 == n.x && s.Y1 == n.y) || (s.X2 == n.x && s.Y2 == n.y)) {
+				onewayTip = true
+				break
+			}
+		}
+		if onewayTip {
 			continue
 		}
 		// walk the unique chain back to a junction or another leaf

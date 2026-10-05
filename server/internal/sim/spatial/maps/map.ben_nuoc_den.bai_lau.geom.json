@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "space_id": "map.ben_nuoc_den.bai_lau",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "TIDAL_RUIN_STEPS",
+  "content_revision": "1d1bb6bc94ca09efc9bf3269f09251ccacc61c771e2a0b93a4edbf2d9c4deb59",
+  "bounds_mm": { "max_x": 89600, "max_y": 18000 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 89600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 13440, "y1": 4000, "x2": 19440, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 19440, "y1": 8000, "x2": 27440, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 27440, "y1": 8000, "x2": 33440, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 53760, "y1": 6500, "x2": 61760, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 62719, "y1": 10500, "x2": 70719, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 89600, "y1": 4000, "x2": 89600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 89600, "max_y": 18000 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.ben_nuoc_den.bai_lau.p1", "x": 7168, "y": 4000 },
+    { "id": "anchor.daily.ben_nuoc_den.bai_lau.p2", "x": 20608, "y": 4000 },
+    { "id": "anchor.spawn.bai_lau.01", "x": 34048, "y": 4000 },
+    { "id": "anchor.spawn.bai_lau.02", "x": 24640, "y": 8000 },
+    { "id": "anchor.spawn.bai_lau.elite", "x": 15540, "y": 5400 },
+    { "id": "anchor.spawn.rare.ben_nuoc.ma_da_dem", "x": 74368, "y": 4000 },
+    { "id": "area.daily.ben_nuoc_den.bai_lau.side", "x": 87807, "y": 4000 },
+    { "id": "chest.hidden.map.ben_nuoc_den.bai_lau.01", "x": 89400, "y": 4000 },
+    { "id": "chest.hidden.map.ben_nuoc_den.bai_lau.02", "x": 15540, "y": 5400 },
+    { "id": "chest.hidden.season.2.ben_nuoc.01", "x": 57360, "y": 6500 },
+    { "id": "fishing_spot.map.ben_nuoc_den.bai_lau.01", "x": 89400, "y": 4000 },
+    { "id": "marker.daily.ben_nuoc_den.bai_lau.1", "x": 89400, "y": 4000 },
+    { "id": "marker.daily.ben_nuoc_den.bai_lau.2", "x": 89400, "y": 4000 },
+    { "id": "portal.ben_nuoc_den.bai_lau.to.ben_nuoc_den.cho_ben", "x": 57360, "y": 6500 },
+    { "id": "portal.ben_nuoc_den.bai_lau.to.ben_nuoc_den.duong_ngap", "x": 30740, "y": 5800 },
+    { "id": "spawn.entry.ben_nuoc_den.bai_lau", "x": 89400, "y": 4000 }
+  ]
+}

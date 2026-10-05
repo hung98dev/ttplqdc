@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "space_id": "map.thanh_co.hao_can",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "MOAT_DUAL_ROUTE",
+  "content_revision": "d2a0f137d42f3be208afc8aadbcd89f2d1fb972937e7e742c3d90a1a27f311d5",
+  "bounds_mm": { "max_x": 115200, "max_y": 25200 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 115200, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 17280, "y1": 4000, "x2": 23280, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 23280, "y1": 8000, "x2": 31280, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 31280, "y1": 8000, "x2": 37280, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 57600, "y1": 4000, "x2": 66600, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 66600, "y1": 12000, "x2": 87600, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 69120, "y1": 6500, "x2": 77120, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 80640, "y1": 10500, "x2": 88640, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 87600, "y1": 12000, "x2": 96600, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 115200, "y1": 4000, "x2": 115200, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 115200, "max_y": 25200 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.thanh_co.hao_can.p1", "x": 9216, "y": 4000 },
+    { "id": "anchor.daily.thanh_co.hao_can.p2", "x": 26495, "y": 4000 },
+    { "id": "anchor.spawn.hao_can.01", "x": 43776, "y": 4000 },
+    { "id": "anchor.spawn.hao_can.02", "x": 21180, "y": 6600 },
+    { "id": "anchor.spawn.hao_can.elite", "x": 19380, "y": 5400 },
+    { "id": "anchor.spawn.rare.thanh_co.ma_co_dem", "x": 95616, "y": 4000 },
+    { "id": "area.daily.thanh_co.hao_can.side", "x": 112895, "y": 4000 },
+    { "id": "chest.hidden.map.thanh_co.hao_can.01", "x": 115000, "y": 4000 },
+    { "id": "chest.hidden.map.thanh_co.hao_can.02", "x": 19380, "y": 5400 },
+    { "id": "marker.daily.thanh_co.hao_can.1", "x": 19980, "y": 5800 },
+    { "id": "marker.daily.thanh_co.hao_can.2", "x": 115000, "y": 4000 },
+    { "id": "portal.thanh_co.hao_can.to.thanh_co.den_tran", "x": 115000, "y": 4000 },
+    { "id": "portal.thanh_co.hao_can.to.thanh_co.duong_da", "x": 115000, "y": 4000 },
+    { "id": "spawn.entry.thanh_co.hao_can", "x": 19980, "y": 5800 }
+  ]
+}

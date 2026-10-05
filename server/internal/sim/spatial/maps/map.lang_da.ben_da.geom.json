@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "space_id": "map.lang_da.ben_da",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "RIVER_LEDGE_S",
+  "content_revision": "15c54bcc3974b6a5f9d8bc28e8ebc8518eb9c488281c8f0492b4541370de9c64",
+  "bounds_mm": { "max_x": 83200, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 83200, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 12480, "y1": 4000, "x2": 18480, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 18480, "y1": 8000, "x2": 26480, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 26480, "y1": 8000, "x2": 32480, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 49920, "y1": 6500, "x2": 57920, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 58239, "y1": 10500, "x2": 66239, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 83200, "y1": 4000, "x2": 83200, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 83200, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.lang_da.ben_da.p1", "x": 6656, "y": 4000 },
+    { "id": "anchor.daily.lang_da.ben_da.p2", "x": 19136, "y": 4000 },
+    { "id": "anchor.quest.a1_chiec_non_ben_da.ghe_cu", "x": 31616, "y": 4000 },
+    { "id": "anchor.quest.a1_chiec_non_ben_da.ghe_gia", "x": 23680, "y": 8000 },
+    { "id": "anchor.spawn.ben_da.01", "x": 14580, "y": 5400 },
+    { "id": "anchor.spawn.ben_da.02", "x": 69056, "y": 4000 },
+    { "id": "anchor.spawn.ben_da.elite", "x": 81535, "y": 4000 },
+    { "id": "area.daily.lang_da.ben_da.side", "x": 83000, "y": 4000 },
+    { "id": "chest.hidden.map.lang_da.ben_da.01", "x": 14580, "y": 5400 },
+    { "id": "chest.hidden.map.lang_da.ben_da.02", "x": 53520, "y": 6500 },
+    { "id": "fishing_spot.map.lang_da.ben_da.01", "x": 83000, "y": 4000 },
+    { "id": "marker.daily.lang_da.ben_da.1", "x": 83000, "y": 4000 },
+    { "id": "marker.daily.lang_da.ben_da.2", "x": 83000, "y": 4000 },
+    { "id": "portal.lang_da.ben_da.to.lang_da.bo_ruong", "x": 53520, "y": 6500 },
+    { "id": "portal.lang_da.ben_da.to.lang_da.go_ma", "x": 29780, "y": 5800 },
+    { "id": "spawn.entry.lang_da.ben_da", "x": 83000, "y": 4000 }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "space_id": "map.nui_thieng.chan_nui",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "MOUNTAIN_TERRACE_HUB",
+  "content_revision": "984cbcc42233f5c9359a7bc41a15f25cb26bcc3c1bffa5be0aa5bb30e77ff889",
+  "bounds_mm": { "max_x": 76800, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 76800, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 11520, "y1": 4000, "x2": 17520, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 17520, "y1": 8000, "x2": 25520, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 25520, "y1": 8000, "x2": 31520, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 46080, "y1": 6500, "x2": 54080, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 53760, "y1": 10500, "x2": 61760, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 76800, "y1": 4000, "x2": 76800, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 76800, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "bonfire.map.nui_thieng.chan_nui", "x": 6144, "y": 4000 },
+    { "id": "checkpoint.nui_thieng.chan_nui", "x": 17664, "y": 4000 },
+    { "id": "cooking_hearth.map.nui_thieng.chan_nui", "x": 29184, "y": 4000 },
+    { "id": "npc.nui_thieng.cho_1", "x": 22720, "y": 8000 },
+    { "id": "npc.nui_thieng.cho_2", "x": 13620, "y": 5400 },
+    { "id": "npc.nui_thieng.dem_1", "x": 63744, "y": 4000 },
+    { "id": "npc.nui_thieng.dem_2", "x": 75263, "y": 4000 },
+    { "id": "npc.nui_thieng.hang_quan", "x": 76600, "y": 4000 },
+    { "id": "npc.nui_thieng.nguoi_dan_duong", "x": 13620, "y": 5400 },
+    { "id": "npc.nui_thieng.tho_nghe", "x": 49680, "y": 6500 },
+    { "id": "portal.nui_thieng.chan_nui.to.nui_thieng.rung_may", "x": 76600, "y": 4000 },
+    { "id": "portal.nui_thieng.chan_nui.to.thanh_co.den_tran", "x": 76600, "y": 4000 },
+    { "id": "sparring_ring.map.nui_thieng.chan_nui", "x": 76600, "y": 4000 },
+    { "id": "spawn.entry.nui_thieng.chan_nui", "x": 49680, "y": 6500 }
+  ]
+}

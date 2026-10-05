@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "space_id": "map.thanh_co.cong_ngoai",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "FORT_GATE_RING",
+  "content_revision": "135726c1b3c71dbb14ef30ea1501b5053ef8227aaf5b0c42126ccd5576c63377",
+  "bounds_mm": { "max_x": 70400, "max_y": 18000 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 70400, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 10560, "y1": 4000, "x2": 16560, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 16560, "y1": 8000, "x2": 24560, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 24560, "y1": 8000, "x2": 30560, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 42240, "y1": 6500, "x2": 50240, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 49280, "y1": 10500, "x2": 57280, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 70400, "y1": 4000, "x2": 70400, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 70400, "max_y": 18000 }
+  ],
+  "anchors": [
+    { "id": "anchor.quest.a5_tuong.bia_da_that", "x": 5632, "y": 4000 },
+    { "id": "anchor.quest.a5_tuong.gach_gia_01", "x": 16191, "y": 4000 },
+    { "id": "anchor.quest.a5_tuong.gach_gia_02", "x": 26752, "y": 4000 },
+    { "id": "bonfire.map.thanh_co.cong_ngoai", "x": 21760, "y": 8000 },
+    { "id": "checkpoint.thanh_co.cong_ngoai", "x": 12660, "y": 5400 },
+    { "id": "cooking_hearth.map.thanh_co.cong_ngoai", "x": 58432, "y": 4000 },
+    { "id": "npc.thanh_co.cho_1", "x": 68991, "y": 4000 },
+    { "id": "npc.thanh_co.cho_2", "x": 70200, "y": 4000 },
+    { "id": "npc.thanh_co.dem_1", "x": 12660, "y": 5400 },
+    { "id": "npc.thanh_co.dem_2", "x": 45840, "y": 6500 },
+    { "id": "npc.thanh_co.hang_quan", "x": 70200, "y": 4000 },
+    { "id": "npc.thanh_co.nguoi_dan_duong", "x": 70200, "y": 4000 },
+    { "id": "npc.thanh_co.tho_nghe", "x": 70200, "y": 4000 },
+    { "id": "portal.thanh_co.cong_ngoai.to.deo_may.rung_cam", "x": 45840, "y": 6500 },
+    { "id": "portal.thanh_co.cong_ngoai.to.thanh_co.duong_da", "x": 27860, "y": 5800 },
+    { "id": "sparring_ring.map.thanh_co.cong_ngoai", "x": 70200, "y": 4000 },
+    { "id": "spawn.entry.thanh_co.cong_ngoai", "x": 70200, "y": 4000 }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "space_id": "map.ben_nuoc_den.cho_ben",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "QUAY_MARKET_U",
+  "content_revision": "783bd9c071a8fc4cfcaf44fb83d7559a6a05e289493bc93164b52ea097c96c49",
+  "bounds_mm": { "max_x": 64000, "max_y": 14400 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 64000, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 9600, "y1": 4000, "x2": 15600, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 15600, "y1": 8000, "x2": 23600, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 23600, "y1": 8000, "x2": 29600, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 38400, "y1": 6500, "x2": 46400, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 44800, "y1": 10500, "x2": 52800, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 64000, "y1": 4000, "x2": 64000, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 64000, "max_y": 14400 }
+  ],
+  "anchors": [
+    { "id": "bonfire.map.ben_nuoc_den.cho_ben", "x": 5120, "y": 4000 },
+    { "id": "checkpoint.ben_nuoc_den.cho_ben", "x": 14719, "y": 4000 },
+    { "id": "cooking_hearth.map.ben_nuoc_den.cho_ben", "x": 24320, "y": 4000 },
+    { "id": "fishing_spot.map.ben_nuoc_den.cho_ben.01", "x": 20800, "y": 8000 },
+    { "id": "npc.ben_nuoc_den.cho_1", "x": 11700, "y": 5400 },
+    { "id": "npc.ben_nuoc_den.cho_2", "x": 53120, "y": 4000 },
+    { "id": "npc.ben_nuoc_den.dem_1", "x": 62719, "y": 4000 },
+    { "id": "npc.ben_nuoc_den.dem_2", "x": 63800, "y": 4000 },
+    { "id": "npc.ben_nuoc_den.hang_quan", "x": 11700, "y": 5400 },
+    { "id": "npc.ben_nuoc_den.nguoi_dan_duong", "x": 42000, "y": 6500 },
+    { "id": "npc.ben_nuoc_den.tho_nghe", "x": 63800, "y": 4000 },
+    { "id": "portal.ben_nuoc_den.cho_ben.to.ben_nuoc_den.bai_lau", "x": 63800, "y": 4000 },
+    { "id": "portal.ben_nuoc_den.cho_ben.to.rung_u_minh.mieu_bo_hoang", "x": 63800, "y": 4000 },
+    { "id": "sparring_ring.map.ben_nuoc_den.cho_ben", "x": 42000, "y": 6500 },
+    { "id": "spawn.entry.ben_nuoc_den.cho_ben", "x": 26900, "y": 5800 }
+  ]
+}

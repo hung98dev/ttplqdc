@@ -1,0 +1,330 @@
+{
+  "course": "vector_course.geom.json",
+  "vectors": [
+    {
+      "name": "walk_on_flat",
+      "start": {
+        "min_x": 4000,
+        "min_y": 4000,
+        "max_x": 4800,
+        "max_y": 5600
+      },
+      "dx": 2000,
+      "dy": 0,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 6000,
+          "min_y": 4000,
+          "max_x": 6800,
+          "max_y": 5600
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": false,
+        "grounded": true,
+        "ground_segment": 2,
+        "on_one_way": false,
+        "contacts": []
+      }
+    },
+    {
+      "name": "walk_up_slope",
+      "start": {
+        "min_x": 10000,
+        "min_y": 4000,
+        "max_x": 10800,
+        "max_y": 5600
+      },
+      "dx": 4000,
+      "dy": 0,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 14000,
+          "min_y": 5400,
+          "max_x": 14800,
+          "max_y": 7000
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": false,
+        "grounded": true,
+        "ground_segment": 3,
+        "on_one_way": false,
+        "contacts": [
+          {
+            "segment_id": 3,
+            "kind": "SLOPE",
+            "x": 14000,
+            "y": 5400
+          }
+        ]
+      }
+    },
+    {
+      "name": "mount_300mm_step",
+      "start": {
+        "min_x": 38800,
+        "min_y": 4000,
+        "max_x": 39600,
+        "max_y": 5600
+      },
+      "dx": 1500,
+      "dy": 0,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 40300,
+          "min_y": 4300,
+          "max_x": 41100,
+          "max_y": 5900
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": false,
+        "grounded": true,
+        "ground_segment": 10,
+        "on_one_way": false,
+        "contacts": [
+          {
+            "segment_id": 9,
+            "kind": "WALL",
+            "x": 40000,
+            "y": 4300
+          }
+        ]
+      }
+    },
+    {
+      "name": "blocked_900mm_wall",
+      "start": {
+        "min_x": 44400,
+        "min_y": 4300,
+        "max_x": 45200,
+        "max_y": 5900
+      },
+      "dx": 2000,
+      "dy": 0,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 45200,
+          "min_y": 4300,
+          "max_x": 46000,
+          "max_y": 5900
+        },
+        "vx_zeroed": true,
+        "vy_zeroed": false,
+        "grounded": true,
+        "ground_segment": 10,
+        "on_one_way": false,
+        "contacts": [
+          {
+            "segment_id": 12,
+            "kind": "WALL",
+            "x": 46000,
+            "y": 4300
+          }
+        ]
+      }
+    },
+    {
+      "name": "fall_to_floor",
+      "start": {
+        "min_x": 33000,
+        "min_y": 9000,
+        "max_x": 33800,
+        "max_y": 10600
+      },
+      "dx": 0,
+      "dy": -4000,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 33000,
+          "min_y": 5000,
+          "max_x": 33800,
+          "max_y": 6600
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": false,
+        "grounded": false,
+        "ground_segment": -1,
+        "on_one_way": false,
+        "contacts": []
+      }
+    },
+    {
+      "name": "drop_through_oneway",
+      "start": {
+        "min_x": 25500,
+        "min_y": 9500,
+        "max_x": 26300,
+        "max_y": 11100
+      },
+      "dx": 0,
+      "dy": -3000,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 7,
+      "drop_ignore_until_tick": 100,
+      "tick": 1,
+      "expected": {
+        "final": {
+          "min_x": 25500,
+          "min_y": 6500,
+          "max_x": 26300,
+          "max_y": 8100
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": false,
+        "grounded": false,
+        "ground_segment": -1,
+        "on_one_way": false,
+        "contacts": []
+      }
+    },
+    {
+      "name": "rise_hits_ceiling",
+      "start": {
+        "min_x": 15000,
+        "min_y": 7600,
+        "max_x": 15800,
+        "max_y": 9200
+      },
+      "dx": 0,
+      "dy": 1500,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 15000,
+          "min_y": 8900,
+          "max_x": 15800,
+          "max_y": 10500
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": true,
+        "grounded": false,
+        "ground_segment": -1,
+        "on_one_way": false,
+        "contacts": [
+          {
+            "segment_id": 4,
+            "kind": "CEILING",
+            "x": 15000,
+            "y": 10500
+          }
+        ]
+      }
+    },
+    {
+      "name": "rise_passes_oneway",
+      "start": {
+        "min_x": 25000,
+        "min_y": 6500,
+        "max_x": 25800,
+        "max_y": 8100
+      },
+      "dx": 0,
+      "dy": 2000,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 25000,
+          "min_y": 8500,
+          "max_x": 25800,
+          "max_y": 10100
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": false,
+        "grounded": false,
+        "ground_segment": -1,
+        "on_one_way": false,
+        "contacts": []
+      }
+    },
+    {
+      "name": "land_on_oneway",
+      "start": {
+        "min_x": 25000,
+        "min_y": 10100,
+        "max_x": 25800,
+        "max_y": 11700
+      },
+      "dx": 0,
+      "dy": -2000,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 25000,
+          "min_y": 9500,
+          "max_x": 25800,
+          "max_y": 11100
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": true,
+        "grounded": true,
+        "ground_segment": 7,
+        "on_one_way": true,
+        "contacts": [
+          {
+            "segment_id": 7,
+            "kind": "ONE_WAY_PLATFORM",
+            "x": 25000,
+            "y": 9500
+          }
+        ]
+      }
+    },
+    {
+      "name": "idle_stays_grounded",
+      "start": {
+        "min_x": 4000,
+        "min_y": 4000,
+        "max_x": 4800,
+        "max_y": 5600
+      },
+      "dx": 0,
+      "dy": 0,
+      "step_height_mm": 300,
+      "drop_ignore_platform_id": 0,
+      "drop_ignore_until_tick": 0,
+      "tick": 0,
+      "expected": {
+        "final": {
+          "min_x": 4000,
+          "min_y": 4000,
+          "max_x": 4800,
+          "max_y": 5600
+        },
+        "vx_zeroed": false,
+        "vy_zeroed": false,
+        "grounded": true,
+        "ground_segment": 2,
+        "on_one_way": false,
+        "contacts": []
+      }
+    }
+  ]
+}

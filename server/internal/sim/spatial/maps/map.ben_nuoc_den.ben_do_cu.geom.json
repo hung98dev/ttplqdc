@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "space_id": "map.ben_nuoc_den.ben_do_cu",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "WHARF_BRANCH_SPINE",
+  "content_revision": "1cb00e749e676e8c8654ae2d4ffa03afc17174d82a3e4f4e6cc452a3729e8438",
+  "bounds_mm": { "max_x": 115200, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 115200, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 17280, "y1": 4000, "x2": 23280, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 23280, "y1": 8000, "x2": 31280, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 31280, "y1": 8000, "x2": 37280, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 69120, "y1": 6500, "x2": 77120, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 80640, "y1": 10500, "x2": 88640, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 115200, "y1": 4000, "x2": 115200, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 115200, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "anchor.boss.ma_da_chua", "x": 51840, "y": 4000 },
+    { "id": "anchor.daily.ben_nuoc_den.ben_do_cu.p1", "x": 9216, "y": 4000 },
+    { "id": "anchor.daily.ben_nuoc_den.ben_do_cu.p2", "x": 26495, "y": 4000 },
+    { "id": "anchor.quest.a3_den_ben_do.den_a", "x": 43776, "y": 4000 },
+    { "id": "anchor.quest.a3_den_ben_do.den_b", "x": 28480, "y": 8000 },
+    { "id": "anchor.quest.a3_den_ben_do.den_c", "x": 19380, "y": 5400 },
+    { "id": "anchor.relic.thuong_luong", "x": 95616, "y": 4000 },
+    { "id": "anchor.spawn.ben_do_cu.01", "x": 112895, "y": 4000 },
+    { "id": "anchor.spawn.ben_do_cu.02", "x": 115000, "y": 4000 },
+    { "id": "anchor.spawn.ben_do_cu.elite", "x": 19380, "y": 5400 },
+    { "id": "area.daily.ben_nuoc_den.ben_do_cu.side", "x": 72720, "y": 6500 },
+    { "id": "chest.hidden.map.ben_nuoc_den.ben_do_cu.01", "x": 115000, "y": 4000 },
+    { "id": "chest.hidden.map.ben_nuoc_den.ben_do_cu.02", "x": 115000, "y": 4000 },
+    { "id": "fishing_spot.map.ben_nuoc_den.ben_do_cu.01", "x": 115000, "y": 4000 },
+    { "id": "marker.daily.ben_nuoc_den.ben_do_cu.1", "x": 72720, "y": 6500 },
+    { "id": "marker.daily.ben_nuoc_den.ben_do_cu.2", "x": 34580, "y": 5800 },
+    { "id": "portal.ben_nuoc_den.ben_do_cu.to.ben_nuoc_den.duong_ngap", "x": 115000, "y": 4000 },
+    { "id": "portal.ben_nuoc_den.ben_do_cu.to.deo_may.ban_chan_deo", "x": 115000, "y": 4000 },
+    { "id": "portal.ben_nuoc_den.ben_do_cu.to.dungeon_xom_chim", "x": 115000, "y": 4000 },
+    { "id": "spawn.entry.ben_nuoc_den.ben_do_cu", "x": 34580, "y": 5800 }
+  ]
+}

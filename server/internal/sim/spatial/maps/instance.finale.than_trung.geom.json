@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "space_id": "instance.finale.than_trung",
+  "space_kind": "FINALE",
+  "layout_profile": "OMEN_CONVERGENCE_ARENA",
+  "content_revision": "8c645751b5563f1cedae78b200af5f630ab559bd8ab778e1c3cc29cc530494cb",
+  "bounds_mm": { "max_x": 76800, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 76800, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 11520, "y1": 4000, "x2": 17520, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 17520, "y1": 8000, "x2": 25520, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 25520, "y1": 8000, "x2": 31520, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 46080, "y1": 6500, "x2": 54080, "y2": 6500 },
+    { "id": 7, "kind": "SLOPE", "x1": 47616, "y1": 4000, "x2": 56616, "y2": 13000 },
+    { "id": 8, "kind": "CEILING", "x1": 53760, "y1": 10500, "x2": 61760, "y2": 10500 },
+    { "id": 9, "kind": "SOLID_GROUND", "x1": 56616, "y1": 13000, "x2": 74800, "y2": 13000 },
+    { "id": 10, "kind": "WALL", "x1": 76800, "y1": 4000, "x2": 76800, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 76800, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "anchor.boss.than_trung", "x": 73800, "y": 13000 }
+  ]
+}
