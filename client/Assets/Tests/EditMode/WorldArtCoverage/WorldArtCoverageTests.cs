@@ -617,19 +617,55 @@ namespace ThinhThan.Tests.EditMode.WorldArtCoverage
                 var fails = new ConcurrentBag<string>();
                 Parallel.ForEach(imgs, j =>
                 {
-                    VolumeGate.Silhouette(
-                        j.Img, null, out var inS, out var lab);
-                    var s = new List<int>();
-                    for (var i = 0; i < j.Img.Width * j.Img.Height; i++)
+                    // Coverage over the full silhouette is identical to
+                    // coverage over unique colors weighted by frequency —
+                    // flat-painted art has few distinct RGB values, so
+                    // DeltaE00 runs per color instead of per pixel.
+                    var hist = new Dictionary<int, int>();
+                    var n = j.Img.Width * j.Img.Height;
+                    long total = 0;
+                    for (var i = 0; i < n; i++)
                     {
-                        if (inS[i])
+                        var p = j.Img.Pixels[i];
+                        if (p.A < 128)
                         {
-                            s.Add(i);
+                            continue;
+                        }
+                        var key = (p.R << 16) | (p.G << 8) | p.B;
+                        hist[key] = hist.TryGetValue(key, out var c)
+                            ? c + 1
+                            : 1;
+                        total++;
+                    }
+                    if (total == 0)
+                    {
+                        fails.Add(j.Name + " empty silhouette");
+                        return;
+                    }
+                    long good = 0;
+                    foreach (var kv in hist)
+                    {
+                        var lab = LabPixels.ToLab(
+                            (byte)(kv.Key >> 16),
+                            (byte)(kv.Key >> 8),
+                            (byte)kv.Key);
+                        var inR = false;
+                        foreach (var pl in palette)
+                        {
+                            if (LabPixels.DeltaE00(lab, pl)
+                                <= VolumeGate.PaletteDeltaE00Max)
+                            {
+                                inR = true;
+                                break;
+                            }
+                        }
+                        if (inR)
+                        {
+                            good += kv.Value;
                         }
                     }
-                    var cov = VolumeGate.PaletteCoverage(s, lab, palette);
-                    if (double.IsNaN(cov) ||
-                        cov < VolumeGate.PaletteCoverageMin)
+                    var cov = (double)good / total;
+                    if (cov < VolumeGate.PaletteCoverageMin)
                     {
                         fails.Add(j.Name + " palette coverage " +
                             cov.ToString("0.###",
