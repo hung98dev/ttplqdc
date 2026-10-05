@@ -31,7 +31,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-004` | Integration / Balance Activation Gate | `DONE` | IMP-003 | `../01_gameplay/skills.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-005` | Operation Idempotency Primitive | `DONE` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-006` | Account Auth, Session & Login Queue | `IN_PROGRESS` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
-| `IMP-007` | Currency Primitive | `IN_PROGRESS` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
+| `IMP-007` | Currency Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `IN_PROGRESS` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `NOT_STARTED` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
 | `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
@@ -86,7 +86,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `NOT_STARTED` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
 | `IMP-060` | Atlas Journal Runtime | `NOT_STARTED` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
-| `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `BLOCKED` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
+| `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `IN_PROGRESS` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
 | `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `DONE` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
@@ -104,7 +104,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
 | `IMP-078` | Server Geometry & Deterministic Collision Core | `DONE` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
 | `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `DONE` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
-| `IMP-080` | Global Runtime (In-Process Single Writer) | `IN_PROGRESS` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
+| `IMP-080` | Global Runtime (In-Process Single Writer) | `DONE` | IMP-068, IMP-082, IMP-098 | `../04_architecture/service_boundaries.md`, `../04_architecture/concurrency.md` |
 | `IMP-081` | Edge Listener, Framing & Heartbeat | `DONE` | IMP-061, IMP-068, IMP-098 | `../05_network/protocol.md`, `../05_network/versioning.md` |
 | `IMP-082` | Durable Command Queue & Backpressure | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-083` | Task-Graph & Architecture Conformance (Q0/Q4) | `DONE` | IMP-000, IMP-061 | `architecture_conformance.md`, `repository_layout.md` |
@@ -436,11 +436,11 @@ evidence_location: "docs/10_implementation/evidence/IMP-061/"
 
 ## `IMP-062` — Unity Geometry Exporter & Map Geometry Parity
 id: IMP-062
-status: BLOCKED
+status: IN_PROGRESS
 claimed_by: "devin-imp-062"
 branch: "imp/IMP-062-geometry-exporter"
-claimed_at: "2026-10-04T21:43:13Z"
-blocked_by: "BLK-003"
+claimed_at: "2026-10-05T00:26:08Z"
+blocked_by: ""
 
 specs: [`../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/physics_geometry_contract.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../07_content/world_route_catalog.md`, `../07_content/dungeon_catalog.md`, `../09_testing/network.md`]
 adrs: [`0005-skill-action-timing-geometry.md`, `0036-seasons-as-launch-infrastructure.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0038-discrete-movement-edge-input-message.md`, `0039-entity-capacity-model-and-ai-budget-classes.md`, `0040-world-consequence-durable-aggregate.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0071-client-presentation-contract-reconciliation.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
@@ -865,7 +865,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-081/"
 
 ## `IMP-080` — Global Runtime (In-Process Single Writer)
 id: IMP-080
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-080"
 branch: "imp/IMP-080-global-runtime"
 claimed_at: "2026-10-04T21:43:22Z"
@@ -1123,7 +1123,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-100/"
 
 ## `IMP-007` — Currency Primitive
 id: IMP-007
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-007"
 branch: "imp/IMP-007-currency"
 claimed_at: "2026-10-04T22:11:09Z"
