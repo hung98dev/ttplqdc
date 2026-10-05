@@ -150,7 +150,12 @@ Răng cưa           >= 50% pixel biên (a > 0 kề a = 0) phải có 1 <= a <= 
                    cutout nhị phân 0/255 bị reject, trừ asset khai báo pixel_art = true (không có ở launch)
 Lỗ trong thân      0 pixel a < 250 bị bao kín trong silhouette, trừ vùng khai báo translucent (ma, khói, nước)
 Đệm cell           silhouette cách mép trái/phải/trên cell >= 4 texture px; mép dưới 0..4 px (chân chạm đất)
-Kích thước         texture = đúng 2 x cell ref; bbox silhouette (a >= 128) <= 2 x giới hạn; thân nhân vật cao 176..192 px
+Kích thước         texture = đúng 2 x cell ref; bbox silhouette (a >= 128) <= 2 x giới hạn;
+                   thân nhân vật cao 176..192 px chỉ áp cho bề mặt full-figure của
+                   `size_profile` CHARACTER và NPC_HUMANOID (cell 96x128 ref): sheet idle,
+                   turnarounds, preview/body đã ghép; không áp cho `*_parts.png` (composite
+                   lớp PSB) hay profile khác (MONSTER_*, BOSS_*, SPIRIT_BEAST) — những file đó
+                   chỉ bị chặn bởi giới hạn bbox/silhouette của profile mình
 ```
 Mask translucent: file `<texture>.translucent.png` cùng kích thước, 1-bit (trắng = translucent), khai báo trong metadata import; chỉ `ACTOR` loại ma/linh hồn, khói, nước được dùng; diện tích mask ≤ 60% silhouette. Mask miễn trừ đúng các dòng ghi "translucent" ở §3.2/§3.6, không miễn trừ dòng khác.
 Validator ghi số đo từng file vào báo cáo; một vi phạm là fail. Ngưỡng chỉ được nới bằng ADR (gate ratchet, ADR-0050).
@@ -315,6 +320,7 @@ Map extent trong catalog là độ phủ tham chiếu, không phải yêu cầu 
 2. **Giai đoạn Release Candidate (M10):**
    - 100% tài nguyên trong phạm vi phát hành phải là asset hoàn thiện (Production Quality), không chấp nhận concept, ảnh mẫu hay asset mặc định của công cụ làm sản phẩm cuối.
    - Kiểm tra không còn bất kỳ asset nào mang nhãn placeholder.
+   - Placeholder được xác định theo trạng thái khai báo (nhãn placeholder, bản ghi nguồn thiếu/chưa APPROVED) và bộ gate của `asset_class`/`size_profile` đã khai báo ở §3.1a — không có heuristic điểm ảnh nào đánh dấu placeholder ngoài nhãn. File thuộc class được miễn Volume/silhouette (UI_ART fill, PARALLAX_FAR, VFX_SOFT, FONT_ATLAS) và sheet composite `*_parts.png` không bị coi là placeholder vì phẳng màu hay không có silhouette full-figure; file vẫn fail nếu vi phạm chính gate áp cho nó (ví dụ PARALLAX_FAR sai thứ tự Môi trường).
    - Toàn bộ font chữ tiếng Việt hiển thị trọn vẹn dấu thanh Unicode, không lỗi ô vuông/ký tự lạ (`tofu`).
 
 ## 5. Nguồn asset và quyền sử dụng
@@ -363,7 +369,10 @@ generation_record  {tool, version, model_id, model_sha256, terms_uri, terms_snap
                     null nếu không. terms_snapshot_sha256 = hash bản sao điều khoản tại thời điểm tạo, lưu LFS tại
                     client/Assets/Art/Provenance/terms/<fragment>/<sha256>.txt; model_sha256/workflow_sha256 null nếu công cụ không lộ ra
                    style_pack_id is not nested in generation_record; legacy nested field is removed, not duplicated
-folklore_card      {source_tales[], regional_variants, motifs_checked[]} cho entity văn hóa (§5); null cho asset chung
+folklore_card      {source_tales[], regional_variants, motifs_checked[]} cho entity văn hóa (§5): bắt buộc
+                   cho mọi file media — kể cả audio — có asset_key gắn một entity §5 (ví dụ `asset.map.<id>.bgm`,
+                   `asset.dungeon.<id>.bgm`, BGM map cụ thể như duel_court); `null` chỉ cho asset chung
+                   không gắn entity (UI kit, fill chung, cue toàn cục)
 inputs             [] hoặc danh sách {creator, source_uri, license_id, license_uri, acquired_at_utc, sha256} cho nguồn ngoài dùng tạo/ghép
 review_state       PENDING | APPROVED | REJECTED
 ```
