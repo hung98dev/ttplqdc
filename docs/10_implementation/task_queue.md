@@ -32,7 +32,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-005` | Operation Idempotency Primitive | `DONE` | IMP-001 | `../06_data/database.md`, `../06_data/save_rules.md` |
 | `IMP-006` | Account Auth, Session & Login Queue | `IN_PROGRESS` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
-| `IMP-008` | Item Ownership Primitive | `IN_PROGRESS` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
+| `IMP-008` | Item Ownership Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `NOT_STARTED` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
 | `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
 | `IMP-011` | Character Progression / Stats | `NOT_STARTED` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
@@ -1153,7 +1153,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-007/"
 
 ## `IMP-008` — Item Ownership Primitive
 id: IMP-008
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-008"
 branch: "imp/IMP-008-items"
 claimed_at: "2026-10-04T22:11:09Z"
