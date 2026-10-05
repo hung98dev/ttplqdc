@@ -2320,7 +2320,11 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             string name = Path.GetFileName(rel);
             ImportMeta(rel, out cellW, out cellH, out detached, out pixelArt,
                 out declared);
-            if (rel.IndexOf("/parts/", StringComparison.Ordinal) >= 0)
+            // Cosmetic /parts/ holds sprite-library slices (sub-sprites of a
+            // composite appearance), not standalone presentation surfaces —
+            // the coverage gate exempts them, so the release audit does too.
+            if (rel.IndexOf("/Cosmetics/", StringComparison.Ordinal) >= 0
+                && rel.IndexOf("/parts/", StringComparison.Ordinal) >= 0)
             {
                 return null;
             }
