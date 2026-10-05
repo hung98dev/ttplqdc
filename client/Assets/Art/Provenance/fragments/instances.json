@@ -1203,7 +1203,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "495cdd7f35ee0e64b629efd7aea67c5869fefc6882b77885825be2e5bdade95d",
-   "final_sha256": "c2c50102aa798fb58269e565b79eaa73c9ddf6afe7ef34be0eaa72db2192dc06",
+   "final_sha256": "1cc64cc2912d8e5eb1980ea7729e1b08fa08f1dfa17ba1bd8bfd017cf5832e88",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
