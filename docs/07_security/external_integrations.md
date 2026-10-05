@@ -82,7 +82,7 @@ Mọi cấu hình môi trường được nạp qua biến môi trường tiêu 
 | Biến môi trường | Bắt buộc | Mô tả |
 |---|---|---|
 | `DATABASE_URL` | Có | Chuỗi kết nối PostgreSQL (pgx pool format) |
-| `SERVER_PORT` | Có | Cổng TCP mở listener WSS (mặc định 8080) |
+| `SERVER_PORT` | Có | Cổng TCP của public HTTPS/WSS listener duy nhất (mặc định 8080): WSS upgrade + public `/api/v1/*` HTTPS endpoints (`auth.md` § HTTPS Endpoints — login, refresh, ticket); admin HTTPS nằm trên listener riêng (`ADMIN_BIND_ADDR`) |
 | `WORLD_CCU_CAP` | Có | Số tài khoản giữ admission slot tối đa (ticket reservation + character select + attached + reconnect grace, mỗi account đúng một slot); đặt bằng CCU đo được ở release gate 10k (`../08_scale_ops/capacity.md`, `session.md` § Login Queue, ADR-0052/0079) |
 | `IAP_SANDBOX` | Không | `true` \| `false` (mặc định `false`) |
 | `APPLE_KEY_ID` | Khi bật IAP | Key ID cấp bởi Apple Developer Portal |

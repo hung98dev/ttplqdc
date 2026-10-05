@@ -50,31 +50,35 @@ var GoModulePins = map[string]string{
 
 // TransitiveModuleAllowlist records the only non-direct modules the approved
 // closure may contain (technology_versions.md § Backend transitive rules).
+// Each value is the set of matrix-declared versions accepted for the module —
+// a set, not a single pin, because a version transition across the trusted
+// verifier boundary needs the old and new matrix pins to coexist briefly
+// (e.g. x/crypto v0.57.0 pulls x/sys v0.48.0 over the OTel v0.47.0 pin).
 // Commit pseudo-versions appear verbatim as recorded in the matrix's
 // transitive-closure entries (ADR-0010); any other pseudo-version is floating.
-var TransitiveModuleAllowlist = map[string]string{
-	"google.golang.org/grpc":         "v1.83.1", // only via pinned OTel HTTP exporters
-	"go.opentelemetry.io/proto/otlp": "v1.11.0", // only via pinned OTel HTTP exporters
+var TransitiveModuleAllowlist = map[string][]string{
+	"google.golang.org/grpc":         {"v1.83.1"}, // only via pinned OTel HTTP exporters
+	"go.opentelemetry.io/proto/otlp": {"v1.11.0"}, // only via pinned OTel HTTP exporters
 	// OTel SDK + OTLP/HTTP exporter require-closure resolved against the
 	// pinned OTel set (technology_versions.md § Backend, IMP-098).
-	"github.com/cenkalti/backoff/v5":                    "v5.0.3",
-	"github.com/cespare/xxhash/v2":                      "v2.3.0",
-	"github.com/felixge/httpsnoop":                      "v1.1.0",
-	"github.com/go-logr/logr":                           "v1.4.4",
-	"github.com/go-logr/stdr":                           "v1.2.2",
-	"github.com/google/uuid":                            "v1.6.0",
-	"github.com/grpc-ecosystem/grpc-gateway/v2":         "v2.30.0",
-	"go.opentelemetry.io/auto/sdk":                      "v1.2.1",
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace": "v1.46.0",
-	"golang.org/x/net":                                  "v0.58.0",
-	"golang.org/x/sys":                                  "v0.47.0",
-	"google.golang.org/genproto/googleapis/api":         "v0.0.0-20260819154853-08b0e4226688",
-	"google.golang.org/genproto/googleapis/rpc":         "v0.0.0-20260819154853-08b0e4226688",
-	"github.com/jackc/pgerrcode":                        "v0.0.0-20220416144525-469b46aa5efa", // via migrate/v4
-	"github.com/jackc/pgpassfile":                       "v1.0.0",                             // via pgx/v5
-	"github.com/jackc/pgservicefile":                    "v0.0.0-20240606120523-5a60cdf6a761", // via pgx/v5
-	"github.com/jackc/puddle/v2":                        "v2.2.2",                             // via pgx/v5
-	"golang.org/x/sync":                                 "v0.23.0",                            // via migrate/v4
+	"github.com/cenkalti/backoff/v5":                    {"v5.0.3"},
+	"github.com/cespare/xxhash/v2":                      {"v2.3.0"},
+	"github.com/felixge/httpsnoop":                      {"v1.1.0"},
+	"github.com/go-logr/logr":                           {"v1.4.4"},
+	"github.com/go-logr/stdr":                           {"v1.2.2"},
+	"github.com/google/uuid":                            {"v1.6.0"},
+	"github.com/grpc-ecosystem/grpc-gateway/v2":         {"v2.30.0"},
+	"go.opentelemetry.io/auto/sdk":                      {"v1.2.1"},
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace": {"v1.46.0"},
+	"golang.org/x/net":                                  {"v0.58.0"},
+	"golang.org/x/sys":                                  {"v0.47.0", "v0.48.0"}, // OTel pin + x/crypto v0.57.0 (argon2) pin, matrix-declared
+	"google.golang.org/genproto/googleapis/api":         {"v0.0.0-20260819154853-08b0e4226688"},
+	"google.golang.org/genproto/googleapis/rpc":         {"v0.0.0-20260819154853-08b0e4226688"},
+	"github.com/jackc/pgerrcode":                        {"v0.0.0-20220416144525-469b46aa5efa"}, // via migrate/v4
+	"github.com/jackc/pgpassfile":                       {"v1.0.0"},                             // via pgx/v5
+	"github.com/jackc/pgservicefile":                    {"v0.0.0-20240606120523-5a60cdf6a761"}, // via pgx/v5
+	"github.com/jackc/puddle/v2":                        {"v2.2.2"},                             // via pgx/v5
+	"golang.org/x/sync":                                 {"v0.23.0"},                            // via migrate/v4
 }
 
 // UnityPackagePins is the exact com.unity.* dependency set in

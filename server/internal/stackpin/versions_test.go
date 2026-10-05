@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strings"
 	"testing"
 )
@@ -267,9 +268,9 @@ func TestNoFloatingOrUnlistedDeps(t *testing.T) {
 			}
 			continue
 		}
-		if pin, ok := TransitiveModuleAllowlist[mod]; ok && indirect[mod] {
-			if pin != ver {
-				t.Errorf("transitive %s@%s, want pinned %s", mod, ver, pin)
+		if pins, ok := TransitiveModuleAllowlist[mod]; ok && indirect[mod] {
+			if !slices.Contains(pins, ver) {
+				t.Errorf("transitive %s@%s, want one of %s", mod, ver, strings.Join(pins, "/"))
 			}
 			continue
 		}
@@ -298,9 +299,11 @@ func isApprovedCommitPseudoVersion(matrix, mod, ver string) bool {
 // matrix-declared pin.
 func TestGoModuleClosureDeclaredInMatrix(t *testing.T) {
 	matrix := readMatrix(t)
-	for mod, ver := range TransitiveModuleAllowlist {
-		if !strings.Contains(matrix, mod+" "+ver) {
-			t.Errorf("TransitiveModuleAllowlist %s %s not declared verbatim in matrix", mod, ver)
+	for mod, vers := range TransitiveModuleAllowlist {
+		for _, ver := range vers {
+			if !strings.Contains(matrix, mod+" "+ver) {
+				t.Errorf("TransitiveModuleAllowlist %s %s not declared verbatim in matrix", mod, ver)
+			}
 		}
 	}
 	// BLK-001 declared closure of pgx/v5 v5.11.0 and migrate/v4 v4.20.1.
@@ -315,8 +318,8 @@ func TestGoModuleClosureDeclaredInMatrix(t *testing.T) {
 		if !strings.Contains(matrix, mod+" "+ver) {
 			t.Errorf("matrix missing transitive-closure entry %s %s", mod, ver)
 		}
-		if pin := TransitiveModuleAllowlist[mod]; pin != ver {
-			t.Errorf("TransitiveModuleAllowlist %s = %q, want %q", mod, pin, ver)
+		if pins := TransitiveModuleAllowlist[mod]; !slices.Contains(pins, ver) {
+			t.Errorf("TransitiveModuleAllowlist %s = %q, want %q in set", mod, pins, ver)
 		}
 	}
 	b, err := os.ReadFile(filepath.Join(repoRoot(t), "server", "go.mod"))
