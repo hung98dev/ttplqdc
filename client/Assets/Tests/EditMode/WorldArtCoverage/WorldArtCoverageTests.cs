@@ -576,6 +576,7 @@ namespace ThinhThan.Tests.EditMode.WorldArtCoverage
         }
 
         [Test]
+        [Timeout(600000)]
         public void TestPaletteGateOnShippedTextures()
         {
             // ≥85% of silhouette pixels (a ≥ 128) within ΔE00 ≤ 8 of the
@@ -605,14 +606,21 @@ namespace ThinhThan.Tests.EditMode.WorldArtCoverage
                     Abs(ArtRoot + "/" + z + "/sig"), "*.png"));
                 files.AddRange(Directory.GetFiles(
                     Abs(ArtRoot + "/" + z + "/parallax"), "*.png"));
-                var fails = new ConcurrentBag<string>();
-                Parallel.ForEach(files, f =>
+                // LoadPng is main-thread only — decode on the main thread,
+                // fan out the DeltaE00 gate math.
+                var imgs = new List<(string Name, LabPixels.Image Img)>();
+                foreach (var f in files)
                 {
-                    var img = ArtRuleFixtures.LoadPng(f);
+                    imgs.Add((Path.GetFileName(f),
+                              ArtRuleFixtures.LoadPng(f)));
+                }
+                var fails = new ConcurrentBag<string>();
+                Parallel.ForEach(imgs, j =>
+                {
                     VolumeGate.Silhouette(
-                        img, null, out var inS, out var lab);
+                        j.Img, null, out var inS, out var lab);
                     var s = new List<int>();
-                    for (var i = 0; i < img.Width * img.Height; i++)
+                    for (var i = 0; i < j.Img.Width * j.Img.Height; i++)
                     {
                         if (inS[i])
                         {
@@ -623,7 +631,7 @@ namespace ThinhThan.Tests.EditMode.WorldArtCoverage
                     if (double.IsNaN(cov) ||
                         cov < VolumeGate.PaletteCoverageMin)
                     {
-                        fails.Add(Path.GetFileName(f) + " palette coverage " +
+                        fails.Add(j.Name + " palette coverage " +
                             cov.ToString("0.###",
                                 CultureInfo.InvariantCulture));
                     }
