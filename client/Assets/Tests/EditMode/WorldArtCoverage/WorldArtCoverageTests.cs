@@ -603,8 +603,11 @@ namespace ThinhThan.Tests.EditMode.WorldArtCoverage
                 foreach (var f in files)
                 {
                     var img = ArtRuleFixtures.LoadPng(f);
+                    // sample: ~2k pixels per file keeps DeltaE00 cost bounded
+                    int stride = Math.Max(
+                        1, img.Pixels.Length / 2048);
                     int solid = 0, inside = 0;
-                    for (int i = 0; i < img.Pixels.Length; i++)
+                    for (int i = 0; i < img.Pixels.Length; i += stride)
                     {
                         var p = img.Pixels[i];
                         if (p.A < 128)
