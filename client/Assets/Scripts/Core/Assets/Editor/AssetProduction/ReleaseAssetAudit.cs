@@ -128,7 +128,10 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             /// <summary>No findings.</summary>
             public bool Passed
             {
-                get { return Findings.Count == 0; }
+                get
+                {
+                    return Findings.Count == 0;
+                }
             }
 
             /// <summary>Deterministic one-line-per-finding summary text.</summary>
