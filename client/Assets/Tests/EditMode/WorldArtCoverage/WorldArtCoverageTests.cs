@@ -1,13 +1,16 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using ThinhThan.Core.Assets;
 using ThinhThan.Core.Assets.Editor.AssetProduction;
 using UnityEngine;
+using VolumeGate = ThinhThan.Core.Assets.Editor.AssetProduction.VolumeDepthGate;
 
 namespace ThinhThan.Tests.EditMode.WorldArtCoverage
 {
@@ -595,45 +598,41 @@ namespace ThinhThan.Tests.EditMode.WorldArtCoverage
                     "no colors parsed for " + z);
                 var files = new List<string>();
                 files.AddRange(Directory.GetFiles(
+                    Abs(ArtRoot + "/" + z + "/tiles"), "*.png"));
+                files.AddRange(Directory.GetFiles(
                     Abs(ArtRoot + "/" + z + "/props"), "*.png"));
                 files.AddRange(Directory.GetFiles(
                     Abs(ArtRoot + "/" + z + "/sig"), "*.png"));
                 files.AddRange(Directory.GetFiles(
                     Abs(ArtRoot + "/" + z + "/parallax"), "*.png"));
-                foreach (var f in files)
+                var fails = new ConcurrentBag<string>();
+                Parallel.ForEach(files, f =>
                 {
                     var img = ArtRuleFixtures.LoadPng(f);
-                    // sample: ~2k pixels per file keeps DeltaE00 cost bounded
-                    int stride = Math.Max(
-                        1, img.Pixels.Length / 2048);
-                    int solid = 0, inside = 0;
-                    for (int i = 0; i < img.Pixels.Length; i += stride)
+                    VolumeGate.Silhouette(
+                        img, null, out var inS, out var lab);
+                    var s = new List<int>();
+                    for (var i = 0; i < img.Width * img.Height; i++)
                     {
-                        var p = img.Pixels[i];
-                        if (p.A < 128)
+                        if (inS[i])
                         {
-                            continue;
-                        }
-                        solid++;
-                        var lab = LabPixels.ToLab(p.R, p.G, p.B);
-                        double best = double.MaxValue;
-                        foreach (var c in palette)
-                        {
-                            best = Math.Min(
-                                best, LabPixels.DeltaE00(lab, c));
-                        }
-                        if (best <= 8.0)
-                        {
-                            inside++;
+                            s.Add(i);
                         }
                     }
-                    Assert.Greater(solid, 0, "empty silhouette: " + f);
-                    double cov = inside / (double)solid;
-                    Assert.GreaterOrEqual(cov, 0.85,
-                        Path.GetFileName(f) + " palette coverage " +
-                        cov.ToString("0.###", CultureInfo.InvariantCulture) +
-                        " < 0.85");
-                }
+                    var cov = VolumeGate.PaletteCoverage(s, lab, palette);
+                    if (double.IsNaN(cov) ||
+                        cov < VolumeGate.PaletteCoverageMin)
+                    {
+                        fails.Add(Path.GetFileName(f) + " palette coverage " +
+                            cov.ToString("0.###",
+                                CultureInfo.InvariantCulture));
+                    }
+                });
+                var ordered = new List<string>(fails);
+                ordered.Sort(StringComparer.Ordinal);
+                Assert.AreEqual(0, fails.Count,
+                    z + " palette violations:\n" +
+                    string.Join("\n", ordered));
             }
         }
     }
