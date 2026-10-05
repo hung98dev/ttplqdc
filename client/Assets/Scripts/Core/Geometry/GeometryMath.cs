@@ -356,7 +356,6 @@ namespace ThinhThan.Core.Geometry
                 wall = accSeg;
                 pen = accPen;
             }
-            }
 
             static long WallXAtBoxSpan(GeometryData.Segment s, Aabb box, long dx)
             {
