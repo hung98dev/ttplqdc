@@ -33,13 +33,13 @@ namespace ThinhThan.Core.Runtime
         [Conditional("THINHTHAN_DEV")]
         public static void Dev(string message)
         {
-            Debug.unityLogger.Log(LogType.Log, message);
+            UnityEngine.Debug.unityLogger.Log(LogType.Log, message);
         }
 
         [Conditional("THINHTHAN_DEV")]
         public static void DevFormat(string format, params object[] args)
         {
-            Debug.unityLogger.LogFormat(LogType.Log, format, args);
+            UnityEngine.Debug.unityLogger.LogFormat(LogType.Log, format, args);
         }
 
         public static void Warn(string message)
@@ -49,7 +49,7 @@ namespace ThinhThan.Core.Runtime
                 return;
             }
 
-            Debug.unityLogger.Log(LogType.Warning, message);
+            UnityEngine.Debug.unityLogger.Log(LogType.Warning, message);
         }
 
         public static void Error(string message)
@@ -59,7 +59,7 @@ namespace ThinhThan.Core.Runtime
                 return;
             }
 
-            Debug.unityLogger.Log(LogType.Error, message);
+            UnityEngine.Debug.unityLogger.Log(LogType.Error, message);
         }
 
         private static bool Allow(string message)
