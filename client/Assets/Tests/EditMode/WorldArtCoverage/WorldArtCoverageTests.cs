@@ -612,7 +612,7 @@ namespace ThinhThan.Tests.EditMode.WorldArtCoverage
                 foreach (var f in files)
                 {
                     imgs.Add((Path.GetFileName(f),
-                              ArtRuleFixtures.LoadPng(f)));
+                        ArtRuleFixtures.LoadPng(f)));
                 }
                 var fails = new ConcurrentBag<string>();
                 Parallel.ForEach(imgs, j =>
