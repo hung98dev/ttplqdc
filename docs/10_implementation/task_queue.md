@@ -96,7 +96,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-069` | Server Composition Root and Lifecycle Wiring | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-049, IMP-050, IMP-051, IMP-054, IMP-055, IMP-062, IMP-077, IMP-084, IMP-085, IMP-086, IMP-087, IMP-089, IMP-090, IMP-092, IMP-093, IMP-103 | `../04_architecture/backend.md`, `../04_architecture/service_boundaries.md` |
 | `IMP-070` | Asset Provenance Register & Validator | `DONE` | IMP-063, IMP-101 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-071` | Player Character & Class Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../01_gameplay/classes.md` |
-| `IMP-072` | Normal-World Environment Art & Scenes | `NOT_STARTED` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md` |
+| `IMP-072` | Normal-World Environment Art & Scenes | `IN_PROGRESS` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md` |
 | `IMP-073` | UI, Item, Equipment & Skill VFX Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-074` | Cosmetic Presentation Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-075` | SFX & Folklore BGM Production | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
@@ -129,7 +129,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-102` | Entitlement Claims & Store Client | `NOT_STARTED` | IMP-010, IMP-053, IMP-066 | `../03_systems/account_storage.md`, `../03_systems/monetization.md` |
 | `IMP-103` | Account Deletion & Data Export API / Account UI | `NOT_STARTED` | IMP-056, IMP-066 | `../07_security/data_protection.md`, `../07_security/auth.md` |
 | `IMP-104` | Monster, Boss & Spirit Beast Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md` |
-| `IMP-105` | Dungeon, Finale & Competitive Environment Art | `NOT_STARTED` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md` |
+| `IMP-105` | Dungeon, Finale & Competitive Environment Art | `IN_PROGRESS` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md` |
 | `IMP-106` | Verify CI Wall-Time Reduction via Caching | `DONE` | IMP-000 | `audit_gates.md`, `agent_execution_protocol.md` |
 
 ## Topological Execution Order
@@ -4228,10 +4228,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-104/"
 
 ## `IMP-072` — Normal-World Environment Art & Scenes
 id: IMP-072
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-072"
+branch: "imp/IMP-072-world-art"
+claimed_at: "2026-10-05T06:20:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/world_route_catalog.md`, `../02_world/maps_zones.md`, `../04_architecture/physics_geometry_contract.md`]
@@ -4268,10 +4268,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-072/"
 
 ## `IMP-105` — Dungeon, Finale & Competitive Environment Art
 id: IMP-105
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-105"
+branch: "imp/IMP-105-instance-art"
+claimed_at: "2026-10-05T06:20:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md`, `../03_systems/pvp.md`, `../03_systems/guild_war.md`, `../04_architecture/physics_geometry_contract.md`]
