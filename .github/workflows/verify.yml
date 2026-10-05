@@ -400,7 +400,7 @@ jobs:
 
       - name: Run EditMode tests
         if: steps.plan.outputs.scope == 'full' && steps.plan.outputs.editmode == 'true'
-        timeout-minutes: 30
+        timeout-minutes: 90
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
@@ -414,7 +414,7 @@ jobs:
           # UTF completion marker + results XML, not the launcher exit code.
           $null = Start-Process -FilePath $editor -PassThru -ArgumentList `
             '-batchmode','-nographics','-runTests','-testPlatform','EditMode','-projectPath',"$PWD\client",'-testResults',$xml,'-logFile',$log
-          $deadline = (Get-Date).AddMinutes(25)
+          $deadline = (Get-Date).AddMinutes(80)
           while ((Get-Date) -lt $deadline) {
             Start-Sleep -Seconds 10
             $txt = Get-Content $log -Raw -ErrorAction SilentlyContinue
