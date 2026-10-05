@@ -1996,10 +1996,17 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                 {
                     continue;
                 }
-                var cls = GateClassOf(rel, out int cellW, out int cellH,
-                    out bool detached, out bool pixelArt, out bool figure);
+                var cls = GateClassOf(repoRoot, rel, out int cellW,
+                    out int cellH, out bool detached, out bool pixelArt,
+                    out bool figure, out string? declared);
                 if (cls == null)
                 {
+                    if (declared != null && declared != "FONT_ATLAS"
+                        && ClassByName(declared, null) == null)
+                    {
+                        Add(report, "gate", rel,
+                            "unknown declared asset_class " + declared);
+                    }
                     continue;
                 }
                 var img = ArtRuleFixtures.LoadPng(abs);
@@ -2218,31 +2225,133 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             return list;
         }
 
+        private static Dictionary<string, string>? s_cosmeticClasses;
+
+        /// <summary>
+        /// Per-file asset_class lookup built once from
+        /// Art/Cosmetics/cosmetic_presentation_map.json: each files[] value
+        /// maps to the cosmetic's declared class, except the "icon" slot
+        /// which is an ITEM_ICON surface (canonical FileClass rule).
+        /// </summary>
+        private static Dictionary<string, string> CosmeticClasses(
+            string repoRoot)
+        {
+            if (s_cosmeticClasses != null)
+            {
+                return s_cosmeticClasses;
+            }
+            var map = new Dictionary<string, string>(StringComparer.Ordinal);
+            string mapPath = Path.Combine(repoRoot,
+                ("client/Assets/Art/Cosmetics/cosmetic_presentation_map.json")
+                .Replace('/', Path.DirectorySeparatorChar));
+            if (File.Exists(mapPath))
+            {
+                var root = RegisterJson.Parse(File.ReadAllText(mapPath));
+                var list = root.Get("cosmetics");
+                if (list != null && list.Type == RegisterJson.Node.Kind.Arr)
+                {
+                    foreach (var c in list.Arr!)
+                    {
+                        var cls = StrField(c!, "asset_class");
+                        var files = c!.Get("files");
+                        if (files == null
+                            || files.Type != RegisterJson.Node.Kind.Obj)
+                        {
+                            continue;
+                        }
+                        foreach (var kv in files.Obj!)
+                        {
+                            var paths = new List<string>();
+                            if (kv.Value.Type == RegisterJson.Node.Kind.Str)
+                            {
+                                paths.Add(kv.Value.Str);
+                            }
+                            else if (kv.Value.Type
+                                == RegisterJson.Node.Kind.Arr)
+                            {
+                                foreach (var n in kv.Value.Arr!)
+                                {
+                                    paths.Add(n.Str);
+                                }
+                            }
+                            foreach (var p in paths)
+                            {
+                                if (!p.EndsWith(".png",
+                                    StringComparison.Ordinal))
+                                {
+                                    continue;
+                                }
+                                map[p] = kv.Key == "icon"
+                                    ? "ITEM_ICON"
+                                    : cls ?? string.Empty;
+                            }
+                        }
+                    }
+                }
+            }
+            s_cosmeticClasses = map;
+            return map;
+        }
+
         /// <summary>
         /// Resolves a release image's section 3.1a asset class, authored
         /// cell size (2x texture px), declared flags and whether the file
         /// is a full-figure surface for the 176..192 px body band.
+        ///
+        /// The declared asset_class in the nearest ancestor import.json /
+        /// actor_import.json (or the cosmetic presentation map) is the
+        /// dispatch input. The 176..192 band is CHARACTER-scoped: only
+        /// player figure surfaces and cosmetic preview/body carry
+        /// AssetClass.Actor; creature and NPC cells (declared ACTOR with a
+        /// non-CHARACTER profile) run the same full rule set minus the
+        /// band, which is exactly AssetClass.Prop's rule set.
+        /// Sprite-library slices under /parts/ are sub-sprites, never
+        /// standalone presentation, and are not gated.
         /// </summary>
         private static CutoutQualityGate.AssetClass? GateClassOf(
-            string rel, out int cellW, out int cellH, out bool detached,
-            out bool pixelArt, out bool figure)
+            string repoRoot, string rel, out int cellW, out int cellH,
+            out bool detached, out bool pixelArt, out bool figure,
+            out string? declared)
         {
             detached = false;
             pixelArt = false;
             figure = false;
+            declared = null;
             string name = Path.GetFileName(rel);
-            ImportMeta(rel, out cellW, out cellH, out detached, out pixelArt);
+            ImportMeta(rel, out cellW, out cellH, out detached, out pixelArt,
+                out declared);
+            if (rel.IndexOf("/parts/", StringComparison.Ordinal) >= 0)
+            {
+                return null;
+            }
             if (rel.IndexOf("/Actors/", StringComparison.Ordinal) >= 0)
             {
-                figure = name.EndsWith("_sheet.png", StringComparison.Ordinal)
-                    || rel.IndexOf("/turnarounds/",
-                        StringComparison.Ordinal) >= 0;
-                return CutoutQualityGate.AssetClass.Actor;
+                // Only the cell-format player sheet is a CHARACTER figure
+                // surface; turnarounds are full-frame gallery renders.
+                figure = name.EndsWith("_sheet.png", StringComparison.Ordinal);
+                return figure
+                    ? CutoutQualityGate.AssetClass.Actor
+                    : CutoutQualityGate.AssetClass.Prop;
             }
             if (rel.IndexOf("/Cosmetics/", StringComparison.Ordinal) >= 0)
             {
                 figure = name == "preview.png" || name == "body.png";
-                return CutoutQualityGate.AssetClass.Actor;
+                if (figure)
+                {
+                    return CutoutQualityGate.AssetClass.Actor;
+                }
+                string? cosCls = declared;
+                if (cosCls == null
+                    && CosmeticClasses(repoRoot).TryGetValue(rel, out var cc))
+                {
+                    cosCls = cc;
+                }
+                return ClassByName(cosCls,
+                    CutoutQualityGate.AssetClass.Prop);
+            }
+            if (declared != null)
+            {
+                return ClassByName(declared, null);
             }
             if (rel.IndexOf("/Instances/", StringComparison.Ordinal) >= 0)
             {
@@ -2296,18 +2405,48 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             return null;
         }
 
+        /// <summary>Maps a declared asset_class name to the gate enum.</summary>
+        private static CutoutQualityGate.AssetClass? ClassByName(
+            string? declared, CutoutQualityGate.AssetClass? fallback)
+        {
+            switch (declared)
+            {
+                case "ACTOR":
+                case "PROP":
+                case "ITEM_ICON":
+                case "EQUIPMENT_ICON":
+                case "COSMETIC_APPEARANCE":
+                    return CutoutQualityGate.AssetClass.Prop;
+                case "UI_ART":
+                    return CutoutQualityGate.AssetClass.UiArt;
+                case "FONT_ATLAS":
+                    return null;
+                case "TILE":
+                    return CutoutQualityGate.AssetClass.Tile;
+                case "PARALLAX_NEAR":
+                    return CutoutQualityGate.AssetClass.ParallaxNear;
+                case "PARALLAX_FAR":
+                    return CutoutQualityGate.AssetClass.ParallaxFar;
+                case "VFX_SOFT":
+                    return CutoutQualityGate.AssetClass.VfxSoft;
+                default:
+                    return fallback;
+            }
+        }
+
         /// <summary>
         /// Reads the file's entry in the nearest ancestor import.json /
-        /// actor_import.json: authored cell dims and the detached_parts /
-        /// pixel_art flags.
+        /// actor_import.json: authored cell dims, the detached_parts /
+        /// pixel_art flags and the declared asset_class.
         /// </summary>
         private static void ImportMeta(string rel, out int cw, out int ch,
-            out bool detached, out bool pixelArt)
+            out bool detached, out bool pixelArt, out string? declared)
         {
             cw = 0;
             ch = 0;
             detached = false;
             pixelArt = false;
+            declared = null;
             string dir = Path.GetDirectoryName(rel)!.Replace('\\', '/');
             while (dir.Length > "client/Assets".Length)
             {
@@ -2320,6 +2459,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                         continue;
                     }
                     var root = RegisterJson.Parse(File.ReadAllText(p));
+                    declared = StrField(root, "asset_class");
                     var tr = root.Get("texture_ref");
                     if (tr != null && tr.Type == RegisterJson.Node.Kind.Arr
                         && tr.Arr!.Count == 2)
