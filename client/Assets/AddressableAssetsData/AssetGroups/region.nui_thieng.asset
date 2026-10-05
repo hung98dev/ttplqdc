@@ -120,6 +120,106 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5680e3f4ec25568a1ec7623429ca989
+    m_Address: asset.map.nui_thieng.chan_nui.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e99fe9035fb659008af0d9482cd35832
+    m_Address: asset.map.nui_thieng.cong_co.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a68aaf5ae8f25def986be3d593260b9e
+    m_Address: asset.map.nui_thieng.rung_may.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb6e35c8d08e596f90bddebd5c6f1c11
+    m_Address: asset.map.nui_thieng.suon_da.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 183544b97531505d926ba839facac964
+    m_Address: asset.tile.nui_thieng.ground.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e17e8d3808d5b958f6546562e7f1736
+    m_Address: asset.tile.nui_thieng.fill.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fef7b79875dd5196b9121f8b0c0982ef
+    m_Address: asset.tile.nui_thieng.platform.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd6017322c09590aa45f379450757a20
+    m_Address: asset.tile.nui_thieng.wall.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e0c9bf322e4557fbba74c2d09aeabdf
+    m_Address: asset.tile.nui_thieng.water.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30e04de9a0a958efb2687df2bf22252b
+    m_Address: asset.prop.nui_thieng.veg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ca1e8d918a155eab7ff4a686a0bdb3a
+    m_Address: asset.prop.nui_thieng.marker.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6af5f35e72b5a4287f9fb614f0baccc
+    m_Address: asset.prop.nui_thieng.scatter.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0168541f87505bffac6e98ee5f78b64f
+    m_Address: asset.prop.nui_thieng.sig_chan_nui.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71ede2e923f95d0684d60c2f956e775a
+    m_Address: asset.prop.nui_thieng.sig_cong_co.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c156b247b1d05956aa786c4e70f4def3
+    m_Address: asset.prop.nui_thieng.sig_rung_may.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bef709095cbb5142b778427716898b58
+    m_Address: asset.prop.nui_thieng.sig_suon_da.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e77700ef97c599fb0bc4327ce1a55b6
+    m_Address: asset.parallax.nui_thieng.l2.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b30b893d42c15a2bb978a9a95109a8c2
+    m_Address: asset.parallax.nui_thieng.l3.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f90b7e511465272b883d5c035b2acdc
+    m_Address: asset.parallax.nui_thieng.l4.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6186a61675525f0999a6e6e2f8fb9cc8
+    m_Address: asset.parallax.nui_thieng.fg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
