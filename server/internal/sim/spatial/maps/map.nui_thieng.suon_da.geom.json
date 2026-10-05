@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "space_id": "map.nui_thieng.suon_da",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "CLIFF_CAVE_FIGURE_EIGHT",
+  "content_revision": "556575f4d1a128cdb13ea15e57ee23bd2efc3c61127c4e41a39a080031323e2c",
+  "bounds_mm": { "max_x": 121600, "max_y": 32400 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 121600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 18240, "y1": 4000, "x2": 24240, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 24240, "y1": 8000, "x2": 32240, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 32240, "y1": 8000, "x2": 38240, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 60800, "y1": 4000, "x2": 69800, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 69800, "y1": 12000, "x2": 90800, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 72960, "y1": 6500, "x2": 80960, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 85120, "y1": 10500, "x2": 93120, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 90800, "y1": 12000, "x2": 99800, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 121600, "y1": 4000, "x2": 121600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 121600, "max_y": 32400 }
+  ],
+  "anchors": [
+    { "id": "anchor.boss.ngu_tinh", "x": 54720, "y": 4000 },
+    { "id": "anchor.daily.nui_thieng.suon_da.p1", "x": 9728, "y": 4000 },
+    { "id": "anchor.daily.nui_thieng.suon_da.p2", "x": 27967, "y": 4000 },
+    { "id": "anchor.quest.a6_vet_tren_da_suong.vet_gia_01", "x": 46208, "y": 4000 },
+    { "id": "anchor.quest.a6_vet_tren_da_suong.vet_gia_02", "x": 22140, "y": 6600 },
+    { "id": "anchor.quest.a6_vet_tren_da_suong.vet_that", "x": 20340, "y": 5400 },
+    { "id": "anchor.spawn.suon_da.01", "x": 100928, "y": 4000 },
+    { "id": "anchor.spawn.suon_da.02", "x": 119167, "y": 4000 },
+    { "id": "anchor.spawn.suon_da.elite", "x": 121400, "y": 4000 },
+    { "id": "area.daily.nui_thieng.suon_da.side", "x": 20340, "y": 5400 },
+    { "id": "chest.hidden.map.nui_thieng.suon_da.01", "x": 20940, "y": 5800 },
+    { "id": "chest.hidden.map.nui_thieng.suon_da.02", "x": 121400, "y": 4000 },
+    { "id": "fishing_spot.map.nui_thieng.suon_da.01", "x": 121400, "y": 4000 },
+    { "id": "marker.daily.nui_thieng.suon_da.1", "x": 121400, "y": 4000 },
+    { "id": "marker.daily.nui_thieng.suon_da.2", "x": 20940, "y": 5800 },
+    { "id": "portal.nui_thieng.suon_da.to.nui_thieng.cong_co", "x": 21540, "y": 6200 },
+    { "id": "portal.nui_thieng.suon_da.to.nui_thieng.rung_may", "x": 121400, "y": 4000 },
+    { "id": "spawn.entry.nui_thieng.suon_da", "x": 121400, "y": 4000 }
+  ]
+}

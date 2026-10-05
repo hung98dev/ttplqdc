@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "space_id": "map.nui_thieng.cong_co",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "ANCIENT_GATE_MULTI_TIER",
+  "content_revision": "33d2949e7f25dc4410cb5cd0021f99a77f03734914bf585e91301edac3675802",
+  "bounds_mm": { "max_x": 128000, "max_y": 32400 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 128000, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 19200, "y1": 4000, "x2": 25200, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 25200, "y1": 8000, "x2": 33200, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 33200, "y1": 8000, "x2": 39200, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 64000, "y1": 4000, "x2": 73000, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 73000, "y1": 12000, "x2": 94000, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 76800, "y1": 6500, "x2": 84800, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 89600, "y1": 10500, "x2": 97600, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 94000, "y1": 12000, "x2": 103000, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 128000, "y1": 4000, "x2": 128000, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 128000, "max_y": 32400 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.nui_thieng.cong_co.p1", "x": 10240, "y": 4000 },
+    { "id": "anchor.daily.nui_thieng.cong_co.p2", "x": 29439, "y": 4000 },
+    { "id": "anchor.relic.than_trung", "x": 48640, "y": 4000 },
+    { "id": "anchor.spawn.cong_co.01", "x": 23100, "y": 6600 },
+    { "id": "anchor.spawn.cong_co.02", "x": 21300, "y": 5400 },
+    { "id": "anchor.spawn.cong_co.elite", "x": 106240, "y": 4000 },
+    { "id": "area.daily.nui_thieng.cong_co.side", "x": 125439, "y": 4000 },
+    { "id": "chest.hidden.map.nui_thieng.cong_co.01", "x": 127800, "y": 4000 },
+    { "id": "chest.hidden.map.nui_thieng.cong_co.02", "x": 21300, "y": 5400 },
+    { "id": "marker.daily.nui_thieng.cong_co.1", "x": 21900, "y": 5800 },
+    { "id": "marker.daily.nui_thieng.cong_co.2", "x": 127800, "y": 4000 },
+    { "id": "portal.nui_thieng.cong_co.to.boss_than_trung", "x": 127800, "y": 4000 },
+    { "id": "portal.nui_thieng.cong_co.to.nui_thieng.suon_da", "x": 127800, "y": 4000 },
+    { "id": "spawn.entry.nui_thieng.cong_co", "x": 21900, "y": 5800 }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "space_id": "map.lang_da.go_ma",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "BURIAL_MOUND_LOOP",
+  "content_revision": "76cbb784a198125f74ebcdc7d1a86a34dd14780cb985144c79a08203bef683ed",
+  "bounds_mm": { "max_x": 96000, "max_y": 25200 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 96000, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 14400, "y1": 4000, "x2": 20400, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 20400, "y1": 8000, "x2": 28400, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 28400, "y1": 8000, "x2": 34400, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 48000, "y1": 4000, "x2": 57000, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 57000, "y1": 12000, "x2": 78000, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 57600, "y1": 6500, "x2": 65600, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 67200, "y1": 10500, "x2": 75200, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 78000, "y1": 12000, "x2": 87000, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 96000, "y1": 4000, "x2": 96000, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 96000, "max_y": 25200 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.lang_da.go_ma.p1", "x": 7680, "y": 4000 },
+    { "id": "anchor.daily.lang_da.go_ma.p2", "x": 22080, "y": 4000 },
+    { "id": "anchor.relic.quy_nhap_trang", "x": 36480, "y": 4000 },
+    { "id": "anchor.spawn.go_ma.01", "x": 18300, "y": 6600 },
+    { "id": "anchor.spawn.go_ma.02", "x": 16500, "y": 5400 },
+    { "id": "anchor.spawn.go_ma.elite", "x": 79680, "y": 4000 },
+    { "id": "anchor.spawn.rare.lang_da.ma_xo_dem", "x": 94079, "y": 4000 },
+    { "id": "area.daily.lang_da.go_ma.side", "x": 95800, "y": 4000 },
+    { "id": "chest.hidden.map.lang_da.go_ma.01", "x": 16500, "y": 5400 },
+    { "id": "chest.hidden.map.lang_da.go_ma.02", "x": 17100, "y": 5800 },
+    { "id": "marker.daily.lang_da.go_ma.1", "x": 95800, "y": 4000 },
+    { "id": "marker.daily.lang_da.go_ma.2", "x": 95800, "y": 4000 },
+    { "id": "portal.lang_da.go_ma.to.dungeon_dinh_lang_bo_hoang", "x": 95800, "y": 4000 },
+    { "id": "portal.lang_da.go_ma.to.lang_da.ben_da", "x": 17100, "y": 5800 },
+    { "id": "portal.lang_da.go_ma.to.rung_u_minh.xom_rung", "x": 17700, "y": 6200 },
+    { "id": "spawn.entry.lang_da.go_ma", "x": 95800, "y": 4000 }
+  ]
+}

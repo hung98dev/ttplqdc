@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "space_id": "map.guild_war.five_seal_conflict",
+  "space_kind": "GUILD_WAR",
+  "layout_profile": "FIVE_SEAL_BRAIDED_FRONT",
+  "content_revision": "821596f42d84c05be786c3308c46e255b5958e04678a63bf46adae1e90f61c57",
+  "bounds_mm": { "max_x": 128000, "max_y": 25200 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 14000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 128000, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 4000, "y1": 4000, "x2": 10000, "y2": 6000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 10000, "y1": 6000, "x2": 22000, "y2": 6000 },
+    { "id": 5, "kind": "SLOPE", "x1": 22000, "y1": 6000, "x2": 28000, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 28000, "y1": 4000, "x2": 34000, "y2": 6000 },
+    { "id": 7, "kind": "ONE_WAY_PLATFORM", "x1": 30000, "y1": 11000, "x2": 50000, "y2": 11000 },
+    { "id": 8, "kind": "SOLID_GROUND", "x1": 34000, "y1": 6000, "x2": 46000, "y2": 6000 },
+    { "id": 9, "kind": "SLOPE", "x1": 46000, "y1": 6000, "x2": 52000, "y2": 4000 },
+    { "id": 10, "kind": "SLOPE", "x1": 52000, "y1": 4000, "x2": 58000, "y2": 6000 },
+    { "id": 11, "kind": "ONE_WAY_PLATFORM", "x1": 56000, "y1": 11000, "x2": 72000, "y2": 11000 },
+    { "id": 12, "kind": "SOLID_GROUND", "x1": 58000, "y1": 6000, "x2": 70000, "y2": 6000 },
+    { "id": 13, "kind": "SLOPE", "x1": 70000, "y1": 6000, "x2": 76000, "y2": 4000 },
+    { "id": 14, "kind": "SLOPE", "x1": 76000, "y1": 4000, "x2": 82000, "y2": 6000 },
+    { "id": 15, "kind": "ONE_WAY_PLATFORM", "x1": 78000, "y1": 11000, "x2": 98000, "y2": 11000 },
+    { "id": 16, "kind": "SOLID_GROUND", "x1": 82000, "y1": 6000, "x2": 94000, "y2": 6000 },
+    { "id": 17, "kind": "SLOPE", "x1": 94000, "y1": 6000, "x2": 100000, "y2": 4000 },
+    { "id": 18, "kind": "SLOPE", "x1": 100000, "y1": 4000, "x2": 106000, "y2": 6000 },
+    { "id": 19, "kind": "SOLID_GROUND", "x1": 106000, "y1": 6000, "x2": 118000, "y2": 6000 },
+    { "id": 20, "kind": "SLOPE", "x1": 118000, "y1": 6000, "x2": 124000, "y2": 4000 },
+    { "id": 21, "kind": "WALL", "x1": 128000, "y1": 4000, "x2": 128000, "y2": 14000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 128000, "max_y": 25200 }
+  ],
+  "anchors": [
+    { "id": "guild_war.seal.hoa", "x": 40000, "y": 6000 },
+    { "id": "guild_war.seal.kim", "x": 88000, "y": 6000 },
+    { "id": "guild_war.seal.moc", "x": 16000, "y": 6000 },
+    { "id": "guild_war.seal.tho", "x": 64000, "y": 6000 },
+    { "id": "guild_war.seal.thuy", "x": 112000, "y": 6000 }
+  ]
+}

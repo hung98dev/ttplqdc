@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "space_id": "map.deo_may.khe_da",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "RAVINE_BRIDGE_LATTICE",
+  "content_revision": "63652f569c717d98f614b7b6e5cd0f822978bf42e63fcb078a48b170c4303bb0",
+  "bounds_mm": { "max_x": 115200, "max_y": 28800 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 115200, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 17280, "y1": 4000, "x2": 23280, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 23280, "y1": 8000, "x2": 31280, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 31280, "y1": 8000, "x2": 37280, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 57600, "y1": 4000, "x2": 66600, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 66600, "y1": 12000, "x2": 87600, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 69120, "y1": 6500, "x2": 77120, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 80640, "y1": 10500, "x2": 88640, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 87600, "y1": 12000, "x2": 96600, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 115200, "y1": 4000, "x2": 115200, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 115200, "max_y": 28800 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.deo_may.khe_da.p1", "x": 9216, "y": 4000 },
+    { "id": "anchor.daily.deo_may.khe_da.p2", "x": 26495, "y": 4000 },
+    { "id": "anchor.quest.a4_cau_tre_gay.bo_xa", "x": 43776, "y": 4000 },
+    { "id": "anchor.spawn.khe_da.01", "x": 21180, "y": 6600 },
+    { "id": "anchor.spawn.khe_da.02", "x": 19380, "y": 5400 },
+    { "id": "anchor.spawn.khe_da.elite", "x": 95616, "y": 4000 },
+    { "id": "area.daily.deo_may.khe_da.side", "x": 112895, "y": 4000 },
+    { "id": "chest.hidden.map.deo_may.khe_da.01", "x": 115000, "y": 4000 },
+    { "id": "chest.hidden.map.deo_may.khe_da.02", "x": 19380, "y": 5400 },
+    { "id": "marker.daily.deo_may.khe_da.1", "x": 19980, "y": 5800 },
+    { "id": "marker.daily.deo_may.khe_da.2", "x": 115000, "y": 4000 },
+    { "id": "portal.deo_may.khe_da.to.deo_may.duong_rung", "x": 115000, "y": 4000 },
+    { "id": "portal.deo_may.khe_da.to.deo_may.rung_cam", "x": 115000, "y": 4000 },
+    { "id": "spawn.entry.deo_may.khe_da", "x": 19980, "y": 5800 }
+  ]
+}

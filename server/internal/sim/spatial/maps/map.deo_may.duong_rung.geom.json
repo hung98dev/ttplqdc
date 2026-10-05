@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "space_id": "map.deo_may.duong_rung",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "RIDGE_SWITCHBACK",
+  "content_revision": "b5e17b6a51f15e05302954956d5672653b96d414ad42a3c949455a25740d4e50",
+  "bounds_mm": { "max_x": 96000, "max_y": 28800 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 96000, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 14400, "y1": 4000, "x2": 20400, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 20400, "y1": 8000, "x2": 28400, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 28400, "y1": 8000, "x2": 34400, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 48000, "y1": 4000, "x2": 57000, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 57000, "y1": 12000, "x2": 78000, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 57600, "y1": 6500, "x2": 65600, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 67200, "y1": 10500, "x2": 75200, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 78000, "y1": 12000, "x2": 87000, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 96000, "y1": 4000, "x2": 96000, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 96000, "max_y": 28800 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.deo_may.duong_rung.p1", "x": 7680, "y": 4000 },
+    { "id": "anchor.daily.deo_may.duong_rung.p2", "x": 22080, "y": 4000 },
+    { "id": "anchor.spawn.duong_rung.01", "x": 36480, "y": 4000 },
+    { "id": "anchor.spawn.duong_rung.02", "x": 18300, "y": 6600 },
+    { "id": "anchor.spawn.duong_rung.elite", "x": 16500, "y": 5400 },
+    { "id": "anchor.spawn.rare.deo_may.ma_tranh_dem", "x": 79680, "y": 4000 },
+    { "id": "area.daily.deo_may.duong_rung.side", "x": 94079, "y": 4000 },
+    { "id": "chest.hidden.map.deo_may.duong_rung.01", "x": 95800, "y": 4000 },
+    { "id": "chest.hidden.map.deo_may.duong_rung.02", "x": 16500, "y": 5400 },
+    { "id": "chest.hidden.season.3.deo_may.01", "x": 17100, "y": 5800 },
+    { "id": "marker.daily.deo_may.duong_rung.1", "x": 95800, "y": 4000 },
+    { "id": "marker.daily.deo_may.duong_rung.2", "x": 95800, "y": 4000 },
+    { "id": "portal.deo_may.duong_rung.to.deo_may.ban_chan_deo", "x": 95800, "y": 4000 },
+    { "id": "portal.deo_may.duong_rung.to.deo_may.khe_da", "x": 17100, "y": 5800 },
+    { "id": "spawn.entry.deo_may.duong_rung", "x": 17700, "y": 6200 }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "space_id": "dungeon.xom_chim",
+  "space_kind": "DUNGEON",
+  "layout_profile": "SLUICE_ROOFTOP_CIRCUIT",
+  "content_revision": "2c49bfac9bbd6fc2a925925589a54d25257ad5f0cebf639be063b2cd31b2e974",
+  "bounds_mm": { "max_x": 108800, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 108800, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 16320, "y1": 4000, "x2": 22320, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 22320, "y1": 8000, "x2": 30320, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 30320, "y1": 8000, "x2": 36320, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 65280, "y1": 6500, "x2": 73280, "y2": 6500 },
+    { "id": 7, "kind": "SLOPE", "x1": 67456, "y1": 4000, "x2": 76456, "y2": 13000 },
+    { "id": 8, "kind": "CEILING", "x1": 76160, "y1": 10500, "x2": 84160, "y2": 10500 },
+    { "id": 9, "kind": "SOLID_GROUND", "x1": 76456, "y1": 13000, "x2": 106800, "y2": 13000 },
+    { "id": 10, "kind": "WALL", "x1": 108800, "y1": 4000, "x2": 108800, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 108800, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "anchor.boss.thuong_luong", "x": 105800, "y": 13000 },
+    { "id": "anchor.dungeon.xom_chim.cong_nuoc.w1", "x": 18120, "y": 5200 },
+    { "id": "anchor.dungeon.xom_chim.cong_nuoc.w2", "x": 26320, "y": 8000 },
+    { "id": "anchor.dungeon.xom_chim.mai_nha.w1", "x": 34520, "y": 5200 },
+    { "id": "anchor.dungeon.xom_chim.mai_nha.w2", "x": 67680, "y": 6500 },
+    { "id": "anchor.dungeon.xom_chim.mai_nha.w3", "x": 71956, "y": 8500 }
+  ]
+}

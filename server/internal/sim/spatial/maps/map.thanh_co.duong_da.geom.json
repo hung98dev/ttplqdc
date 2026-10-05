@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "space_id": "map.thanh_co.duong_da",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "STONE_ALLEY_COMB",
+  "content_revision": "47b1e39331ad3c00ef7bb829bec68679f5b448b644f3277de7f857fd2909db7e",
+  "bounds_mm": { "max_x": 102400, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 102400, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 15360, "y1": 4000, "x2": 21360, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 21360, "y1": 8000, "x2": 29360, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 29360, "y1": 8000, "x2": 35360, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 61440, "y1": 6500, "x2": 69440, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 71680, "y1": 10500, "x2": 79680, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 102400, "y1": 4000, "x2": 102400, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 102400, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.thanh_co.duong_da.p1", "x": 8192, "y": 4000 },
+    { "id": "anchor.daily.thanh_co.duong_da.p2", "x": 23552, "y": 4000 },
+    { "id": "anchor.quest.a5_vien_gach_co.gach_1", "x": 38912, "y": 4000 },
+    { "id": "anchor.quest.a5_vien_gach_co.gach_2", "x": 26560, "y": 8000 },
+    { "id": "anchor.spawn.duong_da.01", "x": 17460, "y": 5400 },
+    { "id": "anchor.spawn.duong_da.02", "x": 84992, "y": 4000 },
+    { "id": "anchor.spawn.duong_da.elite", "x": 100351, "y": 4000 },
+    { "id": "area.daily.thanh_co.duong_da.side", "x": 102200, "y": 4000 },
+    { "id": "chest.hidden.map.thanh_co.duong_da.01", "x": 17460, "y": 5400 },
+    { "id": "chest.hidden.map.thanh_co.duong_da.02", "x": 65040, "y": 6500 },
+    { "id": "chest.hidden.season.4.thanh_co.01", "x": 102200, "y": 4000 },
+    { "id": "marker.daily.thanh_co.duong_da.1", "x": 102200, "y": 4000 },
+    { "id": "marker.daily.thanh_co.duong_da.2", "x": 102200, "y": 4000 },
+    { "id": "portal.thanh_co.duong_da.to.thanh_co.cong_ngoai", "x": 65040, "y": 6500 },
+    { "id": "portal.thanh_co.duong_da.to.thanh_co.hao_can", "x": 32660, "y": 5800 },
+    { "id": "spawn.entry.thanh_co.duong_da", "x": 102200, "y": 4000 }
+  ]
+}

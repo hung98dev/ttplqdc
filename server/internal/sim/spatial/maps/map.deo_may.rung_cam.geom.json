@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "space_id": "map.deo_may.rung_cam",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "FORBIDDEN_GROVE_DOUBLE_LOOP",
+  "content_revision": "7c0b3d0d73f174a3d1fc40678a053223a5c7dbd4c78785b52528c3f47dd3262f",
+  "bounds_mm": { "max_x": 121600, "max_y": 25200 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 121600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 18240, "y1": 4000, "x2": 24240, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 24240, "y1": 8000, "x2": 32240, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 32240, "y1": 8000, "x2": 38240, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 60800, "y1": 4000, "x2": 69800, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 69800, "y1": 12000, "x2": 90800, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 72960, "y1": 6500, "x2": 80960, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 85120, "y1": 10500, "x2": 93120, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 90800, "y1": 12000, "x2": 99800, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 121600, "y1": 4000, "x2": 121600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 121600, "max_y": 25200 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.deo_may.rung_cam.p1", "x": 9728, "y": 4000 },
+    { "id": "anchor.daily.deo_may.rung_cam.p2", "x": 27967, "y": 4000 },
+    { "id": "anchor.quest.a4_chiec_mong_sat.dau_chan_that", "x": 46208, "y": 4000 },
+    { "id": "anchor.quest.a4_chiec_mong_sat.dau_gia_01", "x": 22140, "y": 6600 },
+    { "id": "anchor.quest.a4_chiec_mong_sat.dau_gia_02", "x": 20340, "y": 5400 },
+    { "id": "anchor.relic.ho_tinh", "x": 100928, "y": 4000 },
+    { "id": "anchor.spawn.rung_cam.01", "x": 119167, "y": 4000 },
+    { "id": "anchor.spawn.rung_cam.02", "x": 121400, "y": 4000 },
+    { "id": "anchor.spawn.rung_cam.elite", "x": 20340, "y": 5400 },
+    { "id": "area.daily.deo_may.rung_cam.side", "x": 20940, "y": 5800 },
+    { "id": "chest.hidden.map.deo_may.rung_cam.01", "x": 121400, "y": 4000 },
+    { "id": "chest.hidden.map.deo_may.rung_cam.02", "x": 121400, "y": 4000 },
+    { "id": "marker.daily.deo_may.rung_cam.1", "x": 121400, "y": 4000 },
+    { "id": "marker.daily.deo_may.rung_cam.2", "x": 20940, "y": 5800 },
+    { "id": "portal.deo_may.rung_cam.to.deo_may.khe_da", "x": 21540, "y": 6200 },
+    { "id": "portal.deo_may.rung_cam.to.dungeon_hang_ma_tranh", "x": 121400, "y": 4000 },
+    { "id": "portal.deo_may.rung_cam.to.thanh_co.cong_ngoai", "x": 121400, "y": 4000 },
+    { "id": "spawn.entry.deo_may.rung_cam", "x": 121400, "y": 4000 }
+  ]
+}
