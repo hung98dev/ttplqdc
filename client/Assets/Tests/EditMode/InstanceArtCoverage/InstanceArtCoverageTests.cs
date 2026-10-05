@@ -46,33 +46,69 @@ namespace ThinhThan.Tests.EditMode.InstanceArtCoverage
 
         private static readonly SpaceSpec[] Roster =
         {
-            new SpaceSpec { SpaceId = "dungeon.den_tran",
+            new SpaceSpec
+            {
+                SpaceId = "dungeon.den_tran",
                 SceneRel = "client/Assets/Scenes/Dungeons/dungeon.den_tran.unity",
-                GroupFile = "dungeon.den_tran.asset", Pack = "instances/dungeon_ruins" },
-            new SpaceSpec { SpaceId = "dungeon.dinh_lang_bo_hoang",
+                GroupFile = "dungeon.den_tran.asset",
+                Pack = "instances/dungeon_ruins",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "dungeon.dinh_lang_bo_hoang",
                 SceneRel = "client/Assets/Scenes/Dungeons/dungeon.dinh_lang_bo_hoang.unity",
-                GroupFile = "dungeon.dinh_lang_bo_hoang.asset", Pack = "instances/dungeon_ruins" },
-            new SpaceSpec { SpaceId = "dungeon.hang_ma_tranh",
+                GroupFile = "dungeon.dinh_lang_bo_hoang.asset",
+                Pack = "instances/dungeon_ruins",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "dungeon.hang_ma_tranh",
                 SceneRel = "client/Assets/Scenes/Dungeons/dungeon.hang_ma_tranh.unity",
-                GroupFile = "dungeon.hang_ma_tranh.asset", Pack = "instances/dungeon_ruins" },
-            new SpaceSpec { SpaceId = "dungeon.mieu_ba_trong_rung",
+                GroupFile = "dungeon.hang_ma_tranh.asset",
+                Pack = "instances/dungeon_ruins",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "dungeon.mieu_ba_trong_rung",
                 SceneRel = "client/Assets/Scenes/Dungeons/dungeon.mieu_ba_trong_rung.unity",
-                GroupFile = "dungeon.mieu_ba_trong_rung.asset", Pack = "instances/dungeon_ruins" },
-            new SpaceSpec { SpaceId = "dungeon.xom_chim",
+                GroupFile = "dungeon.mieu_ba_trong_rung.asset",
+                Pack = "instances/dungeon_ruins",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "dungeon.xom_chim",
                 SceneRel = "client/Assets/Scenes/Dungeons/dungeon.xom_chim.unity",
-                GroupFile = "dungeon.xom_chim.asset", Pack = "instances/dungeon_ruins" },
-            new SpaceSpec { SpaceId = "instance.finale.than_trung",
+                GroupFile = "dungeon.xom_chim.asset",
+                Pack = "instances/dungeon_ruins",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "instance.finale.than_trung",
                 SceneRel = "client/Assets/Scenes/Finale/instance.finale.than_trung.unity",
-                GroupFile = "dungeon.finale.asset", Pack = "instances/finale_omen" },
-            new SpaceSpec { SpaceId = "map.pvp.duel_court",
+                GroupFile = "dungeon.finale.asset",
+                Pack = "instances/finale_omen",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "map.pvp.duel_court",
                 SceneRel = "client/Assets/Scenes/Competitive/map.pvp.duel_court.unity",
-                GroupFile = "pvp.shared.asset", Pack = "instances/competitive_arena" },
-            new SpaceSpec { SpaceId = "map.pvp.five_element_arena",
+                GroupFile = "pvp.shared.asset",
+                Pack = "instances/competitive_arena",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "map.pvp.five_element_arena",
                 SceneRel = "client/Assets/Scenes/Competitive/map.pvp.five_element_arena.unity",
-                GroupFile = "pvp.shared.asset", Pack = "instances/competitive_arena" },
-            new SpaceSpec { SpaceId = "map.guild_war.five_seal_conflict",
+                GroupFile = "pvp.shared.asset",
+                Pack = "instances/competitive_arena",
+            },
+            new SpaceSpec
+            {
+                SpaceId = "map.guild_war.five_seal_conflict",
                 SceneRel = "client/Assets/Scenes/Competitive/map.guild_war.five_seal_conflict.unity",
-                GroupFile = "pvp.shared.asset", Pack = "instances/competitive_arena" },
+                GroupFile = "pvp.shared.asset",
+                Pack = "instances/competitive_arena",
+            },
         };
 
         private static string RepoRoot()
