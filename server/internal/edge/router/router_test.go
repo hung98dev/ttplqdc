@@ -13,7 +13,7 @@ import (
 // one handler; re-registering or registering a non-durable id fails.
 func TestHandlerRegistryUniqueIds(t *testing.T) {
 	reg := New()
-	h := func(ctx context.Context, c *listener.Conn, r Route) error { return nil }
+	h := func(ctx context.Context, v View, r Route) error { return nil }
 	if err := reg.Register(12, h); err != nil {
 		t.Fatalf("register 12: %v", err)
 	}
@@ -62,7 +62,7 @@ func TestHandlerRegistryUniqueIds(t *testing.T) {
 func TestUnknownDurableIntentRejected(t *testing.T) {
 	reg := New()
 	var re *RejectError
-	err := reg.Dispatch(context.Background(), nil, listener.Inbound{
+	err := reg.Dispatch(context.Background(), View{}, listener.Inbound{
 		MessageID: 400, Payload: &protocolv1.C2SInventoryMutate{},
 	})
 	if !errors.As(err, &re) || re.Code != protocolv1.ErrorCode_ERROR_CODE_OPERATION_REJECTED {
@@ -70,7 +70,7 @@ func TestUnknownDurableIntentRejected(t *testing.T) {
 	}
 	// id 103 with a payload that is not C2SInteract → family unresolved →
 	// not-allowed-in-state.
-	err = reg.Dispatch(context.Background(), nil, listener.Inbound{
+	err = reg.Dispatch(context.Background(), View{}, listener.Inbound{
 		MessageID: 103, Payload: &protocolv1.C2SCharacterDetach{},
 	})
 	if !errors.As(err, &re) || re.Code != protocolv1.ErrorCode_ERROR_CODE_MESSAGE_NOT_ALLOWED_IN_STATE {
@@ -79,18 +79,23 @@ func TestUnknownDurableIntentRejected(t *testing.T) {
 	// Registered handler receives the frame.
 	reg = New()
 	var got Route
+	var gotView View
 	if err := reg.Register(400, func(ctx context.Context,
-		c *listener.Conn, r Route) error {
+		v View, r Route) error {
 		got = r
+		gotView = v
 		return nil
 	}); err != nil {
 		t.Fatalf("register: %v", err)
 	}
 	in := listener.Inbound{MessageID: 400, Payload: &protocolv1.C2SInventoryMutate{}, ClientSeq: 7}
-	if err := reg.Dispatch(context.Background(), nil, in); err != nil {
+	if err := reg.Dispatch(context.Background(), View{SessionEpoch: 42}, in); err != nil {
 		t.Fatalf("dispatch: %v", err)
 	}
 	if got.Inbound.ClientSeq != 7 || got.Family != "inventory.mutate" || got.MsgID != 400 {
 		t.Fatalf("handler got %+v", got)
+	}
+	if gotView.SessionEpoch != 42 {
+		t.Fatalf("handler got view %+v", gotView)
 	}
 }
