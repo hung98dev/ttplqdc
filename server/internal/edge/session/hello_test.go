@@ -4,6 +4,7 @@ import (
 	"testing"
 	"time"
 
+	"thinhthan/internal/core/id"
 	"thinhthan/internal/edge/listener"
 	protocolv1 "thinhthan/internal/protocol/v1"
 )
@@ -15,7 +16,7 @@ func TestHelloTicketSingleUse(t *testing.T) {
 	acct := seedAccount(t, store)
 	ctx := testCtx()
 
-	tk, err := reg.IssueTicket(ctx, acct, 1,
+	tk, err := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	if err != nil {
 		t.Fatalf("ticket: %v", err)
@@ -34,7 +35,7 @@ func TestHelloTicketSingleUse(t *testing.T) {
 	// Expired ticket → AUTH_EXPIRED.
 	reg2, store2, clk := newTestRegistry(t, 4)
 	acct2 := seedAccount(t, store2)
-	tk2, err := reg2.IssueTicket(ctx, acct2, 1,
+	tk2, err := reg2.IssueTicket(ctx, acct2, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	if err != nil {
 		t.Fatalf("ticket2: %v", err)
@@ -53,7 +54,7 @@ func TestResumeCredentialRotates(t *testing.T) {
 	acct := seedAccount(t, store)
 	ctx := testCtx()
 
-	tk, err := reg.IssueTicket(ctx, acct, 1,
+	tk, err := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	if err != nil {
 		t.Fatalf("ticket: %v", err)

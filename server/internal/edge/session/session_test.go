@@ -7,6 +7,7 @@ import (
 	"github.com/coder/websocket"
 	"google.golang.org/protobuf/proto"
 
+	"thinhthan/internal/core/id"
 	"thinhthan/internal/edge/listener"
 	protocolv1 "thinhthan/internal/protocol/v1"
 )
@@ -19,7 +20,7 @@ func TestAttachDetachFlow(t *testing.T) {
 	charID := seedCharacter(t, store, acct, "hero.one")
 	ctx := testCtx()
 
-	tk, err := reg.IssueTicket(ctx, acct, 1,
+	tk, err := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	if err != nil {
 		t.Fatalf("ticket: %v", err)
@@ -55,7 +56,7 @@ func TestStaleEpochDropped(t *testing.T) {
 	charID := seedCharacter(t, store, acct, "hero.stale")
 	ctx := testCtx()
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1,
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	d := reg.Hello(ctx, listener.HelloMeta{}, helloTicket(tk.Credential, 1))
 	if err := reg.Enqueue(ctx, nil, listener.Inbound{
@@ -82,7 +83,7 @@ func TestSessionReplacedPush(t *testing.T) {
 	addr := startListener(t, reg)
 	ctx := testCtx()
 
-	tk1, _ := reg.IssueTicket(ctx, acct, 1,
+	tk1, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	c1 := wsDial(t, addr)
 	env1 := wsHello(t, c1, helloTicket(tk1.Credential, 1))
@@ -94,7 +95,7 @@ func TestSessionReplacedPush(t *testing.T) {
 	// that sends nothing has no push channel yet.
 	wsAttach(t, c1, ok1.SessionEpoch, 2, charID)
 
-	tk2, _ := reg.IssueTicket(ctx, acct, 1,
+	tk2, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	c2 := wsDial(t, addr)
 	env2 := wsHello(t, c2, helloTicket(tk2.Credential, 1))
@@ -127,7 +128,7 @@ func TestReconnectAuthority(t *testing.T) {
 	addr := startListener(t, reg)
 	ctx := testCtx()
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1,
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	c1 := wsDial(t, addr)
 	env := wsHello(t, c1, helloTicket(tk.Credential, 1))
@@ -169,7 +170,7 @@ func TestOneAccountOneCharacter(t *testing.T) {
 	charC := seedCharacter(t, store, other, "hero.c")
 	ctx := testCtx()
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1,
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	d := reg.Hello(ctx, listener.HelloMeta{}, helloTicket(tk.Credential, 1))
 	epoch := d.OK.SessionEpoch

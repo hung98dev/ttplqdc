@@ -229,6 +229,7 @@ func startListenerWindow(t *testing.T, reg *Registry, helloWindow time.Duration)
 		Session:    reg,
 		Intents:    reg,
 		Disconnect: reg,
+		RTT:        reg,
 	})
 	if err != nil {
 		t.Fatalf("listener: %v", err)

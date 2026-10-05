@@ -8,6 +8,7 @@ import (
 	"github.com/coder/websocket"
 	"google.golang.org/protobuf/proto"
 
+	"thinhthan/internal/core/id"
 	"thinhthan/internal/durable/account"
 	"thinhthan/internal/edge/listener"
 	protocolv1 "thinhthan/internal/protocol/v1"
@@ -23,7 +24,7 @@ func TestSupersedingTicketReattachesLiveCharacter(t *testing.T) {
 	addr := startListener(t, reg)
 	ctx := testCtx()
 
-	tk1, _ := reg.IssueTicket(ctx, acct, 1,
+	tk1, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	c1 := wsDial(t, addr)
 	env1 := wsHello(t, c1, helloTicket(tk1.Credential, 1))
@@ -41,7 +42,7 @@ func TestSupersedingTicketReattachesLiveCharacter(t *testing.T) {
 
 	// Second login: supersede — old conn gets id 8, new session resumes
 	// the character with no CHARACTER_LIST.
-	tk2, _ := reg.IssueTicket(ctx, acct, 1,
+	tk2, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	c2 := wsDial(t, addr)
 	env2 := wsHello(t, c2, helloTicket(tk2.Credential, 1))
@@ -71,7 +72,7 @@ func TestResumeCredentialRotationEvery300s(t *testing.T) {
 	addr := startListener(t, reg)
 	ctx := testCtx()
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1,
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	c := wsDial(t, addr)
 	env := wsHello(t, c, helloTicket(tk.Credential, 1))
@@ -104,7 +105,7 @@ func TestPredecessorCredentialInvalidAfterNewestUsed(t *testing.T) {
 	addr := startListener(t, reg)
 	ctx := testCtx()
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1,
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	c := wsDial(t, addr)
 	env := wsHello(t, c, helloTicket(tk.Credential, 1))
@@ -157,7 +158,7 @@ func TestTicketBypassesQueueDuringGrace(t *testing.T) {
 	ctx := testCtx()
 	plat := protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1, plat, 0, "")
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1, plat, 0, "")
 	c1 := wsDial(t, addr)
 	env := wsHello(t, c1, helloTicket(tk.Credential, 1))
 	var ok protocolv1.S2CHelloOk
@@ -183,12 +184,12 @@ func TestTicketBypassesQueueDuringGrace(t *testing.T) {
 		}
 		time.Sleep(10 * time.Millisecond)
 	}
-	tkO, _ := reg.IssueTicket(ctx, other, 1, plat, 0, "")
+	tkO, _ := reg.IssueTicket(ctx, other, id.UUID{}, 1, plat, 0, "")
 	if tkO.Credential != "" {
 		t.Fatal("queued account unexpectedly admitted")
 	}
 	// The grace account bypasses the queue on the ticket path.
-	tk2, err := reg.IssueTicket(ctx, acct, 1, plat, 0, "")
+	tk2, err := reg.IssueTicket(ctx, acct, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tk2.Credential == "" || tk2.QueuePosition != 0 {
 		t.Fatalf("grace bypass: %+v err=%v", tk2, err)
 	}
@@ -204,13 +205,13 @@ func TestAttachNeverServerOverloaded(t *testing.T) {
 	ctx := testCtx()
 	plat := protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1, plat, 0, "")
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1, plat, 0, "")
 	d := reg.Hello(ctx, listener.HelloMeta{}, helloTicket(tk.Credential, 1))
 	if d.OK == nil {
 		t.Fatalf("hello: %+v", d.Reject)
 	}
 	// Saturate: another account waits on the (full) capacity.
-	tkQ, _ := reg.IssueTicket(ctx, queued, 1, plat, 0, "")
+	tkQ, _ := reg.IssueTicket(ctx, queued, id.UUID{}, 1, plat, 0, "")
 	if tkQ.Credential != "" {
 		t.Fatal("setup: queue not saturated")
 	}
@@ -239,7 +240,7 @@ func TestPhaseLegalitySilentDrop(t *testing.T) {
 	acct := seedAccount(t, store)
 	ctx := testCtx()
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1,
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1,
 		protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS, 0, "")
 	d := reg.Hello(ctx, listener.HelloMeta{}, helloTicket(tk.Credential, 1))
 	// Stale epoch → silent drop.
@@ -277,7 +278,7 @@ func TestDetachRejections(t *testing.T) {
 	ctx := testCtx()
 	plat := protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS
 
-	tk, _ := reg.IssueTicket(ctx, acct, 1, plat, 0, "")
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1, plat, 0, "")
 	d := reg.Hello(ctx, listener.HelloMeta{}, helloTicket(tk.Credential, 1))
 	epoch := d.OK.SessionEpoch
 	var pe *protoError
@@ -305,7 +306,7 @@ func TestDetachRejections(t *testing.T) {
 	if err := store.SetStatus(ctx, nil, acct2, account.StatusPendingDeletion); err != nil {
 		t.Fatalf("status: %v", err)
 	}
-	tk2, _ := reg.IssueTicket(ctx, acct2, 1, plat, 0, "")
+	tk2, _ := reg.IssueTicket(ctx, acct2, id.UUID{}, 1, plat, 0, "")
 	d2 := reg.Hello(ctx, listener.HelloMeta{}, helloTicket(tk2.Credential, 1))
 	if d2.OK == nil {
 		t.Fatalf("pending-deletion hello: %+v", d2.Reject)
@@ -316,5 +317,66 @@ func TestDetachRejections(t *testing.T) {
 	})
 	if !errors.As(err, &pe) || pe.code != protocolv1.ErrorCode_ERROR_CODE_ACCOUNT_PENDING_DELETION {
 		t.Fatalf("pending-deletion attach: %v", err)
+	}
+}
+
+// TestUnboundConnDisconnectReleasesSession: a conn that HELLO'd but never
+// dispatched an inbound (idle in character select) is invisible to the
+// conn->session map — HELLO/heartbeat bypass Enqueue. The heartbeat
+// Publish proves it was live and unbound, so its disconnect releases the
+// session immediately instead of leaking the slot (session.md §
+// Admission: character-select disconnect releases at once).
+func TestUnboundConnDisconnectReleasesSession(t *testing.T) {
+	reg, store, _ := newTestRegistry(t, 1)
+	acct := seedAccount(t, store)
+	other := seedAccount(t, store)
+	addr := startListener(t, reg)
+	ctx := testCtx()
+	plat := protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS
+
+	tk, _ := reg.IssueTicket(ctx, acct, id.UUID{}, 1, plat, 0, "")
+	c1 := wsDial(t, addr)
+	env := wsHello(t, c1, helloTicket(tk.Credential, 1))
+	var ok protocolv1.S2CHelloOk
+	if err := proto.Unmarshal(env.Payload, &ok); err != nil {
+		t.Fatalf("hello_ok: %v", err)
+	}
+	// A heartbeat with a nonzero echo reaches Publish — the only hook the
+	// listener gives a conn that stays silent after HELLO.
+	wsEnv(t, c1, 4, ok.SessionEpoch, 2, &protocolv1.C2SHeartbeat{
+		EchoServerMs: uint64(time.Now().UnixMilli()),
+	})
+	deadline := time.Now().Add(3 * time.Second)
+	for {
+		reg.mu.Lock()
+		live := len(reg.unboundLive)
+		reg.mu.Unlock()
+		if live > 0 {
+			break
+		}
+		if time.Now().After(deadline) {
+			t.Fatal("publish never observed")
+		}
+		time.Sleep(10 * time.Millisecond)
+	}
+	// Abrupt disconnect with no dispatched inbound ever: the session
+	// releases and the queue slot frees for the next account.
+	c1.Close(websocket.StatusAbnormalClosure, "lost")
+	deadline = time.Now().Add(3 * time.Second)
+	for {
+		reg.mu.Lock()
+		s := reg.byAccount[acct]
+		reg.mu.Unlock()
+		if s == nil {
+			break
+		}
+		if time.Now().After(deadline) {
+			t.Fatal("session never released")
+		}
+		time.Sleep(10 * time.Millisecond)
+	}
+	tkO, err := reg.IssueTicket(ctx, other, id.UUID{}, 1, plat, 0, "")
+	if err != nil || tkO.Credential == "" {
+		t.Fatalf("slot not freed: %+v err=%v", tkO, err)
 	}
 }

@@ -7,6 +7,7 @@ import (
 
 	"thinhthan/internal/core/id"
 	"thinhthan/internal/durable/account"
+	"thinhthan/internal/edge/heartbeat"
 	"thinhthan/internal/edge/listener"
 	"thinhthan/internal/edge/router"
 	protocolv1 "thinhthan/internal/protocol/v1"
@@ -44,6 +45,7 @@ func (r *Registry) Enqueue(ctx context.Context, c *listener.Conn, f listener.Inb
 	if s.conn == nil {
 		s.conn = c
 		r.conns[c] = s
+		delete(r.unboundLive, c)
 		bind = true
 	}
 	r.mu.Unlock()
@@ -96,14 +98,49 @@ func (r *Registry) Enqueue(ctx context.Context, c *listener.Conn, f listener.Inb
 	return err
 }
 
+// Publish implements listener.RTTSink. Heartbeat frames never reach
+// Enqueue, so a conn that HELLO'd and stays in character select is
+// invisible until this hook: its presence proves the conn is post-HELLO
+// and alive. The RTT sample itself is unused here.
+func (r *Registry) Publish(c *listener.Conn, _ heartbeat.Sample) {
+	r.mu.Lock()
+	defer r.mu.Unlock()
+	if _, bound := r.conns[c]; !bound {
+		r.unboundLive[c] = struct{}{}
+	}
+}
+
 // Disconnected implements listener.DisconnectSink: a session holding a
 // live character enters the 30 s reconnect grace (slot state
 // RECONNECT_GRACE); a session without one releases its slot at once.
 func (r *Registry) Disconnected(c *listener.Conn, code int, reason string) {
 	r.mu.Lock()
 	defer r.mu.Unlock()
+	_, wasLive := r.unboundLive[c]
+	delete(r.unboundLive, c)
 	s, ok := r.conns[c]
 	if !ok {
+		// The dead conn never dispatched an inbound, so no session is
+		// bound to it. Release is only provable when it was the sole
+		// unbound live conn (Publish evidence) and exactly one session
+		// is still unbound: that session's conn was c — character-select
+		// disconnect releases immediately (session.md § Admission).
+		if !wasLive || len(r.unboundLive) != 0 {
+			return
+		}
+		var orphan *sess
+		for _, cand := range r.sessions {
+			if cand.conn == nil && cand.graceTimer == nil {
+				if orphan != nil {
+					return
+				}
+				orphan = cand
+			}
+		}
+		if orphan == nil {
+			return
+		}
+		r.releaseLocked(orphan)
 		return
 	}
 	delete(r.conns, c)
@@ -169,11 +206,33 @@ func retryOf(code protocolv1.ErrorCode) protocolv1.Retryability {
 // session of the account is notified with SESSION_REPLACED{REVOKED},
 // closed and released; an attached character is detached.
 func (r *Registry) RevokeAccountSessions(ctx context.Context, accountID id.UUID) {
+	r.revokeSessions(ctx, accountID, func(*sess) bool { return true })
+}
+
+// RevokeSessionsExcept implements auth.SessionRevoker: revokes the
+// account's live session only when it belongs to a different login
+// family (password change / takeover keep the caller's session).
+func (r *Registry) RevokeSessionsExcept(ctx context.Context, accountID id.UUID, keepFamily id.UUID) {
+	r.revokeSessions(ctx, accountID, func(s *sess) bool {
+		return s.familyID != keepFamily
+	})
+}
+
+// RevokeFamilySessions implements auth.SessionRevoker: revokes the
+// account's live session only when it belongs to the given login family
+// (logout scope SESSION).
+func (r *Registry) RevokeFamilySessions(ctx context.Context, accountID id.UUID, familyID id.UUID) {
+	r.revokeSessions(ctx, accountID, func(s *sess) bool {
+		return s.familyID == familyID
+	})
+}
+
+func (r *Registry) revokeSessions(ctx context.Context, accountID id.UUID, match func(*sess) bool) {
 	var closeConns []*listener.Conn
 	var charID *id.UUID
 	var epoch uint64
 	r.mu.Lock()
-	if s, ok := r.byAccount[accountID]; ok {
+	if s, ok := r.byAccount[accountID]; ok && match(s) {
 		epoch = s.epoch
 		if s.graceTimer != nil {
 			s.graceTimer.Stop()

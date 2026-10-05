@@ -4,6 +4,7 @@ import (
 	"testing"
 	"time"
 
+	"thinhthan/internal/core/id"
 	"thinhthan/internal/edge/listener"
 	protocolv1 "thinhthan/internal/protocol/v1"
 )
@@ -19,18 +20,18 @@ func TestFifoAdmission(t *testing.T) {
 	ctx := testCtx()
 	plat := protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS
 
-	tkA, err := reg.IssueTicket(ctx, a, 1, plat, 0, "")
+	tkA, err := reg.IssueTicket(ctx, a, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tkA.Credential == "" {
 		t.Fatalf("A ticket: %v", err)
 	}
-	tkB, err := reg.IssueTicket(ctx, b, 1, plat, 0, "")
+	tkB, err := reg.IssueTicket(ctx, b, id.UUID{}, 1, plat, 0, "")
 	if err != nil {
 		t.Fatalf("B ticket: %v", err)
 	}
 	if tkB.Credential != "" || tkB.QueuePosition != 1 || tkB.RetryAfterMs != 5000 {
 		t.Fatalf("B must be head of queue: %+v", tkB)
 	}
-	tkC, err := reg.IssueTicket(ctx, c, 1, plat, 0, "")
+	tkC, err := reg.IssueTicket(ctx, c, id.UUID{}, 1, plat, 0, "")
 	if err != nil {
 		t.Fatalf("C ticket: %v", err)
 	}
@@ -38,7 +39,7 @@ func TestFifoAdmission(t *testing.T) {
 		t.Fatalf("C position: %+v", tkC)
 	}
 	// B re-requests while the slot is still held → stays queued.
-	tkB2, err := reg.IssueTicket(ctx, b, 1, plat, 0, "")
+	tkB2, err := reg.IssueTicket(ctx, b, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tkB2.Credential != "" || tkB2.QueuePosition != 1 {
 		t.Fatalf("B head re-request: %+v", tkB2)
 	}
@@ -52,12 +53,12 @@ func TestFifoAdmission(t *testing.T) {
 	s := reg.byAccount[a]
 	reg.releaseLocked(s)
 	reg.mu.Unlock()
-	tkB3, err := reg.IssueTicket(ctx, b, 1, plat, 0, "")
+	tkB3, err := reg.IssueTicket(ctx, b, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tkB3.Credential == "" {
 		t.Fatalf("B admit after release: %+v err=%v", tkB3, err)
 	}
 	// C still queued behind.
-	tkC2, err := reg.IssueTicket(ctx, c, 1, plat, 0, "")
+	tkC2, err := reg.IssueTicket(ctx, c, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tkC2.Credential != "" || tkC2.QueuePosition != 1 {
 		t.Fatalf("C after B admitted: %+v", tkC2)
 	}
@@ -74,7 +75,7 @@ func TestReconnectBypassesQueue(t *testing.T) {
 	ctx := testCtx()
 	plat := protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS
 
-	tkA, _ := reg.IssueTicket(ctx, a, 1, plat, 0, "")
+	tkA, _ := reg.IssueTicket(ctx, a, id.UUID{}, 1, plat, 0, "")
 	d := reg.Hello(ctx, listener.HelloMeta{}, helloTicket(tkA.Credential, 1))
 	if err := reg.Enqueue(ctx, nil, listener.Inbound{
 		MessageID: 6, SessionEpoch: d.OK.SessionEpoch, ClientSeq: 2,
@@ -83,12 +84,12 @@ func TestReconnectBypassesQueue(t *testing.T) {
 		t.Fatalf("attach: %v", err)
 	}
 	// B queues behind the full capacity.
-	tkB, _ := reg.IssueTicket(ctx, b, 1, plat, 0, "")
+	tkB, _ := reg.IssueTicket(ctx, b, id.UUID{}, 1, plat, 0, "")
 	if tkB.Credential != "" {
 		t.Fatal("B unexpectedly admitted")
 	}
 	// A requests a ticket while holding a live character → bypass.
-	tkA2, err := reg.IssueTicket(ctx, a, 1, plat, 0, "")
+	tkA2, err := reg.IssueTicket(ctx, a, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tkA2.Credential == "" || tkA2.QueuePosition != 0 {
 		t.Fatalf("reconnect bypass: %+v err=%v", tkA2, err)
 	}
@@ -105,21 +106,21 @@ func TestAdmissionWindowExpiry(t *testing.T) {
 	ctx := testCtx()
 	plat := protocolv1.ClientPlatform_CLIENT_PLATFORM_WINDOWS
 
-	tkA, _ := reg.IssueTicket(ctx, a, 1, plat, 0, "")
+	tkA, _ := reg.IssueTicket(ctx, a, id.UUID{}, 1, plat, 0, "")
 	if tkA.Credential == "" {
 		t.Fatal("setup: A must hold the slot")
 	}
-	if _, err := reg.IssueTicket(ctx, b, 1, plat, 0, ""); err != nil {
+	if _, err := reg.IssueTicket(ctx, b, id.UUID{}, 1, plat, 0, ""); err != nil {
 		t.Fatalf("B queue: %v", err)
 	}
 	// B never re-requests. After the window lapses C takes the head.
 	clk.Advance(61 * time.Second)
-	tkC, err := reg.IssueTicket(ctx, c, 1, plat, 0, "")
+	tkC, err := reg.IssueTicket(ctx, c, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tkC.Credential != "" || tkC.QueuePosition != 1 {
 		t.Fatalf("C head after B stale: %+v err=%v", tkC, err)
 	}
 	// B re-requesting now queues behind C.
-	tkB2, err := reg.IssueTicket(ctx, b, 1, plat, 0, "")
+	tkB2, err := reg.IssueTicket(ctx, b, id.UUID{}, 1, plat, 0, "")
 	if err != nil || tkB2.Credential != "" || tkB2.QueuePosition != 2 {
 		t.Fatalf("B after eviction: %+v", tkB2)
 	}

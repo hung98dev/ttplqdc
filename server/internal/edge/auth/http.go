@@ -393,6 +393,12 @@ func (h *Handler) ticket(w http.ResponseWriter, r *http.Request) {
 		writeError(w, err)
 		return
 	}
+	if res.Credential == "" {
+		// Queue position answer: 503 SERVER_OVERLOADED carrying
+		// queue_position + retry_after_ms (auth.md § gameplay/ticket).
+		writeError(w, ErrServerOverloaded(res.QueuePosition, res.RetryAfterMs))
+		return
+	}
 	writeJSON(w, http.StatusOK, map[string]any{
 		"ticket":             res.Credential,
 		"ticket_expires_at":  res.ExpiresAt.Format(time.RFC3339),

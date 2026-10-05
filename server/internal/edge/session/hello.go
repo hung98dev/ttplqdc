@@ -15,8 +15,8 @@ import (
 // FIFO queue position. Reconnect paths (live character / grace) bypass.
 // The registry mutex is the single Edge admission owner.
 func (r *Registry) IssueTicket(ctx context.Context, accountID id.UUID,
-	clientBuild uint32, platform protocolv1.ClientPlatform, protocolMinor uint32,
-	contentRevision string) (Ticket, error) {
+	familyID id.UUID, clientBuild uint32, platform protocolv1.ClientPlatform,
+	protocolMinor uint32, contentRevision string) (Ticket, error) {
 	now := r.cfg.Now()
 	var t Ticket
 
@@ -41,6 +41,7 @@ func (r *Registry) IssueTicket(ctx context.Context, accountID id.UUID,
 	expires := now.Add(r.cfg.TicketTTL)
 	r.tickets[cred] = &ticket{
 		accountID:       accountID,
+		familyID:        familyID,
 		clientBuild:     clientBuild,
 		platform:        platform,
 		protocolMinor:   protocolMinor,
@@ -185,6 +186,7 @@ func (r *Registry) consumeTicketLocked(cred string, msg *protocolv1.C2SHello, no
 	s := &sess{
 		id:              id.NewV7(now),
 		accountID:       t.accountID,
+		familyID:        t.familyID,
 		epoch:           r.mintEpochLocked(t.accountID),
 		attaching:       true,
 		contentRevision: pickRevision(t.contentRevision, r.cfg.ContentRevision),

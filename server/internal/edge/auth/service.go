@@ -87,9 +87,9 @@ type accessClaims struct {
 
 // TicketIssuer mints gameplay tickets / queue positions (edge/session).
 type TicketIssuer interface {
-	IssueTicket(ctx context.Context, accountID id.UUID, clientBuild uint32,
-		platform protocolv1.ClientPlatform, protocolMinor uint32,
-		contentRevision string) (session.Ticket, error)
+	IssueTicket(ctx context.Context, accountID id.UUID, familyID id.UUID,
+		clientBuild uint32, platform protocolv1.ClientPlatform,
+		protocolMinor uint32, contentRevision string) (session.Ticket, error)
 }
 
 // TicketResult mirrors session.Ticket for the auth edge.
@@ -109,6 +109,12 @@ type SessionRevoker interface {
 	// RevokeAccountSessions pushes SESSION_REPLACED{REVOKED} to every live
 	// session of the account and releases their slots.
 	RevokeAccountSessions(ctx context.Context, accountID id.UUID)
+	// RevokeSessionsExcept revokes the account's live session only when it
+	// belongs to a login family other than keepFamily.
+	RevokeSessionsExcept(ctx context.Context, accountID id.UUID, keepFamily id.UUID)
+	// RevokeFamilySessions revokes the account's live session only when it
+	// belongs to the given login family.
+	RevokeFamilySessions(ctx context.Context, accountID id.UUID, familyID id.UUID)
 }
 
 // Config wires the service.
@@ -242,6 +248,13 @@ func (s *Service) newFamily(ctx context.Context, tx pgx.Tx, accountID id.UUID,
 	providerID string, meta LoginMeta) (family account.FamilyRow, refreshCred string, err error) {
 	now := s.cfg.Now()
 	devHash := s.cfg.Salt.DeviceIDHash([]byte(meta.DeviceID))
+	switch meta.Platform {
+	case "WINDOWS", "ANDROID":
+	default:
+		// client_platform has a CHECK constraint — reject at the edge
+		// rather than surfacing a durable write failure as a 503.
+		return family, "", ErrBadRequest
+	}
 	family = account.FamilyRow{
 		SessionFamilyID:   id.NewV7(now),
 		AccountID:         accountID,
@@ -698,7 +711,7 @@ func (s *Service) Logout(ctx context.Context, accessToken, scope string) error {
 		return err
 	}
 	now := s.cfg.Now()
-	return s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
@@ -730,6 +743,20 @@ func (s *Service) Logout(ctx context.Context, accessToken, scope string) error {
 		}
 		return nil
 	})
+	if err != nil {
+		return err
+	}
+	// The revoked credentials' live gameplay connection is deauthorized
+	// (session.md § Logout).
+	if s.cfg.Revoker != nil {
+		switch scope {
+		case "SESSION":
+			s.cfg.Revoker.RevokeFamilySessions(ctx, claims.accountID, claims.familyID)
+		case "ALL":
+			s.cfg.Revoker.RevokeAccountSessions(ctx, claims.accountID)
+		}
+	}
+	return nil
 }
 
 // ---------------------------------------------------------------------------
@@ -840,6 +867,11 @@ func (s *Service) PasswordChange(ctx context.Context, accessToken,
 		}
 	}
 	s.mu.Unlock()
+	// Force session invalidation for the revoked families' live gameplay
+	// connection (session.md § Security Events); the caller's survives.
+	if s.cfg.Revoker != nil {
+		s.cfg.Revoker.RevokeSessionsExcept(ctx, claims.accountID, claims.familyID)
+	}
 	return resp, nil
 }
 
@@ -1118,8 +1150,8 @@ func (s *Service) Ticket(ctx context.Context, accessToken string,
 	if s.cfg.Tickets == nil {
 		return TicketResult{}, ErrTemporaryDependency
 	}
-	t, err := s.cfg.Tickets.IssueTicket(ctx, claims.accountID, clientBuild,
-		platform, protoMinor, contentRevision)
+	t, err := s.cfg.Tickets.IssueTicket(ctx, claims.accountID, claims.familyID,
+		clientBuild, platform, protoMinor, contentRevision)
 	if err != nil {
 		return TicketResult{}, err
 	}
@@ -1149,7 +1181,7 @@ func (s *Service) DeleteAccount(ctx context.Context, accessToken,
 	if err != nil {
 		return err
 	}
-	return s.store.InTx(ctx, func(tx pgx.Tx) error {
+	err = s.store.InTx(ctx, func(tx pgx.Tx) error {
 		if err := account.LockAccount(ctx, tx, claims.accountID); err != nil {
 			return err
 		}
@@ -1180,6 +1212,13 @@ func (s *Service) DeleteAccount(ctx context.Context, accessToken,
 			account.RevocationScopeAccount, &claims.accountID,
 			nil, nil, now, now, now.Add(FamilyAbsoluteTTL))
 	})
+	if err != nil {
+		return err
+	}
+	if s.cfg.Revoker != nil {
+		s.cfg.Revoker.RevokeAccountSessions(ctx, claims.accountID)
+	}
+	return nil
 }
 
 // reAuthenticate verifies the deletion re-auth credential.

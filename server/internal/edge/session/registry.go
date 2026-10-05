@@ -78,6 +78,7 @@ type Ticket struct {
 // ticket rec is stored against the opaque credential string.
 type ticket struct {
 	accountID       id.UUID
+	familyID        id.UUID
 	clientBuild     uint32
 	platform        protocolv1.ClientPlatform
 	protocolMinor   uint32
@@ -102,6 +103,7 @@ type sess struct {
 	conn           *listener.Conn // bound on first inbound
 	attaching      bool           // reserved → waiting HELLO→attach
 	charID         *id.UUID       // attached character
+	familyID       id.UUID        // login family the ticket was minted under
 	ownershipEpoch uint64         // minted per attach (messages.md id 7)
 
 	contentRevision string
@@ -142,7 +144,11 @@ type Registry struct {
 	liveChar   map[id.UUID]*sess  // charID → session holding it
 	ownership  map[id.UUID]uint64 // charID → last ownership epoch
 	conns      map[*listener.Conn]*sess
-	router     DurableRouter
+	// unboundLive tracks conns observed via heartbeat Publish before any
+	// dispatched inbound bound them to a session — proof the conn is
+	// post-HELLO and alive (HELLO/heartbeat frames bypass Enqueue).
+	unboundLive map[*listener.Conn]struct{}
+	router      DurableRouter
 }
 
 // New builds the session registry. store backs ownership/login-signal
@@ -173,18 +179,19 @@ func New(cfg Config, store *account.Store, q *queue.Queue) *Registry {
 		cfg.Capacity = 1
 	}
 	return &Registry{
-		cfg:        cfg,
-		store:      store,
-		q:          q,
-		queue:      newLoginQueue(cfg.Capacity, cfg.AdmissionWindow),
-		tickets:    make(map[string]*ticket),
-		resumes:    make(map[string]*resumeCred),
-		resumeSess: make(map[string]*sess),
-		sessions:   make(map[uint64]*sess),
-		byAccount:  make(map[id.UUID]*sess),
-		liveChar:   make(map[id.UUID]*sess),
-		ownership:  make(map[id.UUID]uint64),
-		conns:      make(map[*listener.Conn]*sess),
+		cfg:         cfg,
+		store:       store,
+		q:           q,
+		queue:       newLoginQueue(cfg.Capacity, cfg.AdmissionWindow),
+		tickets:     make(map[string]*ticket),
+		resumes:     make(map[string]*resumeCred),
+		resumeSess:  make(map[string]*sess),
+		sessions:    make(map[uint64]*sess),
+		byAccount:   make(map[id.UUID]*sess),
+		liveChar:    make(map[id.UUID]*sess),
+		ownership:   make(map[id.UUID]uint64),
+		conns:       make(map[*listener.Conn]*sess),
+		unboundLive: make(map[*listener.Conn]struct{}),
 	}
 }
 

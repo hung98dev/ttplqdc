@@ -177,6 +177,7 @@ func run(ctx context.Context) error {
 		Session:    sessReg,
 		Intents:    sessReg,
 		Disconnect: sessReg,
+		RTT:        sessReg,
 	})
 	if err != nil {
 		return err
@@ -187,7 +188,9 @@ func run(ctx context.Context) error {
 	// Public mux: /api/v1/* → auth handler; /ws → loopback proxy.
 	proxy := &httputil.ReverseProxy{
 		Rewrite: func(pr *httputil.ProxyRequest) {
-			pr.SetURL(&url.URL{Scheme: "http", Host: ln.Addr().String(), Path: "/ws"})
+			// Host-only rewrite: SetURL joins the target path with the inbound
+			// path, so a Path here would turn /ws into /ws/ws.
+			pr.SetURL(&url.URL{Scheme: "http", Host: ln.Addr().String()})
 			// In SERVER mode we terminate TLS: the direct peer is the
 			// client — any client-sent XFF is spoofable, so strip it and
 			// let the proxy write RemoteAddr as the single entry.
