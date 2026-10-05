@@ -72,7 +72,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `04_architecture/concurrency.md` | IMP-002, IMP-079, IMP-080, IMP-082 |
 | `04_architecture/physics_geometry_contract.md` | IMP-004, IMP-013, IMP-015, IMP-018, IMP-019, IMP-022, IMP-023, IMP-024, IMP-040, IMP-041, IMP-042, IMP-062, IMP-063, IMP-066, IMP-067, IMP-070, IMP-071, IMP-072, IMP-078, IMP-104, IMP-105 |
 | `04_architecture/realtime_loop.md` | IMP-013, IMP-014, IMP-055, IMP-062, IMP-069, IMP-078, IMP-079 |
-| `04_architecture/service_boundaries.md` | IMP-022, IMP-025, IMP-069, IMP-080, IMP-081 |
+| `04_architecture/service_boundaries.md` | IMP-022, IMP-025, IMP-069, IMP-080, IMP-081, IMP-100 |
 | `04_architecture/system_overview.md` | IMP-000, IMP-069, IMP-080 |
 | `05_network/errors.md` | IMP-006, IMP-061, IMP-065, IMP-081, IMP-100 |
 | `05_network/messages.md` | IMP-009, IMP-010, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-081, IMP-087, IMP-100, IMP-103 |

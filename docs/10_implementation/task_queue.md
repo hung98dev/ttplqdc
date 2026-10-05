@@ -1090,10 +1090,10 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../01_gameplay/character.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../06_data/text.md`, `../05_network/errors.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
-adrs: [`0013-canonical-unicode-text-normalization.md`, `0029-character-resource-isolation.md`, `0030-one-account-one-live-session.md`, `0048-character-update-timestamp.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0062-world-and-systems-regression-fixes.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
+specs: [`../01_gameplay/character.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../06_data/text.md`, `../05_network/errors.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../04_architecture/service_boundaries.md`]
+adrs: [`0013-canonical-unicode-text-normalization.md`, `0029-character-resource-isolation.md`, `0030-one-account-one-live-session.md`, `0048-character-update-timestamp.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0062-world-and-systems-regression-fixes.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`, `0081-client-durable-command-edge-seam.md`]
 depends_on: [IMP-006]
-owned_paths: [`server/internal/durable/character/`, `server/internal/edge/character/`]
+owned_paths: [`server/internal/durable/character/`, `server/internal/edge/character/`, `server/go.mod`, `server/go.sum`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
 contract_inputs: [authenticated account, create/select intents, account status]
 contract_outputs: [canonical character rows, character list/select result]
@@ -1110,10 +1110,11 @@ Implement character create/list/select: max three, class permanence, no deletion
 - `updated_at` changes on every character-row mutation,
 - a suspended account cannot create a character; existing characters stay playable.
 - ADR-0065: character names are 1..16 graphemes and <= 64 UTF-8 bytes after trim + NFC (`../06_data/text.md` § Name Limits); a name whose key starts with `anonymized_` is rejected with `CHARACTER_NAME_INVALID`; `name_key` up to 256 characters is stored.
+- ADR-0081 seam: the id-12 handler takes the injected session view (unattached = absent `character_id`), submits `JournalClientCommand`, awaits the terminal `JournalOutcome` through the client outcome await seam, delivers `S2C_CHARACTER_CREATE_RESULT` then `S2C_CHARACTER_LIST` on the connection, and `Ack`s only after delivery; a retried `operation_id` returns the retained committed outcome; `SUSPENDED_PAYMENT_RECONCILIATION` rejects as `S2C_ERROR` `ACCOUNT_SUSPENDED` (outside result-13's closed set).
 
 ## Tests
 - `server/internal/durable/character/name_limits_test.go`: TestNameGraphemeAndByteLimits, TestAnonymizedPrefixReserved, TestLongCaseFoldKeyStored (ADR-0065).
-- `server/internal/edge/character/character_wire_test.go`: TestCreateOnlyUnattached, TestCreateErrorCodes, TestCharacterListPushes.
+- `server/internal/edge/character/character_wire_test.go`: TestCreateOnlyUnattached, TestCreateErrorCodes, TestCharacterListPushes, TestSuspendedCreateUsesS2CError, TestCreateRetryReturnsCommittedOutcome.
 - `server/internal/durable/character/character_test.go`: TestMaxThreeCharactersPerAccount, TestFourthCharacterRejected, TestCharacterPermanenceNoDeletion, TestNormalizedNameKeyUniqueness, TestUpdatedAtMaintained, TestSuspendedAccountCannotCreate.
 - `server/internal/edge/character/character_handler_test.go`: TestCreateListSelectFlow, TestSelectForeignCharacterRejected.
 

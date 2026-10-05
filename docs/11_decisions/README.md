@@ -92,4 +92,5 @@ Use `docs/templates/adr.md`.
 | 0078 | Unity-on-Windows-Only CI and Go-Only Linux Runner Topology _(amended by ADR-0079)_ | ACCEPTED |
 | 0079 | Readiness Contract Closure — catalog/privacy/journal/plan-first source decisions; not runtime readiness certification | ACCEPTED |
 | 0080 | Competitive-Space Compile Sources | ACCEPTED |
+| 0081 | Client Durable Command Edge Seam | ACCEPTED |
 
