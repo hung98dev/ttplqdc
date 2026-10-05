@@ -434,24 +434,123 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
             string rel = "client/Assets/Art/UI/flat.png";
             Directory.CreateDirectory(Path.Combine(root,
                 "client/Assets/Art/UI"));
-            // 64x64 single-color opaque PNG = flat placeholder.
-            var img = new LabPixels.Image(64, 64);
-            var px = new LabPixels.Rgba { R = 10, G = 20, B = 30, A = 255 };
-            for (int i = 0; i < img.Pixels.Length; i++)
-            {
-                img.Set(i % 64, i / 64, px);
-            }
-            File.WriteAllBytes(Path.Combine(root,
-                rel.Replace('/', Path.DirectorySeparatorChar)),
-                ArtRuleFixtures.EncodePng(img));
+            File.WriteAllText(Path.Combine(root,
+                rel.Replace('/', Path.DirectorySeparatorChar)), "px");
             string sha = Sha256(Path.Combine(root,
                 rel.Replace('/', Path.DirectorySeparatorChar)));
-            WriteRegister(root, RowJson("FREE_LICENSED", rel, sha,
-                "CC0-1.0", "APPROVED", ""));
+            // Placeholder is a declared state: a row labelled placeholder
+            // must be flagged regardless of pixel content.
+            string row = RowJson("FREE_LICENSED", rel, sha,
+                "CC0-1.0", "APPROVED", "");
+            row = row.Insert(row.IndexOf('\n') + 1,
+                "\"placeholder\":true,\n");
+            WriteRegister(root, row);
             var report = ReleaseAudit.AuditMedia(root);
             var hits = WithSubject(report, rel);
-            Assert.IsTrue(HasDetail(hits, "flat-color placeholder"),
-                "flat placeholder not detected: " + report.Summary());
+            Assert.IsTrue(HasDetail(hits, "declared placeholder"),
+                "labelled placeholder not detected: " + report.Summary());
+        }
+
+        [Test]
+        public void TestGateScopeFollowsDeclaredClassAndProfile()
+        {
+            string root = NewRoot();
+            var png = new LabPixels.Image(192, 256);
+            var solid = new LabPixels.Rgba
+            {
+                R = 80, G = 40, B = 20, A = 255,
+            };
+            // Silhouette ~60px tall, feet at the bottom: a clear band miss if
+            // the 176..192 humanoid band were misapplied.
+            for (int y = 190; y < 250; y++)
+            {
+                for (int x = 70; x < 120; x++)
+                {
+                    png.Set(x, y, solid);
+                }
+            }
+            byte[] bytes = ArtRuleFixtures.EncodePng(png);
+
+            // Creature with a non-humanoid profile: only its own bbox limit
+            // binds, never the humanoid band.
+            string cdir = "client/Assets/Art/Actors/Creatures/z/m";
+            Directory.CreateDirectory(Path.Combine(root,
+                cdir.Replace('/', Path.DirectorySeparatorChar)));
+            File.WriteAllText(Path.Combine(root,
+                (cdir + "/actor_import.json").Replace('/',
+                    Path.DirectorySeparatorChar)),
+                "{\"asset_class\":\"ACTOR\",\"profile\":\"MONSTER_SMALL\","
+                    + "\"technique\":\"skeletal\",\"cell_ref\":[96,128],"
+                    + "\"texture_ref\":[192,256],\"assets\":{}}");
+            string creature = cdir + "/m.png";
+            File.WriteAllBytes(Path.Combine(root,
+                creature.Replace('/', Path.DirectorySeparatorChar)), bytes);
+
+            // UI_ART flat fill: volume/silhouette-exempt class, no pixel
+            // heuristic may mark it placeholder.
+            string udir = "client/Assets/Art/UI";
+            Directory.CreateDirectory(Path.Combine(root, udir));
+            File.WriteAllText(Path.Combine(root,
+                udir.Replace('/', Path.DirectorySeparatorChar)
+                    + "/import.json"),
+                "{\"asset_class\":\"UI_ART\",\"assets\":{}}");
+            string fill = udir + "/fill.png";
+            File.WriteAllBytes(Path.Combine(root,
+                fill.Replace('/', Path.DirectorySeparatorChar)), bytes);
+
+            // *_parts.png composite: never band, never placeholder.
+            string parts = cdir + "/m_parts.png";
+            File.WriteAllBytes(Path.Combine(root,
+                parts.Replace('/', Path.DirectorySeparatorChar)), bytes);
+
+            // PARALLAX_FAR under World: exempt-class flat render.
+            string wdir = "client/Assets/Art/World/z/parallax";
+            Directory.CreateDirectory(Path.Combine(root,
+                wdir.Replace('/', Path.DirectorySeparatorChar)));
+            string far = wdir + "/bg.far.png";
+            File.WriteAllBytes(Path.Combine(root,
+                far.Replace('/', Path.DirectorySeparatorChar)), bytes);
+
+            // Humanoid figure surface positive control: player sheet with
+            // the same 60px silhouette must still flag the band.
+            string pdir = "client/Assets/Art/Actors/Players/x";
+            Directory.CreateDirectory(Path.Combine(root,
+                pdir.Replace('/', Path.DirectorySeparatorChar)));
+            string sheet = pdir + "/x_sheet.png";
+            File.WriteAllBytes(Path.Combine(root,
+                sheet.Replace('/', Path.DirectorySeparatorChar)), bytes);
+
+            var rows = new StringBuilder();
+            foreach (var rel in new[] { creature, fill, parts, far, sheet })
+            {
+                string sha = Sha256(Path.Combine(root,
+                    rel.Replace('/', Path.DirectorySeparatorChar)));
+                if (rows.Length != 0)
+                {
+                    rows.Append(',');
+                }
+                rows.Append(RowJson("FREE_LICENSED", rel, sha,
+                    "CC0-1.0", "APPROVED", ""));
+            }
+            WriteRegister(root, rows.ToString());
+
+            var report = ReleaseAudit.Run(root, runArtGates: true);
+            foreach (var rel in new[] { creature, parts })
+            {
+                var hits = WithSubject(report, rel);
+                Assert.IsFalse(HasDetail(hits, "body height"),
+                    "non-humanoid file hit by body band: " + rel);
+                Assert.IsFalse(HasDetail(hits, "body band"),
+                    "non-humanoid file hit by body band: " + rel);
+            }
+            var placeholder = report.OfDomain("placeholder");
+            Assert.IsEmpty(placeholder,
+                "placeholder finding without declared label: "
+                    + report.Summary());
+            var sheetHits = WithSubject(report, sheet);
+            Assert.IsTrue(HasDetail(sheetHits, "body height")
+                || HasDetail(sheetHits, "body band"),
+                "humanoid figure surface lost its band check: " + sheet);
         }
 
         [Test]

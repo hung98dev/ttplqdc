@@ -1926,45 +1926,83 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
 
         // ---------------- placeholders ----------------
 
+        /// <summary>
+        /// Placeholder is a declared state, never a pixel heuristic: a row
+        /// flagged <c>placeholder</c>, a PLACEHOLDER source_kind, or an
+        /// ancestor import manifest marking the file as placeholder.
+        /// Missing or unapproved source records are reported by the
+        /// provenance/coverage domains instead.
+        /// </summary>
         private static void CheckPlaceholders(string repoRoot, List<Row> rows,
             Report report)
         {
             for (int i = 0; i < rows.Count; i++)
             {
                 string rel = rows[i].FilePath;
-                if (!rel.EndsWith(".png", StringComparison.Ordinal))
+                string reason;
+                var pl = rows[i].Node.Get("placeholder");
+                if (pl != null
+                    && ((pl.Type == RegisterJson.Node.Kind.Bool && pl.Bool)
+                        || (pl.Type == RegisterJson.Node.Kind.Str
+                            && pl.Str!.Length != 0
+                            && pl.Str != "false")))
+                {
+                    reason = "declared placeholder label in source record";
+                }
+                else if (StrField(rows[i].Node, "source_kind")
+                    == "PLACEHOLDER")
+                {
+                    reason = "PLACEHOLDER source_kind";
+                }
+                else if (ImportDeclaresPlaceholder(repoRoot, rel))
+                {
+                    reason = "placeholder flag in import metadata";
+                }
+                else
                 {
                     continue;
                 }
-                string abs = Path.Combine(repoRoot,
-                    rel.Replace('/', Path.DirectorySeparatorChar));
-                if (!File.Exists(abs))
-                {
-                    continue;
-                }
-                var img = ArtRuleFixtures.LoadPng(abs);
-                int opaque = 0;
-                var colors = new HashSet<int>();
-                for (int px = 0; px < img.Pixels.Length; px++)
-                {
-                    var p = img.Pixels[px];
-                    if (p.A >= 128)
-                    {
-                        opaque++;
-                        colors.Add((p.R << 16) | (p.G << 8) | p.B);
-                    }
-                }
-                if (opaque <= 100)
-                {
-                    Add(report, "placeholder", rel,
-                        "no silhouette (opaque <= 100 px)");
-                }
-                else if (colors.Count < 4)
-                {
-                    Add(report, "placeholder", rel,
-                        "flat-color placeholder (<4 opaque colors)");
-                }
+                Add(report, "placeholder", rel, reason);
             }
+        }
+
+        /// <summary>
+        /// True when the nearest ancestor import manifest marks this file
+        /// <c>"placeholder": true</c> under its assets map.
+        /// </summary>
+        private static bool ImportDeclaresPlaceholder(string repoRoot,
+            string rel)
+        {
+            string file = Path.GetFileName(rel);
+            string dir = Path.GetDirectoryName(rel)!.Replace('\\', '/');
+            while (dir.Length > "client/Assets".Length)
+            {
+                for (int m = 0; m < 2; m++)
+                {
+                    string man = m == 0 ? "actor_import.json" : "import.json";
+                    string p = Path.Combine(repoRoot,
+                        (dir + "/" + man).Replace('/',
+                            Path.DirectorySeparatorChar));
+                    if (!File.Exists(p))
+                    {
+                        continue;
+                    }
+                    var root = RegisterJson.Parse(File.ReadAllText(p));
+                    var assets = root.Get("assets");
+                    if (assets == null
+                        || assets.Type != RegisterJson.Node.Kind.Obj
+                        || !assets.Obj!.TryGetValue(file, out var meta))
+                    {
+                        return false;
+                    }
+                    var pl = meta.Get("placeholder");
+                    return pl != null
+                        && pl.Type == RegisterJson.Node.Kind.Bool && pl.Bool;
+                }
+                int cut = dir.LastIndexOf('/');
+                dir = cut < 0 ? string.Empty : dir.Substring(0, cut);
+            }
+            return false;
         }
 
         // ---------------- ART-* gates ----------------
@@ -2319,7 +2357,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             declared = null;
             string name = Path.GetFileName(rel);
             ImportMeta(rel, out cellW, out cellH, out detached, out pixelArt,
-                out declared);
+                out declared, out string? profile);
             // Cosmetic /parts/ holds sprite-library slices (sub-sprites of a
             // composite appearance), not standalone presentation surfaces —
             // the coverage gate exempts them, so the release audit does too.
@@ -2330,16 +2368,16 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             }
             if (rel.IndexOf("/Actors/", StringComparison.Ordinal) >= 0)
             {
-                // Only the cell-format player sheet is a CHARACTER figure
-                // surface; turnarounds are full-frame gallery renders.
-                figure = name.EndsWith("_sheet.png", StringComparison.Ordinal);
+                figure = FigureSurface(rel, name)
+                    && HumanoidProfile(profile);
                 return figure
                     ? CutoutQualityGate.AssetClass.Actor
                     : CutoutQualityGate.AssetClass.Prop;
             }
             if (rel.IndexOf("/Cosmetics/", StringComparison.Ordinal) >= 0)
             {
-                figure = name == "preview.png" || name == "body.png";
+                figure = FigureSurface(rel, name)
+                    && HumanoidProfile(profile);
                 if (figure)
                 {
                     return CutoutQualityGate.AssetClass.Actor;
@@ -2409,6 +2447,39 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             return null;
         }
 
+        /// <summary>
+        /// True when the file is a full-figure surface (idle sheet,
+        /// turnarounds view, assembled preview/body) — the only surfaces the
+        /// 176..192 humanoid body band may bind. Composite layer sheets
+        /// (*_parts.png) are never figure surfaces.
+        /// </summary>
+        private static bool FigureSurface(string rel, string name)
+        {
+            if (name.EndsWith("_parts.png", StringComparison.Ordinal))
+            {
+                return false;
+            }
+            if (name.EndsWith("_sheet.png", StringComparison.Ordinal)
+                || rel.IndexOf("/turnarounds/", StringComparison.Ordinal) >= 0
+                || name == "preview.png" || name == "body.png")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// True when the declared size_profile is humanoid (CHARACTER or
+        /// NPC_HUMANOID) or undeclared — the only profiles the body band
+        /// binds. MONSTER_*/BOSS_*/SPIRIT_BEAST profiles take only their own
+        /// bbox limit.
+        /// </summary>
+        private static bool HumanoidProfile(string? profile)
+        {
+            return profile == null || profile == "CHARACTER"
+                || profile == "NPC_HUMANOID";
+        }
+
         /// <summary>Maps a declared asset_class name to the gate enum.</summary>
         private static CutoutQualityGate.AssetClass? ClassByName(
             string? declared, CutoutQualityGate.AssetClass? fallback)
@@ -2444,13 +2515,15 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
         /// pixel_art flags and the declared asset_class.
         /// </summary>
         private static void ImportMeta(string rel, out int cw, out int ch,
-            out bool detached, out bool pixelArt, out string? declared)
+            out bool detached, out bool pixelArt, out string? declared,
+            out string? profile)
         {
             cw = 0;
             ch = 0;
             detached = false;
             pixelArt = false;
             declared = null;
+            profile = null;
             string dir = Path.GetDirectoryName(rel)!.Replace('\\', '/');
             while (dir.Length > "client/Assets".Length)
             {
@@ -2464,6 +2537,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                     }
                     var root = RegisterJson.Parse(File.ReadAllText(p));
                     declared = StrField(root, "asset_class");
+                    profile = StrField(root, "profile");
                     var tr = root.Get("texture_ref");
                     if (tr != null && tr.Type == RegisterJson.Node.Kind.Arr
                         && tr.Arr!.Count == 2)
@@ -2482,6 +2556,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                         && assets.Type == RegisterJson.Node.Kind.Obj
                         && assets.Obj!.TryGetValue(file, out var meta))
                     {
+                        profile = StrField(meta, "profile") ?? profile;
                         var d = meta.Get("detached_parts");
                         if (d != null
                             && d.Type == RegisterJson.Node.Kind.Bool
