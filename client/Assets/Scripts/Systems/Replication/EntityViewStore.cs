@@ -218,34 +218,21 @@ namespace ThinhThan.Systems.Replication
 
             if (delta.Statuses != null)
             {
-                if (state.Statuses == null)
-                {
-                    state.Statuses = new StatusList();
-                }
-
-                RepeatedField<EntityStatus> target =
-                    state.Statuses.Entries;
-                target.Clear();
+                state.Statuses.Clear();
                 for (int e = 0; e < delta.Statuses.Entries.Count; e++)
                 {
-                    target.Add(delta.Statuses.Entries[e]);
+                    state.Statuses.Add(delta.Statuses.Entries[e]);
                 }
             }
 
             if (delta.EquippedCosmetics != null)
             {
-                if (state.EquippedCosmetics == null)
-                {
-                    state.EquippedCosmetics = new CosmeticList();
-                }
-
-                RepeatedField<EquippedCosmetic> targetCosmetics =
-                    state.EquippedCosmetics.Entries;
-                targetCosmetics.Clear();
+                state.EquippedCosmetics.Clear();
                 for (int e = 0; e < delta.EquippedCosmetics.Entries.Count;
                     e++)
                 {
-                    targetCosmetics.Add(delta.EquippedCosmetics.Entries[e]);
+                    state.EquippedCosmetics.Add(
+                        delta.EquippedCosmetics.Entries[e]);
                 }
             }
 
