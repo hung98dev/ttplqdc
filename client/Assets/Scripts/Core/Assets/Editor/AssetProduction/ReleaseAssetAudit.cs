@@ -799,14 +799,34 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                     }
                     else
                     {
-                        string tp = Path.Combine(repoRoot,
-                            (TermsDir + "/" + row.Fragment + "/" + snap
-                            + ".txt").Replace('/',
-                                Path.DirectorySeparatorChar));
-                        if (!File.Exists(tp))
+                        // terms/<fragment>/<sha>.txt — the fragment is the
+                        // style_pack_id prefix, not the source file name.
+                        var pack = StrField(n, "style_pack_id");
+                        if (pack == null || !pack.Contains("/"))
                         {
-                            errs.Add("terms snapshot " + snap
-                                + " not stored under terms/" + row.Fragment);
+                            errs.Add("cannot resolve terms fragment without"
+                                + " a valid style_pack_id");
+                        }
+                        else
+                        {
+                            string frag = pack.Substring(0,
+                                pack.IndexOf('/'));
+                            string tp = Path.Combine(repoRoot,
+                                (TermsDir + "/" + frag + "/" + snap
+                                + ".txt").Replace('/',
+                                    Path.DirectorySeparatorChar));
+                            if (!File.Exists(tp))
+                            {
+                                errs.Add("terms snapshot " + snap
+                                    + " not stored under terms/" + frag);
+                            }
+                            else if (!string.Equals(
+                                ProvenanceValidator.Sha256File(tp), snap,
+                                StringComparison.Ordinal))
+                            {
+                                errs.Add("terms snapshot content hash"
+                                    + " mismatch");
+                            }
                         }
                     }
                 }
@@ -1537,22 +1557,36 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             string repoRoot, Dictionary<string, ResolvedEntry> resolved,
             Report report)
         {
-            var perGroup = new Dictionary<string, long>(StringComparer.Ordinal);
+            // A file is packaged once per group however many keys
+            // (aliases included) resolve to it — dedupe by path.
+            var perGroup = new Dictionary<string, HashSet<string>>(
+                StringComparer.Ordinal);
             foreach (var kv in resolved)
             {
-                string abs = Path.Combine(repoRoot,
-                    kv.Value.RelPath.Replace('/', Path.DirectorySeparatorChar));
-                if (!File.Exists(abs))
+                if (!perGroup.TryGetValue(kv.Value.Group, out var paths))
                 {
-                    continue;
+                    paths = new HashSet<string>(StringComparer.Ordinal);
+                    perGroup[kv.Value.Group] = paths;
                 }
-                if (!perGroup.TryGetValue(kv.Value.Group, out var sum))
-                {
-                    sum = 0;
-                }
-                perGroup[kv.Value.Group] = sum + new FileInfo(abs).Length;
+                paths.Add(kv.Value.RelPath);
             }
+            var groupBytes = new Dictionary<string, long>(
+                StringComparer.Ordinal);
             foreach (var kv in perGroup)
+            {
+                long sum = 0;
+                foreach (var rel in kv.Value)
+                {
+                    string abs = Path.Combine(repoRoot,
+                        rel.Replace('/', Path.DirectorySeparatorChar));
+                    if (File.Exists(abs))
+                    {
+                        sum += new FileInfo(abs).Length;
+                    }
+                }
+                groupBytes[kv.Key] = sum;
+            }
+            foreach (var kv in groupBytes)
             {
                 if (GroupBudgets.Budgets.TryGetValue(kv.Key, out var b)
                     && kv.Value > b.CompressedMaxBytes)
@@ -1589,12 +1623,19 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             sb.Append("client/Assets/Art/Provenance/asset_source_register.json.\n");
             sb.Append("Do not edit by hand.\n\n");
             sb.Append("== Third-Party Credits (CC-BY-4.0) ==\n");
+            // Derived blocks carry platform newlines (AppendLine);
+            // the packaged notice is canonical LF on every platform.
             string credits = ProvenanceValidator.CreditsText(root);
-            sb.Append(credits.Length == 0 ? "(none)\n" : credits);
+            sb.Append(credits.Length == 0 ? "(none)\n" : Lf(credits));
             sb.Append("\n== Fonts licensed under the SIL Open Font License 1.1 ==\n");
             string fonts = ProvenanceValidator.FontNotice(root);
-            sb.Append(fonts.Length == 0 ? "(none)\n" : fonts);
+            sb.Append(fonts.Length == 0 ? "(none)\n" : Lf(fonts));
             return sb.ToString();
+        }
+
+        private static string Lf(string s)
+        {
+            return s.Replace("\r\n", "\n").Replace("\r", "\n");
         }
 
         private static void CheckNotice(

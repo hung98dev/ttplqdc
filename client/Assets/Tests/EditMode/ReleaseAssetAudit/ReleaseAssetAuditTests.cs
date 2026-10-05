@@ -202,7 +202,7 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
         }
 
         private static string RowJson(string rel, string filePath,
-            string sha, string license, string review, string extra)
+            string sha, string license, string review, string genJson)
         {
             return "{\n"
                 + "\"asset_key\":\"asset.test.icon.sprite\",\n"
@@ -217,9 +217,11 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
                 + "\"final_sha256\":\"" + sha + "\",\n"
                 + "\"changes\":\"\",\"attribution\":\"attr\",\n"
                 + "\"style_pack_id\":\"testfrag/testpack\",\n"
-                + "\"generation_record\":null,\"folklore_card\":null,\n"
+                + "\"generation_record\":"
+                + (genJson.Length == 0 ? "null" : genJson)
+                + ",\"folklore_card\":null,\n"
                 + "\"inputs\":[],\"review_state\":\"" + review + "\""
-                + extra + "\n}";
+                + "\n}";
         }
 
         private static void WriteFragment(string root, string name,
@@ -342,7 +344,7 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
                 rel.Replace('/', Path.DirectorySeparatorChar)));
             // AI_CREATED needs a complete generation_record + terms file;
             // missing folklore_card must independently block approval.
-            string gen = ",\"generation_record\":{\"tool\":\"t\","
+            string gen = "{\"tool\":\"t\","
                 + "\"version\":\"v\",\"model_id\":\"m\",\"model_sha256\":null,"
                 + "\"terms_uri\":\"https://x\",\"terms_snapshot_sha256\":\""
                 + sha + "\",\"prompt\":\"p\",\"seed\":null,"
@@ -351,7 +353,7 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
                 + "\"c2pa_present\":false}";
             File.WriteAllText(Path.Combine(root,
                 "client/Assets/Art/Provenance/terms/testfrag/" + sha + ".txt"),
-                "terms");
+                "px");
             WriteFragment(root, "testfrag", RowJson("AI_CREATED", rel, sha,
                 "AI_TOOL_TERMS", "PENDING", gen));
             string state = ReadReviewState(
