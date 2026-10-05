@@ -1045,6 +1045,10 @@ type fieldDiff struct {
 
 func diffPackets(base, head *Queue) map[string]fieldDiff {
 	out := map[string]fieldDiff{}
+	if base == nil || head == nil {
+		// task_queue.md unchanged — no packet diff exists to validate.
+		return out
+	}
 	for id, bp := range base.ByID {
 		hp := head.ByID[id]
 		fd := fieldDiff{}

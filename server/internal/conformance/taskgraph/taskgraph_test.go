@@ -260,6 +260,18 @@ func TestOpsPrAllowedFields(t *testing.T) {
 	if got := checkControlDiff(base, queueOf(hp3), bd, "ops/x", true, nil, nil); len(got) == 0 {
 		t.Error("stale blocked_by after unblock not flagged")
 	}
+	// known_blockers-only ops/ diff carries no queue change — base/head
+	// queues are nil; packet checks must skip, never panic.
+	bd3 := noBlockers()
+	bd3.Added["OPS-001"] = true
+	if got := checkControlDiff(nil, nil, bd3, "ops/OPS-001-verifier-panic", true, nil, nil); len(got) != 0 {
+		t.Errorf("kb-only ops/ open flagged: %v", got)
+	}
+	bd4 := noBlockers()
+	bd4.Resolved["OPS-002"] = true
+	if got := checkControlDiff(nil, nil, bd4, "ops/OPS-002-x", true, nil, nil); len(got) != 0 {
+		t.Errorf("kb-only ops/ resolve flagged: %v", got)
+	}
 }
 
 func TestBlockedToNotStartedOnlyBySpecOrOps(t *testing.T) {

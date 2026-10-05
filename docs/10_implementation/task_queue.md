@@ -4449,6 +4449,7 @@ consumers_checked: [docs/07_content/presentation_asset_manifest.md, docs/04_arch
 - `client/Assets/Tests/EditMode/ReleaseAssetAudit/ReleaseAssetAuditTests.cs`: full release walk, negative missing-key/placeholder/hash/rights/credits/budget cases and deterministic notice output.
 
 - TestReleaseScopeArtGatesAndReviewRecords (ADR-0076) in the packet's audit test file.
+- `client/Assets/Tests/EditMode/ReleaseAssetAudit/ReleaseAssetAuditTests.cs`: TestGateScopeFollowsDeclaredClassAndProfile — creature/non-humanoid files are not evaluated by the 176..192 humanoid body band, exempt-class files (UI_ART/PARALLAX_FAR/parts composites) are not flagged placeholder for flat color or missing figure silhouette.
 generated_artifacts: [`client/Assets/Notices/THIRD_PARTY_ASSETS.txt`]
 cleanup_obligations: [Commit the deterministic notice, remove temporary audit outputs, and confirm no rejected files remain in build groups.]
 evidence_location: "docs/10_implementation/evidence/IMP-076/"
