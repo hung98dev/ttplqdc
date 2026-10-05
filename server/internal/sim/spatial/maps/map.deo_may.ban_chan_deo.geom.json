@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "space_id": "map.deo_may.ban_chan_deo",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "FOOTPASS_SWITCHBACK",
+  "content_revision": "bc28139fdb0953c6316eade28c691f03567df54156061d8e8de9d88ddad65de4",
+  "bounds_mm": { "max_x": 57600, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 57600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 8640, "y1": 4000, "x2": 14640, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 14640, "y1": 8000, "x2": 22640, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 22640, "y1": 8000, "x2": 28640, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 34560, "y1": 6500, "x2": 42560, "y2": 6500 },
+    { "id": 7, "kind": "CEILING", "x1": 40320, "y1": 10500, "x2": 48320, "y2": 10500 },
+    { "id": 8, "kind": "WALL", "x1": 57600, "y1": 4000, "x2": 57600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 57600, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "bonfire.map.deo_may.ban_chan_deo", "x": 4608, "y": 4000 },
+    { "id": "checkpoint.deo_may.ban_chan_deo", "x": 13247, "y": 4000 },
+    { "id": "cooking_hearth.map.deo_may.ban_chan_deo", "x": 21888, "y": 4000 },
+    { "id": "npc.deo_may.cho_1", "x": 19840, "y": 8000 },
+    { "id": "npc.deo_may.cho_2", "x": 10740, "y": 5400 },
+    { "id": "npc.deo_may.dem_1", "x": 47808, "y": 4000 },
+    { "id": "npc.deo_may.dem_2", "x": 56447, "y": 4000 },
+    { "id": "npc.deo_may.hang_quan", "x": 57400, "y": 4000 },
+    { "id": "npc.deo_may.nguoi_dan_duong", "x": 10740, "y": 5400 },
+    { "id": "npc.deo_may.tho_nghe", "x": 38160, "y": 6500 },
+    { "id": "portal.deo_may.ban_chan_deo.to.ben_nuoc_den.ben_do_cu", "x": 57400, "y": 4000 },
+    { "id": "portal.deo_may.ban_chan_deo.to.deo_may.duong_rung", "x": 57400, "y": 4000 },
+    { "id": "sparring_ring.map.deo_may.ban_chan_deo", "x": 57400, "y": 4000 },
+    { "id": "spawn.entry.deo_may.ban_chan_deo", "x": 38160, "y": 6500 }
+  ]
+}

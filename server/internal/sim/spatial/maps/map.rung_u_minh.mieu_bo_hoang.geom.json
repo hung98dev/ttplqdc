@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "space_id": "map.rung_u_minh.mieu_bo_hoang",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "SHRINE_RADIAL",
+  "content_revision": "cd520c8ff4b72c62e94791c0473faac8c8c918edbbb66ab95d1a1492dcac382e",
+  "bounds_mm": { "max_x": 108800, "max_y": 25200 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 108800, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 16320, "y1": 4000, "x2": 22320, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 22320, "y1": 8000, "x2": 30320, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 30320, "y1": 8000, "x2": 36320, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 54400, "y1": 4000, "x2": 63400, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 63400, "y1": 12000, "x2": 84400, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 65280, "y1": 6500, "x2": 73280, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 76160, "y1": 10500, "x2": 84160, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 84400, "y1": 12000, "x2": 93400, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 108800, "y1": 4000, "x2": 108800, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 108800, "max_y": 25200 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.rung_u_minh.mieu_bo_hoang.p1", "x": 8704, "y": 4000 },
+    { "id": "anchor.daily.rung_u_minh.mieu_bo_hoang.p2", "x": 25023, "y": 4000 },
+    { "id": "anchor.relic.moc_tinh_da", "x": 41344, "y": 4000 },
+    { "id": "anchor.spawn.mieu_bo_hoang.01", "x": 20220, "y": 6600 },
+    { "id": "anchor.spawn.mieu_bo_hoang.02", "x": 18420, "y": 5400 },
+    { "id": "anchor.spawn.mieu_bo_hoang.elite", "x": 90304, "y": 4000 },
+    { "id": "area.daily.rung_u_minh.mieu_bo_hoang.side", "x": 106623, "y": 4000 },
+    { "id": "chest.hidden.map.rung_u_minh.mieu_bo_hoang.01", "x": 108600, "y": 4000 },
+    { "id": "chest.hidden.map.rung_u_minh.mieu_bo_hoang.02", "x": 18420, "y": 5400 },
+    { "id": "fishing_spot.map.rung_u_minh.mieu_bo_hoang.01", "x": 19020, "y": 5800 },
+    { "id": "marker.daily.rung_u_minh.mieu_bo_hoang.1", "x": 108600, "y": 4000 },
+    { "id": "marker.daily.rung_u_minh.mieu_bo_hoang.2", "x": 108600, "y": 4000 },
+    { "id": "portal.rung_u_minh.mieu_bo_hoang.to.ben_nuoc_den.cho_ben", "x": 108600, "y": 4000 },
+    { "id": "portal.rung_u_minh.mieu_bo_hoang.to.dungeon_mieu_ba_trong_rung", "x": 19020, "y": 5800 },
+    { "id": "portal.rung_u_minh.mieu_bo_hoang.to.rung_u_minh.rung_sau", "x": 19620, "y": 6200 },
+    { "id": "spawn.entry.rung_u_minh.mieu_bo_hoang", "x": 108600, "y": 4000 }
+  ]
+}

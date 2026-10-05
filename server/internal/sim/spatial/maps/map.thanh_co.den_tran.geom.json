@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "space_id": "map.thanh_co.den_tran",
+  "space_kind": "FIELD_OR_TOWN",
+  "layout_profile": "TEMPLE_ASCENT_SPIRAL",
+  "content_revision": "df8c9983ef310eb57d686efaca3575c76a588f53fb23df1a701b4aaadd17b469",
+  "bounds_mm": { "max_x": 121600, "max_y": 28800 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 121600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 18240, "y1": 4000, "x2": 24240, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 24240, "y1": 8000, "x2": 32240, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 32240, "y1": 8000, "x2": 38240, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 60800, "y1": 4000, "x2": 69800, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 69800, "y1": 12000, "x2": 90800, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 72960, "y1": 6500, "x2": 80960, "y2": 6500 },
+    { "id": 9, "kind": "CEILING", "x1": 85120, "y1": 10500, "x2": 93120, "y2": 10500 },
+    { "id": 10, "kind": "SLOPE", "x1": 90800, "y1": 12000, "x2": 99800, "y2": 4000 },
+    { "id": 11, "kind": "WALL", "x1": 121600, "y1": 4000, "x2": 121600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 121600, "max_y": 28800 }
+  ],
+  "anchors": [
+    { "id": "anchor.daily.thanh_co.den_tran.p1", "x": 9728, "y": 4000 },
+    { "id": "anchor.daily.thanh_co.den_tran.p2", "x": 27967, "y": 4000 },
+    { "id": "anchor.relic.ho_tinh_chin_duoi", "x": 46208, "y": 4000 },
+    { "id": "anchor.spawn.den_tran.01", "x": 22140, "y": 6600 },
+    { "id": "anchor.spawn.den_tran.02", "x": 20340, "y": 5400 },
+    { "id": "anchor.spawn.den_tran.elite", "x": 100928, "y": 4000 },
+    { "id": "area.daily.thanh_co.den_tran.side", "x": 119167, "y": 4000 },
+    { "id": "chest.hidden.map.thanh_co.den_tran.01", "x": 121400, "y": 4000 },
+    { "id": "chest.hidden.map.thanh_co.den_tran.02", "x": 20340, "y": 5400 },
+    { "id": "marker.daily.thanh_co.den_tran.1", "x": 20940, "y": 5800 },
+    { "id": "marker.daily.thanh_co.den_tran.2", "x": 121400, "y": 4000 },
+    { "id": "portal.thanh_co.den_tran.to.dungeon_den_tran", "x": 121400, "y": 4000 },
+    { "id": "portal.thanh_co.den_tran.to.nui_thieng.chan_nui", "x": 121400, "y": 4000 },
+    { "id": "portal.thanh_co.den_tran.to.thanh_co.hao_can", "x": 20940, "y": 5800 },
+    { "id": "spawn.entry.thanh_co.den_tran", "x": 21540, "y": 6200 }
+  ]
+}

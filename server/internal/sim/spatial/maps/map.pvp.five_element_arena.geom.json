@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "space_id": "map.pvp.five_element_arena",
+  "space_kind": "PVP",
+  "layout_profile": "TRI_ALTAR_CIRCUIT",
+  "content_revision": "ce5066842084e3d970892a350d33d90f33cc91158eb2e2a9289550d60694b309",
+  "bounds_mm": { "max_x": 102400, "max_y": 25200 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 14000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 102400, "y2": 4000 },
+    { "id": 3, "kind": "SOLID_GROUND", "x1": 12000, "y1": 7000, "x2": 22000, "y2": 7000 },
+    { "id": 4, "kind": "SLOPE", "x1": 24000, "y1": 4000, "x2": 30000, "y2": 9000 },
+    { "id": 5, "kind": "SOLID_GROUND", "x1": 30000, "y1": 9000, "x2": 40000, "y2": 9000 },
+    { "id": 6, "kind": "SLOPE", "x1": 40000, "y1": 9000, "x2": 46000, "y2": 4000 },
+    { "id": 7, "kind": "CEILING", "x1": 44000, "y1": 6000, "x2": 58400, "y2": 6000 },
+    { "id": 8, "kind": "SOLID_GROUND", "x1": 46200, "y1": 8000, "x2": 56200, "y2": 8000 },
+    { "id": 9, "kind": "SLOPE", "x1": 56400, "y1": 4000, "x2": 62400, "y2": 9000 },
+    { "id": 10, "kind": "SOLID_GROUND", "x1": 62400, "y1": 9000, "x2": 72400, "y2": 9000 },
+    { "id": 11, "kind": "SLOPE", "x1": 72400, "y1": 9000, "x2": 78400, "y2": 4000 },
+    { "id": 12, "kind": "SOLID_GROUND", "x1": 80400, "y1": 7000, "x2": 90400, "y2": 7000 },
+    { "id": 13, "kind": "WALL", "x1": 102400, "y1": 4000, "x2": 102400, "y2": 14000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 102400, "max_y": 25200 }
+  ],
+  "anchors": [
+    { "id": "altar.center", "x": 51200, "y": 8000 },
+    { "id": "altar.left", "x": 17000, "y": 7000 },
+    { "id": "altar.right", "x": 85400, "y": 7000 }
+  ]
+}

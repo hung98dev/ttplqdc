@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "space_id": "dungeon.hang_ma_tranh",
+  "space_kind": "DUNGEON",
+  "layout_profile": "PREDATOR_TRAIL_FORK",
+  "content_revision": "e4f95df2393aaeba6764de4f555bfdd6406dcc52a3397e3d697d3f8573e77f31",
+  "bounds_mm": { "max_x": 121600, "max_y": 28800 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 121600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 18240, "y1": 4000, "x2": 24240, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 24240, "y1": 8000, "x2": 32240, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 32240, "y1": 8000, "x2": 38240, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 60800, "y1": 4000, "x2": 69800, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 69800, "y1": 12000, "x2": 90800, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 72960, "y1": 6500, "x2": 80960, "y2": 6500 },
+    { "id": 9, "kind": "SLOPE", "x1": 75392, "y1": 4000, "x2": 84392, "y2": 13000 },
+    { "id": 10, "kind": "SOLID_GROUND", "x1": 84392, "y1": 13000, "x2": 118440, "y2": 13000 },
+    { "id": 11, "kind": "CEILING", "x1": 85120, "y1": 10500, "x2": 93120, "y2": 10500 },
+    { "id": 12, "kind": "SLOPE", "x1": 90800, "y1": 12000, "x2": 99800, "y2": 4000 },
+    { "id": 13, "kind": "WALL", "x1": 121600, "y1": 4000, "x2": 121600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 121600, "max_y": 28800 }
+  ],
+  "anchors": [
+    { "id": "anchor.boss.ho_tinh", "x": 117440, "y": 13000 },
+    { "id": "anchor.dungeon.hang_ma_tranh.dau_duong.w1", "x": 20040, "y": 5200 },
+    { "id": "anchor.dungeon.hang_ma_tranh.dau_duong.w2", "x": 28240, "y": 8000 },
+    { "id": "anchor.dungeon.hang_ma_tranh.phuc_kich.w1", "x": 36440, "y": 5200 },
+    { "id": "anchor.dungeon.hang_ma_tranh.phuc_kich.w2", "x": 75360, "y": 6500 },
+    { "id": "anchor.dungeon.hang_ma_tranh.phuc_kich.w3", "x": 65300, "y": 8000 },
+    { "id": "anchor.dungeon.hang_ma_tranh.phuc_kich.w4", "x": 84500, "y": 12000 }
+  ]
+}

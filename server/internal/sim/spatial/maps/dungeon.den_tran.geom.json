@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "space_id": "dungeon.den_tran",
+  "space_kind": "DUNGEON",
+  "layout_profile": "SEAL_TEMPLE_GAUNTLET",
+  "content_revision": "4a18688a22c31c983b32eb5c586c2149e43ee14a07f681ae1d9e9292aed61fce",
+  "bounds_mm": { "max_x": 128000, "max_y": 32400 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 128000, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 19200, "y1": 4000, "x2": 25200, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 25200, "y1": 8000, "x2": 33200, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 33200, "y1": 8000, "x2": 39200, "y2": 4000 },
+    { "id": 6, "kind": "SLOPE", "x1": 64000, "y1": 4000, "x2": 73000, "y2": 12000 },
+    { "id": 7, "kind": "SOLID_GROUND", "x1": 73000, "y1": 12000, "x2": 94000, "y2": 12000 },
+    { "id": 8, "kind": "ONE_WAY_PLATFORM", "x1": 76800, "y1": 6500, "x2": 84800, "y2": 6500 },
+    { "id": 9, "kind": "SLOPE", "x1": 79360, "y1": 4000, "x2": 88360, "y2": 13000 },
+    { "id": 10, "kind": "SOLID_GROUND", "x1": 88360, "y1": 13000, "x2": 124200, "y2": 13000 },
+    { "id": 11, "kind": "CEILING", "x1": 89600, "y1": 10500, "x2": 97600, "y2": 10500 },
+    { "id": 12, "kind": "SLOPE", "x1": 94000, "y1": 12000, "x2": 103000, "y2": 4000 },
+    { "id": 13, "kind": "WALL", "x1": 128000, "y1": 4000, "x2": 128000, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 128000, "max_y": 32400 }
+  ],
+  "anchors": [
+    { "id": "anchor.boss.ho_tinh_chin_duoi", "x": 123200, "y": 13000 },
+    { "id": "anchor.dungeon.den_tran.thach_ve.w1", "x": 21000, "y": 5200 },
+    { "id": "anchor.dungeon.den_tran.thach_ve.w2", "x": 29200, "y": 8000 },
+    { "id": "anchor.dungeon.den_tran.trong_tran.w1", "x": 37400, "y": 5200 },
+    { "id": "anchor.dungeon.den_tran.trong_tran.w2", "x": 79200, "y": 6500 },
+    { "id": "anchor.dungeon.den_tran.tuong_vo.w1", "x": 68500, "y": 8000 },
+    { "id": "anchor.dungeon.den_tran.tuong_vo.w2", "x": 87700, "y": 12000 }
+  ]
+}

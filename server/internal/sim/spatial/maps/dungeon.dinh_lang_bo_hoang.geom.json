@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "space_id": "dungeon.dinh_lang_bo_hoang",
+  "space_kind": "DUNGEON",
+  "layout_profile": "LAMP_COURTYARD_LOOP",
+  "content_revision": "d85a3c4508d4382483498b683344df0ec8e85f84937afc7832c72a6ef0d06341",
+  "bounds_mm": { "max_x": 89600, "max_y": 21600 },
+  "segments": [
+    { "id": 1, "kind": "WALL", "x1": 0, "y1": 4000, "x2": 0, "y2": 12000 },
+    { "id": 2, "kind": "SOLID_GROUND", "x1": 0, "y1": 4000, "x2": 89600, "y2": 4000 },
+    { "id": 3, "kind": "SLOPE", "x1": 13440, "y1": 4000, "x2": 19440, "y2": 8000 },
+    { "id": 4, "kind": "SOLID_GROUND", "x1": 19440, "y1": 8000, "x2": 27440, "y2": 8000 },
+    { "id": 5, "kind": "SLOPE", "x1": 27440, "y1": 8000, "x2": 33440, "y2": 4000 },
+    { "id": 6, "kind": "ONE_WAY_PLATFORM", "x1": 53760, "y1": 6500, "x2": 61760, "y2": 6500 },
+    { "id": 7, "kind": "SLOPE", "x1": 55552, "y1": 4000, "x2": 64552, "y2": 13000 },
+    { "id": 8, "kind": "CEILING", "x1": 62719, "y1": 10500, "x2": 70719, "y2": 10500 },
+    { "id": 9, "kind": "SOLID_GROUND", "x1": 64552, "y1": 13000, "x2": 87600, "y2": 13000 },
+    { "id": 10, "kind": "WALL", "x1": 89600, "y1": 4000, "x2": 89600, "y2": 12000 }
+  ],
+  "camera_regions": [
+    { "id": 1, "min_x": 0, "min_y": 0, "max_x": 89600, "max_y": 21600 }
+  ],
+  "anchors": [
+    { "id": "anchor.boss.quy_nhap_trang", "x": 86600, "y": 13000 },
+    { "id": "anchor.dungeon.dinh_lang_bo_hoang.san_sau.w1", "x": 15240, "y": 5200 },
+    { "id": "anchor.dungeon.dinh_lang_bo_hoang.san_sau.w2", "x": 23440, "y": 8000 },
+    { "id": "anchor.dungeon.dinh_lang_bo_hoang.san_sau.w3", "x": 31640, "y": 5200 },
+    { "id": "anchor.dungeon.dinh_lang_bo_hoang.thap_den.w1", "x": 56160, "y": 6500 },
+    { "id": "anchor.dungeon.dinh_lang_bo_hoang.thap_den.w2", "x": 60052, "y": 8500 }
+  ]
+}
