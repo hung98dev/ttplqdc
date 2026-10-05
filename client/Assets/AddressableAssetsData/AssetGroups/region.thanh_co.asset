@@ -105,6 +105,106 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3c70aa7b4df55ab87584712bdbcad52
+    m_Address: asset.map.thanh_co.cong_ngoai.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f614ae4babc5461b5b5dd88330ae9b5
+    m_Address: asset.map.thanh_co.den_tran.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1835d36ded0a5197af0123271b738af9
+    m_Address: asset.map.thanh_co.duong_da.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 123ff17470f95802b79c78f76f10545e
+    m_Address: asset.map.thanh_co.hao_can.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b916fecaa71546ea50d679027d65af0
+    m_Address: asset.tile.thanh_co.ground.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 666d0896a0ca58618db28cd2035998e4
+    m_Address: asset.tile.thanh_co.fill.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ea5aa4aeb5f5388bbbffaf009a3bb01
+    m_Address: asset.tile.thanh_co.platform.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c5bfad3a12d552d8998bc7a0057f793
+    m_Address: asset.tile.thanh_co.wall.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b6eb666448a547fa22a4a9f234b4160
+    m_Address: asset.tile.thanh_co.water.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83a691d3b55f5ddf9d187372b9b82258
+    m_Address: asset.prop.thanh_co.veg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5a0d5d786c855dea82178c0fb1c51df
+    m_Address: asset.prop.thanh_co.marker.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc67d4fff21652d0bb05484d6e0b72ca
+    m_Address: asset.prop.thanh_co.scatter.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f7a8bb7f9e95cc0bd28c16d04d13ad9
+    m_Address: asset.prop.thanh_co.sig_cong_ngoai.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f07d3efd8cb253728d39e0890b8c0c3c
+    m_Address: asset.prop.thanh_co.sig_den_tran.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d36122dd80b532da42425183e68bca4
+    m_Address: asset.prop.thanh_co.sig_duong_da.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0238e464c2515227b7c60861ae4d4cf6
+    m_Address: asset.prop.thanh_co.sig_hao_can.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52f28e6620a35d52872795070b25941f
+    m_Address: asset.parallax.thanh_co.l2.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dcada4836985e0f98b3a65a92566c70
+    m_Address: asset.parallax.thanh_co.l3.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c578734334b15d0ba51308431429b95d
+    m_Address: asset.parallax.thanh_co.l4.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb3f38c4af795a5ebba13a8ae37ade27
+    m_Address: asset.parallax.thanh_co.fg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:

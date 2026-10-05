@@ -1,0 +1,327 @@
+{
+  "pack_id": "world/vn_env_deo_may_v1",
+  "version": 1,
+  "lighting_frame": "cold alpine top light; violet shadow fill; frost rim; slate-violet outline",
+  "colors": [
+    {
+      "id": "sky_hi",
+      "hex": "#9CB8D8",
+      "role": "L4 high mountain sky"
+    },
+    {
+      "id": "sky_lo",
+      "hex": "#E4E8F0",
+      "role": "L4 cloud band"
+    },
+    {
+      "id": "fog",
+      "hex": "#C4D0DC",
+      "role": "L4 cloud-pool mist"
+    },
+    {
+      "id": "far_sil",
+      "hex": "#8E9CB4",
+      "role": "L4 ridge silhouette violet"
+    },
+    {
+      "id": "mid_tree_hi",
+      "hex": "#6E8A66",
+      "role": "L3 pine lit"
+    },
+    {
+      "id": "mid_tree",
+      "hex": "#4E6A4C",
+      "role": "L3 pine mid"
+    },
+    {
+      "id": "mid_tree_sh",
+      "hex": "#334838",
+      "role": "L3 pine shade"
+    },
+    {
+      "id": "foliage_hi",
+      "hex": "#8CA86E",
+      "role": "L1 mountain grass lit"
+    },
+    {
+      "id": "foliage",
+      "hex": "#5E7C4E",
+      "role": "L1 grass mid"
+    },
+    {
+      "id": "foliage_sh",
+      "hex": "#3E5436",
+      "role": "L1 grass shade"
+    },
+    {
+      "id": "earth_hi",
+      "hex": "#AE9E78",
+      "role": "L1 trail dust lit"
+    },
+    {
+      "id": "earth",
+      "hex": "#867456",
+      "role": "L1 path mid"
+    },
+    {
+      "id": "earth_sh",
+      "hex": "#584A36",
+      "role": "L1 path shade"
+    },
+    {
+      "id": "stone_hi",
+      "hex": "#B8BCC4",
+      "role": "L1 granite lit"
+    },
+    {
+      "id": "stone",
+      "hex": "#8C90A0",
+      "role": "L1 granite mid"
+    },
+    {
+      "id": "stone_sh",
+      "hex": "#5A5E70",
+      "role": "L1 granite shade"
+    },
+    {
+      "id": "wood_hi",
+      "hex": "#96765A",
+      "role": "L2 pine-wood lit"
+    },
+    {
+      "id": "wood",
+      "hex": "#6E5842",
+      "role": "L2 cedar mid"
+    },
+    {
+      "id": "wood_sh",
+      "hex": "#46382A",
+      "role": "L2 cedar shade"
+    },
+    {
+      "id": "roof_hi",
+      "hex": "#7E4C3C",
+      "role": "L2 shrine tile lit"
+    },
+    {
+      "id": "roof_sh",
+      "hex": "#503028",
+      "role": "L2 shrine tile shade"
+    },
+    {
+      "id": "water_hi",
+      "hex": "#7EA8BC",
+      "role": "mountain stream lit"
+    },
+    {
+      "id": "water",
+      "hex": "#4E7C92",
+      "role": "stream mid"
+    },
+    {
+      "id": "water_sh",
+      "hex": "#2C525E",
+      "role": "stream depth"
+    },
+    {
+      "id": "accent_warm",
+      "hex": "#DCA44E",
+      "role": "amber accent — tiger-spirit"
+    },
+    {
+      "id": "accent_cool",
+      "hex": "#5E94B4",
+      "role": "glacier-blue accent"
+    },
+    {
+      "id": "rim",
+      "hex": "#E4ECF4",
+      "role": "frost rim"
+    },
+    {
+      "id": "outline",
+      "hex": "#2A2E3A",
+      "role": "slate-violet outline"
+    },
+    {
+      "id": "foliage_d1",
+      "hex": "#49613E",
+      "role": "foliage ramp stop (d1)"
+    },
+    {
+      "id": "foliage_d2",
+      "hex": "#536F46",
+      "role": "foliage ramp stop (d2)"
+    },
+    {
+      "id": "foliage_l1",
+      "hex": "#6D8B59",
+      "role": "foliage ramp stop (l1)"
+    },
+    {
+      "id": "foliage_l2",
+      "hex": "#7D9963",
+      "role": "foliage ramp stop (l2)"
+    },
+    {
+      "id": "foliage_dd",
+      "hex": "#333F38",
+      "role": "foliage deepest shade"
+    },
+    {
+      "id": "foliage_ll",
+      "hex": "#BCCDB8",
+      "role": "foliage brightest lit"
+    },
+    {
+      "id": "earth_d1",
+      "hex": "#675841",
+      "role": "earth ramp stop (d1)"
+    },
+    {
+      "id": "earth_d2",
+      "hex": "#77664B",
+      "role": "earth ramp stop (d2)"
+    },
+    {
+      "id": "earth_l1",
+      "hex": "#938261",
+      "role": "earth ramp stop (l1)"
+    },
+    {
+      "id": "earth_l2",
+      "hex": "#A1906D",
+      "role": "earth ramp stop (l2)"
+    },
+    {
+      "id": "earth_dd",
+      "hex": "#3F3B38",
+      "role": "earth deepest shade"
+    },
+    {
+      "id": "earth_ll",
+      "hex": "#CCC9BC",
+      "role": "earth brightest lit"
+    },
+    {
+      "id": "stone_d1",
+      "hex": "#6B6F80",
+      "role": "stone ramp stop (d1)"
+    },
+    {
+      "id": "stone_d2",
+      "hex": "#7B7F90",
+      "role": "stone ramp stop (d2)"
+    },
+    {
+      "id": "stone_l1",
+      "hex": "#9B9FAC",
+      "role": "stone ramp stop (l1)"
+    },
+    {
+      "id": "stone_l2",
+      "hex": "#A9ADB8",
+      "role": "stone ramp stop (l2)"
+    },
+    {
+      "id": "stone_dd",
+      "hex": "#404452",
+      "role": "stone deepest shade"
+    },
+    {
+      "id": "stone_ll",
+      "hex": "#D0D6DE",
+      "role": "stone brightest lit"
+    },
+    {
+      "id": "wood_d1",
+      "hex": "#534332",
+      "role": "wood ramp stop (d1)"
+    },
+    {
+      "id": "wood_d2",
+      "hex": "#614D3A",
+      "role": "wood ramp stop (d2)"
+    },
+    {
+      "id": "wood_l1",
+      "hex": "#7B624A",
+      "role": "wood ramp stop (l1)"
+    },
+    {
+      "id": "wood_l2",
+      "hex": "#896C52",
+      "role": "wood ramp stop (l2)"
+    },
+    {
+      "id": "wood_dd",
+      "hex": "#373233",
+      "role": "wood deepest shade"
+    },
+    {
+      "id": "wood_ll",
+      "hex": "#C1B7AF",
+      "role": "wood brightest lit"
+    },
+    {
+      "id": "water_d1",
+      "hex": "#37606F",
+      "role": "water ramp stop (d1)"
+    },
+    {
+      "id": "water_d2",
+      "hex": "#436E81",
+      "role": "water ramp stop (d2)"
+    },
+    {
+      "id": "water_l1",
+      "hex": "#5E8BA0",
+      "role": "water ramp stop (l1)"
+    },
+    {
+      "id": "water_l2",
+      "hex": "#6E99AE",
+      "role": "water ramp stop (l2)"
+    },
+    {
+      "id": "water_dd",
+      "hex": "#2B3E4A",
+      "role": "water deepest shade"
+    },
+    {
+      "id": "water_ll",
+      "hex": "#8EB1CB",
+      "role": "water brightest lit"
+    },
+    {
+      "id": "mid_tree_d1",
+      "hex": "#3C533F",
+      "role": "mid_tree ramp stop (d1)"
+    },
+    {
+      "id": "mid_tree_d2",
+      "hex": "#455F45",
+      "role": "mid_tree ramp stop (d2)"
+    },
+    {
+      "id": "mid_tree_l1",
+      "hex": "#597555",
+      "role": "mid_tree ramp stop (l1)"
+    },
+    {
+      "id": "mid_tree_l2",
+      "hex": "#637F5D",
+      "role": "mid_tree ramp stop (l2)"
+    },
+    {
+      "id": "mid_tree_dd",
+      "hex": "#2E3A39",
+      "role": "mid_tree deepest shade"
+    },
+    {
+      "id": "mid_tree_ll",
+      "hex": "#AFC0B4",
+      "role": "mid_tree brightest lit"
+    }
+  ]
+}

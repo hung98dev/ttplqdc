@@ -110,6 +110,106 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 581b5d6d1c835bd9bf486b7fe2696d52
+    m_Address: asset.map.lang_da.ben_da.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d1688aae4fe59bca7b20772bac41009
+    m_Address: asset.map.lang_da.bo_ruong.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f25707140055f6f89fa4307efe6d261
+    m_Address: asset.map.lang_da.dinh_lang.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 264cb01ec2b45f1a8e42fd242a94bdfe
+    m_Address: asset.map.lang_da.go_ma.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1e16e9199d2583291d9ab2b7303836c
+    m_Address: asset.tile.lang_da.ground.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c12c5782d7052b1904e1f72b823c457
+    m_Address: asset.tile.lang_da.fill.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6a4ee8628ee5db79883e363b0578331
+    m_Address: asset.tile.lang_da.platform.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8688972a4a925a09890d75a7630736b3
+    m_Address: asset.tile.lang_da.wall.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5625eed2ba3d5f4b9044a141a6c2bfa8
+    m_Address: asset.tile.lang_da.water.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89b711bd6ad85283bf86423dcb17a108
+    m_Address: asset.prop.lang_da.veg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d067ab858c755e4f88fbb476da96d454
+    m_Address: asset.prop.lang_da.marker.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 14f0950cc2725325a81a91a0114ef22b
+    m_Address: asset.prop.lang_da.scatter.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 974e356fa07d517e91130601848aa57d
+    m_Address: asset.prop.lang_da.sig_ben_da.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a52cda2f1bc5fd8a75e695f058257f5
+    m_Address: asset.prop.lang_da.sig_bo_ruong.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdbfc53184f55202a655fe1d92c11402
+    m_Address: asset.prop.lang_da.sig_dinh_lang.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8882a2f7f23758a7b498475e82637ba6
+    m_Address: asset.prop.lang_da.sig_go_ma.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e00108726ffe53c683d4d37660a81ac3
+    m_Address: asset.parallax.lang_da.l2.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea0d73c9fe045aee9d56beaec20235a3
+    m_Address: asset.parallax.lang_da.l3.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6f078002fec577d904adbe3c96ac27a
+    m_Address: asset.parallax.lang_da.l4.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d759dd80f21c5eba96cc05551e885c5d
+    m_Address: asset.parallax.lang_da.fg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 03d05df79b43898f254cff5dad608436, type: 2}
   m_SchemaSet:
