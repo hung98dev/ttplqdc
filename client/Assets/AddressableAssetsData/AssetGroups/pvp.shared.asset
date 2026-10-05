@@ -14,7 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: pvp.shared
   m_GUID: 118b09bf60eeb0341aad2ce40ae0d959
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: a6c78cfc207b41abb809e329cd8cbe6f
+    m_Address: asset.map.pvp.duel_court.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63d73efccc084f1ba6d1615c7348f63e
+    m_Address: asset.map.pvp.five_element_arena.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88bef7d985674055b7ae59124ea7d07c
+    m_Address: asset.map.guild_war.five_seal_conflict.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:
