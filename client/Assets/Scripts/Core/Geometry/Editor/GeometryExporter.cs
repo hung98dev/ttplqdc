@@ -27,8 +27,8 @@ namespace ThinhThan.Core.Geometry.Editor
         public sealed class Result
         {
             public bool Ok;
-            public string Json;
-            public string SpaceId;
+            public string Json = "";
+            public string SpaceId = "";
             public readonly List<string> Errors = new List<string>();
         }
 
@@ -64,10 +64,10 @@ namespace ThinhThan.Core.Geometry.Editor
         public static Result ExportScene(Scene scene)
         {
             var res = new Result();
-            GameObject metaGo = null;
-            GameObject segRoot = null;
-            GameObject anchRoot = null;
-            GameObject regRoot = null;
+            GameObject? metaGo = null;
+            GameObject? segRoot = null;
+            GameObject? anchRoot = null;
+            GameObject? regRoot = null;
             foreach (GameObject root in scene.GetRootGameObjects())
             {
                 switch (root.name)
@@ -176,9 +176,9 @@ namespace ThinhThan.Core.Geometry.Editor
                     double syf = bc.size.y;
                     long minX = Quantize(cxf - sxf / 2.0, res, child.name, "minX");
                     long minY = Quantize(cyf - syf / 2.0, res, child.name, "minY");
-                    long maxX = Quantize(cxf + sxf / 2.0, res, child.name, "maxX");
-                    long maxY = Quantize(cyf + syf / 2.0, res, child.name, "maxY");
-                    regs.Add(new[] { minX, minY, maxX, maxY });
+                    long rMaxX = Quantize(cxf + sxf / 2.0, res, child.name, "maxX");
+                    long rMaxY = Quantize(cyf + syf / 2.0, res, child.name, "maxY");
+                    regs.Add(new[] { minX, minY, rMaxX, rMaxY });
                 }
             }
 
@@ -229,13 +229,13 @@ namespace ThinhThan.Core.Geometry.Editor
         sealed class QSegment
         {
             public long Id;
-            public string Kind;
+            public string Kind = "";
             public long X1, Y1, X2, Y2;
         }
 
         sealed class QAnchor
         {
-            public string Id;
+            public string Id = "";
             public long X, Y;
         }
 
@@ -249,7 +249,7 @@ namespace ThinhThan.Core.Geometry.Editor
             y = (double)p.y + (double)offset.y + (double)local.y;
         }
 
-        static string KindForToken(string token)
+        static string? KindForToken(string token)
         {
             string baseTok = token;
             int dot = baseTok.IndexOf('.');
@@ -269,7 +269,7 @@ namespace ThinhThan.Core.Geometry.Editor
         }
 
         // CheckKindSlope mirrors geometry.checkSlopeRule (§7.3).
-        static string CheckKindSlope(string kind, long x1, long y1, long x2, long y2)
+        static string? CheckKindSlope(string kind, long x1, long y1, long x2, long y2)
         {
             long dx = x2 - x1;
             long dy = y2 - y1;
