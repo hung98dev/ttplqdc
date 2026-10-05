@@ -100,7 +100,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-073` | UI, Item, Equipment & Skill VFX Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-074` | Cosmetic Presentation Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-075` | SFX & Folklore BGM Production | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
-| `IMP-076` | Production Asset Coverage, Rights & Release Audit | `NOT_STARTED` | IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
+| `IMP-076` | Production Asset Coverage, Rights & Release Audit | `IN_PROGRESS` | IMP-004, IMP-064, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-104, IMP-105 | `../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md` |
 | `IMP-077` | Operator Admin API (auth, roles, two-person rule) | `NOT_STARTED` | IMP-006, IMP-043, IMP-094 | `../07_security/auth.md`, `../04_architecture/authority.md` |
 | `IMP-078` | Server Geometry & Deterministic Collision Core | `DONE` | IMP-003, IMP-068, IMP-098 | `../04_architecture/physics_geometry_contract.md`, `../01_gameplay/movement.md` |
 | `IMP-079` | Sim Runtime: Fixed-Step Tick, AOI & Replication | `DONE` | IMP-002, IMP-061, IMP-068, IMP-098 | `../04_architecture/realtime_loop.md`, `../04_architecture/concurrency.md` |
@@ -4419,10 +4419,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-075/"
 
 ## `IMP-076` — Production Asset Coverage, Rights & Release Audit
 id: IMP-076
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-076"
+branch: "imp/IMP-076-release-audit"
+claimed_at: "2026-10-05T16:36:00Z"
 blocked_by: ""
 
 specs: [`../07_content/presentation_asset_manifest.md`, `../04_architecture/client_assets.md`, `definition_of_done.md`]
