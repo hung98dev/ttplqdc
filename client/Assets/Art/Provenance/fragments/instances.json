@@ -1,0 +1,2792 @@
+{
+ "schema_version": 1,
+ "assets": [
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/competitive/prop.altar.hoa.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "701eac0bbc1de1c5efc2a74f5682d4b0f53f9a4a11131aa169fead55a7075361",
+   "final_sha256": "e0333c5dc434d463569b4247bc15c27e21ea6a9074bcfc3cb43bbaaf2bd67707",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop altar.hoa, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/competitive/prop.altar.kim.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "f0e4f916f2e5dcc203e075b42650b4f12e93b12ab86b34bd90218dca5c51f154",
+   "final_sha256": "4fe9c08ddd23e741816c589b044420e225ec291fd229984bb739175393b150de",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop altar.kim, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/competitive/prop.altar.moc.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "6fca263ad1c5abe21421ccd5d10fce3850dec32ef74e3552bb505739dcd3e023",
+   "final_sha256": "d9c15adbf3dfe50751b9a54e8fa45407b984308e7659d6139e7bd6e64362a96e",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop altar.moc, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/competitive/prop.altar.tho.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "52562fd606f1dc0e887bb0bde1028742d0e959e450a2e618cf5f0d54c74cdc26",
+   "final_sha256": "8ad90083d77ea847abe3b71c72fb5ba5de5416897aa5398e3bb45fca80fe20f5",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop altar.tho, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/competitive/prop.altar.thuy.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "6e513cfd4df16222da528f7286b05d1847a1ae60f702827d6ee7c3af44204c13",
+   "final_sha256": "ff0bfde277751f0b037f08cb7e7cbfdec473151289d12e9201632073d775f995",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop altar.thuy, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.duel_court.scene",
+   "file_path": "client/Assets/Art/Instances/competitive/prop.banner.duel.png",
+   "content_id": "map.pvp.duel_court",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "a6bc68a0a5df64a1ad82889196365e4acfc36d63b67c6d865a4c1902627005a6",
+   "final_sha256": "37d5885eca062fa41ab3fe4423a8bd746e53463d293af4cef7d5d67f1f390cf6",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop banner.duel, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "duel court ritual arena",
+     "banner-marked dueling ground"
+    ],
+    "regional_variants": [
+     "all-region martial grounds"
+    ],
+    "motifs_checked": [
+     "duel banner motif",
+     "mirrored arena bowl",
+     "no national or religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.guild_war.five_seal_conflict.scene",
+   "file_path": "client/Assets/Art/Instances/competitive/prop.drum.guild.png",
+   "content_id": "map.guild_war.five_seal_conflict",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "3b714100528e7cb37fef5ac2a7508dc43f33606d4533580ef8c0147a5a59ff99",
+   "final_sha256": "239ddd6a0d520d63d951a17da557af6e4032a468d965bee23a6894625c990a55",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop drum.guild, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "five-seal braided front",
+     "guild seal war standards",
+     "ng\u0169 h\u00e0nh seal anchors"
+    ],
+    "regional_variants": [
+     "all-region guild warfare"
+    ],
+    "motifs_checked": [
+     "five seal altars",
+     "guild war drum standard",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.den_tran.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.den_tran/bg.far.dungeon.den_tran.png",
+   "content_id": "dungeon.den_tran",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "592463a939fbc31f7966166adfeec76755bf468dbb50db3b6625d9e73fb8ebe2",
+   "final_sha256": "2366045ebb8c65dc4417fd3557fd91480d3f75468d0122033840cbd96d0730ec",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for dungeon.den_tran, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "h\u1ed3 tinh (nine-tailed fox spirit) temple den",
+     "\u0111\u1ec1n tr\u1ea7n ruined shrine motif",
+     "seal-temple gauntlet"
+    ],
+    "regional_variants": [
+     "northern delta temple ruins",
+     "central highland spirit den"
+    ],
+    "motifs_checked": [
+     "nine-tailed fox shrine",
+     "seal temple pillars and war drum",
+     "no torii gates",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia of living communities",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.den_tran.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.den_tran/bg.mid.dungeon.den_tran.png",
+   "content_id": "dungeon.den_tran",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "d811a747f3eaacbb8755ab51f5a574ebaceaca471d132deeb607f7194f3699e5",
+   "final_sha256": "f7c2fe884c3abedccb149fe49ea525c70dcd3ac59ba899008ba48894abb756db",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for dungeon.den_tran, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "h\u1ed3 tinh (nine-tailed fox spirit) temple den",
+     "\u0111\u1ec1n tr\u1ea7n ruined shrine motif",
+     "seal-temple gauntlet"
+    ],
+    "regional_variants": [
+     "northern delta temple ruins",
+     "central highland spirit den"
+    ],
+    "motifs_checked": [
+     "nine-tailed fox shrine",
+     "seal temple pillars and war drum",
+     "no torii gates",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia of living communities",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.den_tran.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.den_tran/prop.drum.dungeon.den_tran.png",
+   "content_id": "dungeon.den_tran",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "76af06092ff89fbe141086d6bcf2c7b25413ed4cd229da0151dca498be878e14",
+   "final_sha256": "e959e2abcb4a2fa7ffc840bde3f4d8902a6432b2f0df5255dc42ae0a7cbf2473",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop drum.dungeon.den_tran, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "h\u1ed3 tinh (nine-tailed fox spirit) temple den",
+     "\u0111\u1ec1n tr\u1ea7n ruined shrine motif",
+     "seal-temple gauntlet"
+    ],
+    "regional_variants": [
+     "northern delta temple ruins",
+     "central highland spirit den"
+    ],
+    "motifs_checked": [
+     "nine-tailed fox shrine",
+     "seal temple pillars and war drum",
+     "no torii gates",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia of living communities",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.den_tran.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.den_tran/prop.pillar.dungeon.den_tran.png",
+   "content_id": "dungeon.den_tran",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "34d1a293d0c26b4576325da23e7609f7d7941975d620bf2a6cd2b17ce9842baf",
+   "final_sha256": "833509aa30e08f09e39a8bc48c925c7e41b4238829dadd8ef9b5fdad966ffede",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop pillar.dungeon.den_tran, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "h\u1ed3 tinh (nine-tailed fox spirit) temple den",
+     "\u0111\u1ec1n tr\u1ea7n ruined shrine motif",
+     "seal-temple gauntlet"
+    ],
+    "regional_variants": [
+     "northern delta temple ruins",
+     "central highland spirit den"
+    ],
+    "motifs_checked": [
+     "nine-tailed fox shrine",
+     "seal temple pillars and war drum",
+     "no torii gates",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia of living communities",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.den_tran.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.den_tran/tile.dungeon.den_tran.png",
+   "content_id": "dungeon.den_tran",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "134cac311e5663054607956f5ec651be56e7b7f7d45e996be4f997fb06681e6d",
+   "final_sha256": "522e13d8d4d7320947990ebec194efda2de8225d949e5781ee869d72943c8927",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for den_tran, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "h\u1ed3 tinh (nine-tailed fox spirit) temple den",
+     "\u0111\u1ec1n tr\u1ea7n ruined shrine motif",
+     "seal-temple gauntlet"
+    ],
+    "regional_variants": [
+     "northern delta temple ruins",
+     "central highland spirit den"
+    ],
+    "motifs_checked": [
+     "nine-tailed fox shrine",
+     "seal temple pillars and war drum",
+     "no torii gates",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia of living communities",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.dinh_lang_bo_hoang.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.dinh_lang_bo_hoang/bg.far.dungeon.dinh_lang_bo_hoang.png",
+   "content_id": "dungeon.dinh_lang_bo_hoang",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "e680c1877e29ea74412fd720ad8b9b3c57f727125a1f5f7525eab94d871f39c8",
+   "final_sha256": "1ae0ba3c30589cc6cfe02bdad484602dc5cd540e2d01152e84fc7519665879b6",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for dungeon.dinh_lang_bo_hoang, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "\u0111\u00ecnh l\u00e0ng b\u1ecf hoang (abandoned communal house)",
+     "ma \u0111\u00e8n ghost lamps",
+     "qu\u1ef7 nh\u1eadp tr\u00e0ng possession tales"
+    ],
+    "regional_variants": [
+     "northern village \u0111\u00ecnh",
+     "southern deserted hamlet"
+    ],
+    "motifs_checked": [
+     "abandoned communal-house courtyard",
+     "ghost lantern procession",
+     "no Qing-dynasty jiangshi attire",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.dinh_lang_bo_hoang.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.dinh_lang_bo_hoang/bg.mid.dungeon.dinh_lang_bo_hoang.png",
+   "content_id": "dungeon.dinh_lang_bo_hoang",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "fcc55c6a6fafe62abae272815ba9377635a7dc0dd9e55b8128c019287c504732",
+   "final_sha256": "0e05fe5b0947469836ca0a0be8c43b23f4ab7095a99d110c4931057dbd13756c",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for dungeon.dinh_lang_bo_hoang, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "\u0111\u00ecnh l\u00e0ng b\u1ecf hoang (abandoned communal house)",
+     "ma \u0111\u00e8n ghost lamps",
+     "qu\u1ef7 nh\u1eadp tr\u00e0ng possession tales"
+    ],
+    "regional_variants": [
+     "northern village \u0111\u00ecnh",
+     "southern deserted hamlet"
+    ],
+    "motifs_checked": [
+     "abandoned communal-house courtyard",
+     "ghost lantern procession",
+     "no Qing-dynasty jiangshi attire",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.dinh_lang_bo_hoang.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.dinh_lang_bo_hoang/prop.altar.dungeon.dinh_lang_bo_hoang.png",
+   "content_id": "dungeon.dinh_lang_bo_hoang",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "790c7d6d63df531b867bbdf9188c75f915eb0b59b78e87271605e0140adf1e23",
+   "final_sha256": "ea1f047927db90447a938785efafa40a457ffdd5d2941e7b7f4ae76c33b59864",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop altar.dungeon.dinh_lang_bo_hoang, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "\u0111\u00ecnh l\u00e0ng b\u1ecf hoang (abandoned communal house)",
+     "ma \u0111\u00e8n ghost lamps",
+     "qu\u1ef7 nh\u1eadp tr\u00e0ng possession tales"
+    ],
+    "regional_variants": [
+     "northern village \u0111\u00ecnh",
+     "southern deserted hamlet"
+    ],
+    "motifs_checked": [
+     "abandoned communal-house courtyard",
+     "ghost lantern procession",
+     "no Qing-dynasty jiangshi attire",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.dinh_lang_bo_hoang.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.dinh_lang_bo_hoang/prop.lamp.dungeon.dinh_lang_bo_hoang.png",
+   "content_id": "dungeon.dinh_lang_bo_hoang",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "abaa99ec3dfcbdddbf290c6d213d9caed08dedbff2ca2fef0bae1a51aad81ee3",
+   "final_sha256": "618630f6efd80635bac261961fd01c0e503d32eff4aeb70ea91e512e0e2af09c",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop lamp.dungeon.dinh_lang_bo_hoang, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "\u0111\u00ecnh l\u00e0ng b\u1ecf hoang (abandoned communal house)",
+     "ma \u0111\u00e8n ghost lamps",
+     "qu\u1ef7 nh\u1eadp tr\u00e0ng possession tales"
+    ],
+    "regional_variants": [
+     "northern village \u0111\u00ecnh",
+     "southern deserted hamlet"
+    ],
+    "motifs_checked": [
+     "abandoned communal-house courtyard",
+     "ghost lantern procession",
+     "no Qing-dynasty jiangshi attire",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.dinh_lang_bo_hoang.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.dinh_lang_bo_hoang/tile.dungeon.dinh_lang_bo_hoang.png",
+   "content_id": "dungeon.dinh_lang_bo_hoang",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "55ddbc76c02c345a98b35b13713464c6454cf4eead33f988fd747fe916bd277e",
+   "final_sha256": "acae2d52152bc0df56cfbeab907aed5bdd326fe841106dd7335b180ebc8a47b4",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for dinh_lang_bo_hoang, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "\u0111\u00ecnh l\u00e0ng b\u1ecf hoang (abandoned communal house)",
+     "ma \u0111\u00e8n ghost lamps",
+     "qu\u1ef7 nh\u1eadp tr\u00e0ng possession tales"
+    ],
+    "regional_variants": [
+     "northern village \u0111\u00ecnh",
+     "southern deserted hamlet"
+    ],
+    "motifs_checked": [
+     "abandoned communal-house courtyard",
+     "ghost lantern procession",
+     "no Qing-dynasty jiangshi attire",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.hang_ma_tranh.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.hang_ma_tranh/bg.far.dungeon.hang_ma_tranh.png",
+   "content_id": "dungeon.hang_ma_tranh",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "e6c61a83e42ec9c048c79d1e0225113e1a089989bb8c4a6937344668cde53262",
+   "final_sha256": "5ebb9be1e4da15158df89c2ddf32c6ca80ce52dacda4f28355448a73d6c73b15",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for dungeon.hang_ma_tranh, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "hang ma tranh (ghost reed cave)",
+     "h\u1ed3 tinh marsh predator",
+     "will-o-wisp reed marsh"
+    ],
+    "regional_variants": [
+     "southern marshland",
+     "northern reed caves"
+    ],
+    "motifs_checked": [
+     "ghost reed cave totems",
+     "predator cairn trail",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.hang_ma_tranh.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.hang_ma_tranh/bg.mid.dungeon.hang_ma_tranh.png",
+   "content_id": "dungeon.hang_ma_tranh",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "e7dabc463f0011d02f5699421616597ebcf33c150b7d7d3c00e3b126819ff44f",
+   "final_sha256": "d1fb494a35714357e034f83366c8fa2d9edb141fb130c2333c3eaa1fb8ec85bf",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for dungeon.hang_ma_tranh, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "hang ma tranh (ghost reed cave)",
+     "h\u1ed3 tinh marsh predator",
+     "will-o-wisp reed marsh"
+    ],
+    "regional_variants": [
+     "southern marshland",
+     "northern reed caves"
+    ],
+    "motifs_checked": [
+     "ghost reed cave totems",
+     "predator cairn trail",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.hang_ma_tranh.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.hang_ma_tranh/prop.cairn.dungeon.hang_ma_tranh.png",
+   "content_id": "dungeon.hang_ma_tranh",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "1a6a1d0c1d7949edba596e86ae32ae24964c3ff858e9cf87bd89538f5122f975",
+   "final_sha256": "2d164c8c1af711e5ebc786deedd1c571e78a8f10c467d3ed45a17e7d15f10822",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop cairn.dungeon.hang_ma_tranh, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "hang ma tranh (ghost reed cave)",
+     "h\u1ed3 tinh marsh predator",
+     "will-o-wisp reed marsh"
+    ],
+    "regional_variants": [
+     "southern marshland",
+     "northern reed caves"
+    ],
+    "motifs_checked": [
+     "ghost reed cave totems",
+     "predator cairn trail",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.hang_ma_tranh.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.hang_ma_tranh/prop.totem.dungeon.hang_ma_tranh.png",
+   "content_id": "dungeon.hang_ma_tranh",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "495cdd7f35ee0e64b629efd7aea67c5869fefc6882b77885825be2e5bdade95d",
+   "final_sha256": "c681ca8d60004f5f080fac4d797173437de0cbcf8655df6ce99d8ea5a9222a9a",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop totem.dungeon.hang_ma_tranh, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "hang ma tranh (ghost reed cave)",
+     "h\u1ed3 tinh marsh predator",
+     "will-o-wisp reed marsh"
+    ],
+    "regional_variants": [
+     "southern marshland",
+     "northern reed caves"
+    ],
+    "motifs_checked": [
+     "ghost reed cave totems",
+     "predator cairn trail",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.hang_ma_tranh.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.hang_ma_tranh/tile.dungeon.hang_ma_tranh.png",
+   "content_id": "dungeon.hang_ma_tranh",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "27bb5442a50e8f0d2830095321b0cc59760f880ee1c6a3bfd5fd21aa741fe46c",
+   "final_sha256": "b69cbe8454994624e5cc3eb68668b52b294efc1e5d637f1db7a004d3e4745b4b",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for hang_ma_tranh, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "hang ma tranh (ghost reed cave)",
+     "h\u1ed3 tinh marsh predator",
+     "will-o-wisp reed marsh"
+    ],
+    "regional_variants": [
+     "southern marshland",
+     "northern reed caves"
+    ],
+    "motifs_checked": [
+     "ghost reed cave totems",
+     "predator cairn trail",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.mieu_ba_trong_rung.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.mieu_ba_trong_rung/bg.far.dungeon.mieu_ba_trong_rung.png",
+   "content_id": "dungeon.mieu_ba_trong_rung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "6c6d37c88ed421173e254763a5a82d2a6a11900448ea7f4736ff68cc411f7ad9",
+   "final_sha256": "0db7477ca5612c4ea8e655e725e6dbcaaab027bbb475eb189c299c045c1f8268",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for dungeon.mieu_ba_trong_rung, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "mi\u1ebfu b\u00e0 trong r\u1eebng (forest goddess shrine)",
+     "m\u1ed9c tinh tree spirits",
+     "root maze ascent"
+    ],
+    "regional_variants": [
+     "southern forest shrine",
+     "central highland spirit grove"
+    ],
+    "motifs_checked": [
+     "forest goddess shrine marker",
+     "root-maze motif",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.mieu_ba_trong_rung.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.mieu_ba_trong_rung/bg.mid.dungeon.mieu_ba_trong_rung.png",
+   "content_id": "dungeon.mieu_ba_trong_rung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "d42b873a1a8c839b6f9ab1bf085ec2bb7536d5e6977d60215bfaefcca50e12f2",
+   "final_sha256": "2799233d8b213eadc61323928285f809ffe3a6c6d442541525323a8b84d5e8c1",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for dungeon.mieu_ba_trong_rung, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "mi\u1ebfu b\u00e0 trong r\u1eebng (forest goddess shrine)",
+     "m\u1ed9c tinh tree spirits",
+     "root maze ascent"
+    ],
+    "regional_variants": [
+     "southern forest shrine",
+     "central highland spirit grove"
+    ],
+    "motifs_checked": [
+     "forest goddess shrine marker",
+     "root-maze motif",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.mieu_ba_trong_rung.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.mieu_ba_trong_rung/prop.marker.dungeon.mieu_ba_trong_rung.png",
+   "content_id": "dungeon.mieu_ba_trong_rung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "ac89cc8c54e11b7b0db0ccc5a078e52182a9318553eaf027ba144468e2d87bac",
+   "final_sha256": "3982f29a7c1904d2c48b6ec9edaa11c024aff4abfe0a35df303369020a2cb1a4",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop marker.dungeon.mieu_ba_trong_rung, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "mi\u1ebfu b\u00e0 trong r\u1eebng (forest goddess shrine)",
+     "m\u1ed9c tinh tree spirits",
+     "root maze ascent"
+    ],
+    "regional_variants": [
+     "southern forest shrine",
+     "central highland spirit grove"
+    ],
+    "motifs_checked": [
+     "forest goddess shrine marker",
+     "root-maze motif",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.mieu_ba_trong_rung.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.mieu_ba_trong_rung/prop.root.dungeon.mieu_ba_trong_rung.png",
+   "content_id": "dungeon.mieu_ba_trong_rung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "3fc57b3ed5e2d0fdb71fe5d081457323c14befa56accb247d118df48bbcd8daf",
+   "final_sha256": "bdc08237d090e07377850765a0e11768759888a1014fdd84e17cdec2d9793fe6",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop root.dungeon.mieu_ba_trong_rung, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "mi\u1ebfu b\u00e0 trong r\u1eebng (forest goddess shrine)",
+     "m\u1ed9c tinh tree spirits",
+     "root maze ascent"
+    ],
+    "regional_variants": [
+     "southern forest shrine",
+     "central highland spirit grove"
+    ],
+    "motifs_checked": [
+     "forest goddess shrine marker",
+     "root-maze motif",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.mieu_ba_trong_rung.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.mieu_ba_trong_rung/tile.dungeon.mieu_ba_trong_rung.png",
+   "content_id": "dungeon.mieu_ba_trong_rung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "d5ed86c79497e351d92380828884b39bc12cd1f0a4152a84ce48bf459eaab80b",
+   "final_sha256": "ba6c03a8f48313d54db64d53033c306f8933141d788268c70a8f16cc683061d7",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for mieu_ba_trong_rung, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "mi\u1ebfu b\u00e0 trong r\u1eebng (forest goddess shrine)",
+     "m\u1ed9c tinh tree spirits",
+     "root maze ascent"
+    ],
+    "regional_variants": [
+     "southern forest shrine",
+     "central highland spirit grove"
+    ],
+    "motifs_checked": [
+     "forest goddess shrine marker",
+     "root-maze motif",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.xom_chim.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.xom_chim/bg.far.dungeon.xom_chim.png",
+   "content_id": "dungeon.xom_chim",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "334f7e74e2d38c9f00ffb02c4a75f40a46be15270e21511e833af4506647e603",
+   "final_sha256": "cbd962735459f218c7e670f268b168d91bef7fc80a7952f670ab80699ea53b9e",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for dungeon.xom_chim, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "x\u00f3m chim (stork village)",
+     "th\u01b0\u1ee3ng l\u01b0\u01a1ng rooftop boss",
+     "sluice gate water village"
+    ],
+    "regional_variants": [
+     "southern riverine village",
+     "mekong stork hamlet"
+    ],
+    "motifs_checked": [
+     "stork-village sluice gates",
+     "rooftop shrine circuit",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.xom_chim.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.xom_chim/bg.mid.dungeon.xom_chim.png",
+   "content_id": "dungeon.xom_chim",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "8dc29e650ce1ffdfbf262bd3adb999f39ca371ba7790c430919e930e36746d83",
+   "final_sha256": "f2ef01bc57975e5ffa0fa64e98a63917b3c3601854f71c1fbe91737a4ed4e1ad",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for dungeon.xom_chim, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "x\u00f3m chim (stork village)",
+     "th\u01b0\u1ee3ng l\u01b0\u01a1ng rooftop boss",
+     "sluice gate water village"
+    ],
+    "regional_variants": [
+     "southern riverine village",
+     "mekong stork hamlet"
+    ],
+    "motifs_checked": [
+     "stork-village sluice gates",
+     "rooftop shrine circuit",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.xom_chim.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.xom_chim/prop.shrine.dungeon.xom_chim.png",
+   "content_id": "dungeon.xom_chim",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "85059d5087b2412718547152f2759a395a1d8539f7458b29cd76da568bb3d1ec",
+   "final_sha256": "9833810f39912d78eab19b4d3e8e2a0c20929bbe63741b41aa033fc9c6a510ba",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop shrine.dungeon.xom_chim, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "x\u00f3m chim (stork village)",
+     "th\u01b0\u1ee3ng l\u01b0\u01a1ng rooftop boss",
+     "sluice gate water village"
+    ],
+    "regional_variants": [
+     "southern riverine village",
+     "mekong stork hamlet"
+    ],
+    "motifs_checked": [
+     "stork-village sluice gates",
+     "rooftop shrine circuit",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.xom_chim.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.xom_chim/prop.sluice.dungeon.xom_chim.png",
+   "content_id": "dungeon.xom_chim",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "480be5f3aa8911074b3b331aac65e9ab54efa6734fecb8857611241c67f32e90",
+   "final_sha256": "6e6ba5cacc6d360f10a54424bb2eebbe16a231841f93327d93859782b67c8531",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop sluice.dungeon.xom_chim, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "x\u00f3m chim (stork village)",
+     "th\u01b0\u1ee3ng l\u01b0\u01a1ng rooftop boss",
+     "sluice gate water village"
+    ],
+    "regional_variants": [
+     "southern riverine village",
+     "mekong stork hamlet"
+    ],
+    "motifs_checked": [
+     "stork-village sluice gates",
+     "rooftop shrine circuit",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.dungeon.xom_chim.scene",
+   "file_path": "client/Assets/Art/Instances/dungeon.xom_chim/tile.dungeon.xom_chim.png",
+   "content_id": "dungeon.xom_chim",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "9899026fef673a4266b65cfc5b9adb5b363f84275018a58028ba3c615d85f861",
+   "final_sha256": "a64e6529c902c50982058f3c32db9eaf52d70ea6e86c89c7d84cda84c9be1bdd",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/dungeon_ruins",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for xom_chim, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "x\u00f3m chim (stork village)",
+     "th\u01b0\u1ee3ng l\u01b0\u01a1ng rooftop boss",
+     "sluice gate water village"
+    ],
+    "regional_variants": [
+     "southern riverine village",
+     "mekong stork hamlet"
+    ],
+    "motifs_checked": [
+     "stork-village sluice gates",
+     "rooftop shrine circuit",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.instance.finale.than_trung.scene",
+   "file_path": "client/Assets/Art/Instances/instance.finale.than_trung/bg.far.instance.finale.than_trung.png",
+   "content_id": "instance.finale.than_trung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "3df8ee70e783c88b59e644d63e1e4160de4ab86591c192e11a0757600e34caa0",
+   "final_sha256": "672fd0bb1fa7c0dfcd3a42faa6defb4a3ddee2d14b8c9511759b9f7705346f38",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/finale_omen",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for instance.finale.than_trung, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "th\u1ea7n tr\u00f9ng omen convergence",
+     "spirit-void finale arena",
+     "omen gate and monolith"
+    ],
+    "regional_variants": [
+     "all-region spirit lore"
+    ],
+    "motifs_checked": [
+     "omen gate silhouette",
+     "spirit-void monolith and brazier",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.instance.finale.than_trung.scene",
+   "file_path": "client/Assets/Art/Instances/instance.finale.than_trung/bg.mid.instance.finale.than_trung.png",
+   "content_id": "instance.finale.than_trung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "e5ab5fa017805060efb13807332c21147ddb2aeba1d0e2b44cf89084880c7102",
+   "final_sha256": "0a3ae3dad134c717285fdfded8193f5380ef6c50f745df2a225ec469bdc5f33f",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/finale_omen",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for instance.finale.than_trung, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "th\u1ea7n tr\u00f9ng omen convergence",
+     "spirit-void finale arena",
+     "omen gate and monolith"
+    ],
+    "regional_variants": [
+     "all-region spirit lore"
+    ],
+    "motifs_checked": [
+     "omen gate silhouette",
+     "spirit-void monolith and brazier",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.instance.finale.than_trung.scene",
+   "file_path": "client/Assets/Art/Instances/instance.finale.than_trung/prop.brazier.instance.finale.than_trung.png",
+   "content_id": "instance.finale.than_trung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "6836795163bc70ffc126a0a01b417a872c7d60e8987bae99b0e800af10cc688d",
+   "final_sha256": "343babd156c5555d18e926b35d8b8fa2527da2e2fd5c0cdc52ddae3280eb32c5",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/finale_omen",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop brazier.instance.finale.than_trung, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "th\u1ea7n tr\u00f9ng omen convergence",
+     "spirit-void finale arena",
+     "omen gate and monolith"
+    ],
+    "regional_variants": [
+     "all-region spirit lore"
+    ],
+    "motifs_checked": [
+     "omen gate silhouette",
+     "spirit-void monolith and brazier",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.instance.finale.than_trung.scene",
+   "file_path": "client/Assets/Art/Instances/instance.finale.than_trung/prop.gate.instance.finale.than_trung.png",
+   "content_id": "instance.finale.than_trung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "d6d4466ef82ea0a587b16ca9eb05b73b6cd2bd4bcd3bf4517f0c9e966ff85c49",
+   "final_sha256": "01518f67c60c6ad5944251d799517ca7f0e4c1d12e6c1688db85e57355491d5b",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/finale_omen",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop gate.instance.finale.than_trung, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "th\u1ea7n tr\u00f9ng omen convergence",
+     "spirit-void finale arena",
+     "omen gate and monolith"
+    ],
+    "regional_variants": [
+     "all-region spirit lore"
+    ],
+    "motifs_checked": [
+     "omen gate silhouette",
+     "spirit-void monolith and brazier",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.instance.finale.than_trung.scene",
+   "file_path": "client/Assets/Art/Instances/instance.finale.than_trung/prop.monolith.instance.finale.than_trung.png",
+   "content_id": "instance.finale.than_trung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "6912af6d440c6d157fb2aeca535d6fe84b2c32feccd6fde957f1257f51996747",
+   "final_sha256": "3fbe589da8bcb7916a57f0bfd6a703f03d9c75cf25f8edf6140497d703927fe3",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/finale_omen",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D game prop monolith.instance.finale.than_trung, Vietnamese folklore fantasy environment set piece, top-front key light, three value tiers, warm rim, darker-local-color outline, flat #FF00FF background",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "th\u1ea7n tr\u00f9ng omen convergence",
+     "spirit-void finale arena",
+     "omen gate and monolith"
+    ],
+    "regional_variants": [
+     "all-region spirit lore"
+    ],
+    "motifs_checked": [
+     "omen gate silhouette",
+     "spirit-void monolith and brazier",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.instance.finale.than_trung.scene",
+   "file_path": "client/Assets/Art/Instances/instance.finale.than_trung/tile.instance.finale.than_trung.png",
+   "content_id": "instance.finale.than_trung",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "e2df841255360b9164378231a601a39eb2309230e7cc485ee24d44e40b29c451",
+   "final_sha256": "89a9ddbd97799fb9e410084a41ca042664e118399d5246467cbce0c14c0c0229",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/finale_omen",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for finale.than_trung, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "th\u1ea7n tr\u00f9ng omen convergence",
+     "spirit-void finale arena",
+     "omen gate and monolith"
+    ],
+    "regional_variants": [
+     "all-region spirit lore"
+    ],
+    "motifs_checked": [
+     "omen gate silhouette",
+     "spirit-void monolith and brazier",
+     "no religious insignia of living communities",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.guild_war.five_seal_conflict.scene",
+   "file_path": "client/Assets/Art/Instances/map.guild_war.five_seal_conflict/bg.far.map.guild_war.five_seal_conflict.png",
+   "content_id": "map.guild_war.five_seal_conflict",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "d84cea11ea9987f3c93c29481d961f62b2aba946bd863677b4f703ddf9585b16",
+   "final_sha256": "30b63f1d440689cea2586db5e5653daf221dd26e76e5686015770410067b96dc",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for map.guild_war.five_seal_conflict, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "five-seal braided front",
+     "guild seal war standards",
+     "ng\u0169 h\u00e0nh seal anchors"
+    ],
+    "regional_variants": [
+     "all-region guild warfare"
+    ],
+    "motifs_checked": [
+     "five seal altars",
+     "guild war drum standard",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.guild_war.five_seal_conflict.scene",
+   "file_path": "client/Assets/Art/Instances/map.guild_war.five_seal_conflict/bg.mid.map.guild_war.five_seal_conflict.png",
+   "content_id": "map.guild_war.five_seal_conflict",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "fed9b27b6a277cc9a61996c4f6ba4d3051d06eda681f261972661f6350eb4204",
+   "final_sha256": "cdd80b409c503bc5f58d0ff55fcbf76d8863a6a2f30ede4e1bc91dfee6b79d35",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for map.guild_war.five_seal_conflict, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "five-seal braided front",
+     "guild seal war standards",
+     "ng\u0169 h\u00e0nh seal anchors"
+    ],
+    "regional_variants": [
+     "all-region guild warfare"
+    ],
+    "motifs_checked": [
+     "five seal altars",
+     "guild war drum standard",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.guild_war.five_seal_conflict.scene",
+   "file_path": "client/Assets/Art/Instances/map.guild_war.five_seal_conflict/tile.map.guild_war.five_seal_conflict.png",
+   "content_id": "map.guild_war.five_seal_conflict",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "e42afaeeb89d0515fd2428c140457ff5405705cdff6277561cc4e3e22c79d48b",
+   "final_sha256": "e4e1ba51bf533f2e2e11bd61bda5c1883f22c1d77856df862730d318d17dbeab",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for guild_war.five_seal_conflict, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "five-seal braided front",
+     "guild seal war standards",
+     "ng\u0169 h\u00e0nh seal anchors"
+    ],
+    "regional_variants": [
+     "all-region guild warfare"
+    ],
+    "motifs_checked": [
+     "five seal altars",
+     "guild war drum standard",
+     "no Han/N\u00f4m characters as ornament",
+     "no religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.duel_court.scene",
+   "file_path": "client/Assets/Art/Instances/map.pvp.duel_court/bg.far.map.pvp.duel_court.png",
+   "content_id": "map.pvp.duel_court",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "e6330c9f0d85d185fd449489762f972c58c8a575568d0c590998f7e305f4b889",
+   "final_sha256": "18dad51281a7f0e9355ff5b83afb74fb5d45d28ec4f25f2e2f3542118915322f",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for map.pvp.duel_court, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "duel court ritual arena",
+     "banner-marked dueling ground"
+    ],
+    "regional_variants": [
+     "all-region martial grounds"
+    ],
+    "motifs_checked": [
+     "duel banner motif",
+     "mirrored arena bowl",
+     "no national or religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.duel_court.scene",
+   "file_path": "client/Assets/Art/Instances/map.pvp.duel_court/bg.mid.map.pvp.duel_court.png",
+   "content_id": "map.pvp.duel_court",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "534c2d5131ececb192d1e727a69d0889389a5e05904d13c36293d6ccf0794873",
+   "final_sha256": "92d35b13b5d81170aae20ecb9a673e79f56ab636c1099fc19d4d18ce9f83f1ee",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for map.pvp.duel_court, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "duel court ritual arena",
+     "banner-marked dueling ground"
+    ],
+    "regional_variants": [
+     "all-region martial grounds"
+    ],
+    "motifs_checked": [
+     "duel banner motif",
+     "mirrored arena bowl",
+     "no national or religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.duel_court.scene",
+   "file_path": "client/Assets/Art/Instances/map.pvp.duel_court/tile.map.pvp.duel_court.png",
+   "content_id": "map.pvp.duel_court",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "422f4872a57c45c17d620020d3a303f602c24b3c791d982817891e31ace1176d",
+   "final_sha256": "cd93358daee3512b36bde992819c39afdcad3fd1abf454ad2021fe93c9035311",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for pvp.duel_court, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "duel court ritual arena",
+     "banner-marked dueling ground"
+    ],
+    "regional_variants": [
+     "all-region martial grounds"
+    ],
+    "motifs_checked": [
+     "duel banner motif",
+     "mirrored arena bowl",
+     "no national or religious insignia",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/map.pvp.five_element_arena/bg.far.map.pvp.five_element_arena.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "5e9af41c594d00e161cfb537d144902a9852ce618cbc870fd017572e8a1c5b3c",
+   "final_sha256": "897cc5d85eeb73a6c0b1186af3d71a8feefa622f6f0e0a45873dce0d01931ed5",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax far background layer for map.pvp.five_element_arena, Vietnamese folklore fantasy environment vista, atmospheric depth haze, muted distant silhouettes, three value tiers, opaque sky and horizon",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/map.pvp.five_element_arena/bg.mid.map.pvp.five_element_arena.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "4d743c13cd00b6bd21e46f1fbb88972487d251ec6bdb504c78355a3cb1fc86ca",
+   "final_sha256": "888a0317b1f9dc8aa6812129a5ea7ef79c4a6a48e3f083ea05613dc53e8c037c",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D parallax midground layer for map.pvp.five_element_arena, Vietnamese folklore fantasy environment, midground silhouettes and structures, three value tiers, flat #FF00FF background for cutout",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.map.pvp.five_element_arena.scene",
+   "file_path": "client/Assets/Art/Instances/map.pvp.five_element_arena/tile.map.pvp.five_element_arena.png",
+   "content_id": "map.pvp.five_element_arena",
+   "source_kind": "AI_CREATED",
+   "creator": "devin-imp-105",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-01T10:00:00Z",
+   "source_sha256": "60bc4338f83e663fa87b87df202239408b350276d3f830bb32fc5e0d16a1c3f9",
+   "final_sha256": "db935c0f2d1d8ace2ba3970c59dfd36bdda36f6bfe3a944809ff918c9782eb90",
+   "changes": [
+    "magenta background keying",
+    "alpha dilation and despill",
+    "exact 2x finish downscale",
+    "volume grading and edge anti-aliasing"
+   ],
+   "attribution": null,
+   "style_pack_id": "instances/competitive_arena",
+   "generation_record": {
+    "tool": "devin.generate_image",
+    "version": "1.0",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "Painted-volume 2D tileable ground texture for pvp.five_element_arena, Vietnamese folklore fantasy dungeon environment, seamless edge-to-edge tiling, three value tiers, darker-local-color outline accents, flat #FF00FF-free opaque fill",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "background": "opaque",
+     "key_bg": "#FF00FF"
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": {
+    "source_tales": [
+     "ng\u0169 h\u00e0nh five-element altars",
+     "kim m\u1ed9c th\u1ee7y ho\u1ea3 th\u1ed5 altar circuit"
+    ],
+    "regional_variants": [
+     "all-region five-element cosmology"
+    ],
+    "motifs_checked": [
+     "five-element altar set",
+     "tri-altar circuit",
+     "no religious insignia",
+     "no Han/N\u00f4m characters as ornament",
+     "no trademark or unlicensed reference"
+    ]
+   },
+   "inputs": [],
+   "review_state": "PENDING"
+  }
+ ]
+}

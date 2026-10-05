@@ -129,7 +129,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-102` | Entitlement Claims & Store Client | `NOT_STARTED` | IMP-010, IMP-053, IMP-066 | `../03_systems/account_storage.md`, `../03_systems/monetization.md` |
 | `IMP-103` | Account Deletion & Data Export API / Account UI | `NOT_STARTED` | IMP-056, IMP-066 | `../07_security/data_protection.md`, `../07_security/auth.md` |
 | `IMP-104` | Monster, Boss & Spirit Beast Art | `DONE` | IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/monster_catalog.md` |
-| `IMP-105` | Dungeon, Finale & Competitive Environment Art | `IN_PROGRESS` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md` |
+| `IMP-105` | Dungeon, Finale & Competitive Environment Art | `DONE` | IMP-062, IMP-063, IMP-070 | `../07_content/presentation_asset_manifest.md`, `../07_content/dungeon_catalog.md` |
 | `IMP-106` | Verify CI Wall-Time Reduction via Caching | `DONE` | IMP-000 | `audit_gates.md`, `agent_execution_protocol.md` |
 
 ## Topological Execution Order
@@ -4268,7 +4268,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-072/"
 
 ## `IMP-105` — Dungeon, Finale & Competitive Environment Art
 id: IMP-105
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-105"
 branch: "imp/IMP-105-instance-art"
 claimed_at: "2026-10-05T06:20:00Z"

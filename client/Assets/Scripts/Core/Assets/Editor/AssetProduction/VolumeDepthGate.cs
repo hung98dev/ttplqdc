@@ -244,31 +244,22 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             {
                 return 0.0;
             }
+            var coreMask = new bool[lab.Length];
+            for (int j = 0; j < core.Count; j++)
+            {
+                coreMask[core[j]] = true;
+            }
+            var near = DistanceTransform.NearestSource(coreMask, w, lab.Length / w);
             int hit = 0;
             for (int i = 0; i < band.Count; i++)
             {
                 int p = band[i];
-                int px = p % w;
-                int py = p / w;
-                double best = double.MaxValue;
-                int bj = -1;
-                for (int j = 0; j < core.Count; j++)
-                {
-                    int q = core[j];
-                    int qx = q % w;
-                    int qy = q / w;
-                    double d = (qx - px) * (double)(qx - px) + (qy - py) * (double)(qy - py);
-                    if (d < best)
-                    {
-                        best = d;
-                        bj = j;
-                    }
-                }
-                if (bj < 0)
+                int q = near[p];
+                if (q < 0)
                 {
                     continue;
                 }
-                if (Math.Abs(lab[p].L - lab[core[bj]].L) >= RimDeltaLMin)
+                if (Math.Abs(lab[p].L - lab[q].L) >= RimDeltaLMin)
                 {
                     hit++;
                 }

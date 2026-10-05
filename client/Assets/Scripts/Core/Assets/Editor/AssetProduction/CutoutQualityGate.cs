@@ -165,17 +165,27 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             {
                 CheckCorners(cell, cellW, cellH, r);
             }
+            int[] nearOpaque = Array.Empty<int>();
+            if ((rules & (RuleSet.Fringe | RuleSet.TransparentRgb)) != 0)
+            {
+                var opaque = new bool[n];
+                for (int i = 0; i < n; i++)
+                {
+                    opaque[i] = cell.Pixels[i].A == 255;
+                }
+                nearOpaque = DistanceTransform.NearestSource(opaque, cellW, cellH);
+            }
             if ((rules & RuleSet.SemiBand) != 0)
             {
                 CheckSemiBand(cell, cellW, cellH, translucentMask, r);
             }
             if ((rules & RuleSet.Fringe) != 0)
             {
-                CheckFringe(cell, cellW, cellH, r);
+                CheckFringe(cell, cellW, cellH, nearOpaque, r);
             }
             if ((rules & RuleSet.TransparentRgb) != 0)
             {
-                CheckTransparentRgb(cell, cellW, cellH, r);
+                CheckTransparentRgb(cell, cellW, cellH, nearOpaque, r);
             }
             if ((rules & RuleSet.Speck) != 0 && !detachedParts)
             {
@@ -330,7 +340,8 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
         /// saturation &gt; 0.30, or |dL*| &gt; 35 vs the nearest a = 255
         /// pixel (Euclidean; ties in row-major order).
         /// </summary>
-        private static void CheckFringe(LabPixels.Image cell, int w, int h, FileReport r)
+        private static void CheckFringe(
+            LabPixels.Image cell, int w, int h, int[] nearOpaque, FileReport r)
         {
             const double keyHue = 300.0;
             for (int y = 0; y < h; y++)
@@ -358,7 +369,8 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                         continue;
                     }
                     var pl = LabPixels.ToLab(p.R, p.G, p.B);
-                    var near = NearestOpaqueLab(cell, w, h, x, y);
+                    var src = cell.Pixels[nearOpaque[y * w + x]];
+                    var near = LabPixels.ToLab(src.R, src.G, src.B);
                     if (Math.Abs(pl.L - near.L) > 35.0)
                     {
                         r.FringeDeltaLViolations++;
@@ -406,31 +418,17 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
         /// </summary>
         public static LabPixels.Lab NearestOpaqueLab(LabPixels.Image img, int w, int h, int x, int y)
         {
-            double best = double.MaxValue;
-            int bx = -1;
-            int by = -1;
-            for (int yy = 0; yy < h; yy++)
+            var opaque = new bool[w * h];
+            for (int i = 0; i < opaque.Length; i++)
             {
-                for (int xx = 0; xx < w; xx++)
-                {
-                    if (img.At(xx, yy).A != 255)
-                    {
-                        continue;
-                    }
-                    double d = (xx - x) * (double)(xx - x) + (yy - y) * (double)(yy - y);
-                    if (d < best - 1e-9 || (Math.Abs(d - best) <= 1e-9 && (yy < by || (yy == by && xx < bx))))
-                    {
-                        best = d;
-                        bx = xx;
-                        by = yy;
-                    }
-                }
+                opaque[i] = img.Pixels[i].A == 255;
             }
-            if (bx < 0)
+            int s = DistanceTransform.NearestSource(opaque, w, h)[y * w + x];
+            if (s < 0)
             {
                 return new LabPixels.Lab { L = double.NaN, A = double.NaN, B = double.NaN };
             }
-            var p = img.At(bx, by);
+            var p = img.Pixels[s];
             return LabPixels.ToLab(p.R, p.G, p.B);
         }
 
@@ -440,7 +438,8 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
         /// (Euclidean; row-major ties) — the dilated halo that kills bilinear
         /// and atlas fringe.
         /// </summary>
-        private static void CheckTransparentRgb(LabPixels.Image cell, int w, int h, FileReport r)
+        private static void CheckTransparentRgb(
+            LabPixels.Image cell, int w, int h, int[] nearOpaque, FileReport r)
         {
             for (int y = 0; y < h; y++)
             {
@@ -455,8 +454,13 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                     {
                         continue;
                     }
-                    var src = NearestOpaqueRgb(cell, w, h, x, y);
-                    if (src.Found && (p.R != src.R || p.G != src.G || p.B != src.B))
+                    int s = nearOpaque[y * w + x];
+                    if (s < 0)
+                    {
+                        continue;
+                    }
+                    var src = cell.Pixels[s];
+                    if (p.R != src.R || p.G != src.G || p.B != src.B)
                     {
                         r.TransparentRgbViolations++;
                     }
@@ -487,45 +491,6 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                 }
             }
             return false;
-        }
-
-        private struct RgbHit
-        {
-            public bool Found;
-            public byte R;
-            public byte G;
-            public byte B;
-        }
-
-        private static RgbHit NearestOpaqueRgb(LabPixels.Image img, int w, int h, int x, int y)
-        {
-            double best = double.MaxValue;
-            int bx = -1;
-            int by = -1;
-            var hit = new RgbHit();
-            for (int yy = 0; yy < h; yy++)
-            {
-                for (int xx = 0; xx < w; xx++)
-                {
-                    var p = img.At(xx, yy);
-                    if (p.A != 255)
-                    {
-                        continue;
-                    }
-                    double d = (xx - x) * (double)(xx - x) + (yy - y) * (double)(yy - y);
-                    if (d < best - 1e-9 || (Math.Abs(d - best) <= 1e-9 && (yy < by || (yy == by && xx < bx))))
-                    {
-                        best = d;
-                        bx = xx;
-                        by = yy;
-                        hit.Found = true;
-                        hit.R = p.R;
-                        hit.G = p.G;
-                        hit.B = p.B;
-                    }
-                }
-            }
-            return hit;
         }
 
         /// <summary>
