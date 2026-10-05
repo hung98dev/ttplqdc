@@ -37,7 +37,7 @@ namespace ThinhThan.Tests.EditMode.CutoutQualityGate
         {
             var img = Load(name);
             return ThinhThan.Core.Assets.Editor.AssetProduction.CutoutQualityGate.Measure(
-                name, img, 0, 0, cell, cell, cls, null, false, false);
+                name, img, 0, 0, cell, cell, cls, null, false, false, false);
         }
 
         [Test]
@@ -122,9 +122,15 @@ namespace ThinhThan.Tests.EditMode.CutoutQualityGate
             var rep = ThinhThan.Core.Assets.Editor.AssetProduction.CutoutQualityGate.Measure(
                 "wrong_size_fail.png", img, 0, 0, 128, 128,
                 ThinhThan.Core.Assets.Editor.AssetProduction.CutoutQualityGate.AssetClass.Actor,
-                null, false, false);
+                null, false, false, true);
             Assert.Greater(rep.Violations.Count, 0,
                 "64px silhouette must fail the §3.2 size rules (body 176..192)");
+            var noFigure = ThinhThan.Core.Assets.Editor.AssetProduction.CutoutQualityGate.Measure(
+                "wrong_size_fail.png", img, 0, 0, 128, 128,
+                ThinhThan.Core.Assets.Editor.AssetProduction.CutoutQualityGate.AssetClass.Actor,
+                null, false, false, false);
+            Assert.IsFalse(noFigure.Violations.Exists(v => v.Contains("body height")),
+                "non-figure ACTOR surfaces never bind the 176..192 band");
         }
 
         [Test]
