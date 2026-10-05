@@ -666,11 +666,13 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                             Add(report, "provenance", where,
                                 "final_sha256 does not match file bytes");
                         }
-                        var cid = StrField(n, "content_id");
-                        if (cid != "sha256:" + fin)
+                        var cid = n.Get("content_id");
+                        if (cid != null
+                            && cid.Type != RegisterJson.Node.Kind.Str
+                            && cid.Type != RegisterJson.Node.Kind.Null)
                         {
                             Add(report, "provenance", where,
-                                "content_id must equal sha256:<final_sha256>");
+                                "content_id must be a catalog id or null");
                         }
                     }
                 }
