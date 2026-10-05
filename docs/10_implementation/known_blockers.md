@@ -29,6 +29,14 @@ issue: <ops-blocked issue URL>                       (OPS only)
 
 ## Resolved Blockers
 
+### `OPS-001` — post-merge guard froze auto-merge on a cancelled verify job (infra flake) — RESOLVED
+opened_by: coordinator   opened_at: 2026-10-05T21:10:00Z
+resolved_by: coordinator ops/ PR (no environment repair needed)   resolved_at: 2026-10-05
+evidence: post-merge guard run https://github.com/hung98dev/ttplqdc/actions/runs/37372474662 on main `c3aee1c` (merge of spec-change #156, docs-only): the `Q0-Q6 verify (Linux)` job was `cancelled` with zero executed steps (runner never started — transient GitHub Actions infra). `guardaction` classifies `cancelled` as infrastructure (server/internal/conformance/trusted/classify.go InfraConclusion) → GuardAction=freeze → AUTO_MERGE_FROZEN=true + ops-blocked issue #157. The same run's `Q0-Q6 verify (Windows)` job and guard job succeeded. Rerun-failed-jobs on run 37372474662 re-ran the cancelled job green (transient). Nothing in the environment needed repair.
+owning spec / system: GitHub Actions scheduling (outside repository control); `docs/10_implementation/audit_gates.md` § Gate D
+blocks: ALL
+issue: https://github.com/hung98dev/ttplqdc/issues/157
+
 ### `BLK-003` — `map.pvp.duel_court` must export `anchors: []` but `geometry.Validate` rejects empty anchor sets; instanced-boss arena anchors have no emitted IDs — RESOLVED
 opened_by: devin-imp-062 / IMP-062   opened_at: 2026-10-04T22:22:40Z
 resolved_by: spec-owner spec-change (chosen option 1)   resolved_at: 2026-10-04
