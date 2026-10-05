@@ -586,8 +586,8 @@ Generated from `task_queue.md` `owned_paths`.
 | `server/cmd/migrate/` | IMP-005 |
 | `server/cmd/server/` | IMP-006, IMP-069 |
 | `server/cmd/verify/` | IMP-000 |
-| `server/go.mod` | IMP-000, IMP-003, IMP-005, IMP-006, IMP-081, IMP-098 |
-| `server/go.sum` | IMP-000, IMP-003, IMP-005, IMP-006, IMP-081, IMP-098 |
+| `server/go.mod` | IMP-000, IMP-003, IMP-005, IMP-006, IMP-081, IMP-098, IMP-100 |
+| `server/go.sum` | IMP-000, IMP-003, IMP-005, IMP-006, IMP-081, IMP-098, IMP-100 |
 | `server/internal/app/` | IMP-069 |
 | `server/internal/config/` | IMP-003, IMP-004 |
 | `server/internal/config/equipment/` | IMP-026 |
