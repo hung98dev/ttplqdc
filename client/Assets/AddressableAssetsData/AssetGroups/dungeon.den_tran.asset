@@ -15,13 +15,18 @@ MonoBehaviour:
   m_GroupName: dungeon.den_tran
   m_GUID: ab0a72cc378fc7f4abc43da340765b66
   m_SerializeEntries:
-  - m_GUID: 93443d6800504e17a2adb1e4ac6109b6
-    m_Address: asset.boss.ho_tinh_chin_duoi.prefab
+  - m_GUID: 3992e67d8967460798735c4ea43aefa7
+    m_Address: asset.boss.ho_tinh_chin_duoi.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 670d5e6bc8ed42ab94f5e6e2986e536c
     m_Address: asset.dungeon.den_tran.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93443d6800504e17a2adb1e4ac6109b6
+    m_Address: asset.boss.ho_tinh_chin_duoi.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

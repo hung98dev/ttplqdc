@@ -20,8 +20,43 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0238e464c2515227b7c60861ae4d4cf6
+    m_Address: asset.prop.thanh_co.sig_hao_can.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d36122dd80b532da42425183e68bca4
+    m_Address: asset.prop.thanh_co.sig_duong_da.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0fa588edc0d545ecab7b9604ac0183ef
+    m_Address: asset.npc.thanh_co.ambient_night.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 123ff17470f95802b79c78f76f10545e
+    m_Address: asset.map.thanh_co.hao_can.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 150189b36e944c8c9817282a8559f815
     m_Address: asset.npc.thanh_co.dem_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1835d36ded0a5197af0123271b738af9
+    m_Address: asset.map.thanh_co.duong_da.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bfe40e9631748d7a583982b0ee10afd
+    m_Address: asset.npc.thanh_co.nguoi_dan_duong.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 201fca3e14f44b2c9e9901145b3c3ed3
+    m_Address: asset.monster.thanh_co.hon_tuong.parts.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -30,8 +65,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dcada4836985e0f98b3a65a92566c70
+    m_Address: asset.parallax.thanh_co.l3.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 30b3ae0be9e04a76b6ed1677b967cf4b
     m_Address: asset.npc.thanh_co.cho_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a8b3bc1359443f3ba94c5d3d29abb7f
+    m_Address: asset.monster.thanh_co.tuong_da.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f7a8bb7f9e95cc0bd28c16d04d13ad9
+    m_Address: asset.prop.thanh_co.sig_cong_ngoai.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4263f8583f134d4c9c29be096de46f84
+    m_Address: asset.npc.thanh_co.ambient_day.interact.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -40,8 +95,88 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e751afefea94ed6ac48a22b45a62de3
+    m_Address: asset.npc.thanh_co.tho_nghe.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ea5aa4aeb5f5388bbbffaf009a3bb01
+    m_Address: asset.tile.thanh_co.platform.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 51a87704ba304b12b83da17b49e55303
+    m_Address: asset.npc.thanh_co.hang_quan.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52f28e6620a35d52872795070b25941f
+    m_Address: asset.parallax.thanh_co.l2.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 568407b6431a400395e137c57c1c977c
+    m_Address: asset.monster.thanh_co.oan_hon_dem.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c5bfad3a12d552d8998bc7a0057f793
+    m_Address: asset.tile.thanh_co.wall.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6348f9de7cc74d1abade1fa4c0a0b151
+    m_Address: asset.npc.thanh_co.hang_quan.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 666d0896a0ca58618db28cd2035998e4
+    m_Address: asset.tile.thanh_co.fill.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6b6eb666448a547fa22a4a9f234b4160
+    m_Address: asset.tile.thanh_co.water.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ba1037feb254619b15c0d1aece092f7
+    m_Address: asset.monster.thanh_co.ma_co.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a5ab5ab5b71464a9ae6166ea6e3a599
+    m_Address: asset.monster.thanh_co.qua_tinh.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b916fecaa71546ea50d679027d65af0
+    m_Address: asset.tile.thanh_co.ground.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83a691d3b55f5ddf9d187372b9b82258
+    m_Address: asset.prop.thanh_co.veg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 88828d01039848c280c7ca16538e12eb
     m_Address: asset.monster.thanh_co.oan_hon_dem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90621b122819475482224f192902c3cb
+    m_Address: asset.monster.thanh_co.thach_ve.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a6ccee0f5024bdea7c8a30ca91283fa
+    m_Address: asset.monster.thanh_co.qua_tinh.shot.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f614ae4babc5461b5b5dd88330ae9b5
+    m_Address: asset.map.thanh_co.den_tran.scene
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -52,6 +187,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a27ebcf63a4c4664b7cd852fa5144313
     m_Address: asset.npc.thanh_co.cho_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a3c70aa7b4df55ab87584712bdbcad52
+    m_Address: asset.map.thanh_co.cong_ngoai.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5a0d5d786c855dea82178c0fb1c51df
+    m_Address: asset.prop.thanh_co.marker.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab4dc19cc2c046ffa271c42e8f669039
+    m_Address: asset.monster.thanh_co.qua_tinh.hit.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -75,8 +225,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6bb975e0bed4034b8ccf0fe5d967bbd
+    m_Address: asset.monster.thanh_co.qua_tinh.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b6c1e2aa68bb41e08e96d28c46a2f202
     m_Address: asset.monster.thanh_co.qua_tinh_lon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6e57cf9aaa346f48a43f51daed20c5f
+    m_Address: asset.monster.thanh_co.qua_tinh_lon.parts.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -90,108 +250,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: da050d8bb8154cddbd64b44f580d01d9
-    m_Address: asset.monster.thanh_co.hon_tuong.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ef8636a0323645afbad1839581ab47aa
-    m_Address: asset.npc.thanh_co.ambient_day.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fdfddcc6f2894ac18b45c121a4e1eb33
-    m_Address: asset.monster.thanh_co.hon_binh.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a3c70aa7b4df55ab87584712bdbcad52
-    m_Address: asset.map.thanh_co.cong_ngoai.scene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9f614ae4babc5461b5b5dd88330ae9b5
-    m_Address: asset.map.thanh_co.den_tran.scene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1835d36ded0a5197af0123271b738af9
-    m_Address: asset.map.thanh_co.duong_da.scene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 123ff17470f95802b79c78f76f10545e
-    m_Address: asset.map.thanh_co.hao_can.scene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7b916fecaa71546ea50d679027d65af0
-    m_Address: asset.tile.thanh_co.ground.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 666d0896a0ca58618db28cd2035998e4
-    m_Address: asset.tile.thanh_co.fill.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4ea5aa4aeb5f5388bbbffaf009a3bb01
-    m_Address: asset.tile.thanh_co.platform.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5c5bfad3a12d552d8998bc7a0057f793
-    m_Address: asset.tile.thanh_co.wall.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6b6eb666448a547fa22a4a9f234b4160
-    m_Address: asset.tile.thanh_co.water.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 83a691d3b55f5ddf9d187372b9b82258
-    m_Address: asset.prop.thanh_co.veg.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a5a0d5d786c855dea82178c0fb1c51df
-    m_Address: asset.prop.thanh_co.marker.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc67d4fff21652d0bb05484d6e0b72ca
     m_Address: asset.prop.thanh_co.scatter.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3f7a8bb7f9e95cc0bd28c16d04d13ad9
-    m_Address: asset.prop.thanh_co.sig_cong_ngoai.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f07d3efd8cb253728d39e0890b8c0c3c
-    m_Address: asset.prop.thanh_co.sig_den_tran.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0d36122dd80b532da42425183e68bca4
-    m_Address: asset.prop.thanh_co.sig_duong_da.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0238e464c2515227b7c60861ae4d4cf6
-    m_Address: asset.prop.thanh_co.sig_hao_can.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 52f28e6620a35d52872795070b25941f
-    m_Address: asset.parallax.thanh_co.l2.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2dcada4836985e0f98b3a65a92566c70
-    m_Address: asset.parallax.thanh_co.l3.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -200,8 +260,63 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c62fccb22052431fbd9a9dedb059d6af
+    m_Address: asset.npc.thanh_co.ambient_night.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cafcf411988643069f8897ab5dceb1d9
+    m_Address: asset.monster.thanh_co.hon_binh.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cb3f38c4af795a5ebba13a8ae37ade27
     m_Address: asset.parallax.thanh_co.fg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da050d8bb8154cddbd64b44f580d01d9
+    m_Address: asset.monster.thanh_co.hon_tuong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd4815e5b249450890dc1eef157f9748
+    m_Address: asset.npc.thanh_co.nguoi_dan_duong.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e12323089d304234983e4434be45a225
+    m_Address: asset.monster.thanh_co.qua_tinh.defeat.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e56e639ab6744205beabc8f15733d503
+    m_Address: asset.monster.thanh_co.hon_tran_linh.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e89346443379465896cb86e7595d98d1
+    m_Address: asset.npc.thanh_co.ambient_day.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef8636a0323645afbad1839581ab47aa
+    m_Address: asset.npc.thanh_co.ambient_day.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f07d3efd8cb253728d39e0890b8c0c3c
+    m_Address: asset.prop.thanh_co.sig_den_tran.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb4076f7fe994002a50238e15df063a1
+    m_Address: asset.npc.thanh_co.tho_nghe.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdfddcc6f2894ac18b45c121a4e1eb33
+    m_Address: asset.monster.thanh_co.hon_binh.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

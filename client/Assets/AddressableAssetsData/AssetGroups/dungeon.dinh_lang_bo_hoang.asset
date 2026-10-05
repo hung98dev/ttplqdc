@@ -15,13 +15,18 @@ MonoBehaviour:
   m_GroupName: dungeon.dinh_lang_bo_hoang
   m_GUID: 06ab3485c2329f1408f48f6b36dfc3cf
   m_SerializeEntries:
+  - m_GUID: 11de0621b80749569d76ccdd967796a0
+    m_Address: asset.dungeon.dinh_lang_bo_hoang.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7e312e590e84b2b9391030d09f8a806
     m_Address: asset.boss.quy_nhap_trang.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 11de0621b80749569d76ccdd967796a0
-    m_Address: asset.dungeon.dinh_lang_bo_hoang.scene
+  - m_GUID: e0810166bb144f0cb0fa40fb8178f7b7
+    m_Address: asset.boss.quy_nhap_trang.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

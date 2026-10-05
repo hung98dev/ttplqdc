@@ -15,6 +15,21 @@ MonoBehaviour:
   m_GroupName: beast.shared
   m_GUID: 5523e2e971c0c0b4cbebfe04c491768d
   m_SerializeEntries:
+  - m_GUID: 0fcc08ea65884926958e8859e7563b80
+    m_Address: asset.beast.kim.ho_vang.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1265de379be54623bade8ed932f55b51
+    m_Address: asset.beast.hoa.hoa_diep.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a1fe16dea064da084f14986d6a15f05
+    m_Address: asset.beast.thuy.rua_than.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 22863ea897bf4f2b8ab2787018e244aa
     m_Address: asset.beast.tho.trau_dong.prefab
     m_ReadOnly: 0
@@ -25,8 +40,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c1f53793f7743c8854b1a58476f16a9
+    m_Address: asset.beast.kim.ho_vang.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34c36f5eab7f4a9792bd9b5181f93b47
+    m_Address: asset.beast.thuy.rua_than.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36d56ea062f443d8bd24483b6f9a4bea
     m_Address: asset.beast.kim.ho_vang.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49db1ad20243488e91981705d56d954b
+    m_Address: asset.beast.tho.coc_than.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4aa7acd8a1c242a482ce111376746354
+    m_Address: asset.beast.hoa.hoa_diep.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ef42367aff94b55be769d7ee1a2b216
+    m_Address: asset.beast.thuy.rua_than.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6273e146ab5749feb3b4ed8d73ee8ec5
+    m_Address: asset.beast.hoa.hoa_diep.move.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -35,8 +80,63 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6cbc6445e2f749189deb8893b3d40d6d
+    m_Address: asset.beast.tho.trau_dong.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74e3a0298f864f8e9b93e9e2a12df8c2
+    m_Address: asset.beast.thuy.rai_ca.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a6b60a9ade64bf1bb0d955f5cf8add2
+    m_Address: asset.beast.moc.huou_sao.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d5b3072c4074ae3898f7d13f2415f9f
+    m_Address: asset.beast.thuy.rai_ca.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80ea4332543a462cab8ae5128294c94e
+    m_Address: asset.beast.kim.ho_vang.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85a9623de33049daa1b71852937ec79d
+    m_Address: asset.beast.hoa.ga_than.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8871e1bbe82041f68a1a9c285c3f7ce0
+    m_Address: asset.beast.hoa.ga_than.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e163e05b10d4ac69b63c6d15ef5997e
+    m_Address: asset.beast.moc.huou_sao.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 90a89653cf9d4b718312e8089d283e66
+    m_Address: asset.beast.tho.trau_dong.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 968c3ef3454448df84aa082df49c6a83
+    m_Address: asset.beast.moc.chim_lac.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 991777c246f44b7b8f25556f2c08ea1f
     m_Address: asset.beast.hoa.hoa_diep.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99cfe99673344252a00d21d2d46bfe92
+    m_Address: asset.beast.moc.huou_sao.cast.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -50,8 +150,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b73f07bdf32b48ffb3434af3cb8f9057
+    m_Address: asset.beast.tho.coc_than.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b797a4ce385e491b9b890bf3670e37a8
+    m_Address: asset.beast.tho.coc_than.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b990f43f6f7f400ab658f1a888d01764
     m_Address: asset.beast.moc.huou_sao.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c367da6990f44b4c90951c5b61a8f5fb
+    m_Address: asset.beast.tho.trau_dong.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d12a4c02db3c4e3fa269dfb9ed7e0c20
+    m_Address: asset.beast.moc.chim_lac.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d45f364deee64b838a72f00ec1227edc
+    m_Address: asset.beast.thuy.rai_ca.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d92d820d67e54f6ba07656123e4df0ff
+    m_Address: asset.beast.kim.nghe_dong.move.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -60,8 +190,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1e572993dc04d8a88330818d7e29c5a
+    m_Address: asset.beast.kim.nghe_dong.cast.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2b048d2785c425d9295245727ebd8c4
+    m_Address: asset.beast.hoa.ga_than.move.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6fe80361618407b91d65742c818414c
+    m_Address: asset.beast.moc.chim_lac.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff7c286c9a6b4606924f85a5798a59f6
     m_Address: asset.beast.moc.chim_lac.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff9b76a629d6489ea0e38020e250ded2
+    m_Address: asset.beast.kim.nghe_dong.idle.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -15,8 +15,23 @@ MonoBehaviour:
   m_GroupName: region.nui_thieng
   m_GUID: 22b066f0155ca89408a179c68ba6a033
   m_SerializeEntries:
+  - m_GUID: 0168541f87505bffac6e98ee5f78b64f
+    m_Address: asset.prop.nui_thieng.sig_chan_nui.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0202c32db76b48c6956ca54c8e308c75
     m_Address: asset.monster.nui_thieng.bong_vong.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08eb490aa2d54388ab8968e01bab3f16
+    m_Address: asset.npc.nui_thieng.hang_quan.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e77700ef97c599fb0bc4327ce1a55b6
+    m_Address: asset.parallax.nui_thieng.l2.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -25,8 +40,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f90b7e511465272b883d5c035b2acdc
+    m_Address: asset.parallax.nui_thieng.l4.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13b6b145f881467e9127a23003a72970
     m_Address: asset.npc.nui_thieng.ambient_day.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 183544b97531505d926ba839facac964
+    m_Address: asset.tile.nui_thieng.ground.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -35,8 +60,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e17e8d3808d5b958f6546562e7f1736
+    m_Address: asset.tile.nui_thieng.fill.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2983864aefc34f7980aa48b26a0fda5a
     m_Address: asset.npc.nui_thieng.hang_quan.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b3065a911764dc08ad52febfd442837
+    m_Address: asset.monster.nui_thieng.ngu_tinh.parts.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -50,8 +85,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30e04de9a0a958efb2687df2bf22252b
+    m_Address: asset.prop.nui_thieng.veg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e11d34421384eed92e248d2e9bbe14d
+    m_Address: asset.monster.nui_thieng.than_rung_dem.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f193a2f08c24f57986ce7a57b068428
+    m_Address: asset.npc.nui_thieng.ambient_day.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a34aaee5245462fb9d70804f95244b8
+    m_Address: asset.npc.nui_thieng.ambient_day.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4aef74d256d74cf38a6169794e894430
     m_Address: asset.monster.nui_thieng.ma_nui.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b231390d4e94797817dd4e62ec0045a
+    m_Address: asset.boss.ngu_tinh.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -60,8 +120,43 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 521354f0e7b7485a93a436b6c8fefc02
+    m_Address: asset.monster.nui_thieng.bong_vong.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6038784c4d77408782ded8035ad85fa3
+    m_Address: asset.npc.nui_thieng.hang_quan.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6186a61675525f0999a6e6e2f8fb9cc8
+    m_Address: asset.parallax.nui_thieng.fg.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69bd93b44cf3464c88a5880e8bf85359
     m_Address: asset.npc.nui_thieng.dem_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e0c9bf322e4557fbba74c2d09aeabdf
+    m_Address: asset.tile.nui_thieng.water.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71ede2e923f95d0684d60c2f956e775a
+    m_Address: asset.prop.nui_thieng.sig_cong_co.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 768b7533673e4571b97340d60f2224ce
+    m_Address: asset.monster.nui_thieng.than_trung.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ca1e8d918a155eab7ff4a686a0bdb3a
+    m_Address: asset.prop.nui_thieng.marker.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -75,8 +170,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8dee5da3895a437fad14ce7a210e9f3f
+    m_Address: asset.monster.nui_thieng.tinh_thu.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 92a1546e1ffe436cb364c28eeb1e6efb
     m_Address: asset.npc.nui_thieng.tho_nghe.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95b4b3bb578a44efaddc57b045e51630
+    m_Address: asset.monster.nui_thieng.tinh_nui_gia.parts.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -90,8 +195,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a272ef7a7d974f219af483757c4b7486
+    m_Address: asset.monster.nui_thieng.hon_binh_co.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a35437c5053a49109b216e640ed824ee
     m_Address: asset.npc.nui_thieng.dem_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a68aaf5ae8f25def986be3d593260b9e
+    m_Address: asset.map.nui_thieng.rung_may.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b1aa23fbb4ce4e59af927f4c0e5375c2
+    m_Address: asset.monster.nui_thieng.linh_ve.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b30b893d42c15a2bb978a9a95109a8c2
+    m_Address: asset.parallax.nui_thieng.l3.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6af5f35e72b5a4287f9fb614f0baccc
+    m_Address: asset.prop.nui_thieng.scatter.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -100,13 +230,63 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be2c66edba9c43e28477ba93c83161a7
+    m_Address: asset.npc.nui_thieng.nguoi_dan_duong.idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bef709095cbb5142b778427716898b58
+    m_Address: asset.prop.nui_thieng.sig_suon_da.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c156b247b1d05956aa786c4e70f4def3
+    m_Address: asset.prop.nui_thieng.sig_rung_may.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5680e3f4ec25568a1ec7623429ca989
+    m_Address: asset.map.nui_thieng.chan_nui.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9122cf4fb4448019cb6cd2a46f27981
+    m_Address: asset.monster.nui_thieng.vong_linh.parts.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c973e7ca333449b6af63e13ba219a168
     m_Address: asset.monster.nui_thieng.ngu_tinh.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb9f7646a19747fc94d22e0f19d4515b
+    m_Address: asset.npc.nui_thieng.ambient_night.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd24071f076f42f0b5fe5ea91b8f0089
     m_Address: asset.monster.nui_thieng.vong_linh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9a2865e1365433d998f9e5684741e76
+    m_Address: asset.npc.nui_thieng.tho_nghe.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfe248fea77a4716b572a1eaee4ff712
+    m_Address: asset.npc.nui_thieng.nguoi_dan_duong.interact.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e99fe9035fb659008af0d9482cd35832
+    m_Address: asset.map.nui_thieng.cong_co.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb6e35c8d08e596f90bddebd5c6f1c11
+    m_Address: asset.map.nui_thieng.suon_da.scene
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -120,38 +300,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c5680e3f4ec25568a1ec7623429ca989
-    m_Address: asset.map.nui_thieng.chan_nui.scene
+  - m_GUID: f2e54c23242f4215b2a6e3105c4d5400
+    m_Address: asset.npc.nui_thieng.ambient_night.idle.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e99fe9035fb659008af0d9482cd35832
-    m_Address: asset.map.nui_thieng.cong_co.scene
+  - m_GUID: f635c487e11d4edf943e909b31656857
+    m_Address: asset.monster.nui_thieng.ma_nui.parts.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a68aaf5ae8f25def986be3d593260b9e
-    m_Address: asset.map.nui_thieng.rung_may.scene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eb6e35c8d08e596f90bddebd5c6f1c11
-    m_Address: asset.map.nui_thieng.suon_da.scene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 183544b97531505d926ba839facac964
-    m_Address: asset.tile.nui_thieng.ground.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1e17e8d3808d5b958f6546562e7f1736
-    m_Address: asset.tile.nui_thieng.fill.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fef7b79875dd5196b9121f8b0c0982ef
-    m_Address: asset.tile.nui_thieng.platform.sprite
+  - m_GUID: f680e01db66c46a38dc9a84f28cf6d12
+    m_Address: asset.npc.nui_thieng.tho_nghe.idle.anim
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -160,63 +320,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6e0c9bf322e4557fbba74c2d09aeabdf
-    m_Address: asset.tile.nui_thieng.water.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 30e04de9a0a958efb2687df2bf22252b
-    m_Address: asset.prop.nui_thieng.veg.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7ca1e8d918a155eab7ff4a686a0bdb3a
-    m_Address: asset.prop.nui_thieng.marker.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b6af5f35e72b5a4287f9fb614f0baccc
-    m_Address: asset.prop.nui_thieng.scatter.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0168541f87505bffac6e98ee5f78b64f
-    m_Address: asset.prop.nui_thieng.sig_chan_nui.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 71ede2e923f95d0684d60c2f956e775a
-    m_Address: asset.prop.nui_thieng.sig_cong_co.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c156b247b1d05956aa786c4e70f4def3
-    m_Address: asset.prop.nui_thieng.sig_rung_may.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bef709095cbb5142b778427716898b58
-    m_Address: asset.prop.nui_thieng.sig_suon_da.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0e77700ef97c599fb0bc4327ce1a55b6
-    m_Address: asset.parallax.nui_thieng.l2.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b30b893d42c15a2bb978a9a95109a8c2
-    m_Address: asset.parallax.nui_thieng.l3.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0f90b7e511465272b883d5c035b2acdc
-    m_Address: asset.parallax.nui_thieng.l4.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6186a61675525f0999a6e6e2f8fb9cc8
-    m_Address: asset.parallax.nui_thieng.fg.sprite
+  - m_GUID: fef7b79875dd5196b9121f8b0c0982ef
+    m_Address: asset.tile.nui_thieng.platform.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
