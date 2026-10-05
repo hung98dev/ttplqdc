@@ -74,7 +74,7 @@ namespace ThinhThan.Tests.PlayMode.CharacterLifecycleClient
             Result<bool> connected = await orchestrator
                 .ConnectWithTicketAsync(CancellationToken.None)
                 .ConfigureAwait(false);
-            Assert.IsTrue(connected.Ok);
+            Assert.IsTrue(connected.Ok, connected.ErrorCode);
             await PumpUntil(orchestrator,
                 () => presenter.Screen == ClientUiState.CharacterSelect, 5000);
             Assert.AreEqual(ClientUiState.CharacterSelect, presenter.Screen);
