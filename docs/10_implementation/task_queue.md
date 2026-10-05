@@ -124,7 +124,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
 | `IMP-098` | Observability Core | `DONE` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
 | `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `NOT_STARTED` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
-| `IMP-100` | Character Lifecycle | `IN_PROGRESS` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
+| `IMP-100` | Character Lifecycle | `DONE` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
 | `IMP-101` | URP 2D Rendering & Lighting Setup | `DONE` | IMP-000 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
 | `IMP-102` | Entitlement Claims & Store Client | `NOT_STARTED` | IMP-010, IMP-053, IMP-066 | `../03_systems/account_storage.md`, `../03_systems/monetization.md` |
 | `IMP-103` | Account Deletion & Data Export API / Account UI | `NOT_STARTED` | IMP-056, IMP-066 | `../07_security/data_protection.md`, `../07_security/auth.md` |
@@ -1084,7 +1084,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-006/"
 
 ## `IMP-100` — Character Lifecycle
 id: IMP-100
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-100"
 branch: "imp/IMP-100-character-lifecycle"
 claimed_at: "2026-10-05T09:55:00Z"
