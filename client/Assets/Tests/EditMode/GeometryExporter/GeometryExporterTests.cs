@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework;
 using ThinhThan.Core.Geometry;
-using ThinhThan.Core.Geometry.Editor;
+using GeoExporter = ThinhThan.Core.Geometry.Editor.GeometryExporter;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -84,7 +84,7 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
             foreach (string f in Directory.GetFiles(ScenesDir, "*.unity", SearchOption.TopDirectoryOnly))
             {
                 string rel = "Assets/Scenes/Collision/" + Path.GetFileName(f);
-                GeometryExporter.Result r = GeometryExporter.ExportSceneFile(rel);
+                GeoExporter.Result r = GeoExporter.ExportSceneFile(rel);
                 Assert.IsTrue(r.Ok, Path.GetFileName(f) + " export errors: " + string.Join(";", r.Errors));
                 string committed = Path.Combine(MapsDir, r.SpaceId + ".geom.json");
                 Assert.IsTrue(File.Exists(committed), "no committed map for " + r.SpaceId);
@@ -101,8 +101,8 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
             Scene scene = BuildMinimalScene();
             try
             {
-                GeometryExporter.Result a = GeometryExporter.ExportScene(scene);
-                GeometryExporter.Result b = GeometryExporter.ExportScene(scene);
+                GeoExporter.Result a = GeoExporter.ExportScene(scene);
+                GeoExporter.Result b = GeoExporter.ExportScene(scene);
                 Assert.IsTrue(a.Ok, "first export failed: " + string.Join(";", a.Errors));
                 Assert.AreEqual(a.Json, b.Json, "re-export not byte-identical");
             }
@@ -118,7 +118,7 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
             Scene scene = BuildMinimalScene();
             try
             {
-                GeometryExporter.Result r = GeometryExporter.ExportScene(scene);
+                GeoExporter.Result r = GeoExporter.ExportScene(scene);
                 Assert.IsTrue(r.Ok, string.Join(";", r.Errors));
                 GeometryData g = GeometryLoader.Parse(r.Json);
                 Assert.AreEqual(1, g.SchemaVersionValue);
@@ -158,7 +158,7 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
                 // 4.096f * 1000 = 4096 exactly (2^12); 51.2f -> 51200; x2 at 33.0f
                 AddSegment(segRoot, "seg.ground.0", new Vector2(4.096f, 4f), new Vector2(33f, 4f));
                 AddMetaAnchorOrder(scene);
-                GeometryExporter.Result r = GeometryExporter.ExportScene(scene);
+                GeoExporter.Result r = GeoExporter.ExportScene(scene);
                 Assert.IsTrue(r.Ok, string.Join(";", r.Errors));
                 GeometryData g = GeometryLoader.Parse(r.Json);
                 Assert.AreEqual(4096, g.Segments[0].X1);
@@ -185,7 +185,7 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
                 go.AddComponent<EdgeCollider2D>().points = new[] { new Vector2(0f, 4f), new Vector2(8f, 4f) };
                 // intentionally no ServerGeometry tag
                 AddMetaAnchorOrder(bad1);
-                GeometryExporter.Result r = GeometryExporter.ExportScene(bad1);
+                GeoExporter.Result r = GeoExporter.ExportScene(bad1);
                 Assert.IsFalse(r.Ok);
                 Assert.Greater(r.Errors.Count, 0);
             }
@@ -208,7 +208,7 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
                     new Vector2(0f, 4f), new Vector2(4f, 4f), new Vector2(8f, 4f),
                 };
                 AddMetaAnchorOrder(bad2);
-                GeometryExporter.Result r = GeometryExporter.ExportScene(bad2);
+                GeoExporter.Result r = GeoExporter.ExportScene(bad2);
                 Assert.IsFalse(r.Ok);
             }
             finally
@@ -351,7 +351,7 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
         private sealed class ContactDto
         {
             public int segment_id;
-            public string kind;
+            public string kind = "";
             public int x;
             public int y;
         }
@@ -359,34 +359,34 @@ namespace ThinhThan.Tests.EditMode.GeometryExporter
         [Serializable]
         private sealed class VectorExpected
         {
-            public AabbDto final;
+            public AabbDto final = new AabbDto();
             public bool vx_zeroed;
             public bool vy_zeroed;
             public bool grounded;
             public int ground_segment;
             public bool on_one_way;
-            public List<ContactDto> contacts;
+            public List<ContactDto> contacts = new List<ContactDto>();
         }
 
         [Serializable]
         private sealed class VectorCase
         {
-            public string name;
-            public AabbDto start;
+            public string name = "";
+            public AabbDto start = new AabbDto();
             public int dx;
             public int dy;
             public int step_height_mm;
             public int drop_ignore_platform_id;
             public int drop_ignore_until_tick;
             public int tick;
-            public VectorExpected expected;
+            public VectorExpected expected = new VectorExpected();
         }
 
         [Serializable]
         private sealed class VectorFile
         {
-            public string course;
-            public List<VectorCase> vectors;
+            public string course = "";
+            public List<VectorCase> vectors = new List<VectorCase>();
 
             public static VectorFile Load(string json)
             {
