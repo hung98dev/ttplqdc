@@ -155,7 +155,7 @@ namespace ThinhThan.Net
                 HttpResponseMessage response = await _http
                     .SendAsync(request, cancel).ConfigureAwait(false);
                 string text = await response.Content
-                    .ReadAsStringAsync(cancel).ConfigureAwait(false);
+                    .ReadAsStringAsync().ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     var error = JsonUtility.FromJson<AuthErrorBody>(text);

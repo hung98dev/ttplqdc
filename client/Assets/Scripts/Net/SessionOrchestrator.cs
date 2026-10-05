@@ -6,6 +6,7 @@ using Google.Protobuf;
 using ThinhThan.Core.Runtime;
 using ThinhThan.Core.Session;
 using ThinhThan.Protocol.V1;
+using UnityEngine;
 
 namespace ThinhThan.Net
 {
@@ -57,7 +58,8 @@ namespace ThinhThan.Net
                 credentials ?? throw new ArgumentNullException(nameof(credentials));
             _store = store ?? throw new ArgumentNullException(nameof(store));
             _auth = auth ?? throw new ArgumentNullException(nameof(auth));
-            _nowMs = nowMs ?? (() => Environment.TickCount64);
+            _nowMs = nowMs ??
+                (() => (long)(Time.realtimeSinceStartupAsDouble * 1000.0));
             _wallMs = wallMs ??
                 (() => DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
             _delay = delay ??

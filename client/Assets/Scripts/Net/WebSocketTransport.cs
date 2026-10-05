@@ -83,7 +83,7 @@ namespace ThinhThan.Net
             int offset = 0;
             while (true)
             {
-                WebSocketReceiveResult result = await _socket.ReceiveAsync(
+                var result = await _socket.ReceiveAsync(
                     destination.Slice(offset), cancel).ConfigureAwait(false);
                 if (result.MessageType == WebSocketMessageType.Close)
                 {

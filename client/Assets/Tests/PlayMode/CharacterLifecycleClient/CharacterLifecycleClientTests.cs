@@ -35,12 +35,17 @@ namespace ThinhThan.Tests.PlayMode.CharacterLifecycleClient
             Func<bool> condition, int timeoutMs)
         {
             var time = new FrameTime(0.016f, 0.0, 0);
-            long end = Environment.TickCount64 + timeoutMs;
-            while (!condition() && Environment.TickCount64 < end)
+            long end = NowMs() + timeoutMs;
+            while (!condition() && NowMs() < end)
             {
                 orchestrator.Tick(in time);
                 await Task.Delay(10).ConfigureAwait(false);
             }
+        }
+
+        private static long NowMs()
+        {
+            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         }
 
         [Test]

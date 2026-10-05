@@ -58,7 +58,7 @@ namespace ThinhThan.Net
                 frame =>
                     // Payload!: the decoder always fills it for this id.
                     ((S2CCharacterCreateResult)frame.Payload!).Result
-                        .OperationId.SequenceEqual(operationId),
+                        .OperationId.Equals(ByteString.CopyFrom(operationId)),
                 WaitTimeoutMs, cancel);
             Result<bool> sent = await _orchestrator
                 .CreateCharacterAsync(operationId, characterName, classId, cancel)
