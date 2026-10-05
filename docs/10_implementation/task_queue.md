@@ -86,7 +86,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `NOT_STARTED` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
 | `IMP-060` | Atlas Journal Runtime | `NOT_STARTED` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
-| `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `IN_PROGRESS` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
+| `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `DONE` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
 | `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `DONE` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `NOT_STARTED` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
@@ -436,7 +436,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-061/"
 
 ## `IMP-062` — Unity Geometry Exporter & Map Geometry Parity
 id: IMP-062
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-062"
 branch: "imp/IMP-062-geometry-exporter"
 claimed_at: "2026-10-05T00:26:08Z"
