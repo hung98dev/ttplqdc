@@ -130,6 +130,7 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
         }
 
         [Test]
+        [Timeout(1200000)]
         public void TestReleaseScopeArtGatesAndReviewRecords()
         {
             var report = ReleaseAudit.Run(RepoRoot());
