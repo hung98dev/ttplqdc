@@ -117,12 +117,18 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
         /// the cell index; cellW/cellH = 2 x cell_ref px (or the declared
         /// cell_ref for PROP/VFX). mask is the optional translucent mask
         /// buffer (same dimensions as the cell; nonzero = translucent).
+        /// humanoidFigure states the file is a full-figure surface (sheet,
+        /// turnarounds, preview/body) of a CHARACTER or NPC_HUMANOID
+        /// size_profile — the only surfaces the 176..192 body band binds
+        /// (section 3.1a); every other class/profile takes only the
+        /// bbox/silhouette limit.
         /// Returns the per-file report; violations are strings naming the
         /// section-3.2 row that failed.
         /// </summary>
         public static FileReport Measure(
             string path, LabPixels.Image img, int cx, int cy, int cellW, int cellH,
-            AssetClass cls, bool[]? translucentMask, bool detachedParts, bool pixelArt)
+            AssetClass cls, bool[]? translucentMask, bool detachedParts, bool pixelArt,
+            bool humanoidFigure)
         {
             var r = new FileReport
             {
@@ -205,7 +211,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             }
             if ((rules & RuleSet.CellSize) != 0)
             {
-                CheckCellSize(img, cellW, cellH, cls, r);
+                CheckCellSize(img, cellW, cellH, cls, humanoidFigure, r);
             }
             return r;
         }
@@ -783,10 +789,11 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
         /// <summary>
         /// Cell size: texture = exactly 2 x cell ref; silhouette bbox
         /// (a &gt;= 128) at most 2 x the silhouette limit; body height of a
-        /// CHARACTER-class sprite is 176..192 texture px.
+        /// humanoid full-figure surface is 176..192 texture px.
         /// </summary>
         private static void CheckCellSize(
-            LabPixels.Image img, int cellW, int cellH, AssetClass cls, FileReport r)
+            LabPixels.Image img, int cellW, int cellH, AssetClass cls,
+            bool humanoidFigure, FileReport r)
         {
             int minX = img.Width;
             int maxX = -1;
@@ -830,7 +837,7 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
             {
                 r.Violations.Add("silhouette bbox exceeds 2x limit");
             }
-            if (cls == AssetClass.Actor)
+            if (cls == AssetClass.Actor && humanoidFigure)
             {
                 r.BboxHBody = r.BboxH;
                 if (r.BboxHBody < 176 || r.BboxHBody > 192)

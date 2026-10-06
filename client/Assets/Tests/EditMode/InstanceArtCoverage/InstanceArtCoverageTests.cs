@@ -698,7 +698,7 @@ namespace ThinhThan.Tests.EditMode.InstanceArtCoverage
             {
                 var rep = CutoutGate.Measure(
                     j.Rel, j.Img, 0, 0, j.Img.Width, j.Img.Height, j.Cls, null,
-                    false, false);
+                    false, false, false);
                 if (rep.Violations.Count != 0)
                 {
                     fails.Add(j.Rel + ": " + string.Join("; ", rep.Violations));

@@ -2,7 +2,7 @@
   "schema_version": 1.0,
   "assets": [
     {
-      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.burst",
+      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_attack_burst.png",
       "content_id": "sha256:45c25761149d4fcfe04c026f25058ea17078fa5f5a64463e2a935aa06ccf7c62",
       "source_kind": "AI_CREATED",
@@ -70,7 +70,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.shot",
+      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_attack_shot.png",
       "content_id": "sha256:c6d7911f987fd8c1cf203b1233ca99d232f2355310267a6a781fdd714721a543",
       "source_kind": "AI_CREATED",
@@ -138,7 +138,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.defeat",
+      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_defeat.png",
       "content_id": "sha256:a46950ffd261d2467451525b9e1559009cf39631d84858523875059f5ec4a0d1",
       "source_kind": "AI_CREATED",
@@ -206,7 +206,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.hit",
+      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_hit.png",
       "content_id": "sha256:716e089974d58e8a53aa94656fef8f25fccfe71334683ec86507804d14d221ee",
       "source_kind": "AI_CREATED",
@@ -274,7 +274,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.idle",
+      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_idle.png",
       "content_id": "sha256:acd48bbed27c393fdd3c952fcd58ae679f9cd27296f3bfdbc3ca4c862ef6ba30",
       "source_kind": "AI_CREATED",
@@ -342,7 +342,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.move",
+      "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_move.png",
       "content_id": "sha256:5a8064a97dbf10c97f38e9cd4a55daab5d9d06ce37b9390ee189b62d203eb425",
       "source_kind": "AI_CREATED",
@@ -410,7 +410,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.ca_tinh.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.ca_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ca_tinh/ca_tinh_parts.png",
       "content_id": "sha256:eb0c1d3f64184ce5435597a309a22cfbd77d0a121f124f2cd7a9cdd69073b9a0",
       "source_kind": "AI_CREATED",
@@ -478,7 +478,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.hon_chet_duoi.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.hon_chet_duoi.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/hon_chet_duoi/hon_chet_duoi_parts.png",
       "content_id": "sha256:0488d71673510eb1299040c7e4355d9fe32398c71bae4894db26027f4cc7cb7b",
       "source_kind": "AI_CREATED",
@@ -546,7 +546,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.ma_da.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.ma_da.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ma_da/ma_da_parts.png",
       "content_id": "sha256:36fc6a19e959a3bccee95fee40cc9801517dcc5d826b905a6af74a64a046189c",
       "source_kind": "AI_CREATED",
@@ -614,7 +614,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.ma_da_gia.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.ma_da_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ma_da_gia/ma_da_gia_parts.png",
       "content_id": "sha256:0a9146201bfd995a773ebc959ac1b1509e934f266909511bfd5983e0166da034",
       "source_kind": "AI_CREATED",
@@ -682,7 +682,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.nguoi_song_co.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.nguoi_song_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/nguoi_song_co/nguoi_song_co_parts.png",
       "content_id": "sha256:87f0e191de6741587dc922b754f78636fae33ef2571d16b875571c427ab75c0e",
       "source_kind": "AI_CREATED",
@@ -750,7 +750,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.quy_song_dem.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.quy_song_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/quy_song_dem/quy_song_dem_parts.png",
       "content_id": "sha256:b834e60d39c8624cb0158dee7f49ff113c9683efbfdb507e79b0a7e813b0229f",
       "source_kind": "AI_CREATED",
@@ -818,7 +818,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.thuong_luong.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.thuong_luong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/thuong_luong/thuong_luong_parts.png",
       "content_id": "sha256:ace0fd13d9225e192b5662bb2c5aa24260bde250ac40fbe2abb19c72328c2df2",
       "source_kind": "AI_CREATED",
@@ -886,7 +886,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.ben_nuoc_den.thuy_quai.parts",
+      "asset_key": "asset.monster.ben_nuoc_den.thuy_quai.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/thuy_quai/thuy_quai_parts.png",
       "content_id": "sha256:abe5a23e537a027c53dc528c687450c4de9c79f437e2ce4ddc931f3c884d914b",
       "source_kind": "AI_CREATED",
@@ -954,7 +954,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.ho_tinh.parts",
+      "asset_key": "asset.boss.ho_tinh.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ho_tinh/ho_tinh_parts.png",
       "content_id": "sha256:c4d915e053bd0f53d7dccd347acbe4473468e0e01286cefe8bc4e5b634f3371e",
       "source_kind": "AI_CREATED",
@@ -1022,7 +1022,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.ho_tinh_chin_duoi.parts",
+      "asset_key": "asset.boss.ho_tinh_chin_duoi.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ho_tinh_chin_duoi/ho_tinh_chin_duoi_parts.png",
       "content_id": "sha256:0713c649adba06019f34c34e06a65cd95a9234b76b1ff6886a4b77345a6f1c4f",
       "source_kind": "AI_CREATED",
@@ -1090,7 +1090,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.ma_da_chua.parts",
+      "asset_key": "asset.boss.ma_da_chua.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ma_da_chua/ma_da_chua_parts.png",
       "content_id": "sha256:d4962a5edbfab8cf27ad444cca7c4327d72288a3273c01a9417fcb503ee21b74",
       "source_kind": "AI_CREATED",
@@ -1158,7 +1158,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.moc_tinh_da.parts",
+      "asset_key": "asset.boss.moc_tinh_da.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/moc_tinh_da/moc_tinh_da_parts.png",
       "content_id": "sha256:32196fd61a0668fcc9d01be11b4b3787a310a4e94291f4953d01c7bc2125a41e",
       "source_kind": "AI_CREATED",
@@ -1226,7 +1226,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.ngu_tinh.parts",
+      "asset_key": "asset.boss.ngu_tinh.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ngu_tinh/ngu_tinh_parts.png",
       "content_id": "sha256:b5d0c03033cc422ed334d32933dd2dc1257865f10972d882567975ed9dfb730e",
       "source_kind": "AI_CREATED",
@@ -1294,7 +1294,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.quy_nhap_trang.parts",
+      "asset_key": "asset.boss.quy_nhap_trang.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/quy_nhap_trang/quy_nhap_trang_parts.png",
       "content_id": "sha256:b92ef9ab971971d9cd6492339135cb10394bed6bb9e9488e990b934f59bc430e",
       "source_kind": "AI_CREATED",
@@ -1362,7 +1362,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.than_trung.parts",
+      "asset_key": "asset.boss.than_trung.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/than_trung/than_trung_parts.png",
       "content_id": "sha256:afd1236205de34bee1a4c5a19c58592a8c985dd4677dadfeb034b27440c320fc",
       "source_kind": "AI_CREATED",
@@ -1430,7 +1430,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.boss.thuong_luong.parts",
+      "asset_key": "asset.boss.thuong_luong.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/thuong_luong/thuong_luong_parts.png",
       "content_id": "sha256:034d02bd6d4f82034f2208afa5b375c0a57345e8f8ad140b33b1f2051d54d6a8",
       "source_kind": "AI_CREATED",
@@ -1498,7 +1498,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ho_tinh.parts",
+      "asset_key": "asset.monster.deo_may.ho_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ho_tinh/ho_tinh_parts.png",
       "content_id": "sha256:44310cf51d97da7c5a0b1bbd6a2d9336e31567a070f3eecde2aa756460db03ce",
       "source_kind": "AI_CREATED",
@@ -1566,7 +1566,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ho_tinh_ve.parts",
+      "asset_key": "asset.monster.deo_may.ho_tinh_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ho_tinh_ve/ho_tinh_ve_parts.png",
       "content_id": "sha256:dae7037ace03747826e48e4d6de14b883e50a28fc2e591bb73779a17f5565a2f",
       "source_kind": "AI_CREATED",
@@ -1634,7 +1634,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.khi_nui.parts",
+      "asset_key": "asset.monster.deo_may.khi_nui.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/khi_nui/khi_nui_parts.png",
       "content_id": "sha256:f5e4296a616588574c3d01e55c973ce7aae92d105ff80e057ddd5dbd0f5e8ba4",
       "source_kind": "AI_CREATED",
@@ -1702,7 +1702,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_tranh.parts",
+      "asset_key": "asset.monster.deo_may.ma_tranh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_tranh/ma_tranh_parts.png",
       "content_id": "sha256:120760e5f9ebf98bf25a7eb6f2b4890bf08023188ed09c4b0ee1f1994ea49929",
       "source_kind": "AI_CREATED",
@@ -1770,7 +1770,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_tranh_gia.parts",
+      "asset_key": "asset.monster.deo_may.ma_tranh_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_tranh_gia/ma_tranh_gia_parts.png",
       "content_id": "sha256:93fa16b842d198eed4683a1200b749ec6497fe6a6ec9effb99b892523396dd54",
       "source_kind": "AI_CREATED",
@@ -1838,7 +1838,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_van_dem.burst",
+      "asset_key": "asset.monster.deo_may.ma_van_dem.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_attack_burst.png",
       "content_id": "sha256:b225ecffc48e1d06a08552f508a8d0a5c8977e68d7040e7273ed998bc971cf30",
       "source_kind": "AI_CREATED",
@@ -1906,7 +1906,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_van_dem.shot",
+      "asset_key": "asset.monster.deo_may.ma_van_dem.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_attack_shot.png",
       "content_id": "sha256:5d91b87a4a727f6fb5ec5f2124aac417cfa0eb2712c8d7b56e6b7a4ddb6203a3",
       "source_kind": "AI_CREATED",
@@ -1974,7 +1974,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_van_dem.defeat",
+      "asset_key": "asset.monster.deo_may.ma_van_dem.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_defeat.png",
       "content_id": "sha256:91ba891dba2ada7d3cd7559f6d3bdd6af3a55d79385b683659c3a1433b92d8d6",
       "source_kind": "AI_CREATED",
@@ -2042,7 +2042,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_van_dem.hit",
+      "asset_key": "asset.monster.deo_may.ma_van_dem.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_hit.png",
       "content_id": "sha256:fea3e5cfdba2284846ee3fb34e4287ce2eef4d4ce226f1cabb363048b1f0c29b",
       "source_kind": "AI_CREATED",
@@ -2110,7 +2110,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_van_dem.idle",
+      "asset_key": "asset.monster.deo_may.ma_van_dem.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_idle.png",
       "content_id": "sha256:dce350d9010fb2a8295c61be311b091e9501e6b252ebfce20a4a95567183a319",
       "source_kind": "AI_CREATED",
@@ -2178,7 +2178,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.ma_van_dem.move",
+      "asset_key": "asset.monster.deo_may.ma_van_dem.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_move.png",
       "content_id": "sha256:57f6351ebd05a6c7f9e547065d752d5392ac6187a5890df20b4761c375c66305",
       "source_kind": "AI_CREATED",
@@ -2246,7 +2246,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.vong_nui_gia.parts",
+      "asset_key": "asset.monster.deo_may.vong_nui_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/vong_nui_gia/vong_nui_gia_parts.png",
       "content_id": "sha256:d606d2d04b7778c803d97e14982e11c6f78317449c5f296b2de8cd8dd18958db",
       "source_kind": "AI_CREATED",
@@ -2314,7 +2314,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.deo_may.vong_rung.parts",
+      "asset_key": "asset.monster.deo_may.vong_rung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/vong_rung/vong_rung_parts.png",
       "content_id": "sha256:88ef217d6ca7c28752cfdd7981c29541a7c4aef996a9bc614fb577806b32308c",
       "source_kind": "AI_CREATED",
@@ -2382,7 +2382,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.bu_nhin_rom.parts",
+      "asset_key": "asset.monster.lang_da.bu_nhin_rom.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/bu_nhin_rom/bu_nhin_rom_parts.png",
       "content_id": "sha256:5cb174de4d4e8de746bd5fe57e5bf5d87b964f6967c1573b38202f998e832c9b",
       "source_kind": "AI_CREATED",
@@ -2450,7 +2450,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.shot",
+      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_attack_shot.png",
       "content_id": "sha256:c4c9dade5b3dad7cc6aea7a0cba879a8999f8ecf8c5d555aa53115f8da832c62",
       "source_kind": "AI_CREATED",
@@ -2518,7 +2518,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.defeat",
+      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_defeat.png",
       "content_id": "sha256:64edb49bd383cea900a5258b00a46d24f3c1abadf685c1df45fe77b522f5428f",
       "source_kind": "AI_CREATED",
@@ -2586,7 +2586,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.hit",
+      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_hit.png",
       "content_id": "sha256:6c201463f0d2f5f33c918c2e3e9560c8bddc698f5c0195f06b8314e8816fc594",
       "source_kind": "AI_CREATED",
@@ -2654,7 +2654,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.idle",
+      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_idle.png",
       "content_id": "sha256:22048c15311ba13b41d1ceb7666df787ed0514501edc66e5474c0bb536119d4e",
       "source_kind": "AI_CREATED",
@@ -2722,7 +2722,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.move",
+      "asset_key": "asset.monster.lang_da.coc_thanh_tinh.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_move.png",
       "content_id": "sha256:6db9094a3949b782cf04973010a5d9aa39099915ee5c45684e980c791a7c8232",
       "source_kind": "AI_CREATED",
@@ -2790,7 +2790,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.dom_dom_ma.burst",
+      "asset_key": "asset.monster.lang_da.dom_dom_ma.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_attack_burst.png",
       "content_id": "sha256:673b7de345e1f4efc14219425f745f74c408216a6e8b79bfbd5cc392f2f4f864",
       "source_kind": "AI_CREATED",
@@ -2858,7 +2858,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.dom_dom_ma.shot",
+      "asset_key": "asset.monster.lang_da.dom_dom_ma.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_attack_shot.png",
       "content_id": "sha256:7cbba13c318b4db23970d3c0515d69d1777f5d654bf7c256bc6651228c2be8ce",
       "source_kind": "AI_CREATED",
@@ -2926,7 +2926,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.dom_dom_ma.defeat",
+      "asset_key": "asset.monster.lang_da.dom_dom_ma.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_defeat.png",
       "content_id": "sha256:378671137f1db1d9410936969a190144854203622dac04c70eddf635d0b1c69f",
       "source_kind": "AI_CREATED",
@@ -2994,7 +2994,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.dom_dom_ma.hit",
+      "asset_key": "asset.monster.lang_da.dom_dom_ma.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_hit.png",
       "content_id": "sha256:988afd5c5646ad75d571ff01fb4d4a64dc1e639974d4b189a5a57513ea2867d6",
       "source_kind": "AI_CREATED",
@@ -3062,7 +3062,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.dom_dom_ma.idle",
+      "asset_key": "asset.monster.lang_da.dom_dom_ma.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_idle.png",
       "content_id": "sha256:deab449c70d52ea00a6b449dec2985f07cf787713a838ca7613d9e31b9021737",
       "source_kind": "AI_CREATED",
@@ -3130,7 +3130,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.dom_dom_ma.move",
+      "asset_key": "asset.monster.lang_da.dom_dom_ma.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_move.png",
       "content_id": "sha256:11babe10fa0a96f2828cc126067e57a2cdc64bcf63c70d041eb722d884d2e8af",
       "source_kind": "AI_CREATED",
@@ -3198,7 +3198,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.hon_do_trang.parts",
+      "asset_key": "asset.monster.lang_da.hon_do_trang.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_do_trang/hon_do_trang_parts.png",
       "content_id": "sha256:1bb527ca1e6b06a1796a9ddded779fe05f40a2f6c6e94297f9109b6f151c1955",
       "source_kind": "AI_CREATED",
@@ -3266,7 +3266,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.hon_ma_co_thu.parts",
+      "asset_key": "asset.monster.lang_da.hon_ma_co_thu.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_ma_co_thu/hon_ma_co_thu_parts.png",
       "content_id": "sha256:7b45a72c2160db8eef21585c5c0fa12b8d1c9d862ba1547279958ad417931b73",
       "source_kind": "AI_CREATED",
@@ -3334,7 +3334,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.hon_xo_non.parts",
+      "asset_key": "asset.monster.lang_da.hon_xo_non.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_xo_non/hon_xo_non_parts.png",
       "content_id": "sha256:4e4aa8103a2f7ff477902d4bc40aff8ac0feb0e47a926f917d6c054536bed853",
       "source_kind": "AI_CREATED",
@@ -3402,7 +3402,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.ma_xo.parts",
+      "asset_key": "asset.monster.lang_da.ma_xo.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/ma_xo/ma_xo_parts.png",
       "content_id": "sha256:47fe84142c3694dc21ad7d103b083de39918fb8b1737d532ab64da30eff4d73a",
       "source_kind": "AI_CREATED",
@@ -3470,7 +3470,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.quy_nhap_trang.parts",
+      "asset_key": "asset.monster.lang_da.quy_nhap_trang.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/quy_nhap_trang/quy_nhap_trang_parts.png",
       "content_id": "sha256:954f4d4d33bb4f0c82eb4bee366d051518572e2358fee1419b5536c3383e3381",
       "source_kind": "AI_CREATED",
@@ -3538,7 +3538,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.lang_da.vong_hon.parts",
+      "asset_key": "asset.monster.lang_da.vong_hon.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/vong_hon/vong_hon_parts.png",
       "content_id": "sha256:cbd235eb916d927ec0bae116ca4df95c59b6a13b37da5bc7cbe2ecc5ddb2ecca",
       "source_kind": "AI_CREATED",
@@ -3606,7 +3606,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.bong_vong.parts",
+      "asset_key": "asset.monster.nui_thieng.bong_vong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/bong_vong/bong_vong_parts.png",
       "content_id": "sha256:7d8dcde2fdb59c576fb641992eff0fa4a3565b196db86f6a20e0670ea71e97b9",
       "source_kind": "AI_CREATED",
@@ -3674,7 +3674,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.hon_binh_co.parts",
+      "asset_key": "asset.monster.nui_thieng.hon_binh_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/hon_binh_co/hon_binh_co_parts.png",
       "content_id": "sha256:611a284d5f225ab0de3afa2045a9286ae858f096a9da796a07b3a157576e9d12",
       "source_kind": "AI_CREATED",
@@ -3742,7 +3742,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.linh_ve.parts",
+      "asset_key": "asset.monster.nui_thieng.linh_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/linh_ve/linh_ve_parts.png",
       "content_id": "sha256:4041cbcf293d666b11d020568299cd5193326d29be390f4b9a2112a80cd07739",
       "source_kind": "AI_CREATED",
@@ -3810,7 +3810,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.ma_nui.parts",
+      "asset_key": "asset.monster.nui_thieng.ma_nui.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/ma_nui/ma_nui_parts.png",
       "content_id": "sha256:5afcc4aeaa7db53c52724614d6fbccbb020f0f431cd9fb0f13f8871ec7176fe9",
       "source_kind": "AI_CREATED",
@@ -3878,7 +3878,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.ngu_tinh.parts",
+      "asset_key": "asset.monster.nui_thieng.ngu_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/ngu_tinh/ngu_tinh_parts.png",
       "content_id": "sha256:c213a9f937b60025d3bba1741997b911bd4d07bbddb828c85d081a36f745e5b8",
       "source_kind": "AI_CREATED",
@@ -3946,7 +3946,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.than_rung_dem.parts",
+      "asset_key": "asset.monster.nui_thieng.than_rung_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/than_rung_dem/than_rung_dem_parts.png",
       "content_id": "sha256:cdae5659e55e894a846e37e07cf9e5bdc405d8d30b633b40c25bf75c599980c0",
       "source_kind": "AI_CREATED",
@@ -4014,7 +4014,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.than_trung.parts",
+      "asset_key": "asset.monster.nui_thieng.than_trung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/than_trung/than_trung_parts.png",
       "content_id": "sha256:18e6b2a0e8cf58d0335d448046f8ea3ffae9ed3ddeee276991063424c32c7ba5",
       "source_kind": "AI_CREATED",
@@ -4082,7 +4082,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.tinh_nui_gia.parts",
+      "asset_key": "asset.monster.nui_thieng.tinh_nui_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/tinh_nui_gia/tinh_nui_gia_parts.png",
       "content_id": "sha256:091aba7d6ea4c8f5ac7eb1acd6c41472d83fe8da073d9bb6aa867b12b9928006",
       "source_kind": "AI_CREATED",
@@ -4150,7 +4150,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.tinh_thu.parts",
+      "asset_key": "asset.monster.nui_thieng.tinh_thu.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/tinh_thu/tinh_thu_parts.png",
       "content_id": "sha256:42cb14027508549f428de6871028adac03d2f8b76cf72a66302d855b1a2ab4cc",
       "source_kind": "AI_CREATED",
@@ -4218,7 +4218,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.nui_thieng.vong_linh.parts",
+      "asset_key": "asset.monster.nui_thieng.vong_linh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/vong_linh/vong_linh_parts.png",
       "content_id": "sha256:8e6ee960279e995cc8f6cf0f4b2ecfb29e3160fa439b8827ef9f4ce174dcfb24",
       "source_kind": "AI_CREATED",
@@ -4286,7 +4286,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.bong_nguoi.parts",
+      "asset_key": "asset.monster.rung_u_minh.bong_nguoi.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/bong_nguoi/bong_nguoi_parts.png",
       "content_id": "sha256:a3c0aec9ff05b1a752a2cbffc1441404603117dfc84944dd2e8139ae915a9617",
       "source_kind": "AI_CREATED",
@@ -4354,7 +4354,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.dom_lua.burst",
+      "asset_key": "asset.monster.rung_u_minh.dom_lua.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_attack_burst.png",
       "content_id": "sha256:c5e80c06b542e7474c9cc8f17b09e69184ea53a75756292829757f8062d59068",
       "source_kind": "AI_CREATED",
@@ -4422,7 +4422,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.dom_lua.shot",
+      "asset_key": "asset.monster.rung_u_minh.dom_lua.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_attack_shot.png",
       "content_id": "sha256:5f912b3b9a8a0f8cc7a5a5e7ddc4d92b3b2d214493e493c1460dbe4bf8df424a",
       "source_kind": "AI_CREATED",
@@ -4490,7 +4490,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.dom_lua.defeat",
+      "asset_key": "asset.monster.rung_u_minh.dom_lua.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_defeat.png",
       "content_id": "sha256:a03e55708199c94ffcd67788a8744fadb0d3f6a75c4651b74f03cb2e25c16877",
       "source_kind": "AI_CREATED",
@@ -4558,7 +4558,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.dom_lua.hit",
+      "asset_key": "asset.monster.rung_u_minh.dom_lua.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_hit.png",
       "content_id": "sha256:23f6a845ed485480c9f0b19355d6366c9a6fecd381be7406860321922548074b",
       "source_kind": "AI_CREATED",
@@ -4626,7 +4626,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.dom_lua.idle",
+      "asset_key": "asset.monster.rung_u_minh.dom_lua.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_idle.png",
       "content_id": "sha256:9d95192238c1e43916b34a831ff727a48ae740cefad9c2a8bb793f34e4333783",
       "source_kind": "AI_CREATED",
@@ -4694,7 +4694,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.dom_lua.move",
+      "asset_key": "asset.monster.rung_u_minh.dom_lua.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_move.png",
       "content_id": "sha256:cb58d18de53170474fbab0ca3251e7b075ebbf4c9f8d8a18e7ecf97d6251f03c",
       "source_kind": "AI_CREATED",
@@ -4762,7 +4762,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.ma_rung.parts",
+      "asset_key": "asset.monster.rung_u_minh.ma_rung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/ma_rung/ma_rung_parts.png",
       "content_id": "sha256:2eb39ff632b0a1344bd2e2f5cf59df0ad4e5eefb43a98ef8be70b97bc8be51cb",
       "source_kind": "AI_CREATED",
@@ -4830,7 +4830,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.ma_tranh.parts",
+      "asset_key": "asset.monster.rung_u_minh.ma_tranh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/ma_tranh/ma_tranh_parts.png",
       "content_id": "sha256:4576166dd08df797ea0bceb1139ead4a7af4811ea8581f4fbbce6affd7f2c109",
       "source_kind": "AI_CREATED",
@@ -4898,7 +4898,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.moc_tinh.parts",
+      "asset_key": "asset.monster.rung_u_minh.moc_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/moc_tinh/moc_tinh_parts.png",
       "content_id": "sha256:597ccdeb450d892dc41e0d81e5284ca465ff9d22ae9f6a2affa0bf30cc9d252d",
       "source_kind": "AI_CREATED",
@@ -4966,7 +4966,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.tinh_cay.parts",
+      "asset_key": "asset.monster.rung_u_minh.tinh_cay.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/tinh_cay/tinh_cay_parts.png",
       "content_id": "sha256:4bea3b04503cb490c0437b260ed77298bf1e9fda4599a9d0fca5f9d7446284a2",
       "source_kind": "AI_CREATED",
@@ -5034,7 +5034,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.rung_u_minh.vong_rung_sau.parts",
+      "asset_key": "asset.monster.rung_u_minh.vong_rung_sau.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/vong_rung_sau/vong_rung_sau_parts.png",
       "content_id": "sha256:8d2e82e2314f77f98c9f10845a07d499af1075461e3e9b90d4c53769292f1edb",
       "source_kind": "AI_CREATED",
@@ -5102,7 +5102,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.moc.chim_lac.cast",
+      "asset_key": "asset.beast.moc.chim_lac.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_cast.png",
       "content_id": "sha256:a6cf9618602a6bd47c522116c7dc4bd69d06246f896d08bb04ebb476fbb4a62b",
       "source_kind": "AI_CREATED",
@@ -5170,7 +5170,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.moc.chim_lac.idle",
+      "asset_key": "asset.beast.moc.chim_lac.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_idle.png",
       "content_id": "sha256:1e6bc9666f4e6155849487e51243f3ae1376cce43b5af9e15b3309f264990ae2",
       "source_kind": "AI_CREATED",
@@ -5238,7 +5238,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.moc.chim_lac.move",
+      "asset_key": "asset.beast.moc.chim_lac.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_move.png",
       "content_id": "sha256:c5af58cd16274e519d7f9795b74f3bf6bd2aa2f0bf3f849bfd11bf4ff59c8204",
       "source_kind": "AI_CREATED",
@@ -5306,7 +5306,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.tho.coc_than.cast",
+      "asset_key": "asset.beast.tho.coc_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_cast.png",
       "content_id": "sha256:3e5a472180e3cebe72eb423ba211b384c0a3cb7baa2890c74c105a189c5fd667",
       "source_kind": "AI_CREATED",
@@ -5374,7 +5374,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.tho.coc_than.idle",
+      "asset_key": "asset.beast.tho.coc_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_idle.png",
       "content_id": "sha256:759d2c402013a8da3348c1f59b5a894ca69c06fe5ea9241b4f36bca3dc4c21bf",
       "source_kind": "AI_CREATED",
@@ -5442,7 +5442,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.tho.coc_than.move",
+      "asset_key": "asset.beast.tho.coc_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_move.png",
       "content_id": "sha256:3fe0bafe5fd146af30ab61601ebc6f78b4570163ca1b6f00bf6c3ee023f35ac8",
       "source_kind": "AI_CREATED",
@@ -5510,7 +5510,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.hoa.ga_than.cast",
+      "asset_key": "asset.beast.hoa.ga_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_cast.png",
       "content_id": "sha256:fde425da44b0526d3db2a388cc05c8feaedd940b9e87ae867c0fa55221223bc4",
       "source_kind": "AI_CREATED",
@@ -5578,7 +5578,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.hoa.ga_than.idle",
+      "asset_key": "asset.beast.hoa.ga_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_idle.png",
       "content_id": "sha256:1f361b94e22da9608fed01f4ac0d2f6964eec819c69f213a1383b36108b9664a",
       "source_kind": "AI_CREATED",
@@ -5646,7 +5646,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.hoa.ga_than.move",
+      "asset_key": "asset.beast.hoa.ga_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_move.png",
       "content_id": "sha256:01557fa5ae667288d871db9c3e19bc7466772499a40d565f09b9111882814cdb",
       "source_kind": "AI_CREATED",
@@ -5714,7 +5714,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.kim.ho_vang.cast",
+      "asset_key": "asset.beast.kim.ho_vang.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_cast.png",
       "content_id": "sha256:c872c9dce037e1302b80cab5c03a9a41472403a5d1c09e4660f3572772746f8e",
       "source_kind": "AI_CREATED",
@@ -5782,7 +5782,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.kim.ho_vang.idle",
+      "asset_key": "asset.beast.kim.ho_vang.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_idle.png",
       "content_id": "sha256:9fa39c78971505511c2b5da59d6c112e6b0007355ae26d3cd092b239a3db55f8",
       "source_kind": "AI_CREATED",
@@ -5850,7 +5850,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.kim.ho_vang.move",
+      "asset_key": "asset.beast.kim.ho_vang.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_move.png",
       "content_id": "sha256:fb6bebc97314d94a37fab608855206628e9056bddf9c2a94e9bebd178fdc87cf",
       "source_kind": "AI_CREATED",
@@ -5918,7 +5918,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.hoa.hoa_diep.cast",
+      "asset_key": "asset.beast.hoa.hoa_diep.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_cast.png",
       "content_id": "sha256:45e69833e23f4d9dc191a333c2b1b83338b8bc25275e86730ca3bf20d99135eb",
       "source_kind": "AI_CREATED",
@@ -5986,7 +5986,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.hoa.hoa_diep.idle",
+      "asset_key": "asset.beast.hoa.hoa_diep.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_idle.png",
       "content_id": "sha256:e31d8e6ad30a224be1d64fcffd3140430bab50569887c0cf7ab7e827c5f6fad3",
       "source_kind": "AI_CREATED",
@@ -6054,7 +6054,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.hoa.hoa_diep.move",
+      "asset_key": "asset.beast.hoa.hoa_diep.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_move.png",
       "content_id": "sha256:989bc41f46e195493acaab28e0d1a451eb6370693c70e3a789d5bec124b6678a",
       "source_kind": "AI_CREATED",
@@ -6122,7 +6122,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.moc.huou_sao.cast",
+      "asset_key": "asset.beast.moc.huou_sao.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_cast.png",
       "content_id": "sha256:fba50a1e3250a2c5bbd512e01d70dfaa3aba485de350986c9f51b94c2dcfdd3c",
       "source_kind": "AI_CREATED",
@@ -6190,7 +6190,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.moc.huou_sao.idle",
+      "asset_key": "asset.beast.moc.huou_sao.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_idle.png",
       "content_id": "sha256:d65b60088740cc3a0c3812e6c547d512b599c8aebf7ec8f7dde9a59f5ed3a269",
       "source_kind": "AI_CREATED",
@@ -6258,7 +6258,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.moc.huou_sao.move",
+      "asset_key": "asset.beast.moc.huou_sao.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_move.png",
       "content_id": "sha256:cfab4a1a2642ebfb517e497ece5cdea3995529da98c541c3f4f712209a5504e8",
       "source_kind": "AI_CREATED",
@@ -6326,7 +6326,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.kim.nghe_dong.cast",
+      "asset_key": "asset.beast.kim.nghe_dong.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_cast.png",
       "content_id": "sha256:8555d63261cc793884771d66c6fc3a4b14a312a53a8d7f8a11a520296dcb46a3",
       "source_kind": "AI_CREATED",
@@ -6394,7 +6394,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.kim.nghe_dong.idle",
+      "asset_key": "asset.beast.kim.nghe_dong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_idle.png",
       "content_id": "sha256:2b1b998a5b58c888498238c2813024c1b8ecc8d7c94a876e12b747c27aad7794",
       "source_kind": "AI_CREATED",
@@ -6462,7 +6462,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.kim.nghe_dong.move",
+      "asset_key": "asset.beast.kim.nghe_dong.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_move.png",
       "content_id": "sha256:097968c1e93e27c0942efd13a7139f96b2f18382cc16fe383c4dab68e0dfd97b",
       "source_kind": "AI_CREATED",
@@ -6530,7 +6530,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.thuy.rai_ca.cast",
+      "asset_key": "asset.beast.thuy.rai_ca.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_cast.png",
       "content_id": "sha256:ce2c3dbed083c5c901740f2c3a3381da07a036a8ebda2cec98e1e4b3d7672f51",
       "source_kind": "AI_CREATED",
@@ -6598,7 +6598,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.thuy.rai_ca.idle",
+      "asset_key": "asset.beast.thuy.rai_ca.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_idle.png",
       "content_id": "sha256:867a32aaddb4e8a7a0e749582044003ff3cf7ee35714decce02cb3d886816c32",
       "source_kind": "AI_CREATED",
@@ -6666,7 +6666,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.thuy.rai_ca.move",
+      "asset_key": "asset.beast.thuy.rai_ca.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_move.png",
       "content_id": "sha256:f98cb127366fe036ca8df5fd6d4a448a3df42b34812816894454df648f6999bf",
       "source_kind": "AI_CREATED",
@@ -6734,7 +6734,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.thuy.rua_than.cast",
+      "asset_key": "asset.beast.thuy.rua_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_cast.png",
       "content_id": "sha256:2c14cf5195d160bb53e7b978856261d1c40177f5daa15331884875fb4c31027a",
       "source_kind": "AI_CREATED",
@@ -6802,7 +6802,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.thuy.rua_than.idle",
+      "asset_key": "asset.beast.thuy.rua_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_idle.png",
       "content_id": "sha256:234f779fae7553f7c5350a71fae362aa69a4170bee8544447ccb153e7eef083a",
       "source_kind": "AI_CREATED",
@@ -6870,7 +6870,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.thuy.rua_than.move",
+      "asset_key": "asset.beast.thuy.rua_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_move.png",
       "content_id": "sha256:573a5c59efc1d88adbe4c7b80dbd9721e611b902dd09dfb002ba91ba9e85858c",
       "source_kind": "AI_CREATED",
@@ -6938,7 +6938,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.tho.trau_dong.cast",
+      "asset_key": "asset.beast.tho.trau_dong.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_cast.png",
       "content_id": "sha256:b21652167991497f1c66fa967f04fe7f33d721996fd0b244599013da39eb5a5a",
       "source_kind": "AI_CREATED",
@@ -7006,7 +7006,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.tho.trau_dong.idle",
+      "asset_key": "asset.beast.tho.trau_dong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_idle.png",
       "content_id": "sha256:eebda7ef1879262f0d6a7243f318739a13babddd2b621be7e446fbbe4bdf8bfb",
       "source_kind": "AI_CREATED",
@@ -7074,7 +7074,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.beast.tho.trau_dong.move",
+      "asset_key": "asset.beast.tho.trau_dong.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_move.png",
       "content_id": "sha256:52dc3cb70a4831d6a78c7ec69cd2c3f54f11dab36e0c7daefbaf4446a0c963c3",
       "source_kind": "AI_CREATED",
@@ -7142,7 +7142,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.hon_binh.parts",
+      "asset_key": "asset.monster.thanh_co.hon_binh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_binh/hon_binh_parts.png",
       "content_id": "sha256:6ce4efdc338ec2289c6314079e42de1d2f88c6808dd2f231e9cb5e3f2495da8d",
       "source_kind": "AI_CREATED",
@@ -7210,7 +7210,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.hon_tran_linh.parts",
+      "asset_key": "asset.monster.thanh_co.hon_tran_linh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_tran_linh/hon_tran_linh_parts.png",
       "content_id": "sha256:302491b2bbf101cb421a9251fa3a946b25b948f4145da03ad88cc5cea0a58a00",
       "source_kind": "AI_CREATED",
@@ -7278,7 +7278,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.hon_tuong.parts",
+      "asset_key": "asset.monster.thanh_co.hon_tuong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_tuong/hon_tuong_parts.png",
       "content_id": "sha256:57aed14d749d24afec6251572c45831e5a824f3d0239fdb4f10c6a1330ca100c",
       "source_kind": "AI_CREATED",
@@ -7346,7 +7346,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.ma_co.parts",
+      "asset_key": "asset.monster.thanh_co.ma_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/ma_co/ma_co_parts.png",
       "content_id": "sha256:adc605565c4e1d58205b0dfde34080a57425ced76b8132211d1c8c5602ce0dce",
       "source_kind": "AI_CREATED",
@@ -7414,7 +7414,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.oan_hon_dem.parts",
+      "asset_key": "asset.monster.thanh_co.oan_hon_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/oan_hon_dem/oan_hon_dem_parts.png",
       "content_id": "sha256:10c08fff712ce04a7130d9f1bd0e7a50ff3ebd490fd1f9d719de7c05f870a368",
       "source_kind": "AI_CREATED",
@@ -7482,7 +7482,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.qua_tinh.shot",
+      "asset_key": "asset.monster.thanh_co.qua_tinh.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_attack_shot.png",
       "content_id": "sha256:038bac35c782e1e6afad43996743dfbb35e6de73cd3e5c5e5e2955ed039ec419",
       "source_kind": "AI_CREATED",
@@ -7550,7 +7550,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.qua_tinh.defeat",
+      "asset_key": "asset.monster.thanh_co.qua_tinh.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_defeat.png",
       "content_id": "sha256:b7a0d4343902f2c59d3df83951699b3c504c1fc28276e454339871fa5a29d9af",
       "source_kind": "AI_CREATED",
@@ -7618,7 +7618,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.qua_tinh.hit",
+      "asset_key": "asset.monster.thanh_co.qua_tinh.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_hit.png",
       "content_id": "sha256:0f130e9426d525e7a7a3104fd008c2c5fd9fe4f183f3aca4aab95e3fdd9ceda3",
       "source_kind": "AI_CREATED",
@@ -7686,7 +7686,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.qua_tinh.idle",
+      "asset_key": "asset.monster.thanh_co.qua_tinh.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_idle.png",
       "content_id": "sha256:c8e5e298a119b5c5216fb685253bd660c8c0584470985b8d464d38d2d283da63",
       "source_kind": "AI_CREATED",
@@ -7754,7 +7754,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.qua_tinh.move",
+      "asset_key": "asset.monster.thanh_co.qua_tinh.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_move.png",
       "content_id": "sha256:35363fdcc36ebffd0447ecb847223e0157bdca727908b3c5993ab4fba980ddd9",
       "source_kind": "AI_CREATED",
@@ -7822,7 +7822,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.qua_tinh_lon.parts",
+      "asset_key": "asset.monster.thanh_co.qua_tinh_lon.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh_lon/qua_tinh_lon_parts.png",
       "content_id": "sha256:1c28360afe6d509db32452cc446d685a58b797531436df93b827ab3f1bfdfff2",
       "source_kind": "AI_CREATED",
@@ -7890,7 +7890,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.thach_ve.parts",
+      "asset_key": "asset.monster.thanh_co.thach_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/thach_ve/thach_ve_parts.png",
       "content_id": "sha256:8a947ab06c6087cf9c90c514cbc79dbb77d9c5d4b0ca49e690ccdf20452d8b12",
       "source_kind": "AI_CREATED",
@@ -7958,7 +7958,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.monster.thanh_co.tuong_da.parts",
+      "asset_key": "asset.monster.thanh_co.tuong_da.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/tuong_da/tuong_da_parts.png",
       "content_id": "sha256:914824ee8ccf3fc77f5ae1c7c42e89a90d5c7a2075e9158a94de84196edd91ab",
       "source_kind": "AI_CREATED",
@@ -8026,7 +8026,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.ambient_day.idle",
+      "asset_key": "asset.npc.ben_nuoc_den.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_day/ambient_day_idle.png",
       "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
       "source_kind": "AI_CREATED",
@@ -8094,7 +8094,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.ambient_day.interact",
+      "asset_key": "asset.npc.ben_nuoc_den.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_day/ambient_day_interact.png",
       "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
       "source_kind": "AI_CREATED",
@@ -8162,7 +8162,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.ambient_night.idle",
+      "asset_key": "asset.npc.ben_nuoc_den.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_night/ambient_night_idle.png",
       "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
       "source_kind": "AI_CREATED",
@@ -8230,7 +8230,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.ambient_night.interact",
+      "asset_key": "asset.npc.ben_nuoc_den.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_night/ambient_night_interact.png",
       "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
       "source_kind": "AI_CREATED",
@@ -8298,7 +8298,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.hang_quan.idle",
+      "asset_key": "asset.npc.ben_nuoc_den.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/hang_quan/hang_quan_idle.png",
       "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
       "source_kind": "AI_CREATED",
@@ -8366,7 +8366,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.hang_quan.interact",
+      "asset_key": "asset.npc.ben_nuoc_den.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/hang_quan/hang_quan_interact.png",
       "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
       "source_kind": "AI_CREATED",
@@ -8434,7 +8434,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.idle",
+      "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/nguoi_dan_duong/nguoi_dan_duong_idle.png",
       "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
       "source_kind": "AI_CREATED",
@@ -8502,7 +8502,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.interact",
+      "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/nguoi_dan_duong/nguoi_dan_duong_interact.png",
       "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
       "source_kind": "AI_CREATED",
@@ -8570,7 +8570,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.idle",
+      "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/tho_nghe/tho_nghe_idle.png",
       "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
       "source_kind": "AI_CREATED",
@@ -8638,7 +8638,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.interact",
+      "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/tho_nghe/tho_nghe_interact.png",
       "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
       "source_kind": "AI_CREATED",
@@ -8706,7 +8706,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.ambient_day.idle",
+      "asset_key": "asset.npc.deo_may.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_day/ambient_day_idle.png",
       "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
       "source_kind": "AI_CREATED",
@@ -8774,7 +8774,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.ambient_day.interact",
+      "asset_key": "asset.npc.deo_may.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_day/ambient_day_interact.png",
       "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
       "source_kind": "AI_CREATED",
@@ -8842,7 +8842,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.ambient_night.idle",
+      "asset_key": "asset.npc.deo_may.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_night/ambient_night_idle.png",
       "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
       "source_kind": "AI_CREATED",
@@ -8910,7 +8910,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.ambient_night.interact",
+      "asset_key": "asset.npc.deo_may.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_night/ambient_night_interact.png",
       "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
       "source_kind": "AI_CREATED",
@@ -8978,7 +8978,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.hang_quan.idle",
+      "asset_key": "asset.npc.deo_may.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/hang_quan/hang_quan_idle.png",
       "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
       "source_kind": "AI_CREATED",
@@ -9046,7 +9046,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.hang_quan.interact",
+      "asset_key": "asset.npc.deo_may.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/hang_quan/hang_quan_interact.png",
       "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
       "source_kind": "AI_CREATED",
@@ -9114,7 +9114,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.nguoi_dan_duong.idle",
+      "asset_key": "asset.npc.deo_may.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/nguoi_dan_duong/nguoi_dan_duong_idle.png",
       "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
       "source_kind": "AI_CREATED",
@@ -9182,7 +9182,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.nguoi_dan_duong.interact",
+      "asset_key": "asset.npc.deo_may.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/nguoi_dan_duong/nguoi_dan_duong_interact.png",
       "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
       "source_kind": "AI_CREATED",
@@ -9250,7 +9250,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.tho_nghe.idle",
+      "asset_key": "asset.npc.deo_may.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/tho_nghe/tho_nghe_idle.png",
       "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
       "source_kind": "AI_CREATED",
@@ -9318,7 +9318,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.deo_may.tho_nghe.interact",
+      "asset_key": "asset.npc.deo_may.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/tho_nghe/tho_nghe_interact.png",
       "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
       "source_kind": "AI_CREATED",
@@ -9386,7 +9386,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.ambient_day.idle",
+      "asset_key": "asset.npc.lang_da.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_day/ambient_day_idle.png",
       "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
       "source_kind": "AI_CREATED",
@@ -9454,7 +9454,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.ambient_day.interact",
+      "asset_key": "asset.npc.lang_da.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_day/ambient_day_interact.png",
       "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
       "source_kind": "AI_CREATED",
@@ -9522,7 +9522,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.ambient_night.idle",
+      "asset_key": "asset.npc.lang_da.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_night/ambient_night_idle.png",
       "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
       "source_kind": "AI_CREATED",
@@ -9590,7 +9590,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.ambient_night.interact",
+      "asset_key": "asset.npc.lang_da.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_night/ambient_night_interact.png",
       "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
       "source_kind": "AI_CREATED",
@@ -9658,7 +9658,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.hang_quan.idle",
+      "asset_key": "asset.npc.lang_da.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/hang_quan/hang_quan_idle.png",
       "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
       "source_kind": "AI_CREATED",
@@ -9726,7 +9726,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.hang_quan.interact",
+      "asset_key": "asset.npc.lang_da.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/hang_quan/hang_quan_interact.png",
       "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
       "source_kind": "AI_CREATED",
@@ -9794,7 +9794,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.nguoi_dan_duong.idle",
+      "asset_key": "asset.npc.lang_da.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/nguoi_dan_duong/nguoi_dan_duong_idle.png",
       "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
       "source_kind": "AI_CREATED",
@@ -9862,7 +9862,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.nguoi_dan_duong.interact",
+      "asset_key": "asset.npc.lang_da.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/nguoi_dan_duong/nguoi_dan_duong_interact.png",
       "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
       "source_kind": "AI_CREATED",
@@ -9930,7 +9930,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.tho_nghe.idle",
+      "asset_key": "asset.npc.lang_da.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/tho_nghe/tho_nghe_idle.png",
       "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
       "source_kind": "AI_CREATED",
@@ -9998,7 +9998,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.lang_da.tho_nghe.interact",
+      "asset_key": "asset.npc.lang_da.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/tho_nghe/tho_nghe_interact.png",
       "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
       "source_kind": "AI_CREATED",
@@ -10066,7 +10066,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.ambient_day.idle",
+      "asset_key": "asset.npc.nui_thieng.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_day/ambient_day_idle.png",
       "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
       "source_kind": "AI_CREATED",
@@ -10134,7 +10134,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.ambient_day.interact",
+      "asset_key": "asset.npc.nui_thieng.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_day/ambient_day_interact.png",
       "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
       "source_kind": "AI_CREATED",
@@ -10202,7 +10202,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.ambient_night.idle",
+      "asset_key": "asset.npc.nui_thieng.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_night/ambient_night_idle.png",
       "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
       "source_kind": "AI_CREATED",
@@ -10270,7 +10270,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.ambient_night.interact",
+      "asset_key": "asset.npc.nui_thieng.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_night/ambient_night_interact.png",
       "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
       "source_kind": "AI_CREATED",
@@ -10338,7 +10338,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.hang_quan.idle",
+      "asset_key": "asset.npc.nui_thieng.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/hang_quan/hang_quan_idle.png",
       "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
       "source_kind": "AI_CREATED",
@@ -10406,7 +10406,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.hang_quan.interact",
+      "asset_key": "asset.npc.nui_thieng.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/hang_quan/hang_quan_interact.png",
       "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
       "source_kind": "AI_CREATED",
@@ -10474,7 +10474,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.idle",
+      "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/nguoi_dan_duong/nguoi_dan_duong_idle.png",
       "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
       "source_kind": "AI_CREATED",
@@ -10542,7 +10542,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.interact",
+      "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/nguoi_dan_duong/nguoi_dan_duong_interact.png",
       "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
       "source_kind": "AI_CREATED",
@@ -10610,7 +10610,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.tho_nghe.idle",
+      "asset_key": "asset.npc.nui_thieng.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/tho_nghe/tho_nghe_idle.png",
       "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
       "source_kind": "AI_CREATED",
@@ -10678,7 +10678,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.nui_thieng.tho_nghe.interact",
+      "asset_key": "asset.npc.nui_thieng.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/tho_nghe/tho_nghe_interact.png",
       "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
       "source_kind": "AI_CREATED",
@@ -10746,7 +10746,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.ambient_day.idle",
+      "asset_key": "asset.npc.rung_u_minh.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_day/ambient_day_idle.png",
       "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
       "source_kind": "AI_CREATED",
@@ -10814,7 +10814,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.ambient_day.interact",
+      "asset_key": "asset.npc.rung_u_minh.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_day/ambient_day_interact.png",
       "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
       "source_kind": "AI_CREATED",
@@ -10882,7 +10882,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.ambient_night.idle",
+      "asset_key": "asset.npc.rung_u_minh.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_night/ambient_night_idle.png",
       "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
       "source_kind": "AI_CREATED",
@@ -10950,7 +10950,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.ambient_night.interact",
+      "asset_key": "asset.npc.rung_u_minh.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_night/ambient_night_interact.png",
       "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
       "source_kind": "AI_CREATED",
@@ -11018,7 +11018,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.hang_quan.idle",
+      "asset_key": "asset.npc.rung_u_minh.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/hang_quan/hang_quan_idle.png",
       "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
       "source_kind": "AI_CREATED",
@@ -11086,7 +11086,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.hang_quan.interact",
+      "asset_key": "asset.npc.rung_u_minh.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/hang_quan/hang_quan_interact.png",
       "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
       "source_kind": "AI_CREATED",
@@ -11154,7 +11154,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.idle",
+      "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/nguoi_dan_duong/nguoi_dan_duong_idle.png",
       "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
       "source_kind": "AI_CREATED",
@@ -11222,7 +11222,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.interact",
+      "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/nguoi_dan_duong/nguoi_dan_duong_interact.png",
       "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
       "source_kind": "AI_CREATED",
@@ -11290,7 +11290,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.tho_nghe.idle",
+      "asset_key": "asset.npc.rung_u_minh.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/tho_nghe/tho_nghe_idle.png",
       "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
       "source_kind": "AI_CREATED",
@@ -11358,7 +11358,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.rung_u_minh.tho_nghe.interact",
+      "asset_key": "asset.npc.rung_u_minh.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/tho_nghe/tho_nghe_interact.png",
       "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
       "source_kind": "AI_CREATED",
@@ -11426,7 +11426,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.ambient_day.idle",
+      "asset_key": "asset.npc.thanh_co.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_day/ambient_day_idle.png",
       "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
       "source_kind": "AI_CREATED",
@@ -11494,7 +11494,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.ambient_day.interact",
+      "asset_key": "asset.npc.thanh_co.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_day/ambient_day_interact.png",
       "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
       "source_kind": "AI_CREATED",
@@ -11562,7 +11562,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.ambient_night.idle",
+      "asset_key": "asset.npc.thanh_co.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_night/ambient_night_idle.png",
       "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
       "source_kind": "AI_CREATED",
@@ -11630,7 +11630,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.ambient_night.interact",
+      "asset_key": "asset.npc.thanh_co.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_night/ambient_night_interact.png",
       "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
       "source_kind": "AI_CREATED",
@@ -11698,7 +11698,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.hang_quan.idle",
+      "asset_key": "asset.npc.thanh_co.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/hang_quan/hang_quan_idle.png",
       "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
       "source_kind": "AI_CREATED",
@@ -11766,7 +11766,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.hang_quan.interact",
+      "asset_key": "asset.npc.thanh_co.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/hang_quan/hang_quan_interact.png",
       "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
       "source_kind": "AI_CREATED",
@@ -11834,7 +11834,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.idle",
+      "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/nguoi_dan_duong/nguoi_dan_duong_idle.png",
       "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
       "source_kind": "AI_CREATED",
@@ -11902,7 +11902,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.interact",
+      "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/nguoi_dan_duong/nguoi_dan_duong_interact.png",
       "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
       "source_kind": "AI_CREATED",
@@ -11970,7 +11970,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.tho_nghe.idle",
+      "asset_key": "asset.npc.thanh_co.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/tho_nghe/tho_nghe_idle.png",
       "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
       "source_kind": "AI_CREATED",
@@ -12038,7 +12038,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.npc.thanh_co.tho_nghe.interact",
+      "asset_key": "asset.npc.thanh_co.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/tho_nghe/tho_nghe_interact.png",
       "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
       "source_kind": "AI_CREATED",
@@ -12106,7 +12106,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_1",
+      "asset_key": "asset.styleref.beasts.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_1.png",
       "content_id": "sha256:d4feda48ca8d607c3dd6d2ef08a8dd2c092fb33575981dc4775b71816e94c26d",
       "source_kind": "AI_CREATED",
@@ -12156,7 +12156,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_2",
+      "asset_key": "asset.styleref.beasts.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_2.png",
       "content_id": "sha256:9fe8f1d91b5503beac4760ab5151d9eafa67ca9175ba43062980acdf1cb5a410",
       "source_kind": "AI_CREATED",
@@ -12206,7 +12206,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_3",
+      "asset_key": "asset.styleref.beasts.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_3.png",
       "content_id": "sha256:129d697b22d66ba799cc5fa0e42d98de2384820820519305d28f658cf44ff073",
       "source_kind": "AI_CREATED",
@@ -12256,7 +12256,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_4",
+      "asset_key": "asset.styleref.beasts.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_4.png",
       "content_id": "sha256:2dd543e20b3060f35adb7ea6c0d0f725a63cd9a56e868e02f420b0f95babe26d",
       "source_kind": "AI_CREATED",
@@ -12306,7 +12306,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_5",
+      "asset_key": "asset.styleref.beasts.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_5.png",
       "content_id": "sha256:abc32f0480a1e973271462d87f4aeceaaafbe19c20a1c9b3842dc2085747236f",
       "source_kind": "AI_CREATED",
@@ -12356,7 +12356,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_6",
+      "asset_key": "asset.styleref.beasts.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_6.png",
       "content_id": "sha256:5ab33630bed37a3775eeb5d6c20f3e5c05ced7dcbee4bd11410495c316d09681",
       "source_kind": "AI_CREATED",
@@ -12406,7 +12406,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_7",
+      "asset_key": "asset.styleref.beasts.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_7.png",
       "content_id": "sha256:6061847ef507301d6a2c86e7f65ddd4dc662a53082998a67716c55efca3138f6",
       "source_kind": "AI_CREATED",
@@ -12456,7 +12456,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.beasts.anchor_8",
+      "asset_key": "asset.styleref.beasts.anchor_8.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/beasts/anchor_8.png",
       "content_id": "sha256:d30b001c123b7e61b05f930e46a362f13ccc9ca6d78c47feb2ee4c3ad449292b",
       "source_kind": "AI_CREATED",
@@ -12506,7 +12506,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh.anchor_5",
+      "asset_key": "asset.styleref.boss_ho_tinh.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh/anchor_5.png",
       "content_id": "sha256:9ce01cf33c8c6e0d58fc84b722b304777659cdb8ed4201fc2cd2d78f3b659479",
       "source_kind": "AI_CREATED",
@@ -12556,7 +12556,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_back34",
+      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh/turnaround_back34.png",
       "content_id": "sha256:95ec74b0e6d7bc73c6c631ab76023b57d06b0f68fe336b067b4cdfdea71ecd32",
       "source_kind": "AI_CREATED",
@@ -12606,7 +12606,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_front",
+      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh/turnaround_front.png",
       "content_id": "sha256:825e289a0dcd4f00876d0d5e59f7cc8395ef295602206e8207ef93e23a6b2d9e",
       "source_kind": "AI_CREATED",
@@ -12656,7 +12656,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_front34",
+      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh/turnaround_front34.png",
       "content_id": "sha256:dc6ee5d58b6662786755066f84f58c93fc00b852961af884f4fb3afe5c4b7997",
       "source_kind": "AI_CREATED",
@@ -12706,7 +12706,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_side",
+      "asset_key": "asset.styleref.boss_ho_tinh.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh/turnaround_side.png",
       "content_id": "sha256:4926250caa607dbaeb64a71dd8053b7be7cef7eeccc0390b292d37b9a54b8a4c",
       "source_kind": "AI_CREATED",
@@ -12756,7 +12756,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.anchor_5",
+      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh_chin_duoi/anchor_5.png",
       "content_id": "sha256:a405c61b183d8d4840e4d316ecac6298e8a0eb95d5b8fc14997bf10f97822cac",
       "source_kind": "AI_CREATED",
@@ -12806,7 +12806,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_back34",
+      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh_chin_duoi/turnaround_back34.png",
       "content_id": "sha256:0137c59684d60166274110e08a75bd08c30d94d199fc63740bc48a40dff9bbf8",
       "source_kind": "AI_CREATED",
@@ -12856,7 +12856,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_front",
+      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh_chin_duoi/turnaround_front.png",
       "content_id": "sha256:d6f49aefcea37874d5b564abd64920bf016183c781297ea11a6a6227ed8360c3",
       "source_kind": "AI_CREATED",
@@ -12906,7 +12906,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_front34",
+      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh_chin_duoi/turnaround_front34.png",
       "content_id": "sha256:c6f8e27c42cde23dbdc3ba4b7dd6e950d4a7df82ee8d861ba691264a7b101d83",
       "source_kind": "AI_CREATED",
@@ -12956,7 +12956,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_side",
+      "asset_key": "asset.styleref.boss_ho_tinh_chin_duoi.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ho_tinh_chin_duoi/turnaround_side.png",
       "content_id": "sha256:9c6ac5ca07c00044c4d5858dd42d2df6d9905d2b25ca1f20016436c4710431c6",
       "source_kind": "AI_CREATED",
@@ -13006,7 +13006,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ma_da_chua.anchor_5",
+      "asset_key": "asset.styleref.boss_ma_da_chua.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ma_da_chua/anchor_5.png",
       "content_id": "sha256:f6d48f9da1e64d74059b7145ed20b35e4252ddac1b890a318ec173c45e51e4a0",
       "source_kind": "AI_CREATED",
@@ -13056,7 +13056,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_back34",
+      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ma_da_chua/turnaround_back34.png",
       "content_id": "sha256:5d7664468268c0efd621f73f3d6fe252f1a4e3c2eb7c8c3aa02b88ba05c9a87c",
       "source_kind": "AI_CREATED",
@@ -13106,7 +13106,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_front",
+      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ma_da_chua/turnaround_front.png",
       "content_id": "sha256:a627d4211eb460067857d4364769854de41ba8dd08e86f632e483f44a2f0c1a2",
       "source_kind": "AI_CREATED",
@@ -13156,7 +13156,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_front34",
+      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ma_da_chua/turnaround_front34.png",
       "content_id": "sha256:3708177ca351c274cd1135220ce68769eaa8eeb63f19ca80975fd94a2482ec0a",
       "source_kind": "AI_CREATED",
@@ -13206,7 +13206,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_side",
+      "asset_key": "asset.styleref.boss_ma_da_chua.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ma_da_chua/turnaround_side.png",
       "content_id": "sha256:c46548b6028cfd5acac8cebb974aad1c5e036f0224bcfaac97ce6e0385aae8c4",
       "source_kind": "AI_CREATED",
@@ -13256,7 +13256,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_moc_tinh_da.anchor_5",
+      "asset_key": "asset.styleref.boss_moc_tinh_da.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_moc_tinh_da/anchor_5.png",
       "content_id": "sha256:fd455984c39c26a93bf488dec537c089eff045745faab99602f2cd94d7ff111e",
       "source_kind": "AI_CREATED",
@@ -13306,7 +13306,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_back34",
+      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_moc_tinh_da/turnaround_back34.png",
       "content_id": "sha256:bc75e6ea6ba0335b79c1723c629f4e594fd505de739f398501915f7625258697",
       "source_kind": "AI_CREATED",
@@ -13356,7 +13356,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_front",
+      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_moc_tinh_da/turnaround_front.png",
       "content_id": "sha256:98a863d8a2164a0a3b54798e100c58cdb68f543e213c8b7a27e9317da10f963e",
       "source_kind": "AI_CREATED",
@@ -13406,7 +13406,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_front34",
+      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_moc_tinh_da/turnaround_front34.png",
       "content_id": "sha256:53128287590f816078316a1b01e0ce0042719256429f63d7137f006aff655f3e",
       "source_kind": "AI_CREATED",
@@ -13456,7 +13456,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_side",
+      "asset_key": "asset.styleref.boss_moc_tinh_da.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_moc_tinh_da/turnaround_side.png",
       "content_id": "sha256:b0c62a7078dfd2af0bf18f07ef5ef3959509e4a3cfd2024ae2f9db72194372aa",
       "source_kind": "AI_CREATED",
@@ -13506,7 +13506,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ngu_tinh.anchor_5",
+      "asset_key": "asset.styleref.boss_ngu_tinh.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ngu_tinh/anchor_5.png",
       "content_id": "sha256:c922d8e0ec0e08610aaee7799aba92c35cf89579167acb6a757d95b74eedbd09",
       "source_kind": "AI_CREATED",
@@ -13556,7 +13556,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_back34",
+      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ngu_tinh/turnaround_back34.png",
       "content_id": "sha256:e620781b7351d35f05b0532a7a710c0cebd076aab4001bb94469c96e97304a84",
       "source_kind": "AI_CREATED",
@@ -13606,7 +13606,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_front",
+      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ngu_tinh/turnaround_front.png",
       "content_id": "sha256:0e0b26320d7b19d1bb242d2f75851f2d4da0dbe7db63727b01e3f608dd155a73",
       "source_kind": "AI_CREATED",
@@ -13656,7 +13656,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_front34",
+      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ngu_tinh/turnaround_front34.png",
       "content_id": "sha256:ebce2711cae9fb2461f9ab0f2ccab0d37903d01b8de498ddf92c1a10ab647a6d",
       "source_kind": "AI_CREATED",
@@ -13706,7 +13706,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_side",
+      "asset_key": "asset.styleref.boss_ngu_tinh.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_ngu_tinh/turnaround_side.png",
       "content_id": "sha256:6819d46ab14a1a69bf506a35fd6e0dd5424071bb987e821f78b3de458627aa28",
       "source_kind": "AI_CREATED",
@@ -13756,7 +13756,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_quy_nhap_trang.anchor_5",
+      "asset_key": "asset.styleref.boss_quy_nhap_trang.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_quy_nhap_trang/anchor_5.png",
       "content_id": "sha256:c43425239d1a99023a82437092fcbdce83beeb46a610758d44940d162842c3a3",
       "source_kind": "AI_CREATED",
@@ -13806,7 +13806,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_back34",
+      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_quy_nhap_trang/turnaround_back34.png",
       "content_id": "sha256:bc2ec0d86a26fb68a528731dad924356608a73cdab086cfa8b9c7f9758c88b27",
       "source_kind": "AI_CREATED",
@@ -13856,7 +13856,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_front",
+      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_quy_nhap_trang/turnaround_front.png",
       "content_id": "sha256:db6d929f01e2c33016fb16871f094fe67ee23753ce70f4434be7decc5c37fd69",
       "source_kind": "AI_CREATED",
@@ -13906,7 +13906,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_front34",
+      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_quy_nhap_trang/turnaround_front34.png",
       "content_id": "sha256:8535de5c04f6d0a7934e43f7b49ec3ac8bfe9636bccc433ad582f56d4b69215c",
       "source_kind": "AI_CREATED",
@@ -13956,7 +13956,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_side",
+      "asset_key": "asset.styleref.boss_quy_nhap_trang.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_quy_nhap_trang/turnaround_side.png",
       "content_id": "sha256:4e750695e8daf167f84199cbaa2082591f855ad3ff35b79b7ece9c8732fdaef6",
       "source_kind": "AI_CREATED",
@@ -14006,7 +14006,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_than_trung.anchor_5",
+      "asset_key": "asset.styleref.boss_than_trung.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_than_trung/anchor_5.png",
       "content_id": "sha256:4e33b2c3e68667909691209635f430035dd419699246104cc68bcd1fcb2f1ec5",
       "source_kind": "AI_CREATED",
@@ -14056,7 +14056,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_than_trung.turnaround_back34",
+      "asset_key": "asset.styleref.boss_than_trung.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_than_trung/turnaround_back34.png",
       "content_id": "sha256:a8e533cb539ab71ecf7f26a815e8191fab4692916ce5bdd797c500c7a5dff218",
       "source_kind": "AI_CREATED",
@@ -14106,7 +14106,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_than_trung.turnaround_front",
+      "asset_key": "asset.styleref.boss_than_trung.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_than_trung/turnaround_front.png",
       "content_id": "sha256:f5065cf8367af345df281e04375e09b0649d03327e8ebc6f1dd8d1d8c2bc574c",
       "source_kind": "AI_CREATED",
@@ -14156,7 +14156,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_than_trung.turnaround_front34",
+      "asset_key": "asset.styleref.boss_than_trung.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_than_trung/turnaround_front34.png",
       "content_id": "sha256:39454baf8f667fde7bb9932033de66398afa4b0367d8ae692df69ba528727d11",
       "source_kind": "AI_CREATED",
@@ -14206,7 +14206,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_than_trung.turnaround_side",
+      "asset_key": "asset.styleref.boss_than_trung.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_than_trung/turnaround_side.png",
       "content_id": "sha256:04d9648b1de9b59f6ba2afe975080c7419050e9ad18efc1624f690fec3252f2f",
       "source_kind": "AI_CREATED",
@@ -14256,7 +14256,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_thuong_luong.anchor_5",
+      "asset_key": "asset.styleref.boss_thuong_luong.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_thuong_luong/anchor_5.png",
       "content_id": "sha256:1dfde274663c5e9469f10edb1cbb8272ab34a29236aebc1b2f60af4a687a2a70",
       "source_kind": "AI_CREATED",
@@ -14306,7 +14306,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_back34",
+      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_back34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_thuong_luong/turnaround_back34.png",
       "content_id": "sha256:4bf57e61233ad7e411dc58e442c75319bf00af0aeb4fb3d975c97610e54d0513",
       "source_kind": "AI_CREATED",
@@ -14356,7 +14356,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_front",
+      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_front.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_thuong_luong/turnaround_front.png",
       "content_id": "sha256:32fde64784e716c718ef1f167e53b9bf917ef214f4fa21fd373b90adcef17756",
       "source_kind": "AI_CREATED",
@@ -14406,7 +14406,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_front34",
+      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_front34.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_thuong_luong/turnaround_front34.png",
       "content_id": "sha256:3b5488bc9727dc6adc4ecbb384f99e5218931b501dcbf6c9c1323c80ee194252",
       "source_kind": "AI_CREATED",
@@ -14456,7 +14456,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_side",
+      "asset_key": "asset.styleref.boss_thuong_luong.turnaround_side.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/boss_thuong_luong/turnaround_side.png",
       "content_id": "sha256:e0b42dc8e6c3edafe28f2e6abdaf123efd2c7727747dbd8f39cb8009a542de95",
       "source_kind": "AI_CREATED",
@@ -14506,7 +14506,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_1",
+      "asset_key": "asset.styleref.npcs.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_1.png",
       "content_id": "sha256:db25e657ce707ea92a26eb8d875954de9143a9bfe200cb42e13d02ffe977a38a",
       "source_kind": "AI_CREATED",
@@ -14556,7 +14556,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_2",
+      "asset_key": "asset.styleref.npcs.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_2.png",
       "content_id": "sha256:68697d1c90a54f4d446b5e98a1386069d833478dc9a4e3dd413e9172129b6f7f",
       "source_kind": "AI_CREATED",
@@ -14606,7 +14606,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_3",
+      "asset_key": "asset.styleref.npcs.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_3.png",
       "content_id": "sha256:c13f8825e6a77f1bef3e48c3e33c525a5294e891366902f9ef1593888be0d8f7",
       "source_kind": "AI_CREATED",
@@ -14656,7 +14656,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_4",
+      "asset_key": "asset.styleref.npcs.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_4.png",
       "content_id": "sha256:0d0a4aa2ea67179bb2912c87b0e2f5a021d1f0a14419b6df990c8f4425abd6a8",
       "source_kind": "AI_CREATED",
@@ -14706,7 +14706,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_5",
+      "asset_key": "asset.styleref.npcs.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_5.png",
       "content_id": "sha256:f33f6d5173c6cb471a14fcf82bb7ffed20c2e67667a62c18c373fede90fc4fe7",
       "source_kind": "AI_CREATED",
@@ -14756,7 +14756,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_6",
+      "asset_key": "asset.styleref.npcs.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_6.png",
       "content_id": "sha256:db25e657ce707ea92a26eb8d875954de9143a9bfe200cb42e13d02ffe977a38a",
       "source_kind": "AI_CREATED",
@@ -14806,7 +14806,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_7",
+      "asset_key": "asset.styleref.npcs.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_7.png",
       "content_id": "sha256:68697d1c90a54f4d446b5e98a1386069d833478dc9a4e3dd413e9172129b6f7f",
       "source_kind": "AI_CREATED",
@@ -14856,7 +14856,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.npcs.anchor_8",
+      "asset_key": "asset.styleref.npcs.anchor_8.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/npcs/anchor_8.png",
       "content_id": "sha256:c13f8825e6a77f1bef3e48c3e33c525a5294e891366902f9ef1593888be0d8f7",
       "source_kind": "AI_CREATED",
@@ -14906,7 +14906,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_1",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_1.png",
       "content_id": "sha256:599ccd987ad6524ce8cfefa86335ad554d4abda972d6d9f8eef8593804855f85",
       "source_kind": "AI_CREATED",
@@ -14956,7 +14956,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_2",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_2.png",
       "content_id": "sha256:73048eb080f70c87050acbf247d4c864e1d377b883b33030f319208effd4a944",
       "source_kind": "AI_CREATED",
@@ -15006,7 +15006,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_3",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_3.png",
       "content_id": "sha256:c5b8533843cd436a4f74b86a7012a5f0b1327fc0d4c0a6c98d99a3dfe92fc18c",
       "source_kind": "AI_CREATED",
@@ -15056,7 +15056,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_4",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_4.png",
       "content_id": "sha256:219679a851e632565e2904ae7f691bdfd96d5b14efb40f9a1e2102119b437757",
       "source_kind": "AI_CREATED",
@@ -15106,7 +15106,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_5",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_5.png",
       "content_id": "sha256:7682889dc2c10d5575f8cc2edbc9bcfd98cc184024300f549e7a22dc2ccdd85f",
       "source_kind": "AI_CREATED",
@@ -15156,7 +15156,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_6",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_6.png",
       "content_id": "sha256:b29d2db03a1f307f8a115b05892dfb295ccbbc9edde6435dd8cceefd94f539c9",
       "source_kind": "AI_CREATED",
@@ -15206,7 +15206,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_7",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_7.png",
       "content_id": "sha256:98fc7f429c86f52d57f74b1808b17f92bed733d0b1a131f90f2464d896cae590",
       "source_kind": "AI_CREATED",
@@ -15256,7 +15256,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_8",
+      "asset_key": "asset.styleref.region_ben_nuoc_den.anchor_8.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_ben_nuoc_den/anchor_8.png",
       "content_id": "sha256:5fd41d2836fb4fdf1a7d3e86b0623e2370e997a104ea1d50386b504c54b1cde7",
       "source_kind": "AI_CREATED",
@@ -15306,7 +15306,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_1",
+      "asset_key": "asset.styleref.region_deo_may.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_1.png",
       "content_id": "sha256:ea51e68fbef5ade30a065037ffe26eed427f30cfe038503452a3fee672d26818",
       "source_kind": "AI_CREATED",
@@ -15356,7 +15356,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_2",
+      "asset_key": "asset.styleref.region_deo_may.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_2.png",
       "content_id": "sha256:76c4aa7961f3d0d16d78423ecab0f4ff9afb269a9dd0896c4f35e2aaa07a461b",
       "source_kind": "AI_CREATED",
@@ -15406,7 +15406,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_3",
+      "asset_key": "asset.styleref.region_deo_may.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_3.png",
       "content_id": "sha256:4f8f94b8aab2729e6a61f5890d16b93c89da96457a9cfc0eb0a26f411891a9da",
       "source_kind": "AI_CREATED",
@@ -15456,7 +15456,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_4",
+      "asset_key": "asset.styleref.region_deo_may.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_4.png",
       "content_id": "sha256:dc51f95f22e0ded267a9451723e528f470ff01f9ca8ff93e92ea25732c83ac0c",
       "source_kind": "AI_CREATED",
@@ -15506,7 +15506,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_5",
+      "asset_key": "asset.styleref.region_deo_may.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_5.png",
       "content_id": "sha256:cd4bad6fee750467b74ea9878e03631df8fe396f3f7b6eef1cdc555c7d1fef9a",
       "source_kind": "AI_CREATED",
@@ -15556,7 +15556,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_6",
+      "asset_key": "asset.styleref.region_deo_may.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_6.png",
       "content_id": "sha256:285b7272e2b4d2d57f1b9c7a880d974cecdfbc778088534e0421684c017f48a4",
       "source_kind": "AI_CREATED",
@@ -15606,7 +15606,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_7",
+      "asset_key": "asset.styleref.region_deo_may.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_7.png",
       "content_id": "sha256:5046262abb155acf067720e55d6b938a207483e2c729f37d001251608df20e44",
       "source_kind": "AI_CREATED",
@@ -15656,7 +15656,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_deo_may.anchor_8",
+      "asset_key": "asset.styleref.region_deo_may.anchor_8.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_deo_may/anchor_8.png",
       "content_id": "sha256:ec0d022d530d5e6a5d95bd29822c2ad841dea2fe9034f84cbc3aaf0c723a2661",
       "source_kind": "AI_CREATED",
@@ -15706,7 +15706,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_1",
+      "asset_key": "asset.styleref.region_lang_da.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_1.png",
       "content_id": "sha256:ac1a823fb314ddedcd524a32f20f32ed15fec71c9284ffe0f868f8af8f24dbb0",
       "source_kind": "AI_CREATED",
@@ -15756,7 +15756,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_2",
+      "asset_key": "asset.styleref.region_lang_da.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_2.png",
       "content_id": "sha256:281c8a46f7aa03856abb922850c9fb09e8648fb17374d94dcdffe1627e6a8d5a",
       "source_kind": "AI_CREATED",
@@ -15806,7 +15806,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_3",
+      "asset_key": "asset.styleref.region_lang_da.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_3.png",
       "content_id": "sha256:c0adea25794d83f3542f9978e63d90f2c17bf901e78580bdf9406a2382655d27",
       "source_kind": "AI_CREATED",
@@ -15856,7 +15856,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_4",
+      "asset_key": "asset.styleref.region_lang_da.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_4.png",
       "content_id": "sha256:6f9979ab145f1f104e8a3803c91f90c778822ad8ba8c4fadda63d6a755f66e7f",
       "source_kind": "AI_CREATED",
@@ -15906,7 +15906,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_5",
+      "asset_key": "asset.styleref.region_lang_da.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_5.png",
       "content_id": "sha256:230626941a729109fbdeab8b43262e9a31a65ad9aa82ed6299482418da519036",
       "source_kind": "AI_CREATED",
@@ -15956,7 +15956,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_6",
+      "asset_key": "asset.styleref.region_lang_da.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_6.png",
       "content_id": "sha256:04cb5cfc62c91d2a678d4098ccce2b1a772b41ae1093687f01e90109559a4f0c",
       "source_kind": "AI_CREATED",
@@ -16006,7 +16006,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_7",
+      "asset_key": "asset.styleref.region_lang_da.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_7.png",
       "content_id": "sha256:283fa6ee88111d056ab8915dd95bde0d9a709de302cd1a2b87dcf5519f70d264",
       "source_kind": "AI_CREATED",
@@ -16056,7 +16056,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_lang_da.anchor_8",
+      "asset_key": "asset.styleref.region_lang_da.anchor_8.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_lang_da/anchor_8.png",
       "content_id": "sha256:819dca4fd57e7cb5daa5b658d959a1018f1e055cadf78687e842430d8c098717",
       "source_kind": "AI_CREATED",
@@ -16106,7 +16106,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_1",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_1.png",
       "content_id": "sha256:a5ef4f9e95dd255d53bce343d79b2b1ba0f2ed3d02b1c1de0b2042289b776633",
       "source_kind": "AI_CREATED",
@@ -16156,7 +16156,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_2",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_2.png",
       "content_id": "sha256:dfaec9bdbd1908bed568b23986a626a9199378499335ddb74dd88bb862248bbb",
       "source_kind": "AI_CREATED",
@@ -16206,7 +16206,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_3",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_3.png",
       "content_id": "sha256:ee1663c230d1155c4a4d485649ee542ad4d5ea6bf047128a7ca322f839f525a1",
       "source_kind": "AI_CREATED",
@@ -16256,7 +16256,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_4",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_4.png",
       "content_id": "sha256:7e97fbdee62a9221bad77a5a6dbf7723fc6717f1b965a99fc1c59d3021ab860c",
       "source_kind": "AI_CREATED",
@@ -16306,7 +16306,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_5",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_5.png",
       "content_id": "sha256:c8ce2ec2a2d899da8fafa64d66134e09b9e87756c2d8744e5a85e8af7f0dcceb",
       "source_kind": "AI_CREATED",
@@ -16356,7 +16356,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_6",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_6.png",
       "content_id": "sha256:3efd165e730ed28b98200fc4f7ed70f7da0c5775582c1e73ae2da322a330bb3c",
       "source_kind": "AI_CREATED",
@@ -16406,7 +16406,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_7",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_7.png",
       "content_id": "sha256:ec836092256f5c9f92b4a9ba40b71b729a79ad43fe9055ed76b0c31458f9de49",
       "source_kind": "AI_CREATED",
@@ -16456,7 +16456,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_nui_thieng.anchor_8",
+      "asset_key": "asset.styleref.region_nui_thieng.anchor_8.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_nui_thieng/anchor_8.png",
       "content_id": "sha256:986bd4da1994f25b80c55ec9fc60f632d1239148402614e9b4343d87d66c8c89",
       "source_kind": "AI_CREATED",
@@ -16506,7 +16506,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_rung_u_minh.anchor_1",
+      "asset_key": "asset.styleref.region_rung_u_minh.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_rung_u_minh/anchor_1.png",
       "content_id": "sha256:7190d3ccba619a3f2c71329a1c4fb66a1fe2f787a229f098ddf269d6d43edb93",
       "source_kind": "AI_CREATED",
@@ -16556,7 +16556,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_rung_u_minh.anchor_2",
+      "asset_key": "asset.styleref.region_rung_u_minh.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_rung_u_minh/anchor_2.png",
       "content_id": "sha256:6f3fe11bdcff7ab41a0079e2e4a5c43813f2c8257eaa2d33baa3f88c702d5de2",
       "source_kind": "AI_CREATED",
@@ -16606,7 +16606,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_rung_u_minh.anchor_3",
+      "asset_key": "asset.styleref.region_rung_u_minh.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_rung_u_minh/anchor_3.png",
       "content_id": "sha256:4c083be95314e40ac5a7fad60a394dc33fbc67ad4d0f0d71b8acaee71ff5d804",
       "source_kind": "AI_CREATED",
@@ -16656,7 +16656,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_rung_u_minh.anchor_4",
+      "asset_key": "asset.styleref.region_rung_u_minh.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_rung_u_minh/anchor_4.png",
       "content_id": "sha256:227555e3756df6d798e3c43a627f3dc2891f68ea847125818dfdf8b276c94f0b",
       "source_kind": "AI_CREATED",
@@ -16706,7 +16706,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_rung_u_minh.anchor_5",
+      "asset_key": "asset.styleref.region_rung_u_minh.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_rung_u_minh/anchor_5.png",
       "content_id": "sha256:2b0467000f6635ca1f9ebf13c995ec17be478a07c3c5118490cd6ae6047aefb4",
       "source_kind": "AI_CREATED",
@@ -16756,7 +16756,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_rung_u_minh.anchor_6",
+      "asset_key": "asset.styleref.region_rung_u_minh.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_rung_u_minh/anchor_6.png",
       "content_id": "sha256:df46469c74a009b5ccf3d3c388592f01f72d0092b8b46dd9279318e112355e97",
       "source_kind": "AI_CREATED",
@@ -16806,7 +16806,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_rung_u_minh.anchor_7",
+      "asset_key": "asset.styleref.region_rung_u_minh.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_rung_u_minh/anchor_7.png",
       "content_id": "sha256:740e4b821c92f81a9e2b5e6b00c2d341f90bb9e35fe70e84cd1aa094b0c2acb1",
       "source_kind": "AI_CREATED",
@@ -16856,7 +16856,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_1",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_1.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_1.png",
       "content_id": "sha256:a7e74496916a78119cb7e3c80c27d1be806eb00fc1533b365cb230fa630420d0",
       "source_kind": "AI_CREATED",
@@ -16906,7 +16906,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_2",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_2.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_2.png",
       "content_id": "sha256:df853f99c7978db35db73956c2682e1cd75159b3541ea766f14d742136b38012",
       "source_kind": "AI_CREATED",
@@ -16956,7 +16956,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_3",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_3.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_3.png",
       "content_id": "sha256:fbdec80041de3858890aeb8f30397bb3dc8b2b611df83df03625df9103eeb193",
       "source_kind": "AI_CREATED",
@@ -17006,7 +17006,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_4",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_4.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_4.png",
       "content_id": "sha256:d691cff8e10c8988ff807ddb11347e7b05e0c59c6e562c94e0ea3c7d9b65ca15",
       "source_kind": "AI_CREATED",
@@ -17056,7 +17056,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_5",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_5.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_5.png",
       "content_id": "sha256:ea6a2447dd84baa3e35e2920e8806657f201aeb02f05725898a37321bef405c0",
       "source_kind": "AI_CREATED",
@@ -17106,7 +17106,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_6",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_6.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_6.png",
       "content_id": "sha256:cf9cb7522abbf1b1966f0536d7fb4d404ce3015ebe5bc39673f52ab6cee14c76",
       "source_kind": "AI_CREATED",
@@ -17156,7 +17156,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_7",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_7.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_7.png",
       "content_id": "sha256:4cdeb88ecae24ee8104143881f82a1406b6b48ca4bdb11bacde99896a72fbe92",
       "source_kind": "AI_CREATED",
@@ -17206,7 +17206,7 @@
       "review_state": "PENDING"
     },
     {
-      "asset_key": "asset.styleref.region_thanh_co.anchor_8",
+      "asset_key": "asset.styleref.region_thanh_co.anchor_8.sprite",
       "file_path": "client/Assets/Art/StyleRef/actors_creatures/region_thanh_co/anchor_8.png",
       "content_id": "sha256:17f72677c7f6c3be223a63b170c5d3e0f0d9b6928d09bbd330e3cf5d83f137da",
       "source_kind": "AI_CREATED",

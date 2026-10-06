@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be2f33fe6cfa4e108f3bf0027ccf8da0
+    m_Address: asset.boss.than_trung.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cde5a6e162874cbaa0c053ee078454b0
     m_Address: asset.instance.finale.than_trung.scene
     m_ReadOnly: 0
