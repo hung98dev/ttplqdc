@@ -153,6 +153,10 @@ namespace ThinhThan.Net
                             "Bearer", bearer);
                 }
 
+                // One connection per request: pooled reuse after a
+                // server-side close surfaces as forcibly-closed failures
+                // on some runtimes, and the control plane is low-volume.
+                request.Headers.ConnectionClose = true;
                 HttpResponseMessage response = await _http
                     .SendAsync(request, cancel).ConfigureAwait(false);
                 string text = await response.Content
