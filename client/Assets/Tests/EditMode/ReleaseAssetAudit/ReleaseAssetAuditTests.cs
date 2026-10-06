@@ -253,6 +253,21 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
             return list;
         }
 
+        private static List<ReleaseAudit.Finding> WithSubjectPrefix(
+            ReleaseAudit.Report report, string prefix)
+        {
+            var list = new List<ReleaseAudit.Finding>();
+            foreach (var f in report.Findings)
+            {
+                if (f.Subject.StartsWith(prefix,
+                    System.StringComparison.Ordinal))
+                {
+                    list.Add(f);
+                }
+            }
+            return list;
+        }
+
         private static bool HasDetail(
             List<ReleaseAudit.Finding> findings, string needle)
         {
@@ -537,7 +552,7 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
             var report = ReleaseAudit.Run(root, runArtGates: true);
             foreach (var rel in new[] { creature, parts })
             {
-                var hits = WithSubject(report, rel);
+                var hits = WithSubjectPrefix(report, rel);
                 Assert.IsFalse(HasDetail(hits, "body height"),
                     "non-humanoid file hit by body band: " + rel);
                 Assert.IsFalse(HasDetail(hits, "body band"),
@@ -547,7 +562,7 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
             Assert.IsEmpty(placeholder,
                 "placeholder finding without declared label: "
                     + report.Summary());
-            var sheetHits = WithSubject(report, sheet);
+            var sheetHits = WithSubjectPrefix(report, sheet);
             Assert.IsTrue(HasDetail(sheetHits, "body height")
                 || HasDetail(sheetHits, "body band"),
                 "humanoid figure surface lost its band check: " + sheet);
