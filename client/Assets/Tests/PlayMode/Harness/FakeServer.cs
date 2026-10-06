@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Sockets;
 using System.Net.WebSockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,8 +16,9 @@ namespace ThinhThan.Tests.PlayMode.Harness
     /// <summary>
     /// In-proc fake edge for PlayMode tests (packet § Harness): one
     /// <see cref="HttpListener"/> serves the HTTPS control plane
-    /// (gameplay/ticket, auth/refresh, account) and accepts the WSS upgrade
-    /// at /ws, scripting S2C responses. Deterministic defaults; scenario
+    /// (gameplay/ticket, auth/refresh, account); a raw
+    /// <see cref="TcpListener"/> serves the WSS upgrade at /ws, scripting
+    /// S2C responses. Deterministic defaults; scenario
     /// knobs via public delegates and helpers.
     /// </summary>
     public sealed class FakeServer : IDisposable
@@ -25,6 +28,14 @@ namespace ThinhThan.Tests.PlayMode.Harness
             FakeServerSocket socket, FakeServerSocket.Inbound inbound);
 
         private readonly HttpListener _listener = new HttpListener();
+        // Unity's Mono classlib stubs out HttpListener's websocket support
+        // (IsWebSocketRequest is always false and AcceptWebSocketAsync
+        // throws NotImplementedException), so the WSS endpoint is served by
+        // a raw TcpListener + manual 101 handshake instead.
+        private readonly TcpListener _wsListener =
+            new TcpListener(IPAddress.Loopback, 0);
+        private readonly List<TcpClient> _wsClients = new List<TcpClient>();
+        private readonly int _wsPort;
         private readonly List<FakeServerSocket> _sockets =
             new List<FakeServerSocket>();
         private readonly object _gate = new object();
@@ -46,6 +57,8 @@ namespace ThinhThan.Tests.PlayMode.Harness
             HeartbeatIntervalMs = 5000;
             ConnectionTimeoutMs = 15000;
             _listener.Prefixes.Add("http://127.0.0.1:" + port + "/");
+            _wsListener.Start();
+            _wsPort = ((IPEndPoint)_wsListener.LocalEndpoint).Port;
         }
 
         public int Port
@@ -72,7 +85,7 @@ namespace ThinhThan.Tests.PlayMode.Harness
         {
             get
             {
-                return new Uri("ws://127.0.0.1:" + Port + "/ws");
+                return new Uri("ws://127.0.0.1:" + _wsPort + "/ws");
             }
         }
 
@@ -161,6 +174,108 @@ namespace ThinhThan.Tests.PlayMode.Harness
         {
             _listener.Start();
             _ = Task.Run(AcceptLoop);
+            _ = Task.Run(WsAcceptLoop);
+        }
+
+        private async Task WsAcceptLoop()
+        {
+            try
+            {
+                while (!_cancel.IsCancellationRequested)
+                {
+                    TcpClient client = await _wsListener
+                        .AcceptTcpClientAsync()
+                        .ConfigureAwait(false);
+                    lock (_gate)
+                    {
+                        _wsClients.Add(client);
+                    }
+
+                    _ = HandleWsConnection(client);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private async Task HandleWsConnection(TcpClient client)
+        {
+            try
+            {
+                NetworkStream stream = client.GetStream();
+                var headerBuffer = new byte[16384];
+                int read = 0;
+                while (!HeaderComplete(headerBuffer, read))
+                {
+                    int n = await stream.ReadAsync(
+                        headerBuffer, read, headerBuffer.Length - read,
+                        _cancel.Token).ConfigureAwait(false);
+                    if (n <= 0)
+                    {
+                        return;
+                    }
+
+                    read += n;
+                }
+
+                string request = Encoding.ASCII.GetString(headerBuffer, 0, read);
+                string? key = null;
+                foreach (string rawLine in request.Split('\n'))
+                {
+                    string line = rawLine.TrimEnd('\r');
+                    if (line.StartsWith(
+                        "Sec-WebSocket-Key:",
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        key = line.Substring("Sec-WebSocket-Key:".Length)
+                            .Trim();
+                        break;
+                    }
+                }
+
+                if (key == null)
+                {
+                    return;
+                }
+
+                string accept = Convert.ToBase64String(
+                    SHA1.Create().ComputeHash(Encoding.ASCII.GetBytes(
+                        key + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11")));
+                byte[] response = Encoding.ASCII.GetBytes(
+                    "HTTP/1.1 101 Switching Protocols\r\n" +
+                    "Upgrade: websocket\r\n" +
+                    "Connection: Upgrade\r\n" +
+                    "Sec-WebSocket-Accept: " + accept + "\r\n\r\n");
+                await stream.WriteAsync(
+                    response, 0, response.Length).ConfigureAwait(false);
+
+                WebSocket socket = WebSocket.CreateFromStream(
+                    stream, true, null, TimeSpan.FromSeconds(30));
+                lock (_gate)
+                {
+                    _sockets.Add(new FakeServerSocket(this, socket));
+                }
+            }
+            catch (Exception e)
+            {
+                ThinhThan.Core.Runtime.Log.Error(
+                    "fake server ws accept failed: " + e);
+            }
+        }
+
+        private static bool HeaderComplete(byte[] buffer, int length)
+        {
+            for (int i = 0; i + 3 < length; i++)
+            {
+                if (buffer[i] == '\r' && buffer[i + 1] == '\n' &&
+                    buffer[i + 2] == '\r' && buffer[i + 3] == '\n')
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>Sends S2C_SESSION_REPLACED on the latest socket.</summary>
@@ -235,15 +350,23 @@ namespace ThinhThan.Tests.PlayMode.Harness
         {
             _cancel.Cancel();
             _listener.Stop();
+            _wsListener.Stop();
             FakeServerSocket[] sockets;
+            TcpClient[] wsClients;
             lock (_gate)
             {
                 sockets = _sockets.ToArray();
+                wsClients = _wsClients.ToArray();
             }
 
             foreach (FakeServerSocket socket in sockets)
             {
                 socket.Dispose();
+            }
+
+            foreach (TcpClient client in wsClients)
+            {
+                client.Dispose();
             }
 
             _listener.Close();
@@ -390,20 +513,6 @@ namespace ThinhThan.Tests.PlayMode.Harness
                 string path = context.Request.Url != null
                     ? context.Request.Url.AbsolutePath
                     : string.Empty;
-                if (context.Request.IsWebSocketRequest && path == "/ws")
-                {
-                    HttpListenerWebSocketContext wsContext =
-                        await context.AcceptWebSocketAsync(null)
-                            .ConfigureAwait(false);
-                    var socket = new FakeServerSocket(this, wsContext.WebSocket);
-                    lock (_gate)
-                    {
-                        _sockets.Add(socket);
-                    }
-
-                    return;
-                }
-
                 await HandleHttp(context, path).ConfigureAwait(false);
             }
             catch (Exception e)
