@@ -159,7 +159,10 @@ namespace ThinhThan.Tests.PlayMode.MovementPrediction
             Assert.AreEqual(
                 MovementConstants.WireC2SInputState, sender.Sent[2].Id);
 
-            // History recorded both sent seqs.
+            // Seq publish happens on the next frame's drain pass.
+            dispatch.Dispatch(Frame(0.31));
+
+            // History recorded every sent seq.
             Assert.AreEqual(3, history.Count);
             Assert.AreEqual(3, sink.Sent.Count);
         }
