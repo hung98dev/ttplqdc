@@ -23,7 +23,7 @@ namespace ThinhThan.UI.CoreHud
         }
 
         /// <summary>Polls once per frame; marks Vitals when values moved.</summary>
-        public void Update()
+        public void Refresh()
         {
             EntityState? self = _replication.SelfState;
             SelfPrivateState? selfPrivate = _replication.SelfPrivate;

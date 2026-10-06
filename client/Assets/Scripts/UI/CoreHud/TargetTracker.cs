@@ -23,7 +23,7 @@ namespace ThinhThan.UI.CoreHud
             _model = model ?? throw new ArgumentNullException(nameof(model));
         }
 
-        public void Update()
+        public void Refresh()
         {
             SelfPrivateState? selfPrivate = _replication.SelfPrivate;
             ulong id = selfPrivate?.AcceptedTargetEntityId ?? 0UL;

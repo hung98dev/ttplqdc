@@ -136,15 +136,15 @@ namespace ThinhThan.Core.Input
             }
         }
 
-        public InputAction Move { get; }
-        public InputAction Down { get; }
-        public InputAction Jump { get; }
-        public InputAction Basic { get; }
-        public InputAction Interact { get; }
-        public InputAction TargetCycle { get; }
-        public InputAction TargetClear { get; }
-        public InputAction ChatOpen { get; }
-        public InputAction UiNavigate { get; }
+        public InputAction Move { get; private set; }
+        public InputAction Down { get; private set; }
+        public InputAction Jump { get; private set; }
+        public InputAction Basic { get; private set; }
+        public InputAction Interact { get; private set; }
+        public InputAction TargetCycle { get; private set; }
+        public InputAction TargetClear { get; private set; }
+        public InputAction ChatOpen { get; private set; }
+        public InputAction UiNavigate { get; private set; }
 
         /// <summary>Skill actions 1..5 in slot order.</summary>
         public InputAction SkillAt(int slot)

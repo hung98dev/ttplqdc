@@ -45,7 +45,7 @@ namespace ThinhThan.UI.CoreHud
         }
 
         /// <summary>Purges expired slots against the server tick.</summary>
-        public void Update(ulong serverTick)
+        public void Refresh(ulong serverTick)
         {
             bool changed = false;
             for (int i = 0; i < _count; i++)

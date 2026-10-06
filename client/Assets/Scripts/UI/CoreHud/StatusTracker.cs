@@ -52,7 +52,7 @@ namespace ThinhThan.UI.CoreHud
         }
 
         /// <summary>Rebuilds status rows from authoritative state.</summary>
-        public void Update()
+        public void Refresh()
         {
             int n = 0;
             EntityState? self = _replication.SelfState;

@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 using ThinhThan.Core.Runtime;
 using ThinhThan.Core.Session;
 using ThinhThan.Net;
@@ -50,15 +49,15 @@ namespace ThinhThan.UI.StateMachine
         }
 
         /// <summary>Đổi nhân vật: C2S_CHARACTER_DETACH path (§1).</summary>
-        public Task<Result<bool>> RequestDetachAsync(CancellationToken cancel)
+        public void RequestDetach(CancellationToken cancel)
         {
-            return _orchestrator.DetachAsync(cancel);
+            _ = _orchestrator.DetachAsync(cancel);
         }
 
         /// <summary>Đăng xuất / exit-to-title from the DISCONNECTED modal.</summary>
-        public Task RequestLogoutAsync(CancellationToken cancel)
+        public void RequestLogout(CancellationToken cancel)
         {
-            return _orchestrator.LogoutAsync(cancel);
+            _ = _orchestrator.LogoutAsync(cancel);
         }
 
         /// <summary>Đồng ý on the non-dismissible SESSION_REPLACED modal.</summary>

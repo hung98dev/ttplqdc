@@ -293,7 +293,7 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
             });
             Assert.AreEqual(0, model.Cooldowns.Length);
 
-            tracker.Update(250);
+            tracker.Refresh(250);
             tracker.Dispose();
         }
 
@@ -317,7 +317,7 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
             var model = new HudDataModel();
             var feed = new FakeFeed();
             var tracker = new StatusTracker(replication, model, feed);
-            tracker.Update();
+            tracker.Refresh();
 
             Assert.AreEqual(1, model.Statuses.Length);
             Assert.AreEqual("e.ignite", model.Statuses[0].EffectId);
@@ -330,7 +330,7 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
                 EffectId = "e.ignite",
                 StatusKind = "debuff",
             });
-            tracker.Update();
+            tracker.Refresh();
             Assert.AreEqual("debuff", model.Statuses[0].StatusKind);
             tracker.Dispose();
         }

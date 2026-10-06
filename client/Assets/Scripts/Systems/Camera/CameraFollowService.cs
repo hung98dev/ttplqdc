@@ -106,7 +106,7 @@ namespace ThinhThan.Systems.Camera
 
         public void Tick(in FrameTime time)
         {
-            _view.Update(_aspect());
+            _view.Resize(_aspect());
 
             PredictedState state = _prediction.State;
             (long offX, long offY) = _displayOffset();

@@ -31,7 +31,11 @@ namespace ThinhThan.UI.CoreHud
         /// <summary>uGUI Button.onClick hook.</summary>
         public void OnPressed()
         {
-            MenuPressed?.Invoke();
+            Action? handler = MenuPressed;
+            if (handler != null)
+            {
+                handler();
+            }
         }
 
         private void Awake()

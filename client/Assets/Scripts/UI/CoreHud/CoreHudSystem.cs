@@ -62,10 +62,10 @@ namespace ThinhThan.UI.CoreHud
         public void Tick(in FrameTime time)
         {
             ulong tick = _serverTick();
-            _vitals.Update();
-            _target.Update();
-            _status.Update();
-            _cooldown.Update(tick);
+            _vitals.Refresh();
+            _target.Refresh();
+            _status.Refresh();
+            _cooldown.Refresh(tick);
 
             if (_world != null || _latency != null)
             {

@@ -28,14 +28,14 @@ namespace ThinhThan.Systems.Camera
         {
             get;
             private set;
-        } = ReferenceViewWidth;
+        }
 
         /// <summary>Visible world height in meters at the current aspect.</summary>
         public float ViewHeight
         {
             get;
             private set;
-        } = ReferenceViewHeight;
+        }
 
         /// <summary>
         /// Normalized viewport rect for the render camera's viewport —
@@ -45,10 +45,18 @@ namespace ThinhThan.Systems.Camera
         {
             get;
             private set;
-        } = new Rect(0f, 0f, 1f, 1f);
+        }
+
+        /// <summary>View dims at the reference aspect before the first tick.</summary>
+        public CameraViewModel()
+        {
+            ViewWidth = ReferenceViewWidth;
+            ViewHeight = ReferenceViewHeight;
+            Viewport = new Rect(0f, 0f, 1f, 1f);
+        }
 
         /// <summary>Recomputes view dims for the given screen aspect.</summary>
-        public void Update(float aspect)
+        public void Resize(float aspect)
         {
             if (aspect >= PillarboxMaxAspect)
             {
