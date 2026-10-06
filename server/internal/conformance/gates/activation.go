@@ -57,7 +57,8 @@ type RunContext struct {
 	EventName         string // github.event_name
 	HeadBranch        string // PR head ref ("" on push)
 	StatusOnly        bool
-	UnityScope        string // "full" | "none" — from ResolveUnityScope
+	UnityScope        string   // "full" | "none" — from ResolveUnityScope
+	ChangedPaths      []string // PR diff paths (empty on non-PR events)
 	LocalDeferMissing bool
 	InCI              bool
 	MainIdx, HeadIdx  PacketIndex

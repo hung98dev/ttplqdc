@@ -510,6 +510,10 @@ namespace ThinhThan.Tests.PlayMode.Harness
         {
             try
             {
+                // The harness has no keep-alive contract — close every
+                // connection so the client never reuses a socket the
+                // listener has dropped (Unity Mono classlib).
+                context.Response.KeepAlive = false;
                 string path = context.Request.Url != null
                     ? context.Request.Url.AbsolutePath
                     : string.Empty;
@@ -526,6 +530,21 @@ namespace ThinhThan.Tests.PlayMode.Harness
 
         private Task HandleHttp(HttpListenerContext context, string path)
         {
+            // Drain the request body before responding: closing with an
+            // unread body aborts the socket (RST) and poisons the client's
+            // pooled connection.
+            if (context.Request.HasEntityBody)
+            {
+                try
+                {
+                    context.Request.InputStream.CopyTo(
+                        new MemoryStream());
+                }
+                catch (Exception)
+                {
+                }
+            }
+
             string method = context.Request.HttpMethod;
             if (method == "POST" && path == "/api/v1/gameplay/ticket")
             {
