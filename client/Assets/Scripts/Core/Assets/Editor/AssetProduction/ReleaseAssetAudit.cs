@@ -2068,7 +2068,8 @@ namespace ThinhThan.Core.Assets.Editor.AssetProduction
                     for (int cx = 0; cx < gw; cx++)
                     {
                         var rep = CutoutQualityGate.Measure(abs, img, cx, cy,
-                            cellW, cellH, cls.Value, mask, detached, pixelArt);
+                            cellW, cellH, cls.Value, mask, detached, pixelArt,
+                            figure);
                         for (int v = 0; v < rep.Violations.Count; v++)
                         {
                             Add(report, "gate", rel + " cell(" + cx + "," + cy
