@@ -1,7 +1,9 @@
 using System;
 using System.Threading;
+using Google.Protobuf;
 using ThinhThan.Core.Runtime;
 using ThinhThan.Protocol.V1;
+using UnityEngine;
 
 namespace ThinhThan.Systems.Movement
 {

@@ -36,7 +36,7 @@ namespace ThinhThan.Systems.Movement
         }
 
         /// <summary>Current predicted tick (local monotonic — never server ticks).</summary>
-        public ulong Tick
+        public ulong CurrentTick
         {
             get
             {
@@ -158,7 +158,7 @@ namespace ThinhThan.Systems.Movement
 
                 if (r.Kind == InputRecordKind.Edge)
                 {
-                    MovementIntegrator.ApplyEdge(ref _state, r.Edge);
+                    MovementIntegrator.ApplyEdge(ref _state, r.Edge, nextTick);
                 }
                 else
                 {

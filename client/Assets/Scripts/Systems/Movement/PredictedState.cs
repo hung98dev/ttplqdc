@@ -22,6 +22,7 @@ namespace ThinhThan.Systems.Movement
         public long DropIgnorePlatformId;
         public ulong DropIgnoreUntilTick;
         public HeldHorizontalIntent HeldHorizontalIntent;
+        public EffectiveMovementParameters EffectiveParameters;
 
         /// <summary>Copies every checkpoint field into this state.</summary>
         public void RestoreFrom(MovementCheckpoint cp)
@@ -38,6 +39,7 @@ namespace ThinhThan.Systems.Movement
             DropIgnorePlatformId = cp.DropIgnorePlatformId;
             DropIgnoreUntilTick = cp.DropIgnoreUntilTick;
             HeldHorizontalIntent = cp.HeldHorizontalIntent;
+            EffectiveParameters = cp.EffectiveParameters;
         }
     }
 }

@@ -17,9 +17,29 @@ namespace ThinhThan.Systems.Movement
     /// </summary>
     public static class MovementIntegrator
     {
+        /// <summary>
+        /// Fallback effective parameters for a prediction that has never
+        /// seen a checkpoint (synchronization.md § Local Reconciliation —
+        /// replay uses checkpoint effective parameters; before the first
+        /// one lands the canonical baseline stands in).
+        /// </summary>
+        public static readonly EffectiveMovementParameters DefaultParameters =
+            new EffectiveMovementParameters
+            {
+                RunSpeedMmS = unchecked((uint)MovementConstants.RunSpeedMmS),
+                FirstJumpMmS = unchecked((uint)MovementConstants.FirstJumpMmS),
+                SecondJumpMmS = unchecked((uint)MovementConstants.SecondJumpMmS),
+                GravityMmS2 = unchecked((uint)MovementConstants.GravityMmS2),
+                MaxFallMmS = unchecked((uint)MovementConstants.MaxFallMmS),
+                AirControlBp = unchecked((uint)MovementConstants.AirControlBp),
+                MaxStepHeightMm = unchecked((uint)MovementConstants.MaxStepHeightMm),
+            };
+
         /// <summary>Applies one semantic edge to the intent accumulator.</summary>
-        public static void ApplyEdge(ref PredictedState st, LocalEdge edge)
+        public static void ApplyEdge(ref PredictedState st, LocalEdge edge, ulong tick)
         {
+            EffectiveMovementParameters p =
+                st.EffectiveParameters ?? DefaultParameters;
             switch (edge)
             {
                 case LocalEdge.PressLeft:
@@ -47,13 +67,13 @@ namespace ThinhThan.Systems.Movement
                 case LocalEdge.Jump:
                     if (st.IsGrounded)
                     {
-                        st.VyMmS = MovementConstants.FirstJumpMmS;
+                        st.VyMmS = p.FirstJumpMmS;
                         st.JumpCount = 1;
                         st.IsGrounded = false;
                     }
                     else if (st.JumpCount < MovementConstants.MaxJumpCount)
                     {
-                        st.VyMmS = MovementConstants.SecondJumpMmS;
+                        st.VyMmS = p.SecondJumpMmS;
                         st.JumpCount++;
                     }
                     break;
@@ -61,9 +81,7 @@ namespace ThinhThan.Systems.Movement
                     if (st.IsGrounded && st.PlatformId != 0)
                     {
                         st.DropIgnorePlatformId = st.PlatformId;
-                        st.DropIgnoreUntilTick = st.DropIgnoreUntilTick == 0
-                            ? unchecked((ulong)MovementConstants.DropIgnoreTicks)
-                            : st.DropIgnoreUntilTick;
+                        st.DropIgnoreUntilTick = tick + unchecked((ulong)MovementConstants.DropIgnoreTicks);
                         st.IsGrounded = false;
                     }
                     break;
@@ -83,6 +101,8 @@ namespace ThinhThan.Systems.Movement
             ref PredictedState st, GeometryMath.GeometryWorld world,
             int heldDirection, ulong tick)
         {
+            EffectiveMovementParameters p =
+                st.EffectiveParameters ?? DefaultParameters;
             int dir = st.HeldHorizontalIntent == HeldHorizontalIntent.Left
                 ? -1
                 : st.HeldHorizontalIntent == HeldHorizontalIntent.Right
@@ -92,13 +112,13 @@ namespace ThinhThan.Systems.Movement
             long vx;
             if (st.IsGrounded)
             {
-                vx = (long)dir * MovementConstants.RunSpeedMmS;
+                vx = (long)dir * p.RunSpeedMmS;
             }
             else
             {
                 vx = GeometryMath.RoundDiv(
-                    (long)dir * MovementConstants.RunSpeedMmS *
-                    MovementConstants.AirControlBp,
+                    (long)dir * p.RunSpeedMmS *
+                    p.AirControlBp,
                     10000);
             }
 
@@ -109,10 +129,10 @@ namespace ThinhThan.Systems.Movement
             }
             else
             {
-                vy -= GeometryMath.RoundDiv(MovementConstants.GravityMmS2, 20);
-                if (vy < -MovementConstants.MaxFallMmS)
+                vy -= GeometryMath.RoundDiv(p.GravityMmS2, 20);
+                if (vy < -(long)p.MaxFallMmS)
                 {
-                    vy = -MovementConstants.MaxFallMmS;
+                    vy = -(long)p.MaxFallMmS;
                 }
             }
 
@@ -125,7 +145,7 @@ namespace ThinhThan.Systems.Movement
                 dx,
                 dy,
                 new GeometryMath.MoveOpts(
-                    MovementConstants.MaxStepHeightMm,
+                    p.MaxStepHeightMm,
                     st.DropIgnorePlatformId,
                     st.DropIgnoreUntilTick,
                     tick));

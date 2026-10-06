@@ -58,7 +58,7 @@ namespace ThinhThan.Systems.Movement
                 // (IMP-065 seam) — fall back to the newest ack's seq for
                 // the replay base; without any ack, replay all pending.
                 SelfAck? snapAck = self.LatestAck;
-                ulong liveTick = _prediction.Tick;
+                ulong liveTick = _prediction.CurrentTick;
                 _prediction.RestoreFrom(snap);
                 ulong lastSeq =
                     snapAck != null ? snapAck.LastProcessedClientSeq : 0UL;
@@ -77,7 +77,7 @@ namespace ThinhThan.Systems.Movement
                 MovementCheckpoint? cp = ack.Checkpoint;
                 if (cp != null)
                 {
-                    ulong liveTick = _prediction.Tick;
+                    ulong liveTick = _prediction.CurrentTick;
                     history.DropThrough(ack.LastProcessedClientSeq);
                     int displayX = _prediction.State.XMm;
                     int displayY = _prediction.State.YMm;
@@ -95,7 +95,7 @@ namespace ThinhThan.Systems.Movement
                         _smoothStartY = displayY;
                         _smoothTargetX = _prediction.State.XMm;
                         _smoothTargetY = _prediction.State.YMm;
-                        _smoothBaseTick = _prediction.Tick;
+                        _smoothBaseTick = _prediction.CurrentTick;
                         _smoothEndTick = _smoothBaseTick +
                             (ulong)(MovementConstants.SmoothMs /
                                 MovementConstants.TickMillis);
@@ -109,10 +109,10 @@ namespace ThinhThan.Systems.Movement
                 }
             }
 
-            if (_smoothEndTick != 0 && _prediction.Tick < _smoothEndTick)
+            if (_smoothEndTick != 0 && _prediction.CurrentTick < _smoothEndTick)
             {
                 long span = (long)(_smoothEndTick - _smoothBaseTick);
-                long left = (long)(_smoothEndTick - _prediction.Tick);
+                long left = (long)(_smoothEndTick - _prediction.CurrentTick);
                 VisualOffsetMm = (
                     (_smoothStartX - _smoothTargetX) * left / span,
                     (_smoothStartY - _smoothTargetY) * left / span);

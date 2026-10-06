@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading;
+using Google.Protobuf;
 using NUnit.Framework;
 using ThinhThan.Core.Geometry;
 using ThinhThan.Core.Runtime;
