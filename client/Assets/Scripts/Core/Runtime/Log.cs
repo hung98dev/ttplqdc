@@ -64,7 +64,7 @@ namespace ThinhThan.Core.Runtime
 
         private static bool Allow(string message)
         {
-            double now = Time.realtimeSinceStartupAsDouble;
+            double now = Stopwatch.GetTimestamp() / (double)Stopwatch.Frequency;
             lock (_gate)
             {
                 if (_lastEmitted.TryGetValue(message, out double last) &&
