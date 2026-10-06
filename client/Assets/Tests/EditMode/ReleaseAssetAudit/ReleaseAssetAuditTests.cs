@@ -57,7 +57,15 @@ namespace ThinhThan.Tests.EditMode.ReleaseAssetAudit
             var node = RegisterJson.Parse(merged);
             var assets = node.Get("assets");
             Assert.IsNotNull(assets);
-            Assert.AreEqual(1193, assets!.Arr!.Count,
+            int expected = 0;
+            foreach (var f in Directory.GetFiles(Path.Combine(root,
+                ReleaseAudit.FragmentsDir.Replace('/',
+                    Path.DirectorySeparatorChar)), "*.json"))
+            {
+                expected += RegisterJson.Parse(File.ReadAllText(f))
+                    .Get("assets")!.Arr!.Count;
+            }
+            Assert.AreEqual(expected, assets!.Arr!.Count,
                 "merged register must carry every fragment row");
             // Sorted by file_path ascending, unique.
             var prev = string.Empty;
