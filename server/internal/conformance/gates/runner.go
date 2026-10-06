@@ -190,6 +190,8 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details, missing = r.unityCompile()
 	case "Q3.unity.editmode":
 		details, missing = r.unityEditMode()
+	case "Q3.unity.playmode":
+		details, missing = r.unityPlayMode()
 	case "Q3.unity.visualreview":
 		details, missing = r.unityVisualReview()
 	case "Q4.style":
@@ -596,22 +598,35 @@ type nunitRun struct {
 	Total   int      `xml:"total,attr"`
 }
 
-// unityEditMode parses editmode-results.xml (NUnit3) from the Unity results
+// unityEditMode parses editmode-results.xml (NUnit3) — see unityModeResults.
+func (r *Runner) unityEditMode() (errs []string, missing bool) {
+	return r.unityModeResults("editmode")
+}
+
+// unityPlayMode (Q3.unity.playmode, owner IMP-065) folds playmode-results.xml
+// with the same contract as editmode. The gate only evaluates when the scope
+// plan ran the suite (owner DONE, or a client-runtime/PlayMode-harness diff),
+// so an absent results file is fail-closed rather than scope-skipped.
+func (r *Runner) unityPlayMode() (errs []string, missing bool) {
+	return r.unityModeResults("playmode")
+}
+
+// unityModeResults parses <mode>-results.xml (NUnit3) from the Unity results
 // dir and requires the editor's completion line; any failure/error is FAIL,
 // absent file is fail-closed. The spec contract is the "Test run completed.
 // Exiting with code 0" log line **plus** a Passed XML — XML alone is not
 // enough because a killed editor can leave a stale passing file behind.
-func (r *Runner) unityEditMode() (errs []string, missing bool) {
+func (r *Runner) unityModeResults(mode string) (errs []string, missing bool) {
 	var files []string
 	var logs []string
 	_ = filepath.Walk(r.UnityDir, func(p string, fi os.FileInfo, err error) error {
 		if err != nil || fi.IsDir() {
 			return err
 		}
-		if strings.HasSuffix(fi.Name(), ".xml") && strings.Contains(fi.Name(), "editmode") {
+		if strings.HasSuffix(fi.Name(), ".xml") && strings.Contains(fi.Name(), mode) {
 			files = append(files, p)
 		}
-		if strings.Contains(fi.Name(), "editmode") && strings.HasSuffix(fi.Name(), ".log") {
+		if strings.Contains(fi.Name(), mode) && strings.HasSuffix(fi.Name(), ".log") {
 			logs = append(logs, p)
 		}
 		return nil
@@ -630,7 +645,7 @@ func (r *Runner) unityEditMode() (errs []string, missing bool) {
 		}
 	}
 	if !completed {
-		errs = append(errs, "no editmode log carries the 'Test run completed. Exiting with code 0' completion line")
+		errs = append(errs, fmt.Sprintf("no %s log carries the 'Test run completed. Exiting with code 0' completion line", mode))
 	}
 	for _, f := range files {
 		b, err := os.ReadFile(f)
