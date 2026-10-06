@@ -178,6 +178,7 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
                         Hp = 80,
                         MaxHp = 100,
                     });
+                Model.SetQuestDock("seed");
 
                 var vitals = new VitalsTracker(Replication, Model);
                 var target = new TargetTracker(Replication, Model);
