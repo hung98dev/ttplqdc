@@ -5,7 +5,6 @@ using ThinhThan.Protocol.V1;
 using ThinhThan.Systems.Replication;
 using ThinhThan.UI.CoreHud;
 using ThinhThan.UI.StateMachine;
-using TMPro;
 using UnityEngine;
 using UnityEngine.TestTools.Constraints;
 using ConstraintsIs = UnityEngine.TestTools.Constraints.Is;
@@ -155,22 +154,14 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
                 vitalsGo.transform.SetParent(dynamicGo.transform, false);
                 vitalsGo.AddComponent<Image>();
                 Vitals = vitalsGo.AddComponent<VitalsBarWidget>();
-                Vitals.HpText = new GameObject("hp")
-                    .AddComponent<TextMeshProUGUI>();
-                Vitals.HpText.transform.SetParent(
-                    vitalsGo.transform, false);
 
                 var dockGo = new GameObject("questDock");
                 dockGo.transform.SetParent(staticGo.transform, false);
                 QuestDock = dockGo.AddComponent<QuestTrackerWidget>();
-                QuestDock.Body = dockGo.AddComponent<TextMeshProUGUI>();
 
                 var menuGo = new GameObject("menu");
                 menuGo.transform.SetParent(staticGo.transform, false);
                 Menu = menuGo.AddComponent<MenuButtonWidget>();
-                Menu.MapText = menuGo.AddComponent<TextMeshProUGUI>();
-                Menu.PingText = new GameObject("ping")
-                    .AddComponent<TextMeshProUGUI>();
 
                 View = Root.AddComponent<CoreHudView>();
                 View.DynamicCanvas = dynamicCanvas;
@@ -324,8 +315,7 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
                 Image image = vitalsGo.AddComponent<Image>();
                 var textGo = new GameObject("t");
                 textGo.transform.SetParent(vitalsGo.transform, false);
-                TextMeshProUGUI text =
-                    textGo.AddComponent<TextMeshProUGUI>();
+                Image text = textGo.AddComponent<Image>();
                 image.raycastTarget = true;
                 text.raycastTarget = true;
 
@@ -343,12 +333,9 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
 
                 var dockGo = new GameObject("dock");
                 dockGo.transform.SetParent(root.transform, false);
-                TextMeshProUGUI dockText =
-                    dockGo.AddComponent<TextMeshProUGUI>();
+                Image dockText = dockGo.AddComponent<Image>();
                 dockText.raycastTarget = true;
-                var dock = dockGo.AddComponent<QuestTrackerWidget>();
-                dock.Body = dockText;
-                dock.Apply(new HudDataModel());
+                dockGo.AddComponent<QuestTrackerWidget>();
                 Assert.IsFalse(dockText.raycastTarget);
             }
             finally

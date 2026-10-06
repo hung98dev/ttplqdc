@@ -41,9 +41,9 @@ namespace ThinhThan.UI.CoreHud
         private void Awake()
         {
             // Only the menu Button graphic raycasts; labels don't.
-            foreach (TMP_Text t in GetComponentsInChildren<TMP_Text>(true))
+            foreach (Graphic g in GetComponentsInChildren<Graphic>(true))
             {
-                t.raycastTarget = false;
+                g.raycastTarget = false;
             }
         }
 
