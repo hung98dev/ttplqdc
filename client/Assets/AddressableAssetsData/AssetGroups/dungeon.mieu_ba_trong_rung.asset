@@ -15,13 +15,18 @@ MonoBehaviour:
   m_GroupName: dungeon.mieu_ba_trong_rung
   m_GUID: f010fa3b9468afd49bedb41e96c8ab85
   m_SerializeEntries:
-  - m_GUID: 9ba311b02d584987be0b90265238d875
-    m_Address: asset.boss.moc_tinh_da.prefab
+  - m_GUID: 87372a520af640a59391737ecabd2ab8
+    m_Address: asset.boss.moc_tinh_da.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ebcf8e7d93f4d2cb102e04c71de8644
     m_Address: asset.dungeon.mieu_ba_trong_rung.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ba311b02d584987be0b90265238d875
+    m_Address: asset.boss.moc_tinh_da.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
