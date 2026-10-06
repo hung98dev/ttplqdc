@@ -4,7 +4,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_attack_burst.png",
-      "content_id": "sha256:33918c2f327006ea9768f31f063cdbcaf110054251e57a0208a2c0f7f25731b0",
+      "content_id": "sha256:1c04bb9d05bf563bd65fb8e7f1eddfd42e7c3e5629b43064af3225937b5cba93",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -12,7 +12,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "3109067c833886df9eb28d6d37236b2014f3089ec3bb7e779bae8918feb90696",
-      "final_sha256": "33918c2f327006ea9768f31f063cdbcaf110054251e57a0208a2c0f7f25731b0",
+      "final_sha256": "1c04bb9d05bf563bd65fb8e7f1eddfd42e7c3e5629b43064af3225937b5cba93",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -72,7 +72,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_attack_shot.png",
-      "content_id": "sha256:7e80defd50f2d9f25ee76aeb26e7e7ca0c55aada7eab164dc60a35e07150493c",
+      "content_id": "sha256:6f316b4c4c373fe6034a8ba96def57fe1f4e2f4315c07708b68164f87f22c520",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -80,7 +80,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "3109067c833886df9eb28d6d37236b2014f3089ec3bb7e779bae8918feb90696",
-      "final_sha256": "7e80defd50f2d9f25ee76aeb26e7e7ca0c55aada7eab164dc60a35e07150493c",
+      "final_sha256": "6f316b4c4c373fe6034a8ba96def57fe1f4e2f4315c07708b68164f87f22c520",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -140,7 +140,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_defeat.png",
-      "content_id": "sha256:77c0586f625bc0845f5308d1e71cbe992e9939a638a118bf1806a264725083d9",
+      "content_id": "sha256:535afb58a8de28df17c2d393ee7976166218b3025aa822bc15c28bd68fc104d3",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -148,7 +148,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "3109067c833886df9eb28d6d37236b2014f3089ec3bb7e779bae8918feb90696",
-      "final_sha256": "77c0586f625bc0845f5308d1e71cbe992e9939a638a118bf1806a264725083d9",
+      "final_sha256": "535afb58a8de28df17c2d393ee7976166218b3025aa822bc15c28bd68fc104d3",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -208,7 +208,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_hit.png",
-      "content_id": "sha256:917ec4793b2f38bf297e3dc32b3ad13da1d7618ded4664630a618751af67ab4c",
+      "content_id": "sha256:00ac9c002d435b9bf96b3a8e2bfae4bc20991b5cd2090546985daa7105b61fc8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -216,7 +216,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "3109067c833886df9eb28d6d37236b2014f3089ec3bb7e779bae8918feb90696",
-      "final_sha256": "917ec4793b2f38bf297e3dc32b3ad13da1d7618ded4664630a618751af67ab4c",
+      "final_sha256": "00ac9c002d435b9bf96b3a8e2bfae4bc20991b5cd2090546985daa7105b61fc8",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -276,7 +276,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_idle.png",
-      "content_id": "sha256:f878c065911e757efab92bc0446ee5eabad649f62b5277052c096047be419023",
+      "content_id": "sha256:b9862fe5797847be7b6eb156da98f72825aeacf00b01eb712946a6dc7e9026c7",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -284,7 +284,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "3109067c833886df9eb28d6d37236b2014f3089ec3bb7e779bae8918feb90696",
-      "final_sha256": "f878c065911e757efab92bc0446ee5eabad649f62b5277052c096047be419023",
+      "final_sha256": "b9862fe5797847be7b6eb156da98f72825aeacf00b01eb712946a6dc7e9026c7",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -344,7 +344,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_move.png",
-      "content_id": "sha256:e207991ed22bef43ac288474ebf2fbb0085e7de2e4e50cf9a88658a8e2c56220",
+      "content_id": "sha256:6cd9bde7c52216cc0e3a4b1cb20cf38938f1d53f6b02e5ea75e4eaeac1cc14ff",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -352,7 +352,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "3109067c833886df9eb28d6d37236b2014f3089ec3bb7e779bae8918feb90696",
-      "final_sha256": "e207991ed22bef43ac288474ebf2fbb0085e7de2e4e50cf9a88658a8e2c56220",
+      "final_sha256": "6cd9bde7c52216cc0e3a4b1cb20cf38938f1d53f6b02e5ea75e4eaeac1cc14ff",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -412,7 +412,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.ca_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ca_tinh/ca_tinh_parts.png",
-      "content_id": "sha256:e95e829825dcbad451803683d66bf0f6908356aae571608793cf2bdbbfff2527",
+      "content_id": "sha256:9dec663c8e950cc759f983bc51b3c7db8f611da6d69605c123f430ea0829ff5b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -420,7 +420,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "227ce536c8f852d5d7d4c2c02704306938d20cd93200c4e5fe3423c0ce4fad9c",
-      "final_sha256": "e95e829825dcbad451803683d66bf0f6908356aae571608793cf2bdbbfff2527",
+      "final_sha256": "9dec663c8e950cc759f983bc51b3c7db8f611da6d69605c123f430ea0829ff5b",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -480,7 +480,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.hon_chet_duoi.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/hon_chet_duoi/hon_chet_duoi_parts.png",
-      "content_id": "sha256:bd441cffda8b7110b0a758d12f4265e66dc6e4583b7e396014ad0eab7c55e0de",
+      "content_id": "sha256:109e461e61600255c9bbb7376c68dc28db773c240a40d36b05418097912af534",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -488,7 +488,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "87c1e4a9ae2b7126c5f45a227cb31fdfd805a71ec2e4bdbe85881bc533a74d24",
-      "final_sha256": "bd441cffda8b7110b0a758d12f4265e66dc6e4583b7e396014ad0eab7c55e0de",
+      "final_sha256": "109e461e61600255c9bbb7376c68dc28db773c240a40d36b05418097912af534",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -548,7 +548,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.ma_da.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ma_da/ma_da_parts.png",
-      "content_id": "sha256:8ec3f4c5230f74faf6710b322183944f7e6db2a29969c2cf028a6ac39d804853",
+      "content_id": "sha256:fb62392dd7974f531ee8ae1956403941996ddbb5097e48422340536e75958a62",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -556,7 +556,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ef996623fb054785cae6e6df3bd5f93e1df348e050b7eda396646254b78f76d6",
-      "final_sha256": "8ec3f4c5230f74faf6710b322183944f7e6db2a29969c2cf028a6ac39d804853",
+      "final_sha256": "fb62392dd7974f531ee8ae1956403941996ddbb5097e48422340536e75958a62",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -616,7 +616,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.ma_da_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ma_da_gia/ma_da_gia_parts.png",
-      "content_id": "sha256:5e3b836506fc887cdbb17c05b866f0ba0c11857d0ac2ff16898667a46aa3ba3a",
+      "content_id": "sha256:2fc0fa1e4c75389c35a670a43109e03f48ff8f4287e813b76e1d8ca015a62bc4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -624,7 +624,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "873888a0c5d70deca03033821bfadc9641605c52c6883f4017ad8eb92c676eab",
-      "final_sha256": "5e3b836506fc887cdbb17c05b866f0ba0c11857d0ac2ff16898667a46aa3ba3a",
+      "final_sha256": "2fc0fa1e4c75389c35a670a43109e03f48ff8f4287e813b76e1d8ca015a62bc4",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -684,7 +684,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.nguoi_song_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/nguoi_song_co/nguoi_song_co_parts.png",
-      "content_id": "sha256:00cc158bda43a9f915a54e78cf81a0f75f969abe0cd877a6616d66615577f3c2",
+      "content_id": "sha256:a381b5b5de12f53573d942947483a6932a8a1c84dfea1974835a03b623f214c8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -692,7 +692,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "f4b0fea91e986e18b9b27b895fa6240413732313435280ec66bad510d0df5fb2",
-      "final_sha256": "00cc158bda43a9f915a54e78cf81a0f75f969abe0cd877a6616d66615577f3c2",
+      "final_sha256": "a381b5b5de12f53573d942947483a6932a8a1c84dfea1974835a03b623f214c8",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -752,7 +752,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.quy_song_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/quy_song_dem/quy_song_dem_parts.png",
-      "content_id": "sha256:51688ade29ea870db43296897aba617a115e2914f927e0da48bd262a7c02197d",
+      "content_id": "sha256:85b0004d9bc101b7fc562597b2a84be0d91ea5e02eacb8b69b27542e14f7d3a0",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -760,7 +760,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "71d8de5181a191f21aeb1c1ad010ec973d75bf9cc0550540c23085ec202a4837",
-      "final_sha256": "51688ade29ea870db43296897aba617a115e2914f927e0da48bd262a7c02197d",
+      "final_sha256": "85b0004d9bc101b7fc562597b2a84be0d91ea5e02eacb8b69b27542e14f7d3a0",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -820,7 +820,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.thuong_luong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/thuong_luong/thuong_luong_parts.png",
-      "content_id": "sha256:1c9c9988f1343aa25f78d734c9f374ad1e85e8c14c2fe161b469f1712d69f5f6",
+      "content_id": "sha256:bba80ec59fd11f6ada7aae1f2bdbe8ded7b538e6807dc1ca5ceb1337394e0ae4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -828,7 +828,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b1b7ce8376afaf3c8f64146e0e8c3be82436eacee5c2c83fce9174d151f8ab5f",
-      "final_sha256": "1c9c9988f1343aa25f78d734c9f374ad1e85e8c14c2fe161b469f1712d69f5f6",
+      "final_sha256": "bba80ec59fd11f6ada7aae1f2bdbe8ded7b538e6807dc1ca5ceb1337394e0ae4",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -888,7 +888,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.thuy_quai.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/thuy_quai/thuy_quai_parts.png",
-      "content_id": "sha256:82a97e94e7637f26498b7247d6e163533eee5c7ca92c6eb2680d50fce9568edc",
+      "content_id": "sha256:ef1d92f969598c86035f054863eddc14beb19c8e1bca853ab6b886449499f04e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -896,7 +896,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ab7ec8b431fe9c90c3fc67c6a8725b07837c7a1700944c78d08c482cf61cedfd",
-      "final_sha256": "82a97e94e7637f26498b7247d6e163533eee5c7ca92c6eb2680d50fce9568edc",
+      "final_sha256": "ef1d92f969598c86035f054863eddc14beb19c8e1bca853ab6b886449499f04e",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -956,7 +956,7 @@
     {
       "asset_key": "asset.boss.ho_tinh.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ho_tinh/ho_tinh_parts.png",
-      "content_id": "sha256:2d0111454a4a40b8da5252b5939a4e5f374d72eb258cd168af7e77dace10e6c4",
+      "content_id": "sha256:936376703a0462ea03318e9066ca1e2b5cea7d774bbc071b0f5592f4dfc43cd9",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -964,7 +964,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e6b2c47445cfb9e434bf5d91f83a9f750082491dc6e6665441aa3e87733be54e",
-      "final_sha256": "2d0111454a4a40b8da5252b5939a4e5f374d72eb258cd168af7e77dace10e6c4",
+      "final_sha256": "936376703a0462ea03318e9066ca1e2b5cea7d774bbc071b0f5592f4dfc43cd9",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1024,7 +1024,7 @@
     {
       "asset_key": "asset.boss.ho_tinh_chin_duoi.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ho_tinh_chin_duoi/ho_tinh_chin_duoi_parts.png",
-      "content_id": "sha256:359ce8181a0c928bbd43c30bf73cbe0fc92d152b83e050e5f18dd878ff733e94",
+      "content_id": "sha256:6b7e92417cfa44fb1a85652542829bf26dc42cc57dece0299ab02e5dc6d681f5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1032,7 +1032,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c20ea009c239c9aa5ba10ad9df5ca33116061bcfa59943d2df89aa462de519f7",
-      "final_sha256": "359ce8181a0c928bbd43c30bf73cbe0fc92d152b83e050e5f18dd878ff733e94",
+      "final_sha256": "6b7e92417cfa44fb1a85652542829bf26dc42cc57dece0299ab02e5dc6d681f5",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1092,7 +1092,7 @@
     {
       "asset_key": "asset.boss.ma_da_chua.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ma_da_chua/ma_da_chua_parts.png",
-      "content_id": "sha256:56e564c113a5c7c2dbae98565ad6def8f486c5cffbb24db6c903399465779842",
+      "content_id": "sha256:f8525d221b017e5687a8467743b61577d19e54719cce904b4d2cd88cc5655fb4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1100,7 +1100,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a1f4d5cf8f77e15b7b3782d93e2c5d496b30f17e12a4b9649715d591729d7845",
-      "final_sha256": "56e564c113a5c7c2dbae98565ad6def8f486c5cffbb24db6c903399465779842",
+      "final_sha256": "f8525d221b017e5687a8467743b61577d19e54719cce904b4d2cd88cc5655fb4",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1160,7 +1160,7 @@
     {
       "asset_key": "asset.boss.moc_tinh_da.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/moc_tinh_da/moc_tinh_da_parts.png",
-      "content_id": "sha256:501d5171b23a73b2f46e8abc5de9a8a2ed41c7d433b9c859ad2cc2832e3084d8",
+      "content_id": "sha256:052fa212e084d6e1f380a0839eab95c8e2f6f551ca67f7f4a697ca94e5458f3a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1168,7 +1168,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "0f84f92865f05c108e48e4c0fe2d661b45a46e2aca586c4be917595cbfba2d75",
-      "final_sha256": "501d5171b23a73b2f46e8abc5de9a8a2ed41c7d433b9c859ad2cc2832e3084d8",
+      "final_sha256": "052fa212e084d6e1f380a0839eab95c8e2f6f551ca67f7f4a697ca94e5458f3a",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1228,7 +1228,7 @@
     {
       "asset_key": "asset.boss.ngu_tinh.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ngu_tinh/ngu_tinh_parts.png",
-      "content_id": "sha256:1c4d74cbececd2d03038291fbff91a03ff8d9cbd71f4e9545bc694009f9dc9a4",
+      "content_id": "sha256:600f06a2c2c1edfa32d6c932f7342b16d9b7dd1dff165d57269d947babe6cb3b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1236,7 +1236,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "2f5764f5ba3287638dd2b5949529a9481d2d46e265f4b3407a132917c6b269b1",
-      "final_sha256": "1c4d74cbececd2d03038291fbff91a03ff8d9cbd71f4e9545bc694009f9dc9a4",
+      "final_sha256": "600f06a2c2c1edfa32d6c932f7342b16d9b7dd1dff165d57269d947babe6cb3b",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1296,7 +1296,7 @@
     {
       "asset_key": "asset.boss.quy_nhap_trang.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/quy_nhap_trang/quy_nhap_trang_parts.png",
-      "content_id": "sha256:d25c930cd2e895a788de8d7ed23cfc9df9c8c409d0d525eadf5b41a0b29ef8a8",
+      "content_id": "sha256:88dfa589b965138ea75ba05c8641233f1de9ae6976451c347e3cc6812473ef46",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1304,7 +1304,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c11518fac0eb84d3a5bd63b90f014202807ffbe06e40af4f0e8c851c13e31b7a",
-      "final_sha256": "d25c930cd2e895a788de8d7ed23cfc9df9c8c409d0d525eadf5b41a0b29ef8a8",
+      "final_sha256": "88dfa589b965138ea75ba05c8641233f1de9ae6976451c347e3cc6812473ef46",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1364,7 +1364,7 @@
     {
       "asset_key": "asset.boss.than_trung.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/than_trung/than_trung_parts.png",
-      "content_id": "sha256:68939186304194029590186813c9a95eb84dca67ca7d0a53731df6d0b73f9210",
+      "content_id": "sha256:d07d087b17ce0a16245d694775102484fffe6a0f819b279451ec9ba92829138f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1372,7 +1372,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c940266699a8669ea058f26a852ddcc7545e8920ba9e580116ab529ea7ba906b",
-      "final_sha256": "68939186304194029590186813c9a95eb84dca67ca7d0a53731df6d0b73f9210",
+      "final_sha256": "d07d087b17ce0a16245d694775102484fffe6a0f819b279451ec9ba92829138f",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1432,7 +1432,7 @@
     {
       "asset_key": "asset.boss.thuong_luong.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/thuong_luong/thuong_luong_parts.png",
-      "content_id": "sha256:7d1674c5ccba81591c7eb429c3ea303cdc8c42c839552369cd5860b4797dbb3c",
+      "content_id": "sha256:1a9ed3dcd3cff316a4bc93ccd0172d9edccbaaf141190bf92eed596aa9ffbd8e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1440,7 +1440,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d18fe63e1f75e4ec62f095ae0402ed0580b3b5a54331fbf696790707c9c6fa73",
-      "final_sha256": "7d1674c5ccba81591c7eb429c3ea303cdc8c42c839552369cd5860b4797dbb3c",
+      "final_sha256": "1a9ed3dcd3cff316a4bc93ccd0172d9edccbaaf141190bf92eed596aa9ffbd8e",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1500,7 +1500,7 @@
     {
       "asset_key": "asset.monster.deo_may.ho_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ho_tinh/ho_tinh_parts.png",
-      "content_id": "sha256:f584a7f65b8d1bfdf9ce4cb806554360830be2a728e9f6a461b06c2f375c9d99",
+      "content_id": "sha256:697b2a24b6e9879ca0f60ca1287a8a62dbe53668db123ceee00e9b118b4a7d10",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1508,7 +1508,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "39e7b9a72000e34bdf0a2107af242f257b1f1685d38b2d6a3e4b8b155bf56006",
-      "final_sha256": "f584a7f65b8d1bfdf9ce4cb806554360830be2a728e9f6a461b06c2f375c9d99",
+      "final_sha256": "697b2a24b6e9879ca0f60ca1287a8a62dbe53668db123ceee00e9b118b4a7d10",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1568,7 +1568,7 @@
     {
       "asset_key": "asset.monster.deo_may.ho_tinh_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ho_tinh_ve/ho_tinh_ve_parts.png",
-      "content_id": "sha256:5de747c9934ef1cd56042ba4441a0d4e054764605c2c1474d120aa092193cd03",
+      "content_id": "sha256:3248dd41c6c1ee7c2fe57bbef216e32b4f72f16c47ae5bcb5bc108d607b02d54",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1576,7 +1576,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "1d0fe7ea9ae0b820477eef6ee66ba7a90c0cae6d69ee81fa93321999d6a437ae",
-      "final_sha256": "5de747c9934ef1cd56042ba4441a0d4e054764605c2c1474d120aa092193cd03",
+      "final_sha256": "3248dd41c6c1ee7c2fe57bbef216e32b4f72f16c47ae5bcb5bc108d607b02d54",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1636,7 +1636,7 @@
     {
       "asset_key": "asset.monster.deo_may.khi_nui.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/khi_nui/khi_nui_parts.png",
-      "content_id": "sha256:5ea9bfac1ede629387587cbd7f8334f19b5309b0073004ef80e463b99e311bf4",
+      "content_id": "sha256:d5706c89955bba02543640953ed1261c3cb200879f93a1a305259f0d25d83dd2",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1644,7 +1644,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "00764d2cf7dc81e59c31a475239f24654ff97483fe9e99d02ce6ca23cd820f17",
-      "final_sha256": "5ea9bfac1ede629387587cbd7f8334f19b5309b0073004ef80e463b99e311bf4",
+      "final_sha256": "d5706c89955bba02543640953ed1261c3cb200879f93a1a305259f0d25d83dd2",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1704,7 +1704,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_tranh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_tranh/ma_tranh_parts.png",
-      "content_id": "sha256:f37edc3a726cb494c0dd8d722e9b2502a67bd25f169f757a744f3bc3911f1d19",
+      "content_id": "sha256:f2c0c189c81e3a3b30ac3f631738b6facae01eba6fa02ec06a85ad3ec81a44a8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1712,7 +1712,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "0c889b933e6b4b9fd150b4f5172344bf754dd433d60eb6fe9e68dd19bf1cbb2e",
-      "final_sha256": "f37edc3a726cb494c0dd8d722e9b2502a67bd25f169f757a744f3bc3911f1d19",
+      "final_sha256": "f2c0c189c81e3a3b30ac3f631738b6facae01eba6fa02ec06a85ad3ec81a44a8",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1772,7 +1772,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_tranh_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_tranh_gia/ma_tranh_gia_parts.png",
-      "content_id": "sha256:db45baa520c8117991fe221fb9754d7590857c190b8809e8d7dd00ccfc42ab8f",
+      "content_id": "sha256:39e26634176843d4aba495fe600678a3cba7ad1d61de70ae251a872e876e1a3f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1780,7 +1780,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "f9f0a1a96d7cc5ceb78f00c8bc63e73f74a2daedc6746664a1f3d302b8fa4940",
-      "final_sha256": "db45baa520c8117991fe221fb9754d7590857c190b8809e8d7dd00ccfc42ab8f",
+      "final_sha256": "39e26634176843d4aba495fe600678a3cba7ad1d61de70ae251a872e876e1a3f",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1840,7 +1840,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_attack_burst.png",
-      "content_id": "sha256:c293079c07f5a3bb201a92473a4b0dc02f15b68f2fb575dfd8993a372ac35e67",
+      "content_id": "sha256:29a3a958416c4ececb330fe0a5390ae19b5ce89709d9afc728b98d399d222525",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1848,7 +1848,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a16385f043c35cd859332c3ed433a42cb0d1e1eb88be395b6776d66964772e50",
-      "final_sha256": "c293079c07f5a3bb201a92473a4b0dc02f15b68f2fb575dfd8993a372ac35e67",
+      "final_sha256": "29a3a958416c4ececb330fe0a5390ae19b5ce89709d9afc728b98d399d222525",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -1908,7 +1908,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_attack_shot.png",
-      "content_id": "sha256:2f913647866893d744e973ad34da34d1ed01d68337fa17d15300f82b9dcbc727",
+      "content_id": "sha256:007287ffcdc7e6fd3b5862280e965738b18c5dd8ed9573f5e38dd4728ab109c3",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1916,7 +1916,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a16385f043c35cd859332c3ed433a42cb0d1e1eb88be395b6776d66964772e50",
-      "final_sha256": "2f913647866893d744e973ad34da34d1ed01d68337fa17d15300f82b9dcbc727",
+      "final_sha256": "007287ffcdc7e6fd3b5862280e965738b18c5dd8ed9573f5e38dd4728ab109c3",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -1976,7 +1976,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_defeat.png",
-      "content_id": "sha256:6fe039261138a140bae9f69d67ac7c7c78ef9f2cfd2c049df305b79de09d3c1c",
+      "content_id": "sha256:220d471a583d992219ea4d1086bf9776a4856d7235e5bd4643b43ae6096abd07",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1984,7 +1984,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a16385f043c35cd859332c3ed433a42cb0d1e1eb88be395b6776d66964772e50",
-      "final_sha256": "6fe039261138a140bae9f69d67ac7c7c78ef9f2cfd2c049df305b79de09d3c1c",
+      "final_sha256": "220d471a583d992219ea4d1086bf9776a4856d7235e5bd4643b43ae6096abd07",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2044,7 +2044,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_hit.png",
-      "content_id": "sha256:b4e547541e342f352ff51ef29a557351767ab6b01e09334be8bf36fe99068a4d",
+      "content_id": "sha256:c771b83f8a588b21b5247ad082e7caa4d35dff4ee2e6fbbf9f81fd444b7ed503",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2052,7 +2052,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a16385f043c35cd859332c3ed433a42cb0d1e1eb88be395b6776d66964772e50",
-      "final_sha256": "b4e547541e342f352ff51ef29a557351767ab6b01e09334be8bf36fe99068a4d",
+      "final_sha256": "c771b83f8a588b21b5247ad082e7caa4d35dff4ee2e6fbbf9f81fd444b7ed503",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2112,7 +2112,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_idle.png",
-      "content_id": "sha256:04a0f54cea8ca5cbf9961446d41edc5e2eb8f824be2a36ca96974ad53cf7772b",
+      "content_id": "sha256:08c0fb45855d59d90a7692559f33edd0e7d1b46259d9fff9f9929ea6beb16daf",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2120,7 +2120,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a16385f043c35cd859332c3ed433a42cb0d1e1eb88be395b6776d66964772e50",
-      "final_sha256": "04a0f54cea8ca5cbf9961446d41edc5e2eb8f824be2a36ca96974ad53cf7772b",
+      "final_sha256": "08c0fb45855d59d90a7692559f33edd0e7d1b46259d9fff9f9929ea6beb16daf",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2180,7 +2180,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_move.png",
-      "content_id": "sha256:7b01e396911ba4574befeb707ca4fc836642970348b84f97c19fe58860c952d2",
+      "content_id": "sha256:ff25312a47cc0e980218ba24f1361dc4188f34421364a415be53655306b03c00",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2188,7 +2188,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a16385f043c35cd859332c3ed433a42cb0d1e1eb88be395b6776d66964772e50",
-      "final_sha256": "7b01e396911ba4574befeb707ca4fc836642970348b84f97c19fe58860c952d2",
+      "final_sha256": "ff25312a47cc0e980218ba24f1361dc4188f34421364a415be53655306b03c00",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2248,7 +2248,7 @@
     {
       "asset_key": "asset.monster.deo_may.vong_nui_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/vong_nui_gia/vong_nui_gia_parts.png",
-      "content_id": "sha256:f265324544264e3d12e1b88652fdef929408e335c5b67b7728cf8d11c6bb3a71",
+      "content_id": "sha256:b19b5aea176ccca23552e12b0e307afb921bf515a4f44e326dc11f45704868dd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2256,7 +2256,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "95df177af2b5c0203c9560bf44110d571b12cfb8529410de73b9a33ff76abad7",
-      "final_sha256": "f265324544264e3d12e1b88652fdef929408e335c5b67b7728cf8d11c6bb3a71",
+      "final_sha256": "b19b5aea176ccca23552e12b0e307afb921bf515a4f44e326dc11f45704868dd",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -2316,7 +2316,7 @@
     {
       "asset_key": "asset.monster.deo_may.vong_rung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/vong_rung/vong_rung_parts.png",
-      "content_id": "sha256:b1e5ce36d79dc72e3613f7152b3542ba523f991a7a189e6e255927c2be70186a",
+      "content_id": "sha256:443b9431fbd812998f20bc168c5b28e33dd620e49df13c08ac60de6d2f8cbadb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2324,7 +2324,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "138726b586818632bc887e09897ae0deb43fa779869e8f6d96b69fe77964ad84",
-      "final_sha256": "b1e5ce36d79dc72e3613f7152b3542ba523f991a7a189e6e255927c2be70186a",
+      "final_sha256": "443b9431fbd812998f20bc168c5b28e33dd620e49df13c08ac60de6d2f8cbadb",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -2384,7 +2384,7 @@
     {
       "asset_key": "asset.monster.lang_da.bu_nhin_rom.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/bu_nhin_rom/bu_nhin_rom_parts.png",
-      "content_id": "sha256:2285ecb7b0a77eb3f665d8792d29b9911411281fa7bf338029dda3d3594ef1ce",
+      "content_id": "sha256:61be13022d6e3ab853a7a91e277be09c5c0bbd3759f7142b52de3b79a19de477",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2392,7 +2392,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ccfc32716a9639e9b1c5b886ffac98864ec2e43dbcfa8aa1c9540731d76bf67e",
-      "final_sha256": "2285ecb7b0a77eb3f665d8792d29b9911411281fa7bf338029dda3d3594ef1ce",
+      "final_sha256": "61be13022d6e3ab853a7a91e277be09c5c0bbd3759f7142b52de3b79a19de477",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -2452,7 +2452,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_attack_shot.png",
-      "content_id": "sha256:52110b2968d572d4c4e8be62b4b4173c21b1dc70b78241e51538bd998a384040",
+      "content_id": "sha256:7575886039b4f46060fb7229d9eaaef63cd9cc929a64558b54237e1aedaea21c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2460,7 +2460,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d9cfdb4b5029577eff49500095a65a54e7e19ee3c7943883494e06b0e5285328",
-      "final_sha256": "52110b2968d572d4c4e8be62b4b4173c21b1dc70b78241e51538bd998a384040",
+      "final_sha256": "7575886039b4f46060fb7229d9eaaef63cd9cc929a64558b54237e1aedaea21c",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2520,7 +2520,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_defeat.png",
-      "content_id": "sha256:f3338405a016d58f6886b230980b41b05b631f9d9377c367d7a08da197f21008",
+      "content_id": "sha256:be01bc835a341b379d292c0990d08871939bd8f9c01a65b8d326fe1ace10ae6e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2528,7 +2528,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d9cfdb4b5029577eff49500095a65a54e7e19ee3c7943883494e06b0e5285328",
-      "final_sha256": "f3338405a016d58f6886b230980b41b05b631f9d9377c367d7a08da197f21008",
+      "final_sha256": "be01bc835a341b379d292c0990d08871939bd8f9c01a65b8d326fe1ace10ae6e",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2588,7 +2588,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_hit.png",
-      "content_id": "sha256:f4416b4ee1967369dc64de560b8b5f8c3ba20e910121436f69fad076b832ffbd",
+      "content_id": "sha256:5822631980d9a49f5639792755e52466ec8f70db09f1ac8e0115576bb4da792b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2596,7 +2596,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d9cfdb4b5029577eff49500095a65a54e7e19ee3c7943883494e06b0e5285328",
-      "final_sha256": "f4416b4ee1967369dc64de560b8b5f8c3ba20e910121436f69fad076b832ffbd",
+      "final_sha256": "5822631980d9a49f5639792755e52466ec8f70db09f1ac8e0115576bb4da792b",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2656,7 +2656,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_idle.png",
-      "content_id": "sha256:f9ba95e82c2dcbbd062e97e7573d050eb506ee5e40eb1afcdd32fa962dbea23b",
+      "content_id": "sha256:a5dbe4000470234689f2c15a677d9e9cac615e6e3477f0964857434687809011",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2664,7 +2664,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d9cfdb4b5029577eff49500095a65a54e7e19ee3c7943883494e06b0e5285328",
-      "final_sha256": "f9ba95e82c2dcbbd062e97e7573d050eb506ee5e40eb1afcdd32fa962dbea23b",
+      "final_sha256": "a5dbe4000470234689f2c15a677d9e9cac615e6e3477f0964857434687809011",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2724,7 +2724,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_move.png",
-      "content_id": "sha256:f9bf5c5a612f01222d3f78bf5e6eb83bf8f3dd5a44704a56544f2404baabaa29",
+      "content_id": "sha256:2bceacd190b2214184708b2e5589f03f99a1acdd1f81fb9f48d122887f492ff4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2732,7 +2732,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d9cfdb4b5029577eff49500095a65a54e7e19ee3c7943883494e06b0e5285328",
-      "final_sha256": "f9bf5c5a612f01222d3f78bf5e6eb83bf8f3dd5a44704a56544f2404baabaa29",
+      "final_sha256": "2bceacd190b2214184708b2e5589f03f99a1acdd1f81fb9f48d122887f492ff4",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2792,7 +2792,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_attack_burst.png",
-      "content_id": "sha256:061fd30c531122ab5ca5647eb8bee32b49c2145b519d47531d126419b5de0272",
+      "content_id": "sha256:fe152f84dac79902bd927f3a6f7eeeefe40b39df1967035168042a417e07a3e5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2800,7 +2800,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "62e3670f26c3e6b04da7e586963cbebb83965a899c338fed54518f2b5cd80ebf",
-      "final_sha256": "061fd30c531122ab5ca5647eb8bee32b49c2145b519d47531d126419b5de0272",
+      "final_sha256": "fe152f84dac79902bd927f3a6f7eeeefe40b39df1967035168042a417e07a3e5",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2860,7 +2860,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_attack_shot.png",
-      "content_id": "sha256:a58189af66b5871b0fc43cfa45f8f28b2de06cedcf08512753db3741bff5ee87",
+      "content_id": "sha256:80c8d3f180be62f1bfc0f4d91aba322666e0e35e26d861f5fdb921aea2e9c7d7",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2868,7 +2868,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "62e3670f26c3e6b04da7e586963cbebb83965a899c338fed54518f2b5cd80ebf",
-      "final_sha256": "a58189af66b5871b0fc43cfa45f8f28b2de06cedcf08512753db3741bff5ee87",
+      "final_sha256": "80c8d3f180be62f1bfc0f4d91aba322666e0e35e26d861f5fdb921aea2e9c7d7",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2928,7 +2928,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_defeat.png",
-      "content_id": "sha256:c652b415abdac6a594a2f9ee814123b7bb1e8d3f9723887e8aa759a141917d04",
+      "content_id": "sha256:b22bd25f94ed5801af6bb93130a5ab878c611de31ad9e3bf450102bcbc8413d0",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2936,7 +2936,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "62e3670f26c3e6b04da7e586963cbebb83965a899c338fed54518f2b5cd80ebf",
-      "final_sha256": "c652b415abdac6a594a2f9ee814123b7bb1e8d3f9723887e8aa759a141917d04",
+      "final_sha256": "b22bd25f94ed5801af6bb93130a5ab878c611de31ad9e3bf450102bcbc8413d0",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -2996,7 +2996,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_hit.png",
-      "content_id": "sha256:fb21f2acf372461b19d40cc36f9e070557be46889385ac291befb5a9b6d241f2",
+      "content_id": "sha256:b8b44e52ef047fbbcb78a90706bf7ab14d7559c0e6092ebb6607cbb16f092a71",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3004,7 +3004,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "62e3670f26c3e6b04da7e586963cbebb83965a899c338fed54518f2b5cd80ebf",
-      "final_sha256": "fb21f2acf372461b19d40cc36f9e070557be46889385ac291befb5a9b6d241f2",
+      "final_sha256": "b8b44e52ef047fbbcb78a90706bf7ab14d7559c0e6092ebb6607cbb16f092a71",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -3064,7 +3064,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_idle.png",
-      "content_id": "sha256:03270a9cdadd8e48baaa0e63040439ce51bc2aaae7de5d58f180716ef3f49db3",
+      "content_id": "sha256:ff900b3706fd927c8f7d819ceb101efd242fa24cd6c276ccd010cb00069c7d80",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3072,7 +3072,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "62e3670f26c3e6b04da7e586963cbebb83965a899c338fed54518f2b5cd80ebf",
-      "final_sha256": "03270a9cdadd8e48baaa0e63040439ce51bc2aaae7de5d58f180716ef3f49db3",
+      "final_sha256": "ff900b3706fd927c8f7d819ceb101efd242fa24cd6c276ccd010cb00069c7d80",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -3132,7 +3132,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_move.png",
-      "content_id": "sha256:d19bf3a712a34a7363e0c5dd8e036ed443c90baa76a60ec1f6a5eb0476037052",
+      "content_id": "sha256:d569372bcd35d9e6e428e62148d0bc3e64c0bb8b27884c1758b54b0dd9212d0f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3140,7 +3140,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "62e3670f26c3e6b04da7e586963cbebb83965a899c338fed54518f2b5cd80ebf",
-      "final_sha256": "d19bf3a712a34a7363e0c5dd8e036ed443c90baa76a60ec1f6a5eb0476037052",
+      "final_sha256": "d569372bcd35d9e6e428e62148d0bc3e64c0bb8b27884c1758b54b0dd9212d0f",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -3200,7 +3200,7 @@
     {
       "asset_key": "asset.monster.lang_da.hon_do_trang.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_do_trang/hon_do_trang_parts.png",
-      "content_id": "sha256:b45129472a0d7e487968acb8316976ca5f80174538a96788041ceb803f780a9f",
+      "content_id": "sha256:8497500632c7aedbb47e379469f910a52e2a537ea26a74737c1c2036d7ee105c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3208,7 +3208,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "8994b988d1b274ed529b87011c7b1c9fc51aeb0392b6597c77c97ca66a61bc2b",
-      "final_sha256": "b45129472a0d7e487968acb8316976ca5f80174538a96788041ceb803f780a9f",
+      "final_sha256": "8497500632c7aedbb47e379469f910a52e2a537ea26a74737c1c2036d7ee105c",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3268,7 +3268,7 @@
     {
       "asset_key": "asset.monster.lang_da.hon_ma_co_thu.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_ma_co_thu/hon_ma_co_thu_parts.png",
-      "content_id": "sha256:767513b2f2b78f8c5c1ad695babc60b6094a8296c9238cf8fde765c6f1914e4d",
+      "content_id": "sha256:a3c292831f535d59ef79b7187f80b298ed982bf802c568f81538e1ad41f0d672",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3276,7 +3276,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a54998b2e66a318ddbbab0e0ba379ca18ea01203fcca62ef2d99280e27387ce5",
-      "final_sha256": "767513b2f2b78f8c5c1ad695babc60b6094a8296c9238cf8fde765c6f1914e4d",
+      "final_sha256": "a3c292831f535d59ef79b7187f80b298ed982bf802c568f81538e1ad41f0d672",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3336,7 +3336,7 @@
     {
       "asset_key": "asset.monster.lang_da.hon_xo_non.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_xo_non/hon_xo_non_parts.png",
-      "content_id": "sha256:a61f8290c74291765d4ba39e0e213c54d61ed6d01ab92e91ebe5991e3948cfe4",
+      "content_id": "sha256:6f3d555f5ab0382ddbbaa41877c553f7c7cc1e85a013f4c6c49bf761545a698a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3344,7 +3344,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "fcade0eb24758d8ab82eae382e92d580d87002dc72bd8f6fee5e53a559ffc3cb",
-      "final_sha256": "a61f8290c74291765d4ba39e0e213c54d61ed6d01ab92e91ebe5991e3948cfe4",
+      "final_sha256": "6f3d555f5ab0382ddbbaa41877c553f7c7cc1e85a013f4c6c49bf761545a698a",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3404,7 +3404,7 @@
     {
       "asset_key": "asset.monster.lang_da.ma_xo.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/ma_xo/ma_xo_parts.png",
-      "content_id": "sha256:14ef3fd760610d6b46377a14678df93f8427b000d792b022c68a254562396d0e",
+      "content_id": "sha256:9e41742e81a1564ddc1a3b7990fe4f62b002fc782d236988425e7577d9b12696",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3412,7 +3412,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "1759f68dbb13e02ee55c53919b83554b970ea933a2221bd0cd56c67eb1b045e7",
-      "final_sha256": "14ef3fd760610d6b46377a14678df93f8427b000d792b022c68a254562396d0e",
+      "final_sha256": "9e41742e81a1564ddc1a3b7990fe4f62b002fc782d236988425e7577d9b12696",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3472,7 +3472,7 @@
     {
       "asset_key": "asset.monster.lang_da.quy_nhap_trang.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/quy_nhap_trang/quy_nhap_trang_parts.png",
-      "content_id": "sha256:362217f493665f77e08844913a7091f80110b1dbb1fce56e3fd9a7d48cc39c00",
+      "content_id": "sha256:2a046319c962e02a0013d23a27c02da531e804aadd489a8d3696e1c4e7ce7ad7",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3480,7 +3480,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "9531b80e169003d869006bf464bed1b910329d0055ec5449458fe3e0ff9e07f8",
-      "final_sha256": "362217f493665f77e08844913a7091f80110b1dbb1fce56e3fd9a7d48cc39c00",
+      "final_sha256": "2a046319c962e02a0013d23a27c02da531e804aadd489a8d3696e1c4e7ce7ad7",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3540,7 +3540,7 @@
     {
       "asset_key": "asset.monster.lang_da.vong_hon.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/vong_hon/vong_hon_parts.png",
-      "content_id": "sha256:5d4e0b13da83bf3931f5441f1509bbfa32e1972320927cbd8d965bd26c24b639",
+      "content_id": "sha256:7e871601cb300558fc1aec4c5184a1175431aae0e80613af1ee056dd8f4a6ba2",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3548,7 +3548,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "60447913f393cbe8b8917a096fe27927c96748fe35a1c30ac5c73f9ecf3321c6",
-      "final_sha256": "5d4e0b13da83bf3931f5441f1509bbfa32e1972320927cbd8d965bd26c24b639",
+      "final_sha256": "7e871601cb300558fc1aec4c5184a1175431aae0e80613af1ee056dd8f4a6ba2",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3608,7 +3608,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.bong_vong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/bong_vong/bong_vong_parts.png",
-      "content_id": "sha256:b4e68dcda68158729fb3b51826dca8c5e61e5b2ad2bd3b3de21e4a350f3e624d",
+      "content_id": "sha256:7c80265263a3596918d86336b91709386134575a15bc30d3728738c266ab25d1",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3616,7 +3616,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "9c87ed5bacee70f79a06ed1017264a59161f8c9dc3b42ec87b2182c9945bde40",
-      "final_sha256": "b4e68dcda68158729fb3b51826dca8c5e61e5b2ad2bd3b3de21e4a350f3e624d",
+      "final_sha256": "7c80265263a3596918d86336b91709386134575a15bc30d3728738c266ab25d1",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3676,7 +3676,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.hon_binh_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/hon_binh_co/hon_binh_co_parts.png",
-      "content_id": "sha256:84e69ec529b03e779ad26f4285207f6b77b811148b5d9bd7a637f3fe4d09ff18",
+      "content_id": "sha256:b29e915131e11991e5648797d398647c23d283bb03e542bcddfb138ef17717d7",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3684,7 +3684,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "fe53b084d98db25b5b1274dcaf6acc145dd59e884bed3680baf72c887f1ba618",
-      "final_sha256": "84e69ec529b03e779ad26f4285207f6b77b811148b5d9bd7a637f3fe4d09ff18",
+      "final_sha256": "b29e915131e11991e5648797d398647c23d283bb03e542bcddfb138ef17717d7",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3744,7 +3744,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.linh_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/linh_ve/linh_ve_parts.png",
-      "content_id": "sha256:368f22a72e051c9f5525a511a8cbd9f447500e5ab30d515073d9b8270d8654ab",
+      "content_id": "sha256:fa1e00a13d31e0573b486257e9edc45323d92169a0439955542ba059d54f0d4d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3752,7 +3752,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "942dc1263e22a9c001eb2e8b2aafbce2972c8d0050a2908478b7dc76ca546ab5",
-      "final_sha256": "368f22a72e051c9f5525a511a8cbd9f447500e5ab30d515073d9b8270d8654ab",
+      "final_sha256": "fa1e00a13d31e0573b486257e9edc45323d92169a0439955542ba059d54f0d4d",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3812,7 +3812,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.ma_nui.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/ma_nui/ma_nui_parts.png",
-      "content_id": "sha256:8e592f72ae4afe1d22b625278845a2b298817238f31e6177f4ba9f99aaed03ac",
+      "content_id": "sha256:2f6aa62f20df01ba0960a9760419841382e7ff2d6043f11820c177ae9fef51b5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3820,7 +3820,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "02d7e886da077710a6c9df552002112e32152d9ab0a3e2af7088419060b5bb17",
-      "final_sha256": "8e592f72ae4afe1d22b625278845a2b298817238f31e6177f4ba9f99aaed03ac",
+      "final_sha256": "2f6aa62f20df01ba0960a9760419841382e7ff2d6043f11820c177ae9fef51b5",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3880,7 +3880,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.ngu_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/ngu_tinh/ngu_tinh_parts.png",
-      "content_id": "sha256:288f0710d3fc583067c08de16ee352d55ad3d2231b1f72bec6434a6c5d41d252",
+      "content_id": "sha256:eb14eea1ffd42eb191de4b06af96fdc432e26cf1e56c8224208262471583cc90",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3888,7 +3888,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "743b6f168d7720df38cd42e20a9a3b7c0cc8508c2374a12e4046b5f28a1fc03c",
-      "final_sha256": "288f0710d3fc583067c08de16ee352d55ad3d2231b1f72bec6434a6c5d41d252",
+      "final_sha256": "eb14eea1ffd42eb191de4b06af96fdc432e26cf1e56c8224208262471583cc90",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3948,7 +3948,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.than_rung_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/than_rung_dem/than_rung_dem_parts.png",
-      "content_id": "sha256:eca17d0e782aa688b8d779d9931bac5cb539544e04902d93bbf6d6fffb9ce884",
+      "content_id": "sha256:ccbb81f494d73a6785ebbe2d87a9542c9eafea725d5076fab32926dadd9b2532",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3956,7 +3956,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "01f861cf209411a9a0b205dc1fc70753b5fa50bfafdf8a64b5d39010a4e7dd7f",
-      "final_sha256": "eca17d0e782aa688b8d779d9931bac5cb539544e04902d93bbf6d6fffb9ce884",
+      "final_sha256": "ccbb81f494d73a6785ebbe2d87a9542c9eafea725d5076fab32926dadd9b2532",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4016,7 +4016,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.than_trung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/than_trung/than_trung_parts.png",
-      "content_id": "sha256:c076eca8425f9ddb974b890f9a94fb82c48f95deaf85ce0450b98931cb0f722b",
+      "content_id": "sha256:8f63c3c169cf8d7597876fc79363e93024b074441166586abe5f80583021dcb8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4024,7 +4024,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "1a2381a60fd3f09c574356383568de3886510dabc4a82e0ad94641e94054c9f0",
-      "final_sha256": "c076eca8425f9ddb974b890f9a94fb82c48f95deaf85ce0450b98931cb0f722b",
+      "final_sha256": "8f63c3c169cf8d7597876fc79363e93024b074441166586abe5f80583021dcb8",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4084,7 +4084,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.tinh_nui_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/tinh_nui_gia/tinh_nui_gia_parts.png",
-      "content_id": "sha256:00c0cd993aee50f722008133c42e4140bc1ede8d087818051ee4fc7356bbcdf0",
+      "content_id": "sha256:8a55a0489863fa3984c4f6fdd2dcbd1f3efc376aaf9a6d720e4dc3eec31ae29b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4092,7 +4092,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "faa166f55ba0d6ca9a269073eae6dc6fdb839ae30c290183a3c6802477fd2cf7",
-      "final_sha256": "00c0cd993aee50f722008133c42e4140bc1ede8d087818051ee4fc7356bbcdf0",
+      "final_sha256": "8a55a0489863fa3984c4f6fdd2dcbd1f3efc376aaf9a6d720e4dc3eec31ae29b",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4152,7 +4152,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.tinh_thu.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/tinh_thu/tinh_thu_parts.png",
-      "content_id": "sha256:d067424408fe5137cc36cb03a35719b60e92d9a28ed51dea15845946cb09e9e4",
+      "content_id": "sha256:b5648aa5f41c77859b95ae8e4f32c335ff863569ead530b04560100984d18886",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4160,7 +4160,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d4b2d2c6236b28edfd85acd1b1db82596ac5574084dfc36bda60e8911fcbb071",
-      "final_sha256": "d067424408fe5137cc36cb03a35719b60e92d9a28ed51dea15845946cb09e9e4",
+      "final_sha256": "b5648aa5f41c77859b95ae8e4f32c335ff863569ead530b04560100984d18886",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4220,7 +4220,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.vong_linh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/vong_linh/vong_linh_parts.png",
-      "content_id": "sha256:393478d41365b55a3398f45359ebbe43e9c52c8eb2e9492f11d320f97ca82647",
+      "content_id": "sha256:37f74c3551db13c70332b41dd81cba72de82baac3c289c14ce435860a95655f5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4228,7 +4228,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "9d77ab471cc13f1e491802f55665d4f4f6ace21cc413b6e8dfba0ba6f434c921",
-      "final_sha256": "393478d41365b55a3398f45359ebbe43e9c52c8eb2e9492f11d320f97ca82647",
+      "final_sha256": "37f74c3551db13c70332b41dd81cba72de82baac3c289c14ce435860a95655f5",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4288,7 +4288,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.bong_nguoi.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/bong_nguoi/bong_nguoi_parts.png",
-      "content_id": "sha256:1b8ec26656b6003da6e987412c36bd8f0bee4330874f51a3a6a93e9705c98961",
+      "content_id": "sha256:4fb176b0195d5473c56b0f53d318e7ab93da4ba636d0783e6fffbcea3e60c3a2",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4296,7 +4296,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4566f71dac1dc89f4b7613ef7e6ab6e8396f54789b06e18762c739a9aba8a068",
-      "final_sha256": "1b8ec26656b6003da6e987412c36bd8f0bee4330874f51a3a6a93e9705c98961",
+      "final_sha256": "4fb176b0195d5473c56b0f53d318e7ab93da4ba636d0783e6fffbcea3e60c3a2",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4356,7 +4356,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_attack_burst.png",
-      "content_id": "sha256:4e45051dc82857d5a4770dafecd9f0108822fb4092a027974368c516143bea8c",
+      "content_id": "sha256:eecce9cb4a943a8b49aa5f574166f0968424f2af94b687db6eeebb05efe93a2c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4364,7 +4364,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "25d68cc71333999e629476474c9cbee56b1c02da751aada90549822fed89b796",
-      "final_sha256": "4e45051dc82857d5a4770dafecd9f0108822fb4092a027974368c516143bea8c",
+      "final_sha256": "eecce9cb4a943a8b49aa5f574166f0968424f2af94b687db6eeebb05efe93a2c",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -4424,7 +4424,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_attack_shot.png",
-      "content_id": "sha256:f93ba58af7bef094107279862e1aba830e9dc010f3a004de3252bc6f8a5b8005",
+      "content_id": "sha256:7d89077f5c3e6489cf145e1ce0553a721b685a881858d345c615f0d537f17e2f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4432,7 +4432,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "25d68cc71333999e629476474c9cbee56b1c02da751aada90549822fed89b796",
-      "final_sha256": "f93ba58af7bef094107279862e1aba830e9dc010f3a004de3252bc6f8a5b8005",
+      "final_sha256": "7d89077f5c3e6489cf145e1ce0553a721b685a881858d345c615f0d537f17e2f",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -4492,7 +4492,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_defeat.png",
-      "content_id": "sha256:de70864e347129214cbf011f69db003439402073d037e58ca47bb501b28f7a9a",
+      "content_id": "sha256:1ea980fa9ba262fc234847682ec1a4f38d6807cb976ea0237e34734dc1734710",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4500,7 +4500,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "25d68cc71333999e629476474c9cbee56b1c02da751aada90549822fed89b796",
-      "final_sha256": "de70864e347129214cbf011f69db003439402073d037e58ca47bb501b28f7a9a",
+      "final_sha256": "1ea980fa9ba262fc234847682ec1a4f38d6807cb976ea0237e34734dc1734710",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -4560,7 +4560,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_hit.png",
-      "content_id": "sha256:49bcb38f9cf72cd387600cd8ab78aad3eeceed739745d017630cb31c1391bfcb",
+      "content_id": "sha256:5ea76742966b7dbcaf016c63fc1d4a209b9cf2183760dbb4a9cf51c6a1d0b2a5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4568,7 +4568,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "25d68cc71333999e629476474c9cbee56b1c02da751aada90549822fed89b796",
-      "final_sha256": "49bcb38f9cf72cd387600cd8ab78aad3eeceed739745d017630cb31c1391bfcb",
+      "final_sha256": "5ea76742966b7dbcaf016c63fc1d4a209b9cf2183760dbb4a9cf51c6a1d0b2a5",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -4628,7 +4628,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_idle.png",
-      "content_id": "sha256:6047cff3e65b45410b82cb895a6805b31e02f18513a3e082601273a0539999de",
+      "content_id": "sha256:7a34b1fd86b7f88656ad99ef289aa4452248a061e8d87e2b868b7b5433046123",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4636,7 +4636,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "25d68cc71333999e629476474c9cbee56b1c02da751aada90549822fed89b796",
-      "final_sha256": "6047cff3e65b45410b82cb895a6805b31e02f18513a3e082601273a0539999de",
+      "final_sha256": "7a34b1fd86b7f88656ad99ef289aa4452248a061e8d87e2b868b7b5433046123",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -4696,7 +4696,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_move.png",
-      "content_id": "sha256:01381ca6616c78b87abafe4808fba225d37d7b79f143712068196fb5a2f3982d",
+      "content_id": "sha256:8cce9188e48d482105311b1084fe003070e172a6c93690fdd23c368219486c1a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4704,7 +4704,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "25d68cc71333999e629476474c9cbee56b1c02da751aada90549822fed89b796",
-      "final_sha256": "01381ca6616c78b87abafe4808fba225d37d7b79f143712068196fb5a2f3982d",
+      "final_sha256": "8cce9188e48d482105311b1084fe003070e172a6c93690fdd23c368219486c1a",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -4764,7 +4764,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.ma_rung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/ma_rung/ma_rung_parts.png",
-      "content_id": "sha256:971b6ee0e51e0bba50ded9c7149274457adeea66e1b9dd5e68a09fb6f0425cd6",
+      "content_id": "sha256:655ea1601c80a61ba549d661cb7860a7e70f0ab4ee6c424e858739f3517438f3",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4772,7 +4772,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "98a14906c22e4435fd7273d3252e09b59a8de6db6d091d30937ce787883442f4",
-      "final_sha256": "971b6ee0e51e0bba50ded9c7149274457adeea66e1b9dd5e68a09fb6f0425cd6",
+      "final_sha256": "655ea1601c80a61ba549d661cb7860a7e70f0ab4ee6c424e858739f3517438f3",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4832,7 +4832,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.ma_tranh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/ma_tranh/ma_tranh_parts.png",
-      "content_id": "sha256:9647dbadc0704de5b6a06dd1ab38fd725984e97d1c5156e7d0fb2a1a181a3f5f",
+      "content_id": "sha256:78a4a79863d3883f4aec5bb498ff2a24e1471687c3b13ccf3c9626ab7d9dd213",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4840,7 +4840,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "04f7c1ca1956b0145244b00de306180cd7d1bc0d60c92b4933eb5a3f455eef4e",
-      "final_sha256": "9647dbadc0704de5b6a06dd1ab38fd725984e97d1c5156e7d0fb2a1a181a3f5f",
+      "final_sha256": "78a4a79863d3883f4aec5bb498ff2a24e1471687c3b13ccf3c9626ab7d9dd213",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4900,7 +4900,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.moc_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/moc_tinh/moc_tinh_parts.png",
-      "content_id": "sha256:5ac3b242b5126b50cc08952834abe62589a946c531698091949d9884bd65df65",
+      "content_id": "sha256:b323df6cb901b32935ed7c27362552cba2cdd7999a86b802274645a34e656a12",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4908,7 +4908,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "9fbb9a7583b5cfc4c5a4af217695e41124a11593444f6943bbf70212061886f1",
-      "final_sha256": "5ac3b242b5126b50cc08952834abe62589a946c531698091949d9884bd65df65",
+      "final_sha256": "b323df6cb901b32935ed7c27362552cba2cdd7999a86b802274645a34e656a12",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4968,7 +4968,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.tinh_cay.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/tinh_cay/tinh_cay_parts.png",
-      "content_id": "sha256:96b924d2ec3a9db4bf95ea3f60039d8a40b59982ccef825d40c41ddc0d91ec91",
+      "content_id": "sha256:abd7fa125e5162c0e65352b4ffc9c9b24dbece17dc71067114a57245d074dca8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4976,7 +4976,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "65d2ef37c976f4f9805486c4ec25a89a6422ee9696d42ab2dc998d350be9c3b6",
-      "final_sha256": "96b924d2ec3a9db4bf95ea3f60039d8a40b59982ccef825d40c41ddc0d91ec91",
+      "final_sha256": "abd7fa125e5162c0e65352b4ffc9c9b24dbece17dc71067114a57245d074dca8",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -5036,7 +5036,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.vong_rung_sau.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/vong_rung_sau/vong_rung_sau_parts.png",
-      "content_id": "sha256:b1c3d8ac6380a8274236c3641ae79401133eddef76967b92e379675edacf72a8",
+      "content_id": "sha256:71bf9a4f20a5b86df0bb9c4c36edf1dd1f0e7bb8e36a1425ff81a8903f2f8c3f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5044,7 +5044,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ac17fd3f970c769b206931db9997864422bb0ca06fd2fa2ab7c148da7d3ee1bc",
-      "final_sha256": "b1c3d8ac6380a8274236c3641ae79401133eddef76967b92e379675edacf72a8",
+      "final_sha256": "71bf9a4f20a5b86df0bb9c4c36edf1dd1f0e7bb8e36a1425ff81a8903f2f8c3f",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -5104,7 +5104,7 @@
     {
       "asset_key": "asset.beast.moc.chim_lac.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_cast.png",
-      "content_id": "sha256:111e59777eebddb73af0c79175ef16b73ca6a48010680f1265083f27fe778b2f",
+      "content_id": "sha256:3a2db01cd6ab6a37d326e1faef6b06939f7144a25d6a5df588de5d3a2e8f05b4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5112,7 +5112,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "228b4a658fa683e4404c50d374d9afc5b8aa4443d5ccc1b54881ae2422e689f2",
-      "final_sha256": "111e59777eebddb73af0c79175ef16b73ca6a48010680f1265083f27fe778b2f",
+      "final_sha256": "3a2db01cd6ab6a37d326e1faef6b06939f7144a25d6a5df588de5d3a2e8f05b4",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5172,7 +5172,7 @@
     {
       "asset_key": "asset.beast.moc.chim_lac.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_idle.png",
-      "content_id": "sha256:485460b66ad65cf3809a4b62bac0648f2c1f5d590c6e45555823e2314bfd50ac",
+      "content_id": "sha256:6544b3f4077ef6a7db8d5a916034e362b293e8505876d2ceb168fcb968ed6c94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5180,7 +5180,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "228b4a658fa683e4404c50d374d9afc5b8aa4443d5ccc1b54881ae2422e689f2",
-      "final_sha256": "485460b66ad65cf3809a4b62bac0648f2c1f5d590c6e45555823e2314bfd50ac",
+      "final_sha256": "6544b3f4077ef6a7db8d5a916034e362b293e8505876d2ceb168fcb968ed6c94",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5240,7 +5240,7 @@
     {
       "asset_key": "asset.beast.moc.chim_lac.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_move.png",
-      "content_id": "sha256:c27bfe716edc0ed83dc0d9996dfe46866b1fd550466f96db0f86b2409a6a6930",
+      "content_id": "sha256:8875fc415c9c9abf97d984516ee491ebfd5b15228164bbd6eacc46385769a5d3",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5248,7 +5248,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "228b4a658fa683e4404c50d374d9afc5b8aa4443d5ccc1b54881ae2422e689f2",
-      "final_sha256": "c27bfe716edc0ed83dc0d9996dfe46866b1fd550466f96db0f86b2409a6a6930",
+      "final_sha256": "8875fc415c9c9abf97d984516ee491ebfd5b15228164bbd6eacc46385769a5d3",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5308,7 +5308,7 @@
     {
       "asset_key": "asset.beast.tho.coc_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_cast.png",
-      "content_id": "sha256:43005123d92b85b519358a8dac611e582158b37686521caad64afadbaaa3ce45",
+      "content_id": "sha256:aba7cec65760bcd9af40fc41bf934948652319bb065ad5b096ecf68ba6793cb7",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5316,7 +5316,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a4d6221914474f244c6d757ce03914be2f52918f45759d05e03a20d9a35532e6",
-      "final_sha256": "43005123d92b85b519358a8dac611e582158b37686521caad64afadbaaa3ce45",
+      "final_sha256": "aba7cec65760bcd9af40fc41bf934948652319bb065ad5b096ecf68ba6793cb7",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5376,7 +5376,7 @@
     {
       "asset_key": "asset.beast.tho.coc_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_idle.png",
-      "content_id": "sha256:43341e8b9ca4ed6d8a643f1dc7885691b1c804eecd9deb7c4274519d5b84c114",
+      "content_id": "sha256:554c48ad7d236949b0cc7fdb3275fd0c6e3f26f6aa40fbb5b116b938ca2fbf75",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5384,7 +5384,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a4d6221914474f244c6d757ce03914be2f52918f45759d05e03a20d9a35532e6",
-      "final_sha256": "43341e8b9ca4ed6d8a643f1dc7885691b1c804eecd9deb7c4274519d5b84c114",
+      "final_sha256": "554c48ad7d236949b0cc7fdb3275fd0c6e3f26f6aa40fbb5b116b938ca2fbf75",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5444,7 +5444,7 @@
     {
       "asset_key": "asset.beast.tho.coc_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_move.png",
-      "content_id": "sha256:619252ad32c63db3da365e8830bca81632077c412743db4f1666f66de94962b5",
+      "content_id": "sha256:7f42626bf9f9c57d8e3cde3f11d63ecc2aa6a424a4fcff7c65e18ac267a8ab51",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5452,7 +5452,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a4d6221914474f244c6d757ce03914be2f52918f45759d05e03a20d9a35532e6",
-      "final_sha256": "619252ad32c63db3da365e8830bca81632077c412743db4f1666f66de94962b5",
+      "final_sha256": "7f42626bf9f9c57d8e3cde3f11d63ecc2aa6a424a4fcff7c65e18ac267a8ab51",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5512,7 +5512,7 @@
     {
       "asset_key": "asset.beast.hoa.ga_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_cast.png",
-      "content_id": "sha256:a36a34b5c45ebd7413bd689f6f066a68524c618130f9d50134d43b2c174d7aef",
+      "content_id": "sha256:de03f8330147fa8a4e091a5100040bdef0e2741ab9cf2e763bb39ef38e431dd1",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5520,7 +5520,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "7526c727c1c9d6c949529bf9600348c748c4ac10d5e2c3975d9fd07feef352b5",
-      "final_sha256": "a36a34b5c45ebd7413bd689f6f066a68524c618130f9d50134d43b2c174d7aef",
+      "final_sha256": "de03f8330147fa8a4e091a5100040bdef0e2741ab9cf2e763bb39ef38e431dd1",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5580,7 +5580,7 @@
     {
       "asset_key": "asset.beast.hoa.ga_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_idle.png",
-      "content_id": "sha256:b3eb61632c3a25fafa541c10a4272f520f3ea6e797fa5ffa2e13296f7e83b200",
+      "content_id": "sha256:5f6016aac5100f81949548bd67f450a3291431844af2633268b92cf3d17efa33",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5588,7 +5588,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "7526c727c1c9d6c949529bf9600348c748c4ac10d5e2c3975d9fd07feef352b5",
-      "final_sha256": "b3eb61632c3a25fafa541c10a4272f520f3ea6e797fa5ffa2e13296f7e83b200",
+      "final_sha256": "5f6016aac5100f81949548bd67f450a3291431844af2633268b92cf3d17efa33",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5648,7 +5648,7 @@
     {
       "asset_key": "asset.beast.hoa.ga_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_move.png",
-      "content_id": "sha256:39dc19ddfafe4213d74e6667de814778cac06e4d9705e0919e5a0069c389ed48",
+      "content_id": "sha256:e2cc7235670ed043f897f8bdf7b359c1da3647c65d7c340ec74580b35407e44b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5656,7 +5656,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "7526c727c1c9d6c949529bf9600348c748c4ac10d5e2c3975d9fd07feef352b5",
-      "final_sha256": "39dc19ddfafe4213d74e6667de814778cac06e4d9705e0919e5a0069c389ed48",
+      "final_sha256": "e2cc7235670ed043f897f8bdf7b359c1da3647c65d7c340ec74580b35407e44b",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5716,7 +5716,7 @@
     {
       "asset_key": "asset.beast.kim.ho_vang.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_cast.png",
-      "content_id": "sha256:4749647ff2da89ffa16de8228f3dd444a3c1a90bbe80fdbe12b9e0572b4d4e7d",
+      "content_id": "sha256:ae6c2dc66ab8c543d66b397f75e6e01c7b129585ca032d0a10e465fb4e305ed5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5724,7 +5724,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4ab2212efe65b97fc96bf38e92d9b05d2dfb0776bede0059abb97c8d34adfbd1",
-      "final_sha256": "4749647ff2da89ffa16de8228f3dd444a3c1a90bbe80fdbe12b9e0572b4d4e7d",
+      "final_sha256": "ae6c2dc66ab8c543d66b397f75e6e01c7b129585ca032d0a10e465fb4e305ed5",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5784,7 +5784,7 @@
     {
       "asset_key": "asset.beast.kim.ho_vang.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_idle.png",
-      "content_id": "sha256:d5058cf1f3c8b3e1267ec162b6c34a2018204cffe59998d8f52b4c4f28468c7b",
+      "content_id": "sha256:db929090d9b41a724b3a1e69edafc2e0c38d58d99ae6a38ac383c2dcf115474d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5792,7 +5792,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4ab2212efe65b97fc96bf38e92d9b05d2dfb0776bede0059abb97c8d34adfbd1",
-      "final_sha256": "d5058cf1f3c8b3e1267ec162b6c34a2018204cffe59998d8f52b4c4f28468c7b",
+      "final_sha256": "db929090d9b41a724b3a1e69edafc2e0c38d58d99ae6a38ac383c2dcf115474d",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5852,7 +5852,7 @@
     {
       "asset_key": "asset.beast.kim.ho_vang.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_move.png",
-      "content_id": "sha256:e514424f95a2dc93b6fb40494803f7b8a611762ff3ee808c44f15d8dc61e2d4b",
+      "content_id": "sha256:7154483580aef00f897cbf1214ebdbfb73470d26d79878c70f5fe5c243e8d6c6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5860,7 +5860,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4ab2212efe65b97fc96bf38e92d9b05d2dfb0776bede0059abb97c8d34adfbd1",
-      "final_sha256": "e514424f95a2dc93b6fb40494803f7b8a611762ff3ee808c44f15d8dc61e2d4b",
+      "final_sha256": "7154483580aef00f897cbf1214ebdbfb73470d26d79878c70f5fe5c243e8d6c6",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5920,7 +5920,7 @@
     {
       "asset_key": "asset.beast.hoa.hoa_diep.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_cast.png",
-      "content_id": "sha256:0890c212046e071aae0868902bf2fc56acd70738fe525f2e79b9f7e84240c0a0",
+      "content_id": "sha256:824a58860aa4bb54a2d8f7d8fdba5aa9a5784f2d0a1a45bce242c77e41e6107e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5928,7 +5928,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ee774c4a6d6407876ae028470ca4ce2b4299012524d5457688578ec6561959de",
-      "final_sha256": "0890c212046e071aae0868902bf2fc56acd70738fe525f2e79b9f7e84240c0a0",
+      "final_sha256": "824a58860aa4bb54a2d8f7d8fdba5aa9a5784f2d0a1a45bce242c77e41e6107e",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -5988,7 +5988,7 @@
     {
       "asset_key": "asset.beast.hoa.hoa_diep.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_idle.png",
-      "content_id": "sha256:cfe6e539dcf6456298f3b5cb7a0c0f13d46174347d503cc27689aaa9b3892e40",
+      "content_id": "sha256:075698ea283f6ec76b1bf5a99081b9ad1d8dcf506f4d4753e54c72c7526d15f7",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5996,7 +5996,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ee774c4a6d6407876ae028470ca4ce2b4299012524d5457688578ec6561959de",
-      "final_sha256": "cfe6e539dcf6456298f3b5cb7a0c0f13d46174347d503cc27689aaa9b3892e40",
+      "final_sha256": "075698ea283f6ec76b1bf5a99081b9ad1d8dcf506f4d4753e54c72c7526d15f7",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6056,7 +6056,7 @@
     {
       "asset_key": "asset.beast.hoa.hoa_diep.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_move.png",
-      "content_id": "sha256:ed7713b59ee5dc33f88e9d5e23f1ec373f1d77e7e31b975c5e3046ec7780934f",
+      "content_id": "sha256:37b7dfac9e9e507283cf9f04ddc71ca6a0e8eae7b0a7820c4c89505ec8dc140e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6064,7 +6064,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ee774c4a6d6407876ae028470ca4ce2b4299012524d5457688578ec6561959de",
-      "final_sha256": "ed7713b59ee5dc33f88e9d5e23f1ec373f1d77e7e31b975c5e3046ec7780934f",
+      "final_sha256": "37b7dfac9e9e507283cf9f04ddc71ca6a0e8eae7b0a7820c4c89505ec8dc140e",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6124,7 +6124,7 @@
     {
       "asset_key": "asset.beast.moc.huou_sao.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_cast.png",
-      "content_id": "sha256:6397c35caa78953dddd83f08f599764bc07044860137eea05baaa8125b068f44",
+      "content_id": "sha256:3b29b46926afaa495ab7ef2b623a8bc69b6a7595a7adb2bb958f9212b897948a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6132,7 +6132,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b1f0906641d02301ea2b336d732b81c8545ccb7ce9b3cb77ca048d22e8a172e2",
-      "final_sha256": "6397c35caa78953dddd83f08f599764bc07044860137eea05baaa8125b068f44",
+      "final_sha256": "3b29b46926afaa495ab7ef2b623a8bc69b6a7595a7adb2bb958f9212b897948a",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6192,7 +6192,7 @@
     {
       "asset_key": "asset.beast.moc.huou_sao.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_idle.png",
-      "content_id": "sha256:5e36dfe116054f6e0fbab5aba4df554ad422682691db425e2f89f2a609cbfc7c",
+      "content_id": "sha256:e5c252e82ee9e9b6da16920412203b180c4478e323fdd3365692fb9a9b8f15aa",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6200,7 +6200,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b1f0906641d02301ea2b336d732b81c8545ccb7ce9b3cb77ca048d22e8a172e2",
-      "final_sha256": "5e36dfe116054f6e0fbab5aba4df554ad422682691db425e2f89f2a609cbfc7c",
+      "final_sha256": "e5c252e82ee9e9b6da16920412203b180c4478e323fdd3365692fb9a9b8f15aa",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6260,7 +6260,7 @@
     {
       "asset_key": "asset.beast.moc.huou_sao.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_move.png",
-      "content_id": "sha256:c914af7bfdebe716cd45672f840fcd6f48f10f279b58afe0dd131952a7c09647",
+      "content_id": "sha256:2132840302af6b4e4e55a34fc7e01b6e43f7c273e920489c3642b99bee4010fb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6268,7 +6268,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b1f0906641d02301ea2b336d732b81c8545ccb7ce9b3cb77ca048d22e8a172e2",
-      "final_sha256": "c914af7bfdebe716cd45672f840fcd6f48f10f279b58afe0dd131952a7c09647",
+      "final_sha256": "2132840302af6b4e4e55a34fc7e01b6e43f7c273e920489c3642b99bee4010fb",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6328,7 +6328,7 @@
     {
       "asset_key": "asset.beast.kim.nghe_dong.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_cast.png",
-      "content_id": "sha256:372edf6c34ab7f1cd38349e9d90f3c3fd59ec0459492da963000ab7e58816bca",
+      "content_id": "sha256:8fc59ec3352306191460206aa4af210f064988fa038b712d75a9d760d762b22b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6336,7 +6336,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "5e31c28ab40bb13119fddff7944c26e02f63a38f90a8efe06f3975ed4f6696d2",
-      "final_sha256": "372edf6c34ab7f1cd38349e9d90f3c3fd59ec0459492da963000ab7e58816bca",
+      "final_sha256": "8fc59ec3352306191460206aa4af210f064988fa038b712d75a9d760d762b22b",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6396,7 +6396,7 @@
     {
       "asset_key": "asset.beast.kim.nghe_dong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_idle.png",
-      "content_id": "sha256:4333c1166e0998cf1313940bbda78cfbc4c528d175ed8bd3ea31f7122870ca1e",
+      "content_id": "sha256:2e26cdffc9bf033b0f674b0ae10791f3d182beb2fa078222959997c98bfeb1df",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6404,7 +6404,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "5e31c28ab40bb13119fddff7944c26e02f63a38f90a8efe06f3975ed4f6696d2",
-      "final_sha256": "4333c1166e0998cf1313940bbda78cfbc4c528d175ed8bd3ea31f7122870ca1e",
+      "final_sha256": "2e26cdffc9bf033b0f674b0ae10791f3d182beb2fa078222959997c98bfeb1df",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6464,7 +6464,7 @@
     {
       "asset_key": "asset.beast.kim.nghe_dong.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_move.png",
-      "content_id": "sha256:f1871838957525cb19e5162eab7e80fb64064bcae024d0269b2695f015073bd9",
+      "content_id": "sha256:323ee1f0c16923e04cb827955e5761e75c4aeccc394744c4dcda379cb01cc830",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6472,7 +6472,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "5e31c28ab40bb13119fddff7944c26e02f63a38f90a8efe06f3975ed4f6696d2",
-      "final_sha256": "f1871838957525cb19e5162eab7e80fb64064bcae024d0269b2695f015073bd9",
+      "final_sha256": "323ee1f0c16923e04cb827955e5761e75c4aeccc394744c4dcda379cb01cc830",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6532,7 +6532,7 @@
     {
       "asset_key": "asset.beast.thuy.rai_ca.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_cast.png",
-      "content_id": "sha256:286f9e7ae1ffa924112c7c2cdde70c426467d15a25679d138f9c71e3c37a7be1",
+      "content_id": "sha256:62d76d66dfe774731fe80fda4ead2f861d69ed472923be3a66b918ff111fe53a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6540,7 +6540,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c7495ffcde1aeb0487228a838a8dc49acd625269bbc9a93094b727f94472445d",
-      "final_sha256": "286f9e7ae1ffa924112c7c2cdde70c426467d15a25679d138f9c71e3c37a7be1",
+      "final_sha256": "62d76d66dfe774731fe80fda4ead2f861d69ed472923be3a66b918ff111fe53a",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6600,7 +6600,7 @@
     {
       "asset_key": "asset.beast.thuy.rai_ca.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_idle.png",
-      "content_id": "sha256:f31b07e043e17745597b0c5ea86999dbc4ebdd34c0235718b5eccadf1da240a9",
+      "content_id": "sha256:169ec7876a3813f0795699392d4705638e887e97ee534c7a2af409e157c1e194",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6608,7 +6608,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c7495ffcde1aeb0487228a838a8dc49acd625269bbc9a93094b727f94472445d",
-      "final_sha256": "f31b07e043e17745597b0c5ea86999dbc4ebdd34c0235718b5eccadf1da240a9",
+      "final_sha256": "169ec7876a3813f0795699392d4705638e887e97ee534c7a2af409e157c1e194",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6668,7 +6668,7 @@
     {
       "asset_key": "asset.beast.thuy.rai_ca.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_move.png",
-      "content_id": "sha256:d99832565bed7b406559fb7ae9e56e9f1002a42ae54f0aeba356675c6b8ae0af",
+      "content_id": "sha256:ad892dc2578417729b8b76cf1e86de1020b850eedc5a08120f54a5371021e796",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6676,7 +6676,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c7495ffcde1aeb0487228a838a8dc49acd625269bbc9a93094b727f94472445d",
-      "final_sha256": "d99832565bed7b406559fb7ae9e56e9f1002a42ae54f0aeba356675c6b8ae0af",
+      "final_sha256": "ad892dc2578417729b8b76cf1e86de1020b850eedc5a08120f54a5371021e796",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6736,7 +6736,7 @@
     {
       "asset_key": "asset.beast.thuy.rua_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_cast.png",
-      "content_id": "sha256:6ce42923b2407c0d3eb55604927637bc8e9aa20d9abe4e154ad6a8b974d08e55",
+      "content_id": "sha256:379ab689863ed9a9ff07f71bceeb21a25b0d9787d6a731bc12059dbe70b55e1f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6744,7 +6744,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "33e3474d1139f67461f694c58c5e1fe84d7f53b7f8eab48f2bc9992eb431652e",
-      "final_sha256": "6ce42923b2407c0d3eb55604927637bc8e9aa20d9abe4e154ad6a8b974d08e55",
+      "final_sha256": "379ab689863ed9a9ff07f71bceeb21a25b0d9787d6a731bc12059dbe70b55e1f",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6804,7 +6804,7 @@
     {
       "asset_key": "asset.beast.thuy.rua_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_idle.png",
-      "content_id": "sha256:250b5e25590407a6c1733f2e522fe9a4ea7d871b1b541ce30ff8ee6acbf4bdb5",
+      "content_id": "sha256:a8e312a2e522579bf2daa90092888fb7f644b5fd4c56dddbbdd5c9f4ab17143d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6812,7 +6812,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "33e3474d1139f67461f694c58c5e1fe84d7f53b7f8eab48f2bc9992eb431652e",
-      "final_sha256": "250b5e25590407a6c1733f2e522fe9a4ea7d871b1b541ce30ff8ee6acbf4bdb5",
+      "final_sha256": "a8e312a2e522579bf2daa90092888fb7f644b5fd4c56dddbbdd5c9f4ab17143d",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6872,7 +6872,7 @@
     {
       "asset_key": "asset.beast.thuy.rua_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_move.png",
-      "content_id": "sha256:42053b0ae18338610d591b52ef81f0c724a37de32e85cac249760923cae10715",
+      "content_id": "sha256:c92c0974c2c836f823f173c647a9673c5b48456293c92a13d0cea104f9846209",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6880,7 +6880,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "33e3474d1139f67461f694c58c5e1fe84d7f53b7f8eab48f2bc9992eb431652e",
-      "final_sha256": "42053b0ae18338610d591b52ef81f0c724a37de32e85cac249760923cae10715",
+      "final_sha256": "c92c0974c2c836f823f173c647a9673c5b48456293c92a13d0cea104f9846209",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6940,7 +6940,7 @@
     {
       "asset_key": "asset.beast.tho.trau_dong.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_cast.png",
-      "content_id": "sha256:86ed4f2d54656857db2d5e8687905b9d34c5d567806b9625ffc24e0a58ed753e",
+      "content_id": "sha256:cbae7c04963c64c4b8feeb5a3047e8e1128a9b822ce3150082c97f334bf61140",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6948,7 +6948,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "7e3397fed0635af6a6f6f3ec9256eff7acbdc76b9d0e5268c3c3c5930d2feb08",
-      "final_sha256": "86ed4f2d54656857db2d5e8687905b9d34c5d567806b9625ffc24e0a58ed753e",
+      "final_sha256": "cbae7c04963c64c4b8feeb5a3047e8e1128a9b822ce3150082c97f334bf61140",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -7008,7 +7008,7 @@
     {
       "asset_key": "asset.beast.tho.trau_dong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_idle.png",
-      "content_id": "sha256:5819f96438c898d255503d441fc3518e816edc3e9a5fc86689c98af5ce407b40",
+      "content_id": "sha256:4532f872d21b9d7a7a413ea9e5c78416f1f9288291112df7b1da8ff1f44393a7",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7016,7 +7016,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "7e3397fed0635af6a6f6f3ec9256eff7acbdc76b9d0e5268c3c3c5930d2feb08",
-      "final_sha256": "5819f96438c898d255503d441fc3518e816edc3e9a5fc86689c98af5ce407b40",
+      "final_sha256": "4532f872d21b9d7a7a413ea9e5c78416f1f9288291112df7b1da8ff1f44393a7",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -7076,7 +7076,7 @@
     {
       "asset_key": "asset.beast.tho.trau_dong.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_move.png",
-      "content_id": "sha256:dc862001c1dc03af88a6ccc69457097084ebda2b922490385091883198965e40",
+      "content_id": "sha256:645874966176cddbd977b18beec345149581928b033be180bf854abd1e64227a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7084,7 +7084,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "7e3397fed0635af6a6f6f3ec9256eff7acbdc76b9d0e5268c3c3c5930d2feb08",
-      "final_sha256": "dc862001c1dc03af88a6ccc69457097084ebda2b922490385091883198965e40",
+      "final_sha256": "645874966176cddbd977b18beec345149581928b033be180bf854abd1e64227a",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -7144,7 +7144,7 @@
     {
       "asset_key": "asset.monster.thanh_co.hon_binh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_binh/hon_binh_parts.png",
-      "content_id": "sha256:e128ac41c474d9ffa693ae4360f75b2f565059ca6ce4a38b1f9ba7aa89b2c781",
+      "content_id": "sha256:ad6d5483cdf01531bbe3ace9f37380a8fb3985ed10cd78a444376a2de3c44087",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7152,7 +7152,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "fd1385d5d9ac9203f1baf0ffb6674ade4f5e95b17a949c8d6c1b24f88a4c6ed6",
-      "final_sha256": "e128ac41c474d9ffa693ae4360f75b2f565059ca6ce4a38b1f9ba7aa89b2c781",
+      "final_sha256": "ad6d5483cdf01531bbe3ace9f37380a8fb3985ed10cd78a444376a2de3c44087",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7212,7 +7212,7 @@
     {
       "asset_key": "asset.monster.thanh_co.hon_tran_linh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_tran_linh/hon_tran_linh_parts.png",
-      "content_id": "sha256:4df248d712697964b095f5019dadbb5ce8d65e7e898af4b278fed936c25d2cbb",
+      "content_id": "sha256:2be8f7462e6139062b7722813896352f4692a2abcbf94b94dbc511b7fa7d7a44",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7220,7 +7220,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "119c05968abba4b0640ed45702ca84621b6c83d2a4edbbdc6aa64175d391ebf7",
-      "final_sha256": "4df248d712697964b095f5019dadbb5ce8d65e7e898af4b278fed936c25d2cbb",
+      "final_sha256": "2be8f7462e6139062b7722813896352f4692a2abcbf94b94dbc511b7fa7d7a44",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7280,7 +7280,7 @@
     {
       "asset_key": "asset.monster.thanh_co.hon_tuong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_tuong/hon_tuong_parts.png",
-      "content_id": "sha256:48f684cc22d7eea64a7d721627e021423f231f0fc0aa8fa36da7be8ea12fe439",
+      "content_id": "sha256:8cc0355ef5ac07845d341edc0fdccb40cc8e039828c3898cad4f4e8ad2c6d0dc",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7288,7 +7288,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b85d1191cd9005e31d144e637c27b287ab5e0531d6367fdb16f9a741386c49d5",
-      "final_sha256": "48f684cc22d7eea64a7d721627e021423f231f0fc0aa8fa36da7be8ea12fe439",
+      "final_sha256": "8cc0355ef5ac07845d341edc0fdccb40cc8e039828c3898cad4f4e8ad2c6d0dc",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7348,7 +7348,7 @@
     {
       "asset_key": "asset.monster.thanh_co.ma_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/ma_co/ma_co_parts.png",
-      "content_id": "sha256:8cfb86f6349ba807ddc48a0304320e84e0a1182bff795f9082cd6eefec0561f6",
+      "content_id": "sha256:d22def091caf446b3f6d3eeb69b876befa7ff863f6bca2eca8b21ce815fd3fc4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7356,7 +7356,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d115b063711d2520ef745d04a142f5d74edfa125762bc86d4e6fc04bc23388f5",
-      "final_sha256": "8cfb86f6349ba807ddc48a0304320e84e0a1182bff795f9082cd6eefec0561f6",
+      "final_sha256": "d22def091caf446b3f6d3eeb69b876befa7ff863f6bca2eca8b21ce815fd3fc4",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7416,7 +7416,7 @@
     {
       "asset_key": "asset.monster.thanh_co.oan_hon_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/oan_hon_dem/oan_hon_dem_parts.png",
-      "content_id": "sha256:3819129369582541d45f2abfd61558b6a64f9edbaacb9e37f61915b117b427d6",
+      "content_id": "sha256:8b6e61bf1a948767241a5a52ba00916d346521e69761f72f3ab272bc66c582b1",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7424,7 +7424,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "97f652a3a0b809f391432616a5bd18a88d347abbda634a0d93e0d9bfbd86c132",
-      "final_sha256": "3819129369582541d45f2abfd61558b6a64f9edbaacb9e37f61915b117b427d6",
+      "final_sha256": "8b6e61bf1a948767241a5a52ba00916d346521e69761f72f3ab272bc66c582b1",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7484,7 +7484,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_attack_shot.png",
-      "content_id": "sha256:4f18483d8d2d999590db58f7d77f96101e9925fef5309a5e05fca99b911e1efe",
+      "content_id": "sha256:6c9427200297707aa8581726d81f95627afa15548b5c993d44297d90081387e3",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7492,7 +7492,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e8e14328fd6d12a2ba16e36e4ef86e853ef035f4d342223313a9f5546ec2ae23",
-      "final_sha256": "4f18483d8d2d999590db58f7d77f96101e9925fef5309a5e05fca99b911e1efe",
+      "final_sha256": "6c9427200297707aa8581726d81f95627afa15548b5c993d44297d90081387e3",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -7552,7 +7552,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_defeat.png",
-      "content_id": "sha256:0b6e595bad78c21c59a9383abf853212f203afe575cb3eb330100cd09c8ae63e",
+      "content_id": "sha256:4ca47b38fcb8d960c62e8d14f64dec9e728ace6b8869c35de42a32b456ae5968",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7560,7 +7560,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e8e14328fd6d12a2ba16e36e4ef86e853ef035f4d342223313a9f5546ec2ae23",
-      "final_sha256": "0b6e595bad78c21c59a9383abf853212f203afe575cb3eb330100cd09c8ae63e",
+      "final_sha256": "4ca47b38fcb8d960c62e8d14f64dec9e728ace6b8869c35de42a32b456ae5968",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -7620,7 +7620,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_hit.png",
-      "content_id": "sha256:45fd7b51954d07ff89d0558ead56cbfc95be0a4537729a8177a6510b262edd49",
+      "content_id": "sha256:c6155410c9d502f894477ef12fe0dc4fc92c04ebb747ace9efa57fc0cc211e8f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7628,7 +7628,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e8e14328fd6d12a2ba16e36e4ef86e853ef035f4d342223313a9f5546ec2ae23",
-      "final_sha256": "45fd7b51954d07ff89d0558ead56cbfc95be0a4537729a8177a6510b262edd49",
+      "final_sha256": "c6155410c9d502f894477ef12fe0dc4fc92c04ebb747ace9efa57fc0cc211e8f",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -7688,7 +7688,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_idle.png",
-      "content_id": "sha256:63761ffcf2d8b4a55b315da2813a59f534e2dbb3e5a2152ff880c8a4f19a6050",
+      "content_id": "sha256:8824c1606b6f45cd631e855a756d6351668ee2e0a52f4e1baa4eaf55936eeaed",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7696,7 +7696,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e8e14328fd6d12a2ba16e36e4ef86e853ef035f4d342223313a9f5546ec2ae23",
-      "final_sha256": "63761ffcf2d8b4a55b315da2813a59f534e2dbb3e5a2152ff880c8a4f19a6050",
+      "final_sha256": "8824c1606b6f45cd631e855a756d6351668ee2e0a52f4e1baa4eaf55936eeaed",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -7756,7 +7756,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_move.png",
-      "content_id": "sha256:e4c6ca82d06419a9dae2fd3f271fa4bcd22b17b14651cb9d6b8fb18d0cf7b5cf",
+      "content_id": "sha256:edb9384a78cb2e456acb8d21cc0ebe8594ea9e78b4868292a946e219a853c768",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7764,7 +7764,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e8e14328fd6d12a2ba16e36e4ef86e853ef035f4d342223313a9f5546ec2ae23",
-      "final_sha256": "e4c6ca82d06419a9dae2fd3f271fa4bcd22b17b14651cb9d6b8fb18d0cf7b5cf",
+      "final_sha256": "edb9384a78cb2e456acb8d21cc0ebe8594ea9e78b4868292a946e219a853c768",
       "changes": [
         "magenta background keying",
         "fit to MONSTER_SMALL cell 2x",
@@ -7824,7 +7824,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh_lon.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh_lon/qua_tinh_lon_parts.png",
-      "content_id": "sha256:d709d84a1e835f3c4a5b97652b950da5fcab9ba730e6ed7bc221601619c38f7f",
+      "content_id": "sha256:0f160094f0a414094dc35793fec65c12c97553d01627f3bdd04920b5228f207f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7832,7 +7832,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "cbaa9ac64edca9beaf99c45801566db108a6b69fdc401f0dd1aa770d6bd33d89",
-      "final_sha256": "d709d84a1e835f3c4a5b97652b950da5fcab9ba730e6ed7bc221601619c38f7f",
+      "final_sha256": "0f160094f0a414094dc35793fec65c12c97553d01627f3bdd04920b5228f207f",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7892,7 +7892,7 @@
     {
       "asset_key": "asset.monster.thanh_co.thach_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/thach_ve/thach_ve_parts.png",
-      "content_id": "sha256:7ba07ebba643f92616e9e5ecdb72a0d606c21c5d0bdbb8a69365a5b3b2b96724",
+      "content_id": "sha256:683e28d50fcdbb52d13f269a7fefb8e97e167bdc621d0e73a9a68d31c4c1ed5e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7900,7 +7900,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "8fc7283921191ebb6fcb17bf0347a8d65aed28bb90cc37cf3beab1c37577abb5",
-      "final_sha256": "7ba07ebba643f92616e9e5ecdb72a0d606c21c5d0bdbb8a69365a5b3b2b96724",
+      "final_sha256": "683e28d50fcdbb52d13f269a7fefb8e97e167bdc621d0e73a9a68d31c4c1ed5e",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7960,7 +7960,7 @@
     {
       "asset_key": "asset.monster.thanh_co.tuong_da.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/tuong_da/tuong_da_parts.png",
-      "content_id": "sha256:1dbad3feb6077c331553699293005bdca86a4240d9408ec64b0d2f7078168b23",
+      "content_id": "sha256:3e4f4b6f7fe45c2c9a6578f0de6cbe399d88caa97b526678d6efb21039647cf5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7968,7 +7968,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "77f97d28d0ef69191ab749fc82eed5d2ffa9a2ffacbe9f0daa72e7af72a683e4",
-      "final_sha256": "1dbad3feb6077c331553699293005bdca86a4240d9408ec64b0d2f7078168b23",
+      "final_sha256": "3e4f4b6f7fe45c2c9a6578f0de6cbe399d88caa97b526678d6efb21039647cf5",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -8028,7 +8028,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "content_id": "sha256:4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8036,7 +8036,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "509427190dcec647e1e7fa74c0dbfb673183297e639879977f41b752c62c5a25",
-      "final_sha256": "d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "final_sha256": "4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8096,7 +8096,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "content_id": "sha256:f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8104,7 +8104,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "509427190dcec647e1e7fa74c0dbfb673183297e639879977f41b752c62c5a25",
-      "final_sha256": "be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "final_sha256": "f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8164,7 +8164,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "content_id": "sha256:9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8172,7 +8172,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "dc0cf7cb89a5f0f696418b9f4f8000a4a2bb6793f3e943081c96d1f7ce892ca1",
-      "final_sha256": "aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "final_sha256": "9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8232,7 +8232,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "content_id": "sha256:3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8240,7 +8240,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "dc0cf7cb89a5f0f696418b9f4f8000a4a2bb6793f3e943081c96d1f7ce892ca1",
-      "final_sha256": "b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "final_sha256": "3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8300,7 +8300,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "content_id": "sha256:d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8308,7 +8308,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "08ad33aee1411edd617806ffce364fe58782f046468acc8c4d874c0b3c36f985",
-      "final_sha256": "2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "final_sha256": "d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8368,7 +8368,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "content_id": "sha256:27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8376,7 +8376,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "08ad33aee1411edd617806ffce364fe58782f046468acc8c4d874c0b3c36f985",
-      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "final_sha256": "27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8436,7 +8436,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "content_id": "sha256:53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8444,7 +8444,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ccb1a45cfcc44e73fa8d6fb7d2c4a052930cf1b48931da137a02bf3d8d543510",
-      "final_sha256": "2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "final_sha256": "53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8504,7 +8504,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "content_id": "sha256:90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8512,7 +8512,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ccb1a45cfcc44e73fa8d6fb7d2c4a052930cf1b48931da137a02bf3d8d543510",
-      "final_sha256": "5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "final_sha256": "90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8572,7 +8572,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "content_id": "sha256:0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8580,7 +8580,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "56270be448365b01ad5387fc5c5a142cde018e57e1bb2c849d66640ff0995f76",
-      "final_sha256": "8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "final_sha256": "0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8640,7 +8640,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "content_id": "sha256:b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8648,7 +8648,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "56270be448365b01ad5387fc5c5a142cde018e57e1bb2c849d66640ff0995f76",
-      "final_sha256": "b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "final_sha256": "b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8708,7 +8708,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "content_id": "sha256:4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8716,7 +8716,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "27c26672e8c3d3eca10c0f03bc74c4218505ba6aae9c14176839267cb7b4614d",
-      "final_sha256": "d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "final_sha256": "4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8776,7 +8776,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "content_id": "sha256:f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8784,7 +8784,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "27c26672e8c3d3eca10c0f03bc74c4218505ba6aae9c14176839267cb7b4614d",
-      "final_sha256": "be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "final_sha256": "f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8844,7 +8844,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "content_id": "sha256:9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8852,7 +8852,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "2b4b965545214e06aa14a3554467a81b836de81d881be1d6baa2264af733f852",
-      "final_sha256": "aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "final_sha256": "9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8912,7 +8912,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "content_id": "sha256:3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8920,7 +8920,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "2b4b965545214e06aa14a3554467a81b836de81d881be1d6baa2264af733f852",
-      "final_sha256": "b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "final_sha256": "3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8980,7 +8980,7 @@
     {
       "asset_key": "asset.npc.deo_may.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "content_id": "sha256:d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8988,7 +8988,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "0647cca259f79dbf271ce2f63fbde829d6ed5df4bc74f7c9c7106b1d3e202822",
-      "final_sha256": "2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "final_sha256": "d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9048,7 +9048,7 @@
     {
       "asset_key": "asset.npc.deo_may.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "content_id": "sha256:27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9056,7 +9056,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "0647cca259f79dbf271ce2f63fbde829d6ed5df4bc74f7c9c7106b1d3e202822",
-      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "final_sha256": "27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9116,7 +9116,7 @@
     {
       "asset_key": "asset.npc.deo_may.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "content_id": "sha256:53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9124,7 +9124,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c0eeed46bc7175855481a9212307e8e49714231007722419e4db362611034618",
-      "final_sha256": "2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "final_sha256": "53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9184,7 +9184,7 @@
     {
       "asset_key": "asset.npc.deo_may.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "content_id": "sha256:90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9192,7 +9192,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c0eeed46bc7175855481a9212307e8e49714231007722419e4db362611034618",
-      "final_sha256": "5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "final_sha256": "90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9252,7 +9252,7 @@
     {
       "asset_key": "asset.npc.deo_may.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "content_id": "sha256:0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9260,7 +9260,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "edb915e66688561a439ed1dfc969fb4e240594cbd8a3571e54113061baf397c0",
-      "final_sha256": "8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "final_sha256": "0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9320,7 +9320,7 @@
     {
       "asset_key": "asset.npc.deo_may.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "content_id": "sha256:b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9328,7 +9328,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "edb915e66688561a439ed1dfc969fb4e240594cbd8a3571e54113061baf397c0",
-      "final_sha256": "b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "final_sha256": "b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9388,7 +9388,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "content_id": "sha256:4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9396,7 +9396,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "cf77780f77eaef9c6be5e955cebf91b6fb6f38cafdaf71eb74dd56ca0fa70da7",
-      "final_sha256": "d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "final_sha256": "4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9456,7 +9456,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "content_id": "sha256:f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9464,7 +9464,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "cf77780f77eaef9c6be5e955cebf91b6fb6f38cafdaf71eb74dd56ca0fa70da7",
-      "final_sha256": "be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "final_sha256": "f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9524,7 +9524,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "content_id": "sha256:9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9532,7 +9532,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "1bd5c23eb1bcb750a7e9e279a0d8d75cf10fe4e52fee9fbd91d24bc72650ead8",
-      "final_sha256": "aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "final_sha256": "9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9592,7 +9592,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "content_id": "sha256:3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9600,7 +9600,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "1bd5c23eb1bcb750a7e9e279a0d8d75cf10fe4e52fee9fbd91d24bc72650ead8",
-      "final_sha256": "b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "final_sha256": "3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9660,7 +9660,7 @@
     {
       "asset_key": "asset.npc.lang_da.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "content_id": "sha256:d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9668,7 +9668,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "df455f533f6b0f45280574521c95bc187cde15a10c1dff15d02d7d269247e7f9",
-      "final_sha256": "2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "final_sha256": "d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9728,7 +9728,7 @@
     {
       "asset_key": "asset.npc.lang_da.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "content_id": "sha256:27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9736,7 +9736,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "df455f533f6b0f45280574521c95bc187cde15a10c1dff15d02d7d269247e7f9",
-      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "final_sha256": "27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9796,7 +9796,7 @@
     {
       "asset_key": "asset.npc.lang_da.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "content_id": "sha256:53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9804,7 +9804,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b0f70fca19fc54026d3969bdc7bc8c0353dbe629eaeb2a5a978deab41550256c",
-      "final_sha256": "2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "final_sha256": "53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9864,7 +9864,7 @@
     {
       "asset_key": "asset.npc.lang_da.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "content_id": "sha256:90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9872,7 +9872,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b0f70fca19fc54026d3969bdc7bc8c0353dbe629eaeb2a5a978deab41550256c",
-      "final_sha256": "5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "final_sha256": "90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9932,7 +9932,7 @@
     {
       "asset_key": "asset.npc.lang_da.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "content_id": "sha256:0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9940,7 +9940,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ccab73fc4ba34bc5414233db066bb7c07afeed5a13b786a34fab903fde6e7787",
-      "final_sha256": "8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "final_sha256": "0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10000,7 +10000,7 @@
     {
       "asset_key": "asset.npc.lang_da.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "content_id": "sha256:b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10008,7 +10008,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ccab73fc4ba34bc5414233db066bb7c07afeed5a13b786a34fab903fde6e7787",
-      "final_sha256": "b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "final_sha256": "b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10068,7 +10068,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "content_id": "sha256:4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10076,7 +10076,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "5d9c8d34bc749b38d7b1bfedb17961f5beecf3690d170ebce2ce0e7baf361c1d",
-      "final_sha256": "d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "final_sha256": "4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10136,7 +10136,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "content_id": "sha256:f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10144,7 +10144,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "5d9c8d34bc749b38d7b1bfedb17961f5beecf3690d170ebce2ce0e7baf361c1d",
-      "final_sha256": "be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "final_sha256": "f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10204,7 +10204,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "content_id": "sha256:9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10212,7 +10212,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e9692a8fe65863a08138362aca7d3d9b0790c5c6aff753b6ef8c0fbaf3ad686a",
-      "final_sha256": "aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "final_sha256": "9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10272,7 +10272,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "content_id": "sha256:3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10280,7 +10280,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "e9692a8fe65863a08138362aca7d3d9b0790c5c6aff753b6ef8c0fbaf3ad686a",
-      "final_sha256": "b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "final_sha256": "3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10340,7 +10340,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "content_id": "sha256:d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10348,7 +10348,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "f29bdc1f7477ed803654f7a3136a47affecb10c2dd2063be1071ca5ca2b92f49",
-      "final_sha256": "2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "final_sha256": "d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10408,7 +10408,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "content_id": "sha256:27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10416,7 +10416,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "f29bdc1f7477ed803654f7a3136a47affecb10c2dd2063be1071ca5ca2b92f49",
-      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "final_sha256": "27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10476,7 +10476,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "content_id": "sha256:53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10484,7 +10484,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "bf8e6b1edb728265c10dba85e4de4f9642c2908b17ebc157e00c3c90acb74a66",
-      "final_sha256": "2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "final_sha256": "53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10544,7 +10544,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "content_id": "sha256:90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10552,7 +10552,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "bf8e6b1edb728265c10dba85e4de4f9642c2908b17ebc157e00c3c90acb74a66",
-      "final_sha256": "5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "final_sha256": "90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10612,7 +10612,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "content_id": "sha256:0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10620,7 +10620,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ce6db32ca307f153b9957bd1f1a3b198e2fc92928ae215adf5a144ec30168348",
-      "final_sha256": "8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "final_sha256": "0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10680,7 +10680,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "content_id": "sha256:b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10688,7 +10688,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ce6db32ca307f153b9957bd1f1a3b198e2fc92928ae215adf5a144ec30168348",
-      "final_sha256": "b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "final_sha256": "b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10748,7 +10748,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "content_id": "sha256:4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10756,7 +10756,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ac0c102cda51bc0552b13da68a2ff5614dbb1a72ec643716b6be38d75489834c",
-      "final_sha256": "d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "final_sha256": "4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10816,7 +10816,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "content_id": "sha256:f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10824,7 +10824,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ac0c102cda51bc0552b13da68a2ff5614dbb1a72ec643716b6be38d75489834c",
-      "final_sha256": "be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "final_sha256": "f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10884,7 +10884,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "content_id": "sha256:9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10892,7 +10892,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "383ec0ebc09f4b8d9ee36c7d7c1107658bee9a5f0f5c5d20ea010cc373469620",
-      "final_sha256": "aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "final_sha256": "9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10952,7 +10952,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "content_id": "sha256:3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10960,7 +10960,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "383ec0ebc09f4b8d9ee36c7d7c1107658bee9a5f0f5c5d20ea010cc373469620",
-      "final_sha256": "b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "final_sha256": "3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11020,7 +11020,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "content_id": "sha256:d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11028,7 +11028,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "18751e578c537d76a06c5cd12ebe3161e12ddcd6632c01d50cccb4e70642fb12",
-      "final_sha256": "2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "final_sha256": "d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11088,7 +11088,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "content_id": "sha256:27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11096,7 +11096,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "18751e578c537d76a06c5cd12ebe3161e12ddcd6632c01d50cccb4e70642fb12",
-      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "final_sha256": "27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11156,7 +11156,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "content_id": "sha256:53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11164,7 +11164,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d37b1de5332a0ecb8290a7dc10439e51d74b5d4f56d24a953ef966125d0dbe77",
-      "final_sha256": "2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "final_sha256": "53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11224,7 +11224,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "content_id": "sha256:90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11232,7 +11232,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d37b1de5332a0ecb8290a7dc10439e51d74b5d4f56d24a953ef966125d0dbe77",
-      "final_sha256": "5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "final_sha256": "90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11292,7 +11292,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "content_id": "sha256:0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11300,7 +11300,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "5095bac1227bb2c278247f799a61de6858c0cf3a39b9c9b5d55c071982fc7f5b",
-      "final_sha256": "8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "final_sha256": "0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11360,7 +11360,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "content_id": "sha256:b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11368,7 +11368,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "5095bac1227bb2c278247f799a61de6858c0cf3a39b9c9b5d55c071982fc7f5b",
-      "final_sha256": "b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "final_sha256": "b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11428,7 +11428,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "content_id": "sha256:4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11436,7 +11436,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a281914fe247036557b1cfacbe42cb7bc4cd9104bcbf881ed890d57e37724801",
-      "final_sha256": "d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
+      "final_sha256": "4866e5fa11fbd7b04869501196c1d8e0167859e356f8a0bf3f29cd13ba6982bb",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11496,7 +11496,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "content_id": "sha256:f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11504,7 +11504,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "a281914fe247036557b1cfacbe42cb7bc4cd9104bcbf881ed890d57e37724801",
-      "final_sha256": "be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
+      "final_sha256": "f3567677443ffdf23ab25a06555232d2695edeb824d2a169f3af3c55cf6387d5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11564,7 +11564,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "content_id": "sha256:9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11572,7 +11572,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "793ec9d7ae9aad0f4a37c87b0fa92d0da7d9dbb19fdc651a20fdc6009ffd7708",
-      "final_sha256": "aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
+      "final_sha256": "9f87ce27d7a48d4522ed285a99b14408fe1d9161cc710f041ce54a7c1ddcf7ba",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11632,7 +11632,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "content_id": "sha256:3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11640,7 +11640,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "793ec9d7ae9aad0f4a37c87b0fa92d0da7d9dbb19fdc651a20fdc6009ffd7708",
-      "final_sha256": "b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
+      "final_sha256": "3418834abb011e4e7e33ef46f40d1697b8cd6c69d697341c1f7c405e25017e31",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11700,7 +11700,7 @@
     {
       "asset_key": "asset.npc.thanh_co.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "content_id": "sha256:d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11708,7 +11708,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4dd0d6963b504174293bb7daf9b7f443af6bc920bb9e0a4c7cd24b27bba534ac",
-      "final_sha256": "2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
+      "final_sha256": "d59fc65e0f066d8e6ce67d6233a33df35bc74c1526e8af083f42fb021837857f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11768,7 +11768,7 @@
     {
       "asset_key": "asset.npc.thanh_co.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "content_id": "sha256:27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11776,7 +11776,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4dd0d6963b504174293bb7daf9b7f443af6bc920bb9e0a4c7cd24b27bba534ac",
-      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
+      "final_sha256": "27a22e1393c1bf524f8c51aab5603050187da41bcc8a50f29a5120b7b1946809",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11836,7 +11836,7 @@
     {
       "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "content_id": "sha256:53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11844,7 +11844,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c3b15b0651f2dca16787fa02b01ff69629c843a8cedb3af3da8f0e5520cbcabd",
-      "final_sha256": "2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
+      "final_sha256": "53775af6c61b3cca7fdd309799c25c538ec573c288929913bb1500e59a27002f",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11904,7 +11904,7 @@
     {
       "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "content_id": "sha256:90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11912,7 +11912,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c3b15b0651f2dca16787fa02b01ff69629c843a8cedb3af3da8f0e5520cbcabd",
-      "final_sha256": "5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
+      "final_sha256": "90e33040ec7fd76887b8e610e09b69561f16b191edd94558bcf15dfd8a5971cd",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11972,7 +11972,7 @@
     {
       "asset_key": "asset.npc.thanh_co.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "content_id": "sha256:0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11980,7 +11980,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "713b92c9feabe743d208cc63e2cce2b7222f5354d0b98d6234a2e28a68192952",
-      "final_sha256": "8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
+      "final_sha256": "0df0dcf5e79823ca4dbb7455fa5c8fdfa1230017d59442bfe486292a109ca32d",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -12040,7 +12040,7 @@
     {
       "asset_key": "asset.npc.thanh_co.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "content_id": "sha256:b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -12048,7 +12048,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "713b92c9feabe743d208cc63e2cce2b7222f5354d0b98d6234a2e28a68192952",
-      "final_sha256": "b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
+      "final_sha256": "b10ea6e380f83e2149aedd5b71f20c33b6686611765fc0588b67df4862519ab5",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
