@@ -48,6 +48,11 @@ namespace ThinhThan.Tests.PlayMode.Harness
             Guid.NewGuid().ToByteArray();
         private readonly string _resumeCredential =
             Guid.NewGuid().ToString("N");
+        private const string DefaultMapId = "map.lang_da.dinh_lang";
+        private const uint DefaultChannelIndex = 1u;
+        private const string DefaultContentRevision = "rev.test";
+        private static readonly byte[] _defaultInstanceId =
+            Guid.NewGuid().ToByteArray();
 
         public FakeServer(int port)
         {
@@ -399,11 +404,7 @@ namespace ThinhThan.Tests.PlayMode.Harness
                     // Payload! : FakeServerSocket decodes id 6 to
                     // C2SCharacterAttach and never emits a null payload.
                     var attach = (C2SCharacterAttach)inbound.Payload!;
-                    var attachOk = new S2CCharacterAttachOk
-                    {
-                        CharacterId = attach.CharacterId,
-                    };
-                    _ = socket.SendAsync(7, attachOk);
+                    _ = SendAttachThenPrepareAsync(socket, attach.CharacterId);
                     break;
                 case 10:
                     _ = socket.SendAsync(11, new S2CCharacterDetachOk());
@@ -433,6 +434,9 @@ namespace ThinhThan.Tests.PlayMode.Harness
                         _ => socket.SendAsync(14, ListWith(character)));
                     break;
                 case 106:
+                    // C2S_PRESENTATION_READY completes the transfer: the
+                    // server answers with the new world baseline (300).
+                    _ = socket.SendAsync(300, BuildBaseline());
                     break;
                 case 306:
                     break;
@@ -480,6 +484,53 @@ namespace ThinhThan.Tests.PlayMode.Harness
             }
 
             await socket.SendAsync(2, ok).ConfigureAwait(false);
+            if (ok.ResumedCharacterId.Length == 16)
+            {
+                // Resumed sessions skip C2S_CHARACTER_ATTACH (6): the
+                // server sends attach_ok + TRANSFER_PREPARE directly
+                // (reconnect.md, messages.md § attach/resume order).
+                await SendAttachThenPrepareAsync(
+                    socket, ok.ResumedCharacterId).ConfigureAwait(false);
+            }
+        }
+
+        private static async Task SendAttachThenPrepareAsync(
+            FakeServerSocket socket, ByteString characterId)
+        {
+            var attachOk = new S2CCharacterAttachOk
+            {
+                CharacterId = characterId,
+                OwnershipEpoch = 1,
+                MapId = DefaultMapId,
+                ChannelIndex = DefaultChannelIndex,
+                InstanceId = ByteString.CopyFrom(_defaultInstanceId),
+                ContentRevision = DefaultContentRevision,
+            };
+            await socket.SendAsync(7, attachOk).ConfigureAwait(false);
+            var prepare = new S2CTransferPrepare
+            {
+                TransferId = ByteString.CopyFrom(_defaultInstanceId),
+                Reason = TransferReason.Unspecified,
+                MapId = DefaultMapId,
+                ChannelIndex = DefaultChannelIndex,
+                InstanceId = ByteString.CopyFrom(_defaultInstanceId),
+                ContentRevision = DefaultContentRevision,
+            };
+            await socket.SendAsync(105, prepare).ConfigureAwait(false);
+        }
+
+        private static S2CWorldBaseline BuildBaseline()
+        {
+            var baseline = new S2CWorldBaseline
+            {
+                BaselineId = 1,
+                ServerTick = 1,
+                MapId = DefaultMapId,
+                ChannelIndex = DefaultChannelIndex,
+                InstanceId = ByteString.CopyFrom(_defaultInstanceId),
+                ContentRevision = DefaultContentRevision,
+            };
+            return baseline;
         }
 
         private static S2CCharacterList ListWith(CharacterSummary character)

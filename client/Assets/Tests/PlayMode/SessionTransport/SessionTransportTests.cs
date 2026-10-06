@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -108,6 +109,13 @@ namespace ThinhThan.Tests.PlayMode.SessionTransport
             server.Start();
             SessionOrchestrator orchestrator = NewOrchestrator(
                 server, out SessionStateMachine fsm, out _);
+            var phases = new List<SessionPhase>();
+            var uiStates = new List<ClientUiState>();
+            fsm.Changed += snapshot =>
+            {
+                phases.Add(snapshot.Phase);
+                uiStates.Add(snapshot.UiState);
+            };
             Result<bool> connected = await orchestrator
                 .ConnectWithTicketAsync(CancellationToken.None)
                 .ConfigureAwait(false);
@@ -115,6 +123,15 @@ namespace ThinhThan.Tests.PlayMode.SessionTransport
             await PumpUntil(orchestrator,
                 () => fsm.Phase == SessionPhase.InWorld, 5000);
             Assert.AreEqual(SessionPhase.InWorld, fsm.Phase);
+
+            // contract §1: resume transits TRANSFERRING_MAP before
+            // IN_WORLD and never flashes IN_WORLD first.
+            Assert.IsTrue(phases.Contains(SessionPhase.TransferringMap));
+            Assert.Less(phases.IndexOf(SessionPhase.TransferringMap),
+                phases.IndexOf(SessionPhase.InWorld));
+            Assert.IsTrue(uiStates.Contains(ClientUiState.TransferringMap));
+            Assert.Less(uiStates.IndexOf(ClientUiState.TransferringMap),
+                uiStates.IndexOf(ClientUiState.InWorld));
 
             // Latest!: the connect above must have produced one socket.
             FakeServerSocket first = server.Latest!;
@@ -124,6 +141,17 @@ namespace ThinhThan.Tests.PlayMode.SessionTransport
                     server.Sockets.Count >= 2, 15000);
             Assert.AreEqual(SessionPhase.InWorld, fsm.Phase);
             Assert.GreaterOrEqual(server.Sockets.Count, 2);
+
+            // Resume-into-map: after Reconnecting the session must reach
+            // TRANSFERRING_MAP before IN_WORLD (DISCONNECTED ->
+            // TRANSFERRING_MAP per contract §1).
+            int reconnectIdx = phases.IndexOf(SessionPhase.Reconnecting);
+            Assert.GreaterOrEqual(reconnectIdx, 0);
+            int tmTail = phases.IndexOf(
+                SessionPhase.TransferringMap, reconnectIdx);
+            int iwTail = phases.IndexOf(SessionPhase.InWorld, reconnectIdx);
+            Assert.Greater(tmTail, reconnectIdx);
+            Assert.Greater(iwTail, tmTail);
 
             FakeServerSocket resumedSocket = server.Sockets[1];
             bool sawResumeHello = false;

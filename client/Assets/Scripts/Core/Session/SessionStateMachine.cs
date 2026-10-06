@@ -19,9 +19,11 @@ namespace ThinhThan.Core.Session
                 (SessionPhase.Connecting, SessionPhase.Disconnected),
                 (SessionPhase.Authenticating, SessionPhase.CharacterSelect),
                 (SessionPhase.Authenticating, SessionPhase.InWorld),
+                (SessionPhase.Authenticating, SessionPhase.TransferringMap),
                 (SessionPhase.Authenticating, SessionPhase.Disconnected),
                 (SessionPhase.Authenticating, SessionPhase.Reconnecting),
                 (SessionPhase.CharacterSelect, SessionPhase.InWorld),
+                (SessionPhase.CharacterSelect, SessionPhase.TransferringMap),
                 (SessionPhase.CharacterSelect, SessionPhase.Disconnected),
                 (SessionPhase.CharacterSelect, SessionPhase.Reconnecting),
                 (SessionPhase.InWorld, SessionPhase.TransferringMap),
@@ -35,6 +37,7 @@ namespace ThinhThan.Core.Session
                 (SessionPhase.Reconnecting, SessionPhase.Authenticating),
                 (SessionPhase.Reconnecting, SessionPhase.CharacterSelect),
                 (SessionPhase.Reconnecting, SessionPhase.InWorld),
+                (SessionPhase.Reconnecting, SessionPhase.TransferringMap),
                 (SessionPhase.Reconnecting, SessionPhase.Disconnected),
             };
 
@@ -49,6 +52,7 @@ namespace ThinhThan.Core.Session
                 (ClientUiState.LoginQueued, ClientUiState.CharacterSelect),
                 (ClientUiState.LoginQueued, ClientUiState.AuthTitle),
                 (ClientUiState.CharacterSelect, ClientUiState.InWorld),
+                (ClientUiState.CharacterSelect, ClientUiState.TransferringMap),
                 (ClientUiState.CharacterSelect, ClientUiState.AuthTitle),
                 (ClientUiState.CharacterSelect, ClientUiState.Disconnected),
                 (ClientUiState.InWorld, ClientUiState.TransferringMap),
@@ -58,6 +62,7 @@ namespace ThinhThan.Core.Session
                 (ClientUiState.TransferringMap, ClientUiState.Disconnected),
                 (ClientUiState.Disconnected, ClientUiState.AuthTitle),
                 (ClientUiState.Disconnected, ClientUiState.CharacterSelect),
+                (ClientUiState.Disconnected, ClientUiState.TransferringMap),
                 (ClientUiState.Disconnected, ClientUiState.InWorld),
             };
 

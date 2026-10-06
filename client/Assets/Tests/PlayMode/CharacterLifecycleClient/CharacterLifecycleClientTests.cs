@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -70,6 +71,13 @@ namespace ThinhThan.Tests.PlayMode.CharacterLifecycleClient
                     Task.Delay(Math.Min(ms, 25), cancel));
             var controller = new CharacterSessionController(orchestrator);
             var presenter = new SessionUiPresenter(orchestrator, fsm);
+            var phases = new List<SessionPhase>();
+            var transfers = new List<TransferDestination?>();
+            fsm.Changed += snapshot =>
+            {
+                phases.Add(snapshot.Phase);
+                transfers.Add(orchestrator.PendingTransfer);
+            };
 
             Result<bool> connected = await orchestrator
                 .ConnectWithTicketAsync(CancellationToken.None)
@@ -103,6 +111,17 @@ namespace ThinhThan.Tests.PlayMode.CharacterLifecycleClient
                 () => fsm.Phase == SessionPhase.InWorld, 3000);
             Assert.AreEqual(SessionPhase.InWorld, fsm.Phase);
             Assert.AreEqual(ClientUiState.InWorld, presenter.Screen);
+
+            // contract §1: attach routes CHARACTER_SELECT ->
+            // TRANSFERRING_MAP -> IN_WORLD carrying the attach_ok
+            // destination; IN_WORLD lands on the entry baseline.
+            int tmIdx = phases.IndexOf(SessionPhase.TransferringMap);
+            Assert.GreaterOrEqual(tmIdx, 0);
+            Assert.Less(phases.IndexOf(SessionPhase.CharacterSelect), tmIdx);
+            Assert.Less(tmIdx, phases.IndexOf(SessionPhase.InWorld));
+            Assert.AreEqual(
+                "map.lang_da.dinh_lang",
+                transfers[tmIdx]?.MapId);
 
             Result<S2CCharacterDetachOk> detached =
                 await controller.DetachAsync(CancellationToken.None)
