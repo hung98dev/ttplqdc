@@ -790,6 +790,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3cd72030edd3cb2a905a0099b6007888
+    m_Address: asset.ui.credits.text
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d50a5f613df0c694f83e41ca7fdf100d, type: 2}
   m_SchemaSet:

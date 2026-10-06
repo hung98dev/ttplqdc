@@ -1,0 +1,12 @@
+ThinhThan - Third-Party Asset Notices
+
+Generated deterministically by ReleaseAssetAudit (IMP-076) from
+client/Assets/Art/Provenance/asset_source_register.json.
+Do not edit by hand.
+
+== Third-Party Credits (CC-BY-4.0) ==
+(none)
+
+== Fonts licensed under the SIL Open Font License 1.1 ==
+Be Vietnam Pro (OFL-1.1), see client/Assets/Art/UI/Fonts/COPYRIGHT.txt and OFL.txt
+Be Vietnam Pro (OFL-1.1), see client/Assets/Art/UI/Fonts/COPYRIGHT.txt and OFL.txt
