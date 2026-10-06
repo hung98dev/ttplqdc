@@ -27008,7 +27008,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "134cac311e5663054607956f5ec651be56e7b7f7d45e996be4f997fb06681e6d",
-   "final_sha256": "522e13d8d4d7320947990ebec194efda2de8225d949e5781ee869d72943c8927",
+   "final_sha256": "dde2711b1be4545346a42201888cf1c3419ba4ff5c46c193f0cf6671b1342b01",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -27309,7 +27309,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "55ddbc76c02c345a98b35b13713464c6454cf4eead33f988fd747fe916bd277e",
-   "final_sha256": "acae2d52152bc0df56cfbeab907aed5bdd326fe841106dd7335b180ebc8a47b4",
+   "final_sha256": "dd23698531eb535bf6a8452254c09f75afacb81a07fb55362295fbd4e2bd1dbd",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -27609,7 +27609,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "27bb5442a50e8f0d2830095321b0cc59760f880ee1c6a3bfd5fd21aa741fe46c",
-   "final_sha256": "b69cbe8454994624e5cc3eb68668b52b294efc1e5d637f1db7a004d3e4745b4b",
+   "final_sha256": "e9320b4164523d765cc39749ff66860d2584c10058cfe7421f0ebb1ee342c005",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -27909,7 +27909,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "d5ed86c79497e351d92380828884b39bc12cd1f0a4152a84ce48bf459eaab80b",
-   "final_sha256": "ba6c03a8f48313d54db64d53033c306f8933141d788268c70a8f16cc683061d7",
+   "final_sha256": "ae9d962b4a1ea79b54be16ff7315e673f70fc44133572d95bd8b89ff11a949e2",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -28209,7 +28209,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "9899026fef673a4266b65cfc5b9adb5b363f84275018a58028ba3c615d85f861",
-   "final_sha256": "a64e6529c902c50982058f3c32db9eaf52d70ea6e86c89c7d84cda84c9be1bdd",
+   "final_sha256": "94c4cc0fe01ed5e50b0a56ed876a26840091b73dd3c2b3f23c7012a721638bf2",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -28564,7 +28564,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "e2df841255360b9164378231a601a39eb2309230e7cc485ee24d44e40b29c451",
-   "final_sha256": "89a9ddbd97799fb9e410084a41ca042664e118399d5246467cbce0c14c0c0229",
+   "final_sha256": "a7a28143ea058d3f85b891934ba747d28493c66d2f8088e0a4a8434d4627fee5",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -28741,7 +28741,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "e42afaeeb89d0515fd2428c140457ff5405705cdff6277561cc4e3e22c79d48b",
-   "final_sha256": "e4e1ba51bf533f2e2e11bd61bda5c1883f22c1d77856df862730d318d17dbeab",
+   "final_sha256": "f7fd80c3fc973bca589bdda7c3a65fce4cdc2c095c41290f35acb533ea8d6b57",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -28914,7 +28914,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "422f4872a57c45c17d620020d3a303f602c24b3c791d982817891e31ace1176d",
-   "final_sha256": "cd93358daee3512b36bde992819c39afdcad3fd1abf454ad2021fe93c9035311",
+   "final_sha256": "ca63912ae95316df4a3ec1ca94d250d0cefd46c92c889e4ee85dc7041a6163ab",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
@@ -29087,7 +29087,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-01T10:00:00Z",
    "source_sha256": "60bc4338f83e663fa87b87df202239408b350276d3f830bb32fc5e0d16a1c3f9",
-   "final_sha256": "db935c0f2d1d8ace2ba3970c59dfd36bdda36f6bfe3a944809ff918c9782eb90",
+   "final_sha256": "064ec98c57f758e2c96f06d671292a7aefd634380a9d6aea92908a91c89e0748",
    "changes": [
     "magenta background keying",
     "alpha dilation and despill",
