@@ -34,7 +34,10 @@ type Result struct {
 	Grounded      bool // feet resting on a walkable surface (gap <= 1mm)
 	GroundSegment int64
 	OnOneWay      bool
-	Contacts      []Contact
+	// Contacts are the contacts this call's displacement created — a press
+	// against a surface the box already rested on resolves nothing and is
+	// not re-reported.
+	Contacts []Contact
 
 	illegal bool // input state already penetrated blocking geometry
 }
@@ -190,11 +193,15 @@ func (w *World) sweepX(box AABB, dx int64, opts MoveOpts, res *Result) (AABB, bo
 			})
 			continue
 		}
-		// Stop at the wall (non-penetrating side; quantized once).
-		res.Contacts = append(res.Contacts, Contact{
-			SegmentID: wall.ID, Kind: wall.Kind,
-			X: edgeX(cur, remaining), Y: cur.MinY,
-		})
+		// Stop at the wall (non-penetrating side; quantized once). A resting
+		// press resolves nothing — only a contact created by this call's
+		// displacement is an event worth recording.
+		if move != 0 || remaining != dx || pen {
+			res.Contacts = append(res.Contacts, Contact{
+				SegmentID: wall.ID, Kind: wall.Kind,
+				X: edgeX(cur, remaining), Y: cur.MinY,
+			})
+		}
 		return cur, true
 	}
 	if remaining != 0 {
@@ -355,9 +362,11 @@ func (w *World) sweepY(box AABB, dy int64, opts MoveOpts, res *Result) AABB {
 			cur.MinY -= d
 			cur.MaxY -= d
 			res.VyZeroed = true
-			res.Contacts = append(res.Contacts, Contact{
-				SegmentID: seg.ID, Kind: seg.Kind, X: cur.MinX, Y: best,
-			})
+			if d != 0 {
+				res.Contacts = append(res.Contacts, Contact{
+					SegmentID: seg.ID, Kind: seg.Kind, X: cur.MinX, Y: best,
+				})
+			}
 		} else {
 			cur = cur.Translate(0, -fall)
 		}
@@ -381,9 +390,11 @@ func (w *World) sweepY(box AABB, dy int64, opts MoveOpts, res *Result) AABB {
 			cur.MaxY += d
 			cur.MinY += d
 			res.VyZeroed = true
-			res.Contacts = append(res.Contacts, Contact{
-				SegmentID: seg.ID, Kind: seg.Kind, X: cur.MinX, Y: bestTop,
-			})
+			if d != 0 {
+				res.Contacts = append(res.Contacts, Contact{
+					SegmentID: seg.ID, Kind: seg.Kind, X: cur.MinX, Y: bestTop,
+				})
+			}
 		} else {
 			cur = cur.Translate(0, dy)
 		}

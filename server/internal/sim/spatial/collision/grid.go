@@ -1,6 +1,8 @@
 package collision
 
 import (
+	"sync"
+
 	"thinhthan/internal/sim/spatial/geometry"
 )
 
@@ -62,16 +64,28 @@ func (w *World) forEach(b AABB, fn func(s geometry.Segment)) {
 	if y1 >= w.rows {
 		y1 = w.rows - 1
 	}
-	// Scratch marks per call avoid a visited-set allocation; the index slice
-	// is bounded by construction and cells deduplicate via the mark array.
-	marks := make(map[int]struct{}, 16)
+	// Dedup scratch comes from a pool so the tick hot path is zero-alloc; the
+	// generation stamp avoids a clearing pass between calls. Pooling keeps
+	// World immutable — it may be read concurrently.
+	mb := markPool.Get().(*markBuf)
+	if cap(mb.marks) < len(w.segs) {
+		mb.marks = make([]uint32, len(w.segs))
+	}
+	marks := mb.marks[:len(w.segs)]
+	mb.gen++
+	if mb.gen == 0 { // wrapped: re-stamp everything
+		clear(marks)
+		mb.gen = 1
+	}
+	gen := mb.gen
+	defer markPool.Put(mb)
 	for cy := y0; cy <= y1; cy++ {
 		for cx := x0; cx <= x1; cx++ {
 			for _, i := range w.cells[cy*w.cols+cx] {
-				if _, seen := marks[i]; seen {
+				if marks[i] == gen {
 					continue
 				}
-				marks[i] = struct{}{}
+				marks[i] = gen
 				s := w.segs[i]
 				if max64(s.X1, s.X2) < b.MinX || min64(s.X1, s.X2) > b.MaxX ||
 					max64(s.Y1, s.Y2) < b.MinY || min64(s.Y1, s.Y2) > b.MaxY {
@@ -82,6 +96,15 @@ func (w *World) forEach(b AABB, fn func(s geometry.Segment)) {
 		}
 	}
 }
+
+// markBuf is the pooled per-call visited set for forEach: marks[i] == gen
+// means segment i was already emitted this call.
+type markBuf struct {
+	gen   uint32
+	marks []uint32
+}
+
+var markPool = sync.Pool{New: func() any { return &markBuf{} }}
 
 func min64(a, b int64) int64 {
 	if a < b {
