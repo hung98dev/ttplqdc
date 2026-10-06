@@ -4,7 +4,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_attack_burst.png",
-      "content_id": "sha256:45c25761149d4fcfe04c026f25058ea17078fa5f5a64463e2a935aa06ccf7c62",
+      "content_id": "sha256:33918c2f327006ea9768f31f063cdbcaf110054251e57a0208a2c0f7f25731b0",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -72,7 +72,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_attack_shot.png",
-      "content_id": "sha256:c6d7911f987fd8c1cf203b1233ca99d232f2355310267a6a781fdd714721a543",
+      "content_id": "sha256:7e80defd50f2d9f25ee76aeb26e7e7ca0c55aada7eab164dc60a35e07150493c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -140,7 +140,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_defeat.png",
-      "content_id": "sha256:a46950ffd261d2467451525b9e1559009cf39631d84858523875059f5ec4a0d1",
+      "content_id": "sha256:77c0586f625bc0845f5308d1e71cbe992e9939a638a118bf1806a264725083d9",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -208,7 +208,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_hit.png",
-      "content_id": "sha256:716e089974d58e8a53aa94656fef8f25fccfe71334683ec86507804d14d221ee",
+      "content_id": "sha256:917ec4793b2f38bf297e3dc32b3ad13da1d7618ded4664630a618751af67ab4c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -276,7 +276,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_idle.png",
-      "content_id": "sha256:acd48bbed27c393fdd3c952fcd58ae679f9cd27296f3bfdbc3ca4c862ef6ba30",
+      "content_id": "sha256:f878c065911e757efab92bc0446ee5eabad649f62b5277052c096047be419023",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -344,7 +344,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.bong_nuoc_ma.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/bong_nuoc_ma/bong_nuoc_ma_move.png",
-      "content_id": "sha256:5a8064a97dbf10c97f38e9cd4a55daab5d9d06ce37b9390ee189b62d203eb425",
+      "content_id": "sha256:e207991ed22bef43ac288474ebf2fbb0085e7de2e4e50cf9a88658a8e2c56220",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -412,7 +412,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.ca_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ca_tinh/ca_tinh_parts.png",
-      "content_id": "sha256:eb0c1d3f64184ce5435597a309a22cfbd77d0a121f124f2cd7a9cdd69073b9a0",
+      "content_id": "sha256:e95e829825dcbad451803683d66bf0f6908356aae571608793cf2bdbbfff2527",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -420,7 +420,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "227ce536c8f852d5d7d4c2c02704306938d20cd93200c4e5fe3423c0ce4fad9c",
-      "final_sha256": "343a090e7ade8e09487c0e3f0cb5fc2d357475f3270891ef82092a470b38a8cb",
+      "final_sha256": "e95e829825dcbad451803683d66bf0f6908356aae571608793cf2bdbbfff2527",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -480,7 +480,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.hon_chet_duoi.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/hon_chet_duoi/hon_chet_duoi_parts.png",
-      "content_id": "sha256:0488d71673510eb1299040c7e4355d9fe32398c71bae4894db26027f4cc7cb7b",
+      "content_id": "sha256:bd441cffda8b7110b0a758d12f4265e66dc6e4583b7e396014ad0eab7c55e0de",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -548,7 +548,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.ma_da.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ma_da/ma_da_parts.png",
-      "content_id": "sha256:36fc6a19e959a3bccee95fee40cc9801517dcc5d826b905a6af74a64a046189c",
+      "content_id": "sha256:8ec3f4c5230f74faf6710b322183944f7e6db2a29969c2cf028a6ac39d804853",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -616,7 +616,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.ma_da_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/ma_da_gia/ma_da_gia_parts.png",
-      "content_id": "sha256:0a9146201bfd995a773ebc959ac1b1509e934f266909511bfd5983e0166da034",
+      "content_id": "sha256:5e3b836506fc887cdbb17c05b866f0ba0c11857d0ac2ff16898667a46aa3ba3a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -684,7 +684,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.nguoi_song_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/nguoi_song_co/nguoi_song_co_parts.png",
-      "content_id": "sha256:87f0e191de6741587dc922b754f78636fae33ef2571d16b875571c427ab75c0e",
+      "content_id": "sha256:00cc158bda43a9f915a54e78cf81a0f75f969abe0cd877a6616d66615577f3c2",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -752,7 +752,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.quy_song_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/quy_song_dem/quy_song_dem_parts.png",
-      "content_id": "sha256:b834e60d39c8624cb0158dee7f49ff113c9683efbfdb507e79b0a7e813b0229f",
+      "content_id": "sha256:51688ade29ea870db43296897aba617a115e2914f927e0da48bd262a7c02197d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -820,7 +820,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.thuong_luong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/thuong_luong/thuong_luong_parts.png",
-      "content_id": "sha256:ace0fd13d9225e192b5662bb2c5aa24260bde250ac40fbe2abb19c72328c2df2",
+      "content_id": "sha256:1c9c9988f1343aa25f78d734c9f374ad1e85e8c14c2fe161b469f1712d69f5f6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -828,7 +828,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b1b7ce8376afaf3c8f64146e0e8c3be82436eacee5c2c83fce9174d151f8ab5f",
-      "final_sha256": "281cab478c34040399d413237eff5545a31f6c340684d0605b8708a1f2fb25b5",
+      "final_sha256": "1c9c9988f1343aa25f78d734c9f374ad1e85e8c14c2fe161b469f1712d69f5f6",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -888,7 +888,7 @@
     {
       "asset_key": "asset.monster.ben_nuoc_den.thuy_quai.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/ben_nuoc_den/thuy_quai/thuy_quai_parts.png",
-      "content_id": "sha256:abe5a23e537a027c53dc528c687450c4de9c79f437e2ce4ddc931f3c884d914b",
+      "content_id": "sha256:82a97e94e7637f26498b7247d6e163533eee5c7ca92c6eb2680d50fce9568edc",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -956,7 +956,7 @@
     {
       "asset_key": "asset.boss.ho_tinh.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ho_tinh/ho_tinh_parts.png",
-      "content_id": "sha256:c4d915e053bd0f53d7dccd347acbe4473468e0e01286cefe8bc4e5b634f3371e",
+      "content_id": "sha256:2d0111454a4a40b8da5252b5939a4e5f374d72eb258cd168af7e77dace10e6c4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1024,7 +1024,7 @@
     {
       "asset_key": "asset.boss.ho_tinh_chin_duoi.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ho_tinh_chin_duoi/ho_tinh_chin_duoi_parts.png",
-      "content_id": "sha256:0713c649adba06019f34c34e06a65cd95a9234b76b1ff6886a4b77345a6f1c4f",
+      "content_id": "sha256:359ce8181a0c928bbd43c30bf73cbe0fc92d152b83e050e5f18dd878ff733e94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1092,7 +1092,7 @@
     {
       "asset_key": "asset.boss.ma_da_chua.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ma_da_chua/ma_da_chua_parts.png",
-      "content_id": "sha256:d4962a5edbfab8cf27ad444cca7c4327d72288a3273c01a9417fcb503ee21b74",
+      "content_id": "sha256:56e564c113a5c7c2dbae98565ad6def8f486c5cffbb24db6c903399465779842",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1160,7 +1160,7 @@
     {
       "asset_key": "asset.boss.moc_tinh_da.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/moc_tinh_da/moc_tinh_da_parts.png",
-      "content_id": "sha256:32196fd61a0668fcc9d01be11b4b3787a310a4e94291f4953d01c7bc2125a41e",
+      "content_id": "sha256:501d5171b23a73b2f46e8abc5de9a8a2ed41c7d433b9c859ad2cc2832e3084d8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1228,7 +1228,7 @@
     {
       "asset_key": "asset.boss.ngu_tinh.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/ngu_tinh/ngu_tinh_parts.png",
-      "content_id": "sha256:b5d0c03033cc422ed334d32933dd2dc1257865f10972d882567975ed9dfb730e",
+      "content_id": "sha256:1c4d74cbececd2d03038291fbff91a03ff8d9cbd71f4e9545bc694009f9dc9a4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1296,7 +1296,7 @@
     {
       "asset_key": "asset.boss.quy_nhap_trang.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/quy_nhap_trang/quy_nhap_trang_parts.png",
-      "content_id": "sha256:b92ef9ab971971d9cd6492339135cb10394bed6bb9e9488e990b934f59bc430e",
+      "content_id": "sha256:d25c930cd2e895a788de8d7ed23cfc9df9c8c409d0d525eadf5b41a0b29ef8a8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1364,7 +1364,7 @@
     {
       "asset_key": "asset.boss.than_trung.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/than_trung/than_trung_parts.png",
-      "content_id": "sha256:afd1236205de34bee1a4c5a19c58592a8c985dd4677dadfeb034b27440c320fc",
+      "content_id": "sha256:68939186304194029590186813c9a95eb84dca67ca7d0a53731df6d0b73f9210",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1372,7 +1372,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c940266699a8669ea058f26a852ddcc7545e8920ba9e580116ab529ea7ba906b",
-      "final_sha256": "e5a42ae356f6538f65c11a9efd5d3cba172f069669e78f7de8cf4c7521494c2d",
+      "final_sha256": "68939186304194029590186813c9a95eb84dca67ca7d0a53731df6d0b73f9210",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -1432,7 +1432,7 @@
     {
       "asset_key": "asset.boss.thuong_luong.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/thuong_luong/thuong_luong_parts.png",
-      "content_id": "sha256:034d02bd6d4f82034f2208afa5b375c0a57345e8f8ad140b33b1f2051d54d6a8",
+      "content_id": "sha256:7d1674c5ccba81591c7eb429c3ea303cdc8c42c839552369cd5860b4797dbb3c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1500,7 +1500,7 @@
     {
       "asset_key": "asset.monster.deo_may.ho_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ho_tinh/ho_tinh_parts.png",
-      "content_id": "sha256:44310cf51d97da7c5a0b1bbd6a2d9336e31567a070f3eecde2aa756460db03ce",
+      "content_id": "sha256:f584a7f65b8d1bfdf9ce4cb806554360830be2a728e9f6a461b06c2f375c9d99",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1568,7 +1568,7 @@
     {
       "asset_key": "asset.monster.deo_may.ho_tinh_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ho_tinh_ve/ho_tinh_ve_parts.png",
-      "content_id": "sha256:dae7037ace03747826e48e4d6de14b883e50a28fc2e591bb73779a17f5565a2f",
+      "content_id": "sha256:5de747c9934ef1cd56042ba4441a0d4e054764605c2c1474d120aa092193cd03",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1636,7 +1636,7 @@
     {
       "asset_key": "asset.monster.deo_may.khi_nui.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/khi_nui/khi_nui_parts.png",
-      "content_id": "sha256:f5e4296a616588574c3d01e55c973ce7aae92d105ff80e057ddd5dbd0f5e8ba4",
+      "content_id": "sha256:5ea9bfac1ede629387587cbd7f8334f19b5309b0073004ef80e463b99e311bf4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1704,7 +1704,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_tranh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_tranh/ma_tranh_parts.png",
-      "content_id": "sha256:120760e5f9ebf98bf25a7eb6f2b4890bf08023188ed09c4b0ee1f1994ea49929",
+      "content_id": "sha256:f37edc3a726cb494c0dd8d722e9b2502a67bd25f169f757a744f3bc3911f1d19",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1772,7 +1772,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_tranh_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_tranh_gia/ma_tranh_gia_parts.png",
-      "content_id": "sha256:93fa16b842d198eed4683a1200b749ec6497fe6a6ec9effb99b892523396dd54",
+      "content_id": "sha256:db45baa520c8117991fe221fb9754d7590857c190b8809e8d7dd00ccfc42ab8f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1840,7 +1840,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_attack_burst.png",
-      "content_id": "sha256:b225ecffc48e1d06a08552f508a8d0a5c8977e68d7040e7273ed998bc971cf30",
+      "content_id": "sha256:c293079c07f5a3bb201a92473a4b0dc02f15b68f2fb575dfd8993a372ac35e67",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1908,7 +1908,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_attack_shot.png",
-      "content_id": "sha256:5d91b87a4a727f6fb5ec5f2124aac417cfa0eb2712c8d7b56e6b7a4ddb6203a3",
+      "content_id": "sha256:2f913647866893d744e973ad34da34d1ed01d68337fa17d15300f82b9dcbc727",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1976,7 +1976,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_defeat.png",
-      "content_id": "sha256:91ba891dba2ada7d3cd7559f6d3bdd6af3a55d79385b683659c3a1433b92d8d6",
+      "content_id": "sha256:6fe039261138a140bae9f69d67ac7c7c78ef9f2cfd2c049df305b79de09d3c1c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2044,7 +2044,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_hit.png",
-      "content_id": "sha256:fea3e5cfdba2284846ee3fb34e4287ce2eef4d4ce226f1cabb363048b1f0c29b",
+      "content_id": "sha256:b4e547541e342f352ff51ef29a557351767ab6b01e09334be8bf36fe99068a4d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2112,7 +2112,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_idle.png",
-      "content_id": "sha256:dce350d9010fb2a8295c61be311b091e9501e6b252ebfce20a4a95567183a319",
+      "content_id": "sha256:04a0f54cea8ca5cbf9961446d41edc5e2eb8f824be2a36ca96974ad53cf7772b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2180,7 +2180,7 @@
     {
       "asset_key": "asset.monster.deo_may.ma_van_dem.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/ma_van_dem/ma_van_dem_move.png",
-      "content_id": "sha256:57f6351ebd05a6c7f9e547065d752d5392ac6187a5890df20b4761c375c66305",
+      "content_id": "sha256:7b01e396911ba4574befeb707ca4fc836642970348b84f97c19fe58860c952d2",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2248,7 +2248,7 @@
     {
       "asset_key": "asset.monster.deo_may.vong_nui_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/vong_nui_gia/vong_nui_gia_parts.png",
-      "content_id": "sha256:d606d2d04b7778c803d97e14982e11c6f78317449c5f296b2de8cd8dd18958db",
+      "content_id": "sha256:f265324544264e3d12e1b88652fdef929408e335c5b67b7728cf8d11c6bb3a71",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2316,7 +2316,7 @@
     {
       "asset_key": "asset.monster.deo_may.vong_rung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/deo_may/vong_rung/vong_rung_parts.png",
-      "content_id": "sha256:88ef217d6ca7c28752cfdd7981c29541a7c4aef996a9bc614fb577806b32308c",
+      "content_id": "sha256:b1e5ce36d79dc72e3613f7152b3542ba523f991a7a189e6e255927c2be70186a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2324,7 +2324,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "138726b586818632bc887e09897ae0deb43fa779869e8f6d96b69fe77964ad84",
-      "final_sha256": "8f7d6bbca4189904f4e47d0c0534b214f645c66baf5b6f07ee5ebf699ca1f955",
+      "final_sha256": "b1e5ce36d79dc72e3613f7152b3542ba523f991a7a189e6e255927c2be70186a",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -2384,7 +2384,7 @@
     {
       "asset_key": "asset.monster.lang_da.bu_nhin_rom.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/bu_nhin_rom/bu_nhin_rom_parts.png",
-      "content_id": "sha256:5cb174de4d4e8de746bd5fe57e5bf5d87b964f6967c1573b38202f998e832c9b",
+      "content_id": "sha256:2285ecb7b0a77eb3f665d8792d29b9911411281fa7bf338029dda3d3594ef1ce",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2452,7 +2452,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_attack_shot.png",
-      "content_id": "sha256:c4c9dade5b3dad7cc6aea7a0cba879a8999f8ecf8c5d555aa53115f8da832c62",
+      "content_id": "sha256:52110b2968d572d4c4e8be62b4b4173c21b1dc70b78241e51538bd998a384040",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2520,7 +2520,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_defeat.png",
-      "content_id": "sha256:64edb49bd383cea900a5258b00a46d24f3c1abadf685c1df45fe77b522f5428f",
+      "content_id": "sha256:f3338405a016d58f6886b230980b41b05b631f9d9377c367d7a08da197f21008",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2588,7 +2588,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_hit.png",
-      "content_id": "sha256:6c201463f0d2f5f33c918c2e3e9560c8bddc698f5c0195f06b8314e8816fc594",
+      "content_id": "sha256:f4416b4ee1967369dc64de560b8b5f8c3ba20e910121436f69fad076b832ffbd",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2656,7 +2656,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_idle.png",
-      "content_id": "sha256:22048c15311ba13b41d1ceb7666df787ed0514501edc66e5474c0bb536119d4e",
+      "content_id": "sha256:f9ba95e82c2dcbbd062e97e7573d050eb506ee5e40eb1afcdd32fa962dbea23b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2724,7 +2724,7 @@
     {
       "asset_key": "asset.monster.lang_da.coc_thanh_tinh.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/coc_thanh_tinh/coc_thanh_tinh_move.png",
-      "content_id": "sha256:6db9094a3949b782cf04973010a5d9aa39099915ee5c45684e980c791a7c8232",
+      "content_id": "sha256:f9bf5c5a612f01222d3f78bf5e6eb83bf8f3dd5a44704a56544f2404baabaa29",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2792,7 +2792,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_attack_burst.png",
-      "content_id": "sha256:673b7de345e1f4efc14219425f745f74c408216a6e8b79bfbd5cc392f2f4f864",
+      "content_id": "sha256:061fd30c531122ab5ca5647eb8bee32b49c2145b519d47531d126419b5de0272",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2860,7 +2860,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_attack_shot.png",
-      "content_id": "sha256:7cbba13c318b4db23970d3c0515d69d1777f5d654bf7c256bc6651228c2be8ce",
+      "content_id": "sha256:a58189af66b5871b0fc43cfa45f8f28b2de06cedcf08512753db3741bff5ee87",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2928,7 +2928,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_defeat.png",
-      "content_id": "sha256:378671137f1db1d9410936969a190144854203622dac04c70eddf635d0b1c69f",
+      "content_id": "sha256:c652b415abdac6a594a2f9ee814123b7bb1e8d3f9723887e8aa759a141917d04",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -2996,7 +2996,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_hit.png",
-      "content_id": "sha256:988afd5c5646ad75d571ff01fb4d4a64dc1e639974d4b189a5a57513ea2867d6",
+      "content_id": "sha256:fb21f2acf372461b19d40cc36f9e070557be46889385ac291befb5a9b6d241f2",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3064,7 +3064,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_idle.png",
-      "content_id": "sha256:deab449c70d52ea00a6b449dec2985f07cf787713a838ca7613d9e31b9021737",
+      "content_id": "sha256:03270a9cdadd8e48baaa0e63040439ce51bc2aaae7de5d58f180716ef3f49db3",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3132,7 +3132,7 @@
     {
       "asset_key": "asset.monster.lang_da.dom_dom_ma.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/dom_dom_ma/dom_dom_ma_move.png",
-      "content_id": "sha256:11babe10fa0a96f2828cc126067e57a2cdc64bcf63c70d041eb722d884d2e8af",
+      "content_id": "sha256:d19bf3a712a34a7363e0c5dd8e036ed443c90baa76a60ec1f6a5eb0476037052",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3200,7 +3200,7 @@
     {
       "asset_key": "asset.monster.lang_da.hon_do_trang.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_do_trang/hon_do_trang_parts.png",
-      "content_id": "sha256:1bb527ca1e6b06a1796a9ddded779fe05f40a2f6c6e94297f9109b6f151c1955",
+      "content_id": "sha256:b45129472a0d7e487968acb8316976ca5f80174538a96788041ceb803f780a9f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3268,7 +3268,7 @@
     {
       "asset_key": "asset.monster.lang_da.hon_ma_co_thu.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_ma_co_thu/hon_ma_co_thu_parts.png",
-      "content_id": "sha256:7b45a72c2160db8eef21585c5c0fa12b8d1c9d862ba1547279958ad417931b73",
+      "content_id": "sha256:767513b2f2b78f8c5c1ad695babc60b6094a8296c9238cf8fde765c6f1914e4d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3336,7 +3336,7 @@
     {
       "asset_key": "asset.monster.lang_da.hon_xo_non.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/hon_xo_non/hon_xo_non_parts.png",
-      "content_id": "sha256:4e4aa8103a2f7ff477902d4bc40aff8ac0feb0e47a926f917d6c054536bed853",
+      "content_id": "sha256:a61f8290c74291765d4ba39e0e213c54d61ed6d01ab92e91ebe5991e3948cfe4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3404,7 +3404,7 @@
     {
       "asset_key": "asset.monster.lang_da.ma_xo.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/ma_xo/ma_xo_parts.png",
-      "content_id": "sha256:47fe84142c3694dc21ad7d103b083de39918fb8b1737d532ab64da30eff4d73a",
+      "content_id": "sha256:14ef3fd760610d6b46377a14678df93f8427b000d792b022c68a254562396d0e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3472,7 +3472,7 @@
     {
       "asset_key": "asset.monster.lang_da.quy_nhap_trang.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/quy_nhap_trang/quy_nhap_trang_parts.png",
-      "content_id": "sha256:954f4d4d33bb4f0c82eb4bee366d051518572e2358fee1419b5536c3383e3381",
+      "content_id": "sha256:362217f493665f77e08844913a7091f80110b1dbb1fce56e3fd9a7d48cc39c00",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3540,7 +3540,7 @@
     {
       "asset_key": "asset.monster.lang_da.vong_hon.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/lang_da/vong_hon/vong_hon_parts.png",
-      "content_id": "sha256:cbd235eb916d927ec0bae116ca4df95c59b6a13b37da5bc7cbe2ecc5ddb2ecca",
+      "content_id": "sha256:5d4e0b13da83bf3931f5441f1509bbfa32e1972320927cbd8d965bd26c24b639",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3608,7 +3608,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.bong_vong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/bong_vong/bong_vong_parts.png",
-      "content_id": "sha256:7d8dcde2fdb59c576fb641992eff0fa4a3565b196db86f6a20e0670ea71e97b9",
+      "content_id": "sha256:b4e68dcda68158729fb3b51826dca8c5e61e5b2ad2bd3b3de21e4a350f3e624d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3676,7 +3676,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.hon_binh_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/hon_binh_co/hon_binh_co_parts.png",
-      "content_id": "sha256:611a284d5f225ab0de3afa2045a9286ae858f096a9da796a07b3a157576e9d12",
+      "content_id": "sha256:84e69ec529b03e779ad26f4285207f6b77b811148b5d9bd7a637f3fe4d09ff18",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3744,7 +3744,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.linh_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/linh_ve/linh_ve_parts.png",
-      "content_id": "sha256:4041cbcf293d666b11d020568299cd5193326d29be390f4b9a2112a80cd07739",
+      "content_id": "sha256:368f22a72e051c9f5525a511a8cbd9f447500e5ab30d515073d9b8270d8654ab",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3752,7 +3752,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "942dc1263e22a9c001eb2e8b2aafbce2972c8d0050a2908478b7dc76ca546ab5",
-      "final_sha256": "b1b7fdd6af5bc4915cdc4836d5600d4862ec3c61136fa8f9d012f1f7ac592b19",
+      "final_sha256": "368f22a72e051c9f5525a511a8cbd9f447500e5ab30d515073d9b8270d8654ab",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -3812,7 +3812,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.ma_nui.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/ma_nui/ma_nui_parts.png",
-      "content_id": "sha256:5afcc4aeaa7db53c52724614d6fbccbb020f0f431cd9fb0f13f8871ec7176fe9",
+      "content_id": "sha256:8e592f72ae4afe1d22b625278845a2b298817238f31e6177f4ba9f99aaed03ac",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3880,7 +3880,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.ngu_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/ngu_tinh/ngu_tinh_parts.png",
-      "content_id": "sha256:c213a9f937b60025d3bba1741997b911bd4d07bbddb828c85d081a36f745e5b8",
+      "content_id": "sha256:288f0710d3fc583067c08de16ee352d55ad3d2231b1f72bec6434a6c5d41d252",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3948,7 +3948,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.than_rung_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/than_rung_dem/than_rung_dem_parts.png",
-      "content_id": "sha256:cdae5659e55e894a846e37e07cf9e5bdc405d8d30b633b40c25bf75c599980c0",
+      "content_id": "sha256:eca17d0e782aa688b8d779d9931bac5cb539544e04902d93bbf6d6fffb9ce884",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -3956,7 +3956,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "01f861cf209411a9a0b205dc1fc70753b5fa50bfafdf8a64b5d39010a4e7dd7f",
-      "final_sha256": "2190d864920725044a46d0f4dcc1cb48c07cfbc109c61bba9885eb16391e7acc",
+      "final_sha256": "eca17d0e782aa688b8d779d9931bac5cb539544e04902d93bbf6d6fffb9ce884",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4016,7 +4016,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.than_trung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/than_trung/than_trung_parts.png",
-      "content_id": "sha256:18e6b2a0e8cf58d0335d448046f8ea3ffae9ed3ddeee276991063424c32c7ba5",
+      "content_id": "sha256:c076eca8425f9ddb974b890f9a94fb82c48f95deaf85ce0450b98931cb0f722b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4024,7 +4024,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "1a2381a60fd3f09c574356383568de3886510dabc4a82e0ad94641e94054c9f0",
-      "final_sha256": "4375b1130c7586ebb217dadb83fa08c239129cbe6e436651600cf708f9731b1d",
+      "final_sha256": "c076eca8425f9ddb974b890f9a94fb82c48f95deaf85ce0450b98931cb0f722b",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4084,7 +4084,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.tinh_nui_gia.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/tinh_nui_gia/tinh_nui_gia_parts.png",
-      "content_id": "sha256:091aba7d6ea4c8f5ac7eb1acd6c41472d83fe8da073d9bb6aa867b12b9928006",
+      "content_id": "sha256:00c0cd993aee50f722008133c42e4140bc1ede8d087818051ee4fc7356bbcdf0",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4152,7 +4152,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.tinh_thu.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/tinh_thu/tinh_thu_parts.png",
-      "content_id": "sha256:42cb14027508549f428de6871028adac03d2f8b76cf72a66302d855b1a2ab4cc",
+      "content_id": "sha256:d067424408fe5137cc36cb03a35719b60e92d9a28ed51dea15845946cb09e9e4",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4160,7 +4160,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d4b2d2c6236b28edfd85acd1b1db82596ac5574084dfc36bda60e8911fcbb071",
-      "final_sha256": "0f2753f485608840a0ed37a151530f63e3d1d7ee2877a8618e86757c37bb54bb",
+      "final_sha256": "d067424408fe5137cc36cb03a35719b60e92d9a28ed51dea15845946cb09e9e4",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4220,7 +4220,7 @@
     {
       "asset_key": "asset.monster.nui_thieng.vong_linh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/nui_thieng/vong_linh/vong_linh_parts.png",
-      "content_id": "sha256:8e6ee960279e995cc8f6cf0f4b2ecfb29e3160fa439b8827ef9f4ce174dcfb24",
+      "content_id": "sha256:393478d41365b55a3398f45359ebbe43e9c52c8eb2e9492f11d320f97ca82647",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4228,7 +4228,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "9d77ab471cc13f1e491802f55665d4f4f6ace21cc413b6e8dfba0ba6f434c921",
-      "final_sha256": "65fa052ee7de60ef13094bfdb479e4a814f3812a03a012d9d5e6d806f0bf68be",
+      "final_sha256": "393478d41365b55a3398f45359ebbe43e9c52c8eb2e9492f11d320f97ca82647",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4288,7 +4288,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.bong_nguoi.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/bong_nguoi/bong_nguoi_parts.png",
-      "content_id": "sha256:a3c0aec9ff05b1a752a2cbffc1441404603117dfc84944dd2e8139ae915a9617",
+      "content_id": "sha256:1b8ec26656b6003da6e987412c36bd8f0bee4330874f51a3a6a93e9705c98961",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4296,7 +4296,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4566f71dac1dc89f4b7613ef7e6ab6e8396f54789b06e18762c739a9aba8a068",
-      "final_sha256": "1ffad06c0bbe17a8dcf205fe678865bb3b30864dd161f71abdd8c59ab1e1b8e4",
+      "final_sha256": "1b8ec26656b6003da6e987412c36bd8f0bee4330874f51a3a6a93e9705c98961",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -4356,7 +4356,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.burst.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_attack_burst.png",
-      "content_id": "sha256:c5e80c06b542e7474c9cc8f17b09e69184ea53a75756292829757f8062d59068",
+      "content_id": "sha256:4e45051dc82857d5a4770dafecd9f0108822fb4092a027974368c516143bea8c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4424,7 +4424,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_attack_shot.png",
-      "content_id": "sha256:5f912b3b9a8a0f8cc7a5a5e7ddc4d92b3b2d214493e493c1460dbe4bf8df424a",
+      "content_id": "sha256:f93ba58af7bef094107279862e1aba830e9dc010f3a004de3252bc6f8a5b8005",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4492,7 +4492,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_defeat.png",
-      "content_id": "sha256:a03e55708199c94ffcd67788a8744fadb0d3f6a75c4651b74f03cb2e25c16877",
+      "content_id": "sha256:de70864e347129214cbf011f69db003439402073d037e58ca47bb501b28f7a9a",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4560,7 +4560,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_hit.png",
-      "content_id": "sha256:23f6a845ed485480c9f0b19355d6366c9a6fecd381be7406860321922548074b",
+      "content_id": "sha256:49bcb38f9cf72cd387600cd8ab78aad3eeceed739745d017630cb31c1391bfcb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4628,7 +4628,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_idle.png",
-      "content_id": "sha256:9d95192238c1e43916b34a831ff727a48ae740cefad9c2a8bb793f34e4333783",
+      "content_id": "sha256:6047cff3e65b45410b82cb895a6805b31e02f18513a3e082601273a0539999de",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4696,7 +4696,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.dom_lua.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/dom_lua/dom_lua_move.png",
-      "content_id": "sha256:cb58d18de53170474fbab0ca3251e7b075ebbf4c9f8d8a18e7ecf97d6251f03c",
+      "content_id": "sha256:01381ca6616c78b87abafe4808fba225d37d7b79f143712068196fb5a2f3982d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4764,7 +4764,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.ma_rung.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/ma_rung/ma_rung_parts.png",
-      "content_id": "sha256:2eb39ff632b0a1344bd2e2f5cf59df0ad4e5eefb43a98ef8be70b97bc8be51cb",
+      "content_id": "sha256:971b6ee0e51e0bba50ded9c7149274457adeea66e1b9dd5e68a09fb6f0425cd6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4832,7 +4832,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.ma_tranh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/ma_tranh/ma_tranh_parts.png",
-      "content_id": "sha256:4576166dd08df797ea0bceb1139ead4a7af4811ea8581f4fbbce6affd7f2c109",
+      "content_id": "sha256:9647dbadc0704de5b6a06dd1ab38fd725984e97d1c5156e7d0fb2a1a181a3f5f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4900,7 +4900,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.moc_tinh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/moc_tinh/moc_tinh_parts.png",
-      "content_id": "sha256:597ccdeb450d892dc41e0d81e5284ca465ff9d22ae9f6a2affa0bf30cc9d252d",
+      "content_id": "sha256:5ac3b242b5126b50cc08952834abe62589a946c531698091949d9884bd65df65",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -4968,7 +4968,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.tinh_cay.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/tinh_cay/tinh_cay_parts.png",
-      "content_id": "sha256:4bea3b04503cb490c0437b260ed77298bf1e9fda4599a9d0fca5f9d7446284a2",
+      "content_id": "sha256:96b924d2ec3a9db4bf95ea3f60039d8a40b59982ccef825d40c41ddc0d91ec91",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5036,7 +5036,7 @@
     {
       "asset_key": "asset.monster.rung_u_minh.vong_rung_sau.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/rung_u_minh/vong_rung_sau/vong_rung_sau_parts.png",
-      "content_id": "sha256:8d2e82e2314f77f98c9f10845a07d499af1075461e3e9b90d4c53769292f1edb",
+      "content_id": "sha256:b1c3d8ac6380a8274236c3641ae79401133eddef76967b92e379675edacf72a8",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5044,7 +5044,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "ac17fd3f970c769b206931db9997864422bb0ca06fd2fa2ab7c148da7d3ee1bc",
-      "final_sha256": "6b31c049357cc365e5e176b407ef727338fd1692b53ac627a4d88363d19b096b",
+      "final_sha256": "b1c3d8ac6380a8274236c3641ae79401133eddef76967b92e379675edacf72a8",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -5104,7 +5104,7 @@
     {
       "asset_key": "asset.beast.moc.chim_lac.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_cast.png",
-      "content_id": "sha256:a6cf9618602a6bd47c522116c7dc4bd69d06246f896d08bb04ebb476fbb4a62b",
+      "content_id": "sha256:111e59777eebddb73af0c79175ef16b73ca6a48010680f1265083f27fe778b2f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5172,7 +5172,7 @@
     {
       "asset_key": "asset.beast.moc.chim_lac.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_idle.png",
-      "content_id": "sha256:1e6bc9666f4e6155849487e51243f3ae1376cce43b5af9e15b3309f264990ae2",
+      "content_id": "sha256:485460b66ad65cf3809a4b62bac0648f2c1f5d590c6e45555823e2314bfd50ac",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5240,7 +5240,7 @@
     {
       "asset_key": "asset.beast.moc.chim_lac.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/chim_lac/chim_lac_move.png",
-      "content_id": "sha256:c5af58cd16274e519d7f9795b74f3bf6bd2aa2f0bf3f849bfd11bf4ff59c8204",
+      "content_id": "sha256:c27bfe716edc0ed83dc0d9996dfe46866b1fd550466f96db0f86b2409a6a6930",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5308,7 +5308,7 @@
     {
       "asset_key": "asset.beast.tho.coc_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_cast.png",
-      "content_id": "sha256:3e5a472180e3cebe72eb423ba211b384c0a3cb7baa2890c74c105a189c5fd667",
+      "content_id": "sha256:43005123d92b85b519358a8dac611e582158b37686521caad64afadbaaa3ce45",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5376,7 +5376,7 @@
     {
       "asset_key": "asset.beast.tho.coc_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_idle.png",
-      "content_id": "sha256:759d2c402013a8da3348c1f59b5a894ca69c06fe5ea9241b4f36bca3dc4c21bf",
+      "content_id": "sha256:43341e8b9ca4ed6d8a643f1dc7885691b1c804eecd9deb7c4274519d5b84c114",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5444,7 +5444,7 @@
     {
       "asset_key": "asset.beast.tho.coc_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/coc_than/coc_than_move.png",
-      "content_id": "sha256:3fe0bafe5fd146af30ab61601ebc6f78b4570163ca1b6f00bf6c3ee023f35ac8",
+      "content_id": "sha256:619252ad32c63db3da365e8830bca81632077c412743db4f1666f66de94962b5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5512,7 +5512,7 @@
     {
       "asset_key": "asset.beast.hoa.ga_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_cast.png",
-      "content_id": "sha256:fde425da44b0526d3db2a388cc05c8feaedd940b9e87ae867c0fa55221223bc4",
+      "content_id": "sha256:a36a34b5c45ebd7413bd689f6f066a68524c618130f9d50134d43b2c174d7aef",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5580,7 +5580,7 @@
     {
       "asset_key": "asset.beast.hoa.ga_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_idle.png",
-      "content_id": "sha256:1f361b94e22da9608fed01f4ac0d2f6964eec819c69f213a1383b36108b9664a",
+      "content_id": "sha256:b3eb61632c3a25fafa541c10a4272f520f3ea6e797fa5ffa2e13296f7e83b200",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5648,7 +5648,7 @@
     {
       "asset_key": "asset.beast.hoa.ga_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ga_than/ga_than_move.png",
-      "content_id": "sha256:01557fa5ae667288d871db9c3e19bc7466772499a40d565f09b9111882814cdb",
+      "content_id": "sha256:39dc19ddfafe4213d74e6667de814778cac06e4d9705e0919e5a0069c389ed48",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5716,7 +5716,7 @@
     {
       "asset_key": "asset.beast.kim.ho_vang.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_cast.png",
-      "content_id": "sha256:c872c9dce037e1302b80cab5c03a9a41472403a5d1c09e4660f3572772746f8e",
+      "content_id": "sha256:4749647ff2da89ffa16de8228f3dd444a3c1a90bbe80fdbe12b9e0572b4d4e7d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5784,7 +5784,7 @@
     {
       "asset_key": "asset.beast.kim.ho_vang.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_idle.png",
-      "content_id": "sha256:9fa39c78971505511c2b5da59d6c112e6b0007355ae26d3cd092b239a3db55f8",
+      "content_id": "sha256:d5058cf1f3c8b3e1267ec162b6c34a2018204cffe59998d8f52b4c4f28468c7b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5852,7 +5852,7 @@
     {
       "asset_key": "asset.beast.kim.ho_vang.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/ho_vang/ho_vang_move.png",
-      "content_id": "sha256:fb6bebc97314d94a37fab608855206628e9056bddf9c2a94e9bebd178fdc87cf",
+      "content_id": "sha256:e514424f95a2dc93b6fb40494803f7b8a611762ff3ee808c44f15d8dc61e2d4b",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5920,7 +5920,7 @@
     {
       "asset_key": "asset.beast.hoa.hoa_diep.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_cast.png",
-      "content_id": "sha256:45e69833e23f4d9dc191a333c2b1b83338b8bc25275e86730ca3bf20d99135eb",
+      "content_id": "sha256:0890c212046e071aae0868902bf2fc56acd70738fe525f2e79b9f7e84240c0a0",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -5988,7 +5988,7 @@
     {
       "asset_key": "asset.beast.hoa.hoa_diep.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_idle.png",
-      "content_id": "sha256:e31d8e6ad30a224be1d64fcffd3140430bab50569887c0cf7ab7e827c5f6fad3",
+      "content_id": "sha256:cfe6e539dcf6456298f3b5cb7a0c0f13d46174347d503cc27689aaa9b3892e40",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6056,7 +6056,7 @@
     {
       "asset_key": "asset.beast.hoa.hoa_diep.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/hoa_diep/hoa_diep_move.png",
-      "content_id": "sha256:989bc41f46e195493acaab28e0d1a451eb6370693c70e3a789d5bec124b6678a",
+      "content_id": "sha256:ed7713b59ee5dc33f88e9d5e23f1ec373f1d77e7e31b975c5e3046ec7780934f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6124,7 +6124,7 @@
     {
       "asset_key": "asset.beast.moc.huou_sao.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_cast.png",
-      "content_id": "sha256:fba50a1e3250a2c5bbd512e01d70dfaa3aba485de350986c9f51b94c2dcfdd3c",
+      "content_id": "sha256:6397c35caa78953dddd83f08f599764bc07044860137eea05baaa8125b068f44",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6132,7 +6132,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b1f0906641d02301ea2b336d732b81c8545ccb7ce9b3cb77ca048d22e8a172e2",
-      "final_sha256": "2590a0a5b33e4dd139b37d49a7452d41ec15274d74fb097b462e976c52507c4d",
+      "final_sha256": "6397c35caa78953dddd83f08f599764bc07044860137eea05baaa8125b068f44",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6192,7 +6192,7 @@
     {
       "asset_key": "asset.beast.moc.huou_sao.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_idle.png",
-      "content_id": "sha256:d65b60088740cc3a0c3812e6c547d512b599c8aebf7ec8f7dde9a59f5ed3a269",
+      "content_id": "sha256:5e36dfe116054f6e0fbab5aba4df554ad422682691db425e2f89f2a609cbfc7c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6260,7 +6260,7 @@
     {
       "asset_key": "asset.beast.moc.huou_sao.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/huou_sao/huou_sao_move.png",
-      "content_id": "sha256:cfab4a1a2642ebfb517e497ece5cdea3995529da98c541c3f4f712209a5504e8",
+      "content_id": "sha256:c914af7bfdebe716cd45672f840fcd6f48f10f279b58afe0dd131952a7c09647",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6268,7 +6268,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b1f0906641d02301ea2b336d732b81c8545ccb7ce9b3cb77ca048d22e8a172e2",
-      "final_sha256": "8172e06587eed8c97450ec41eeb7187e0e8b9e2bbf7aee1db37bdafa861e35cf",
+      "final_sha256": "c914af7bfdebe716cd45672f840fcd6f48f10f279b58afe0dd131952a7c09647",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6328,7 +6328,7 @@
     {
       "asset_key": "asset.beast.kim.nghe_dong.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_cast.png",
-      "content_id": "sha256:8555d63261cc793884771d66c6fc3a4b14a312a53a8d7f8a11a520296dcb46a3",
+      "content_id": "sha256:372edf6c34ab7f1cd38349e9d90f3c3fd59ec0459492da963000ab7e58816bca",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6396,7 +6396,7 @@
     {
       "asset_key": "asset.beast.kim.nghe_dong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_idle.png",
-      "content_id": "sha256:2b1b998a5b58c888498238c2813024c1b8ecc8d7c94a876e12b747c27aad7794",
+      "content_id": "sha256:4333c1166e0998cf1313940bbda78cfbc4c528d175ed8bd3ea31f7122870ca1e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6464,7 +6464,7 @@
     {
       "asset_key": "asset.beast.kim.nghe_dong.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/nghe_dong/nghe_dong_move.png",
-      "content_id": "sha256:097968c1e93e27c0942efd13a7139f96b2f18382cc16fe383c4dab68e0dfd97b",
+      "content_id": "sha256:f1871838957525cb19e5162eab7e80fb64064bcae024d0269b2695f015073bd9",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6532,7 +6532,7 @@
     {
       "asset_key": "asset.beast.thuy.rai_ca.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_cast.png",
-      "content_id": "sha256:ce2c3dbed083c5c901740f2c3a3381da07a036a8ebda2cec98e1e4b3d7672f51",
+      "content_id": "sha256:286f9e7ae1ffa924112c7c2cdde70c426467d15a25679d138f9c71e3c37a7be1",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6540,7 +6540,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c7495ffcde1aeb0487228a838a8dc49acd625269bbc9a93094b727f94472445d",
-      "final_sha256": "33bf97aed5e4e64913b6aa205ecf703183048a903fcbc6e824e6234565e28ae6",
+      "final_sha256": "286f9e7ae1ffa924112c7c2cdde70c426467d15a25679d138f9c71e3c37a7be1",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6600,7 +6600,7 @@
     {
       "asset_key": "asset.beast.thuy.rai_ca.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_idle.png",
-      "content_id": "sha256:867a32aaddb4e8a7a0e749582044003ff3cf7ee35714decce02cb3d886816c32",
+      "content_id": "sha256:f31b07e043e17745597b0c5ea86999dbc4ebdd34c0235718b5eccadf1da240a9",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6608,7 +6608,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c7495ffcde1aeb0487228a838a8dc49acd625269bbc9a93094b727f94472445d",
-      "final_sha256": "19071c48c3fd6fced2146e979306dbbc5a377bd05dd6fd15fc50fd26cfd3bac4",
+      "final_sha256": "f31b07e043e17745597b0c5ea86999dbc4ebdd34c0235718b5eccadf1da240a9",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6668,7 +6668,7 @@
     {
       "asset_key": "asset.beast.thuy.rai_ca.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rai_ca/rai_ca_move.png",
-      "content_id": "sha256:f98cb127366fe036ca8df5fd6d4a448a3df42b34812816894454df648f6999bf",
+      "content_id": "sha256:d99832565bed7b406559fb7ae9e56e9f1002a42ae54f0aeba356675c6b8ae0af",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6676,7 +6676,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "c7495ffcde1aeb0487228a838a8dc49acd625269bbc9a93094b727f94472445d",
-      "final_sha256": "39f9d2056782af7a85ea4198e4d2b8536c64bd908ad18d760b1ef37a2c52ce4e",
+      "final_sha256": "d99832565bed7b406559fb7ae9e56e9f1002a42ae54f0aeba356675c6b8ae0af",
       "changes": [
         "magenta background keying",
         "fit to SPIRIT_BEAST cell 2x",
@@ -6736,7 +6736,7 @@
     {
       "asset_key": "asset.beast.thuy.rua_than.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_cast.png",
-      "content_id": "sha256:2c14cf5195d160bb53e7b978856261d1c40177f5daa15331884875fb4c31027a",
+      "content_id": "sha256:6ce42923b2407c0d3eb55604927637bc8e9aa20d9abe4e154ad6a8b974d08e55",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6804,7 +6804,7 @@
     {
       "asset_key": "asset.beast.thuy.rua_than.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_idle.png",
-      "content_id": "sha256:234f779fae7553f7c5350a71fae362aa69a4170bee8544447ccb153e7eef083a",
+      "content_id": "sha256:250b5e25590407a6c1733f2e522fe9a4ea7d871b1b541ce30ff8ee6acbf4bdb5",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6872,7 +6872,7 @@
     {
       "asset_key": "asset.beast.thuy.rua_than.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/rua_than/rua_than_move.png",
-      "content_id": "sha256:573a5c59efc1d88adbe4c7b80dbd9721e611b902dd09dfb002ba91ba9e85858c",
+      "content_id": "sha256:42053b0ae18338610d591b52ef81f0c724a37de32e85cac249760923cae10715",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -6940,7 +6940,7 @@
     {
       "asset_key": "asset.beast.tho.trau_dong.cast.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_cast.png",
-      "content_id": "sha256:b21652167991497f1c66fa967f04fe7f33d721996fd0b244599013da39eb5a5a",
+      "content_id": "sha256:86ed4f2d54656857db2d5e8687905b9d34c5d567806b9625ffc24e0a58ed753e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7008,7 +7008,7 @@
     {
       "asset_key": "asset.beast.tho.trau_dong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_idle.png",
-      "content_id": "sha256:eebda7ef1879262f0d6a7243f318739a13babddd2b621be7e446fbbe4bdf8bfb",
+      "content_id": "sha256:5819f96438c898d255503d441fc3518e816edc3e9a5fc86689c98af5ce407b40",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7076,7 +7076,7 @@
     {
       "asset_key": "asset.beast.tho.trau_dong.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/spirit_beasts/trau_dong/trau_dong_move.png",
-      "content_id": "sha256:52dc3cb70a4831d6a78c7ec69cd2c3f54f11dab36e0c7daefbaf4446a0c963c3",
+      "content_id": "sha256:dc862001c1dc03af88a6ccc69457097084ebda2b922490385091883198965e40",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7144,7 +7144,7 @@
     {
       "asset_key": "asset.monster.thanh_co.hon_binh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_binh/hon_binh_parts.png",
-      "content_id": "sha256:6ce4efdc338ec2289c6314079e42de1d2f88c6808dd2f231e9cb5e3f2495da8d",
+      "content_id": "sha256:e128ac41c474d9ffa693ae4360f75b2f565059ca6ce4a38b1f9ba7aa89b2c781",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7152,7 +7152,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "fd1385d5d9ac9203f1baf0ffb6674ade4f5e95b17a949c8d6c1b24f88a4c6ed6",
-      "final_sha256": "d7b6bfe8e92317c0e36909890744d14bb2a50d3b19149379e8672380888ce986",
+      "final_sha256": "e128ac41c474d9ffa693ae4360f75b2f565059ca6ce4a38b1f9ba7aa89b2c781",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7212,7 +7212,7 @@
     {
       "asset_key": "asset.monster.thanh_co.hon_tran_linh.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_tran_linh/hon_tran_linh_parts.png",
-      "content_id": "sha256:302491b2bbf101cb421a9251fa3a946b25b948f4145da03ad88cc5cea0a58a00",
+      "content_id": "sha256:4df248d712697964b095f5019dadbb5ce8d65e7e898af4b278fed936c25d2cbb",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7220,7 +7220,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "119c05968abba4b0640ed45702ca84621b6c83d2a4edbbdc6aa64175d391ebf7",
-      "final_sha256": "5c242ef1be664a3de57c0a565b7edb419dbf741e2455029bedc385c64a8eb8cd",
+      "final_sha256": "4df248d712697964b095f5019dadbb5ce8d65e7e898af4b278fed936c25d2cbb",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7280,7 +7280,7 @@
     {
       "asset_key": "asset.monster.thanh_co.hon_tuong.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/hon_tuong/hon_tuong_parts.png",
-      "content_id": "sha256:57aed14d749d24afec6251572c45831e5a824f3d0239fdb4f10c6a1330ca100c",
+      "content_id": "sha256:48f684cc22d7eea64a7d721627e021423f231f0fc0aa8fa36da7be8ea12fe439",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7288,7 +7288,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "b85d1191cd9005e31d144e637c27b287ab5e0531d6367fdb16f9a741386c49d5",
-      "final_sha256": "b61deff61b59b1ee4f1bfe7249337b4677c0ede98bb677f02be1d8dcdb2df495",
+      "final_sha256": "48f684cc22d7eea64a7d721627e021423f231f0fc0aa8fa36da7be8ea12fe439",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7348,7 +7348,7 @@
     {
       "asset_key": "asset.monster.thanh_co.ma_co.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/ma_co/ma_co_parts.png",
-      "content_id": "sha256:adc605565c4e1d58205b0dfde34080a57425ced76b8132211d1c8c5602ce0dce",
+      "content_id": "sha256:8cfb86f6349ba807ddc48a0304320e84e0a1182bff795f9082cd6eefec0561f6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7356,7 +7356,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d115b063711d2520ef745d04a142f5d74edfa125762bc86d4e6fc04bc23388f5",
-      "final_sha256": "64a6f962f46d5071baeef54b36fdbeb55f28e42d836de231d517a3ee4081e672",
+      "final_sha256": "8cfb86f6349ba807ddc48a0304320e84e0a1182bff795f9082cd6eefec0561f6",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
@@ -7416,7 +7416,7 @@
     {
       "asset_key": "asset.monster.thanh_co.oan_hon_dem.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/oan_hon_dem/oan_hon_dem_parts.png",
-      "content_id": "sha256:10c08fff712ce04a7130d9f1bd0e7a50ff3ebd490fd1f9d719de7c05f870a368",
+      "content_id": "sha256:3819129369582541d45f2abfd61558b6a64f9edbaacb9e37f61915b117b427d6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7484,7 +7484,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.shot.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_attack_shot.png",
-      "content_id": "sha256:038bac35c782e1e6afad43996743dfbb35e6de73cd3e5c5e5e2955ed039ec419",
+      "content_id": "sha256:4f18483d8d2d999590db58f7d77f96101e9925fef5309a5e05fca99b911e1efe",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7552,7 +7552,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.defeat.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_defeat.png",
-      "content_id": "sha256:b7a0d4343902f2c59d3df83951699b3c504c1fc28276e454339871fa5a29d9af",
+      "content_id": "sha256:0b6e595bad78c21c59a9383abf853212f203afe575cb3eb330100cd09c8ae63e",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7620,7 +7620,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.hit.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_hit.png",
-      "content_id": "sha256:0f130e9426d525e7a7a3104fd008c2c5fd9fe4f183f3aca4aab95e3fdd9ceda3",
+      "content_id": "sha256:45fd7b51954d07ff89d0558ead56cbfc95be0a4537729a8177a6510b262edd49",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7688,7 +7688,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.idle.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_idle.png",
-      "content_id": "sha256:c8e5e298a119b5c5216fb685253bd660c8c0584470985b8d464d38d2d283da63",
+      "content_id": "sha256:63761ffcf2d8b4a55b315da2813a59f534e2dbb3e5a2152ff880c8a4f19a6050",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7756,7 +7756,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh.move.anim",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh/qua_tinh_move.png",
-      "content_id": "sha256:35363fdcc36ebffd0447ecb847223e0157bdca727908b3c5993ab4fba980ddd9",
+      "content_id": "sha256:e4c6ca82d06419a9dae2fd3f271fa4bcd22b17b14651cb9d6b8fb18d0cf7b5cf",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7824,7 +7824,7 @@
     {
       "asset_key": "asset.monster.thanh_co.qua_tinh_lon.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/qua_tinh_lon/qua_tinh_lon_parts.png",
-      "content_id": "sha256:1c28360afe6d509db32452cc446d685a58b797531436df93b827ab3f1bfdfff2",
+      "content_id": "sha256:d709d84a1e835f3c4a5b97652b950da5fcab9ba730e6ed7bc221601619c38f7f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7892,7 +7892,7 @@
     {
       "asset_key": "asset.monster.thanh_co.thach_ve.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/thach_ve/thach_ve_parts.png",
-      "content_id": "sha256:8a947ab06c6087cf9c90c514cbc79dbb77d9c5d4b0ca49e690ccdf20452d8b12",
+      "content_id": "sha256:7ba07ebba643f92616e9e5ecdb72a0d606c21c5d0bdbb8a69365a5b3b2b96724",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -7960,7 +7960,7 @@
     {
       "asset_key": "asset.monster.thanh_co.tuong_da.parts.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/thanh_co/tuong_da/tuong_da_parts.png",
-      "content_id": "sha256:914824ee8ccf3fc77f5ae1c7c42e89a90d5c7a2075e9158a94de84196edd91ab",
+      "content_id": "sha256:1dbad3feb6077c331553699293005bdca86a4240d9408ec64b0d2f7078168b23",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8028,7 +8028,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
+      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8096,7 +8096,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
+      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8164,7 +8164,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
+      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8232,7 +8232,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
+      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8300,7 +8300,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
+      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8368,7 +8368,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
+      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8376,7 +8376,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "08ad33aee1411edd617806ffce364fe58782f046468acc8c4d874c0b3c36f985",
-      "final_sha256": "8db9d551a68936aedc04efb572a79ea9331ffff7f84e51dde5c1697724f76405",
+      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -8436,7 +8436,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
+      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8504,7 +8504,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
+      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8572,7 +8572,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
+      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8640,7 +8640,7 @@
     {
       "asset_key": "asset.npc.ben_nuoc_den.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/ben_nuoc_den/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
+      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8708,7 +8708,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
+      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8776,7 +8776,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
+      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8844,7 +8844,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
+      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8912,7 +8912,7 @@
     {
       "asset_key": "asset.npc.deo_may.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
+      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -8980,7 +8980,7 @@
     {
       "asset_key": "asset.npc.deo_may.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
+      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9048,7 +9048,7 @@
     {
       "asset_key": "asset.npc.deo_may.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
+      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9056,7 +9056,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "0647cca259f79dbf271ce2f63fbde829d6ed5df4bc74f7c9c7106b1d3e202822",
-      "final_sha256": "8db9d551a68936aedc04efb572a79ea9331ffff7f84e51dde5c1697724f76405",
+      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9116,7 +9116,7 @@
     {
       "asset_key": "asset.npc.deo_may.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
+      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9184,7 +9184,7 @@
     {
       "asset_key": "asset.npc.deo_may.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
+      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9252,7 +9252,7 @@
     {
       "asset_key": "asset.npc.deo_may.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
+      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9320,7 +9320,7 @@
     {
       "asset_key": "asset.npc.deo_may.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/deo_may/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
+      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9388,7 +9388,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
+      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9456,7 +9456,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
+      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9524,7 +9524,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
+      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9592,7 +9592,7 @@
     {
       "asset_key": "asset.npc.lang_da.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
+      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9660,7 +9660,7 @@
     {
       "asset_key": "asset.npc.lang_da.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
+      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9728,7 +9728,7 @@
     {
       "asset_key": "asset.npc.lang_da.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
+      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9736,7 +9736,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "df455f533f6b0f45280574521c95bc187cde15a10c1dff15d02d7d269247e7f9",
-      "final_sha256": "8db9d551a68936aedc04efb572a79ea9331ffff7f84e51dde5c1697724f76405",
+      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -9796,7 +9796,7 @@
     {
       "asset_key": "asset.npc.lang_da.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
+      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9864,7 +9864,7 @@
     {
       "asset_key": "asset.npc.lang_da.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
+      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -9932,7 +9932,7 @@
     {
       "asset_key": "asset.npc.lang_da.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
+      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10000,7 +10000,7 @@
     {
       "asset_key": "asset.npc.lang_da.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/lang_da/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
+      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10068,7 +10068,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
+      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10136,7 +10136,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
+      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10204,7 +10204,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
+      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10272,7 +10272,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
+      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10340,7 +10340,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
+      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10408,7 +10408,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
+      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10416,7 +10416,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "f29bdc1f7477ed803654f7a3136a47affecb10c2dd2063be1071ca5ca2b92f49",
-      "final_sha256": "8db9d551a68936aedc04efb572a79ea9331ffff7f84e51dde5c1697724f76405",
+      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -10476,7 +10476,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
+      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10544,7 +10544,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
+      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10612,7 +10612,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
+      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10680,7 +10680,7 @@
     {
       "asset_key": "asset.npc.nui_thieng.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/nui_thieng/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
+      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10748,7 +10748,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
+      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10816,7 +10816,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
+      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10884,7 +10884,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
+      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -10952,7 +10952,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
+      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11020,7 +11020,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
+      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11088,7 +11088,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
+      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11096,7 +11096,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "18751e578c537d76a06c5cd12ebe3161e12ddcd6632c01d50cccb4e70642fb12",
-      "final_sha256": "8db9d551a68936aedc04efb572a79ea9331ffff7f84e51dde5c1697724f76405",
+      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11156,7 +11156,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
+      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11224,7 +11224,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
+      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11292,7 +11292,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
+      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11360,7 +11360,7 @@
     {
       "asset_key": "asset.npc.rung_u_minh.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/rung_u_minh/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
+      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11428,7 +11428,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_day.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_day/ambient_day_idle.png",
-      "content_id": "sha256:2a377faca6c70e3edbd840fbaf6756a74ea1f278f70fa997e6195aadb7a8a018",
+      "content_id": "sha256:d61fbb984b814b9942fdbd6e39838ad6607103e5646a56b423b43f9a1f6a1c3c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11496,7 +11496,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_day.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_day/ambient_day_interact.png",
-      "content_id": "sha256:afb4997d93ae41ae7cc20295894c0941e0aa89497c8b2d5f1425a31b9716117a",
+      "content_id": "sha256:be682197a90bab9663bfba495b9aa457bd5b766598c8a60ba28c9156b915903f",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11564,7 +11564,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_night.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_night/ambient_night_idle.png",
-      "content_id": "sha256:b37943bbfb00b8eda89a9a81961a7d4d3f86d0c6fc7c976450f11ec7b147ade9",
+      "content_id": "sha256:aef2cb4bcba80c2a318e5274d70b08b6b12f8dba1eec44c746b3ab20b6a44de6",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11632,7 +11632,7 @@
     {
       "asset_key": "asset.npc.thanh_co.ambient_night.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/ambient_night/ambient_night_interact.png",
-      "content_id": "sha256:e1d10c98db3997d7141c95872b3d4b86a0154bf66c221e28c3e118b2a0a84aeb",
+      "content_id": "sha256:b7d7b39a6ff1490fa8c5577dec5e169acee0c0dacef74da2e057c1966311a414",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11700,7 +11700,7 @@
     {
       "asset_key": "asset.npc.thanh_co.hang_quan.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/hang_quan/hang_quan_idle.png",
-      "content_id": "sha256:35bb72174ba06c11cb59f1f7f1ac38adc1dcbbb70aebc80e556ff53211bbbed7",
+      "content_id": "sha256:2a522614ffd58035f54926a62446bf402cb38ea0e03aea9867320f85817e0e7c",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11768,7 +11768,7 @@
     {
       "asset_key": "asset.npc.thanh_co.hang_quan.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/hang_quan/hang_quan_interact.png",
-      "content_id": "sha256:bfa7a9b8c6707f1e07213c410ec451cddfbae8d522b4748a95b08bef9395fadf",
+      "content_id": "sha256:f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11776,7 +11776,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "4dd0d6963b504174293bb7daf9b7f443af6bc920bb9e0a4c7cd24b27bba534ac",
-      "final_sha256": "8db9d551a68936aedc04efb572a79ea9331ffff7f84e51dde5c1697724f76405",
+      "final_sha256": "f387f031e4291ae0558d33a646bfa83062af9699ddf50951777ee60acfe6f364",
       "changes": [
         "magenta background keying",
         "fit to NPC_HUMANOID cell 2x",
@@ -11836,7 +11836,7 @@
     {
       "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/nguoi_dan_duong/nguoi_dan_duong_idle.png",
-      "content_id": "sha256:ac43f0d476535e97267d7b516174423d6a65b3f76e0255848fdf545a41485f08",
+      "content_id": "sha256:2be8a87fb1b1e524ab081b62d4419f12c960292e7ae95e41ba59fc0f2fd83b94",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11904,7 +11904,7 @@
     {
       "asset_key": "asset.npc.thanh_co.nguoi_dan_duong.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/nguoi_dan_duong/nguoi_dan_duong_interact.png",
-      "content_id": "sha256:cb98ffc96a7567245f226879ea83d11cf9c54145c8cb4f396d008db6f4fe1530",
+      "content_id": "sha256:5dd0fb3fe9b8754c175f4fad4fe5c1b70c6387cf78beca7d1c5c1852f3b9fd07",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -11972,7 +11972,7 @@
     {
       "asset_key": "asset.npc.thanh_co.tho_nghe.idle.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/tho_nghe/tho_nghe_idle.png",
-      "content_id": "sha256:4abacd010c8e8e2389b30d2186791f9cd263860f7bd57d05d4389c1edd1c1cd4",
+      "content_id": "sha256:8ec369be4f54dc19b50b700fd336f62042ef0989cccc7dec84543b8c67deacba",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -12040,7 +12040,7 @@
     {
       "asset_key": "asset.npc.thanh_co.tho_nghe.interact.anim",
       "file_path": "client/Assets/Art/Actors/Npcs/thanh_co/tho_nghe/tho_nghe_interact.png",
-      "content_id": "sha256:efffb7b8ed905c76dc8e7f5ec9d947a2e1ba601ba03d99f0ba2f7e32cd197981",
+      "content_id": "sha256:b01f71f24a41a693bbe4bc227e7461020b40488ca79fa3dae84b3c8688ae678d",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
