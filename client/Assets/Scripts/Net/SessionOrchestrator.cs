@@ -136,6 +136,14 @@ namespace ThinhThan.Net
             }
         }
 
+        /// <summary>Destination of the in-flight TRANSFERRING_MAP entry
+        /// (attach_ok / transfer_prepare); null outside a transfer.</summary>
+        public TransferDestination? PendingTransfer
+        {
+            get;
+            private set;
+        }
+
         /// <summary>Current session epoch accepted by HELLO_OK.</summary>
         public ulong SessionEpoch
         {
@@ -353,6 +361,7 @@ namespace ThinhThan.Net
         public async Task ShutdownAsync()
         {
             _shuttingDown = true;
+            PendingTransfer = null;
             HeartbeatLoop? heartbeat = _heartbeat;
             _heartbeat = null;
             if (heartbeat != null)
@@ -536,9 +545,12 @@ namespace ThinhThan.Net
                 case WireIds.S2CTransferPrepare:
                     ApplyTransferPrepare((S2CTransferPrepare)frame.Payload!);
                     break;
+                case WireIds.S2CWorldBaseline:
+                    Replication?.Apply(frame);
+                    EnterWorldOnBaseline();
+                    break;
                 case WireIds.S2CDeath:
                 case WireIds.S2CRespawn:
-                case WireIds.S2CWorldBaseline:
                 case WireIds.S2CEntitySpawn:
                 case WireIds.S2CEntityDespawn:
                 case WireIds.S2CStateDelta:
@@ -573,7 +585,12 @@ namespace ThinhThan.Net
             if (ok.ResumedCharacterId.Length == 16)
             {
                 _attachedCharacterLive = true;
-                TransitionWorldTo(SessionPhase.InWorld, ClientUiState.InWorld);
+                // Resume enters TRANSFERRING_MAP (client_experience_contract
+                // .md §1: DISCONNECTED -> TRANSFERRING_MAP), never through
+                // IN_WORLD; the following attach_ok carries the destination
+                // and the entry baseline lands IN_WORLD.
+                TransitionWorldTo(
+                    SessionPhase.TransferringMap, ClientUiState.TransferringMap);
             }
             else
             {
@@ -601,7 +618,14 @@ namespace ThinhThan.Net
         {
             _attachedCharacterLive = true;
             _credentials.ResumedCharacterId = ok.CharacterId.ToByteArray();
-            TransitionWorldTo(SessionPhase.InWorld, ClientUiState.InWorld);
+            // CHARACTER_SELECT -> TRANSFERRING_MAP -> IN_WORLD
+            // (client_experience_contract.md §1): the attach destination
+            // authorizes the map entry; IN_WORLD lands on the new baseline.
+            PendingTransfer = new TransferDestination(
+                ok.MapId, ok.ChannelIndex, ok.InstanceId.ToByteArray(),
+                ok.ContentRevision);
+            TransitionWorldTo(
+                SessionPhase.TransferringMap, ClientUiState.TransferringMap);
         }
 
         private void ApplySessionReplaced()
@@ -622,6 +646,9 @@ namespace ThinhThan.Net
         {
             _fsm.SetPlacementPending(false);
             _fsm.SetDeadOverlay(false);
+            PendingTransfer = new TransferDestination(
+                prepare.MapId, prepare.ChannelIndex,
+                prepare.InstanceId.ToByteArray(), prepare.ContentRevision);
             TransitionWorldTo(SessionPhase.TransferringMap, ClientUiState.TransferringMap);
             byte[] transferId = prepare.TransferId.ToByteArray();
             _ = SendPresentationReadyAsync(transferId, CancellationToken.None);
@@ -667,6 +694,21 @@ namespace ThinhThan.Net
             }
         }
 
+        /// <summary>IN_WORLD is entered on the post-transfer baseline
+        /// (protocol.md § Phase Legality: "7 + baseline (300) received").
+        /// </summary>
+        private void EnterWorldOnBaseline()
+        {
+            if (_fsm.Phase != SessionPhase.TransferringMap)
+            {
+                return;
+            }
+
+            PendingTransfer = null;
+            _fsm.SetPlacementPending(false);
+            TransitionWorldTo(SessionPhase.InWorld, ClientUiState.InWorld);
+        }
+
         private void TransitionWorldTo(SessionPhase phase, ClientUiState ui)
         {
             _fsm.TransitionPhase(phase);
@@ -686,7 +728,8 @@ namespace ThinhThan.Net
                 _fsm.TransitionUi(ClientUiState.AuthTitle);
             }
 
-            if (ui == ClientUiState.InWorld &&
+            if ((ui == ClientUiState.InWorld ||
+                    ui == ClientUiState.TransferringMap) &&
                 (_fsm.UiState == ClientUiState.AuthTitle ||
                     _fsm.UiState == ClientUiState.LoginQueued))
             {
@@ -731,6 +774,7 @@ namespace ThinhThan.Net
             }
 
             _reconnectInFlight = true;
+            PendingTransfer = null;
             _fsm.DropToDisconnected();
             _fsm.TransitionPhase(SessionPhase.Reconnecting);
             while (_reconnect.CanRetry && !_shuttingDown)
