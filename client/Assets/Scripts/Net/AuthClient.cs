@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ThinhThan.Core.Runtime;
 using ThinhThan.Core.Session;
 using UnityEngine;
 
@@ -161,6 +162,9 @@ namespace ThinhThan.Net
                     var error = JsonUtility.FromJson<AuthErrorBody>(text);
                     if (error == null || error.error_code.Length == 0)
                     {
+                        Log.Error(
+                            "auth error body unparsed status=" +
+                            (int)response.StatusCode + " body=" + text);
                         return Result<TResponse>.Failure(
                             "TEMPORARY_DEPENDENCY_FAILURE");
                     }
@@ -178,8 +182,9 @@ namespace ThinhThan.Net
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error("auth request failed: " + e);
                 return Result<TResponse>.Failure(
                     "TEMPORARY_DEPENDENCY_FAILURE");
             }
