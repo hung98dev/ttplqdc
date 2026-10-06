@@ -1202,7 +1202,7 @@ require a folklore_card (ART-010) carry one.
 | `client/Assets/Audio/Bgm/rung_u_minh/dungeon_mieu_ba_trong_rung.ogg` | `asset.dungeon.mieu_ba_trong_rung.bgm` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
 | `client/Assets/Audio/Bgm/rung_u_minh/field.ogg` | `asset.bgm.rung_u_minh.field.bgm` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
 | `client/Assets/Audio/Bgm/rung_u_minh/town.ogg` | `asset.bgm.rung_u_minh.town.bgm` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
-| `client/Assets/Audio/Bgm/shared/duel_court.ogg` | `asset.map.pvp.duel_court.bgm` | FREE_LICENSED | CC0-1.0 | folklore_card required (ART-010) | REJECTED |
+| `client/Assets/Audio/Bgm/shared/duel_court.ogg` | `asset.map.pvp.duel_court.bgm` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
 | `client/Assets/Audio/Bgm/shared/five_element_arena.ogg` | `asset.map.pvp.five_element_arena.bgm` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
 | `client/Assets/Audio/Bgm/shared/five_seal_conflict.ogg` | `asset.map.guild_war.five_seal_conflict.bgm` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
 | `client/Assets/Audio/Bgm/shared/menu_main.ogg` | `asset.bgm.menu_main.bgm` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
@@ -1224,4 +1224,4 @@ require a folklore_card (ART-010) carry one.
 | `client/Assets/Audio/Sfx/ui_confirm.ogg` | `asset.sfx.ui_confirm.clip` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
 | `client/Assets/Audio/Sfx/ui_error.ogg` | `asset.sfx.ui_error.clip` | FREE_LICENSED | CC0-1.0 | license + source page + attribution | APPROVED |
 
-rows: 1207; approved: 1206.
+rows: 1207; approved: 1207.

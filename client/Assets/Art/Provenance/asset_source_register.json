@@ -67018,9 +67018,26 @@
    "attribution": "umplix (opengameart.org), CC0",
    "style_pack_id": null,
    "generation_record": null,
-   "folklore_card": null,
+   "folklore_card": {
+    "source_tales": [
+     "village communal-house yard (đình làng) martial contests; challengers meeting on the central wooden duel platform; heroic strings-and-brass challenge theme"
+    ],
+    "regional_variants": [
+     "lang_da"
+    ],
+    "motifs_checked": [
+     "torii",
+     "qing_robes",
+     "jiangshi_hats",
+     "kimono",
+     "hanbok",
+     "modern_religious_symbols",
+     "modern_political_symbols",
+     "meaningless_han_nom_chars"
+    ]
+   },
    "inputs": [],
-   "review_state": "PENDING"
+   "review_state": "APPROVED"
   },
   {
    "asset_key": "asset.map.pvp.five_element_arena.bgm",
