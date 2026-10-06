@@ -280,6 +280,7 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
             public string Rel = string.Empty;
             public LabPixels.Image Img = null!;
             public CutoutGate.AssetClass Cls;
+            public bool HumanoidFigure;
             public int MinBodyH;
             public int MaxBodyH;
         }
@@ -331,6 +332,7 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
                         Rel = rel,
                         Img = ArtRuleFixtures.LoadPng(abs),
                         Cls = ClassOf(fileClass),
+                        HumanoidFigure = band,
                         MinBodyH = band ? 176 : 0,
                         MaxBodyH = band ? 192 : 0,
                     });
@@ -352,7 +354,7 @@ namespace ThinhThan.Tests.EditMode.CosmeticArtCoverage
             {
                 var rep = CutoutGate.Measure(
                     j.Rel, j.Img, 0, 0, j.Img.Width, j.Img.Height, j.Cls, null,
-                    false, false);
+                    false, false, j.HumanoidFigure);
                 if (rep.Violations.Count != 0)
                 {
                     fails.Add(j.Rel + ": " + string.Join("; ", rep.Violations));
