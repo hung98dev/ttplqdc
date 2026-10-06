@@ -29145,7 +29145,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "c5222b8a31fe39b89f9ad52047d962cc60d9335ca462da868a0fa7731b2e7539",
+   "final_sha256": "de44c4f3961487f1ada49ebacb7fbe8a5604f47d2208e7b9932de7c920008b82",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29196,7 +29196,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "1431b03ddb3c31f515a4862fac3d7d63bb7a54f49f3854ce6c29c1a30134daa5",
+   "final_sha256": "6f3eb84cb775b850c62ca0bb1c43707fd9a1f04260e5df5d68404ef940e91b51",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29247,7 +29247,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "fb3fadb9eba430fe22aabf5c142a7f0aebd1d294a50dc0e2b9ffd8ea3906441c",
+   "final_sha256": "f143fe70307bb2e420121e20279805ba0425fd19904b3fa3e229fdf194e70ccd",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29298,7 +29298,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "bf50d01b3a3cf0f52c846be198d9d11b363e0d01d003ac7619e5f5e0614d24b0",
+   "final_sha256": "9cedc89af6f3e78faeb263d5bf6d9e4f6d69f02893e468da5748740366601578",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29349,7 +29349,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "ead798558cab9411aa432df88ddb2fc8892c799b7a0f815ec44f440fedd7f0b6",
+   "final_sha256": "c2b7572b3de11dbeb268ddf169e9ce501a2863080131eec3b22e70825bcbb2ce",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29400,7 +29400,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "d7123c2aad966036effa64f77a7855e967e1bd515f4155098edc4d70be0ceb38",
+   "final_sha256": "cbc2d93091653637fa969b4d59fbf9745f4b32749bd055fd02337e7b7c34c5c6",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29451,7 +29451,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "78c028fc6cb591cad7d173238139305a0a06cdd542c0755dbb12fb7da3c56b95",
+   "final_sha256": "1baba3ddfbddfe0d403019f1495d8636e1dbea56bfd016686aac288acf42a1b1",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29502,7 +29502,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "5b09b9999df02c5cf32f3fc623fdfdf09a2d3a7c45ef4846ba3767975b9994f9",
+   "final_sha256": "97a6442312c571c7ec64237c1ec1542638ec99412a542c9f7b1ec57aa0348dad",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29553,7 +29553,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "3327d2d5f713a80c5b6a798c14b6f69100616d16cbb3a57619bd258bfb6e5bb8",
+   "final_sha256": "626a6c48556501337960f8e1978652be8eabc1133e1ff6729556f815f75bf546",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29604,7 +29604,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "dac92b41b92a7d16ee50d6dba529c1c66e6279e36f96bda16cef870390b64a7a",
+   "final_sha256": "223648c4d8992f1e64e05271a6ca5572c17d94791791ca6e956f474bb147ceea",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29655,7 +29655,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "80850cbfa9978daf7e91f044b539f8bd1d2bca23445b263e6f1874f6433883d6",
+   "final_sha256": "b943eaceb36ebb595b61379a69081c393dbc65be673f5298f93ceb9aae84e87b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29706,7 +29706,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "43f613588544931dbd6ff5be01a52433031817285fe2085fbde2432fbb78d45c",
+   "final_sha256": "f8bf83872f9dfe61215f21df0e59776181da3b4be6bc6099b7ef353e8f0ed1bd",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29757,7 +29757,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "6205c2eb923f31fb7eb8a42f0e92f5438c403738967594328410c70aeb642d69",
+   "final_sha256": "065e19e26847c11d7c10e5f0ed1bfc3537807f9fc99f328dc367df7cfebedcf1",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29808,7 +29808,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "845834dcd673b75da21516c6decdd15b2c6d901105ff956f51f73f629ac01efe",
+   "final_sha256": "1392e81e27f792dfa2da510add047a4d0fec803d3fd37b180bf6d61fa9c75a0a",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29859,7 +29859,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "10346a495ad981e0ae39ef0d7911afb0b0738d37aaedde5dda9772fd312f8a96",
+   "final_sha256": "b75b5d5c46f460c7c80173d8b55d6dee373d13a7e31898a088006ae1fecd7f9c",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29910,7 +29910,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "fcc4341c26d2fe0392698b6e945975a3486928efa4cab463f877f9dab07d0f6c",
+   "final_sha256": "3825bd3ee48dba8f7aa52473ca3dc7e1719566e8477004af465c248b7df9a8c9",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -29961,7 +29961,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "6eb5ea2051312b62ba508c10359ac006ba4dc1eadced05b07f72214a8f5f36b5",
+   "final_sha256": "e6431a6aea3a43836c4c154a6b50726b2545064eadaa30111b8318bf86331dca",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -30012,7 +30012,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bcbd8fafe44229ee3af3a9810b47d382dd0c197c42e906d2699de0d6867e119c",
-   "final_sha256": "0a73d65d4dab5e17763c3fa4eab6e1fb99c9d849a667c826a86c48a2be401f5f",
+   "final_sha256": "80695230d6c128e7f51f03842b00b8969ac315ee640e850464d25652dce99e94",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -30063,7 +30063,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "bb5d9716f4bc9355fc0875e17749574ea29024a81a5563fd6b8541df7c40cc4b",
+   "final_sha256": "aa29d6da68464d8c127903b3a769c43ab531a541312422e8ea41e11f26d8ff59",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30114,7 +30114,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8afb98ce05b7f14b581187936d7a8910a61ed1be5ed0d7c15de3c4ad2ac984a2",
+   "final_sha256": "d43b971504cc9e2872d1caad431904e11c626abc74a10a099b314682a2559739",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30165,7 +30165,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f2d2504da5cec8c29e06893c53fe3ab064b014a5d8509fcf77b948c1604e8593",
+   "final_sha256": "e1d34c474df3bb283b51056cca58e549a5ecedb84bebb5bc217b168c0a425e88",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30216,7 +30216,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ddbc7c2096a22211bd6289f200a30ff418f02ee040e08bb982df6496fc557af4",
+   "final_sha256": "38a683a9ac691dc8b3e8c7c8f78d1648771fca30f8a7c8226f0aaac6f746972f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30267,7 +30267,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a2258e86cabdeb2bf7c7e1d4debebb934b92a3c5cef406bdcdca2aa14a8b6bdf",
+   "final_sha256": "90503aac0b24de2e7617ff0fc4e0c60edca368bffb2a2a120a7d030bc1c78c36",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30318,7 +30318,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "6e709efeffcce93b3d9052dff1ff6b2cb76e215d834a289fb9646c232549509a",
+   "final_sha256": "20200b3c030a7a311e7cad9c7897ff89a94cb1b169b5f01fccbdd17d2ddc0b85",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30369,7 +30369,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "bba6b89fbc3e142246d8f193a9de07d6274aff1fc349af0316b6158ae5eae722",
+   "final_sha256": "92b378e46207f9ddbf73304ebd94e792d6fd40077a16f429f7f8b0b01c1833d2",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30420,7 +30420,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "e9791144ff4486cc607dffbd9a0ce36daffc1d7d4f48097832209ed7ec577e00",
+   "final_sha256": "deda07f8b84c5cb7cd9b1d36a972f1d28e9c0756da61d1d23825b15132e464cb",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30471,7 +30471,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "2b83329f78cc81f4537e5f36e8b359c3c9a68d887593c24382aa119b4d92011f",
+   "final_sha256": "4ff5636ccd9cdd2462e6efd3db92ba6f452c62690147de9874d107ec3161f850",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30522,7 +30522,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a1511528500148ade5bd2ce8315ce9fc45eb9eeab6cd865ad20295f89c228eb0",
+   "final_sha256": "2685632cfb86a8ae9fde0a9a7ac2ee15bac07abaec94539869ec0dc14d0536e7",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30573,7 +30573,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "741094b48da99db9f435c79e0440eec269cb895054a68e930aac621a143645cc",
+   "final_sha256": "8f4c7c980d9433d87fa8b64c3ba4bddc89296a73dc94224277a07eb3f845f13c",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30624,7 +30624,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "0109fcf1be07ad6febe9b629dc32c73610b9618379aa82c02f8f4b6ea17ad47b",
+   "final_sha256": "a8f5995b490142b3ec3cc1b5bc7b0d974def40b4f6302fbd5f30322e87b1bffb",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30675,7 +30675,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8c24c189556194c39c7b0e0fa081544a264340d4633869e17a4eb252498c78cf",
+   "final_sha256": "09e994e2cf7e483053d61df7a949717a867129f251edd7c5c19cfe76ea73aaee",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30726,7 +30726,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "159acfbcce6207d81be3a3809e7bd7b46d04adec00f295873dde6ceb5ff21dc6",
+   "final_sha256": "172bec2e17ff647f176e2a29a4696f4628de3b67fab1bb696d07a3406e60b0ae",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30777,7 +30777,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a724f8cde18dd7f2928b002e4c42fb57ce2c76bd422701669ce369a29bb65456",
+   "final_sha256": "dc03ce0bbefdc55a5c54d4ca2278e745c068c3e37484e15b83fbbd9fd8c1a629",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30829,7 +30829,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "b5e4d72abab0bccf77c91e01e5d02ad623cb5b4b2ad0297022149c2e45f5433b",
+   "final_sha256": "3df27067f6eaa58f63e710ba13e8321c3377135e2ccc4ef2d5f129d576f93ced",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30881,7 +30881,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d330be7007dafdde449008c2a633c8511a891817eabfcf5282cec964373b9b9c",
+   "final_sha256": "8bbd69c97362db67d3448985235b16c283a29b22318e7c6b05034d40d12e09a7",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30933,7 +30933,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "067c4ef2a592101c8cd11d6a8360ab6ee37215899966418a47a910b5da061316",
+   "final_sha256": "0a5f6a17f220e357cd91872dab430b7fb7a7b2a91ad30c1ab84a859094e90032",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -30985,7 +30985,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8d06c7837fbf2427cb2f00bdd84a2b7b32d4271895bb3ca874c47726ea5c9fc9",
+   "final_sha256": "7c0e3e46ca2fa035d5b2c3ab6d4d5a3274313536b96d02dcfbbeb8c26f31ca6a",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31037,7 +31037,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "6077d847de9bcfad941fef5dab5376f05355215ae8cc75a6dfc68aefb383c0e0",
+   "final_sha256": "1ec6d0935430d99a8a4707d112aaf60c7ceb86b9373c0aba80a07f5d9f82f984",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31089,7 +31089,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "35be1ec4ee6e55a6e21b37de2c1257bc906e3c18ab6d1ac781d668cd076226ba",
+   "final_sha256": "af6bd9325d64524fde463bde240b0196276ec69a35053e0d6003ebef3e14fc17",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31141,7 +31141,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f3ecee145862cd65d8f260ca6604745f64335365af568d1803d72ba44b33b8e3",
+   "final_sha256": "ff04b540dcafb0fcf91dd966a89bd802422dee6526ef1ae4808472e467db23c6",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31193,7 +31193,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "9aff94e825010dd9cd4ad0d1271cad90812c3e1366f8793037539bd541ff8513",
+   "final_sha256": "54e18b80b59d4d61e3a04dcd008825d87cbceebb2130bb22bc3b93d12593cf30",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31245,7 +31245,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "224a112a73debaa6ffda9298eabbfe78a9cdb49a48621064a5d56a6215935527",
+   "final_sha256": "0bebe3263075c2cacaacdf637f5bcd348f042f392874142e619053fde8fbea88",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31297,7 +31297,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a6c2c601f3141e3945a6f217fd47cb4aa17a7c104705ab12b8238d29d7b8d36e",
+   "final_sha256": "8d421560b6deb2d65354aacba0036767a1191d06b26fb7d606c3f430198e7dc8",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31349,7 +31349,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "31fd747e922c69a0623e7026b77f6f771fadf430fb306d5d960f0fd4a3480c64",
+   "final_sha256": "dd9b5e8e9289e89c70bc8e0c5584023a3df08646dd8f2505c52a866d556e7d06",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31401,7 +31401,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d10710c37a44aa83e4e990974b7a2314e660be0ff7466b837a8360d4b98dfaba",
+   "final_sha256": "35e3cc17c9e714d13f208852c93a9b8d0acad0bd55fa8ba18496dc016ef4a147",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31453,7 +31453,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "3ed93aa993e0e1c6913bdc0a189a892fb2c17a848e5fd3da95644341bd180dab",
+   "final_sha256": "ef8d43afab7ffa798f8faf4cdf420db97358527de77f45b792f44721d98692bf",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31505,7 +31505,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "9eebb46a053da5330816fc50646c452c035900f0c5bf2e3dc9d018eeb224c165",
+   "final_sha256": "e1c8412d6ec764242e436798ad9f9f22f2c184f096c6669722d5c57ef4de39d8",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31557,7 +31557,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "53b2472bf3d22200103a56922e436db238fb0cc549130438b9dc5b31ff768544",
+   "final_sha256": "b09e7361f049ae6b7141e11a90444b855c5520b67e42ce5777e2c953e64061ef",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31609,7 +31609,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "19aa5fa46d74aed9975ad4f98f5460c70621f4f8f71a30af5058b5579618fe89",
+   "final_sha256": "e0d807953b71fcceadb08af5866c05726b5e464287d78db1ac1d1b46ee16dd85",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31661,7 +31661,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "119fe5227def51cce44a367fd82d3f59ac1d61479e7d364da1011d69aea5f6a2",
+   "final_sha256": "be07e3a61606c113f92d389e43551c6c383b03216b9bd7d41f1443815a3f4090",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31713,7 +31713,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "dd2d64b46fb64e58f2caa5068519fcbbeb59392cd9333f7c1ebc884befc48dee",
+   "final_sha256": "480b3a93c7eec53f8e600e678236d217fdb20210073ae46918913f58f39410fe",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31765,7 +31765,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "75843a3447a5233f373f95f175b2ec7b0b16ccf311013cefe9be1a4bd3135fd3",
+   "final_sha256": "f5ff9ccad8035a775d033bde2a8864bf89ea624796bcb105a1b5edea02825877",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31817,7 +31817,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "7432bb0299fde447ede657679ce8bce463f42b1187752224ffd6edeed886ee39",
+   "final_sha256": "a68f77454ad0a963b6c16b4b4c7294ba41ad7486a5363423fea9bb7cf90a6bf8",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31869,7 +31869,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "df618b914bc1b99e4c41b553cca22a853fd1b80af97079095f32185381dcb928",
+   "final_sha256": "3e907bd2e8326108b89ca9909fc7e92bf8d784dcf575f0c991ac92b34da5c324",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31921,7 +31921,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a53dea3de5a3d6716bdad45b304dae480d0523d201b1113cad32a2e3c3e00a9d",
+   "final_sha256": "281e4a0020d2552bb7de76fa495daf8f643d6a37479c07b8ca8328859364f237",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -31973,7 +31973,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f3653d3ab70c70cf15bf0245c6fcb896bf1d5fa1962ee5bf8585d911501d25e4",
+   "final_sha256": "d9662af047e9ac6ad4f41e8911c1e3e89faacf8c8d68c1447dc462d99ad53ea3",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32025,7 +32025,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "adaef5036b0e8f903c906c2923e5b237e27197ef774e3a70bb074b16aebfa2e1",
+   "final_sha256": "d3d3abcb85522122ec4d5a6c506fce8181856422a4a8d2d35e76cf8758fbba9d",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32077,7 +32077,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ec2fa84a6c493839cc034b4ad95a944bcbb51b807039c2666dad839c64dae456",
+   "final_sha256": "8ba278413c013fed29522dd5c2db2d9348128232d86df365375494ea2b280656",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32129,7 +32129,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "755207c7835a64eb576cfccabc890c765672f57c93e54abf24b2763c993d5665",
+   "final_sha256": "c7ac8a6048bd3933f4da99aa76f817c86dabd5e9457120c3d6d1e594eb6af30d",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32181,7 +32181,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "c2a91e01f3974d170e50ed2f8bcc8e0ba5cbcccd9aa1ab438374621df94ab679",
+   "final_sha256": "0d5f530019fd121a20e68bdb729c439029063cb5dbf46dc56f53722a0fbe7dc1",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32233,7 +32233,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "11497763c613371756c0476ec59af441211bd9ac7adf04a6c82ff1c47dc8cb41",
+   "final_sha256": "e354024ab57c2963e87c0360b19e6bb121c08573d5d2a00393039f8e216d6770",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32285,7 +32285,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "cfd917aec12a3100766c255ef97fb229757bada644390d97dbdc952289c9dec6",
+   "final_sha256": "3b403a784deff4bb4024480c673602f8c006aed1094d648d2554bfb045e8add5",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32337,7 +32337,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "65dc9b89d07a16549f3793e43ddfffe9962d91039d2270812f04d829bbdc7e11",
+   "final_sha256": "5a2bf97ac5a425597f84b16b201c64de2fdf6735d1bdd1e2d5039910fc735281",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32389,7 +32389,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "602b7a0ecabf6c2a063c7c5f9b4550511633c1eaccb0c8f3b9226985fe73c37d",
+   "final_sha256": "ecaf827969d0693d3e42144320ff0c2e0164d00e15877edc1008bd98fb8f9227",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32441,7 +32441,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ca51054a2b1982d427b25d21bc83c4a3f0caa3f315be4395fa432aebddcc01d4",
+   "final_sha256": "1b2510e753b15aee9387b9a6d8a1962e3ad405f4ae50d64a002c22108be1935b",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32493,7 +32493,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "2a049606a7d1f9e7162a9f59af177ae850669d7fd4435b7d2ca4e5878af1591e",
+   "final_sha256": "889a912ce90a8e58dfc0810ff12aeea3e73bbfaa23d4ce2c66924b33ec934f2e",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32545,7 +32545,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "170d37351f6a80bc369d4e2b302ff857e9f7541e8c8c1ea5a7297216585ac8a9",
+   "final_sha256": "77de87f2949f5e1e43cfd31f904e40713126d283861524c0571a8c35bbfad01a",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32597,7 +32597,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "fede9b2488ecf2704355fc4aa75cfbad83268b8d2c093645cd123a1354f079c1",
+   "final_sha256": "06cb7611d511dfdd38ba2665ba70b9db6c9fb76749be4eb77170f429d15f63b6",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32649,7 +32649,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "12d109dfbcfc07df942f85c098cec50ddb1396a583878b3d8ca122e2d8354f96",
+   "final_sha256": "9c9c5fa0d96499c40127022c7a06be4a7c23222708ada7cfdcc61a1fbcc0b7a1",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32701,7 +32701,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "e01eb8c627207f62b0ae7904ecf9f47a3b059942d177695fdfa4fbd70b589fd7",
+   "final_sha256": "1a0c7de0f33949ca21aa3133868b5638bc9f73dfa3ef4c1d8d5fe0e7292fc5cc",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32753,7 +32753,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "5a9d96e09b839135bf549dc46441b4aae383c6c6bc593e8585de19a4f3b35d21",
+   "final_sha256": "a5d2e5850a1bcaafab13f2979a5884c220ea2fd49249c9c2df41dbdb0a7e3ceb",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32805,7 +32805,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "96935e3ccad7eb2babe183ffaa6601f161e1c788b9c1ba57844978e389f47960",
+   "final_sha256": "ca2ba433ae22f79027d806e31c0ec2d9d9bd8aabbd366c67f017721c9e6ea6e8",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32857,7 +32857,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8fa936da9bc9623fcdf15c86f25b1741c5dfcffd45fbc044d9787aef4669af3b",
+   "final_sha256": "9f6693f812a09b3cf3182c32c9bace595abfa1dd7ac5262716c2285dd413b13b",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32909,7 +32909,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "066ef56acb367a25d5677a47be2af07dd0b28b0965227f964d89af46e12a7e47",
+   "final_sha256": "685b75492aaaa174196d4b1a99cddaeeb69d1e6783ec3dc887c7fd080ad258af",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -32961,7 +32961,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "2c90a6f36f87d705684d6c742bd9c9a2d6c4e0fa126042e80746d3c160abc856",
+   "final_sha256": "14dbbbece8ddc3af8a2b3906a1ade9347b93b10974f21f9a8086cc9b9632d83f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33013,7 +33013,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f29d4f0f754a4b38b857d77041e0d3ac95e4b5b83fd84b4fb37db089f17cfa10",
+   "final_sha256": "bcc32287e6895938eb44890de0351d718997eee1456708fdedae5de0dfdfcad1",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33065,7 +33065,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f1cfe871691b224f40b27035f0e3e4ca0306866c6e0453980790c1a7da70def9",
+   "final_sha256": "2e5f852ae9e067c75c9e889075ed5c7128a3852ec5455d9fef0535de3124808f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33117,7 +33117,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "1d5eefae2087995790ab4ff0b530fed65aa5604c9c18d14c342f54eafb78a15a",
+   "final_sha256": "b218c1bfe3f0f1e5567d30a8047ccc7842677d73b399b3795433982bc9df97d1",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33169,7 +33169,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d83da266b13a12d869a3c84a4e9fd77244f8517219b6f04ede2d5e98e29a5c0d",
+   "final_sha256": "5a2e42f74fea4c3c6c7329b2f214cb6e362fcea873c0ef00897a01e763fd8b12",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33221,7 +33221,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "14841d724b1db66749377ae0fa05839f6501e4f2fcf0c3cca97916bc67833d69",
+   "final_sha256": "8cf5b8c478de59be429003abfa6664fcc999047163673d76fe3faeef51ed0b29",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33273,7 +33273,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "4065d75dbca3209d4ba2880fbe6a40050bdf8eee39787d5755f2abab1717a19a",
+   "final_sha256": "a4755b4c932499f03617dabfecfe656abbc9a5d4bcecfffb5ac347a7c0809790",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33325,7 +33325,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "529d77153f01ac6996248220647500b52f30cad6d93b58e8f5feda6beae6d149",
+   "final_sha256": "6047f9bd8522f44fecd4561acab2fcd440c6ae07e00f929e1a49970ee4e85ffd",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33377,7 +33377,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "47aa2a6eb78b53987c0e518e53958cbe92d122d0244f9a34ca0480cdac827c17",
+   "final_sha256": "7033689704bc2697c6251f00fa7f4a7ed0c740e5438a4f1100f4671702c4f0e4",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33429,7 +33429,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "5a42b65bdba35989e986a1886152f536ab787417b961c5bf3fbb18331e569881",
+   "final_sha256": "2f5f1639214b9cf9ae9801ea882e8db09ec4f4f72d097831ee674e8120ccb46f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33481,7 +33481,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "3b5886fb6b7f1fdd4c6ee87f3671b339c7a28cf8266b7f7a986d20bfdb818ae2",
+   "final_sha256": "bc610d02718e593ec9fda9adfdc752b77f97a7fe8f3b7c408bbae0f753974f2d",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33533,7 +33533,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "03cc29d80e84e1fc79746a296b384b39ae5114572df3767693e4dedad9c83338",
+   "final_sha256": "f5917e140a84fffae3dea2e9d8fab9c48b3de7148d9782463b5d8bd1d281e494",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33585,7 +33585,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "35cac1606c62249b608396e34c255420e7faeff602c71a5bca7dae4547e66669",
+   "final_sha256": "b4fdce63a4e1ead1209a3bd4ce180f8bd77dd3d8321f0ebcd200352f30f5f867",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33637,7 +33637,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a9ccfa1c504328f811287e35a8f0451940ac0d355f7da244721923c1c6c3c4a0",
+   "final_sha256": "2160e4612c337afdf2ed2451ffe1e732abcd17a58c545198e898ef7c7ea9ab15",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33689,7 +33689,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a4d561873514799e4215154e2450b493a4da1fdbcd8d239db2203d3896aebba9",
+   "final_sha256": "f2b70bfa949da04db41e7948c87f929c52654bffe4284c038b0e05f51ab31b7b",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33741,7 +33741,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "aa17df619a7c72d228615aa1e17e9b16d22352f732ce71aae0bee5abbe2b5fe3",
+   "final_sha256": "c5108301b94661bc7847a951738f5973fa920aedb0dac15dc54a7c4845bb4b00",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33793,7 +33793,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d1d176c9b7f10d9a0fa2035d799a0bcb5ae14d89548752aec4d0c0fccc38c081",
+   "final_sha256": "0d6f7e99b91814ac7de622ad9f35903fd21bc8fe717d36bf0de2054a73df2ff3",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33845,7 +33845,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "90e7090b5d04ab441a9b8b0363e53c12d436b6159de279ca1a4685be1284ac24",
+   "final_sha256": "22e19d8ae1ba1e0b89fbcb5f64871259629dca9bf12d0f793e03f1ee6aece924",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33897,7 +33897,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "60b83dd482d76457adea6554b9e782e8161970d7e7828d29de24e6480a4cf949",
+   "final_sha256": "015b469db2bf08244fad7a4089a74885b2f056078744972f17678bf6fbb3cd23",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -33949,7 +33949,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "5b581f7a7cfc72dc6c1d2d7bc4b290e1fcbe8e55fb4112340ae76f119027fe5d",
+   "final_sha256": "d2e6bb7204add5852c8fb7de900498595508ea0ec04aaa0a3321f98c330944f2",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34001,7 +34001,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8412cd759c15fbd3184849fc50fc6cafb1a1db8703b32d638a9e07771390c06c",
+   "final_sha256": "22244dfd99b8c79d5edb7d39259dd96144476637cabc68d55a40dbd4f63bfd47",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34053,7 +34053,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ae022edb5fdf3c5d9f71a1bfe11c6b7d5e6640a80cdea6a4de4c110ed3ba6c2c",
+   "final_sha256": "a81a5ffd55c92135059270029c89359f5636968b96e240943c77919b613cdea1",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34105,7 +34105,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "86d79be7af0cbdb57fb016de7000e7b4388d3be951866c68fadbbd9ba23f4468",
+   "final_sha256": "dea1e2b992534eda456a9d72404e5c5fe0af484f656af4e86fb0c307e21a9016",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34157,7 +34157,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "5a511ea4c4ef1da828dca424f9ac24b0a92f5ea5b6998475f4fac789e93cc0ac",
+   "final_sha256": "8246fecb6a62212d15e055b2f69a55bc80f2452819aa1a50b80808879373155d",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34209,7 +34209,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "1dbcddfec9dc0dbda29915c8e088119175b6c9d272d9c4ee8b9e98756259d40c",
+   "final_sha256": "b6fe94b31e1c313ad8dbb7500b8afdf834afb00c643ac3180992cda3d6174bab",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34261,7 +34261,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "3c71ed61e1c7039a094cd275303b95d05444c85c629c2d3e492b89d32754b60e",
+   "final_sha256": "b61ee76b0b8754b361ff8d1e5d5e75a8214023c34188d9c65330fa070f574377",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34313,7 +34313,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d832bc91acc77f23df4711a7dacb2e92171c4223bf280258dbaec535e33ed151",
+   "final_sha256": "47679fd47bf5464f5f48e26bdf5dd3df710f80ddad3855cb498f848101d1f741",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34365,7 +34365,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ed7d48963956aba9b7c10aae68337ed60d19aaf6a1eb448532887ac666937a56",
+   "final_sha256": "cbed73287c8d233182e57a1da2eedf783abe4b4a73357a1b3d8063266c6b6de5",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34417,7 +34417,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "2177a7186700793822db2abbe572e79ee1ce2e3f9e6f1a494dabbc1739669ea9",
+   "final_sha256": "cad9c95df4d23a97956d78cf4516277041325627e6d25f25fffb01993abfdd29",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34469,7 +34469,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "e179205b6d57dd231e48686617444bcd74f93a5dae7574e0c021c9c55d8b5417",
+   "final_sha256": "1fbbe1ba2980d0c20735542b47d5cea881bd1673b93713554a619d9dbf71b082",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34521,7 +34521,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "53d6d6e69cd2c9de4e813e89b1b11a74e8087da2b62cc898350c44373ccff6f5",
+   "final_sha256": "944ed192f930ef5255279157a6f8a8e7350b9f64abb1faaee5ff37775f24cd92",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34573,7 +34573,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "faf88616951e9a10b542fec52ae1a6322301f379af585a48c276672de723e8b5",
+   "final_sha256": "fdda8d7817fa72006cf954e6404f79d4618412ae5d88f61488bcfc79f78e1a2a",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34625,7 +34625,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ab697c117365314800b47ecb7d04ad74420125cf4d7f7b555a108ce1413f5620",
+   "final_sha256": "a5b95f2213d1d3f7ab68304e6a86dbfab730599c2dce37794c1360d80aa34916",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34677,7 +34677,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "5bd36b8a96500dc4979efeaf9856a926eab6b82533547f71bf9dd65108bd7b50",
+   "final_sha256": "6a1df8c438d5f9b4b6247cf78eaeb1096d1a1087e06a9aee17495f1f97003d9b",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34729,7 +34729,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "c65cbf5e45cb4eba93e8ae553f91ad1c35b0b2e1cbfc1437c800dae042ad120b",
+   "final_sha256": "887e0f488ffaa2012c25265a7e8a8ed4987ed1087247a2a8dda3db52633ebcd5",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34781,7 +34781,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "061e9813e8260e98bebd1e222b8c5607312a8b70bf8cd59da961dd785b3f5dd4",
+   "final_sha256": "423133ee005d0d4ddcb72210bb151e62ea0282a06c5c42fff617e6aa13184eee",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34833,7 +34833,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "6ed61a0ed6e2162b35aa45560dc6a91692683952e4ce0350b8910a143be01d2f",
+   "final_sha256": "1d4e8e64d5632cc6db7e4a7ab806319f5d7f6893a8a7f910c7bcf8ce08a75a99",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34885,7 +34885,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "60b98d214ffdc5f66b342e78aa46c9b49c7b0a649d64768eaf6c64b86f72b270",
+   "final_sha256": "3a98952ddc825b79ced5ef504ce02f51c50aa135c7299ce96a2ee3c3f54b9560",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34937,7 +34937,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d02721ef7864dca0f8a9b0923d82fb2711ff8085a5761639321e5196d0f8a043",
+   "final_sha256": "e696318928c22ad80f497141c9ab90531e67787fd99cdca7442c2556326471ce",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -34989,7 +34989,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "366e5e7058c913ab6d1efb244d3c65c9d106cfebdcb21d580066c5ac8bc10a12",
+   "final_sha256": "c851b1471cce5fe06b5a64116df6c21c500c8fd6dc3b648774bb8213dee7aae3",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35041,7 +35041,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "53b746953948b204c3e558efea6460a8dd0198cdc7df07dd7432c717c29b6c85",
+   "final_sha256": "32d78da9bd6628cdd342e897241c6aa94160c9bf29694561630898aa0f3c0ec9",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35093,7 +35093,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "56c1224e883029bf0eb5d81ce9999c089cb50f250939af3bdb6d1ba2a10297f0",
+   "final_sha256": "a57b3b62ac4d551b5291d7f37b30c4dfbb78bf1bcc2c94b4658ce667fcab2aa2",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35145,7 +35145,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "74738d2a5679721e208b7b115a2482281f6ce42f90bfc2cfc13f2d0659c1c6b7",
+   "final_sha256": "c09bb4d4f2c9cedada3a64a3507298942415083dbb046f760572d8ab8c883ab7",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35197,7 +35197,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8fa83a7a35e07304fbe183e1fec117b8f724e4632b6baf7454dffb0d750726a2",
+   "final_sha256": "4869f0ad9a55a162277c2a09f826e07d69bcce4afd5c62e6467455d0f23f3717",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35249,7 +35249,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "28c94d6bfe6ee021e5d2e249359d672a6122864994e3677132417059aec92e30",
+   "final_sha256": "75f33173d405c5485e01283077b7bf9f7b94aef5c8d58c06e12d34516e803613",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35301,7 +35301,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "1d2ef8fb63122b6f83f9f50f4b2927404e9319722763065fc481bd5bffb51206",
+   "final_sha256": "ae094982132a8cafc613a3fbf01b5eaabc920340ffa65cbf66b16a4d7fa66141",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35353,7 +35353,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "b37f18a856289c7495a79e78522d0d7a8c4890595ca646c86020c48e1c728acf",
+   "final_sha256": "c0e2b15cae5171c35afa35fa0e6c700862d334964f9fd6e1c3b910e64ddf6075",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35405,7 +35405,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8c76acf010f59e42d04b6cf938a9ced8dace027b367015f86e8acf95c4bd8855",
+   "final_sha256": "d79906e32742f1bbaa20415afb7cf1b2b42e156cf32858f08716d7f5e7356cfa",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35457,7 +35457,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "1fc6f195a072ccd5d24851fc050ea41c29b3c469e738d7a2f451929d60026a10",
+   "final_sha256": "40fce743da186fed700d3f12105cd7999202dcab3607962c557709716eac0f79",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35509,7 +35509,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "629218736f1ca3a6d7e154ec92dea8a97adc2d6f9cc2e10f2c832ee4e50132d7",
+   "final_sha256": "1dcaa917eb0ff090e581ac0350d1fa1073403db5dc903edd45ecedcc042c0a1e",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35561,7 +35561,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "df9e9f4ee59020a3a6944da898cc47d27421ccabc81c2a076fc50e01d01b7d2a",
+   "final_sha256": "15cd099f61d37d85cc3c733b2cc899f9056c40ca369497d44895cbbda0cc6813",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35613,7 +35613,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "67d3824c30938c0647be0d6a2ea52bd74bcfb3a2d53de7364e165fdccd7e069d",
+   "final_sha256": "83dc2995037f418976c3c0b44e4bd4a82a633364709547c7140a0c548fe96c41",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35665,7 +35665,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "952b10998c1025d3ce80b0aec8be52f03f39b6fcaa13400a504983d5a6a672bd",
+   "final_sha256": "3d805f850c6632bf185a10a38ec05bb6a522f30dbeead7838e7dd19e901ee1f8",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35717,7 +35717,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "90978256634f7f4951943fb957faebddeef401f0b3998dcaa4e1eb9f527a6f29",
+   "final_sha256": "699a0f93b7fd466a4c093a1bb237ddaf51118631a467d1b1139dcb28a995743e",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35769,7 +35769,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "6427648751ee6d279b50c048236b5983a515431dbc2cd2e686d2db87b2a7ab6b",
+   "final_sha256": "d80cb088d27637ff65bae23841be5427d3a3b9a5a9dc4ddfd88c45dc42087285",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35821,7 +35821,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a53b4f8b77db74eb4f53278ab9e90ca4a99bde4da57877ccda63dd2b63f8b01e",
+   "final_sha256": "599ab405e5254b28c4d9736f8ff7c62e23dec1d80181a24adb3db114f7f41c64",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35873,7 +35873,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a3eb744c8d3c2aee1b58b5ae1bde45e67fca96163044c59197d49b75e687b9e5",
+   "final_sha256": "2095aa6521d4df73c49f369a7a00d0d204ffbd20fda07504d6603d8f73f8fb7f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35925,7 +35925,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f484a3fdd6a6c1ef1365ae05f2b5547b75e096b47bf0334e291e1ba587bf34a3",
+   "final_sha256": "26b8a4d1b40a3142433994b6de346621071569fca6c2dc0519fa92819e02fe4c",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -35977,7 +35977,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "2cf4b6c2dcc1e4db306caffde0090d555071a19756d41bb45d14fa20de3a3e69",
+   "final_sha256": "29c1a72a36e0206993998cf493a7de730f9179f5061c586d1feebd45b080f069",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36029,7 +36029,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "739c0b23e66d6ad39cd83ac6711573af4d653703ad245a1cb45622ef4f909000",
+   "final_sha256": "83cd66f35cee7d245df96d85fcd1b45e66be44f3691059b26402f4b3901a2e0a",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36081,7 +36081,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "a4c66afda8deadc4a8714a30ba2e1302229685502269072757926d5c37d56613",
+   "final_sha256": "c97999424378cf126bba5d78b083a089555a139ee9ef26f4c7be19481dd40513",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36133,7 +36133,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "c40400a541e973566d14161c8eb837367c6a46b6b39ee43641cb2d436c7623a3",
+   "final_sha256": "a47788947bfbe49748e92c644bf1f5f2b40fbab77e5ac64f32d76d57be465572",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36185,7 +36185,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "c2986d20542061d37df4113bafefba7fda701f7be39bdd39ba496f608d34420a",
+   "final_sha256": "ebdfb84d6638a990bea5faad91bbe45fb671347deaebaa621e45267a5c6b10ab",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36237,7 +36237,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "e8ac6860e34b98f6cfbbd2126c4908f6f53e1b3f4ccdc86c16fd5074372daaeb",
+   "final_sha256": "c5c53c0a39ffe2c01f3488e59c1f6dc6f21fd39bd15314d06a08f0334a948c84",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36289,7 +36289,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "b002c83226594e7d94dce64b515c7fe82dfee135b0301c0dd842e13ac015d1d9",
+   "final_sha256": "ab9385e90c26d353f98182d6b8872bc1682aac8d4cd2860a57a9aa7338bd6152",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36341,7 +36341,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f409a758f5fba29c9744fb1cdb732f9facb502d4dc3fe2aea500ed8a51240053",
+   "final_sha256": "48a7911f39fbe3fcfe50a43f05d29c50d352d8bdf5e756509540676c1625b8e1",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36393,7 +36393,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "78371d14da884fc4842914b61c33871012bd68d194d162706ef4d21725974fb7",
+   "final_sha256": "39e2a1d0028e8d0a586d70f71cf5fbda4aeb389e65820933abf728a2b913af19",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36445,7 +36445,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "9528869c5cd5fe77ce47a84cb093868b8a6e20bcc0cc95b3ee0a0fbf9b3a12f2",
+   "final_sha256": "b9bb96fddf199313f5a6e63f9e4e046bdd9985a8105d17692147d869b82ce4e4",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36497,7 +36497,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "60d0ac5b247a2837e59709db70523a2ea40f75a234316e254a53c4f6da174070",
+   "final_sha256": "621b96a492ae04408eceb358cbdaefc74efffc7bafa7f591078c626d79198a02",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36549,7 +36549,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "2d90378088dad1152cbb819d77febf119cd91210196dcf0b51cb5b8cdbfb99d3",
+   "final_sha256": "c778cc71082724b0ffc0af0d3711438f3a13d9d573e26026ea962b3dae1f7dbb",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36601,7 +36601,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "0813807772d6f6cbd3b8b0af96d2635a76037dc58d38c4c2e0d5407271ed75d5",
+   "final_sha256": "d4c7bff1c6ee55dc87997ba855930edaf36491465a8df50d07bdd3791ceaeb0c",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36653,7 +36653,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "5795e68ac848eb6a2eca7f1f4deb7bd2b4414485f21abd21d6c4ad710a2809b5",
+   "final_sha256": "e7605055cb4dc23f75b5123cbf0f88056fcc95e1ba133edc082da8a9a7da1cb3",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36705,7 +36705,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f1754c88723c3a3c9ba08ccff482fae0bff129500fc617b167e3fb158c2dbcfd",
+   "final_sha256": "24543e4f86b624b53588a145ca22f4ae610a77ce341d0f4ea8c3d54066b6b5aa",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36757,7 +36757,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "9846688c92d8b670ed2242f3cb64e4e5226697d2e2987c06b1df74954f6bfb5b",
+   "final_sha256": "0ca3c541b136511b8f43c7c026f30c646632e891d9ab2e5d4c6654093a6b3b12",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36809,7 +36809,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "0a7867bde1156eec74f6a520c96799a65a815505f4ae6922fa87b4b83271c46c",
+   "final_sha256": "65baa5bade70f82fafee124d5950591df010fab6d6f2de84714a5507d2de22a0",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36861,7 +36861,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "424d3557f13e866e71c5f5c6910ee52ce298f5ff314265b3d05321a9bcf5c49c",
+   "final_sha256": "65de07c94ddd34ad76ff359b3b1d062119a9703473b9417eef59797b128caf3f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36913,7 +36913,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "7a2391e268dd4100d6e297cbaefd2ad2c0b44fc02dc6e29c418cb103c8c36873",
+   "final_sha256": "86287526def40284eb6df0cc67efe9024fce8a25a52846abd8c76f15bccbc383",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -36965,7 +36965,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "5a57ac6823337a7b5f05041cbf2a04bda844b74aed34e9cde81a1a3731a34f7a",
+   "final_sha256": "9283eab62027a70772206347f1505eb245cee56c1081cd92378b53f60fb0b0b0",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37017,7 +37017,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ef0d7868edb7767dfef78d314f86e8782bd9034eb10fdcde682b10c6c8fe4044",
+   "final_sha256": "1b387516307240d1e13cb3352f98039891b33060688a18559c89458f69e54cf0",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37069,7 +37069,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "c78420f80dbf7dd4315d9437f041ef59ccc985b13fe4e2723f0c8c48768e1192",
+   "final_sha256": "7abeeda48db01d9aa66b98c1bdbfb8b090bd18a6d28e1025230456d57370029e",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37121,7 +37121,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "3459ed399bdbad08ec2510c44dc4a97e62c7444b46b747db5dcb7280c1029fad",
+   "final_sha256": "e0672ad8e1d3dfae469555e4011e4ef73a2de35a959a4a5b43b64b591f8280f6",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37173,7 +37173,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "38b8833abe9b7b7da6a26aa43d6dae58ae6fdcac81f9b0169efbb3dcd13fed61",
+   "final_sha256": "f984f99b3ac4f3450279b8d2ab649d6891a2573956e5dd125770b28862ee6cf6",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37225,7 +37225,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d46b6f42859c250ce4fcd9eb5b9b0a67d39a7f7fb55178a46c8ff09a32046d9c",
+   "final_sha256": "84cde1c6ca86a045f83e4d500dbc7cf4c4255fc75c5ebd3beb302fb3f203d146",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37277,7 +37277,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "7307dc0b357d655f8c88f667e29f0905d4b7c3173ca594d0cfb5cf317793349e",
+   "final_sha256": "15381329f1af13047b7baba706663143990fcafb0a9adb188af98dcd2c0a8b30",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37329,7 +37329,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "fdfe1817c65106b38b40b00066000786738264e0cf89f4237b04448be20e17c1",
+   "final_sha256": "e9d12d586ff5399eb2d3b08a3c285ebfba8cb394805aca0d7f208cb1eda05e5d",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37381,7 +37381,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "4aed35e636715753829268a02113a967634a54248eeb15061572c612e47b0a61",
+   "final_sha256": "9d6985694738db71c56a8c6c364ba10d8ae4fb22b8472e51c2ce190b5faf0324",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37433,7 +37433,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "126c88f96a68d688b92265154f1bdec8ba0a892f6cb5678862190e90f58130c6",
+   "final_sha256": "41741ea5e35d32005072d186e571e6bedb5af6c5da1039f648091851cdafb9f1",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37485,7 +37485,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "06efc5c722af609f6a80aa6c57a97124428bc92bbe2588a4af05c7031031744e",
+   "final_sha256": "736d0ecb6f84fa42454d75a8b58c013d6fa273857385aa19addf2e69643b73d0",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37537,7 +37537,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "829bceca16ead467a21af5156d822ce6037c359ea71c443a61643b0d187dcdb9",
+   "final_sha256": "35ca2a30eac60632b5d3f059dfd9797e0cb65bebda6dc4863d386b2b29be8abf",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37589,7 +37589,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "21fc9be6347aab48bc9c3880f64d85ef5fddc2e857b74b4c8797493b81c2e8f5",
+   "final_sha256": "71e525fa57f9e3592d758d40a01fbeb9c7b2d884495a9e05589267c25da6a906",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37641,7 +37641,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "9a0b8eafb685b387812ae0c5f72a26646cf7c5061af6c6ecbcb55a51721934fb",
+   "final_sha256": "5a35fc73e4c8fcb1e195936292bece938c5d75e841da2cf8a08ac513168ff8bb",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37693,7 +37693,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "289383c768acc31c9cfc201001004d6df7bd8cea4907457002c71deb93f37a34",
+   "final_sha256": "c04a4c26dc3a46870ab1d2f000ec21b9faaee1f145e5a031516ef8544abbcacb",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37745,7 +37745,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "c2e3a7c29797b93b958953e5a46530690e9ec6646d2aff9d8a0135fb96c5f4be",
+   "final_sha256": "fa261eb75c8e34fe70ac6c95580a335b4b5bc915d10354584ea690cc3caf60e3",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37797,7 +37797,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "7cc24e44d33267e01f0206c7e1543eca567b9546278e75f63455ff76c0fe1676",
+   "final_sha256": "bb364747e5f1f3222a1995663f42ec9f5abe94f6df745167fca0b92296f2cfc7",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37849,7 +37849,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f0c13cb52be2b5694497a6b015206716797d1efd13f49b7195198b456d8cf686",
+   "final_sha256": "a94cbf9cfb6ef0bdacaaa46a1a65a6a7171e2a0a946a59e9409ce4da51c3d80d",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37901,7 +37901,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "b8e18c1f62488953bc08bd0c5c9c4e86807cf5454c96cebcffd7cf5aac1b3d3a",
+   "final_sha256": "8b7a7f070d80b3a8b4f3944766a1fd09b272ba53850f074efa2f5164ee8c4fef",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -37953,7 +37953,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "c7e69f7521e516f0acf730634515a5f293b8e0c518bc1f30eff057c90997c561",
+   "final_sha256": "ea4d740c75d284ee92f21325a69c14479f3fe0d663305c05462ba135de007b4f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38005,7 +38005,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "165d2d3aed533ce6094284d635ea197206f6e6259b84e95e7c9160b89adc9cac",
+   "final_sha256": "fabdaeaa028624aab3798319fc8c28f9af172e43e39903814b72553f62cacb0b",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38057,7 +38057,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "988d880a35b0cec49d072fb13d9c51e1357ba9eab3610c8c562d54e5391a048e",
+   "final_sha256": "967d304c7e93e5d0e2d2dacd2d3cf3dd172c5b7dd0928389b8bfbc11e4d99f19",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38109,7 +38109,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "928b329e206b2b2dc1477cb4a710aed49f902d5b2798c2e587092d2ab02f772e",
+   "final_sha256": "94c41146a9e827f1919344472e2ad96826e80907a50c2930ed81f815faf3ccea",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38161,7 +38161,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "dfa125bcdfcecdde8d61b12d0974f993e9948177358aeb4b9d0ab5cb1c15c5f0",
+   "final_sha256": "f399e32e214b50943621ed3f43136719acf2b3be42e6771bd5992f3414441055",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38213,7 +38213,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "93618e259de11573acdb5c5e93ecbe3f0a4861cea849a5a1dd1bfeefa0a1bd0b",
+   "final_sha256": "db2d8a9d84f4cd1e546eb955fada7759adb83d9e34fc570e59ee75b06653be7f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38265,7 +38265,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "313b4e4903f11e1b2a800e4d6ea41407a6d85832087774e7c7ac8797eb8ad8b1",
+   "final_sha256": "3253ca1b466ce67066a071b7b7d4241db17776264fe7fbda34109c818599a66c",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38317,7 +38317,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "9e55a5d49b54541fcc5bbae0c16555b3059de7c9b9fdcf4993dd8f53b1a55f8f",
+   "final_sha256": "f6add59e465647cbdcfe3defddbf211980d465cb908852f6d7de22511ebb91c3",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38369,7 +38369,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "b857fb83272b1c1c551aa6cba3f0035c09e209fd48409da4fb2f13456dabd47f",
+   "final_sha256": "cff967ab17d5afb3fc19b349dc757e710ad8b59e6aa88c7244f3bdeded84b261",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38421,7 +38421,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "4e660c074fc9e9d2418607f5eda1dd0ca8a2e9426f362fe486ef6ec8f880313a",
+   "final_sha256": "236da098edf52cc9f3809d181b0f6c21fa6363699486becec923291857613141",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38473,7 +38473,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "b1ef27a515fd1cd26d83259aec4a008f896aa03421de0c63e807f195c9e8d2b3",
+   "final_sha256": "dcf43d7c66620dfd89a4d62cdfe3c4f1bff49b1ac3a33f01826010e59268fea2",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38525,7 +38525,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "034a80ce25feb5e83bfc2aee36dcda7a6c8e484385bcc18553b55ae2b54a5ac7",
+   "final_sha256": "17aa3f8dd78449c10c3a2ef9347e475d3fde48031e906cdcbe8fc67365013615",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38577,7 +38577,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "170ad20d4e9ec20bc82c078cd1278dff01a2c773ecd57735adfbd791f6d822b2",
+   "final_sha256": "c573f6761bc574bf6ad126cd5274998572cce8c9f6208364aedea66377bdb3a7",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38629,7 +38629,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "edb2973bb3ac53edd9ce2d52da8398672a46c07b58cb40f52cdc65aa990273b5",
+   "final_sha256": "3b1e2e26df2ea4723f68b41b498193303b90e8c0e6fd9976269cf4372da19f16",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38681,7 +38681,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "66928680c7d2475c7b86263c22b0d63c8836dd353816bf3872624eeae80cec3b",
+   "final_sha256": "894fc8bad9c1ccd42ab2c339ba1b066185e465f7ecc062ee33a10eaf19baa9b6",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38733,7 +38733,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "2b668d6ebf2ec6ce9a645d9ac3782a51fdc9810ce15b2f9e8dec298344395cd8",
+   "final_sha256": "46698257f65efc950abdfe3f77fe1d2bb7d61881f83a33d98819243da301c3b9",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38785,7 +38785,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "e533e6f63a7d5807291078225e1162b5784dbaa1da2008813b84f234536fa515",
+   "final_sha256": "127d39f3e1e94ce6cd4fb2b4df8d6f04e26abca4e2801da47defc0a3681a992f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38837,7 +38837,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "8bcf949063eaafeb8dff90ed04deead39b7f5a3dd243377f8eac26bab6a6ec47",
+   "final_sha256": "36e1867f1e8dd7d1fb759b3343cf764389bfcb2c3edce5111a4acee19730b6e5",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38889,7 +38889,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "76dc1526abf5d8ef288f74d5156fd348a838a2cf7b278b0e0a217cb8922eaedb",
+   "final_sha256": "7707dd429ca3add3456011e94c13a05d23a53b34197009247397b2ffcc3c42b5",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38941,7 +38941,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d002cefdb62587b39917266f56d3cd9097679b0b4c3b0ce3305addbe0ed6ea4d",
+   "final_sha256": "dcf48943044e9e9cccee183773897b49455b4cb4af6cbd208409e3d4569e5a76",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -38993,7 +38993,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "ee3575543c329588cb129244bb1fa4a82c33db4c39b89106e1e4e8d44d6e924c",
+   "final_sha256": "90f938d95a50aa9796db2fcd62f5916b67a5b920d9f12402abd967b73cecf7cd",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39045,7 +39045,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "f0fe8fe071a341f8116fd07f6968fec60552f435371b37213290b7d4f2cc3942",
+   "final_sha256": "cae7ea237131b92c466862f33e43cea76422595b5f2a4624bdf75c444d7963b0",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39097,7 +39097,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "e427f28380e9dd9f5df1266378a2136d390f5ca3169ef080c4b6ea74f73d361a",
+   "final_sha256": "a72c9dd28252d363553d9e1bf748c8dab8087a0b99260470ceaf4818c995d03a",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39149,7 +39149,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "449f8d5c1fabe5b8d8d816383712623d2b44fcf3038ffee0f7474f5492508bc7",
+   "final_sha256": "a7b92c4fff2ca15dd6a9c43026a24f14074ec84fb2410b53b49f049225f83a8f",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39201,7 +39201,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "229ca8525797d4a75998680839f43184b3d4380f306f65fe8ae6e7e2364b138b",
+   "final_sha256": "4c0b905f84d4e46a2f468d440b25c3f178b3f7af6e3a35833c99f2d4995a37ec",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39253,7 +39253,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "9cc3b3ac8bf095f60db2d24f58ac9dbf4e62450ce44c5836b2756dc49c3bd22c",
+   "final_sha256": "bf924fa11277471045c7c9712d150570f8fae88240f937b09d50971c84f7d715",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39305,7 +39305,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "50280d599b9473d890a22d16706e1068234eb2ad7240e1aa91cb09d02921ccfd",
+   "final_sha256": "c5fe0dfda7181be727c735251f2531ae490947c4fe1fb96d770d45fc22e1b23b",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39357,7 +39357,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "00d206cebee5b6dd7238bf87947423e1c7197b009e8a70a5decc027661b675f1",
+   "final_sha256": "60e3700f22b7f080fe58898cb99a0c27e821f141a26a5c7dda42231b6270fb0e",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39409,7 +39409,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "d12533b2b1d66fcf5e1951584e57d1f9d30db8ed5fe4dfad1370ba35c5a60402",
+   "final_sha256": "fbe9c64f42e721fab272133664cd7143d8b7dc660391d71341343fa7c8bb1b07",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39461,7 +39461,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
-   "final_sha256": "dec3ee7793c831c6372729f3df02beb9dd39542b7408aa319e34e6e68467548b",
+   "final_sha256": "51ca7a461104301383bd7c8a5555a7b21b1cfc64ef9dd030939b2374d756bece",
    "changes": [
     "magenta background keying",
     "slot cell slice",
@@ -39513,7 +39513,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "c076bb0218a4f8b743960db50b5f2425c50a431866717254a05f9ffc8892b15c",
+   "final_sha256": "136a3971a8140f1995f4f84fbad3636b1df56292b2c94a60aef7d3d772ea92c4",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39564,7 +39564,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "d8c0b79fcbe3e3d8b49eca6aea09ccd9a0707172e452647374ab4664af6b653a",
+   "final_sha256": "219291d195fa291f6d3ad24ed03200a4373678e9a5916ea174cbf611bb1fd7b7",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39615,7 +39615,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "af41f26d12ce50007244be1ad43aafab45c59c8e3276a20d2940c973cafff214",
+   "final_sha256": "3696856b557cebd7558e820370901a210a26101a76dadfb20f3eab00217f27b6",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39666,7 +39666,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "cf283dcf9d286603e1692b7f9cefd928a4eba00c104ba7ab623df425784e0f69",
+   "final_sha256": "9b067c655954a8002eb8f71fe2d20c055f6f4158f0b99b64d820ec215dab11b5",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39717,7 +39717,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "ae8188df3ab3fe2928ac854fb9db35c714c7cfbcc9230f363f30d8f72fad9d4c",
+   "final_sha256": "e885a0224a75e0c135adca77b46e067d4e81e6ec963fa7978bcc0d500a6c6fea",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39768,7 +39768,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "7a58c889adbecd2b46215c9a9a45a5711085da16bba9dc6848202117f1df8c0e",
+   "final_sha256": "f07cc15957bfeb9dd7b33b3c8ac6186101510072054ebaebaa3fc8bb2b957904",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39819,7 +39819,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "a8f668f584cc58350b4c26862eb3d636d1efb3746a29ae180cb4f845d1dff034",
+   "final_sha256": "bb1347624d1450de0ef31a06f067ce58823fe86772fe79081e1961cd69e9c8d9",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39870,7 +39870,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "ae98a221fbb57fd03ded9b7c99580d6d11c013ddb05f013dda864832a09948bf",
+   "final_sha256": "742871c6d006ffae5f26d50221e3bc9060b7b6b155ac698978aaa16b4aadb7a5",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39921,7 +39921,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "654275d03ecd92c6c5480a14c17469741cb327e56a152b2d741ca29a03ef7a0e",
+   "final_sha256": "42e2ee5910546b425f7d9fa9956c8391c1af20f4c3ae16e310ad1d2f085e177b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -39972,7 +39972,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "29bd2dd63ce6f3a0b5bc7cf4ae642852fb818e79a0664343d0506dd68d779b1f",
+   "final_sha256": "2912248b924cefe01b0eeb3568c390996d41185f66e9763998daa9a5c9edf9fb",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40023,7 +40023,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "05e39bfcc510cd667fe6dd712125edf7739f78883d325ed09a36a1d8ba17addf",
+   "final_sha256": "8859dc0bb4a073938dcdf510ad538b33b7953a7c4446acacf6903bfdf8c58dcc",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40074,7 +40074,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "16c1f09b8ba7d75e74a025a0294764e836c3df83b00e6233b7d44677ae7dfbc4",
+   "final_sha256": "fe8c5e984c2d4812e9f7e53958b91a8a7f2a78de2a82feaa86ceeeb3ba234d7b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40125,7 +40125,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "6c5fb36f95326b1be43a2fb838ce8b2aedb8c7fe6599ecf91e4ec2e182e53f84",
+   "final_sha256": "85338dbf63a786e0e20bc2eef624b16c728952123c2375addb8282ee35fba7c5",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40176,7 +40176,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "0747768351cc5784735108233496074ba71cc6bd58ace0ebb86b263493997343",
+   "final_sha256": "f58e055065a491922b22c13e467be8c9b09beb3079a52ec86426b8ac5627ce2b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40227,7 +40227,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "59eb904982c2728be509f29f71fb12ad78811465b7eaf0fabe37b1a630f0af54",
+   "final_sha256": "083c06fc8812fd238fecc3ba350578f90124a5eff0310cd7701843d95edc1c81",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40278,7 +40278,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2a8ecf29ece76ebace72f8f4097e96532bcc432915fb7e192e4083d401710ddf",
-   "final_sha256": "dc5c1c07f444060c0bd51a80fa70b8722c20a4b55035f2986a5e144f7215c334",
+   "final_sha256": "fbbaf9bbc22b1b8c16fe9401711926e22e3b9567ee3da5a5213688c9515aa5e6",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40329,7 +40329,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "881c03728ffb1cf68c8017d4ca6d34a4e1ab9b38ce6225f17e0cd4e3dbec9caf",
+   "final_sha256": "cad8117441276860e942ebe036f5340007eeeecd9392c7c00f5c4cc63f11de36",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40380,7 +40380,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "b18e4309d89cfc7317d3d37ec962132fdf9c576d4e4fc59aa126923eca84b736",
+   "final_sha256": "b9eb40494f81c053608cc30855afca7ca8c3273022ee9bbc049e6b2bb62503eb",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40431,7 +40431,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "62d230c782363e132dd522f014a057484bcc6f0d7ac7aefcaf1cd45a198e246a",
+   "final_sha256": "65755e5062d1b2726f423445fe639656a066c384870bcb852701d3ab674c2c98",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40482,7 +40482,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "496013b5bdb4ac8f5127bef3bebaecdc8893340a872e5f59b38a172eef51e81f",
+   "final_sha256": "2b3cc859405b7c4ec3b9a12b9ec2a545bf29764e36b3604981994e6f107f8aec",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40533,7 +40533,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "69118fb408f353a1bd54f38a37424c5eb2f70fa271b9637b592b353c118ce220",
+   "final_sha256": "11a0f32390e142029b22aa0624f8813befa41db69f24c925be1734894e47994b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40584,7 +40584,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "f37094c90564f63bb989af49704f964f89020bc95d108719a5e53a52ad930667",
+   "final_sha256": "fbe6f8c28c958647160231eae1f19e08dde361f03493a66ce7db9462801e65a1",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40635,7 +40635,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "d617203ca69e56be5d8e01fb985d2bbaec788ff53960f90662a645c14a6cece0",
+   "final_sha256": "e360d2867e225d94eaeef2c1fcf6f40a90033e46e852ec0f552528145d884157",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40686,7 +40686,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "8fdf40dec3e4adf4506adf7d1c466c2c8661268b4d54702f11377e57dc8d16b3",
+   "final_sha256": "e8ee7226c9fae2f9145fa8ca22e0cad8b50178522e4d70a96e0f3bda14a65e27",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40737,7 +40737,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "6eb02b0eaf04665ba18900846cd60d7861c8c21136776c6d8bc9fdd907105ee9",
+   "final_sha256": "380c5f4ce4af3b44473ad6235f3e42541441019bf2fd0c7b5513cfc3b62d5d65",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40788,7 +40788,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "94128b090a4c09230f3e99e1568cef29fe4b6b7d1565a8ed36d999afeaa05bcd",
+   "final_sha256": "b2dfa71564de9b8a8a11ce8e242a4077a3f1b712729ac60fd03e8a1ab73de196",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40839,7 +40839,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "b896cb099865a06b2eb000057a94ac938c3945abed77dd768c2ad36694dd81f3",
+   "final_sha256": "3510b9555552300fe2951433b5547eb59afe715634d376fc581ecfb64059f721",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40890,7 +40890,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "c04b309db6e502cdb94f0c5c28b0d39ca7f25369aa48be16d898ff7a576dbe29",
+   "final_sha256": "c13bb83b2db47181825f2bffb0c8da981090faf9cb567adf6a1fac8996f48623",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40941,7 +40941,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "673dfe0bbc2cb884fd864a2aa02c75cc6f0a6adea30d956573f2136cd06930cc",
+   "final_sha256": "345a3e7a6f887e5dfecf0b7f7dd74d84278646d7bdfd26e65b3598990411a2f6",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -40992,7 +40992,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "94d764137808ca9270f8f8ed1ca188cfd4e36c7273c6a718424bc9577fba73fa",
+   "final_sha256": "5c6f12f973aced235c7c932eb6c1d5f3c2c3dc6ab36cc2bc1661e282cac9304e",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41043,7 +41043,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "a760d2d4f56d51f4493d3c77b5339f5d0041056b040b7897a61d011f1935c963",
+   "final_sha256": "a35bdf2fc4efee6a7bfe5ae57a3a5d9c2d53b3c1d41c180a8323367b062892df",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41094,7 +41094,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "b3539b53e8073204cf58449223e81dc0314d15da6aa4126d3bcce9d7fcb3f06e",
+   "final_sha256": "aa867ac50d6523141edcfc403ad62673a074130258a96de7d98f40918eb316b0",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41145,7 +41145,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f814975cdb711ca17b54e441c531c0863c0d01658713518fb3b29eb5127f99d0",
-   "final_sha256": "f827e85a9634bbba72a55b6d68e2dad9f544a36bb4b77561d8d26fa2f80dd1d0",
+   "final_sha256": "89657047e7fc8c1c76b2d32521fe57d176b8a0062155ab99f6bc4a7982bc47c9",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41196,7 +41196,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "b6dc56e3eee282d35ffa4cc456743ac127b48f321e7acfce546a77a63a99a530",
+   "final_sha256": "03f8be4dd195260191605a5483455e9822de8109fd8f914391367accd3ce0e48",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41247,7 +41247,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "bddae43d8ea63102a6555f61d1b5d9c1bcc58437667057ca6ef68b384ef9bd71",
+   "final_sha256": "e2716e97b3e6fec4e17e9e9d6c790f3311acb33b33b4390604f3de815969cd05",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41298,7 +41298,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "64936998ce296a1db5bf41e0484e242ec2cb68243c0cf3c2fa479297c88cbd13",
+   "final_sha256": "e2660f696e856fc25354c812a858b7164949f88827329582dd004ddd2ac93023",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41349,7 +41349,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "415041df05f9226f5bdc33d3bde1b58f1e3c15dffa007578b5273b3c028302cb",
+   "final_sha256": "1b940682e860cd034ef1ad410b5220626a33c2ffac3817b6fd00235906835602",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41400,7 +41400,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "90328b02d6a782a47fb121efa56df22626e8530b6355059577d4ed03bf4e1921",
+   "final_sha256": "ca1dcaf2cc76c4c5bc14e9817e5e88f7d2a9325c4243d42e12cfc5a28fedb722",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41451,7 +41451,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "b652c2a0a82149edf1bbb5fb6500f4a9f8bcb0e7d02ed1b43ceb4b48c37a753d",
+   "final_sha256": "4b1ca293d9ee0fb298f492a15541aaf52922691e5a6c231087229f7c39755e20",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -41502,7 +41502,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "40ea0997b8fd7706a21950026d1652ae5a9bbc4c36f75cb13b0a995b569f9bd0",
-   "final_sha256": "d5fdb180015f1a6e8cef86f7f6d5fa814a3d3650b15c9fb18a9c74b98ea26cd0",
+   "final_sha256": "726291649c46e66f7b80a0e3a7fd2c47ade45a02fffa1d7006877732b46f1501",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -51511,7 +51511,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "1a5c42544f513f74047f3c8bb88721d08e6923885f694b0490473ca6722d0943",
-   "final_sha256": "1a5c42544f513f74047f3c8bb88721d08e6923885f694b0490473ca6722d0943",
+   "final_sha256": "edb22c646816e9231f87b35c536a1f2d10bf7dbb75456b80fd8bd3f81632a2a6",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x1024",
@@ -51593,7 +51593,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7878731bab05ec1c7ba0ddc342b297b624ccaf3c66e736c66d37fb10a9374bed",
-   "final_sha256": "7878731bab05ec1c7ba0ddc342b297b624ccaf3c66e736c66d37fb10a9374bed",
+   "final_sha256": "aaf378a739110ed7015ff5270e8e46f52ec71b595aa5260905bb15aacb375cdd",
    "changes": [
     "magenta background keying",
     "canvas finish to 640x800",
@@ -51635,7 +51635,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2f79e1cc165dc83102104440465f0ac0e2172c3d6c4d349577dc1759cc9e6815",
-   "final_sha256": "2f79e1cc165dc83102104440465f0ac0e2172c3d6c4d349577dc1759cc9e6815",
+   "final_sha256": "5643dc0fc92c55947682163f3be7284997ce590b29c22110ac3cdb64d0c08be0",
    "changes": [
     "magenta background keying",
     "canvas finish to 960x560",
@@ -51677,7 +51677,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a937010dcd65ab167511326749a1a66c920faa0c83c8ef4ad5d2f958fd064c1f",
-   "final_sha256": "322724403102c52858a2bedd1ff639afc8a1eb9f28f99063c290b5be29c68088",
+   "final_sha256": "c1803976d36bc0db4417e393928bb6ac0d138e7685cc2dd00a3f4ca192a30a17",
    "changes": [
     "magenta background keying",
     "canvas finish to 960x560",
@@ -51760,7 +51760,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a191a4613026d8bbcad528441e9d4263f0e5472cff8524867a5c742a2d451f1d",
-   "final_sha256": "51553f65e12dbdf54b51dc6010ef76d24b8e02a25e021e39adcda1fd75885648",
+   "final_sha256": "52ea4b580dd47882e433b20a06e95ef1dad8a8dbda26c8f4eb0c1adf8017f76b",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x64",
@@ -51802,7 +51802,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "deb950dee9b2bd0f366ab6b71f9be0d3f7cb8be1c9ea18d48b3f001538dfb52e",
-   "final_sha256": "1d634083ba34f2a09fe5ce667f57452e9c6e1cf3d39c6e8b5438b099fac1acc4",
+   "final_sha256": "db1f033aa69b4830eb3460be67a7321b874340553b4b586ddac6e1e590111d92",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x64",
@@ -51844,7 +51844,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "e48ce10438f0e651184fae7dba638c681e469ab01808fcb8edb5c158f7714634",
-   "final_sha256": "e48ce10438f0e651184fae7dba638c681e469ab01808fcb8edb5c158f7714634",
+   "final_sha256": "927de41364a11e1a9f99a9b57dc950fc98f9311d9da2c9f385f66458073914cd",
    "changes": [
     "magenta background keying",
     "canvas finish to 256x256",
@@ -51885,7 +51885,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "61c99b802b72d74b5578f4a719ed5927b2b1408703410be3bb15e5374729c968",
-   "final_sha256": "61c99b802b72d74b5578f4a719ed5927b2b1408703410be3bb15e5374729c968",
+   "final_sha256": "64daef0a040fe7485c02228c17ac8c9a81366745149105391f9ebf1f4cee28ae",
    "changes": [
     "magenta background keying",
     "canvas finish to 256x256",
@@ -51926,7 +51926,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "0951fc543b8fd27562c12c60009f3f2abe62ad776922dd6735d381abf921da69",
-   "final_sha256": "0951fc543b8fd27562c12c60009f3f2abe62ad776922dd6735d381abf921da69",
+   "final_sha256": "ed591c4e9f6ce5fbdb054e35de9da51f5db0bb845fc037a1fd313a4344214b27",
    "changes": [
     "magenta background keying",
     "canvas finish to 192x192",
@@ -51967,7 +51967,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "2d7ea73ac27237389b194f92019039d4effd29264bd538a29a80db4cb8459d10",
-   "final_sha256": "98be5731528705a461dc19b62908fcbef548035f81e60919838f10076042488c",
+   "final_sha256": "453f3fa366ddfe133623a679a1814fdd8545ff0583876175be59f98ec4d8a0ed",
    "changes": [
     "magenta background keying",
     "canvas finish to 768x192",
@@ -52010,7 +52010,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "933f78e6b40980ba789849625f2585fb5ce482de867b4200439d79a8b9f869a6",
-   "final_sha256": "933f78e6b40980ba789849625f2585fb5ce482de867b4200439d79a8b9f869a6",
+   "final_sha256": "0aecb58ee7d9d426eb2c38c9cca0a0564daaedcb1ed7ceb79979967bbdc1de5e",
    "changes": [
     "magenta background keying",
     "canvas finish to 768x32",
@@ -52052,7 +52052,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ba7f9f6ccde258bcd34e9baca83ea00ee4a1789c8801c798ec0f19160dd8372a",
-   "final_sha256": "915072fd67f2e7ab69f2d09c438d74acd58fdab1392cb8431c698977435151d7",
+   "final_sha256": "25187f0e1a461e2c190bf966b8c8857449ddf0292358020a414d9c4bc1497892",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x96",
@@ -52095,7 +52095,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ca0fb1e0d7ba164975f0ace7f139a0b6c082129177d02d87c44044d911accc4c",
-   "final_sha256": "2738b1c30f1699cc630a07a16be3f6dd90da9852d0c3998a8c22ba14e4fff1a7",
+   "final_sha256": "1912bdd303d7c0fc0392219368f7d25bb2c64e545ca5628df620620489fc9923",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x96",
@@ -52138,7 +52138,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "84c0b196869310b55d21cd3dd0346cc200c1989cce06c274f8ee54aeef9a2627",
-   "final_sha256": "84c0b196869310b55d21cd3dd0346cc200c1989cce06c274f8ee54aeef9a2627",
+   "final_sha256": "b549a1b03579b26f46a28e7902b5a7087d3de41c263c795d5f459d21d25004c0",
    "changes": [
     "magenta background keying",
     "canvas finish to 256x256",
@@ -52179,7 +52179,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "15bd71de8aae8ae50051fb6724fcdbdd5a85f407c19f0fc5659c8ab0891e3df2",
-   "final_sha256": "15bd71de8aae8ae50051fb6724fcdbdd5a85f407c19f0fc5659c8ab0891e3df2",
+   "final_sha256": "512b27b9d976070a1ec699ca0fd58653d5f147f30ec1e6e11c3069b48e8256b3",
    "changes": [
     "magenta background keying",
     "canvas finish to 128x128",
@@ -52220,7 +52220,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "89de41f1c0f69b557b47615e8ff28fd53aa07263229925e2f6eef2fcc2486846",
-   "final_sha256": "89de41f1c0f69b557b47615e8ff28fd53aa07263229925e2f6eef2fcc2486846",
+   "final_sha256": "87ff98719efd4bf4c8dade0c837bee02a2c284e3e5539f7f9ed68dd053c318ff",
    "changes": [
     "magenta background keying",
     "canvas finish to 192x192",
@@ -52261,7 +52261,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "69b7e18b517f2f35b6c5a734b102bdffedd14eb61177f3f6e4e61baf55c73fc1",
-   "final_sha256": "69b7e18b517f2f35b6c5a734b102bdffedd14eb61177f3f6e4e61baf55c73fc1",
+   "final_sha256": "aafe7d3c49e2752b473db1c87a148cd05906b56d7a03071a7446f674e0da48e2",
    "changes": [
     "magenta background keying",
     "canvas finish to 192x192",
@@ -52302,7 +52302,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "fbfbe137e08c3275b81ec1e1441ccb35c8fc13442d866851e8fde7da810256ca",
-   "final_sha256": "4866bf18ede4d32c6485266ce88b7239b324c3f64802e9a3945602bccfc252dc",
+   "final_sha256": "c4b502f4c710e2ababc9294caa825bf1128ba38d4ee82aac826336af14ad1291",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x96",
@@ -52345,7 +52345,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ffde9120663578eb478da3788082636242d35ca365c10ec35be7a3b12832c3a7",
-   "final_sha256": "ffde9120663578eb478da3788082636242d35ca365c10ec35be7a3b12832c3a7",
+   "final_sha256": "1a07c9b05df3decd6f58e8d220000af28c8969266d9783ef1b69a4707b11b9b3",
    "changes": [
     "magenta background keying",
     "canvas finish to 128x128",
@@ -52386,7 +52386,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "11a3375c4d7a595e0c9b150b740dbebe26c7950c304c9708c6f25faa086ddbe6",
-   "final_sha256": "11a3375c4d7a595e0c9b150b740dbebe26c7950c304c9708c6f25faa086ddbe6",
+   "final_sha256": "64d10b257cda74206c971bec02176a310a4a835606952259602967f4d35212d0",
    "changes": [
     "magenta background keying",
     "canvas finish to 192x192",
@@ -52427,7 +52427,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "4cc491c1029e726491c67b3ec4c9eddc298bef3f96e51e6b14a857b657d5f9a4",
-   "final_sha256": "6a0d862d0b581e18edc18e13ab361abe3a9f1991df8be1e378805f9f72d7aa78",
+   "final_sha256": "8d27b0446792cccd148d64287a5bebd831510074a2831c34bdcf04669470a106",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x640",
@@ -52470,7 +52470,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f638a76b9a64d5bf7406f2185174b98ad79c22db8f369dd463a489500b86636a",
-   "final_sha256": "f638a76b9a64d5bf7406f2185174b98ad79c22db8f369dd463a489500b86636a",
+   "final_sha256": "bce42ec0a080d3dfcb83600c5c25494313e29975aa9e1d9b440876980f449794",
    "changes": [
     "magenta background keying",
     "canvas finish to 256x256",
@@ -52511,7 +52511,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "0328ec63a6c0a3ef86ab05f16ce574afd28593bb3d914e406c24552223ff1ad2",
-   "final_sha256": "0328ec63a6c0a3ef86ab05f16ce574afd28593bb3d914e406c24552223ff1ad2",
+   "final_sha256": "d93a2edff1c68642e3883fdfee3dee3aec8d3c260743cb589aae589d970f014e",
    "changes": [
     "magenta background keying",
     "canvas finish to 256x256",
@@ -52552,7 +52552,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c4d3d9b64f1c28599ac4fa0c539a8735391836c98acfc62fd074659bfb82b55d",
-   "final_sha256": "c4d3d9b64f1c28599ac4fa0c539a8735391836c98acfc62fd074659bfb82b55d",
+   "final_sha256": "b4214b60fe3d1568b0cd46f395f25b7a55bad06885ca9cd6ce686ac91dfa3147",
    "changes": [
     "magenta background keying",
     "canvas finish to 128x128",
@@ -52593,7 +52593,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "51e9ce96ff50d98e936f09d2c7156674fe87c3e9c7ced2cbd52cb54ea1eb79f3",
-   "final_sha256": "51e9ce96ff50d98e936f09d2c7156674fe87c3e9c7ced2cbd52cb54ea1eb79f3",
+   "final_sha256": "247a9d5d46201271826e347903d7e4d811beb521b91865e4416c075dd38ba17a",
    "changes": [
     "magenta background keying",
     "canvas finish to 128x128",
@@ -52634,7 +52634,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "717b7a005fdeefbd461e64254048e66b462cb952b196241dbb4d9d63d4d5c89b",
-   "final_sha256": "717b7a005fdeefbd461e64254048e66b462cb952b196241dbb4d9d63d4d5c89b",
+   "final_sha256": "e95b9110a437c23ff76e308a4c3d991f943628d9d983ae09ad41e1e70455a430",
    "changes": [
     "magenta background keying",
     "canvas finish to 128x128",
@@ -52675,7 +52675,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "fc4ebcd92ef5cfce7caa520e421c26ca469e047720899b75f9d3c2c7658673a5",
+   "final_sha256": "893ad977461cc09c11b9bc56214f8424f319a158b710d882ced0d9ba9fb97b35",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -52726,7 +52726,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "8adc9550970b7fa28578c201d0f74d2fcf5bb013f073e2528b3b259225c66028",
+   "final_sha256": "508c24adc5130091fb415f003e54fe3995bf8118ed8541e68aec17fe5e7cc5d5",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -52777,7 +52777,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "fcc6abe7f0fa2de92721402f8e6b7b2569aa4e0979031e52a7caa89d2704bbfb",
+   "final_sha256": "15bc8c1544604aa91e801045c0ba062b7acf58df5be26b7dc949d32ae18888a6",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -52828,7 +52828,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "19b61a150942fc9c523a82e3499f802715658accdf0abc7a88b26d2e282d756a",
+   "final_sha256": "99619b3c642701186b6b21938d8cb5518a9750ea320f08d0ce0b33a70c88f386",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -52879,7 +52879,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "0ad412a3fd9aed3eb01cce37f753068c2ed3ccd6e1706ddc7abc6dfe031ccc79",
+   "final_sha256": "3427a927c7ee68378edb540e3ba8b1263545e1caa77d6db98d83840d31eded5e",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -52930,7 +52930,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "c971c1398cf97db198b387812f61bf7471eb0b0397fedc0d1a4e57f7c391d9c9",
+   "final_sha256": "b9177782446bfb0b9cf103719d3c7abd86754eb4767f49f3b95ab67bafdc8fd4",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -52981,7 +52981,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "668ce54d91d779ccfc040cd9449a936e508a51f88d9c950bd175628c219fa16a",
+   "final_sha256": "9bb4aa1cc8da270322e489bff2ed500258bfe9db4f7ede533402b0b85afe3be0",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53032,7 +53032,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "e782143d93317a8d0d1d73efc365eb7302e9eba19466032007ec0440b9c0b461",
+   "final_sha256": "22742734f7bf800806e8af6b20e8bdeb2c456a3fc165f0c2e6e8870ea4a54091",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53083,7 +53083,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "35c7e881374a7a26e4eee3a31bf34022c81ea6132055f389b3459a02580c0c68",
+   "final_sha256": "9a32e6287ccd84ea27ae9a7e3d3fb63d2c9efce63bf81c525bdc3703d9c45922",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53134,7 +53134,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "9daccc14ca3f087a6460fb5c49d7b2d93f9a67c156d7569eb9c70cd111c90688",
+   "final_sha256": "0e2b6a1299ed01f2a8bb6df0e9d4db002a5b254692db8b1d0c17f0d556aecf72",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53185,7 +53185,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "afeab55abc36039abf2a8aeda3b926058eef60a07fdf5fe61f8dcb2e79a53c56",
+   "final_sha256": "1d560d3387f125d4379410f36fa71ec86882e269f5b143cf4cac2295c5191c0d",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53236,7 +53236,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "01a7976d391466305620dedcd76e3c9400fc078618b5e9e634e66b0d42d222d6",
+   "final_sha256": "7ac66d35324405d040aa163bd3315d54d699c77cc00db818c7d60e4bc8eadb4a",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53287,7 +53287,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "552c5e8f70b2382edd05a4fe3679f58877dc23025dc39039ec1538c4b540b43f",
+   "final_sha256": "842198253be47a92aa63e15f7fe8ea5b68bc565e2556d3e0a502c68149c1d255",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53338,7 +53338,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "c5faa8c0cdeb0f4895f7b771d03baad3bec36ec124bbedf0c0115a848b6f614e",
+   "final_sha256": "d98a07dfc2f311407f0f7518f1ac8f938922338db410115ca31dc1d19accb428",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53389,7 +53389,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "4f9a081952c14b8e24b1ae45928fdc0b31072ce163207f1a106901219e6296fc",
+   "final_sha256": "ff87248554b763102f14a218c7178eed3f34d161a809b9c0859f56b8e23de726",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53440,7 +53440,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "51967d109a943126c56e86a7a3b798bdf64bcff0280f3fa4620922e4677c8799",
+   "final_sha256": "1a5da5402039ade2c6d3ebc125efd37e1d7237006dcdbf348e087f44600cd4b4",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53491,7 +53491,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "5d06f17962cfcc6df6fe33273982f73ee0d87103b93d44704f5420ccbc3a6974",
+   "final_sha256": "49015c682327ae5a1f12ce63ea43ad19bff78f5df77f79eed985f52fc021c2f4",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53542,7 +53542,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "38e18179fe7a2c16f41c064bb327deaec74631a9e1e16490b64e3d1cbc2c8e5a",
+   "final_sha256": "c3384109d1acf645313f5f0ef3829764e1ccd6163e87f680ff1d6717744491f1",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53593,7 +53593,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "90c76b58c1ffff2f4c956e5f19ec87497a68e952ff522e40a152d87f37157587",
+   "final_sha256": "666fbc80d937422a46985bb4499f948f9f15a6acabadb2f813b7c6c8567191e5",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53644,7 +53644,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "d195a8ed747e29c76dad84ed789abff3a899f2deef93eb5fae8a5f16f895a0f2",
+   "final_sha256": "eaeb0c3e0023ac2f14da29e06a8eb0d2e3354a82a22a7d5af76011daea7172cf",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53695,7 +53695,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "38ea2241ed8f242f817c1193a902786a133392abe2a823c77844fc9541c80f69",
+   "final_sha256": "9ce19beadc4d0143df4cfd9449060ccf17ed15fab06d9bbfad00c261f9853ef2",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53746,7 +53746,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "e545d1016abc0416388a31491b74a29675531a6d26547fd537a172b3ed55578a",
+   "final_sha256": "8df41f4d22b0b0a10983b595b5682653be1ad89a7febde5d6949e4a69df35954",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53797,7 +53797,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "36fb24bca580a39a5253fcc198c9e5b1dd135ba886a2911bdaf4b6dd27a7f0ad",
+   "final_sha256": "6e95c03615e4f4dfdcd625949ef5cb708a09d6fcd37bd816f2982b8da08078d4",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53848,7 +53848,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ff7ac9b48868eff3a52fbd6c0d528ffc2f371770acd7a2582d3568672fd52ccb",
-   "final_sha256": "1cd9ec44b08e32f56e267994a40af86d834228c7896bb893d1ce944ed583a90c",
+   "final_sha256": "1fa66aba4b10bcf388edeab96db2fa3b0b47c5205b0cd35afe2ce7a322bf47ae",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53899,7 +53899,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "e3b4ab1c3eae57dc2c344231c61db01af39ebf9a9769b49346e03701c214ebeb",
+   "final_sha256": "ef209eb0770245ce022c8e9a2e693292a96e40a5305dc622b3bbc205a08c1c28",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -53950,7 +53950,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "15ac802ebc3e8ff4779a98ed28d2f3ac0a2c4c9ae665557bd7a26e43d1e3cb71",
+   "final_sha256": "6f91315c5e5a4fa7de8971fa49d8ce5ce0c2bf791710df3cb35aeaed892c162a",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54001,7 +54001,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "53336cea0672fe2086a20110f8c835f8ab33b11b4e20c71a3f5445e98f24c97e",
+   "final_sha256": "0e5714ad3817de01bc1d188073b502781190a9a99dcd4d924b5f0bf80a4cf84d",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54052,7 +54052,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "43c4b4df339174fdaca4229a2996c64bdb988e2e000addc2de73c299bbac424c",
+   "final_sha256": "738e8d18ce13d86551bc9fdf50b45b4cd03401f0f6e263a8c2bac1a75c5a5760",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54103,7 +54103,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "fdc58bdf30baf42dd97c2aca21e51d3308c9fc9058544621b82c7a13e3069e44",
+   "final_sha256": "537181793689caab4dd73514fc8a97b4d75a8f670c181526d2a514616dc301d1",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54154,7 +54154,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "a01068d567999d3d4b6fd4763151e2de0a8e625bef31d5853ef7e0f56c3b2706",
+   "final_sha256": "b8a5f3aa39e91b8bdae7d0e1a555987c3a9d78725492679883ce044094d91c0a",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54205,7 +54205,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "6be704deebf8b2f13b0d22a49668500030e58dff0b2b7069cb0c766cfbfe98a9",
+   "final_sha256": "365f3f6a0a019a6a1ec335fa2d8049c0ca7b3b9d02ee1e36f8250b408d63ae76",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54256,7 +54256,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "83940f7af4decc2af15eba4fadf75d0990774933dd6e37275100ca5c0520b568",
+   "final_sha256": "62db6cebd480de2ebe22a829b71acc5fd078e7f4d212f5baacae05b914a813cc",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54307,7 +54307,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "68344a1d203b250877f0b2bbbab731bea5818a911ea91c99d7139c38d94eee5b",
+   "final_sha256": "7dcd3c65c5396cd5f1970adcd1089ec7cce929d738df4d446d482a74bd81d288",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54358,7 +54358,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "938db3d69d0b88306052798ed0d797e4a24b64f73191088a9123ba652e0d9d5a",
+   "final_sha256": "21df7ffdc5cdb74fd33e1aa69566678933f24a2f7dbff365909f41dd824c002f",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54409,7 +54409,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "12500fffad23210d6180cb24bc3239e87719ffc4cda36898ca0b0751c0d12cd0",
+   "final_sha256": "b22ca83f9b87576602e3fd02e566621cc8a2ccad6f8fc2818c8589afd33b0e0b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54460,7 +54460,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "a1d5614e10b9580284eaf0b9240e109265e38d68651df54a683b1c961754abff",
-   "final_sha256": "f192b229d2d255f6fa6b35710141b7db2adeda1199192ba66560491ce7c1bed3",
+   "final_sha256": "7215ac927c7b78387a776ba9fb86a55791e83dbcaa31e0e74eba3621a9478bf8",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54511,7 +54511,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "7b021a2fad45a67c36e7b5e4b6fbd7f67b51a340ba2635456f139a263141a595",
-   "final_sha256": "c39d65bfd358d3362330acbc9c2bcd567c7a01850dc3f9973ed6cf39c85c503e",
+   "final_sha256": "c94d005c1ba4316b0e485c715832cee2858313c36e09d02eb08cf4607f4af818",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54562,7 +54562,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "979cbbc2c9678d95ce1c50a0d27417b8313cfd016880facaf8fb316f0c8cdce1",
+   "final_sha256": "fba335305e4794a7cd3b7acdb84d2b7cea54f39e764e1c77b2128bc15fb94189",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54613,7 +54613,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "0009fcfe97750c3fd673e32c8ecbc9a57f637fae45332beb8d0e95d32494e490",
+   "final_sha256": "2b68179a9ea23d0b0f9d1b7650b849822ec1f84b9b03dea020336fad0cfa86e0",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54664,7 +54664,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "72724f1e71f45c47a56757867a89566bcd0aa146c734bf47404f08c5ac6189f8",
+   "final_sha256": "d9362e79416ad0dd7c29b5831fa5c5870e2f1ee68818fa18e1c49eb4e53d4bdb",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54715,7 +54715,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "18c05512566b1e5d4b84f87b210ab631d1b0dd3e9d0c2cba0082dd620c64e64d",
+   "final_sha256": "181ffb88e2af5ae6bf761a8724d81e53e139d6d07b62a6cd0268deb7b832560a",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54766,7 +54766,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "1153ce3f9ac36ad6d476b2e7735166a3c61e245f34066fba38bdf93598a9af54",
+   "final_sha256": "a1b12aef59eab4c8d01201089d8685849a2ba1019ce929e0faf97fd712a3d81b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54817,7 +54817,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "a81c52d1ae9461d7dbd6d9e7ab86f0727d036f005117647c0c9f802afee3d013",
+   "final_sha256": "5e53ae217829bcbe3e78cf843253dc2742adfa28a6dbc6a4baa8109fcafcdc51",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54868,7 +54868,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "85fcd4f2f19a772c8880845688fd1511ac26ef3f2fa40bb4be4c0e68b4fea9d8",
+   "final_sha256": "e15ee9a7c672b9c70bad917091436a1c592fcd0d9dfa41b8beb6073c3b775d9e",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54919,7 +54919,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "2e094322f08c94f87da517b06c9d5ce5d0a3c09f7f7e344310d1b517965bade5",
+   "final_sha256": "afca6b99ee3c0fe3b0b096af5657d4e1e46fbfe837e8598e2188b6f011b56f5b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -54970,7 +54970,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "37ae9c311ed09bdf305102d0be81fe806f2391bfeb4539992675edc111de6680",
+   "final_sha256": "49447f4cbaca884eef21ed220185fccaa8355b69bb3081bb5d1b4c701576bb3c",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55021,7 +55021,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "4c3c3a6c9eb9fc23ed9d74123449950f6a3d777036082694d4f95b94945a106c",
+   "final_sha256": "4b46ec101981242d08828c021f4f116a2808e7b2cdc329eb9fb6c82261ea6e1c",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55072,7 +55072,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "3ba3685deba6d17e06a9faf08946ea2d740c016d0c0fa4456a0b02b6cc5d9bef",
-   "final_sha256": "eebd03ecd16a664e8c1c3d8f1b84846d214a2e3e3c2483b6a66182938300071e",
+   "final_sha256": "b5fc2561553bc2bb5648600d1b5ce8144ff0c94c2cae2ab5be41a1e19434d5bd",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55123,7 +55123,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "6cf513a1651bdfa4957fee850403b496f70b714d2831db02bde0ea864285ecb7",
+   "final_sha256": "f7e7f68a811aca353a5b9f44341873ae8160e1f220732cd1dc76fbc76e269aaf",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55174,7 +55174,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "e29aec780f9b226a22256aba28a3b1e582f34b66bcf16759fd506633e0f33f6d",
+   "final_sha256": "d004d5857dd28d6b3db87accc9f26bcdcacf72e40dab343173738bb3f2041e79",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55225,7 +55225,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "50dcef3dd6d099ceb970c38493dc18c6bbabb38e464e35ed507345425c0e26c1",
+   "final_sha256": "ae7f14fbd415aa3e24a8046b74a55dc074fc1edf6204dad04540729a8be570dc",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55276,7 +55276,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "ab2be695bb85b0e36eb0c7bb743953e5d7b9a86a0327af3107a30693bbe415fd",
+   "final_sha256": "328f89eee7dbc682639c6f8fb9b3612f70ffd363d47d27af686c704480bafe2b",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55327,7 +55327,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "54032399fb4ed722d4a209b789ec20d5de5ed799980bcf05b5099005b2ed9354",
+   "final_sha256": "ca8624e001e60e8980c99d64dd21c192b0aef93da066d51c2a0c5656fbbc87e6",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55378,7 +55378,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "5384362a88d954957802aa8956a5949e2c5eaf73bcdd7fc1730490636cfc4143",
+   "final_sha256": "43feebb9245a7df0031f2ac16e630512d02247bb1bb996e694b47db71d537735",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55429,7 +55429,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "ed0838fcb99984b0404b3a40f30e4dac59209981c2d25230b603a5bf8ec5ed1a",
+   "final_sha256": "06eb3350ef92cd0246e7a76e50561caacbdac52e9bc58bb6252f1a97374a613c",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55480,7 +55480,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "92153b6e1511ca47960b622c1775a22b848f13c0f58cc6956a4289899d2feee5",
+   "final_sha256": "849e3f921358687c4fd4ebb266232bf40031d748fc9f66c05fa5a066a64fbce2",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55531,7 +55531,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "67fa163d816006f0c427064ed6e28ee1552935da4c3e93f487ec3748e671769e",
+   "final_sha256": "3bf75c1c0bcd3e1fd98a716047dd95ce7b5d26b5273341d7e811e8af211099a9",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55582,7 +55582,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "58411f45e1e28314e4ff4b3ba1a113cca9188b38d7411edaa0b211b783aa550e",
+   "final_sha256": "c87222718c426679758b9e87cd5eb4edcdf88b27d7ae29685e1626d4421efd07",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55633,7 +55633,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "87addd5a684b7189c43c48cdf37fdc73e7847ffe5335934a02a938f266ec547e",
+   "final_sha256": "65541c176664091292c85b897834a8b4a909d13e7ab8915f6a4f58157211c109",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55684,7 +55684,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "5c82e9841616f9c04b95dbb7057123ac5ef7ed6a1ff14c5cf63bcb7868f46345",
-   "final_sha256": "1853bcbe2f37146115a4e212583dd9ae5160ba346a60c324f05146bc848a1a51",
+   "final_sha256": "3d6ccbb39f441f8c151cb45760fe5fae65de99189d4297cdaa2d96e94b20a684",
    "changes": [
     "magenta background keying",
     "cell slice",
@@ -55735,7 +55735,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "cffe577e7d10850da75098b8a619f6cbefb5e57b2d5df0a95a6bd7153f171099",
+   "final_sha256": "7209e6c42d6761e3376a3bfc61cf6b53ee169db53a0db97d3f232b25211f15c1",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -55787,7 +55787,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "4b60d4dd7e5abf1413798451951ca96f6bf755aba7a84ba541f73b5067a0616f",
+   "final_sha256": "e3f94bed9d46e7d603aa02e4d6841f0e9215d162378e19c4e52c9276cf7096e0",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -55839,7 +55839,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "c731c4a3758fef3700a8c9296180f30b24185eca5526e99f6a0d633c75ac7a8a",
+   "final_sha256": "c875e4e7765ffbda0c6b28da8e8e5b14b70c390dfa1cbf390123573c0ffaef73",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -55891,7 +55891,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "cf77dc4b7814e844d3fbe0e00de6381daacf74abf2a68b708910b0516e7e5a70",
+   "final_sha256": "54aae4b2f945ea5c7717fda483696e74dd8c0401bbc07e36f5efcf858a703cb5",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -55943,7 +55943,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "74dab2171a1080aed42407caa6750af55bb01c2df64b8ea035372136fcfadd79",
+   "final_sha256": "036c155f4ecbb18335fd6d4f8c7f0939fc350072d7c9db44da7883841230452a",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -55995,7 +55995,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "a5386b7174a8ede960a6f7fc6b875778773976b1f632b089ab5a7431fa7ed6a0",
+   "final_sha256": "71b5ac18a84ba1b65fe743d52d4b8c2fe2317748340a51374525e5491627b93f",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56047,7 +56047,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "e41022cb047f499a9c8145d832cfccdf83b29d1cf9f8370be61aa4869ba6b521",
+   "final_sha256": "eb57d0d56ae346970e83f94c17023fbafa7f1f465a184aab8e8afe49770f2ef4",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56099,7 +56099,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "6d94a170b64b58019a9947b95057ff7bcc746b8eaaab1d8e5a745c51f1023dfe",
+   "final_sha256": "e26f93c355385651e1883dbe8fdff2406645bae4947f2c59d645226527210305",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56151,7 +56151,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "8e6d0ca7f5db744d621747ee4707a3ed2fdb1ecb78236da4929fefcefcbf36ab",
+   "final_sha256": "f5156d981fff57740c91742c1000176d8797bc4a63ea59e98008d625d4b4d221",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56203,7 +56203,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "41ab27e77e0e73019bc037a8fde9495632481339b5611d54e3862418462de01e",
+   "final_sha256": "1dc529465c94a150b2991cd5b5933e8bea32d1d04389c6a84e354f40737f43a7",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56255,7 +56255,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "abd199b7102c3f4afddbec44e45b5c170fbb31a588a76d790b4af0622c41c890",
+   "final_sha256": "d794ac63cd22db7ef07b8c79f3c658e9500be699c21d291de931677cba84ad46",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56307,7 +56307,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "00bd8ab3e40f375c2ce50f0f55232c22ca3ebf9f5b4ac04fd2114a75520596dd",
+   "final_sha256": "0718d70d0d77cd673d73c79952e666a73ff1108fe81ed1ee41b5a0481b185d86",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56359,7 +56359,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "f06c129f8e40d83ffd1cafbdfa512c620768d1bdffee1777e4769254d241daad",
+   "final_sha256": "6b5d1f8cb2807d768c6139ec037d64c2a7cdbe82acb0c6d4230aa29f12b8e4a7",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56411,7 +56411,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "dd8dcec9cadd50f78ca6c643f5b8db6e451948022c235a6b4e33695bacca99e9",
+   "final_sha256": "a9a7a7ef478357d01e03eab521f22a466f4aab9a869ad3f6c0ee3f15ea3c8b0b",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56463,7 +56463,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "a5556df325ded29d6e697674bb229251799a70b0e751122d43c19511acb8b189",
+   "final_sha256": "44cb7413b864c6e59f0b5ccb4769e941e004ce353c03b530219ec8b1369b516a",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56515,7 +56515,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "6958f50e00b49d5a43fa59231f8db13adca5a59f0a05a56ea11edfe99f248e53",
-   "final_sha256": "743ff41d1aefb95c430f000a96813aa14e314a96f576e8c6b81d88ab35509c23",
+   "final_sha256": "aee9d694fb73e7fda6b1b16aa90964b00a066e042286a472b50f1da3f9a8f344",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56567,7 +56567,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "b1793ae58ed0a0096c251c7eadb941914793fa890a245531298c729571d5e232",
+   "final_sha256": "38ff87309fa16170778178712b75669cbbabca5967f70378fe9c85e12e7556e8",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56619,7 +56619,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "a3a7ea0f2a3a5b2a62794ed173f5396693553b440b76e1b3497245587a4c9a05",
+   "final_sha256": "266c95335fc15c0af1d30f0224960d9a01b3e59738dc72d865193fb7342f4b37",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56671,7 +56671,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "d55804c0e48bbb08b81a814813ffb3b51b2888c6b6fb1d3ba057be480de360bf",
+   "final_sha256": "91a27f4c014b3ff23baa36a417c224898cda64d721963bb8f7ce4a7572467bd7",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56723,7 +56723,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "cfe44db6fffc9a7d51068400a91eb94ccbf711ee3d3c2f919b547c5752135201",
+   "final_sha256": "d21332540c83bd434a18a2feadbf628be951472688a618af9f1a964395b129c5",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56775,7 +56775,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "cc05f9b437d91fdfc2caab1b04331b6b4850bd73ec9e031914c8009662c69fcc",
+   "final_sha256": "cfb5b81b3039d814d08d0e8063f0bcb8af17ae8c4c2ccbab6a2c94c347c8dc60",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56827,7 +56827,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "0ab53ef362a72adb37b947bd8915254b238abfdc67fa58b2dcb49fd032bd43d4",
+   "final_sha256": "217af3191f06fc8cfecbab3113cfce51ecc11f11b4dcb170802d70bdcede535c",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56879,7 +56879,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "cd0be482e410818bb67d1957f74c3306653950217b3b7fc97d0a42779757ae9c",
+   "final_sha256": "f165dfcb4f287f133bea5764c662bc059165b7eb62d9d0fd0febaba61a8f4eac",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56931,7 +56931,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "0ef314b6ac578b5a7339f1141f0d5f22e272828910fda31c08f8cc3e4ba28f0c",
+   "final_sha256": "83cd640b8830bed91d5cd66c43394562fb1aa9921329df253516e06babd94ea0",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -56983,7 +56983,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "48ee35e32610bf91dcb6b41d3537786335ad904d2a9427bf0b6de6830a409e15",
+   "final_sha256": "f727707b30721b3198e3f43216064d3a48f649b5dc42c94af58131ea871399a1",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57035,7 +57035,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "1a8caa95366b6ba0649bdb63820993576c63ccaafbca372829d6a3e9b28a98ae",
+   "final_sha256": "987b70e26812a225a3ebddf70e4e72e9e30555b10ce00d837e062b737e70d55c",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57087,7 +57087,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "05d5948eb644a412d6a618308714343025b58a7c547d8dd85a101319878e63d0",
+   "final_sha256": "5127a1226e66bdb2ddc61cea1d790a7046fc11965f7b0d2a52dd61c9791b1338",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57139,7 +57139,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "c63a88fce3f4ef10d24df9bc13940a3d810f301c626923be541df18cf566fd12",
+   "final_sha256": "a16f9e23fb2e085f7626606a0146d151f5dd6161f16b9d0edc0d6a743f27d9d2",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57191,7 +57191,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "d69d86f25faa5931563f909630aba9c2e1095d27dfd237578525be4973752f67",
+   "final_sha256": "7f6ce9d59da0f992328bbb928343c9de97f6850daaf5e3b0bfae7def5e184e57",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57243,7 +57243,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "b052ed42cf89e1143dde3496e7d80006cd7ffd4b5ede52e05d8320d81a15d32f",
+   "final_sha256": "54b7f031a56ab9c7fd27a0d9eb6ccb3eb6a5dfe802a54dd815256f0a6d0dfe0e",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57295,7 +57295,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "50f21a78c6be34622cfd4dc19290d9165561e6b636021234e0d885a94c5e45d4",
+   "final_sha256": "67f59adecddb859a126ec0717481fa8c7298643ad99982639f1d4cc7d48a98bc",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57347,7 +57347,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "c546ecef18c05a070153290f15d745c66122dbfd5bd04a96255713a8dec847d2",
-   "final_sha256": "3067a4ef4125504b957c7f624764ea231df828ef166bd5778be5d60a069bf3e6",
+   "final_sha256": "71067c214fa105981959b8df2d1953e21b5a8b5cb83ea0ecaf31e1fe4969f1e5",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57399,7 +57399,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "fc4c1f0ed59320e44cb69558c8b3b8ee07ae9623260a4c25efbd799f9809abf7",
+   "final_sha256": "c64fb4e17235498c78cef2f110fe42cf4b93b9f1b4e82f6bc1abc97db070ac73",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57451,7 +57451,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "86050709c25fb90060f32906e638cd2d0168bd990ed2fe225a6cdbf8e9a061fb",
+   "final_sha256": "3f6c6d7d583faa1b28e308221b70261a6fd88310d44b72393f7b12d8da361311",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57503,7 +57503,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "73c949846e405eea9fa0396233dbe87fdf87dc5f89d1b7a601410014a1aa0e8e",
+   "final_sha256": "6f8d18f4db2a35cc90469e007a41994fa3f97f65d53635edb45ef974b8250e27",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57555,7 +57555,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "59306845287072c0a01c5c42eac3e5e900195290a908598e4850fdde4b9b4268",
+   "final_sha256": "060fdfe89bb8b1e7328f42d08661810fb9d82c5f01267ad35604b421796da6d6",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57607,7 +57607,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "c05bc301874d41faf3273a700b1ee520e13a1ac416a14d6a0f8fa57db024e496",
+   "final_sha256": "ce9e39ca83ca3e099dd5a97edcc5737c0586c9c914efa7b03d80e73d0a3c7aca",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57659,7 +57659,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "84e525d70c360690fa8583c51000035d9cde5685ff331c2c4f2f61307a20637f",
+   "final_sha256": "13caa84ad294854371efc9fdef0bdde998ed8c2cd8adfa95da459ceed5340e46",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57711,7 +57711,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "6c3c12995a3164b922ec2bae8c306ee6b24cc033fddeb528fd9edc4515ca5af2",
+   "final_sha256": "0f38fcc9914ab07dd0a943c587de12ef260d0939a6a18771fb4c03520dc640d0",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57763,7 +57763,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "d4c29272c8075c384d02562f4ba4df20843f656be505784132d8421f3a4e875e",
-   "final_sha256": "25eacafcb8702c159e2f829474d401044f06097c43829558ee25e235be6976ca",
+   "final_sha256": "afc67b6eba920a959458fcae2ac80d1cce0be9580fa1b8edda8306a9ea0bb744",
    "changes": [
     "magenta background keying",
     "status glyph cell slice",
@@ -57815,7 +57815,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "e8b9907b861d6c5a515df39a8468a2d8257d2604124382bc3e5a81ef53ee1acd",
-   "final_sha256": "cc9887447f6039f5ce7ce80ffb43f15f4c558efbdaedb9082d02841cb21dc081",
+   "final_sha256": "41f9b7da2f50bb055a1042d4c96f7c93fd78d88c9b7386902ad2d6cd2fb0c75f",
    "changes": [
     "magenta background keying",
     "canvas finish to 400x112",
@@ -57858,7 +57858,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "07c24c3c97f58578aea14965f603d52641fd08edbec85e48c5038e8e8e9433c4",
-   "final_sha256": "2d7066967e9effee8f7296652ecb7d800edc6872c062e4b915d8951ab352755f",
+   "final_sha256": "71b3bb274223a05913fd8c18795874d94253d12ce0b5a9e49cab01307c784646",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x640",
@@ -57901,7 +57901,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "1571bb1ff5d96c449dcbeedfff41e8dbe33c62e22173b2c2ec9f260a885bc026",
-   "final_sha256": "aa0a45b4f38bc44b3608635707c058bb9eb5b91bda48a2bd5717c90d656f74ce",
+   "final_sha256": "4d62c7f40fe01cda7b94f9dd0bac4a6b61c2889095ed637c6dd17bf0a2d08108",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x256",
@@ -57944,7 +57944,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "01eaf3ddfb969659edf17806abc4968be79d8f6157174dc925316bb2497eab6e",
-   "final_sha256": "0f0920872cda2ce1be3e1c40efde36d96523884b3c3dea2c191d9774ac6dd037",
+   "final_sha256": "d8b8f2db29d4dbaa641c4356fd29489fbbc48ccc7f2b2e4ff14714df182213c6",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x128",
@@ -57987,7 +57987,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "70b4dd3aeead81f95a30069ca831fecd4235767273ef21a6c2a27053b632b063",
-   "final_sha256": "98ed5f6d67888efd761006825b567d80a3d73e012bfec62ea5d675a56ba98324",
+   "final_sha256": "ea98074a8a61d6e48daf842097d12e62af99d3d519b3d5f82382140f1d1652b1",
    "changes": [
     "magenta background keying",
     "canvas finish to 320x96",
@@ -58030,7 +58030,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "ef9fd12ee104cd1e76afd7277f9a50a3b767cb8b84243c434056b7b26f73afff",
-   "final_sha256": "a108c96e5149460290efa934b83c375d84ea77ee115f24bd28841fbacf0b9413",
+   "final_sha256": "d8c5715c4de5e46786de350d221dfc7735d021d76d5104e0236f74ce0bb8f447",
    "changes": [
     "magenta background keying",
     "canvas finish to 768x480",
@@ -58073,7 +58073,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "46c899612d0258758c05a43f79b06b5938177e4b9201c9c68d8cc89628f476c2",
-   "final_sha256": "46c899612d0258758c05a43f79b06b5938177e4b9201c9c68d8cc89628f476c2",
+   "final_sha256": "0b6f7b5e0baee27040fdf10283d903c7ec2943b263f55f62d09a251b9c8e8483",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x32",
@@ -58115,7 +58115,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "489ba29f754f79c1d2e6493e541582a157e7b635237619d799c6f3ae0c116b9e",
-   "final_sha256": "7695e00cae9098a64f8129d2e29523fc377c830d1b58dd393234d0edb55b6bfb",
+   "final_sha256": "f83cb121c9d56662cc746ea15c699fcd1cc715811759102a6443a36342d63d15",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x640",
@@ -58158,7 +58158,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "259f8c4b06ed4faf86741a36465c841e70f88ba1911ff50805e2bfc0ad362c74",
-   "final_sha256": "259f8c4b06ed4faf86741a36465c841e70f88ba1911ff50805e2bfc0ad362c74",
+   "final_sha256": "e4dc918a02b97f0863189c19f0ac5bb0a30254fc857c1848e6ef5bbb1a587c3f",
    "changes": [
     "magenta background keying",
     "canvas finish to 192x192",
@@ -58199,7 +58199,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "174d1b8bc8d0cbd21d2fdb863e87ecb229a85d8ce2cbaba35d1da981fc6014af",
-   "final_sha256": "174d1b8bc8d0cbd21d2fdb863e87ecb229a85d8ce2cbaba35d1da981fc6014af",
+   "final_sha256": "32a1825537d2a5caaff7ec5c98377954390fce42e8463f7527d2342b90c37797",
    "changes": [
     "magenta background keying",
     "canvas finish to 192x192",
@@ -58240,7 +58240,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "4bfa12b8b9726c2d74b5bc5f2738fdfd060903676df08436b980ec845c214561",
-   "final_sha256": "e6c4582f54bff4bd5bed25bf8204de14c7d105c73bcd59e0b684e5eb99489ba9",
+   "final_sha256": "8f5bb635ae5300ee4e876f414ac67d5a14b0e646d8f02aac8bbb15ccff843ad4",
    "changes": [
     "magenta background keying",
     "canvas finish to 512x320",
@@ -58283,7 +58283,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "eaf51119757390a8cf3d77faa4184eefadba704d0c5299ecd89e582297431f52",
-   "final_sha256": "eaf51119757390a8cf3d77faa4184eefadba704d0c5299ecd89e582297431f52",
+   "final_sha256": "9002f9646f6496e75a93da898c0fc68c008efe9a9a7584d521a0ba7c431f9dd6",
    "changes": [
     "magenta background keying",
     "canvas finish to 1024x1024",
@@ -58324,7 +58324,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "bf499f298986ca62d3b2e395a01edf4c2aa1afb4b98a80d0fc9182c360ba6c17",
-   "final_sha256": "bf499f298986ca62d3b2e395a01edf4c2aa1afb4b98a80d0fc9182c360ba6c17",
+   "final_sha256": "82e2c5994825b7ff32a3df8ed012e80976444a482ae314a9f30d91fccb95bcc0",
    "changes": [
     "magenta background keying",
     "canvas finish to 960x48",
@@ -58366,7 +58366,7 @@
    "license_uri": "https://openai.com/policies/terms-of-use/",
    "acquired_at_utc": "2026-10-02T00:00:00Z",
    "source_sha256": "f750e557b1a63345de3df17a2c43827616912fb39ba6629f142568930c114cd1",
-   "final_sha256": "f750e557b1a63345de3df17a2c43827616912fb39ba6629f142568930c114cd1",
+   "final_sha256": "0f175b490af978c9b131bca79baa297e6247fd4117b22e21d1118ab8c0dece3a",
    "changes": [
     "magenta background keying",
     "canvas finish to 960x48",
