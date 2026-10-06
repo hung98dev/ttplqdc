@@ -8,6 +8,7 @@ using ThinhThan.UI.StateMachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TestTools.Constraints;
+using ConstraintsIs = UnityEngine.TestTools.Constraints.Is;
 using UnityEngine.UI;
 
 namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
@@ -309,7 +310,7 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
                 baselineId: 3);
             Assert.That(
                 () => rig.Tick(),
-                Is.Not.AllocatingGCMemory());
+                ConstraintsIs.Not.AllocatingGCMemory());
         }
 
         [Test]
