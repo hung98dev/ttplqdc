@@ -328,12 +328,17 @@ namespace ThinhThan.Net
                 action();
             }
 
-            if (_session == null)
+            // ApplyFrame may retire the session mid-drain (SESSION_REPLACED
+            // -> ShutdownAsync nulls _session) — snapshot once and stop when
+            // the live session changes.
+            NetSession? session = _session;
+            if (session == null)
             {
                 return;
             }
 
-            while (_session.TryDequeue(out ReceiveLease lease))
+            while (_session == session &&
+                session.TryDequeue(out ReceiveLease lease))
             {
                 using (lease)
                 {
@@ -879,10 +884,31 @@ namespace ThinhThan.Net
                         (waiter.Predicate == null || waiter.Predicate(frame)))
                     {
                         _waiters.RemoveAt(i);
-                        waiter.Completion.TrySetResult(frame);
+                        // The waiter outlives the lease — hand it a detached
+                        // copy because the pooled frame is Reset() on
+                        // release.
+                        waiter.Completion.TrySetResult(Detach(frame));
                     }
                 }
             }
+        }
+
+        private static DecodedFrame Detach(DecodedFrame frame)
+        {
+            return new DecodedFrame
+            {
+                ConnectionGeneration = frame.ConnectionGeneration,
+                SessionEpoch = frame.SessionEpoch,
+                ServerSeq = frame.ServerSeq,
+                CorrelationId = frame.CorrelationId,
+                MessageId = frame.MessageId,
+                BaselineId = frame.BaselineId,
+                Envelope = frame.Envelope,
+                Payload = frame.Payload,
+                BarrierOrdinal = frame.BarrierOrdinal,
+                AccountedBytes = frame.AccountedBytes,
+                Sequence = frame.Sequence,
+            };
         }
 
         /// <summary>Awaits a frame of <paramref name="messageId"/> matching
@@ -924,12 +950,17 @@ namespace ThinhThan.Net
 
         private void DrainPending()
         {
-            if (_session == null)
+            // ApplyFrame may retire the session mid-drain (SESSION_REPLACED
+            // -> ShutdownAsync nulls _session) — snapshot once and stop when
+            // the live session changes.
+            NetSession? session = _session;
+            if (session == null)
             {
                 return;
             }
 
-            while (_session.TryDequeue(out ReceiveLease lease))
+            while (_session == session &&
+                session.TryDequeue(out ReceiveLease lease))
             {
                 using (lease)
                 {
