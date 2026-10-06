@@ -15,13 +15,18 @@ MonoBehaviour:
   m_GroupName: dungeon.hang_ma_tranh
   m_GUID: 8847c4f10c037014bb20c018fc68f965
   m_SerializeEntries:
-  - m_GUID: 31b239062b3c41a8bec095931afbc489
-    m_Address: asset.boss.ho_tinh.prefab
+  - m_GUID: 0040cb31211f4f12b7b2ed4f48cb0333
+    m_Address: asset.boss.ho_tinh.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2785095c25b447368427b210db26acdc
     m_Address: asset.dungeon.hang_ma_tranh.scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31b239062b3c41a8bec095931afbc489
+    m_Address: asset.boss.ho_tinh.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

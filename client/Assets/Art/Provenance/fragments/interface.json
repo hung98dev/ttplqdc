@@ -920,6 +920,720 @@
    "review_state": "PENDING"
   },
   {
+   "asset_key": "asset.equipment.body.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/body.png",
+   "content_id": "sha256:bb5d9716f4bc9355fc0875e17749574ea29024a81a5563fd6b8541df7c40cc4b",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "bb5d9716f4bc9355fc0875e17749574ea29024a81a5563fd6b8541df7c40cc4b",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(0,2)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.charm.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/charm.png",
+   "content_id": "sha256:8afb98ce05b7f14b581187936d7a8910a61ed1be5ed0d7c15de3c4ad2ac984a2",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "8afb98ce05b7f14b581187936d7a8910a61ed1be5ed0d7c15de3c4ad2ac984a2",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(3,1)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.costume.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/costume.png",
+   "content_id": "sha256:f2d2504da5cec8c29e06893c53fe3ab064b014a5d8509fcf77b948c1604e8593",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "f2d2504da5cec8c29e06893c53fe3ab064b014a5d8509fcf77b948c1604e8593",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(2,0)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.feet.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/feet.png",
+   "content_id": "sha256:ddbc7c2096a22211bd6289f200a30ff418f02ee040e08bb982df6496fc557af4",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "ddbc7c2096a22211bd6289f200a30ff418f02ee040e08bb982df6496fc557af4",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(1,1)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.hands.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/hands.png",
+   "content_id": "sha256:a2258e86cabdeb2bf7c7e1d4debebb934b92a3c5cef406bdcdca2aa14a8b6bdf",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "a2258e86cabdeb2bf7c7e1d4debebb934b92a3c5cef406bdcdca2aa14a8b6bdf",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(0,3)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.head.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/head.png",
+   "content_id": "sha256:6e709efeffcce93b3d9052dff1ff6b2cb76e215d834a289fb9646c232549509a",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "6e709efeffcce93b3d9052dff1ff6b2cb76e215d834a289fb9646c232549509a",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(0,1)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.jade.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/jade.png",
+   "content_id": "sha256:bba6b89fbc3e142246d8f193a9de07d6274aff1fc349af0316b6158ae5eae722",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "bba6b89fbc3e142246d8f193a9de07d6274aff1fc349af0316b6158ae5eae722",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(2,2)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.legs.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/legs.png",
+   "content_id": "sha256:e9791144ff4486cc607dffbd9a0ce36daffc1d7d4f48097832209ed7ec577e00",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "e9791144ff4486cc607dffbd9a0ce36daffc1d7d4f48097832209ed7ec577e00",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(1,0)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.necklace.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/necklace.png",
+   "content_id": "sha256:2b83329f78cc81f4537e5f36e8b359c3c9a68d887593c24382aa119b4d92011f",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "2b83329f78cc81f4537e5f36e8b359c3c9a68d887593c24382aa119b4d92011f",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(1,2)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.relic.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/relic.png",
+   "content_id": "sha256:a1511528500148ade5bd2ce8315ce9fc45eb9eeab6cd865ad20295f89c228eb0",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "a1511528500148ade5bd2ce8315ce9fc45eb9eeab6cd865ad20295f89c228eb0",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(3,0)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.ring.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/ring.png",
+   "content_id": "sha256:741094b48da99db9f435c79e0440eec269cb895054a68e930aac621a143645cc",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "741094b48da99db9f435c79e0440eec269cb895054a68e930aac621a143645cc",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(1,3)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.seal.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/seal.png",
+   "content_id": "sha256:0109fcf1be07ad6febe9b629dc32c73610b9618379aa82c02f8f4b6ea17ad47b",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "0109fcf1be07ad6febe9b629dc32c73610b9618379aa82c02f8f4b6ea17ad47b",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(2,3)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.talisman.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/talisman.png",
+   "content_id": "sha256:8c24c189556194c39c7b0e0fa081544a264340d4633869e17a4eb252498c78cf",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "8c24c189556194c39c7b0e0fa081544a264340d4633869e17a4eb252498c78cf",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(2,1)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
+   "asset_key": "asset.equipment.weapon.icon",
+   "file_path": "client/Assets/Art/Items/Equipment/_slots/weapon.png",
+   "content_id": "sha256:159acfbcce6207d81be3a3809e7bd7b46d04adec00f295873dde6ceb5ff21dc6",
+   "source_kind": "AI_CREATED",
+   "creator": "Devin (in-session multimodal generation)",
+   "source_uri": null,
+   "license_id": "AI_TOOL_TERMS",
+   "license_uri": "https://openai.com/policies/terms-of-use/",
+   "acquired_at_utc": "2026-10-02T00:00:00Z",
+   "source_sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a",
+   "final_sha256": "159acfbcce6207d81be3a3809e7bd7b46d04adec00f295873dde6ceb5ff21dc6",
+   "changes": [
+    "magenta background keying",
+    "slot cell slice",
+    "fit to 128x128 icon canvas",
+    "edge anti-aliasing and volume shading"
+   ],
+   "attribution": null,
+   "style_pack_id": "interface/interface_chibi",
+   "generation_record": {
+    "tool": "Direct AI Generation (In-Session Multimodal)",
+    "version": "2026-10-01",
+    "model_id": "gpt-image-2.5-flare",
+    "model_sha256": null,
+    "terms_uri": "https://openai.com/policies/terms-of-use/",
+    "terms_snapshot_sha256": "d3e12861a9d22652d8f1a3817c9ca9fb312cba90f82c855df4d3af90e27ec530",
+    "prompt": "2D game equipment icon sprite sheet: a perfect 4x4 grid of square cells on a completely flat solid magenta #FF00FF background. Each cell contains ONE centered stylized hand-painted equipment piece icon in Vietnamese village fantasy style, warm light from upper left, chunky readable silhouette, deep rich shading, metallic materials, no text, no watermark. Cells in order: sword blade, spear head, axe head, helmet, chestplate, shoulder guard, gauntlet, belt, leggings, boots, shield, amulet, ring, earrings.",
+    "seed": null,
+    "parameters": {
+     "size": "1536x1024",
+     "n": 1
+    },
+    "workflow_sha256": null,
+    "reference_uris": [],
+    "reference_sha256": [],
+    "c2pa_present": false
+   },
+   "folklore_card": null,
+   "inputs": [
+    {
+     "creator": "Devin (in-session multimodal generation)",
+     "source_uri": "in-session://gpt-image-2.5-flare/raw/equip_base.png#cell(0,0)",
+     "license_id": "AI_TOOL_TERMS",
+     "license_uri": "https://openai.com/policies/terms-of-use/",
+     "acquired_at_utc": "2026-10-02T00:00:00Z",
+     "sha256": "280adf34e9eace191d79935ae7c6ed948881dd462ca991d2c57944bf7020e67a"
+    }
+   ],
+   "review_state": "PENDING"
+  },
+  {
    "asset_key": "asset.item.eq.t1.ben_da.body.icon",
    "file_path": "client/Assets/Art/Items/Equipment/item_eq_t1_ben_da_body.png",
    "content_id": "sha256:a724f8cde18dd7f2928b002e4c42fb57ce2c76bd422701669ce369a29bb65456",
@@ -12278,7 +12992,7 @@
     "canvas finish to 960x560",
     "edge anti-aliasing",
     "nine-slice border declared [48, 48, 48, 48]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -12568,7 +13282,7 @@
     "canvas finish to 768x192",
     "edge anti-aliasing",
     "nine-slice border declared [24, 24, 48, 48]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -12653,7 +13367,7 @@
     "canvas finish to 512x96",
     "edge anti-aliasing",
     "nine-slice border declared [20, 20, 40, 40]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -12696,7 +13410,7 @@
     "canvas finish to 512x96",
     "edge anti-aliasing",
     "nine-slice border declared [20, 20, 40, 40]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -12903,7 +13617,7 @@
     "canvas finish to 512x96",
     "edge anti-aliasing",
     "nine-slice border declared [20, 20, 40, 40]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -13028,7 +13742,7 @@
     "canvas finish to 512x640",
     "edge anti-aliasing",
     "nine-slice border declared [24, 24, 24, 24]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18416,7 +19130,7 @@
     "canvas finish to 400x112",
     "edge anti-aliasing",
     "nine-slice border declared [24, 24, 48, 48]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18459,7 +19173,7 @@
     "canvas finish to 1024x640",
     "edge anti-aliasing",
     "nine-slice border declared [48, 48, 48, 48]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18502,7 +19216,7 @@
     "canvas finish to 512x256",
     "edge anti-aliasing",
     "nine-slice border declared [24, 24, 48, 48]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18545,7 +19259,7 @@
     "canvas finish to 512x128",
     "edge anti-aliasing",
     "nine-slice border declared [24, 24, 48, 48]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18588,7 +19302,7 @@
     "canvas finish to 320x96",
     "edge anti-aliasing",
     "nine-slice border declared [20, 20, 40, 40]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18631,7 +19345,7 @@
     "canvas finish to 768x480",
     "edge anti-aliasing",
     "nine-slice border declared [48, 48, 48, 48]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18716,7 +19430,7 @@
     "canvas finish to 1024x640",
     "edge anti-aliasing",
     "nine-slice border declared [64, 64, 64, 64]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
@@ -18841,7 +19555,7 @@
     "canvas finish to 512x320",
     "edge anti-aliasing",
     "nine-slice border declared [32, 32, 32, 32]",
-    "nine-slice stretch-band flattened to uniform fill (manifest \u00a73.1a stretch metric)"
+    "nine-slice stretch-band flattened to uniform fill (manifest §3.1a stretch metric)"
    ],
    "attribution": null,
    "style_pack_id": "interface/interface_chibi",
