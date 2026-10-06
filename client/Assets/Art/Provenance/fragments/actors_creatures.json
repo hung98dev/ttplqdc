@@ -1432,7 +1432,7 @@
     {
       "asset_key": "asset.boss.thuong_luong.sprite",
       "file_path": "client/Assets/Art/Actors/Creatures/bosses/thuong_luong/thuong_luong_parts.png",
-      "content_id": "sha256:1a9ed3dcd3cff316a4bc93ccd0172d9edccbaaf141190bf92eed596aa9ffbd8e",
+      "content_id": "sha256:f801d215de151c85bac3e5c46706729273b896ca8d6caae747dd14cc7ae0d220",
       "source_kind": "AI_CREATED",
       "creator": "Devin (in-session multimodal generation)",
       "source_uri": null,
@@ -1440,7 +1440,7 @@
       "license_uri": "https://openai.com/policies/terms-of-use/",
       "acquired_at_utc": "2026-10-02T13:16:09Z",
       "source_sha256": "d18fe63e1f75e4ec62f095ae0402ed0580b3b5a54331fbf696790707c9c6fa73",
-      "final_sha256": "1a9ed3dcd3cff316a4bc93ccd0172d9edccbaaf141190bf92eed596aa9ffbd8e",
+      "final_sha256": "f801d215de151c85bac3e5c46706729273b896ca8d6caae747dd14cc7ae0d220",
       "changes": [
         "magenta background keying",
         "part segmentation from 8-cell sheet",
