@@ -60,15 +60,48 @@ namespace ThinhThan.Tests.PlayMode.InputHudStateMachine
 
         private sealed class FakeWorld : IWorldContextFeed
         {
-            public string MapId { get; set; } = "map_test_flat";
-            public uint ChannelIndex { get; set; } = 3U;
-            public string ContentRevision { get; set; } = "rev";
-            public string DisplayName { get; set; } = "Test Map";
+            public string MapId
+            {
+                get;
+                set;
+            }
+            public uint ChannelIndex
+            {
+                get;
+                set;
+            }
+            public string ContentRevision
+            {
+                get;
+                set;
+            }
+            public string DisplayName
+            {
+                get;
+                set;
+            }
+
+            public FakeWorld()
+            {
+                MapId = "map_test_flat";
+                ChannelIndex = 3U;
+                ContentRevision = "rev";
+                DisplayName = "Test Map";
+            }
         }
 
         private sealed class FakeLatency : ILatencyProbe
         {
-            public int RttMs { get; set; } = 42;
+            public int RttMs
+            {
+                get;
+                set;
+            }
+
+            public FakeLatency()
+            {
+                RttMs = 42;
+            }
         }
 
         private static void FeedBaseline(
