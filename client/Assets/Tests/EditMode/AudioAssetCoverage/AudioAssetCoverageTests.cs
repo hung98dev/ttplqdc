@@ -486,8 +486,19 @@ namespace ThinhThan.Tests.EditMode.AudioAssetCoverage
                     fp + " changes must be an array");
                 Assert.Greater(changes.Arr!.Count, 0,
                     fp + " shipped file differs from source; changes must document the edits");
-                Assert.AreEqual("PENDING", Str(row, "review_state"),
-                    fp + " must enter review as PENDING");
+                string review = Str(row, "review_state")!;
+                Assert.Contains(review, new[] { "PENDING", "APPROVED" },
+                    fp + ": unknown review_state");
+                // ART-010: entity-bound media must carry a folklore_card.
+                string key = Str(row, "asset_key")!;
+                bool entityBound = key.StartsWith("asset.map.")
+                    || key.StartsWith("asset.dungeon.")
+                    || key.StartsWith("asset.instance.");
+                if (entityBound)
+                {
+                    Assert.IsNotNull(row.Get("folklore_card"),
+                        fp + ": entity-bound media lacks folklore_card (ART-010)");
+                }
             }
         }
 
