@@ -171,7 +171,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fdf9b1814595c039695d42c12983fbe
-    m_Address: asset.parallax.rung_u_minh.l3.sprite
+    m_Address: asset.parallax.rung_u_minh.par_l3.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -186,12 +186,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8925aca96a1c5a0ab9735e95c2d71d66
-    m_Address: asset.parallax.rung_u_minh.l2.sprite
+    m_Address: asset.parallax.rung_u_minh.par_l2.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 95216bc936695feeb0f328130fda2f42
-    m_Address: asset.parallax.rung_u_minh.l4.sprite
+    m_Address: asset.parallax.rung_u_minh.par_l4.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -66,7 +66,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2dcada4836985e0f98b3a65a92566c70
-    m_Address: asset.parallax.thanh_co.l3.sprite
+    m_Address: asset.parallax.thanh_co.par_l3.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 52f28e6620a35d52872795070b25941f
-    m_Address: asset.parallax.thanh_co.l2.sprite
+    m_Address: asset.parallax.thanh_co.par_l2.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c578734334b15d0ba51308431429b95d
-    m_Address: asset.parallax.thanh_co.l4.sprite
+    m_Address: asset.parallax.thanh_co.par_l4.sprite
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
