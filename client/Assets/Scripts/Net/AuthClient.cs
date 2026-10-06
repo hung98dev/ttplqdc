@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ThinhThan.Core.Runtime;
 using ThinhThan.Core.Session;
 using UnityEngine;
 
@@ -152,6 +153,10 @@ namespace ThinhThan.Net
                             "Bearer", bearer);
                 }
 
+                // One connection per request: pooled reuse after a
+                // server-side close surfaces as forcibly-closed failures
+                // on some runtimes, and the control plane is low-volume.
+                request.Headers.ConnectionClose = true;
                 HttpResponseMessage response = await _http
                     .SendAsync(request, cancel).ConfigureAwait(false);
                 string text = await response.Content
@@ -161,6 +166,9 @@ namespace ThinhThan.Net
                     var error = JsonUtility.FromJson<AuthErrorBody>(text);
                     if (error == null || error.error_code.Length == 0)
                     {
+                        Log.Error(
+                            "auth error body unparsed status=" +
+                            (int)response.StatusCode + " body=" + text);
                         return Result<TResponse>.Failure(
                             "TEMPORARY_DEPENDENCY_FAILURE");
                     }
@@ -178,8 +186,9 @@ namespace ThinhThan.Net
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error("auth request failed: " + e);
                 return Result<TResponse>.Failure(
                     "TEMPORARY_DEPENDENCY_FAILURE");
             }
