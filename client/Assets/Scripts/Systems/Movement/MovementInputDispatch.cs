@@ -292,7 +292,8 @@ namespace ThinhThan.Systems.Movement
 
         private static ulong MonoMs()
         {
-            return (ulong)(Environment.TickCount64);
+            return (ulong)(System.Diagnostics.Stopwatch.GetTimestamp() /
+                (System.Diagnostics.Stopwatch.Frequency / 1000));
         }
     }
 

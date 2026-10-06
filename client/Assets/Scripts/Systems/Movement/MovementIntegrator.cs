@@ -67,13 +67,13 @@ namespace ThinhThan.Systems.Movement
                 case LocalEdge.Jump:
                     if (st.IsGrounded)
                     {
-                        st.VyMmS = p.FirstJumpMmS;
+                        st.VyMmS = unchecked((int)p.FirstJumpMmS);
                         st.JumpCount = 1;
                         st.IsGrounded = false;
                     }
                     else if (st.JumpCount < MovementConstants.MaxJumpCount)
                     {
-                        st.VyMmS = p.SecondJumpMmS;
+                        st.VyMmS = unchecked((int)p.SecondJumpMmS);
                         st.JumpCount++;
                     }
                     break;
@@ -112,13 +112,13 @@ namespace ThinhThan.Systems.Movement
             long vx;
             if (st.IsGrounded)
             {
-                vx = (long)dir * p.RunSpeedMmS;
+                vx = (long)dir * (long)p.RunSpeedMmS;
             }
             else
             {
                 vx = GeometryMath.RoundDiv(
-                    (long)dir * p.RunSpeedMmS *
-                    p.AirControlBp,
+                    (long)dir * (long)p.RunSpeedMmS *
+                    (long)p.AirControlBp,
                     10000);
             }
 

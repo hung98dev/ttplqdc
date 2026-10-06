@@ -22,7 +22,7 @@ namespace ThinhThan.Systems.Movement
     {
         private readonly MovementPredictionSystem _prediction;
         private SelfAck? _seenAck;
-        private long _smoothEndTick;
+        private ulong _smoothEndTick;
         private long _smoothStartX;
         private long _smoothStartY;
         private long _smoothTargetX;

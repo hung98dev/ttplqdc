@@ -33,10 +33,10 @@ namespace ThinhThan.Systems.Movement
             VyMmS = cp.VyMmS;
             Facing = cp.Facing;
             MovementState = cp.MovementState;
-            PlatformId = cp.PlatformId;
+            PlatformId = unchecked((long)cp.PlatformId);
             IsGrounded = cp.IsGrounded;
-            JumpCount = cp.JumpCount;
-            DropIgnorePlatformId = cp.DropIgnorePlatformId;
+            JumpCount = unchecked((int)cp.JumpCount);
+            DropIgnorePlatformId = unchecked((long)cp.DropIgnorePlatformId);
             DropIgnoreUntilTick = cp.DropIgnoreUntilTick;
             HeldHorizontalIntent = cp.HeldHorizontalIntent;
             EffectiveParameters = cp.EffectiveParameters;
