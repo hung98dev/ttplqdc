@@ -24,9 +24,10 @@ const (
 
 // PlanUnityModes resolves the run mode activation table: a mode is active iff
 // scope=full, the PR is not status-only, and the mode's owner task is DONE on
-// main or head. PlayMode additionally activates on any client-runtime diff —
-// owner-DONE activation alone can never verify the suite's own owner's fixes
-// (a fix/IMP-065 runtime change shipped while playmode=false).
+// main or head. PlayMode additionally activates on any client-runtime or
+// PlayMode-harness diff — owner-DONE activation alone can never verify the
+// suite's own owner's fixes (a fix/IMP-065 runtime change shipped while
+// playmode=false).
 func PlanUnityModes(ctx RunContext) UnityPlan {
 	on := func(owner string) bool {
 		if ctx.UnityScope != "full" || ctx.StatusOnly {
@@ -44,13 +45,21 @@ func PlanUnityModes(ctx RunContext) UnityPlan {
 	}
 }
 
+// clientRuntimePrefixes are diff surfaces the PlayMode suite verifies. Both
+// are always scope=full and never status-only, so they need no further gating.
+var clientRuntimePrefixes = []string{
+	"client/Assets/Scripts/",
+	"client/Assets/Tests/PlayMode/", // suite harness fixes must self-verify
+}
+
 // touchesClientRuntime reports whether the diff changes Unity client runtime
-// code. A client/Assets/Scripts path is always scope=full and never
-// status-only, so it needs no further gating.
+// code or the PlayMode harness itself.
 func touchesClientRuntime(paths []string) bool {
 	for _, p := range paths {
-		if strings.HasPrefix(p, "client/Assets/Scripts/") {
-			return true
+		for _, pre := range clientRuntimePrefixes {
+			if strings.HasPrefix(p, pre) {
+				return true
+			}
 		}
 	}
 	return false

@@ -67,6 +67,11 @@ func TestPlanUnityModes_ClientRuntimeDiffRunsPlayMode(t *testing.T) {
 	if p = PlanUnityModes(ctx); !p.PlayMode {
 		t.Fatalf("runtime .meta diff must activate playmode: %+v", p)
 	}
+	// PlayMode harness diffs self-verify too (e.g. a FakeServer-only fix).
+	ctx.ChangedPaths = []string{"client/Assets/Tests/PlayMode/Net/FakeServer.cs"}
+	if p = PlanUnityModes(ctx); !p.PlayMode {
+		t.Fatalf("PlayMode harness diff must activate playmode: %+v", p)
+	}
 	// Non-runtime diffs keep playmode off.
 	ctx.ChangedPaths = []string{"docs/10_implementation/task_queue.md", "server/internal/durable/queue/queue.go"}
 	if p = PlanUnityModes(ctx); p.PlayMode {
@@ -75,5 +80,10 @@ func TestPlanUnityModes_ClientRuntimeDiffRunsPlayMode(t *testing.T) {
 	ctx.ChangedPaths = []string{"client/Assets/Art/UI/icon.png", "client/ProjectSettings/ProjectVersion.txt"}
 	if p = PlanUnityModes(ctx); p.PlayMode {
 		t.Fatalf("client non-Scripts diff must not activate playmode: %+v", p)
+	}
+	// EditMode-only harness diffs stay off — PlayMode cost is not justified.
+	ctx.ChangedPaths = []string{"client/Assets/Tests/EditMode/AssemblyGraph/FooTests.cs"}
+	if p = PlanUnityModes(ctx); p.PlayMode {
+		t.Fatalf("EditMode-only diff must not activate playmode: %+v", p)
 	}
 }
