@@ -407,8 +407,9 @@ namespace ThinhThan.Net
             {
                 await session.ConnectAsync(wssUri, cancel).ConfigureAwait(false);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error("ws connect failed: " + e);
                 session.Dispose();
                 _fsm.DropToDisconnected();
                 return Result<bool>.Failure("TEMPORARY_DEPENDENCY_FAILURE");
@@ -452,8 +453,9 @@ namespace ThinhThan.Net
             {
                 await session.SendHelloAsync(hello, cancel).ConfigureAwait(false);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Log.Error("hello send failed: " + e);
                 _fsm.DropToDisconnected();
                 return Result<bool>.Failure("TEMPORARY_DEPENDENCY_FAILURE");
             }

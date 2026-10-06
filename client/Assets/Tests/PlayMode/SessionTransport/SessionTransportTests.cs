@@ -77,7 +77,7 @@ namespace ThinhThan.Tests.PlayMode.SessionTransport
             Result<bool> connected = await orchestrator
                 .ConnectWithTicketAsync(CancellationToken.None)
                 .ConfigureAwait(false);
-            Assert.IsTrue(connected.Ok);
+            Assert.IsTrue(connected.Ok, connected.ErrorCode);
             await PumpUntil(orchestrator,
                 () => fsm.Phase == SessionPhase.CharacterSelect, 5000);
             Assert.AreEqual(SessionPhase.CharacterSelect, fsm.Phase);
@@ -111,7 +111,7 @@ namespace ThinhThan.Tests.PlayMode.SessionTransport
             Result<bool> connected = await orchestrator
                 .ConnectWithTicketAsync(CancellationToken.None)
                 .ConfigureAwait(false);
-            Assert.IsTrue(connected.Ok);
+            Assert.IsTrue(connected.Ok, connected.ErrorCode);
             await PumpUntil(orchestrator,
                 () => fsm.Phase == SessionPhase.InWorld, 5000);
             Assert.AreEqual(SessionPhase.InWorld, fsm.Phase);
@@ -152,7 +152,7 @@ namespace ThinhThan.Tests.PlayMode.SessionTransport
             Result<bool> connected = await orchestrator
                 .ConnectWithTicketAsync(CancellationToken.None)
                 .ConfigureAwait(false);
-            Assert.IsTrue(connected.Ok);
+            Assert.IsTrue(connected.Ok, connected.ErrorCode);
             await PumpUntil(orchestrator,
                 () => fsm.Phase == SessionPhase.CharacterSelect, 5000);
 

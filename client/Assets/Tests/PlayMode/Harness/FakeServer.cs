@@ -406,8 +406,10 @@ namespace ThinhThan.Tests.PlayMode.Harness
 
                 await HandleHttp(context, path).ConfigureAwait(false);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                ThinhThan.Core.Runtime.Log.Error(
+                    "fake server request failed: " + e);
                 context.Response.StatusCode = 500;
                 context.Response.Close();
             }
