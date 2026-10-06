@@ -39,14 +39,15 @@ namespace ThinhThan.Net
                 CorrelationId = correlationId,
                 Payload = payload.ToByteString(),
             };
-            if (envelope.CalculateSize() > destination.Length)
+            int size = envelope.CalculateSize();
+            if (size > destination.Length)
             {
                 throw new InvalidOperationException(
                     "Outbound frame exceeds caller buffer");
             }
 
-            envelope.WriteTo(destination);
-            return envelope.CalculateSize();
+            envelope.WriteTo(destination.Slice(0, size));
+            return size;
         }
 
         /// <summary>
