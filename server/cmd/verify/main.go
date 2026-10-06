@@ -263,6 +263,7 @@ func buildContext(root string, localDefer bool) (gates.RunContext, error) {
 		}
 	}
 	ctx.UnityScope = gates.ResolveUnityScope(ctx.EventName, ctx.HeadBranch, paths, diffErr)
+	ctx.ChangedPaths = paths
 	return ctx, nil
 }
 
