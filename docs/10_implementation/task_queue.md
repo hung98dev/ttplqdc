@@ -37,7 +37,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
 | `IMP-011` | Character Progression / Stats | `NOT_STARTED` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `NOT_STARTED` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
-| `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `NOT_STARTED` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
+| `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `IN_PROGRESS` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `NOT_STARTED` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
 | `IMP-015` | Skill Runtime / Geometry | `NOT_STARTED` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-016` | Effects / Status / Shield Pipeline | `NOT_STARTED` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
@@ -1390,10 +1390,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-065/"
 
 ## `IMP-013` — Movement / Collision / C2S_MOVEMENT_EDGE
 id: IMP-013
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-013"
+branch: "imp/IMP-013-movement-collision"
+claimed_at: "2026-10-06T15:20:00Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md`, `../04_architecture/physics_geometry_contract.md`, `../05_network/messages.md`, `../05_network/synchronization.md`, `../09_testing/network.md`]
