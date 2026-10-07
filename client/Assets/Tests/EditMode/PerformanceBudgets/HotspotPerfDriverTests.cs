@@ -158,6 +158,9 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             int maxParticles = 0;
             double maxFrameBudgetMs = 0.0;
 
+            // Batchmode never records profiler frames without this flag;
+            // without it lastFrameIndex stays -1 and PERF-002 has no data.
+            UnityEditorInternal.ProfilerDriver.profileEditor = true;
             UnityEngine.Profiling.Profiler.enabled = true;
             using (var memory = new MemoryProbe())
             using (var gc = new ProfilerRecorder(
@@ -432,8 +435,12 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 1280, 720, 0, UnityEngine.RenderTextureFormat.RFloat);
             RenderTexture? previousTarget = camera.targetTexture;
             RenderTexture? previousActive = RenderTexture.active;
+            Color previousClear = camera.backgroundColor;
             try
             {
+                // The clear color writes into the counting channel — a
+                // nonzero background shifts every accumulated count.
+                camera.backgroundColor = Color.black;
                 camera.targetTexture = target;
                 camera.Render();
                 RenderTexture.active = target;
@@ -484,6 +491,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     renderer.enabled = true;
                 }
 
+                camera.backgroundColor = previousClear;
                 camera.targetTexture = previousTarget;
                 RenderTexture.active = previousActive;
                 target.Release();
