@@ -138,10 +138,12 @@ namespace ThinhThan.Tests.PlayMode.Performance
                 unparentedSemaphore, out cpu, out error);
             Assert.IsTrue(ok, error!);
             Assert.AreEqual(
-                15.0,
+                17.0,
                 cpu * 1000.0,
                 0.001,
-                "a Semaphore.WaitForSignal with no render ancestor counts");
+                "a Semaphore.WaitForSignal is main-thread idle on a sync " +
+                "primitive — excluded wherever it nests, render " +
+                "ancestor or not");
         }
 
         [Test]
