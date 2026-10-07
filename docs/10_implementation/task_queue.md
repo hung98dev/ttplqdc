@@ -119,7 +119,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-092` | MA_AM Status | `NOT_STARTED` | IMP-016, IMP-022, IMP-057 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-093` | Guild Stone | `NOT_STARTED` | IMP-036, IMP-052, IMP-060 | `../03_systems/guild.md`, `../03_systems/seasons.md` |
 | `IMP-094` | Chat Moderation & chat_messages | `NOT_STARTED` | IMP-034, IMP-080 | `../03_systems/social.md`, `../06_data/data_model.md` |
-| `IMP-095` | Client Performance Budgets & Quality Presets (every PR) | `IN_PROGRESS` | IMP-063, IMP-065, IMP-066, IMP-101 | `../04_architecture/client_performance.md`, `../04_architecture/client.md` |
+| `IMP-095` | Client Performance Budgets & Quality Presets (every PR) | `DONE` | IMP-063, IMP-065, IMP-066, IMP-101 | `../04_architecture/client_performance.md`, `../04_architecture/client.md` |
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
 | `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
 | `IMP-098` | Observability Core | `DONE` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
@@ -1678,7 +1678,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-066/"
 
 ## `IMP-095` — Client Performance Budgets & Quality Presets (every PR)
 id: IMP-095
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-095"
 branch: "imp/IMP-095-client-perf-budgets"
 claimed_at: "2026-10-07T04:10:00Z"
