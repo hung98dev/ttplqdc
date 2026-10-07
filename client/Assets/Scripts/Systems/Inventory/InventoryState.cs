@@ -140,7 +140,7 @@ namespace ThinhThan.Systems.Inventory
                     m.LockedQuantity = 0U;
                     continue;
                 }
-                InventoryItemModel item = m.Item;
+                InventoryItemModel? item = m.Item;
                 if (item == null ||
                     !SameInstance(item.InstanceId, c.ItemInstanceId))
                 {
