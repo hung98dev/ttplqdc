@@ -332,6 +332,31 @@ namespace ThinhThan.Tests.PlayMode.Harness
             return socket.SendAsync(14, list);
         }
 
+        /// <summary>Pushes S2C_PROGRESSION_MUTATE_RESULT (514) on the latest
+        /// socket.</summary>
+        public Task SendProgressionMutateResultAsync(
+            S2CProgressionMutateResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(514, result);
+        }
+
+        /// <summary>Pushes S2C_PROGRESSION_STATE (515) on the latest socket.
+        /// </summary>
+        public Task SendProgressionStateAsync(S2CProgressionState state)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(515, state);
+        }
+
         /// <summary>Sends S2C_ERROR with close_after on the latest socket.</summary>
         public Task SendErrorAsync(
             ErrorCode errorCode, bool closeAfter, uint retryAfterMs = 0)
