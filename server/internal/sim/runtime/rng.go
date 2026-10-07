@@ -28,7 +28,7 @@ func (p *Partition) Stream(ctx rng.Context) (*rng.Stream, error) {
 // consequence write carries.
 func (p *Partition) SourceEvent() (name string, op id.UUID, err error) {
 	n, opID, err := p.incarnation.NextSourceEvent(
-		p.cfg.MapID, p.cfg.ChannelID, p.cfg.InstanceID, p.tickN)
+		p.cfg.MapID, p.cfg.ChannelID, p.cfg.InstanceID, p.tickN.Load())
 	if err != nil {
 		return "", id.UUID{}, err
 	}
