@@ -591,6 +591,7 @@ CREATE TABLE public.characters (
     fishing_catch_count integer DEFAULT 0 NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
+    progression_revision bigint DEFAULT 0 NOT NULL,
     CONSTRAINT characters_class_id_check CHECK (((class_id)::text = ANY ((ARRAY['class.kim'::character varying, 'class.moc'::character varying, 'class.thuy'::character varying, 'class.hoa'::character varying, 'class.tho'::character varying])::text[]))),
     CONSTRAINT characters_current_exp_check CHECK (((current_exp >= 0) AND (current_exp <= 702100000))),
     CONSTRAINT characters_fishing_catch_count_check CHECK ((fishing_catch_count >= 0)),
