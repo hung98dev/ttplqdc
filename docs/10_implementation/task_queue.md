@@ -35,7 +35,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-008` | Item Ownership Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `IN_PROGRESS` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
 | `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
-| `IMP-011` | Character Progression / Stats | `DONE` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
+| `IMP-011` | Character Progression / Stats | `IN_PROGRESS` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `NOT_STARTED` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `NOT_STARTED` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
@@ -1273,7 +1273,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-010/"
 
 ## `IMP-011` — Character Progression / Stats
 id: IMP-011
-status: DONE
+status: IN_PROGRESS
 claimed_by: "devin-imp-011"
 branch: "imp/IMP-011-progression-stats"
 claimed_at: "2026-10-07T18:20:00Z"
