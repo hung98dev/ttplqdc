@@ -34,7 +34,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `02_world/dungeons.md` | IMP-023, IMP-024 |
 | `02_world/maps_zones.md` | IMP-018, IMP-055, IMP-072, IMP-084 |
 | `02_world/monsters.md` | IMP-019 |
-| `02_world/npcs.md` | IMP-020, IMP-028 |
+| `02_world/npcs.md` | IMP-020, IMP-028, IMP-102 |
 | `02_world/quests.md` | IMP-021, IMP-089, IMP-090 |
 | `02_world/spawning.md` | IMP-019 |
 | `02_world/world_rules.md` | IMP-018, IMP-023, IMP-025, IMP-055, IMP-058, IMP-059, IMP-063, IMP-087, IMP-101 |
@@ -75,7 +75,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `04_architecture/service_boundaries.md` | IMP-018, IMP-022, IMP-025, IMP-069, IMP-080, IMP-081, IMP-100 |
 | `04_architecture/system_overview.md` | IMP-000, IMP-069, IMP-080 |
 | `05_network/errors.md` | IMP-006, IMP-061, IMP-065, IMP-081, IMP-100 |
-| `05_network/messages.md` | IMP-009, IMP-010, IMP-011, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-081, IMP-087, IMP-100, IMP-103 |
+| `05_network/messages.md` | IMP-009, IMP-010, IMP-011, IMP-012, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-081, IMP-087, IMP-100, IMP-102, IMP-103 |
 | `05_network/protobuf_conventions.md` | IMP-001, IMP-005, IMP-010, IMP-018, IMP-020, IMP-021, IMP-022, IMP-023, IMP-025, IMP-027, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-038, IMP-040, IMP-041, IMP-042, IMP-052, IMP-053, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-069, IMP-077, IMP-082, IMP-084, IMP-085, IMP-086, IMP-089, IMP-091, IMP-093, IMP-094, IMP-100, IMP-102 |
 | `05_network/protocol.md` | IMP-006, IMP-014, IMP-061, IMP-065, IMP-081 |
 | `05_network/reconnect.md` | IMP-065, IMP-069 |
@@ -83,7 +83,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `05_network/versioning.md` | IMP-061, IMP-065, IMP-067, IMP-081 |
 | `06_data/config.md` | IMP-001, IMP-002, IMP-003, IMP-004, IMP-022, IMP-069, IMP-078 |
 | `06_data/content_authoring_contract.md` | IMP-003, IMP-004 |
-| `06_data/data_model.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-011, IMP-022, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-053, IMP-054, IMP-056, IMP-077, IMP-086, IMP-091, IMP-094, IMP-097, IMP-100 |
+| `06_data/data_model.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-011, IMP-012, IMP-022, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-053, IMP-054, IMP-056, IMP-077, IMP-086, IMP-091, IMP-094, IMP-097, IMP-100 |
 | `06_data/database.md` | IMP-005, IMP-022, IMP-056, IMP-082, IMP-097 |
 | `06_data/ids.md` | IMP-001, IMP-005, IMP-061, IMP-069, IMP-082 |
 | `06_data/migrations.md` | IMP-005, IMP-047 |
@@ -238,6 +238,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `0080-competitive-space-compile-sources.md` | IMP-003, IMP-004 |
 | `0081-client-durable-command-edge-seam.md` | IMP-018, IMP-100 |
 | `0082-non-durable-client-command-edge-partition-seam.md` | IMP-018 |
+| `0083-edge-admission-consult-and-durable-world-effects.md` | IMP-009, IMP-011, IMP-018, IMP-102 |
 
 ## Requirement ID → Task
 

@@ -657,6 +657,7 @@ Generated from `task_queue.md` `owned_paths`.
 | `server/internal/edge/admin/` | IMP-077 |
 | `server/internal/edge/auth/` | IMP-006 |
 | `server/internal/edge/character/` | IMP-100 |
+| `server/internal/edge/entitlement/` | IMP-102 |
 | `server/internal/edge/heartbeat/` | IMP-081 |
 | `server/internal/edge/iap/` | IMP-053 |
 | `server/internal/edge/inventory/` | IMP-009 |
