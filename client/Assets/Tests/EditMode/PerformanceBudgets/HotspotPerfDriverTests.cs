@@ -48,12 +48,54 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
         private const int Repetitions = 3;
         private const int MeasureFramesPerRep = 600;
 
+        private bool _epoPushed;
+        private bool _epoWasEnabled;
+        private EnterPlayModeOptions _epoPrevious;
+
         private static bool GraphicsAvailable
         {
             get
             {
                 return SystemInfo.graphicsDeviceType !=
                     GraphicsDeviceType.Null;
+            }
+        }
+
+        /// <summary>
+        /// EditMode runs must not reload the domain on play-mode entry:
+        /// an unscheduled assembly reload aborts the UTF run ("unexpected
+        /// assembly reload") and leaves the editor stuck in play mode.
+        /// </summary>
+        private void EnterNoReloadPlayMode()
+        {
+            _epoWasEnabled = EditorSettings.enterPlayModeOptionsEnabled;
+            _epoPrevious = EditorSettings.enterPlayModeOptions;
+            _epoPushed = true;
+            EditorSettings.enterPlayModeOptionsEnabled = true;
+            EditorSettings.enterPlayModeOptions =
+                EnterPlayModeOptions.DisableDomainReload;
+            EditorApplication.EnterPlaymode();
+        }
+
+        [UnityTearDown]
+        public IEnumerator RestorePlayModeState()
+        {
+            if (EditorApplication.isPlaying ||
+                EditorApplication.isPlayingOrWillChangePlaymode)
+            {
+                EditorApplication.ExitPlaymode();
+            }
+
+            while (EditorApplication.isPlaying)
+            {
+                yield return null;
+            }
+
+            if (_epoPushed)
+            {
+                EditorSettings.enterPlayModeOptionsEnabled = _epoWasEnabled;
+                EditorSettings.enterPlayModeOptions = _epoPrevious;
+                _epoPushed = false;
             }
         }
 
@@ -99,7 +141,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
 
             GraphicsCapabilityProbe.VerifyCurrentInvocation();
 
-            EditorApplication.EnterPlaymode();
+            EnterNoReloadPlayMode();
             while (!EditorApplication.isPlaying)
             {
                 yield return null;
@@ -205,7 +247,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
 
             GraphicsCapabilityProbe.VerifyCurrentInvocation();
 
-            EditorApplication.EnterPlaymode();
+            EnterNoReloadPlayMode();
             while (!EditorApplication.isPlaying)
             {
                 yield return null;
