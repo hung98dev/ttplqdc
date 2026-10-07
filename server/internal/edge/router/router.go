@@ -2,7 +2,10 @@
 // durable-intent set of protobuf_conventions.md §7 (CLIENT_EXPANSION)
 // and dispatches them to registered per-ID handlers. Later tasks
 // register handlers; the classification table here is complete and
-// read-only for them.
+// read-only for them. A second, closed-at-startup handler table covers
+// registered non-durable C2S ids (ADR-0082): feature packages bind their
+// own ids and Dispatch invokes those handlers with the same session
+// view, resolving no §7 family.
 package router
 
 import (
@@ -50,6 +53,10 @@ type Handler func(ctx context.Context, v View, r Route) error
 var (
 	// ErrNotDurableIntent: MsgID is outside the closed §7 set.
 	ErrNotDurableIntent = errors.New("router: not a durable intent")
+	// ErrNotNonDurableID: MsgID cannot enter the non-durable table — a §7
+	// durable intent (use Register) or a session-owned id (<= 11, owned
+	// by the listener/session layer).
+	ErrNotNonDurableID = errors.New("router: not a non-durable c2s id")
 	// ErrDuplicateID: a handler is already registered for MsgID.
 	ErrDuplicateID = errors.New("router: duplicate message id")
 	// ErrUnregistered: durable MsgID with no registered handler.
@@ -131,6 +138,16 @@ func IsDurableIntent(msgID uint32) bool {
 	return ok
 }
 
+// IsNonDurableID reports whether the wire id may enter the non-durable
+// handler table (ADR-0082): outside the §7 durable set and outside the
+// session-owned control range (ids 1–11 carry HELLO/heartbeat/attach/
+// detach and their S2C counterparts — listener/session-owned, never a
+// feature route). The realtime input set (protocol.md § Phase Legality)
+// stays closed in edge/listener and must not be registered here.
+func IsNonDurableID(msgID uint32) bool {
+	return msgID > 11 && !IsDurableIntent(msgID)
+}
+
 // FamilyFor resolves the §7 family for a durable intent. For id 103 the
 // interact_kind is read from the decoded *C2SInteract payload; other ids
 // need no payload.
@@ -156,15 +173,20 @@ func FamilyFor(msgID uint32, payload any) (string, bool) {
 	return "", false
 }
 
-// Registry is the router: closed classification + per-id handler table.
+// Registry is the router: closed classification + per-id handler tables
+// for durable intents and registered non-durable ids.
 type Registry struct {
-	mu       sync.RWMutex
-	handlers map[uint32]Handler
+	mu         sync.RWMutex
+	handlers   map[uint32]Handler
+	nonDurable map[uint32]Handler
 }
 
 // New builds an empty router.
 func New() *Registry {
-	return &Registry{handlers: make(map[uint32]Handler)}
+	return &Registry{
+		handlers:   make(map[uint32]Handler),
+		nonDurable: make(map[uint32]Handler),
+	}
 }
 
 // Register installs the handler for a durable msgID; duplicates are an
@@ -185,31 +207,74 @@ func (r *Registry) Register(msgID uint32, h Handler) error {
 	return nil
 }
 
-// Registered returns the sorted registered id set (tests/audits).
+// RegisterNonDurable installs the handler for a non-durable C2S id
+// (ADR-0082): the owning edge/<feature> package binds its id at startup
+// composition, e.g. edge/world binding C2S_RESPAWN_REQUEST (208).
+// §7 durable ids and session-owned ids are rejected; realtime input ids
+// must not be registered (they belong to the listener's input path).
+func (r *Registry) RegisterNonDurable(msgID uint32, h Handler) error {
+	if !IsNonDurableID(msgID) {
+		return fmt.Errorf("%w: %d", ErrNotNonDurableID, msgID)
+	}
+	if h == nil {
+		return fmt.Errorf("%w: nil handler for %d", ErrUnregistered, msgID)
+	}
+	r.mu.Lock()
+	defer r.mu.Unlock()
+	if _, dup := r.nonDurable[msgID]; dup {
+		return fmt.Errorf("%w: %d", ErrDuplicateID, msgID)
+	}
+	r.nonDurable[msgID] = h
+	return nil
+}
+
+// Registered returns the sorted registered id set across both tables
+// (tests/audits).
 func (r *Registry) Registered() []uint32 {
 	r.mu.RLock()
 	defer r.mu.RUnlock()
-	out := make([]uint32, 0, len(r.handlers))
+	out := make([]uint32, 0, len(r.handlers)+len(r.nonDurable))
 	for id := range r.handlers {
+		out = append(out, id)
+	}
+	for id := range r.nonDurable {
 		out = append(out, id)
 	}
 	return out
 }
 
 // Handles implements the session adapter's router check: every durable
-// intent routes through Dispatch (unregistered ids reject there).
-func (r *Registry) Handles(msgID uint32) bool { return IsDurableIntent(msgID) }
+// intent routes through Dispatch (unregistered ids reject there), and a
+// registered non-durable id is reported the same way (ADR-0082).
+func (r *Registry) Handles(msgID uint32) bool {
+	if IsDurableIntent(msgID) {
+		return true
+	}
+	r.mu.RLock()
+	defer r.mu.RUnlock()
+	_, ok := r.nonDurable[msgID]
+	return ok
+}
 
 // Dispatch classifies the inbound intent and calls its handler. Unknown
 // durable intents are rejected with MESSAGE_NOT_ALLOWED_IN_STATE; a
-// non-durable id returns ErrNotDurableIntent for the caller to ignore.
+// registered non-durable id resolves no family and invokes its handler
+// with the same session view (ADR-0082). Other non-durable ids return
+// ErrNotDurableIntent for the caller to ignore (the adapter's silent
+// consume path for unregistered ids is unchanged).
 func (r *Registry) Dispatch(ctx context.Context, v View, in listener.Inbound) error {
 	fam, ok := FamilyFor(in.MessageID, in.Payload)
 	if !ok {
 		if IsDurableIntent(in.MessageID) {
 			return &RejectError{Code: protocolv1.ErrorCode_ERROR_CODE_MESSAGE_NOT_ALLOWED_IN_STATE}
 		}
-		return fmt.Errorf("%w: %d", ErrNotDurableIntent, in.MessageID)
+		r.mu.RLock()
+		h, reg := r.nonDurable[in.MessageID]
+		r.mu.RUnlock()
+		if !reg {
+			return fmt.Errorf("%w: %d", ErrNotDurableIntent, in.MessageID)
+		}
+		return h(ctx, v, Route{MsgID: in.MessageID, Family: "", Inbound: in})
 	}
 	r.mu.RLock()
 	h, ok := r.handlers[in.MessageID]
