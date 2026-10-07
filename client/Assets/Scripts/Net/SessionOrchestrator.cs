@@ -82,6 +82,14 @@ namespace ThinhThan.Net
             set;
         }
 
+        /// <summary>World transfer/interact result frames land here
+        /// (110, 116, 204) — Systems/World (IMP-018).</summary>
+        public IWorldSink? World
+        {
+            get;
+            set;
+        }
+
         /// <summary>Latest CHARACTER_LIST snapshot (REPLACEABLE_STATE).</summary>
         public S2CCharacterList? CharacterList
         {
@@ -558,6 +566,11 @@ namespace ThinhThan.Net
                 case WireIds.S2CMovementCorrection:
                     Replication?.Apply(frame);
                     break;
+                case WireIds.S2CChannelSwitchResult:
+                case WireIds.S2CInteractResult:
+                case WireIds.S2CActionRejected:
+                    World?.Apply(frame);
+                    break;
                 default:
                     break;
             }
@@ -650,6 +663,14 @@ namespace ThinhThan.Net
                 prepare.MapId, prepare.ChannelIndex,
                 prepare.InstanceId.ToByteArray(), prepare.ContentRevision);
             TransitionWorldTo(SessionPhase.TransferringMap, ClientUiState.TransferringMap);
+            // The server consumes C2S_PRESENTATION_READY only while the
+            // connection is in its TRANSFER phase (protocol.md § Phase
+            // Legality): emit 106 only when the FSM actually holds
+            // TRANSFERRING_MAP.
+            if (_fsm.Phase != SessionPhase.TransferringMap)
+            {
+                return;
+            }
             byte[] transferId = prepare.TransferId.ToByteArray();
             _ = SendPresentationReadyAsync(transferId, CancellationToken.None);
         }
