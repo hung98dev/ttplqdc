@@ -99,3 +99,75 @@ func TestUnknownDurableIntentRejected(t *testing.T) {
 		t.Fatalf("handler got view %+v", gotView)
 	}
 }
+
+// TestNonDurableRouteTable: registered non-durable C2S ids (ADR-0082)
+// are reported by Handles the same way durable intents are, resolve no
+// family, and invoke their handler with the same session view; §7 ids
+// and session-owned ids can't register, unregistered non-durable ids
+// keep the silent-consume path (Handles false).
+func TestNonDurableRouteTable(t *testing.T) {
+	reg := New()
+	h := func(ctx context.Context, v View, r Route) error { return nil }
+	// 208 is unregistered: not handled, dispatch is a no-op for the
+	// adapter (ErrNotDurableIntent signals silent consume).
+	if reg.Handles(208) {
+		t.Fatal("unregistered 208 reported handled")
+	}
+	if err := reg.Dispatch(context.Background(), View{}, listener.Inbound{
+		MessageID: 208, Payload: &protocolv1.C2SRespawnRequest{},
+	}); !errors.Is(err, ErrNotDurableIntent) {
+		t.Fatalf("unregistered 208 dispatch: %v", err)
+	}
+	// §7 durable ids and session-owned ids are rejected.
+	if err := reg.RegisterNonDurable(400, h); !errors.Is(err, ErrNotNonDurableID) {
+		t.Fatalf("durable register: %v", err)
+	}
+	for _, id := range []uint32{1, 4, 6, 10, 11} {
+		if err := reg.RegisterNonDurable(id, h); !errors.Is(err, ErrNotNonDurableID) {
+			t.Fatalf("session id %d accepted", id)
+		}
+	}
+	if err := reg.RegisterNonDurable(208, nil); err == nil {
+		t.Fatal("nil handler accepted")
+	}
+	// Registered id dispatches through with an empty family and the
+	// injected view.
+	var got Route
+	var gotView View
+	if err := reg.RegisterNonDurable(208, func(ctx context.Context,
+		v View, r Route) error {
+		got = r
+		gotView = v
+		return nil
+	}); err != nil {
+		t.Fatalf("register 208: %v", err)
+	}
+	if err := reg.RegisterNonDurable(208, h); !errors.Is(err, ErrDuplicateID) {
+		t.Fatalf("dup register: %v", err)
+	}
+	if !reg.Handles(208) {
+		t.Fatal("registered 208 not handled")
+	}
+	in := listener.Inbound{MessageID: 208, Payload: &protocolv1.C2SRespawnRequest{}, ClientSeq: 9}
+	if err := reg.Dispatch(context.Background(), View{SessionEpoch: 7}, in); err != nil {
+		t.Fatalf("dispatch 208: %v", err)
+	}
+	if got.MsgID != 208 || got.Family != "" || got.Inbound.ClientSeq != 9 {
+		t.Fatalf("handler got %+v", got)
+	}
+	if gotView.SessionEpoch != 7 {
+		t.Fatalf("handler got view %+v", gotView)
+	}
+	// The durable path is unchanged.
+	for _, id := range []uint32{12, 103, 400, 608, 708} {
+		if !reg.Handles(id) {
+			t.Fatalf("durable %d not handled", id)
+		}
+	}
+	var re *RejectError
+	if err := reg.Dispatch(context.Background(), View{}, listener.Inbound{
+		MessageID: 400, Payload: &protocolv1.C2SInventoryMutate{},
+	}); !errors.As(err, &re) || re.Code != protocolv1.ErrorCode_ERROR_CODE_OPERATION_REJECTED {
+		t.Fatalf("unregistered durable dispatch: %v", err)
+	}
+}

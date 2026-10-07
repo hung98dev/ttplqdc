@@ -26,7 +26,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `01_gameplay/death_respawn.md` | IMP-084 |
 | `01_gameplay/movement.md` | IMP-013, IMP-062, IMP-066, IMP-078 |
 | `01_gameplay/progression.md` | IMP-011, IMP-090 |
-| `01_gameplay/skills.md` | IMP-003, IMP-004, IMP-014, IMP-015, IMP-017, IMP-049 |
+| `01_gameplay/skills.md` | IMP-003, IMP-004, IMP-011, IMP-014, IMP-015, IMP-017, IMP-049 |
 | `01_gameplay/stats.md` | IMP-011 |
 | `01_gameplay/status_effects.md` | IMP-016, IMP-084, IMP-092 |
 | `02_world/README.md` | IMP-018 |
@@ -34,7 +34,7 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `02_world/dungeons.md` | IMP-023, IMP-024 |
 | `02_world/maps_zones.md` | IMP-018, IMP-055, IMP-072, IMP-084 |
 | `02_world/monsters.md` | IMP-019 |
-| `02_world/npcs.md` | IMP-020, IMP-028 |
+| `02_world/npcs.md` | IMP-020, IMP-028, IMP-102 |
 | `02_world/quests.md` | IMP-021, IMP-089, IMP-090 |
 | `02_world/spawning.md` | IMP-019 |
 | `02_world/world_rules.md` | IMP-018, IMP-023, IMP-025, IMP-055, IMP-058, IMP-059, IMP-063, IMP-087, IMP-101 |
@@ -72,10 +72,10 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `04_architecture/concurrency.md` | IMP-002, IMP-079, IMP-080, IMP-082 |
 | `04_architecture/physics_geometry_contract.md` | IMP-004, IMP-013, IMP-015, IMP-018, IMP-019, IMP-022, IMP-023, IMP-024, IMP-040, IMP-041, IMP-042, IMP-062, IMP-063, IMP-066, IMP-067, IMP-070, IMP-071, IMP-072, IMP-078, IMP-104, IMP-105 |
 | `04_architecture/realtime_loop.md` | IMP-013, IMP-014, IMP-055, IMP-062, IMP-069, IMP-078, IMP-079 |
-| `04_architecture/service_boundaries.md` | IMP-022, IMP-025, IMP-069, IMP-080, IMP-081, IMP-100 |
+| `04_architecture/service_boundaries.md` | IMP-018, IMP-022, IMP-025, IMP-069, IMP-080, IMP-081, IMP-100 |
 | `04_architecture/system_overview.md` | IMP-000, IMP-069, IMP-080 |
 | `05_network/errors.md` | IMP-006, IMP-061, IMP-065, IMP-081, IMP-100 |
-| `05_network/messages.md` | IMP-009, IMP-010, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-081, IMP-087, IMP-100, IMP-103 |
+| `05_network/messages.md` | IMP-009, IMP-010, IMP-011, IMP-012, IMP-013, IMP-014, IMP-018, IMP-020, IMP-029, IMP-034, IMP-035, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-061, IMP-062, IMP-066, IMP-078, IMP-079, IMP-081, IMP-087, IMP-100, IMP-102, IMP-103 |
 | `05_network/protobuf_conventions.md` | IMP-001, IMP-005, IMP-010, IMP-018, IMP-020, IMP-021, IMP-022, IMP-023, IMP-025, IMP-027, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-038, IMP-040, IMP-041, IMP-042, IMP-052, IMP-053, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-069, IMP-077, IMP-082, IMP-084, IMP-085, IMP-086, IMP-089, IMP-091, IMP-093, IMP-094, IMP-100, IMP-102 |
 | `05_network/protocol.md` | IMP-006, IMP-014, IMP-061, IMP-065, IMP-081 |
 | `05_network/reconnect.md` | IMP-065, IMP-069 |
@@ -83,11 +83,11 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `05_network/versioning.md` | IMP-061, IMP-065, IMP-067, IMP-081 |
 | `06_data/config.md` | IMP-001, IMP-002, IMP-003, IMP-004, IMP-022, IMP-069, IMP-078 |
 | `06_data/content_authoring_contract.md` | IMP-003, IMP-004 |
-| `06_data/data_model.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-010, IMP-022, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-053, IMP-054, IMP-056, IMP-077, IMP-086, IMP-091, IMP-094, IMP-097, IMP-100 |
+| `06_data/data_model.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-011, IMP-012, IMP-022, IMP-029, IMP-030, IMP-031, IMP-034, IMP-036, IMP-037, IMP-040, IMP-041, IMP-042, IMP-053, IMP-054, IMP-056, IMP-077, IMP-086, IMP-091, IMP-094, IMP-097, IMP-100 |
 | `06_data/database.md` | IMP-005, IMP-022, IMP-056, IMP-082, IMP-097 |
 | `06_data/ids.md` | IMP-001, IMP-005, IMP-061, IMP-069, IMP-082 |
 | `06_data/migrations.md` | IMP-005, IMP-047 |
-| `06_data/physical_schema_contract.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-030, IMP-036, IMP-053, IMP-100 |
+| `06_data/physical_schema_contract.md` | IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-011, IMP-030, IMP-036, IMP-053, IMP-100 |
 | `06_data/save_rules.md` | IMP-001, IMP-005, IMP-010, IMP-018, IMP-020, IMP-021, IMP-022, IMP-023, IMP-025, IMP-027, IMP-029, IMP-030, IMP-034, IMP-036, IMP-037, IMP-038, IMP-040, IMP-041, IMP-042, IMP-052, IMP-053, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-069, IMP-077, IMP-082, IMP-084, IMP-085, IMP-086, IMP-089, IMP-091, IMP-093, IMP-094, IMP-100, IMP-102 |
 | `06_data/text.md` | IMP-064, IMP-100 |
 | `07_content/README.md` | IMP-003 |
@@ -235,6 +235,10 @@ All tasks consume `../README.md`, all files in `../00_context/`, accepted ADRs w
 | `0077-ci-critical-path-cheap-unity-retries-and-two-phase-verifier.md` | IMP-000 |
 | `0078-unity-windows-native-and-linux-go-only-ci.md` | IMP-000, IMP-067, IMP-070, IMP-095, IMP-096, IMP-106 |
 | `0079-readiness-contract-closure.md` | IMP-000, IMP-001, IMP-002, IMP-003, IMP-004, IMP-005, IMP-006, IMP-007, IMP-008, IMP-009, IMP-010, IMP-011, IMP-012, IMP-013, IMP-014, IMP-015, IMP-016, IMP-017, IMP-018, IMP-019, IMP-020, IMP-021, IMP-022, IMP-023, IMP-024, IMP-025, IMP-026, IMP-027, IMP-028, IMP-029, IMP-030, IMP-031, IMP-032, IMP-033, IMP-034, IMP-035, IMP-036, IMP-037, IMP-038, IMP-039, IMP-040, IMP-041, IMP-042, IMP-043, IMP-044, IMP-045, IMP-046, IMP-047, IMP-048, IMP-049, IMP-050, IMP-051, IMP-052, IMP-053, IMP-054, IMP-055, IMP-056, IMP-057, IMP-058, IMP-059, IMP-060, IMP-061, IMP-062, IMP-063, IMP-064, IMP-065, IMP-066, IMP-067, IMP-068, IMP-069, IMP-070, IMP-071, IMP-072, IMP-073, IMP-074, IMP-075, IMP-076, IMP-077, IMP-078, IMP-079, IMP-080, IMP-081, IMP-082, IMP-083, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-091, IMP-092, IMP-093, IMP-094, IMP-095, IMP-096, IMP-097, IMP-098, IMP-099, IMP-100, IMP-101, IMP-102, IMP-103, IMP-104, IMP-105, IMP-106 |
+| `0080-competitive-space-compile-sources.md` | IMP-003, IMP-004 |
+| `0081-client-durable-command-edge-seam.md` | IMP-018, IMP-100 |
+| `0082-non-durable-client-command-edge-partition-seam.md` | IMP-018 |
+| `0083-edge-admission-consult-and-durable-world-effects.md` | IMP-009, IMP-011, IMP-018, IMP-102 |
 
 ## Requirement ID → Task
 

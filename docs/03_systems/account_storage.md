@@ -37,7 +37,7 @@ For `ACCOUNT_SCOPED_ACCESS` entitlements the one-shot claim rule does **not** ap
 - Refund/chargeback of an ACCOUNT_SCOPED_ACCESS entitlement invalidates all future claims **and revokes every cosmetic already claimed under it on every character** (claimed season cosmetics are entitlements, not inventory items): only the `character_cosmetic_entitlements` rows whose source is that entitlement are deleted; a cosmetic also owned through another source stays owned. If at least one tier had been claimed, the entitlement becomes `REFUNDED_CONSUMED` (one `IAP_REFUND_CONSUMED` event per refunded purchase); otherwise `REFUNDED`. Revoked cosmetics unequip at next sync.
 
 ## Access
-Configured hub NPC may open the panel. Rejected while `in_combat`.
+Configured hub NPC may open the panel. Rejected while `in_combat`. Panel open is client presentation over the `S2C_ENTITLEMENT_PANEL_STATE` (435) projection — there is no separate open request; the NPC gate (open session, interaction range, not `in_combat`) is enforced at `C2S_ENTITLEMENT_CLAIM` (418) admission via its `npc_id` (`../05_network/messages.md`).
 
 ## Invariants
 ```text

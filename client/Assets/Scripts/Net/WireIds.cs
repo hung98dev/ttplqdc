@@ -35,6 +35,9 @@ namespace ThinhThan.Net
         public const uint S2CTransferPrepare = 105;
         public const uint C2SPresentationReady = 106;
         public const uint S2CMovementCorrection = 107;
+        public const uint S2CChannelSwitchResult = 110;
+        public const uint S2CInteractResult = 116;
+        public const uint S2CActionRejected = 204;
         public const uint S2CDeath = 206;
         public const uint S2CRespawn = 207;
         public const uint S2CWorldBaseline = 300;
@@ -44,5 +47,13 @@ namespace ThinhThan.Net
         public const uint C2SBaselineAck = 306;
         public const uint C2SBaselineResyncRequest = 307;
         public const uint S2CBaselineResyncResult = 308;
+        public const uint S2CInventoryResult = 401;
+        public const uint S2CEntitlementClaimResult = 419;
+        public const uint S2CInventoryExpandResult = 429;
+        public const uint S2CWalletState = 432;
+        public const uint S2CInventoryState = 433;
+        public const uint S2CEntitlementPanelState = 435;
+        public const uint S2CProgressionMutateResult = 514;
+        public const uint S2CProgressionState = 515;
     }
 }

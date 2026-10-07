@@ -229,6 +229,7 @@ Do not put `*.prefab`, `*.asset`, `*.meta`, or `*.unity` in LFS.
 - Unity tests live in `client/Assets/Tests/{EditMode|PlayMode}/<Feature>/`, one folder per packet, listed in its `owned_paths`. The root test asmdefs belong to IMP-000; `PlayMode/Harness/` belongs to IMP-065 and is read-only for other packets.
 - Shared registries: `client/Assets/AddressableAssetsData/` is owned by IMP-063; a packet that depends on IMP-063 may append groups/entries only for keys it owns (append-only, key-owner checked by the IMP-063 validator). The append surface is granted by naming the exact registry files in the packet's `owned_paths` (Q0 `ownedFile` matches exact paths or `dir/` prefixes and implies `.meta`) together with a `depends_on` edge to the registry owner, which `paths.ownership_overlap` requires for any shared path; e.g. IMP-064 owns `AddressableAssetSettings.asset` plus the `AssetGroups/localization.*(.asset)` group and schema assets (ADR-0074). Localization string tables are per feature: the packet owning `client/Assets/Scripts/{Systems|UI}/<Feature>/` implicitly owns `client/Assets/Localization/Tables/<Feature>/`; `Tables/Core/` belongs to IMP-064.
 - Module lockfiles: `server/go.mod`/`server/go.sum` are owned by IMP-000 and co-ownable — a packet whose code imports a module already pinned in `../00_context/technology_versions.md` lists both in `owned_paths` before landing its `require`/`go.sum` lines (every packet transitively depends on IMP-000, so `paths.ownership_overlap` ordering holds). Missing ownership is corrected in the packet and this index before implementation; a spec-change does not create runtime lockfiles in the docs-only baseline.
+- Client inbound dispatch seam: `client/Assets/Scripts/Net/` (and `client/Assets/Tests/PlayMode/Harness/`) stays wholly IMP-065-owned — packets never list its files in `owned_paths`. The wire-id dispatch surfaces inside it are append surfaces keyed by S2C message id — `WireIds.cs` (constants), `EnvelopeCodec.cs` (`_s2cParsers` entries), `ReceiveQueue.cs` (`_replaceables`/`_barriers` membership), `SessionOrchestrator.cs` (`ApplyFrame` cases that hand the decoded frame to the packet's own Systems handler), and the harness emitters in `client/Assets/Tests/PlayMode/Harness/FakeServer.cs`. For every packet whose spec assigns it inbound S2C ids, the per-id binding across these files lands through a routed `fix(IMP-065)` gatefix PR that must merge before the consuming task's PR; the contract is one thin entry per id — no generic decoded-frame registry, orchestrator/queue mechanics unchanged.
 - Provenance: `client/Assets/Art/Provenance/asset_source_register.json` is created empty by IMP-070 and merged by IMP-076 from `fragments/<name>.json`, each fragment owned by exactly one art packet.
 - Evidence directories are implied by `evidence_location` only; no packet lists `docs/10_implementation/evidence/` in `owned_paths`.
 - Unity `.meta` files are implied by ownership (ADR-0072): a packet owning `client/**` path P also owns `P.meta`, and the `.meta` of every folder it is the first to create; they are editor-materialized in CI (artifact `unity-materialized-windows`, ADR-0078) and committed byte-for-byte, never hand-written, except the path-derived GUIDs of § ProjectSettings Baseline.
@@ -656,12 +657,16 @@ Generated from `task_queue.md` `owned_paths`.
 | `server/internal/edge/admin/` | IMP-077 |
 | `server/internal/edge/auth/` | IMP-006 |
 | `server/internal/edge/character/` | IMP-100 |
+| `server/internal/edge/entitlement/` | IMP-102 |
 | `server/internal/edge/heartbeat/` | IMP-081 |
 | `server/internal/edge/iap/` | IMP-053 |
+| `server/internal/edge/inventory/` | IMP-009 |
 | `server/internal/edge/listener/` | IMP-081 |
+| `server/internal/edge/progression/` | IMP-011 |
 | `server/internal/edge/router/` | IMP-006 |
 | `server/internal/edge/security/` | IMP-045 |
 | `server/internal/edge/session/` | IMP-006 |
+| `server/internal/edge/world/` | IMP-018 |
 | `server/internal/global/bosses/` | IMP-022 |
 | `server/internal/global/guild/` | IMP-036 |
 | `server/internal/global/matchmaking/arena/` | IMP-041 |

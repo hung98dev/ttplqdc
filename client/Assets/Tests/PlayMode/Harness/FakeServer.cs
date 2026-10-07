@@ -332,6 +332,143 @@ namespace ThinhThan.Tests.PlayMode.Harness
             return socket.SendAsync(14, list);
         }
 
+        /// <summary>Pushes S2C_CHANNEL_SWITCH_RESULT (110) on the latest
+        /// socket.</summary>
+        public Task SendChannelSwitchResultAsync(
+            S2CChannelSwitchResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(110, result);
+        }
+
+        /// <summary>Pushes S2C_INTERACT_RESULT (116) on the latest socket.
+        /// </summary>
+        public Task SendInteractResultAsync(S2CInteractResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(116, result);
+        }
+
+        /// <summary>Pushes S2C_ACTION_REJECTED (204) on the latest socket.
+        /// </summary>
+        public Task SendActionRejectedAsync(S2CActionRejected rejected)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(204, rejected);
+        }
+
+        /// <summary>Pushes S2C_INVENTORY_RESULT (401) on the latest socket.
+        /// </summary>
+        public Task SendInventoryResultAsync(S2CInventoryResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(401, result);
+        }
+
+        /// <summary>Pushes S2C_ENTITLEMENT_CLAIM_RESULT (419) on the latest
+        /// socket.</summary>
+        public Task SendEntitlementClaimResultAsync(
+            S2CEntitlementClaimResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(419, result);
+        }
+
+        /// <summary>Pushes S2C_INVENTORY_EXPAND_RESULT (429) on the latest
+        /// socket.</summary>
+        public Task SendInventoryExpandResultAsync(
+            S2CInventoryExpandResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(429, result);
+        }
+
+        /// <summary>Pushes S2C_WALLET_STATE (432) on the latest socket.
+        /// </summary>
+        public Task SendWalletStateAsync(S2CWalletState state)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(432, state);
+        }
+
+        /// <summary>Pushes S2C_INVENTORY_STATE (433) on the latest socket.
+        /// </summary>
+        public Task SendInventoryStateAsync(S2CInventoryState state)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(433, state);
+        }
+
+        /// <summary>Pushes S2C_ENTITLEMENT_PANEL_STATE (435) on the latest
+        /// socket.</summary>
+        public Task SendEntitlementPanelStateAsync(
+            S2CEntitlementPanelState state)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(435, state);
+        }
+
+        /// <summary>Pushes S2C_PROGRESSION_MUTATE_RESULT (514) on the latest
+        /// socket.</summary>
+        public Task SendProgressionMutateResultAsync(
+            S2CProgressionMutateResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(514, result);
+        }
+
+        /// <summary>Pushes S2C_PROGRESSION_STATE (515) on the latest socket.
+        /// </summary>
+        public Task SendProgressionStateAsync(S2CProgressionState state)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(515, state);
+        }
+
         /// <summary>Sends S2C_ERROR with close_after on the latest socket.</summary>
         public Task SendErrorAsync(
             ErrorCode errorCode, bool closeAfter, uint retryAfterMs = 0)

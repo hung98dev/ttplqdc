@@ -93,4 +93,6 @@ Use `docs/templates/adr.md`.
 | 0079 | Readiness Contract Closure — catalog/privacy/journal/plan-first source decisions; not runtime readiness certification | ACCEPTED |
 | 0080 | Competitive-Space Compile Sources | ACCEPTED |
 | 0081 | Client Durable Command Edge Seam | ACCEPTED |
+| 0082 | Non-Durable Client Command Edge→Partition Seam | ACCEPTED |
+| 0083 | Edge Admission Consults and Durable-Op World Effects over the Partition Seam | ACCEPTED |
 
