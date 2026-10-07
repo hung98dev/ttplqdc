@@ -1678,7 +1678,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-066/"
 
 ## `IMP-095` — Client Performance Budgets & Quality Presets (every PR)
 id: IMP-095
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-095"
 branch: "imp/IMP-095-client-perf-budgets"
 claimed_at: "2026-10-07T04:10:00Z"
