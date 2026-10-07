@@ -78,10 +78,6 @@ func pool(t *testing.T) *pgxpool.Pool {
 	return sharedPool
 }
 
-func n(base string) string {
-	return fmt.Sprintf("%s_%d", base, time.Now().UnixNano()%1_000_000_000)
-}
-
 func mkAccount(t *testing.T) id.UUID {
 	t.Helper()
 	acct := id.NewV4()
