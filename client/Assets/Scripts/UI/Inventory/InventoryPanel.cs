@@ -159,7 +159,8 @@ namespace ThinhThan.UI.Inventory
             }
             if (CapacityText != null)
             {
-                CapacityText.SetText("{0}/{1}", used, cap);
+                CapacityText.SetText("{0}/{1}", (float)used,
+                    (float)cap);
             }
         }
 

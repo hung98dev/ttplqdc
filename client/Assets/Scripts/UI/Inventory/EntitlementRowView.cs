@@ -34,8 +34,8 @@ namespace ThinhThan.UI.Inventory
             {
                 int claimable = m.ClaimableTierIds.Count;
                 int claimed = m.ClaimedTierIds.Count;
-                TiersText.SetText("{0}/{1}", claimed,
-                    claimed + claimable);
+                TiersText.SetText("{0}/{1}", (float)claimed,
+                    (float)(claimed + claimable));
             }
             if (ClaimButton != null)
             {
