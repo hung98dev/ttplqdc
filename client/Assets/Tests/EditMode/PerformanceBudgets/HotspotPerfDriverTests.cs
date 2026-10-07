@@ -158,8 +158,10 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             int maxParticles = 0;
             double maxFrameBudgetMs = 0.0;
 
-            // Batchmode never records profiler frames without this flag;
-            // without it lastFrameIndex stays -1 and PERF-002 has no data.
+            // Batchmode never records profiler frames without these
+            // flags; without them lastFrameIndex stays -1 and PERF-002
+            // has no data.
+            UnityEditorInternal.ProfilerDriver.enabled = true;
             UnityEditorInternal.ProfilerDriver.profileEditor = true;
             UnityEngine.Profiling.Profiler.enabled = true;
             using (var memory = new MemoryProbe())
