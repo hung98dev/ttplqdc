@@ -90,6 +90,16 @@ namespace ThinhThan.Net
             set;
         }
 
+        /// <summary>Inventory/wallet/entitlement frames land here
+        /// (401, 419, 429, 432, 433, 435) — Systems/Inventory (IMP-009).
+        /// </summary>
+        public IInventorySink? Inventory
+        {
+            get;
+            set;
+        }
+
+
         /// <summary>Progression frames land here (514, 515) —
         /// Systems/Progression (IMP-011).</summary>
         public IProgressionSink? Progression
@@ -578,6 +588,14 @@ namespace ThinhThan.Net
                 case WireIds.S2CInteractResult:
                 case WireIds.S2CActionRejected:
                     World?.Apply(frame);
+                    break;
+                case WireIds.S2CInventoryResult:
+                case WireIds.S2CEntitlementClaimResult:
+                case WireIds.S2CInventoryExpandResult:
+                case WireIds.S2CWalletState:
+                case WireIds.S2CInventoryState:
+                case WireIds.S2CEntitlementPanelState:
+                    Inventory?.Apply(frame);
                     break;
                 case WireIds.S2CProgressionMutateResult:
                 case WireIds.S2CProgressionState:

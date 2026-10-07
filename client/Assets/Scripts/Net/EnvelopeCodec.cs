@@ -111,6 +111,12 @@ namespace ThinhThan.Net
                 [WireIds.S2CEntityDespawn] = S2CEntityDespawn.Parser,
                 [WireIds.S2CStateDelta] = S2CStateDelta.Parser,
                 [WireIds.S2CBaselineResyncResult] = S2CBaselineResyncResult.Parser,
+                [WireIds.S2CInventoryResult] = S2CInventoryResult.Parser,
+                [WireIds.S2CEntitlementClaimResult] = S2CEntitlementClaimResult.Parser,
+                [WireIds.S2CInventoryExpandResult] = S2CInventoryExpandResult.Parser,
+                [WireIds.S2CWalletState] = S2CWalletState.Parser,
+                [WireIds.S2CInventoryState] = S2CInventoryState.Parser,
+                [WireIds.S2CEntitlementPanelState] = S2CEntitlementPanelState.Parser,
                 [WireIds.S2CProgressionMutateResult] = S2CProgressionMutateResult.Parser,
                 [WireIds.S2CProgressionState] = S2CProgressionState.Parser,
             };
