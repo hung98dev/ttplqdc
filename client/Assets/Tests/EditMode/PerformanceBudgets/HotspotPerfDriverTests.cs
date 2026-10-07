@@ -158,6 +158,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             int maxParticles = 0;
             double maxFrameBudgetMs = 0.0;
 
+            UnityEngine.Profiling.Profiler.enabled = true;
             using (var memory = new MemoryProbe())
             using (var gc = new ProfilerRecorder(
                 PerfMarkers.GcAllocatedInFrameCounter, 16))
@@ -329,11 +330,26 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 }
             }
 
+            var histogram = new SortedDictionary<float, int>();
+            foreach (float v in pixels)
+            {
+                float key = Mathf.Round(v * 4f) / 4f;
+                histogram[key] =
+                    histogram.TryGetValue(key, out int c) ? c + 1 : 1;
+            }
+
+            var top = new List<string>(4);
+            foreach (KeyValuePair<float, int> pair in histogram)
+            {
+                top.Add(pair.Key.ToString("0.##") + ":" + pair.Value);
+            }
+
             Assert.IsTrue(
                 hasOne && hasTwo && hasThree,
                 "PERF-016 calibration fixture must produce counts " +
                 "1, 2 and 3 (base, single overlap, double overlap) — " +
-                "readback or counting material is broken");
+                "readback histogram {" +
+                string.Join(", ", top) + "}");
         }
 
         private static void AssertOverdraw(
@@ -575,7 +591,9 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             var failures = new List<string>();
             if (cpuByRep.Count != Repetitions || HasEmptyWindow(cpuByRep))
             {
-                failures.Add("PERF-002 frame capture produced no samples");
+                failures.Add(
+                    "PERF-002 frame capture produced no samples — " +
+                    s_lastMeasureDiag);
             }
             else
             {
@@ -729,10 +747,16 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
         /// <see cref="ProfilerDriver"/> and runs PERF-002 union accounting
         /// through <see cref="FrameIntervalProbe"/>.
         /// </summary>
+        private static string s_lastMeasureDiag = "not run";
+
         private static bool TryMeasureLastFrame(out double cpuSeconds)
         {
             cpuSeconds = 0.0;
             int frameIndex = ProfilerDriver.lastFrameIndex;
+            int validViews = 0;
+            int missingPlayerLoop = 0;
+            var roots = new List<string>(8);
+            string? computeError = null;
             for (int ti = 0; ti < 64; ti++)
             {
                 using HierarchyFrameDataView view =
@@ -745,9 +769,16 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     continue;
                 }
 
+                validViews++;
                 int playerLoopId = FindPlayerLoopId(view);
                 if (playerLoopId < 0)
                 {
+                    missingPlayerLoop++;
+                    if (roots.Count < 8)
+                    {
+                        roots.Add(view.GetItemName(view.GetRootItemID()));
+                    }
+
                     continue;
                 }
 
@@ -779,10 +810,23 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     }
                 }
 
-                return FrameIntervalProbe.TryComputeCpuSeconds(
-                    samples, out cpuSeconds, out _);
+                if (FrameIntervalProbe.TryComputeCpuSeconds(
+                    samples, out cpuSeconds, out computeError))
+                {
+                    s_lastMeasureDiag =
+                        "frameIndex=" + frameIndex +
+                        " validViews=" + validViews +
+                        " missingPlayerLoop=" + missingPlayerLoop;
+                    return true;
+                }
             }
 
+            s_lastMeasureDiag =
+                "frameIndex=" + frameIndex +
+                " validViews=" + validViews +
+                " missingPlayerLoop=" + missingPlayerLoop +
+                " roots=[" + string.Join(",", roots) + "]" +
+                " computeError=" + (computeError ?? "none");
             return false;
         }
 
