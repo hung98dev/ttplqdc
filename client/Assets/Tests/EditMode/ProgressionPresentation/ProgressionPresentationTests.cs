@@ -154,7 +154,7 @@ namespace ThinhThan.Tests.EditMode.ProgressionPresentation
         {
             var sender = new FakeSender();
             var intents = new ProgressionIntents(
-                sender, () => new byte[16] { 1, 2, 3 });
+                sender, () => new byte[16]);
             var _ = intents.RequestUpgrade(
                 "skill.kim.active.pha_khong_kiem", 2,
                 CancellationToken.None);
@@ -164,7 +164,6 @@ namespace ThinhThan.Tests.EditMode.ProgressionPresentation
             _ = intents.RequestRespec(
                 "npc.lang_da.nguoi_dan_duong", RespecKind.Potential,
                 CancellationToken.None);
-            minted++;
 
             Assert.That(sender.Sent.Count, Is.EqualTo(3));
             Assert.That(sender.Sent[0].Id,
