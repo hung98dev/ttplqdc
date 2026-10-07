@@ -140,19 +140,19 @@ namespace ThinhThan.Systems.Inventory
                     m.LockedQuantity = 0U;
                     continue;
                 }
-                bool sameInstance = m.Item != null &&
-                    SameInstance(m.Item.InstanceId,
-                        c.ItemInstanceId);
-                if (!sameInstance)
+                InventoryItemModel item = m.Item;
+                if (item == null ||
+                    !SameInstance(item.InstanceId, c.ItemInstanceId))
                 {
-                    m.Item = new InventoryItemModel
+                    item = new InventoryItemModel
                     {
                         InstanceId = c.ItemInstanceId.ToByteArray(),
                     };
                     m.LockedQuantity = 0U;
                 }
-                m.Item.ItemId = c.ItemId;
-                m.Item.Quantity = c.Quantity;
+                item.ItemId = c.ItemId;
+                item.Quantity = c.Quantity;
+                m.Item = item;
             }
             _ordered.Sort(CompareSlots);
             Revision = r.InventoryRevision;
