@@ -332,6 +332,43 @@ namespace ThinhThan.Tests.PlayMode.Harness
             return socket.SendAsync(14, list);
         }
 
+        /// <summary>Pushes S2C_CHANNEL_SWITCH_RESULT (110) on the latest
+        /// socket.</summary>
+        public Task SendChannelSwitchResultAsync(
+            S2CChannelSwitchResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(110, result);
+        }
+
+        /// <summary>Pushes S2C_INTERACT_RESULT (116) on the latest socket.
+        /// </summary>
+        public Task SendInteractResultAsync(S2CInteractResult result)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(116, result);
+        }
+
+        /// <summary>Pushes S2C_ACTION_REJECTED (204) on the latest socket.
+        /// </summary>
+        public Task SendActionRejectedAsync(S2CActionRejected rejected)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+            return socket.SendAsync(204, rejected);
+        }
+
         /// <summary>Pushes S2C_INVENTORY_RESULT (401) on the latest socket.
         /// </summary>
         public Task SendInventoryResultAsync(S2CInventoryResult result)

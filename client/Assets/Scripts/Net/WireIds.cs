@@ -35,6 +35,9 @@ namespace ThinhThan.Net
         public const uint S2CTransferPrepare = 105;
         public const uint C2SPresentationReady = 106;
         public const uint S2CMovementCorrection = 107;
+        public const uint S2CChannelSwitchResult = 110;
+        public const uint S2CInteractResult = 116;
+        public const uint S2CActionRejected = 204;
         public const uint S2CDeath = 206;
         public const uint S2CRespawn = 207;
         public const uint S2CWorldBaseline = 300;
