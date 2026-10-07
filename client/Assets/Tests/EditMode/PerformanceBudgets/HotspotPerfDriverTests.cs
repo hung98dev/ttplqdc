@@ -73,7 +73,8 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             _epoPushed = true;
             EditorSettings.enterPlayModeOptionsEnabled = true;
             EditorSettings.enterPlayModeOptions =
-                EnterPlayModeOptions.DisableDomainReload;
+                EnterPlayModeOptions.DisableDomainReload |
+                EnterPlayModeOptions.DisableSceneReload;
             EditorApplication.EnterPlaymode();
         }
 
