@@ -290,6 +290,8 @@ Root includes character_id, account_id, display/normalized name, class_id, lifec
 
 Owned projections include progression, potential allocation, skills, currencies, progression flags, discoveries/first-clears, checkpoint, cosmetic selection, fishing UTC-date catch count (`world_rules.md` daily cap 50), and chivalry lifetime plus utc-day counters (`character_chivalry`, § Social / Party).
 
+`characters.progression_revision BIGINT NOT NULL DEFAULT 0` (migration pair `000002_*`, `physical_schema_contract.md` §6) is the aggregate revision carried by `S2C_PROGRESSION_STATE` (515). Every committed transaction that mutates the 515 projection — level/`current_exp`, `unspent_skill_points`, `unspent_potential_points`, `character_skill_levels`, `character_potential_allocations`, or the persisted skill loadout — increments it by exactly 1 under the character lock in the same transaction. It is a staleness-detection revision (`save_rules.md` § Revisions / Conflicts), not a +1-per-push sequence.
+
 ### character_activity
 ```text
 character_id       UUID PRIMARY KEY REFERENCES characters(character_id)
@@ -317,6 +319,7 @@ balance        BIGINT NOT NULL CHECK (balance >= 0)   -- caps: ../03_systems/eco
 revision       BIGINT NOT NULL DEFAULT 0
 PRIMARY KEY (character_id, currency_id)
 ```
+The wire `wallet_revision` (`S2C_WALLET_STATE` 432) is derived: `SUM(character_currencies.revision)` over the character's currency rows. Every committed wallet mutation increments at least one row's `revision`, so the sum is strictly monotone and needs no dedicated column.
 The baseline also creates `rate_limit_counters` and `auth_failure_backoff` with the schema in `../07_security/external_integrations.md` § 3.
 
 ### Character Progression Column Types
