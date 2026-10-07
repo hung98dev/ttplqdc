@@ -90,7 +90,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
 | `IMP-064` | Unity Bilingual Localization Pipeline (vi-VN / en-US) | `DONE` | IMP-000, IMP-063 | `../04_architecture/client_localization.md`, `../06_data/text.md` |
 | `IMP-065` | Unity Client Bootstrap, Session State & Network Transport | `DONE` | IMP-061, IMP-100 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
-| `IMP-066` | Unity Input Action Mapping & Core UI/HUD State Machine | `IN_PROGRESS` | IMP-013, IMP-065 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
+| `IMP-066` | Unity Input Action Mapping & Core UI/HUD State Machine | `DONE` | IMP-013, IMP-065 | `../04_architecture/client.md`, `../04_architecture/client_experience_contract.md` |
 | `IMP-067` | Unity IL2CPP Player Build (Windows, Android) & Release Packaging | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-076, IMP-084, IMP-085, IMP-086, IMP-087, IMP-088, IMP-089, IMP-090, IMP-093, IMP-099, IMP-103 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
 | `IMP-068` | Trusted CI, Post-Merge Guard & Foundation Exit | `DONE` | IMP-004, IMP-005, IMP-061, IMP-063, IMP-064, IMP-083, IMP-106 | `audit_gates.md`, `agent_execution_protocol.md` |
 | `IMP-069` | Server Composition Root and Lifecycle Wiring | `NOT_STARTED` | IMP-020, IMP-024, IMP-025, IMP-028, IMP-041, IMP-042, IMP-049, IMP-050, IMP-051, IMP-054, IMP-055, IMP-062, IMP-077, IMP-084, IMP-085, IMP-086, IMP-087, IMP-089, IMP-090, IMP-092, IMP-093, IMP-103 | `../04_architecture/backend.md`, `../04_architecture/service_boundaries.md` |
@@ -1627,7 +1627,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-084/"
 
 ## `IMP-066` — Unity Input Action Mapping & Core UI/HUD State Machine
 id: IMP-066
-status: IN_PROGRESS
+status: DONE
 claimed_by: devin-imp-066
 branch: imp/IMP-066-input-hud-statemachine
 claimed_at: "2026-10-06T21:00:00Z"
