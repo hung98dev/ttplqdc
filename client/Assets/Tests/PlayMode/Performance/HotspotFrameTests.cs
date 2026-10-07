@@ -138,12 +138,12 @@ namespace ThinhThan.Tests.PlayMode.Performance
                 unparentedSemaphore, out cpu, out error);
             Assert.IsTrue(ok, error!);
             Assert.AreEqual(
-                17.0,
+                20.0,
                 cpu * 1000.0,
                 0.001,
-                "a Semaphore.WaitForSignal is main-thread idle on a sync " +
-                "primitive — excluded wherever it nests, render " +
-                "ancestor or not");
+                "an unparented gameplay semaphore wait stays included " +
+                "(PERF-002 counterexample — only render-ancestor " +
+                "semaphores are excluded)");
         }
 
         [Test]
