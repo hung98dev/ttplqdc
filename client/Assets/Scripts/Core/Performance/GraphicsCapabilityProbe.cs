@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace ThinhThan.Core.Performance
 {
@@ -24,13 +25,6 @@ namespace ThinhThan.Core.Performance
                     "Performance gates require a graphics device: " +
                     "run Unity with -force-d3d11 (WARP/URP capability per " +
                     "presentation_asset_manifest.md §3.3a)");
-            }
-
-            if (!SystemInfo.supportsRenderTextures)
-            {
-                throw new InvalidOperationException(
-                    "graphics device lacks render textures — PERF-016 " +
-                    "overdraw measurement cannot run");
             }
 
             if (!SystemInfo.SupportsRenderTextureFormat(
