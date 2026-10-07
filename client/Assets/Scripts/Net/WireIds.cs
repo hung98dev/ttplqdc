@@ -47,5 +47,7 @@ namespace ThinhThan.Net
         public const uint C2SBaselineAck = 306;
         public const uint C2SBaselineResyncRequest = 307;
         public const uint S2CBaselineResyncResult = 308;
+        public const uint S2CProgressionMutateResult = 514;
+        public const uint S2CProgressionState = 515;
     }
 }

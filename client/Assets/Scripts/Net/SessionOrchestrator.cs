@@ -90,6 +90,14 @@ namespace ThinhThan.Net
             set;
         }
 
+        /// <summary>Progression frames land here (514, 515) —
+        /// Systems/Progression (IMP-011).</summary>
+        public IProgressionSink? Progression
+        {
+            get;
+            set;
+        }
+
         /// <summary>Latest CHARACTER_LIST snapshot (REPLACEABLE_STATE).</summary>
         public S2CCharacterList? CharacterList
         {
@@ -570,6 +578,10 @@ namespace ThinhThan.Net
                 case WireIds.S2CInteractResult:
                 case WireIds.S2CActionRejected:
                     World?.Apply(frame);
+                    break;
+                case WireIds.S2CProgressionMutateResult:
+                case WireIds.S2CProgressionState:
+                    Progression?.Apply(frame);
                     break;
                 default:
                     break;
