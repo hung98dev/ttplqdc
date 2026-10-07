@@ -21,7 +21,11 @@ namespace ThinhThan.UI.Inventory
         public TMP_Text? CapacityText;
         public Button? ExpandButton;
         public TMP_Text? ExpandPriceText;
-        public IInventoryIntents? Intents { get; set; }
+        public IInventoryIntents? Intents
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Expansion ladder (economy.md: 60→120 in +10 steps);

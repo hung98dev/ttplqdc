@@ -14,7 +14,11 @@ namespace ThinhThan.UI.Inventory
     {
         public RectTransform? RowsRoot;
         public EntitlementRowView? RowPrefab;
-        public IInventoryIntents? Intents { get; set; }
+        public IInventoryIntents? Intents
+        {
+            get;
+            set;
+        }
 
         /// <summary>419 in-flight: claim buttons idle until verdict.</summary>
         public bool ClaimInFlight;

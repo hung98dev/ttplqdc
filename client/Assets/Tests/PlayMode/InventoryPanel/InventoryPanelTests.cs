@@ -4,6 +4,7 @@ using ThinhThan.Net;
 using ThinhThan.Protocol.V1;
 using PbSlotView = ThinhThan.Protocol.V1.InventorySlotView;
 using UiSlotView = ThinhThan.UI.Inventory.InventorySlotView;
+using UiPanel = ThinhThan.UI.Inventory.InventoryPanel;
 using ThinhThan.Systems.Inventory;
 using ThinhThan.UI.Inventory;
 using TMPro;
@@ -48,13 +49,13 @@ namespace ThinhThan.Tests.PlayMode.InventoryPanel
             return b;
         }
 
-        private static InventoryPanel NewPanel()
+        private static UiPanel NewPanel()
         {
             var go = new GameObject("panel", typeof(RectTransform),
-                typeof(InventoryPanel));
+                typeof(UiPanel));
             var root = new GameObject("grid", typeof(RectTransform));
             root.transform.SetParent(go.transform, false);
-            var panel = go.GetComponent<InventoryPanel>();
+            var panel = go.GetComponent<UiPanel>();
             panel.GridRoot = root.GetComponent<RectTransform>();
             var capText = new GameObject("cap").AddComponent<
                 TextMeshProUGUI>();
