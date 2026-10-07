@@ -10,7 +10,7 @@ namespace ThinhThan.UI.Inventory
     /// </summary>
     public sealed class InventoryPresenter : MonoBehaviour
     {
-        public InventoryApplier? Applier;
+        public InventoryApplier? Applier { get; set; }
         public InventoryPanel? Inventory;
         public EntitlementPanel? Entitlements;
 

@@ -21,6 +21,7 @@ namespace ThinhThan.UI.Inventory
         public TMP_Text? CapacityText;
         public Button? ExpandButton;
         public TMP_Text? ExpandPriceText;
+        public IInventoryIntents? Intents { get; set; }
 
         /// <summary>
         /// Expansion ladder (economy.md: 60→120 in +10 steps);
@@ -37,6 +38,8 @@ namespace ThinhThan.UI.Inventory
         private Pool<InventorySlotView>? _pool;
         private readonly List<InventorySlotView> _live =
             new List<InventorySlotView>();
+        private int _lastCapacity = MinCapacity;
+        private bool _expandInFlight;
 
         /// <summary>Apply-call count (once-per-frame proof for tests).</summary>
         public int ApplyCount
@@ -77,6 +80,10 @@ namespace ThinhThan.UI.Inventory
             _pool = new Pool<InventorySlotView>(CreateCell,
                 c => c.gameObject.SetActive(false));
             _pool.Prewarm(MinCapacity);
+            if (ExpandButton != null)
+            {
+                ExpandButton.onClick.AddListener(OnExpandClicked);
+            }
         }
 
         private InventorySlotView CreateCell()
@@ -107,7 +114,9 @@ namespace ThinhThan.UI.Inventory
         public void Apply(InventoryState s)
         {
             ApplyCount++;
-            int needed = s.Capacity > 0 ? s.Capacity : MinCapacity;
+            _expandInFlight = false;
+            _lastCapacity = s.Capacity > 0 ? s.Capacity : MinCapacity;
+            int needed = _lastCapacity;
             EnsureCells(needed);
 
             int cell = 0;
@@ -169,7 +178,7 @@ namespace ThinhThan.UI.Inventory
             bool full = s.Capacity >= MaxCapacity;
             if (ExpandButton != null)
             {
-                ExpandButton.interactable = !full;
+                ExpandButton.interactable = !full && !_expandInFlight;
             }
             if (ExpandPriceText != null)
             {
@@ -184,6 +193,18 @@ namespace ThinhThan.UI.Inventory
                     : 0L;
                 ExpandPriceText.SetText("{0}", price);
             }
+        }
+
+        private void OnExpandClicked()
+        {
+            if (Intents == null || _expandInFlight ||
+                _lastCapacity >= MaxCapacity)
+            {
+                return;
+            }
+            _expandInFlight = true;
+            _ = Intents.RequestExpand((uint)_lastCapacity,
+                System.Threading.CancellationToken.None);
         }
     }
 }
