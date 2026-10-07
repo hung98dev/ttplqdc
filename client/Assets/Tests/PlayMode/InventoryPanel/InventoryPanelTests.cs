@@ -7,7 +7,6 @@ using UiSlotView = ThinhThan.UI.Inventory.InventorySlotView;
 using UiPanel = ThinhThan.UI.Inventory.InventoryPanel;
 using ThinhThan.Systems.Inventory;
 using ThinhThan.UI.Inventory;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,14 +56,9 @@ namespace ThinhThan.Tests.PlayMode.InventoryPanel
             root.transform.SetParent(go.transform, false);
             var panel = go.GetComponent<UiPanel>();
             panel.GridRoot = root.GetComponent<RectTransform>();
-            var capText = new GameObject("cap").AddComponent<
-                TextMeshProUGUI>();
-            capText.transform.SetParent(go.transform, false);
-            panel.CapacityText = capText;
-            var price = new GameObject("price").AddComponent<
-                TextMeshProUGUI>();
-            price.transform.SetParent(go.transform, false);
-            panel.ExpandPriceText = price;
+            // No TMP components in headless CI (IMP-066 precedent:
+            // TMP Settings asset absent -> defaultStyleSheet NRE).
+            // Panels null-guard every TMP_Text ref.
             var btn = new GameObject("expand", typeof(Button),
                 typeof(RectTransform));
             btn.transform.SetParent(go.transform, false);
