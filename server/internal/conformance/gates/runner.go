@@ -192,6 +192,8 @@ func (r *Runner) evaluate(spec GateSpec) GateRow {
 		details, missing = r.unityEditMode()
 	case "Q3.unity.playmode":
 		details, missing = r.unityPlayMode()
+	case "Q3.unity.performance":
+		details, missing = r.unityPerformance()
 	case "Q3.unity.visualreview":
 		details, missing = r.unityVisualReview()
 	case "Q4.style":
@@ -609,6 +611,14 @@ func (r *Runner) unityEditMode() (errs []string, missing bool) {
 // so an absent results file is fail-closed rather than scope-skipped.
 func (r *Runner) unityPlayMode() (errs []string, missing bool) {
 	return r.unityModeResults("playmode")
+}
+
+// unityPerformance (Q3.unity.performance, owner IMP-095) folds
+// performance-results.xml with the same contract as editmode/playmode: the
+// gate only evaluates when the scope plan ran the Performance category
+// suite (owner DONE), so an absent results file is fail-closed.
+func (r *Runner) unityPerformance() (errs []string, missing bool) {
+	return r.unityModeResults("performance")
 }
 
 // unityModeResults parses <mode>-results.xml (NUnit3) from the Unity results

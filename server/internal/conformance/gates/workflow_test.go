@@ -407,6 +407,50 @@ func TestPlayModeEvaluator(t *testing.T) {
 	}
 }
 
+func TestPerformanceEvaluator(t *testing.T) {
+	spec := GateSpec{ID: "Q3.unity.performance", OS: "windows", Owner: "IMP-095"}
+	newRunner := func(dir string) *Runner {
+		return &Runner{Root: t.TempDir(), Ctx: RunContext{OSTarget: "windows", InCI: true}, UnityDir: dir}
+	}
+	// The gate must evaluate, not "gate has no evaluator". Missing results
+	// -> missing -> FAIL on CI.
+	row := newRunner(t.TempDir()).evaluate(spec)
+	if row.Result != ResultFail || strings.Contains(row.Reason, "no evaluator") {
+		t.Fatalf("missing performance XML must fail closed, got %s (%s)", row.Result, row.Reason)
+	}
+	passXML := `<test-run total="4" passed="4" failed="0"></test-run>`
+	// Passing XML alone is not enough — no completion line -> FAIL (stale
+	// file from a killed editor).
+	dir := t.TempDir()
+	writeFile(t, dir, "performance-results.xml", passXML)
+	writeFile(t, dir, "performance-editor.log", "batchmode exited early")
+	row = newRunner(dir).evaluate(spec)
+	if row.Result != ResultFail {
+		t.Fatalf("no completion line must fail, got %s", row.Result)
+	}
+	// failed>0 -> FAIL even with the completion line.
+	writeFile(t, dir, "performance-results.xml", `<test-run total="4" passed="3" failed="1"></test-run>`)
+	writeFile(t, dir, "performance-editor.log", "Test run completed. Exiting with code 0")
+	row = newRunner(dir).evaluate(spec)
+	if row.Result != ResultFail {
+		t.Fatalf("failed>0 must fail, got %s", row.Result)
+	}
+	// Passed XML + completion line -> PASS.
+	writeFile(t, dir, "performance-results.xml", passXML)
+	row = newRunner(dir).evaluate(spec)
+	if row.Result != ResultPass {
+		t.Fatalf("passed suite must pass, got %s (%s)", row.Result, row.Reason)
+	}
+	// Malformed XML -> FAIL.
+	dir2 := t.TempDir()
+	writeFile(t, dir2, "performance-results.xml", "<test-run total=")
+	writeFile(t, dir2, "performance-editor.log", "Test run completed. Exiting with code 0")
+	row = newRunner(dir2).evaluate(spec)
+	if row.Result != ResultFail {
+		t.Fatalf("malformed XML must fail, got %s", row.Result)
+	}
+}
+
 func TestRequiredJobsRunPreUnityPhase(t *testing.T) {
 	wf := readWorkflow(t)
 	wv := jobSection(t, wf, "verify-windows")
