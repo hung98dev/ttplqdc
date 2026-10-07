@@ -9,6 +9,9 @@ namespace ThinhThan.Core.Performance
     public interface IFrameTimeSource
     {
         /// <summary>Duration of the most recent complete frame, seconds.</summary>
-        double FrameSeconds { get; }
+        double FrameSeconds
+        {
+            get;
+        }
     }
 }

@@ -77,7 +77,10 @@ namespace ThinhThan.Core.Performance
         /// <summary>Latest computed state — presentation-only outputs.</summary>
         public State Current
         {
-            get { return _current; }
+            get
+            {
+                return _current;
+            }
         }
 
         /// <summary>Raised whenever a step or preset change updates <see cref="Current"/>.</summary>
@@ -212,7 +215,11 @@ namespace ThinhThan.Core.Performance
                 ParticleLevel = _particleLevel,
                 ParticleCeiling = _presetParticleCeiling * _particleLevel / ParticleLevelFull,
             };
-            Changed?.Invoke(_current);
+            Action<State>? changed = Changed;
+            if (changed != null)
+            {
+                changed(_current);
+            }
         }
 
         private List<double> WindowContents()

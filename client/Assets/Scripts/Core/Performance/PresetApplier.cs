@@ -90,12 +90,41 @@ namespace ThinhThan.Core.Performance
                 throw new ArgumentNullException(nameof(sinks));
             }
 
-            sinks.SetQualityLevel?.Invoke((int)preset);
-            sinks.SetRenderScale?.Invoke(RenderScaleFor(preset));
-            sinks.ApplyLightBudget?.Invoke(PointLightLimitFor(preset), viewCenter);
-            sinks.SetParticleCeiling?.Invoke(ParticleCeilingFor(preset));
-            sinks.SetParallaxL3Visible?.Invoke(preset != QualityPreset.Low);
-            sinks.SetBloomEnabled?.Invoke(preset == QualityPreset.High);
+            Action<int>? setQualityLevel = sinks.SetQualityLevel;
+            if (setQualityLevel != null)
+            {
+                setQualityLevel((int)preset);
+            }
+
+            Action<float>? setRenderScale = sinks.SetRenderScale;
+            if (setRenderScale != null)
+            {
+                setRenderScale(RenderScaleFor(preset));
+            }
+
+            Action<int, Vector2>? applyLightBudget = sinks.ApplyLightBudget;
+            if (applyLightBudget != null)
+            {
+                applyLightBudget(PointLightLimitFor(preset), viewCenter);
+            }
+
+            Action<int>? setParticleCeiling = sinks.SetParticleCeiling;
+            if (setParticleCeiling != null)
+            {
+                setParticleCeiling(ParticleCeilingFor(preset));
+            }
+
+            Action<bool>? setParallaxL3 = sinks.SetParallaxL3Visible;
+            if (setParallaxL3 != null)
+            {
+                setParallaxL3(preset != QualityPreset.Low);
+            }
+
+            Action<bool>? setBloom = sinks.SetBloomEnabled;
+            if (setBloom != null)
+            {
+                setBloom(preset == QualityPreset.High);
+            }
         }
     }
 }

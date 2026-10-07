@@ -38,7 +38,10 @@ namespace ThinhThan.Core.Performance
         /// <summary>Persisted toggle; writes through on change.</summary>
         public bool Enabled
         {
-            get { return _enabled; }
+            get
+            {
+                return _enabled;
+            }
             set
             {
                 if (_enabled == value)
@@ -66,7 +69,10 @@ namespace ThinhThan.Core.Performance
         /// <summary>Effective target frame rate under the current flag.</summary>
         public int EffectiveFrameRate
         {
-            get { return _enabled ? CapFrameRate : _baselineFrameRate; }
+            get
+            {
+                return _enabled ? CapFrameRate : _baselineFrameRate;
+            }
         }
 
         private void Apply()

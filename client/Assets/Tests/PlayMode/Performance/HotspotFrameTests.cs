@@ -409,12 +409,18 @@ namespace ThinhThan.Tests.PlayMode.Performance
             public double Now;
             public float UnscaledDeltaSeconds
             {
-                get { return 0.016f; }
+                get
+                {
+                    return 0.016f;
+                }
             }
 
             public double NowSeconds
             {
-                get { return Now; }
+                get
+                {
+                    return Now;
+                }
             }
         }
     }

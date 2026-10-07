@@ -24,18 +24,28 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             public double Now;
             public float UnscaledDeltaSeconds
             {
-                get { return 0.016f; }
+                get
+                {
+                    return 0.016f;
+                }
             }
 
             public double NowSeconds
             {
-                get { return Now; }
+                get
+                {
+                    return Now;
+                }
             }
         }
 
         private sealed class FakeFrameSource : IFrameTimeSource
         {
-            public double FrameSeconds { get; set; }
+            public double FrameSeconds
+            {
+                get;
+                set;
+            }
         }
 
         private static QualityGovernor NewGovernor(

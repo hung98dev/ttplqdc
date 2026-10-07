@@ -38,7 +38,10 @@ namespace ThinhThan.Core.Performance
 
         public double FrameSeconds
         {
-            get { return _frameSeconds; }
+            get
+            {
+                return _frameSeconds;
+            }
         }
     }
 }

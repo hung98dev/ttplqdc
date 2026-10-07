@@ -33,14 +33,32 @@ namespace ThinhThan.Core.Performance
                 DurationSeconds = durationSeconds;
             }
 
-            public int Id { get; }
-            public int ParentId { get; }
-            public string Name { get; }
-            public double StartSeconds { get; }
-            public double DurationSeconds { get; }
+            public int Id
+            {
+                get;
+            }
+            public int ParentId
+            {
+                get;
+            }
+            public string Name
+            {
+                get;
+            }
+            public double StartSeconds
+            {
+                get;
+            }
+            public double DurationSeconds
+            {
+                get;
+            }
             public double EndSeconds
             {
-                get { return StartSeconds + DurationSeconds; }
+                get
+                {
+                    return StartSeconds + DurationSeconds;
+                }
             }
         }
 

@@ -43,37 +43,55 @@ namespace ThinhThan.Core.Performance
         /// <summary>False when a required counter is unavailable on this platform.</summary>
         public bool Valid
         {
-            get { return _total.Valid && _gfx.Valid; }
+            get
+            {
+                return _total.Valid && _gfx.Valid;
+            }
         }
 
         /// <summary>Current Total Used Memory (bytes).</summary>
         public long TotalBytes
         {
-            get { return _total.LastValue; }
+            get
+            {
+                return _total.LastValue;
+            }
         }
 
         /// <summary>Current Gfx Used Memory (bytes).</summary>
         public long GfxBytes
         {
-            get { return _gfx.LastValue; }
+            get
+            {
+                return _gfx.LastValue;
+            }
         }
 
         /// <summary>GC bytes allocated by the most recent sampled frame (PERF-004).</summary>
         public long GcAllocatedBytes
         {
-            get { return _gcAllocated.Valid ? _gcAllocated.LastValue : 0; }
+            get
+            {
+                return _gcAllocated.Valid ? _gcAllocated.LastValue : 0;
+            }
         }
 
         /// <summary>Peak Total Used Memory minus the empty-scene baseline.</summary>
         public long PeakTotalDeltaBytes
         {
-            get { return _peakTotal - _baselineTotal; }
+            get
+            {
+                return _peakTotal - _baselineTotal;
+            }
         }
 
         /// <summary>Peak Gfx Used Memory minus the empty-scene baseline.</summary>
         public long PeakGfxDeltaBytes
         {
-            get { return _peakGfx - _baselineGfx; }
+            get
+            {
+                return _peakGfx - _baselineGfx;
+            }
         }
 
         /// <summary>Records the empty-scene baseline and resets peaks to it.</summary>

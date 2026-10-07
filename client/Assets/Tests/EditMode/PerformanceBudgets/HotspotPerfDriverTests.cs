@@ -680,7 +680,10 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
 
             public int Count
             {
-                get { return _values.Count; }
+                get
+                {
+                    return _values.Count;
+                }
             }
 
             public void Add(double seconds)
@@ -726,12 +729,18 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
         {
             public float UnscaledDeltaSeconds
             {
-                get { return Time.unscaledDeltaTime; }
+                get
+                {
+                    return Time.unscaledDeltaTime;
+                }
             }
 
             public double NowSeconds
             {
-                get { return Time.realtimeSinceStartupAsDouble; }
+                get
+                {
+                    return Time.realtimeSinceStartupAsDouble;
+                }
             }
         }
 
@@ -772,19 +781,32 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
 
             public int ActivePointLightCount
             {
-                get { return _lightBudget.Count; }
+                get
+                {
+                    return _lightBudget.Count;
+                }
             }
 
             public int LiveParticles
             {
-                get { return _particleBudget.LiveCount; }
+                get
+                {
+                    return _particleBudget.LiveCount;
+                }
             }
 
-            public double LastFrameBudgetMs { get; private set; }
+            public double LastFrameBudgetMs
+            {
+                get;
+                private set;
+            }
 
             public int StoreCount
             {
-                get { return _applier.Store.Count; }
+                get
+                {
+                    return _applier.Store.Count;
+                }
             }
 
             public void Load(byte[] container)

@@ -29,13 +29,19 @@ namespace ThinhThan.Core.Performance
         /// <summary>Preset ceiling B before governor levels (512/1024/2048).</summary>
         public int PresetCeiling
         {
-            get { return _presetCeiling; }
+            get
+            {
+                return _presetCeiling;
+            }
         }
 
         /// <summary>Governor level in [2, 4]; 4 = 100% of the preset ceiling.</summary>
         public int Level
         {
-            get { return _level; }
+            get
+            {
+                return _level;
+            }
         }
 
         /// <summary>Effective ceiling: floor(B · level / 4).</summary>
@@ -50,7 +56,10 @@ namespace ThinhThan.Core.Performance
         /// <summary>Mandatory telegraph count currently reserved.</summary>
         public int MandatoryReserved
         {
-            get { return _mandatoryReserved; }
+            get
+            {
+                return _mandatoryReserved;
+            }
         }
 
         /// <summary>

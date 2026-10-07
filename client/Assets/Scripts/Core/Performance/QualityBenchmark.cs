@@ -55,7 +55,10 @@ namespace ThinhThan.Core.Performance
         /// <summary>True after the sampling window completed.</summary>
         public bool Completed
         {
-            get { return !_running; }
+            get
+            {
+                return !_running;
+            }
         }
 
         /// <summary>Feeds one frame; returns the selected preset when the window closes.</summary>
