@@ -167,6 +167,10 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 PerfMarkers.SetPassCallsCounter, 8))
             {
                 LoadScene();
+                // Single-mode load unloads the previous scene at the
+                // next frame boundary; any object found/created before
+                // then lives in the dying scene.
+                yield return null;
                 QualitySettings.SetQualityLevel(0, true);
                 QualitySettings.vSyncCount = 0;
                 Application.targetFrameRate = -1;
@@ -255,6 +259,9 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             }
 
             LoadScene();
+            // Same deferred-unload hazard as HotspotCountersMeetBudgets:
+            // yield so the swap completes before objects are resolved.
+            yield return null;
             QualitySettings.SetQualityLevel(0, true);
             QualitySettings.vSyncCount = 0;
 
