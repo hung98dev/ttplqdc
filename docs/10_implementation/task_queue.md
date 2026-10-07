@@ -1196,7 +1196,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../03_systems/inventory.md`, `../03_systems/account_storage.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/data_model.md`]
-adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
+adrs: [`0029-character-resource-isolation.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0068-implementation-packet-readiness-corrections.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0062-world-and-systems-regression-fixes.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`, `0083-edge-admission-consult-and-durable-world-effects.md`]
 depends_on: [IMP-007, IMP-008, IMP-066]
 owned_paths: [`server/internal/durable/inventory/`, `server/internal/edge/inventory/`, `client/Assets/Scripts/Systems/Inventory/`, `client/Assets/Scripts/UI/Inventory/`, `client/Assets/Tests/PlayMode/InventoryPanel/`]
 forbidden_paths: [`server/internal/sim/`]
@@ -1214,6 +1214,7 @@ Implement inventory capacity/stacking/expansion. `account_storage.md` is the IAP
 - full inventory, split/merge, and entitlement-panel (non-vault) tests pass; no item instance may occupy account storage.
 - ADR-0060: 400 ops and 428 follow `messages.md` field lists; expansion price steps and `CAPACITY_FULL` at 120; 432/433/435 are full snapshots sent after attach and every committed change.
 - `wallet_revision` in 432 follows the `data_model.md` § character_currencies derivation (`SUM` of the character's per-currency row revisions); the ADR-0081 thin handlers for its durable ids live in `server/internal/edge/inventory/`; the client inbound dispatch for its S2C ids lands through the routed IMP-065 `Net/` binding (repository_layout.md § Client inbound dispatch seam).
+- ADR-0083: `use_effect.cooldown_ends_at_tick` resolves the character's partition current-tick through the `PartitionTick(characterID)` consult on `edge/world`'s read-only surface; a consult timeout or no live partition rejects the USE at admission — never a fabricated tick.
 
 ## Tests
 - `server/internal/durable/inventory/inventory_state_test.go`: TestLockedQuantityReported.
@@ -1278,7 +1279,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../01_gameplay/progression.md`, `../01_gameplay/stats.md`, `../01_gameplay/skills.md`, `../05_network/messages.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`]
-adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0079-readiness-contract-closure.md`]
+adrs: [`0031-exp-scale-x100-and-corrected-act-budgets.md`, `0032-seven-channel-exp-source-portfolio.md`, `0033-skill-unlock-schedule-remap.md`, `0034-just-guard-edge-trigger-streak.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0079-readiness-contract-closure.md`, `0083-edge-admission-consult-and-durable-world-effects.md`]
 depends_on: [IMP-007, IMP-066, IMP-100]
 owned_paths: [`server/internal/sim/progression/`, `server/internal/durable/progression/`, `server/internal/edge/progression/`, `client/Assets/Scripts/Systems/Progression/`, `client/Assets/Scripts/UI/Progression/`, `client/Assets/Tests/EditMode/ProgressionPresentation/`]
 forbidden_paths: [`server/migrations/`]
@@ -1296,6 +1297,7 @@ Implement level/EXP, skill/potential points, allocation/respec, final stat pipel
 - `C2S_SKILL_UPGRADE`, `C2S_POTENTIAL_ALLOCATE` and `C2S_RESPEC` follow `progression.md` § Skill Points / § Respec: all-or-nothing, idempotent by `operation_id`, rejects `SKILL_POINTS_INSUFFICIENT`, `SKILL_MAX_LEVEL`, `SKILL_NOT_LEARNED`, `POTENTIAL_POINTS_INSUFFICIENT`, `POTENTIAL_CAP_EXCEEDED`, `INSUFFICIENT_CURRENCY`, `IN_COMBAT`, `INVALID_STATE`; respec charge and refund commit in one transaction.
 - ADR-0060: skill upgrade costs 1 point and rejects `SKILL_NOT_LEARNED`/`SKILL_MAX_LEVEL`/`SKILL_POINTS_INSUFFICIENT`; allocation is all-or-nothing with `POTENTIAL_POINTS_INSUFFICIENT`/`POTENTIAL_CAP_EXCEEDED`; respec refunds all points of its kind at the `progression.md` price; `expected_level` mismatch is `STATE_CONFLICT`.
 - 515 carries `progression_revision` from `characters.progression_revision` — every committed progression-mutation transaction increments it by exactly 1 (`data_model.md` § Character; column arrives via migration pair `000002_*`, IMP-005-owned path); `skill_loadout` in 515/514 projects the `skills.md` § Active and Basic Loadout default until a `SKILL_SET` persists (IMP-012).
+- ADR-0083: 513 `npc_id` admission validates the open NPC session + `service.respec` allowed-set + interaction range + not `in_combat` through the `NpcServiceValid` consult on `edge/world`'s surface — never catalog-position-only.
 
 ## Tests
 - `server/internal/sim/progression/progression_test.go`: TestLevelEXPCurve, TestPotentialPointAllocation, TestSkillPointBudget59, TestStatPipelineResolution, TestSkillUpgradeRejects, TestPotentialAllocateAllOrNothingCap, TestRespecChargeAndRefundAtomic, TestProgressionOpsIdempotent.
@@ -1810,7 +1812,7 @@ claimed_at: ""
 blocked_by: ""
 
 specs: [`../02_world/README.md`, `../02_world/maps_zones.md`, `../02_world/world_rules.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/world_route_catalog.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/sharding.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../04_architecture/service_boundaries.md`]
-adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`, `0081-client-durable-command-edge-seam.md`, `0082-non-durable-client-command-edge-partition-seam.md`]
+adrs: [`0020-map-channel-capacity-contract.md`, `0035-spawn-density-increase.md`, `0046-reference-viewport-entity-scale-and-map-geometry.md`, `0055-2x-texture-authoring-and-cutout-quality-gate.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0068-implementation-packet-readiness-corrections.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`, `0081-client-durable-command-edge-seam.md`, `0082-non-durable-client-command-edge-partition-seam.md`, `0083-edge-admission-consult-and-durable-world-effects.md`]
 depends_on: [IMP-013, IMP-062, IMP-066, IMP-100]
 owned_paths: [`server/internal/sim/world/`, `server/internal/durable/world/`, `server/internal/edge/world/`, `client/Assets/Scripts/Systems/World/`, `client/Assets/Tests/PlayMode/WorldTransferPresentation/`]
 forbidden_paths: [`server/migrations/`, `client/Assets/Scripts/UI/`]
@@ -1837,6 +1839,7 @@ Implement normal-world map instances, entry spawns, portals, checkpoints, transf
 - ADR-0062: when every channel is at `FORCED_PLACEMENT_HARD_CAP`, the server sends `S2C_PLACEMENT_PENDING` (reason, `retry_after_ms = 5000`) and retries every 5s; waiting states per reason follow `world_rules.md` § Forced Placement (dead in place, instance kept open, loading screen for reconnect/first login); the CCU login queue is not used.
 - Placement order (`../02_world/world_rules.md`, ADR-0070): automatic placement picks the most populated running channel below 18, else starts the lowest-index stopped channel; forced placement: preferred channel (< 22), else running channel with the lowest count < 18, else the lowest-index stopped channel, else running channel with the lowest count < 22, else `S2C_PLACEMENT_PENDING`.
 - ADR-0082: `C2S_RESPAWN_REQUEST` (208) routes through the router's non-durable table to the `edge/world` handler, which posts a validated world command into the `sim/world` mailbox drained by a registered system on the owning partition; the respawn settlement persists via the partition's `QueueCommand`/`EMIT_DURABLE_COMMANDS` with the client `operation_id` preserved; retry re-sends the committed `S2C_RESPAWN` (207), rejection is `S2C_ACTION_REJECTED`; 208 never joins `realtimeInput` or `durableFamiliesExact`. The ADR-0081 thin handlers for its durable ids (placement/instance/interaction families) live in `server/internal/edge/world/`.
+- ADR-0083: `sim/world` produces the admission-consult surface — typed consult entries on the world-command mailbox, FIFO with commands, answered by the owning partition's drain or the world runtime, bounded await — and `edge/world` exposes it read-only to sibling `edge/*` handlers. Its durable ids admit via consult → `JournalClientCommand` Submit → `durable/world` commit; an op with a partition-side effect posts the world command preserving `operation_id` after the committed outcome. The partition never emits `JournalClientCommand`.
 
 ## Tests
 - `server/internal/sim/world/placement_pending_test.go`: TestPlacementPendingThenPlaced.
@@ -3289,10 +3292,10 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/account_storage.md`, `../03_systems/monetization.md`, `../03_systems/seasons.md`, `../03_systems/cosmetics.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
-adrs: [`0029-character-resource-isolation.md`, `0036-seasons-as-launch-infrastructure.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
+specs: [`../03_systems/account_storage.md`, `../03_systems/monetization.md`, `../03_systems/seasons.md`, `../03_systems/cosmetics.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../05_network/messages.md`, `../02_world/npcs.md`]
+adrs: [`0029-character-resource-isolation.md`, `0036-seasons-as-launch-infrastructure.md`, `0041-anti-rmt-trade-gates-and-iap-entitlement-integrity.md`, `0053-durable-contract-reconciliation.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`, `0083-edge-admission-consult-and-durable-world-effects.md`]
 depends_on: [IMP-010, IMP-053, IMP-066]
-owned_paths: [`server/internal/durable/monetization/claims/`, `client/Assets/Scripts/Systems/Store/`, `client/Assets/Scripts/UI/Store/`, `client/Assets/Tests/PlayMode/StoreUi/`]
+owned_paths: [`server/internal/durable/monetization/claims/`, `server/internal/edge/entitlement/`, `client/Assets/Scripts/Systems/Store/`, `client/Assets/Scripts/UI/Store/`, `client/Assets/Tests/PlayMode/StoreUi/`]
 forbidden_paths: [`server/internal/sim/`, `server/migrations/`]
 contract_inputs: [GRANTED entitlements, selected character, reward tiers]
 contract_outputs: [per-character claims, store/panel UI states]
@@ -3306,7 +3309,8 @@ Implement the entitlement claim path: `ONE_SHOT` materialization through Reward 
 - the composite key prevents a second claim by the same character; another character claims its own instance; the access entitlement is never depleted,
 - claims after `claim_deadline_at` are rejected; a tier already owned from an earlier cycle is a no-op,
 - a `ONE_SHOT` claim materializes once to the selected character,
-- store UI states come only from server results.
+- store UI states come only from server results,
+- 418 carries `npc_id`: admission validates the open NPC session + `service.storage.account` allowed-set + interaction range + not `in_combat` through the ADR-0083 `NpcServiceValid` consult via its `edge/entitlement/` handler, rejecting on 419 with `OUT_OF_RANGE`/`INVALID_STATE`/`IN_COMBAT` before entitlement evaluation.
 
 ## Tests
 - `server/internal/durable/monetization/claims/claims_test.go`: TestSeasonTrackCompositeClaimKey, TestSecondCharacterClaimsOwnInstance, TestClaimDeadline, TestAlreadyOwnedTierNoop, TestOneShotClaimOnce.

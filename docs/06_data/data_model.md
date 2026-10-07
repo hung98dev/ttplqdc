@@ -367,6 +367,7 @@ character_loadouts(character_id, loadout_index, role, revision)
 ~~~
 
 Slot occupancy is derived from/validated with item_locations. Exactly three equipment loadouts and canonical equipment slots follow system specs.
+The wire `loadout_revision` (`S2C_INVENTORY_STATE` 433, `S2C_LOADOUT_RESULT` 403) is derived like `wallet_revision`: `SUM(character_loadouts.revision)` over the character's loadout rows — every committed loadout mutation increments a row's `revision`, so the sum is strictly monotone and needs no dedicated column.
 
 
 # Souls / Builds
