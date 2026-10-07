@@ -1,8 +1,8 @@
 package world
 
 import (
-	"thinhthan/internal/sim/runtime"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	"thinhthan/internal/sim/runtime"
 )
 
 // npcRangeOK checks the 2.5m session range between the player's entity

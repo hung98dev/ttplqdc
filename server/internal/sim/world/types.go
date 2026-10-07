@@ -19,15 +19,15 @@ import (
 
 // Channel capacity and lifecycle constants (world_rules.md, sharding.md).
 const (
-	ChannelsPerMap   = 30 // channel indices run 1..30
-	SoftCap          = 18 // player-initiated admission cap per channel
-	HardCap          = 22 // forced-placement cap per channel
-	PendingRetryMS   = 5000
-	IdleStop         = 600 * time.Second
-	RespawnDelayTick = 60 // RESPAWN_DELAY 3s at 20 Hz
-	InvulnTicks      = 60 // 3.0s invulnerability after respawn
-	NPCSessionTicks  = 600 // gameplay-capable session expiry (30s at 20 Hz)
-	NPCRangeMM       = 2500
+	ChannelsPerMap         = 30 // channel indices run 1..30
+	SoftCap                = 18 // player-initiated admission cap per channel
+	HardCap                = 22 // forced-placement cap per channel
+	PendingRetryMS         = 5000
+	IdleStop               = 600 * time.Second
+	RespawnDelayTick       = 60  // RESPAWN_DELAY 3s at 20 Hz
+	InvulnTicks            = 60  // 3.0s invulnerability after respawn
+	NPCSessionTicks        = 600 // gameplay-capable session expiry (30s at 20 Hz)
+	NPCRangeMM             = 2500
 	TransferBudgetWorld    = 30 * time.Second
 	TransferBudgetInstance = 120 * time.Second
 )
@@ -71,13 +71,13 @@ type CheckpointDef struct {
 
 // PortalDef is one directed portal edge (portal family fields).
 type PortalDef struct {
-	PortalID    string
-	SourceMap   string
-	DestMap     string
-	DestSpawn   string // anchor id on the destination map
-	AnchorID    string // portal anchor id on the source map
-	RequireFlag string // content flag id, "" when none
-	RequireLevel int32 // 0 = no level gate
+	PortalID     string
+	SourceMap    string
+	DestMap      string
+	DestSpawn    string // anchor id on the destination map
+	AnchorID     string // portal anchor id on the source map
+	RequireFlag  string // content flag id, "" when none
+	RequireLevel int32  // 0 = no level gate
 }
 
 // NpcDef is one NPC placed on a map; Services is its allowed-service set.

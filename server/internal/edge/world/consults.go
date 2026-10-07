@@ -16,8 +16,8 @@ import (
 	"time"
 
 	"thinhthan/internal/core/id"
-	simworld "thinhthan/internal/sim/world"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	simworld "thinhthan/internal/sim/world"
 )
 
 var (
@@ -109,11 +109,11 @@ func (rc *runtimeConsults) NpcServiceValid(ctx context.Context, characterID id.U
 		return simworld.ConsultReply{OK: false, Code: protocolv1.ErrorCode_ERROR_CODE_TARGET_INVALID}, nil
 	}
 	return rc.ask(ctx, simworld.Consult{
-		Kind:        simworld.ConsultNpcServiceValid,
-		CharacterID: characterID,
+		Kind:         simworld.ConsultNpcServiceValid,
+		CharacterID:  characterID,
 		InteractKind: uint32(protocolv1.InteractKind_INTERACT_KIND_NPC_SERVICE),
-		TargetID:    npc,
-		ServiceID:   serviceID,
+		TargetID:     npc,
+		ServiceID:    serviceID,
 	})
 }
 

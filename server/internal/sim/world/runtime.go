@@ -9,9 +9,9 @@ import (
 
 	"thinhthan/internal/core/id"
 	observability "thinhthan/internal/observability/core"
+	protocolv1 "thinhthan/internal/protocol/v1"
 	"thinhthan/internal/sim/replication"
 	"thinhthan/internal/sim/runtime"
-	protocolv1 "thinhthan/internal/protocol/v1"
 )
 
 // Config is the runtime's injected surface.
@@ -59,11 +59,11 @@ type Runtime struct {
 	cfg      Config
 	director *Director
 
-	mu          sync.RWMutex
-	hosts       map[chanKey]*ChannelHost
-	admits      map[chanKey][]*Command // TransferStart queued while starting
-	dispatcher  *InteractDispatcher
-	hooks       []StartupHook
+	mu               sync.RWMutex
+	hosts            map[chanKey]*ChannelHost
+	admits           map[chanKey][]*Command // TransferStart queued while starting
+	dispatcher       *InteractDispatcher
+	hooks            []StartupHook
 	checkpointLedger *checkpointWrites
 
 	ctx    context.Context

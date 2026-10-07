@@ -5,9 +5,9 @@ import (
 	"strconv"
 
 	"thinhthan/internal/core/id"
+	protocolv1 "thinhthan/internal/protocol/v1"
 	"thinhthan/internal/sim/runtime"
 	"thinhthan/internal/sim/spatial/geometry"
-	protocolv1 "thinhthan/internal/protocol/v1"
 )
 
 // applyInteract is the post-commit world effect of a durable 103: TALK

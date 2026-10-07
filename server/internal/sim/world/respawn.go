@@ -5,8 +5,8 @@ import (
 	"math"
 
 	"thinhthan/internal/core/id"
-	"thinhthan/internal/sim/runtime"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	"thinhthan/internal/sim/runtime"
 )
 
 // applyRespawn is the ADR-0082 208 drain: only a DEAD member whose
@@ -139,15 +139,15 @@ func (h *ChannelHost) finishRespawn(cmd *Command, p *runtime.Partition,
 	e.Snap.HP = out.HPAfter
 	e.Private.CurrentMP = out.MPAfter
 	msg := &protocolv1.S2CRespawn{
-		EntityId:             entityID,
-		MapId:                h.mapID,
-		CheckpointId:         out.CheckpointID,
-		XMm:                  e.Snap.X,
-		YMm:                  e.Snap.Y,
-		HpAfter:              out.HPAfter,
-		MpAfter:              out.MPAfter,
+		EntityId:              entityID,
+		MapId:                 h.mapID,
+		CheckpointId:          out.CheckpointID,
+		XMm:                   e.Snap.X,
+		YMm:                   e.Snap.Y,
+		HpAfter:               out.HPAfter,
+		MpAfter:               out.MPAfter,
 		InvulnerableUntilTick: tc.Tick + InvulnTicks,
-		ServerTick:           tc.Tick,
+		ServerTick:            tc.Tick,
 	}
 	h.emit(charID, MsgS2CRespawn, msg)
 	h.respawned[cmd.OperationID] = msg

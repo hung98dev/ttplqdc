@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using ThinhThan.Core.Runtime;
 
 namespace ThinhThan.Systems.World
@@ -10,12 +8,13 @@ namespace ThinhThan.Systems.World
     /// PERF-018 facet: destination map load gate for TRANSFERRING_MAP.
     /// <c>Begin(mapId)</c> pre-sizes the pooled view rows
     /// (actors / projectiles / VFX / floating text / UI rows — the caller's
-    /// content counts) and requests the Addressables
-    /// <c>region.&lt;zone&gt;</c> group through the injected loader seam
+    /// content counts) and starts the Addressables
+    /// <c>region.&lt;zone&gt;</c> group load through the injected loader seam
     /// (composition binds <c>Addressables.LoadAssetsAsync</c>; tests fake it).
-    /// <see cref="Ready"/> becomes true only when every prewarm applied and
-    /// the group load resolved — it gates the 106 C2S_PRESENTATION_READY
-    /// the FSM emits while TRANSFERRING_MAP.
+    /// <see cref="Poll"/> settles the pipeline once the handle reports
+    /// <see cref="IGroupLoad.Done"/>: <see cref="Ready"/> becomes true only
+    /// when every prewarm applied and the group load succeeded — it gates
+    /// the 106 C2S_PRESENTATION_READY the FSM emits while TRANSFERRING_MAP.
     /// A failed load marks the pipeline <see cref="Status.Failed"/> — no
     /// client-chosen fallback and no world-state mutation happens here.
     /// </summary>
@@ -37,18 +36,21 @@ namespace ThinhThan.Systems.World
             Failed = 3,
         }
 
-        private readonly Func<string, CancellationToken, Task<bool>> _loadGroup;
+        private readonly Func<string, IGroupLoad?> _beginGroupLoad;
         private readonly List<Action<int>> _prewarmApply = new List<Action<int>>();
         private readonly List<int> _prewarmCounts = new List<int>();
         private readonly List<string> _prewarmNames = new List<string>();
+        private IGroupLoad? _load;
 
         /// <summary>
-        /// loadGroup resolves the named Addressables group; returns whether
-        /// every asset in the group resolved.
+        /// beginGroupLoad starts the load of the named Addressables group and
+        /// returns its handle; a null handle fails the pipeline.
         /// </summary>
-        public MapLoadPipeline(Func<string, CancellationToken, Task<bool>> loadGroup)
+        public MapLoadPipeline(Func<string, IGroupLoad?> beginGroupLoad)
         {
-            _loadGroup = loadGroup ?? throw new ArgumentNullException(nameof(loadGroup));
+            _beginGroupLoad = beginGroupLoad ?? throw new ArgumentNullException(nameof(beginGroupLoad));
+            ActiveMapId = "";
+            ActiveGroupKey = "";
         }
 
         /// <summary>Current status.</summary>
@@ -72,14 +74,14 @@ namespace ThinhThan.Systems.World
         {
             get;
             private set;
-        } = "";
+        }
 
         /// <summary>The group key requested for the active map.</summary>
         public string ActiveGroupKey
         {
             get;
             private set;
-        } = "";
+        }
 
         /// <summary>Number of registered prewarm steps.</summary>
         public int PrewarmCount
@@ -114,10 +116,12 @@ namespace ThinhThan.Systems.World
 
         /// <summary>
         /// Starts the load for a destination map: pre-sizes every registered
-        /// pool from its content count, then awaits the region group load.
-        /// Unknown map_id or a failed group load -> Failed, false.
+        /// pool from its content count, then starts the region group load.
+        /// Unknown map_id or a loader failure -> Failed, false. When the
+        /// loader settles synchronously the pipeline is Ready immediately;
+        /// otherwise call <see cref="Poll"/> until it settles.
         /// </summary>
-        public async Task<bool> Begin(string mapId, CancellationToken cancel = default)
+        public bool Begin(string mapId)
         {
             if (!WorldMapRegistry.TryGet(mapId, out var rec))
             {
@@ -131,22 +135,37 @@ namespace ThinhThan.Systems.World
             {
                 _prewarmApply[i](_prewarmCounts[i]);
             }
-            bool ok;
+            IGroupLoad? load;
             try
             {
-                ok = await _loadGroup(rec.GroupKey, cancel);
-            }
-            catch (OperationCanceledException)
-            {
-                Current = Status.Idle;
-                return false;
+                load = _beginGroupLoad(rec.GroupKey);
             }
             catch (Exception)
             {
-                ok = false;
+                Current = Status.Failed;
+                return false;
             }
-            Current = ok ? Status.Ready : Status.Failed;
-            return ok;
+            if (load == null)
+            {
+                Current = Status.Failed;
+                return false;
+            }
+            _load = load;
+            Poll();
+            return Current == Status.Loading || Current == Status.Ready;
+        }
+
+        /// <summary>
+        /// Settles the pipeline when the in-flight group load reports
+        /// <see cref="IGroupLoad.Done"/> — call each frame while
+        /// TRANSFERRING_MAP.
+        /// </summary>
+        public void Poll()
+        {
+            if (Current == Status.Loading && _load != null && _load.Done)
+            {
+                Current = _load.Succeeded ? Status.Ready : Status.Failed;
+            }
         }
 
         /// <summary>Back to idle (transfer done / aborted).</summary>
@@ -155,6 +174,7 @@ namespace ThinhThan.Systems.World
             Current = Status.Idle;
             ActiveMapId = "";
             ActiveGroupKey = "";
+            _load = null;
         }
     }
 }

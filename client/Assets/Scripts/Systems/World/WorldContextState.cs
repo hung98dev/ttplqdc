@@ -17,6 +17,9 @@ namespace ThinhThan.Systems.World
         public WorldContextState(Func<string, string?>? localize = null)
         {
             _localize = localize;
+            MapId = "";
+            ContentRevision = "";
+            DisplayNameKey = "";
         }
 
         /// <summary>Current map_id ("" when unknown).</summary>
@@ -24,7 +27,7 @@ namespace ThinhThan.Systems.World
         {
             get;
             private set;
-        } = "";
+        }
 
         /// <summary>Current channel_index (0 = instance/none).</summary>
         public uint ChannelIndex
@@ -38,14 +41,14 @@ namespace ThinhThan.Systems.World
         {
             get;
             private set;
-        } = "";
+        }
 
         /// <summary>Localization key of the current map's display name.</summary>
         public string DisplayNameKey
         {
             get;
             private set;
-        } = "";
+        }
 
         /// <summary>Localized display name (falls back to MapId).</summary>
         public string DisplayName
@@ -54,7 +57,7 @@ namespace ThinhThan.Systems.World
             {
                 if (DisplayNameKey.Length > 0)
                 {
-                    var localized = _localize?.Invoke(DisplayNameKey);
+                    var localized = _localize == null ? null : _localize(DisplayNameKey);
                     if (!string.IsNullOrEmpty(localized))
                     {
                         return localized!;

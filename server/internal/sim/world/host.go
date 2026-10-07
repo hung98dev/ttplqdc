@@ -7,8 +7,8 @@ import (
 	"google.golang.org/protobuf/proto"
 
 	"thinhthan/internal/core/id"
-	"thinhthan/internal/sim/runtime"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	"thinhthan/internal/sim/runtime"
 )
 
 // worldPlayer is the host-side bookkeeping of one member: entity handle,
@@ -37,12 +37,12 @@ type ChannelHost struct {
 	mapID string
 	ch    uint32
 
-	part *runtime.Partition
-	mb   *Mailbox
-	ctx    context.Context
-	cancel context.CancelFunc
-	done   chan struct{} // closed when the partition loop exits
-	inDrain atomic.Bool // set while drainMailbox runs on the partition goroutine
+	part    *runtime.Partition
+	mb      *Mailbox
+	ctx     context.Context
+	cancel  context.CancelFunc
+	done    chan struct{} // closed when the partition loop exits
+	inDrain atomic.Bool   // set while drainMailbox runs on the partition goroutine
 
 	players   map[id.UUID]*worldPlayer
 	npcs      map[uint64]*npcInst
@@ -104,12 +104,6 @@ func (h *ChannelHost) applyCommand(cmd *Command, p *runtime.Partition, tc *runti
 	case CmdPlayerLeave:
 		h.removePlayer(cmd.CharacterID, p)
 	}
-}
-
-// player returns the member's host-side row.
-func (h *ChannelHost) player(characterID id.UUID) (*worldPlayer, bool) {
-	pl, ok := h.players[characterID]
-	return pl, ok
 }
 
 // removePlayer despawns the member entity, closes sessions, and frees the

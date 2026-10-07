@@ -23,15 +23,15 @@ const (
 // request cancels. RequestMessageID is the wire id of the trigger
 // (6 attach / 208 respawn / 0 server-driven).
 type PendingWait struct {
-	CharacterID       id.UUID
-	RequestMessageID  uint32
-	Reason            PendingReason
-	Request           PlacementRequest
-	RetryAfterMs      uint32
+	CharacterID      id.UUID
+	RequestMessageID uint32
+	Reason           PendingReason
+	Request          PlacementRequest
+	RetryAfterMs     uint32
 	// Resolve runs when the retry placement succeeds — nil keeps the
 	// character pending until the caller acts on PlacementResult.
 	Resolve func(*Runtime, PlacementResult)
-	nextAt            time.Time
+	nextAt  time.Time
 }
 
 // NewPendingWait constructs the wait with its first emit already implied:

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using ThinhThan.Core.Assets;
 using ThinhThan.Core.Geometry;
@@ -42,6 +40,21 @@ namespace ThinhThan.Tests.PlayMode.WorldTransferPresentation
                 {
                     return 0.016f;
                 }
+            }
+        }
+
+        private sealed class FakeGroupLoad : IGroupLoad
+        {
+            public bool Done
+            {
+                get;
+                set;
+            }
+
+            public bool Succeeded
+            {
+                get;
+                set;
             }
         }
 
@@ -159,10 +172,10 @@ namespace ThinhThan.Tests.PlayMode.WorldTransferPresentation
         public void TestMapLoadPrewarmsPoolsAndGroup()
         {
             var loaded = new List<string>();
-            var pipeline = new MapLoadPipeline((group, _) =>
+            var pipeline = new MapLoadPipeline(group =>
             {
                 loaded.Add(group);
-                return Task.FromResult(true);
+                return new FakeGroupLoad { Done = true, Succeeded = true };
             });
 
             var actors = new Pool<object>(() => new object());
@@ -176,8 +189,7 @@ namespace ThinhThan.Tests.PlayMode.WorldTransferPresentation
             pipeline.AddPool(text, 32);
             pipeline.AddPool(uiRows, 12);
 
-            var task = pipeline.Begin("map.lang_da.bo_ruong");
-            Assert.IsTrue(task.GetAwaiter().GetResult());
+            Assert.IsTrue(pipeline.Begin("map.lang_da.bo_ruong"));
             Assert.IsTrue(pipeline.Ready);
             Assert.AreEqual(MapLoadPipeline.Status.Ready, pipeline.Current);
             Assert.AreEqual("region.lang_da", pipeline.ActiveGroupKey);
@@ -193,9 +205,8 @@ namespace ThinhThan.Tests.PlayMode.WorldTransferPresentation
         [Test]
         public void TestMapLoadFailureIsFailedNotFallback()
         {
-            var pipeline = new MapLoadPipeline((_, __) => Task.FromResult(false));
-            var ok = pipeline.Begin("map.lang_da.bo_ruong").GetAwaiter().GetResult();
-            Assert.IsFalse(ok);
+            var pipeline = new MapLoadPipeline(_ => new FakeGroupLoad { Done = true, Succeeded = false });
+            Assert.IsFalse(pipeline.Begin("map.lang_da.bo_ruong"));
             Assert.AreEqual(MapLoadPipeline.Status.Failed, pipeline.Current);
             Assert.IsFalse(pipeline.Ready);
         }
@@ -204,15 +215,15 @@ namespace ThinhThan.Tests.PlayMode.WorldTransferPresentation
         public void TestMapLoadUnknownMapFailsWithoutMutation()
         {
             var loaded = new List<string>();
-            var pipeline = new MapLoadPipeline((group, _) =>
+            var pipeline = new MapLoadPipeline(group =>
             {
                 loaded.Add(group);
-                return Task.FromResult(true);
+                return new FakeGroupLoad { Done = true, Succeeded = true };
             });
             var pool = new Pool<object>(() => new object());
             pipeline.AddPool(pool, 8);
 
-            Assert.IsFalse(pipeline.Begin("map.unknown.nowhere").GetAwaiter().GetResult());
+            Assert.IsFalse(pipeline.Begin("map.unknown.nowhere"));
             Assert.AreEqual(MapLoadPipeline.Status.Failed, pipeline.Current);
             Assert.AreEqual(0, loaded.Count);
             Assert.AreEqual(0, pool.IdleCount);
@@ -221,13 +232,40 @@ namespace ThinhThan.Tests.PlayMode.WorldTransferPresentation
         [Test]
         public void TestMapLoadReadyGateResetOnNewTransfer()
         {
-            var pipeline = new MapLoadPipeline((_, __) => Task.FromResult(true));
-            Assert.IsTrue(pipeline.Begin("map.lang_da.bo_ruong").GetAwaiter().GetResult());
+            var pipeline = new MapLoadPipeline(_ => new FakeGroupLoad { Done = true, Succeeded = true });
+            Assert.IsTrue(pipeline.Begin("map.lang_da.bo_ruong"));
             Assert.IsTrue(pipeline.Ready);
             pipeline.Reset();
             Assert.AreEqual(MapLoadPipeline.Status.Idle, pipeline.Current);
             Assert.IsFalse(pipeline.Ready);
             Assert.AreEqual("", pipeline.ActiveGroupKey);
+        }
+
+        [Test]
+        public void TestMapLoadAsyncHandleSettlesViaPoll()
+        {
+            var handle = new FakeGroupLoad();
+            var pipeline = new MapLoadPipeline(_ => handle);
+            Assert.IsTrue(pipeline.Begin("map.lang_da.bo_ruong"));
+            Assert.AreEqual(MapLoadPipeline.Status.Loading, pipeline.Current);
+            Assert.IsFalse(pipeline.Ready);
+
+            handle.Succeeded = true;
+            handle.Done = true;
+            pipeline.Poll();
+            Assert.AreEqual(MapLoadPipeline.Status.Ready, pipeline.Current);
+            Assert.IsTrue(pipeline.Ready);
+
+            var failed = new FakeGroupLoad();
+            var second = new MapLoadPipeline(_ => failed);
+            Assert.IsTrue(second.Begin("map.lang_da.bo_ruong"));
+            failed.Done = true;
+            second.Poll();
+            Assert.AreEqual(MapLoadPipeline.Status.Failed, second.Current);
+
+            var nullLoader = new MapLoadPipeline(_ => null);
+            Assert.IsFalse(nullLoader.Begin("map.lang_da.bo_ruong"));
+            Assert.AreEqual(MapLoadPipeline.Status.Failed, nullLoader.Current);
         }
 
         // ---------------------------------------------------------------
@@ -365,11 +403,7 @@ namespace ThinhThan.Tests.PlayMode.WorldTransferPresentation
         public void TestRespawnPresentationGatesAndReArms()
         {
             var sent = 0;
-            var r = new RespawnPresentation(() =>
-            {
-                sent++;
-                return Task.CompletedTask;
-            });
+            var r = new RespawnPresentation(() => sent++);
 
             Assert.IsFalse(r.RequestRespawn());
             Assert.AreEqual(0, sent);

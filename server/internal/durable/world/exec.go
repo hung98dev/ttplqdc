@@ -243,4 +243,3 @@ func marshalOutcome(outcome *journalv1.JournalOutcome) (idempotency.Outcome, err
 	}
 	return idempotency.Outcome{SchemaVersion: 1, Payload: b}, nil
 }
-

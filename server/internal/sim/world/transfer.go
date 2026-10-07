@@ -34,12 +34,12 @@ func (d *Director) beginTransfer(characterID, transferID id.UUID,
 	d.transfers[characterID] = &transfer{
 		CharacterID: characterID,
 		TransferID:  transferID,
-		Kind:       kind,
-		DstMap:     dstMap,
-		DstChannel: dstChannel,
-		DstSpawn:   dstSpawn,
-		FrozenAt:   d.now(),
-		Budget:     budget,
+		Kind:        kind,
+		DstMap:      dstMap,
+		DstChannel:  dstChannel,
+		DstSpawn:    dstSpawn,
+		FrozenAt:    d.now(),
+		Budget:      budget,
 	}
 	if m != nil {
 		d.transfers[characterID].SrcMap = m.MapID

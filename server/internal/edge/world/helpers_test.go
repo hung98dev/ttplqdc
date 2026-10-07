@@ -193,15 +193,14 @@ func (c *testClocks) Advance(d time.Duration) {
 // durable queue with the world executor family-mux, live simworld
 // runtime, service + router.
 type env struct {
-	pool     *pgxpool.Pool
-	store    *durableworld.Store
-	q        *queue.Queue
-	w        *simworld.Runtime
-	svc      *Service
-	rt       *router.Registry
-	out      *capOutbound
-	clocks   *testClocks
-	consults *fakeConsults
+	pool   *pgxpool.Pool
+	store  *durableworld.Store
+	q      *queue.Queue
+	w      *simworld.Runtime
+	svc    *Service
+	rt     *router.Registry
+	out    *capOutbound
+	clocks *testClocks
 }
 
 func newEnv(t *testing.T, consults Consults) *env {

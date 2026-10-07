@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 
 namespace ThinhThan.Systems.World
 {
@@ -13,10 +12,10 @@ namespace ThinhThan.Systems.World
     /// </summary>
     public sealed class RespawnPresentation
     {
-        private readonly Func<Task> _sendRespawn;
+        private readonly Action _sendRespawn;
 
         /// <summary>sendRespawn issues one 208 intent.</summary>
-        public RespawnPresentation(Func<Task> sendRespawn)
+        public RespawnPresentation(Action sendRespawn)
         {
             _sendRespawn = sendRespawn ?? throw new ArgumentNullException(nameof(sendRespawn));
         }
@@ -69,7 +68,7 @@ namespace ThinhThan.Systems.World
                 return false;
             }
             Requested = true;
-            _ = _sendRespawn();
+            _sendRespawn();
             return true;
         }
 

@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"thinhthan/internal/core/id"
-	simworld "thinhthan/internal/sim/world"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	simworld "thinhthan/internal/sim/world"
 )
 
 // fakeConsults is a scriptable Consults stub: every call is recorded so

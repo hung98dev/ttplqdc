@@ -31,7 +31,7 @@ namespace ThinhThan.Systems.World
         {
             get;
             private set;
-        } = State.Idle;
+        }
 
         /// <summary>Channel index the in-flight/last request targeted.</summary>
         public uint TargetChannelIndex

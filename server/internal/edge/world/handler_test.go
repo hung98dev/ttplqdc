@@ -10,8 +10,8 @@ import (
 	"thinhthan/internal/core/id"
 	"thinhthan/internal/durable/idempotency"
 	"thinhthan/internal/edge/router"
-	simworld "thinhthan/internal/sim/world"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	simworld "thinhthan/internal/sim/world"
 )
 
 // opBytes mints a fresh UUIDv7 operation id.
@@ -176,7 +176,7 @@ func TestTalkPostsWorldCommandOnly(t *testing.T) {
 func TestPortalPostCommitCommand(t *testing.T) {
 	cons := newFakeConsults()
 	cons.replies["PortalAdmission:portal.alpha.beta"] = simworld.ConsultReply{
-		OK:   true,
+		OK:    true,
 		MapID: "map.beta",
 	}
 	e := newEnv(t, cons)

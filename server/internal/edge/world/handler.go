@@ -15,8 +15,8 @@ import (
 	durableworld "thinhthan/internal/durable/world"
 	"thinhthan/internal/edge/listener"
 	"thinhthan/internal/edge/router"
-	simworld "thinhthan/internal/sim/world"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	simworld "thinhthan/internal/sim/world"
 )
 
 // ADR-0083 route per durable id: consult (read-only mailbox answer) →
@@ -67,9 +67,9 @@ func (s *Service) interact(ctx context.Context, v router.View, r router.Route) e
 		// TALK owns no durable write — the post path opens the volatile
 		// NPC session; the 116 is emitted directly.
 		if err := s.postWorld(v, &simworld.Command{
-			Kind:        simworld.CmdInteract,
-			CharacterID: *v.CharacterID,
-			OperationID: mustOpID(req.GetOperationId()),
+			Kind:         simworld.CmdInteract,
+			CharacterID:  *v.CharacterID,
+			OperationID:  mustOpID(req.GetOperationId()),
 			InteractKind: uint32(kind),
 			TargetID:     mustEntityID(req.GetTargetId()),
 		}); err != nil {

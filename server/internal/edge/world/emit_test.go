@@ -16,7 +16,7 @@ func TestEmitterDropsNonCheckpointKinds(t *testing.T) {
 	e := newEnv(t, nil)
 	em := NewEmitter(e.w, e.q)
 	cmd := runtime.DurableCommand{
-		Kind:  runtime.CmdWorldConsequence,
+		Kind:   runtime.CmdWorldConsequence,
 		Family: "sim.world_consequence",
 	}
 	if err := em.Emit(context.Background(), cmd); err != nil {

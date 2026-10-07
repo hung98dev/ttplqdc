@@ -6,8 +6,8 @@ import (
 	"time"
 
 	"thinhthan/internal/core/id"
-	"thinhthan/internal/sim/runtime"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	"thinhthan/internal/sim/runtime"
 )
 
 // StartupHook is one channel-start pipeline stage; hooks run inside the
@@ -160,9 +160,9 @@ func (w *Runtime) newHost(mapID string, ch uint32) (*ChannelHost, error) {
 		Metrics:         w.cfg.Metrics,
 	}
 	p, err := runtime.NewPartition(pcfg, runtime.Ports{
-		Durable:  w.cfg.Durable,
-		Results:  w.cfg.Results,
-		Loader:   loaderPort{w: w},
+		Durable: w.cfg.Durable,
+		Results: w.cfg.Results,
+		Loader:  loaderPort{w: w},
 		// Replication traffic and world control share the outbound port:
 		// replication rows carry the entity id, world-control rows carry
 		// the session target (SessionTarget); the edge pump resolves both.

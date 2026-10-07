@@ -59,11 +59,11 @@ func (e *Emitter) Emit(ctx context.Context, cmd runtime.DurableCommand) error {
 // checkpointJournal converts the sim-side value into the durable payload.
 func checkpointJournal(cp *simworld.CheckpointWrite) *journalv1.JournalCheckpoint {
 	j := &journalv1.JournalCheckpoint{
-		CharacterId:     cp.CharacterID[:],
-		OwnershipEpoch:  cp.OwnershipEpoch,
-		CheckpointId:    cp.CheckpointID,
-		SafeMapId:       cp.SafeMapID,
-		EntrySpawnId:    cp.EntrySpawnID,
+		CharacterId:    cp.CharacterID[:],
+		OwnershipEpoch: cp.OwnershipEpoch,
+		CheckpointId:   cp.CheckpointID,
+		SafeMapId:      cp.SafeMapID,
+		EntrySpawnId:   cp.EntrySpawnID,
 
 		MembershipState: cp.MembershipState,
 		RecordedAtMs:    cp.RecordedAtMs,

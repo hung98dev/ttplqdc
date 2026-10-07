@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"thinhthan/internal/core/id"
-	"thinhthan/internal/sim/runtime"
 	protocolv1 "thinhthan/internal/protocol/v1"
+	"thinhthan/internal/sim/runtime"
 )
 
 // onPresentationReady handles the client's 106: the frozen entity leaves

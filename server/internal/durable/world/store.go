@@ -105,12 +105,12 @@ func (s *Store) SetMap(ctx context.Context, tx pgx.Tx, characterID id.UUID, mapI
 // may not import sim/, so sim/world's loader adapter maps it to
 // runtime.WorldConsequence itself.
 type ConsequenceRow struct {
-	RelicID     string
-	SourceID    string
-	Active      bool
+	RelicID      string
+	SourceID     string
+	Active       bool
 	BuffEffectID string
-	SpawnedAt   time.Time
-	ExpiresAt   time.Time
+	SpawnedAt    time.Time
+	ExpiresAt    time.Time
 }
 
 // LoadConsequences returns every world_consequence_relics row for the

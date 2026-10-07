@@ -31,9 +31,9 @@ const (
 
 // Command is one typed mailbox command.
 type Command struct {
-	Kind        CommandKind
-	CharacterID id.UUID
-	OperationID [16]byte // durable op id to preserve through effects
+	Kind         CommandKind
+	CharacterID  id.UUID
+	OperationID  [16]byte // durable op id to preserve through effects
 	EnqueuedTick uint64
 
 	// Interact (CmdInteract)
@@ -47,11 +47,11 @@ type Command struct {
 	TargetChannel uint32
 
 	// TransferStart / PresentationReady
-	TransferID    [16]byte
-	MapID         string
-	SpawnAnchorID string
+	TransferID     [16]byte
+	MapID          string
+	SpawnAnchorID  string
 	SpawnX, SpawnY int32
-	Reason        uint8 // PendingReason context for admit bookkeeping
+	Reason         uint8 // PendingReason context for admit bookkeeping
 
 	// Respawn is set on respawn-driven admissions: the dest host emits
 	// the committed 207 and queues the checkpoint durable write.

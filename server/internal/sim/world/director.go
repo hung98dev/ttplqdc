@@ -19,20 +19,20 @@ const (
 
 // Channel is one map's channel-instance registry row.
 type Channel struct {
-	Index         uint32
-	State         ChannelState
-	Occupancy     int // reservations + admitted players
-	IdleSince     time.Time
-	Quarantined   bool // loader/hook timeout — excluded from selection
-	LastErr       error
-	host          *ChannelHost
+	Index       uint32
+	State       ChannelState
+	Occupancy   int // reservations + admitted players
+	IdleSince   time.Time
+	Quarantined bool // loader/hook timeout — excluded from selection
+	LastErr     error
+	host        *ChannelHost
 }
 
 // member is the director's per-character location ledger.
 type member struct {
-	MapID       string
-	Channel     uint32
-	LastSwitch  time.Time // last CHANNEL_SWITCH admission (cooldown)
+	MapID      string
+	Channel    uint32
+	LastSwitch time.Time // last CHANNEL_SWITCH admission (cooldown)
 }
 
 // Director is the single-writer registry of every normal-world map's
