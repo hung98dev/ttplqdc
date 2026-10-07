@@ -1189,10 +1189,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-008/"
 
 ## `IMP-009` — Inventory / IAP Entitlement Panel
 id: IMP-009
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-009"
+branch: "imp/IMP-009-inventory-iap"
+claimed_at: "2026-10-07T18:20:00Z"
 blocked_by: ""
 
 specs: [`../03_systems/inventory.md`, `../03_systems/account_storage.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/data_model.md`]
@@ -1273,10 +1273,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-010/"
 
 ## `IMP-011` — Character Progression / Stats
 id: IMP-011
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-011"
+branch: "imp/IMP-011-progression-stats"
+claimed_at: "2026-10-07T18:20:00Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/progression.md`, `../01_gameplay/stats.md`, `../01_gameplay/skills.md`, `../05_network/messages.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`]
@@ -1807,10 +1807,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-096/"
 
 ## `IMP-018` — Map / Transfer / Checkpoint Runtime
 id: IMP-018
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-018"
+branch: "imp/IMP-018-map-transfer-runtime"
+claimed_at: "2026-10-07T18:20:00Z"
 blocked_by: ""
 
 specs: [`../02_world/README.md`, `../02_world/maps_zones.md`, `../02_world/world_rules.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/world_route_catalog.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/sharding.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../04_architecture/service_boundaries.md`]
