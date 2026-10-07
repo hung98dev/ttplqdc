@@ -114,6 +114,8 @@ namespace ThinhThan.Net
                 [WireIds.S2CWalletState] = S2CWalletState.Parser,
                 [WireIds.S2CInventoryState] = S2CInventoryState.Parser,
                 [WireIds.S2CEntitlementPanelState] = S2CEntitlementPanelState.Parser,
+                [WireIds.S2CProgressionMutateResult] = S2CProgressionMutateResult.Parser,
+                [WireIds.S2CProgressionState] = S2CProgressionState.Parser,
             };
         }
     }

@@ -32,6 +32,7 @@ namespace ThinhThan.Net
                 WireIds.S2CWalletState,
                 WireIds.S2CInventoryState,
                 WireIds.S2CEntitlementPanelState,
+                WireIds.S2CProgressionState,
             };
 
         /// <summary>Message ids that advance the barrier ordinal.</summary>

@@ -50,5 +50,7 @@ namespace ThinhThan.Net
         public const uint S2CWalletState = 432;
         public const uint S2CInventoryState = 433;
         public const uint S2CEntitlementPanelState = 435;
+        public const uint S2CProgressionMutateResult = 514;
+        public const uint S2CProgressionState = 515;
     }
 }
