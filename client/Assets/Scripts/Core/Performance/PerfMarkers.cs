@@ -37,8 +37,10 @@ namespace ThinhThan.Core.Performance
         /// <summary>
         /// True for marker names that are always excluded from main-thread
         /// gameplay CPU accounting: <c>Gfx.*</c>, <c>Camera.Render</c>,
-        /// <c>Render.*</c> and <c>WaitForTargetFPS</c>. Semaphore waits are
-        /// excluded separately and only under a rendering ancestor.
+        /// <c>Render.*</c>, <c>WaitForTargetFPS</c> and
+        /// <c>Semaphore.WaitForSignal</c>. A semaphore wait is main-thread
+        /// idle time blocked on a synchronization primitive, never CPU
+        /// work — it is excluded wherever it nests in the PlayerLoop.
         /// </summary>
         public static bool IsAlwaysExcludedMarker(string name)
         {
@@ -50,24 +52,8 @@ namespace ThinhThan.Core.Performance
             return name.StartsWith("Gfx.", StringComparison.Ordinal) ||
                 name.Equals("Camera.Render", StringComparison.Ordinal) ||
                 name.StartsWith("Render.", StringComparison.Ordinal) ||
-                name.Equals(WaitForTargetFpsMarker, StringComparison.Ordinal);
-        }
-
-        /// <summary>
-        /// True for marker names that identify rendering work on an ancestor
-        /// chain — used to decide whether a <c>Semaphore.WaitForSignal</c>
-        /// descendant is a rendering wait (PERF-002 exclusion rule).
-        /// </summary>
-        public static bool IsRenderAncestorMarker(string name)
-        {
-            if (name == null)
-            {
-                return false;
-            }
-
-            return name.StartsWith("Gfx.", StringComparison.Ordinal) ||
-                name.Equals("Camera.Render", StringComparison.Ordinal) ||
-                name.StartsWith("Render.", StringComparison.Ordinal);
+                name.Equals(WaitForTargetFpsMarker, StringComparison.Ordinal) ||
+                name.Equals(SemaphoreWaitMarker, StringComparison.Ordinal);
         }
     }
 }

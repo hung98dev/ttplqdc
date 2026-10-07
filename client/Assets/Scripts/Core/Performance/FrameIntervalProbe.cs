@@ -9,10 +9,11 @@ namespace ThinhThan.Core.Performance
     /// PlayerLoop root minus the union of eligible exclusion intervals,
     /// clipped to the root and merged once. Exclusions are main-thread
     /// descendants only: Gfx.*, Camera.Render, Render.*, WaitForTargetFPS,
-    /// and Semaphore.WaitForSignal only when its ancestor chain marks a
-    /// rendering wait. A missing root, truncated list, invalid nesting,
-    /// negative or non-finite duration, or a union exceeding the frame is
-    /// an invalid measurement — it fails, never clamps.
+    /// and Semaphore.WaitForSignal (main-thread idle on a synchronization
+    /// primitive, wherever it nests). A missing root, truncated list,
+    /// invalid nesting, negative or non-finite duration, or a union
+    /// exceeding the frame is an invalid measurement — it fails, never
+    /// clamps.
     /// </summary>
     public static class FrameIntervalProbe
     {
@@ -148,9 +149,7 @@ namespace ThinhThan.Core.Performance
                     return false;
                 }
 
-                bool eligible = PerfMarkers.IsAlwaysExcludedMarker(s.Name) ||
-                    (s.Name == PerfMarkers.SemaphoreWaitMarker &&
-                        HasRenderAncestor(samples, byId, i, rootIndex));
+                bool eligible = PerfMarkers.IsAlwaysExcludedMarker(s.Name);
                 if (eligible && s.DurationSeconds > 0.0)
                 {
                     excluded.Add((s.StartSeconds, s.EndSeconds));
@@ -274,38 +273,6 @@ namespace ThinhThan.Core.Performance
                 }
 
                 if (parentIndex == rootIndex)
-                {
-                    return true;
-                }
-
-                cursor = parentIndex;
-            }
-
-            return false;
-        }
-
-        private static bool HasRenderAncestor(
-            IReadOnlyList<Sample> samples,
-            Dictionary<int, int> byId,
-            int index,
-            int rootIndex)
-        {
-            int cursor = index;
-            int guard = samples.Count + 1;
-            while (guard-- > 0)
-            {
-                int parentId = samples[cursor].ParentId;
-                if (parentId < 0 || !byId.TryGetValue(parentId, out int parentIndex))
-                {
-                    return false;
-                }
-
-                if (parentIndex == rootIndex)
-                {
-                    return false;
-                }
-
-                if (PerfMarkers.IsRenderAncestorMarker(samples[parentIndex].Name))
                 {
                     return true;
                 }

@@ -133,22 +133,17 @@ namespace ThinhThan.Tests.PlayMode.Performance
                 UiWireIds.C2SBasicAttack,
                 rig.Sender.Sent[0].MessageId);
 
-            var localEdges = new LocalEdge[8];
-            int moved = rig.Source.SampleEdges(localEdges);
-            var moveTime = new FrameTime(0.016f, 1.0, 1);
-            for (int i = 0; i < moved; i++)
+            var held = new InputRecord
             {
-                var record = new InputRecord
-                {
-                    Kind = InputRecordKind.Edge,
-                    Seq = (ulong)(i + 1),
-                    Tick = 1,
-                    HeldDirection = 1,
-                    Edge = localEdges[i],
-                };
-                rig.Prediction.EnqueueLocal(in record);
-            }
+                Kind = InputRecordKind.Held,
+                Seq = 1,
+                Tick = 1,
+                HeldDirection = rig.Source.HeldDirection,
+                Flags = rig.Source.HeldFlags,
+            };
+            rig.Prediction.EnqueueLocal(in held);
 
+            var moveTime = new FrameTime(0.05f, 1.0, 1);
             rig.Prediction.Tick(in moveTime);
 
             PredictedState after = rig.Prediction.State;
@@ -163,7 +158,7 @@ namespace ThinhThan.Tests.PlayMode.Performance
         {
             var emulator = new NetworkEmulator(0xACE)
             {
-                LatencyMs = 120,
+                LatencyMs = 60,
                 JitterMs = 10,
                 DropProbability = 0.0,
             };

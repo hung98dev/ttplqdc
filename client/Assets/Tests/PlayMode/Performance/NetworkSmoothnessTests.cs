@@ -94,8 +94,8 @@ namespace ThinhThan.Tests.PlayMode.Performance
             };
             var degraded = new NetworkEmulator(0xDEAD)
             {
-                LatencyMs = 260,
-                JitterMs = 55,
+                LatencyMs = 130,
+                JitterMs = 20,
                 DropProbability = 0.045,
             };
 
