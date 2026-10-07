@@ -9,8 +9,10 @@ using ThinhThan.Net;
 using ThinhThan.Systems.Replication;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEditor.Profiling;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.Rendering.Universal;
@@ -317,8 +319,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             var previous =
                 new Dictionary<SpriteRenderer, Material?>();
             SpriteRenderer[] renderers =
-                Object.FindObjectsByType<SpriteRenderer>(
-                    FindObjectsSortMode.None);
+                Object.FindObjectsByType<SpriteRenderer>();
             foreach (SpriteRenderer renderer in renderers)
             {
                 previous[renderer] = renderer.sharedMaterial;
@@ -328,8 +329,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             var previousParticles =
                 new Dictionary<ParticleSystemRenderer, Material?>();
             ParticleSystemRenderer[] particleRenderers =
-                Object.FindObjectsByType<ParticleSystemRenderer>(
-                    FindObjectsSortMode.None);
+                Object.FindObjectsByType<ParticleSystemRenderer>();
             foreach (ParticleSystemRenderer renderer in particleRenderers)
             {
                 previousParticles[renderer] = renderer.sharedMaterial;
@@ -400,34 +400,39 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             int passes = 0;
             for (int ti = 0; ti < 64; ti++)
             {
-                using FrameDataView view =
-                    ProfilerDriver.GetFrameDataView(frameIndex, ti);
+                using HierarchyFrameDataView view =
+                    ProfilerDriver.GetHierarchyFrameDataView(
+                        frameIndex, ti,
+                        HierarchyFrameDataView.ViewModes.Default,
+                        HierarchyFrameDataView.columnDontSort, false);
                 if (!view.valid)
                 {
                     continue;
                 }
 
-                int rootId = view.rootSampleId;
-                if (view.GetSampleName(rootId) != PerfMarkers.PlayerLoopMarker)
+                int rootId = view.GetRootItemID();
+                if (view.GetItemName(rootId) != PerfMarkers.PlayerLoopMarker)
                 {
                     continue;
                 }
 
                 var stack = new List<int> { rootId };
+                var childBuf = new List<int>(32);
                 while (stack.Count > 0)
                 {
                     int id = stack[stack.Count - 1];
                     stack.RemoveAt(stack.Count - 1);
-                    string name = view.GetSampleName(id);
+                    string name = view.GetItemName(id);
                     if (IsFullScreenPassMarker(name))
                     {
                         passes++;
                     }
 
-                    List<int> children = view.GetSampleChildrenId(id);
-                    for (int i = 0; i < children.Count; i++)
+                    childBuf.Clear();
+                    view.GetItemChildren(id, childBuf);
+                    for (int i = 0; i < childBuf.Count; i++)
                     {
-                        stack.Add(children[i]);
+                        stack.Add(childBuf[i]);
                     }
                 }
             }
@@ -619,15 +624,18 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             int frameIndex = ProfilerDriver.lastFrameIndex;
             for (int ti = 0; ti < 64; ti++)
             {
-                using FrameDataView view =
-                    ProfilerDriver.GetFrameDataView(frameIndex, ti);
+                using HierarchyFrameDataView view =
+                    ProfilerDriver.GetHierarchyFrameDataView(
+                        frameIndex, ti,
+                        HierarchyFrameDataView.ViewModes.Default,
+                        HierarchyFrameDataView.columnDontSort, false);
                 if (!view.valid)
                 {
                     continue;
                 }
 
-                int rootId = view.rootSampleId;
-                if (view.GetSampleName(rootId) != PerfMarkers.PlayerLoopMarker)
+                int rootId = view.GetRootItemID();
+                if (view.GetItemName(rootId) != PerfMarkers.PlayerLoopMarker)
                 {
                     continue;
                 }
@@ -637,6 +645,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 {
                     (rootId, -1),
                 };
+                var childBuf = new List<int>(32);
                 while (stack.Count > 0)
                 {
                     (int id, int parentId) = stack[stack.Count - 1];
@@ -644,13 +653,18 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     samples.Add(new FrameIntervalProbe.Sample(
                         id,
                         parentId,
-                        view.GetSampleName(id),
-                        view.GetSampleStartTimeNs(id) * 1e-9,
-                        view.GetSampleTimeNs(id) * 1e-9));
-                    List<int> children = view.GetSampleChildrenId(id);
-                    for (int i = 0; i < children.Count; i++)
+                        view.GetItemName(id),
+                        view.GetItemColumnDataAsDouble(
+                            id, HierarchyFrameDataView.columnStartTime) *
+                            0.001,
+                        view.GetItemColumnDataAsDouble(
+                            id, HierarchyFrameDataView.columnTotalTime) *
+                            0.001));
+                    childBuf.Clear();
+                    view.GetItemChildren(id, childBuf);
+                    for (int i = 0; i < childBuf.Count; i++)
                     {
-                        stack.Add((children[i], id));
+                        stack.Add((childBuf[i], id));
                     }
                 }
 

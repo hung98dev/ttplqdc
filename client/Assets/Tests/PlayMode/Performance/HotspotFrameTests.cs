@@ -12,6 +12,7 @@ using ThinhThan.Systems.Replication;
 using ThinhThan.Tests.PlayMode.NetReceive.Fixtures;
 using Unity.Profiling;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.TestTools;
 
 namespace ThinhThan.Tests.PlayMode.Performance

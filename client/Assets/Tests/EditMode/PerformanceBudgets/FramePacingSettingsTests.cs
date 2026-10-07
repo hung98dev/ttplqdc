@@ -59,7 +59,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             Assert.AreEqual(0, QualitySettings.vSyncCount);
             Assert.AreEqual(60, Application.targetFrameRate);
             Assert.IsTrue(
-                PlayerSettings.optimizedFramePacing,
+                PlayerSettings.Android.optimizedFramePacing,
                 "PERF-019 requires Optimized Frame Pacing enabled for Android");
         }
 
