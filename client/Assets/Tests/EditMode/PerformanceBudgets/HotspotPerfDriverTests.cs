@@ -48,55 +48,12 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
         private const int Repetitions = 3;
         private const int MeasureFramesPerRep = 600;
 
-        private bool _epoPushed;
-        private bool _epoWasEnabled;
-        private EnterPlayModeOptions _epoPrevious;
-
         private static bool GraphicsAvailable
         {
             get
             {
                 return SystemInfo.graphicsDeviceType !=
                     GraphicsDeviceType.Null;
-            }
-        }
-
-        /// <summary>
-        /// EditMode runs must not reload the domain on play-mode entry:
-        /// an unscheduled assembly reload aborts the UTF run ("unexpected
-        /// assembly reload") and leaves the editor stuck in play mode.
-        /// </summary>
-        private void EnterNoReloadPlayMode()
-        {
-            _epoWasEnabled = EditorSettings.enterPlayModeOptionsEnabled;
-            _epoPrevious = EditorSettings.enterPlayModeOptions;
-            _epoPushed = true;
-            EditorSettings.enterPlayModeOptionsEnabled = true;
-            EditorSettings.enterPlayModeOptions =
-                EnterPlayModeOptions.DisableDomainReload |
-                EnterPlayModeOptions.DisableSceneReload;
-            EditorApplication.EnterPlaymode();
-        }
-
-        [UnityTearDown]
-        public IEnumerator RestorePlayModeState()
-        {
-            if (EditorApplication.isPlaying ||
-                EditorApplication.isPlayingOrWillChangePlaymode)
-            {
-                EditorApplication.ExitPlaymode();
-            }
-
-            while (EditorApplication.isPlaying)
-            {
-                yield return null;
-            }
-
-            if (_epoPushed)
-            {
-                EditorSettings.enterPlayModeOptionsEnabled = _epoWasEnabled;
-                EditorSettings.enterPlayModeOptions = _epoPrevious;
-                _epoPushed = false;
             }
         }
 
@@ -142,7 +99,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
 
             GraphicsCapabilityProbe.VerifyCurrentInvocation();
 
-            EnterNoReloadPlayMode();
+            EditorApplication.EnterPlaymode();
             while (!EditorApplication.isPlaying)
             {
                 yield return null;
@@ -158,12 +115,6 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             int maxParticles = 0;
             double maxFrameBudgetMs = 0.0;
 
-            // Batchmode never records profiler frames without these
-            // flags; without them lastFrameIndex stays -1 and PERF-002
-            // has no data.
-            UnityEditorInternal.ProfilerDriver.enabled = true;
-            UnityEditorInternal.ProfilerDriver.profileEditor = true;
-            UnityEngine.Profiling.Profiler.enabled = true;
             using (var memory = new MemoryProbe())
             using (var gc = new ProfilerRecorder(
                 PerfMarkers.GcAllocatedInFrameCounter, 16))
@@ -173,10 +124,6 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 PerfMarkers.SetPassCallsCounter, 8))
             {
                 LoadScene();
-                // Single-mode load unloads the previous scene at the
-                // next frame boundary; any object found/created before
-                // then lives in the dying scene.
-                yield return null;
                 QualitySettings.SetQualityLevel(0, true);
                 QualitySettings.vSyncCount = 0;
                 Application.targetFrameRate = -1;
@@ -258,16 +205,13 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
 
             GraphicsCapabilityProbe.VerifyCurrentInvocation();
 
-            EnterNoReloadPlayMode();
+            EditorApplication.EnterPlaymode();
             while (!EditorApplication.isPlaying)
             {
                 yield return null;
             }
 
             LoadScene();
-            // Same deferred-unload hazard as HotspotCountersMeetBudgets:
-            // yield so the swap completes before objects are resolved.
-            yield return null;
             QualitySettings.SetQualityLevel(0, true);
             QualitySettings.vSyncCount = 0;
 
@@ -282,8 +226,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 Object.Instantiate(fixturePrefab);
             yield return null;
 
-            float[] calibration = RenderOverdraw(
-                camera, counting, fixture.transform);
+            float[] calibration = RenderOverdraw(camera, counting);
             AssertCalibration(calibration);
             Object.Destroy(fixture);
             yield return null;
@@ -335,26 +278,11 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 }
             }
 
-            var histogram = new SortedDictionary<float, int>();
-            foreach (float v in pixels)
-            {
-                float key = Mathf.Round(v * 4f) / 4f;
-                histogram[key] =
-                    histogram.TryGetValue(key, out int c) ? c + 1 : 1;
-            }
-
-            var top = new List<string>(4);
-            foreach (KeyValuePair<float, int> pair in histogram)
-            {
-                top.Add(pair.Key.ToString("0.##") + ":" + pair.Value);
-            }
-
             Assert.IsTrue(
                 hasOne && hasTwo && hasThree,
                 "PERF-016 calibration fixture must produce counts " +
                 "1, 2 and 3 (base, single overlap, double overlap) — " +
-                "readback histogram {" +
-                string.Join(", ", top) + "}");
+                "readback or counting material is broken");
         }
 
         private static void AssertOverdraw(
@@ -384,33 +312,16 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 "PERF-016 full-screen passes on LOW <= 1");
         }
 
-        /// <summary>
-        /// Renders one counting pass: every in-scope renderer draws the
-        /// additive counting material so each covered pixel accumulates
-        /// its overdraw count. When <paramref name="scopeRoot"/> is set,
-        /// renderers outside that subtree are disabled for the pass so a
-        /// calibration fixture is measured in isolation.
-        /// </summary>
         private static float[] RenderOverdraw(
             Camera camera,
-            Material counting,
-            Transform? scopeRoot = null)
+            Material counting)
         {
-            var disabled = new List<Renderer>(64);
             var previous =
                 new Dictionary<SpriteRenderer, Material?>();
             SpriteRenderer[] renderers =
                 Object.FindObjectsByType<SpriteRenderer>();
             foreach (SpriteRenderer renderer in renderers)
             {
-                if (scopeRoot != null &&
-                    !renderer.transform.IsChildOf(scopeRoot))
-                {
-                    renderer.enabled = false;
-                    disabled.Add(renderer);
-                    continue;
-                }
-
                 previous[renderer] = renderer.sharedMaterial;
                 renderer.sharedMaterial = counting;
             }
@@ -421,14 +332,6 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 Object.FindObjectsByType<ParticleSystemRenderer>();
             foreach (ParticleSystemRenderer renderer in particleRenderers)
             {
-                if (scopeRoot != null &&
-                    !renderer.transform.IsChildOf(scopeRoot))
-                {
-                    renderer.enabled = false;
-                    disabled.Add(renderer);
-                    continue;
-                }
-
                 previousParticles[renderer] = renderer.sharedMaterial;
                 renderer.sharedMaterial = counting;
             }
@@ -437,12 +340,8 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 1280, 720, 0, UnityEngine.RenderTextureFormat.RFloat);
             RenderTexture? previousTarget = camera.targetTexture;
             RenderTexture? previousActive = RenderTexture.active;
-            Color previousClear = camera.backgroundColor;
             try
             {
-                // The clear color writes into the counting channel — a
-                // nonzero background shifts every accumulated count.
-                camera.backgroundColor = Color.black;
                 camera.targetTexture = target;
                 camera.Render();
                 RenderTexture.active = target;
@@ -488,12 +387,6 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     }
                 }
 
-                foreach (Renderer renderer in disabled)
-                {
-                    renderer.enabled = true;
-                }
-
-                camera.backgroundColor = previousClear;
                 camera.targetTexture = previousTarget;
                 RenderTexture.active = previousActive;
                 target.Release();
@@ -517,13 +410,13 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     continue;
                 }
 
-                int playerLoopId = FindPlayerLoopId(view);
-                if (playerLoopId < 0)
+                int rootId = view.GetRootItemID();
+                if (view.GetItemName(rootId) != PerfMarkers.PlayerLoopMarker)
                 {
                     continue;
                 }
 
-                var stack = new List<int> { playerLoopId };
+                var stack = new List<int> { rootId };
                 var childBuf = new List<int>(32);
                 while (stack.Count > 0)
                 {
@@ -545,36 +438,6 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             }
 
             return passes;
-        }
-
-        /// <summary>
-        /// Locates the PlayerLoop subtree inside a profiler frame. Under
-        /// the editor-driven runner the frame root is EditorLoop and the
-        /// play-mode PlayerLoop sits beneath it; batch play-mode runs
-        /// expose it at the root.
-        /// </summary>
-        private static int FindPlayerLoopId(HierarchyFrameDataView view)
-        {
-            var stack = new List<int> { view.GetRootItemID() };
-            var childBuf = new List<int>(32);
-            while (stack.Count > 0)
-            {
-                int id = stack[stack.Count - 1];
-                stack.RemoveAt(stack.Count - 1);
-                if (view.GetItemName(id) == PerfMarkers.PlayerLoopMarker)
-                {
-                    return id;
-                }
-
-                childBuf.Clear();
-                view.GetItemChildren(id, childBuf);
-                for (int i = 0; i < childBuf.Count; i++)
-                {
-                    stack.Add(childBuf[i]);
-                }
-            }
-
-            return -1;
         }
 
         private static bool IsFullScreenPassMarker(string name)
@@ -601,9 +464,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             var failures = new List<string>();
             if (cpuByRep.Count != Repetitions || HasEmptyWindow(cpuByRep))
             {
-                failures.Add(
-                    "PERF-002 frame capture produced no samples — " +
-                    s_lastMeasureDiag);
+                failures.Add("PERF-002 frame capture produced no samples");
             }
             else
             {
@@ -757,16 +618,10 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
         /// <see cref="ProfilerDriver"/> and runs PERF-002 union accounting
         /// through <see cref="FrameIntervalProbe"/>.
         /// </summary>
-        private static string s_lastMeasureDiag = "not run";
-
         private static bool TryMeasureLastFrame(out double cpuSeconds)
         {
             cpuSeconds = 0.0;
             int frameIndex = ProfilerDriver.lastFrameIndex;
-            int validViews = 0;
-            int missingPlayerLoop = 0;
-            var roots = new List<string>(8);
-            string? computeError = null;
             for (int ti = 0; ti < 64; ti++)
             {
                 using HierarchyFrameDataView view =
@@ -779,23 +634,16 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     continue;
                 }
 
-                validViews++;
-                int playerLoopId = FindPlayerLoopId(view);
-                if (playerLoopId < 0)
+                int rootId = view.GetRootItemID();
+                if (view.GetItemName(rootId) != PerfMarkers.PlayerLoopMarker)
                 {
-                    missingPlayerLoop++;
-                    if (roots.Count < 8)
-                    {
-                        roots.Add(view.GetItemName(view.GetRootItemID()));
-                    }
-
                     continue;
                 }
 
                 var samples = new List<FrameIntervalProbe.Sample>(512);
                 var stack = new List<(int id, int parentId)>(64)
                 {
-                    (playerLoopId, -1),
+                    (rootId, -1),
                 };
                 var childBuf = new List<int>(32);
                 while (stack.Count > 0)
@@ -820,23 +668,10 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     }
                 }
 
-                if (FrameIntervalProbe.TryComputeCpuSeconds(
-                    samples, out cpuSeconds, out computeError))
-                {
-                    s_lastMeasureDiag =
-                        "frameIndex=" + frameIndex +
-                        " validViews=" + validViews +
-                        " missingPlayerLoop=" + missingPlayerLoop;
-                    return true;
-                }
+                return FrameIntervalProbe.TryComputeCpuSeconds(
+                    samples, out cpuSeconds, out _);
             }
 
-            s_lastMeasureDiag =
-                "frameIndex=" + frameIndex +
-                " validViews=" + validViews +
-                " missingPlayerLoop=" + missingPlayerLoop +
-                " roots=[" + string.Join(",", roots) + "]" +
-                " computeError=" + (computeError ?? "none");
             return false;
         }
 
