@@ -1215,6 +1215,7 @@ Implement inventory capacity/stacking/expansion. `account_storage.md` is the IAP
 - ADR-0060: 400 ops and 428 follow `messages.md` field lists; expansion price steps and `CAPACITY_FULL` at 120; 432/433/435 are full snapshots sent after attach and every committed change.
 - `wallet_revision` in 432 follows the `data_model.md` § character_currencies derivation (`SUM` of the character's per-currency row revisions); the ADR-0081 thin handlers for its durable ids live in `server/internal/edge/inventory/`; the client inbound dispatch for its S2C ids lands through the routed IMP-065 `Net/` binding (repository_layout.md § Client inbound dispatch seam).
 - ADR-0083: `use_effect.cooldown_ends_at_tick` resolves the character's partition current-tick through the `PartitionTick(characterID)` consult on `edge/world`'s read-only surface; a consult timeout or no live partition rejects the USE at admission — never a fabricated tick.
+- `loadout_revision` in 433 follows the `data_model.md` § Inventory / Loadouts derivation (`SUM(character_loadouts.revision)` over the character's loadout rows).
 
 ## Tests
 - `server/internal/durable/inventory/inventory_state_test.go`: TestLockedQuantityReported.
@@ -1316,7 +1317,7 @@ branch: ""
 claimed_at: ""
 blocked_by: ""
 
-specs: [`../03_systems/equipment.md`, `../07_content/equipment_catalog.md`]
+specs: [`../03_systems/equipment.md`, `../07_content/equipment_catalog.md`, `../05_network/messages.md`, `../06_data/data_model.md`]
 adrs: [`0021-hardcore-enhancement-rate-curve.md`, `0037-reflect-lifesteal-absorb-heal-reduction-stats.md`, `0060-wire-and-durable-contract-completion.md`, `0063-economy-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-008, IMP-009, IMP-011]
 owned_paths: [`server/internal/sim/equipment/`, `server/internal/durable/equipment/`, `client/Assets/Scripts/Systems/Equipment/`, `client/Assets/Scripts/UI/Equipment/`, `client/Assets/Tests/PlayMode/EquipmentUi/`]
@@ -1333,6 +1334,7 @@ Implement 14 slots, 3 loadouts, ACTIVE/SUPPORT selection, persistent rolls/enhan
 ## Acceptance
 - one-instance-one-slot/loadout contribution tests pass.
 - ADR-0060: EQUIP displaces to inventory, UNEQUIP requires capacity and returns a contracted Soul to Collection atomically, SWITCH_ACTIVE follows `equipment.md`.
+- `loadout_revision` in 402/403 follows the `data_model.md` § Inventory / Loadouts derivation (`SUM(character_loadouts.revision)` over the character's loadout rows) — every committed loadout mutation increments at least one row's `revision`.
 
 ## Tests
 - `server/internal/sim/equipment/equipment_test.go`: TestFourteenEquipmentSlots, TestThreeLoadoutSwitching, TestEnhancementSuccessCurve, TestLuckyCharmProtection.
