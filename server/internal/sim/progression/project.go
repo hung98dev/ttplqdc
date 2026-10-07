@@ -33,17 +33,11 @@ type StateView struct {
 }
 
 // Project renders the authoritative projection for a value. Skills are
-// emitted in catalog document order filtered to learned rows; loadout is
-// the default derivation unless loadout is non-nil (a persisted
-// SKILL_SET).
+// the effective learned set in catalog document order (auto-learned
+// milestones count even before a durable row exists); loadout is the
+// default derivation unless loadout is non-nil (a persisted SKILL_SET).
 func Project(p PlayerProgress, revision uint64, loadout *Loadout) StateView {
-	defs := ClassSkills(p.ClassID)
-	rows := make([]SkillRow, 0, len(defs))
-	for _, d := range defs {
-		if lvl, ok := p.Skills[d.ID]; ok {
-			rows = append(rows, SkillRow{SkillID: d.ID, Level: lvl})
-		}
-	}
+	rows := p.LearnedSkills()
 	lo := DefaultLoadout(p)
 	if loadout != nil {
 		lo = *loadout
@@ -62,8 +56,8 @@ func Project(p PlayerProgress, revision uint64, loadout *Loadout) StateView {
 }
 
 // DefaultLoadout derives the skills.md default: basic_skill_id is the
-// class's basic_1; active_slots carry the learned actives in catalog
-// document order, remaining slots empty.
+// class's basic_1; active_slots carry the effectively learned actives in
+// catalog document order, remaining slots empty.
 func DefaultLoadout(p PlayerProgress) Loadout {
 	lo := Loadout{BasicSkillID: BasicOne(p.ClassID)}
 	slot := 0
@@ -74,7 +68,7 @@ func DefaultLoadout(p PlayerProgress) Loadout {
 		if d.Kind != SkillKindActive {
 			continue
 		}
-		if _, ok := p.Skills[d.ID]; ok {
+		if _, ok := LearnedLevel(p, d.ID); ok {
 			lo.ActiveSlots[slot] = d.ID
 			slot++
 		}

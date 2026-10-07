@@ -84,19 +84,51 @@ func (p PlayerProgress) SpentSkillPoints() int32 {
 	return spent
 }
 
+// LearnedLevel is the effective level of skillID for p. Skills are
+// learned automatically at level milestones (skills.md), so a catalog
+// skill whose unlock level the character has reached is learned at level
+// 1 even before any durable row exists; a persisted row carries the
+// upgraded level and wins. (0, false) means not yet learnable.
+func LearnedLevel(p PlayerProgress, skillID string) (int32, bool) {
+	def, ok := Lookup(skillID)
+	if !ok {
+		return 0, false
+	}
+	if lvl, persisted := p.Skills[skillID]; persisted && lvl >= 1 {
+		return lvl, true
+	}
+	if p.Level >= int32(def.UnlockLevel) {
+		return 1, true
+	}
+	return 0, false
+}
+
+// LearnedSkills renders the effective learned-skill ledger in catalog
+// document order: every skill unlockable at p.Level, with the persisted
+// row level where one exists (it wins — rows carry upgraded levels).
+// Rows for skills outside the class catalog are ignored here; Validate
+// flags those separately.
+func (p PlayerProgress) LearnedSkills() []SkillRow {
+	defs := ClassSkills(p.ClassID)
+	rows := make([]SkillRow, 0, len(defs))
+	for _, d := range defs {
+		if lvl, ok := LearnedLevel(p, d.ID); ok {
+			rows = append(rows, SkillRow{SkillID: d.ID, Level: lvl})
+		}
+	}
+	return rows
+}
+
 // ApplySkillUpgrade applies C2S_SKILL_UPGRADE semantics: +1 level to a
 // learned skill for 1 unspent skill point (ADR-0060). expectedLevel is the
 // client-echoed current level; a mismatch is STATE_CONFLICT. Check order:
 // learned → conflict → max → insufficient.
 func (p PlayerProgress) ApplySkillUpgrade(skillID string, expectedLevel uint32) (PlayerProgress, error) {
-	lvl, ok := p.Skills[skillID]
+	lvl, ok := LearnedLevel(p, skillID)
 	if !ok {
 		return p, reject(RejectSkillNotLearned)
 	}
-	def, ok := Lookup(skillID)
-	if !ok {
-		return p, reject(RejectSkillNotLearned)
-	}
+	def, _ := Lookup(skillID)
 	if expectedLevel != 0 && int32(expectedLevel) != lvl {
 		return p, reject(RejectStateConflict)
 	}

@@ -381,12 +381,14 @@ func TestProgressionStatePush(t *testing.T) {
 		v.ProgressionRevision != 7 {
 		t.Fatalf("projection = %+v", v)
 	}
-	// Skills ordered by catalog document order, not map order.
+	// Skills ordered by catalog document order over the effective learned
+	// set: unlock ≤ 22 rows are learned at 1 even unrowed (pha_khong_kiem)
+	// and persisted rows for later milestones stay learned (lien_kiem).
 	wantOrder := []string{
 		"skill.kim.basic.kiem_thuc", "skill.kim.basic.truy_phong_kiem",
 		"skill.kim.passive.kiem_tam", "skill.kim.active.xuyen_phong",
-		"skill.kim.passive.lien_kiem", "skill.kim.active.hoi_kiem",
-		"skill.kim.active.pha_giap"}
+		"skill.kim.passive.lien_kiem", "skill.kim.basic.pha_khong_kiem",
+		"skill.kim.active.hoi_kiem", "skill.kim.active.pha_giap"}
 	if len(v.Skills) != len(wantOrder) {
 		t.Fatalf("skills len %d", len(v.Skills))
 	}
