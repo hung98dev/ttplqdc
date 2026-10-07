@@ -82,6 +82,15 @@ namespace ThinhThan.Net
             set;
         }
 
+        /// <summary>Inventory/wallet/entitlement frames land here
+        /// (401, 419, 429, 432, 433, 435) — Systems/Inventory (IMP-009).
+        /// </summary>
+        public IInventorySink? Inventory
+        {
+            get;
+            set;
+        }
+
         /// <summary>Latest CHARACTER_LIST snapshot (REPLACEABLE_STATE).</summary>
         public S2CCharacterList? CharacterList
         {
@@ -557,6 +566,14 @@ namespace ThinhThan.Net
                 case WireIds.S2CBaselineResyncResult:
                 case WireIds.S2CMovementCorrection:
                     Replication?.Apply(frame);
+                    break;
+                case WireIds.S2CInventoryResult:
+                case WireIds.S2CEntitlementClaimResult:
+                case WireIds.S2CInventoryExpandResult:
+                case WireIds.S2CWalletState:
+                case WireIds.S2CInventoryState:
+                case WireIds.S2CEntitlementPanelState:
+                    Inventory?.Apply(frame);
                     break;
                 default:
                     break;
