@@ -33,16 +33,16 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-006` | Account Auth, Session & Login Queue | `DONE` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
-| `IMP-009` | Inventory / IAP Entitlement Panel | `NOT_STARTED` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
+| `IMP-009` | Inventory / IAP Entitlement Panel | `IN_PROGRESS` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
 | `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
-| `IMP-011` | Character Progression / Stats | `NOT_STARTED` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
+| `IMP-011` | Character Progression / Stats | `IN_PROGRESS` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `NOT_STARTED` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `NOT_STARTED` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
 | `IMP-015` | Skill Runtime / Geometry | `NOT_STARTED` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-016` | Effects / Status / Shield Pipeline | `NOT_STARTED` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-018` | Map / Transfer / Checkpoint Runtime | `NOT_STARTED` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
+| `IMP-018` | Map / Transfer / Checkpoint Runtime | `IN_PROGRESS` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
 | `IMP-019` | Spawn Runtime / Monster AI | `NOT_STARTED` | IMP-003, IMP-016, IMP-018 | `../02_world/spawning.md`, `../02_world/monsters.md` |
 | `IMP-020` | Discovery / Progression Source Events | `NOT_STARTED` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
 | `IMP-021` | Quest Runtime | `NOT_STARTED` | IMP-010, IMP-011, IMP-018, IMP-019 | `../02_world/quests.md`, `../07_content/quest_catalog.md` |
@@ -1189,10 +1189,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-008/"
 
 ## `IMP-009` — Inventory / IAP Entitlement Panel
 id: IMP-009
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-009"
+branch: "imp/IMP-009-inventory-iap"
+claimed_at: "2026-10-07T18:20:00Z"
 blocked_by: ""
 
 specs: [`../03_systems/inventory.md`, `../03_systems/account_storage.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/data_model.md`]
@@ -1273,10 +1273,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-010/"
 
 ## `IMP-011` — Character Progression / Stats
 id: IMP-011
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-011"
+branch: "imp/IMP-011-progression-stats"
+claimed_at: "2026-10-07T18:20:00Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/progression.md`, `../01_gameplay/stats.md`, `../01_gameplay/skills.md`, `../05_network/messages.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`]
@@ -1807,10 +1807,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-096/"
 
 ## `IMP-018` — Map / Transfer / Checkpoint Runtime
 id: IMP-018
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-018"
+branch: "imp/IMP-018-map-transfer-runtime"
+claimed_at: "2026-10-07T18:20:00Z"
 blocked_by: ""
 
 specs: [`../02_world/README.md`, `../02_world/maps_zones.md`, `../02_world/world_rules.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/world_route_catalog.md`, `../04_architecture/client_performance.md`, `../08_scale_ops/sharding.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`, `../04_architecture/service_boundaries.md`]
