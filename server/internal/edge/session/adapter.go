@@ -83,8 +83,9 @@ func (r *Registry) Enqueue(ctx context.Context, c *listener.Conn, f listener.Inb
 		if r.router != nil && r.router.Handles(f.MessageID) {
 			err = r.router.Dispatch(ctx, view, f)
 		}
-		// Non-durable ids without a registered handler are consumed
-		// silently — no owning feature has landed yet.
+		// Registered non-durable ids route through the same Handles/
+		// Dispatch consult (ADR-0082); ids with no registered handler
+		// are consumed silently — no owning feature has landed yet.
 	}
 	if err != nil {
 		var pe *protoError
