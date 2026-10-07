@@ -276,7 +276,8 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 Object.Instantiate(fixturePrefab);
             yield return null;
 
-            float[] calibration = RenderOverdraw(camera, counting);
+            float[] calibration = RenderOverdraw(
+                camera, counting, fixture.transform);
             AssertCalibration(calibration);
             Object.Destroy(fixture);
             yield return null;
@@ -362,16 +363,33 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 "PERF-016 full-screen passes on LOW <= 1");
         }
 
+        /// <summary>
+        /// Renders one counting pass: every in-scope renderer draws the
+        /// additive counting material so each covered pixel accumulates
+        /// its overdraw count. When <paramref name="scopeRoot"/> is set,
+        /// renderers outside that subtree are disabled for the pass so a
+        /// calibration fixture is measured in isolation.
+        /// </summary>
         private static float[] RenderOverdraw(
             Camera camera,
-            Material counting)
+            Material counting,
+            Transform? scopeRoot = null)
         {
+            var disabled = new List<Renderer>(64);
             var previous =
                 new Dictionary<SpriteRenderer, Material?>();
             SpriteRenderer[] renderers =
                 Object.FindObjectsByType<SpriteRenderer>();
             foreach (SpriteRenderer renderer in renderers)
             {
+                if (scopeRoot != null &&
+                    !renderer.transform.IsChildOf(scopeRoot))
+                {
+                    renderer.enabled = false;
+                    disabled.Add(renderer);
+                    continue;
+                }
+
                 previous[renderer] = renderer.sharedMaterial;
                 renderer.sharedMaterial = counting;
             }
@@ -382,6 +400,14 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 Object.FindObjectsByType<ParticleSystemRenderer>();
             foreach (ParticleSystemRenderer renderer in particleRenderers)
             {
+                if (scopeRoot != null &&
+                    !renderer.transform.IsChildOf(scopeRoot))
+                {
+                    renderer.enabled = false;
+                    disabled.Add(renderer);
+                    continue;
+                }
+
                 previousParticles[renderer] = renderer.sharedMaterial;
                 renderer.sharedMaterial = counting;
             }
@@ -437,6 +463,11 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     }
                 }
 
+                foreach (Renderer renderer in disabled)
+                {
+                    renderer.enabled = true;
+                }
+
                 camera.targetTexture = previousTarget;
                 RenderTexture.active = previousActive;
                 target.Release();
@@ -460,13 +491,13 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     continue;
                 }
 
-                int rootId = view.GetRootItemID();
-                if (view.GetItemName(rootId) != PerfMarkers.PlayerLoopMarker)
+                int playerLoopId = FindPlayerLoopId(view);
+                if (playerLoopId < 0)
                 {
                     continue;
                 }
 
-                var stack = new List<int> { rootId };
+                var stack = new List<int> { playerLoopId };
                 var childBuf = new List<int>(32);
                 while (stack.Count > 0)
                 {
@@ -488,6 +519,36 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
             }
 
             return passes;
+        }
+
+        /// <summary>
+        /// Locates the PlayerLoop subtree inside a profiler frame. Under
+        /// the editor-driven runner the frame root is EditorLoop and the
+        /// play-mode PlayerLoop sits beneath it; batch play-mode runs
+        /// expose it at the root.
+        /// </summary>
+        private static int FindPlayerLoopId(HierarchyFrameDataView view)
+        {
+            var stack = new List<int> { view.GetRootItemID() };
+            var childBuf = new List<int>(32);
+            while (stack.Count > 0)
+            {
+                int id = stack[stack.Count - 1];
+                stack.RemoveAt(stack.Count - 1);
+                if (view.GetItemName(id) == PerfMarkers.PlayerLoopMarker)
+                {
+                    return id;
+                }
+
+                childBuf.Clear();
+                view.GetItemChildren(id, childBuf);
+                for (int i = 0; i < childBuf.Count; i++)
+                {
+                    stack.Add(childBuf[i]);
+                }
+            }
+
+            return -1;
         }
 
         private static bool IsFullScreenPassMarker(string name)
@@ -684,8 +745,8 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     continue;
                 }
 
-                int rootId = view.GetRootItemID();
-                if (view.GetItemName(rootId) != PerfMarkers.PlayerLoopMarker)
+                int playerLoopId = FindPlayerLoopId(view);
+                if (playerLoopId < 0)
                 {
                     continue;
                 }
@@ -693,7 +754,7 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 var samples = new List<FrameIntervalProbe.Sample>(512);
                 var stack = new List<(int id, int parentId)>(64)
                 {
-                    (rootId, -1),
+                    (playerLoopId, -1),
                 };
                 var childBuf = new List<int>(32);
                 while (stack.Count > 0)
