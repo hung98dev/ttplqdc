@@ -80,7 +80,7 @@ func scanOwners(idx PacketIndex, path string) (owner *Packet, live bool) {
 	sort.Strings(ids)
 	for _, id := range ids {
 		p := idx[id]
-		for _, own := range p.OwnedPaths {
+		for _, own := range p.effectiveOwnedPaths() {
 			if !covers(own, path) {
 				continue
 			}
