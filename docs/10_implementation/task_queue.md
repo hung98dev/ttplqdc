@@ -34,7 +34,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-007` | Currency Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `DONE` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
-| `IMP-010` | Reward Claims | `BLOCKED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
+| `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
 | `IMP-011` | Character Progression / Stats | `DONE` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `IN_PROGRESS` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
@@ -1229,11 +1229,11 @@ evidence_location: "docs/10_implementation/evidence/IMP-009/"
 
 ## `IMP-010` — Reward Claims
 id: IMP-010
-status: BLOCKED
-claimed_by: "devin-imp-010"
-branch: "imp/IMP-010-reward-claims"
-claimed_at: "2026-10-08T05:37:26Z"
-blocked_by: "BLK-004"
+status: NOT_STARTED
+claimed_by: ""
+branch: ""
+claimed_at: ""
+blocked_by: ""
 
 specs: [`../03_systems/reward_claims.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
 adrs: [`0012-reward-claim-item-materialization.md`, `0063-economy-contract-reconciliation.md`, `0060-wire-and-durable-contract-completion.md`, `0062-world-and-systems-regression-fixes.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0065-data-schema-completion-and-erasure-retention.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0079-readiness-contract-closure.md`]
