@@ -34,17 +34,17 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-007` | Currency Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `DONE` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
-| `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
+| `IMP-010` | Reward Claims | `IN_PROGRESS` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
 | `IMP-011` | Character Progression / Stats | `DONE` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `NOT_STARTED` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
-| `IMP-014` | Combat Action State Machine | `NOT_STARTED` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
+| `IMP-014` | Combat Action State Machine | `IN_PROGRESS` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
 | `IMP-015` | Skill Runtime / Geometry | `NOT_STARTED` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-016` | Effects / Status / Shield Pipeline | `NOT_STARTED` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-018` | Map / Transfer / Checkpoint Runtime | `DONE` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
 | `IMP-019` | Spawn Runtime / Monster AI | `NOT_STARTED` | IMP-003, IMP-016, IMP-018 | `../02_world/spawning.md`, `../02_world/monsters.md` |
-| `IMP-020` | Discovery / Progression Source Events | `NOT_STARTED` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
+| `IMP-020` | Discovery / Progression Source Events | `IN_PROGRESS` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
 | `IMP-021` | Quest Runtime | `NOT_STARTED` | IMP-010, IMP-011, IMP-018, IMP-019 | `../02_world/quests.md`, `../07_content/quest_catalog.md` |
 | `IMP-022` | Boss Runtime / WorldConsequence | `NOT_STARTED` | IMP-005, IMP-010, IMP-016, IMP-019, IMP-080 | `../02_world/bosses.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-023` | Dungeon Runtime | `NOT_STARTED` | IMP-010, IMP-018, IMP-019, IMP-021, IMP-022 | `../02_world/dungeons.md`, `../04_architecture/physics_geometry_contract.md` |
@@ -53,12 +53,12 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-026` | Equipment Catalog Runtime Expansion | `NOT_STARTED` | IMP-003, IMP-012 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-027` | Crafting / Enhancement | `NOT_STARTED` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
 | `IMP-028` | NPC Services / Shops | `NOT_STARTED` | IMP-007, IMP-009, IMP-018, IMP-027 | `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md` |
-| `IMP-029` | Direct Trade | `NOT_STARTED` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
-| `IMP-030` | Auction House | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
+| `IMP-029` | Direct Trade | `IN_PROGRESS` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
+| `IMP-030` | Auction House | `IN_PROGRESS` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
 | `IMP-031` | Soul Contracts | `NOT_STARTED` | IMP-010, IMP-012, IMP-016 | `../03_systems/soul_contracts.md`, `../07_content/soul_catalog.md` |
 | `IMP-032` | Spirit Meridian | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/spirit_meridian.md`, `../07_content/build_catalog.md` |
 | `IMP-033` | Formations | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/formations.md`, `../07_content/build_catalog.md` |
-| `IMP-034` | Friends / Block / Chat | `NOT_STARTED` | IMP-018, IMP-080, IMP-100 | `../03_systems/social.md`, `../05_network/messages.md` |
+| `IMP-034` | Friends / Block / Chat | `IN_PROGRESS` | IMP-018, IMP-080, IMP-100 | `../03_systems/social.md`, `../05_network/messages.md` |
 | `IMP-035` | Party | `NOT_STARTED` | IMP-018, IMP-080, IMP-100 | `../03_systems/party.md`, `../05_network/messages.md` |
 | `IMP-036` | Guild Core / Progression | `NOT_STARTED` | IMP-007, IMP-034, IMP-100 | `../03_systems/guild.md`, `../03_systems/guild_progression.md` |
 | `IMP-037` | Guild Storage | `NOT_STARTED` | IMP-008, IMP-009, IMP-036 | `../03_systems/guild_storage.md`, `../06_data/data_model.md` |
@@ -123,7 +123,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
 | `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
 | `IMP-098` | Observability Core | `DONE` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
-| `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `NOT_STARTED` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
+| `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `IN_PROGRESS` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
 | `IMP-100` | Character Lifecycle | `DONE` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
 | `IMP-101` | URP 2D Rendering & Lighting Setup | `DONE` | IMP-000 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
 | `IMP-102` | Entitlement Claims & Store Client | `NOT_STARTED` | IMP-010, IMP-053, IMP-066 | `../03_systems/account_storage.md`, `../03_systems/monetization.md` |
@@ -1229,10 +1229,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-009/"
 
 ## `IMP-010` — Reward Claims
 id: IMP-010
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-010"
+branch: "imp/IMP-010-reward-claims"
+claimed_at: "2026-10-08T05:37:26Z"
 blocked_by: ""
 
 specs: [`../03_systems/reward_claims.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -1442,10 +1442,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-013/"
 
 ## `IMP-014` — Combat Action State Machine
 id: IMP-014
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-014"
+branch: "imp/IMP-014-combat-action-fsm"
+claimed_at: "2026-10-08T05:37:26Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/combat.md`, `../01_gameplay/skills.md`, `../04_architecture/realtime_loop.md`, `../09_testing/gameplay.md`, `../05_network/protocol.md`, `../05_network/messages.md`]
@@ -1737,10 +1737,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-095/"
 
 ## `IMP-099` — Client Screens: Login, Queue, Loading, Settings, Credits
 id: IMP-099
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-099"
+branch: "imp/IMP-099-client-screens"
+claimed_at: "2026-10-08T05:25:54Z"
 blocked_by: ""
 
 specs: [`../04_architecture/client_experience_contract.md`, `../04_architecture/client.md`, `../04_architecture/client_performance.md`, `../04_architecture/client_localization.md`, `../07_security/auth.md`, `../07_security/session.md`]
@@ -1898,10 +1898,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-019/"
 
 ## `IMP-020` — Discovery / Progression Source Events
 id: IMP-020
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-020"
+branch: "imp/IMP-020-discovery-events"
+claimed_at: "2026-10-08T05:37:26Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/README.md`, `../01_gameplay/core_loop.md`, `../07_content/world_route_catalog.md`, `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -2640,10 +2640,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-028/"
 
 ## `IMP-029` — Direct Trade
 id: IMP-029
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-029"
+branch: "imp/IMP-029-direct-trade"
+claimed_at: "2026-10-08T05:37:26Z"
 blocked_by: ""
 
 specs: [`../03_systems/trading_auction.md`, `../06_data/data_model.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -2685,10 +2685,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-029/"
 
 ## `IMP-030` — Auction House
 id: IMP-030
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-030"
+branch: "imp/IMP-030-auction-house"
+claimed_at: "2026-10-08T05:37:26Z"
 blocked_by: ""
 
 specs: [`../03_systems/trading_auction.md`, `../06_data/data_model.md`, `../06_data/physical_schema_contract.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -2838,10 +2838,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-033/"
 
 ## `IMP-034` — Friends / Block / Chat
 id: IMP-034
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-034"
+branch: "imp/IMP-034-friends-block-chat"
+claimed_at: "2026-10-08T05:37:26Z"
 blocked_by: ""
 
 specs: [`../03_systems/social.md`, `../05_network/messages.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
