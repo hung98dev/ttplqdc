@@ -83,7 +83,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-056` | Retention & Erasure Engine | `NOT_STARTED` | IMP-043, IMP-094, IMP-100 | `../07_security/data_protection.md`, `../07_security/personal_data_register.md` |
 | `IMP-057` | Linh Thú Companion Runtime | `NOT_STARTED` | IMP-008, IMP-010, IMP-016, IMP-019, IMP-100 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
 | `IMP-058` | Folk Fishing Runtime | `NOT_STARTED` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
-| `IMP-059` | Hearth / Cooking / Bonfire Runtime | `NOT_STARTED` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
+| `IMP-059` | Hearth / Cooking / Bonfire Runtime | `IN_PROGRESS` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
 | `IMP-060` | Atlas Journal Runtime | `NOT_STARTED` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
 | `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `DONE` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
@@ -2166,10 +2166,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-058/"
 
 ## `IMP-059` — Hearth / Cooking / Bonfire Runtime
 id: IMP-059
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-059"
+branch: "imp/IMP-059-hearth-bonfire"
+claimed_at: "2026-10-08T06:32:15Z"
 blocked_by: ""
 
 specs: [`../02_world/world_rules.md`, `../07_content/crafting_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
