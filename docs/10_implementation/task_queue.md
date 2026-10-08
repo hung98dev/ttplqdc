@@ -54,7 +54,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-027` | Crafting / Enhancement | `NOT_STARTED` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
 | `IMP-028` | NPC Services / Shops | `NOT_STARTED` | IMP-007, IMP-009, IMP-018, IMP-027 | `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md` |
 | `IMP-029` | Direct Trade | `IN_PROGRESS` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
-| `IMP-030` | Auction House | `IN_PROGRESS` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
+| `IMP-030` | Auction House | `DONE` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
 | `IMP-031` | Soul Contracts | `NOT_STARTED` | IMP-010, IMP-012, IMP-016 | `../03_systems/soul_contracts.md`, `../07_content/soul_catalog.md` |
 | `IMP-032` | Spirit Meridian | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/spirit_meridian.md`, `../07_content/build_catalog.md` |
 | `IMP-033` | Formations | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/formations.md`, `../07_content/build_catalog.md` |
@@ -2685,7 +2685,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-029/"
 
 ## `IMP-030` — Auction House
 id: IMP-030
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-030"
 branch: "imp/IMP-030-auction-house"
 claimed_at: "2026-10-08T05:37:26Z"
