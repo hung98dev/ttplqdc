@@ -3,6 +3,7 @@ using NUnit.Framework;
 using ThinhThan.Net;
 using ThinhThan.Protocol.V1;
 using ThinhThan.Systems.Combat;
+using CombatPresentation = ThinhThan.Systems.Combat.CombatPresentation;
 
 namespace ThinhThan.Tests.PlayMode.CombatPresentation
 {
@@ -34,7 +35,7 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
                 SkillId = "basic_1",
                 ClientSeq = 7,
                 ServerTick = 10,
-                Facing = Facing.FacingRight,
+                Facing = Facing.Right,
                 TargetEntityId = Foe,
                 CooldownEndsAtTick = 20,
                 MpAfter = 950,
@@ -79,7 +80,7 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
                 {
                     ClientSeq = 1,
                     RequestMessageId = 104, // portal: IWorldSink domain
-                    ErrorCode = ErrorCode.ErrorCodeOutOfRange,
+                    ErrorCode = ErrorCode.OutOfRange,
                 }));
             Assert.AreEqual(ErrorCode.Unspecified,
                 applier.State.LastReject);
@@ -89,11 +90,11 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
                 {
                     ClientSeq = 9,
                     RequestMessageId = CombatApplier.C2SBasicAttack,
-                    ErrorCode = ErrorCode.ErrorCodeCooldownActive,
+                    ErrorCode = ErrorCode.CooldownActive,
                 }));
             var cue = pres.Evaluate(10);
 
-            Assert.AreEqual(ErrorCode.ErrorCodeCooldownActive,
+            Assert.AreEqual(ErrorCode.CooldownActive,
                 applier.State.LastReject);
             Assert.AreEqual(9UL, applier.State.LastRejectSeq);
             Assert.AreEqual(CombatPresentationCue.Rejected, cue);
@@ -118,8 +119,8 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
                     ActionInstanceId = 2,
                     SourceEntityId = Foe,
                     TargetEntityId = Self,
-                    ResultKind = CombatResultKind.CombatResultKindDamage,
-                    Outcome = CombatOutcome.CombatOutcomeHit,
+                    ResultKind = CombatResultKind.Damage,
+                    Outcome = CombatOutcome.Hit,
                     PostMitigationDamage = 40,
                     HpDamage = 40,
                     TargetHpAfter = 460,
@@ -145,8 +146,8 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
                     ServerTick = 20,
                     SourceEntityId = Foe,
                     TargetEntityId = Self,
-                    ResultKind = CombatResultKind.CombatResultKindDamage,
-                    Outcome = CombatOutcome.CombatOutcomeHit,
+                    ResultKind = CombatResultKind.Damage,
+                    Outcome = CombatOutcome.Hit,
                     PostMitigationDamage = 30,
                     HpDamage = 18,
                     TargetHpAfter = 442,
@@ -175,8 +176,8 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
                     ServerTick = 12,
                     SourceEntityId = Foe,
                     TargetEntityId = Self,
-                    ResultKind = CombatResultKind.CombatResultKindDamage,
-                    Outcome = CombatOutcome.CombatOutcomeHit,
+                    ResultKind = CombatResultKind.Damage,
+                    Outcome = CombatOutcome.Hit,
                     PostMitigationDamage = 999,
                     HpDamage = 999,
                     TargetHpAfter = 0,
@@ -214,25 +215,28 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
             now = 12345;
             var c = System.Threading.CancellationToken.None;
 
-            _ = intents.BasicAttackAsync(Facing.FacingRight, Foe, c);
+            _ = intents.BasicAttackAsync(Facing.Right, Foe, c);
             Assert.AreEqual(CombatApplier.C2SBasicAttack,
                 sender.LastId);
-            var atk = (C2SBasicAttack)sender.LastMsg;
-            Assert.AreEqual(12345UL, atk.ClientMonoMs);
+            var atk = sender.LastMsg as C2SBasicAttack;
+            Assert.NotNull(atk);
+            Assert.AreEqual(12345UL, atk!.ClientMonoMs);
             Assert.AreEqual(Foe, atk.TargetEntityId);
 
-            _ = intents.UseSkillAsync("s1", Facing.FacingLeft, 0, 100, 0, c);
-            var sk = (C2SSkillUse)sender.LastMsg;
+            _ = intents.UseSkillAsync("s1", Facing.Left, 0, 100, 0, c);
+            var sk = sender.LastMsg as C2SSkillUse;
+            Assert.NotNull(sk);
             Assert.AreEqual(CombatApplier.C2SSkillUse, sender.LastId);
-            Assert.AreEqual("s1", sk.SkillId);
-            Assert.AreEqual(Facing.FacingLeft, sk.Facing);
+            Assert.AreEqual("s1", sk!.SkillId);
+            Assert.AreEqual(Facing.Left, sk.Facing);
             Assert.AreEqual(100, sk.AreaCenterXMm);
 
             _ = intents.SetTargetAsync(Foe, c);
             Assert.AreEqual(CombatApplier.C2STargetIntent,
                 sender.LastId);
-            Assert.AreEqual(Foe,
-                ((C2STargetIntent)sender.LastMsg).TargetEntityId);
+            var ti = sender.LastMsg as C2STargetIntent;
+            Assert.NotNull(ti);
+            Assert.AreEqual(Foe, ti!.TargetEntityId);
         }
 
         private sealed class FakeSender : ICombatSender
