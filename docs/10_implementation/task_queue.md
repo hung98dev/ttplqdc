@@ -44,7 +44,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-018` | Map / Transfer / Checkpoint Runtime | `DONE` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
 | `IMP-019` | Spawn Runtime / Monster AI | `NOT_STARTED` | IMP-003, IMP-016, IMP-018 | `../02_world/spawning.md`, `../02_world/monsters.md` |
-| `IMP-020` | Discovery / Progression Source Events | `IN_PROGRESS` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
+| `IMP-020` | Discovery / Progression Source Events | `DONE` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
 | `IMP-021` | Quest Runtime | `NOT_STARTED` | IMP-010, IMP-011, IMP-018, IMP-019 | `../02_world/quests.md`, `../07_content/quest_catalog.md` |
 | `IMP-022` | Boss Runtime / WorldConsequence | `NOT_STARTED` | IMP-005, IMP-010, IMP-016, IMP-019, IMP-080 | `../02_world/bosses.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-023` | Dungeon Runtime | `NOT_STARTED` | IMP-010, IMP-018, IMP-019, IMP-021, IMP-022 | `../02_world/dungeons.md`, `../04_architecture/physics_geometry_contract.md` |
@@ -1898,7 +1898,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-019/"
 
 ## `IMP-020` — Discovery / Progression Source Events
 id: IMP-020
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-020"
 branch: "imp/IMP-020-discovery-events"
 claimed_at: "2026-10-08T05:37:26Z"
