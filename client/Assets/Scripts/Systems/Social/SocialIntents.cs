@@ -44,61 +44,67 @@ namespace ThinhThan.Systems.Social
         public async Awaitable<byte[]> RequestFriend(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return await Send(611, new C2SFriendRequest
+            var req = new C2SFriendRequest
             {
                 TargetCharacterId = ByteString.CopyFrom(
                     targetCharacterId ?? new byte[0]),
-            }, cancel);
+            };
+            return await Send(611, req, cancel);
         }
 
         public async Awaitable<byte[]> AcceptFriend(
             byte[] requesterCharacterId, CancellationToken cancel)
         {
-            return await Send(613, new C2SFriendAccept
+            var req = new C2SFriendAccept
             {
                 RequesterCharacterId = ByteString.CopyFrom(
                     requesterCharacterId ?? new byte[0]),
-            }, cancel);
+            };
+            return await Send(613, req, cancel);
         }
 
         public async Awaitable<byte[]> DeclineFriend(
             byte[] requesterCharacterId, CancellationToken cancel)
         {
-            return await Send(614, new C2SFriendDecline
+            var req = new C2SFriendDecline
             {
                 RequesterCharacterId = ByteString.CopyFrom(
                     requesterCharacterId ?? new byte[0]),
-            }, cancel);
+            };
+            return await Send(614, req, cancel);
         }
 
         public async Awaitable<byte[]> RemoveFriend(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return await Send(615, new C2SFriendRemove
+            var req = new C2SFriendRemove
             {
                 TargetCharacterId = ByteString.CopyFrom(
                     targetCharacterId ?? new byte[0]),
-            }, cancel);
+            };
+            return await Send(615, req, cancel);
         }
 
         public async Awaitable<byte[]> AddBlock(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return await Send(617, new C2SBlockAdd
+            var req = new C2SBlockAdd
             {
                 TargetCharacterId = ByteString.CopyFrom(
                     targetCharacterId ?? new byte[0]),
-            }, cancel);
+            };
+            return await Send(617, req, cancel);
         }
 
         public async Awaitable<byte[]> RemoveBlock(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return await Send(618, new C2SBlockRemove
+            var req = new C2SBlockRemove
             {
                 TargetCharacterId = ByteString.CopyFrom(
                     targetCharacterId ?? new byte[0]),
-            }, cancel);
+            };
+            return await Send(618, req, cancel);
         }
 
         public async Awaitable<byte[]> ReportPlayer(
