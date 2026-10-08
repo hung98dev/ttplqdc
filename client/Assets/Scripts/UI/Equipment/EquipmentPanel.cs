@@ -115,10 +115,11 @@ namespace ThinhThan.UI.Equipment
                 _live[i].SlotId = SlotIds[i];
                 _live[i].Apply(s.ItemAt(VisibleLoadoutId, SlotIds[i]));
                 int captured = i;
-                if (_live[i].UnequipButton != null)
+                Button? unequip = _live[i].UnequipButton;
+                if (unequip != null)
                 {
-                    _live[i].UnequipButton.onClick.RemoveAllListeners();
-                    _live[i].UnequipButton.onClick.AddListener(
+                    unequip.onClick.RemoveAllListeners();
+                    unequip.onClick.AddListener(
                         () => OnUnequipClicked(captured));
                 }
             }
@@ -146,7 +147,7 @@ namespace ThinhThan.UI.Equipment
         {
             while (_live.Count < needed)
             {
-                EquipmentSlotView c = _pool!.Get();
+                EquipmentSlotView c = _pool!.Rent();
                 c.gameObject.SetActive(true);
                 _live.Add(c);
             }
@@ -160,7 +161,8 @@ namespace ThinhThan.UI.Equipment
             }
             _lastRequestedSlot = slotIndex;
             _ = Intents.RequestUnequip(VisibleLoadoutId,
-                SlotIds[slotIndex], gameObject.GetCancellationTokenOnDestroy());
+                SlotIds[slotIndex],
+                System.Threading.CancellationToken.None);
         }
 
         private void OnSwitchClicked()
@@ -170,7 +172,7 @@ namespace ThinhThan.UI.Equipment
                 return;
             }
             _ = Intents.RequestSwitchActive(VisibleLoadoutId,
-                gameObject.GetCancellationTokenOnDestroy());
+                System.Threading.CancellationToken.None);
         }
 
         /// <summary>Last unequip request slot (test introspection).</summary>
