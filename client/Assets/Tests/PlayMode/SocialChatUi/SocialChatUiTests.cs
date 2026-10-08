@@ -138,7 +138,7 @@ namespace ThinhThan.Tests.PlayMode.SocialChatUi
             }));
             Assert.NotNull(a.State.LastChatResult);
             Assert.AreEqual(ResultStatus.Success,
-                a.State.LastChatResult.Result.Status);
+                a.State.LastChatResult!.Result.Status);
 
             a.Apply(Frame(633, new S2CReportPlayerResult
             {
@@ -162,7 +162,7 @@ namespace ThinhThan.Tests.PlayMode.SocialChatUi
                 ExpiresAtMs = 42,
             }));
             Assert.NotNull(a.State.PendingPush);
-            Assert.AreEqual("req", a.State.PendingPush.DisplayName);
+            Assert.AreEqual("req", a.State.PendingPush!.DisplayName);
 
             a.Apply(Frame(654, new S2CSocialResult
             {
@@ -175,7 +175,7 @@ namespace ThinhThan.Tests.PlayMode.SocialChatUi
             }));
             Assert.NotNull(a.State.LastSocialResult);
             Assert.AreEqual(ErrorCode.CapacityFull,
-                a.State.LastSocialResult.Result.ErrorCode);
+                a.State.LastSocialResult!.Result.ErrorCode);
         }
 
         [Test]
