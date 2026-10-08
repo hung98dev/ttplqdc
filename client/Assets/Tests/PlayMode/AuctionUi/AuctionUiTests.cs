@@ -158,12 +158,12 @@ namespace ThinhThan.Tests.PlayMode.AuctionUi
                     },
                     Rows =
                     {
-                        new AuctionListingView
+                        new AuctionSearchRow
                         {
                             ListingId = ByteString.CopyFrom(Id16(5)),
                             Item = Item(Id16(13), "item.weapon.t3", 1),
                             PriceCommon = 4000,
-                            State = AuctionListingState.Active,
+                            SellerDisplayName = "seller.test",
                         },
                     },
                     NextPageCursor = "cGFnZTI",
