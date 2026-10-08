@@ -1252,6 +1252,7 @@ Implement persistent overflow/recovery claims and compatible currency aggregatio
 ## Acceptance
 - Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064 reward-claim paging: 434 sends `total_count` and the 50 oldest PENDING claims only after attach; `C2S_REWARD_CLAIM_LIST_REQUEST` (439, offset, limit 1..50) returns 440 in the same order; every committed change emits `S2C_REWARD_CLAIM_DELTA` (441) with `claims_revision` + 1; no frame exceeds the outbound limit at any claim count.
+- `claims_revision` reads `characters.claims_revision` (`../06_data/data_model.md` § Character, migration pair `000004_*` from the routed schema gatefix): exactly +1 per committed transaction mutating the character's claims projection under the character lock — never `SUM(reward_claims.revision)`.
 - independent reward slots settle without sibling rollback/reroll.
 - at the 100-claim cap an item claim consolidates per `owner_character_id + item_id + effective_binding` (never per-instance state); preventable sources reject with `CLAIM_CAP_REACHED` and consume nothing; non-preventable sources exceed the cap; no reward is deleted (ADR-0063).
 - ADR-0060: unknown `source_type` is rejected; 409 returns granted lines; 434 lists every PENDING claim with `cap = 100`.
@@ -1904,7 +1905,7 @@ blocked_by: ""
 specs: [`../01_gameplay/README.md`, `../01_gameplay/core_loop.md`, `../07_content/world_route_catalog.md`, `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
 adrs: [`0025-peak-moments-and-progression-books.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-011, IMP-018]
-owned_paths: [`server/internal/sim/discovery/`, `server/internal/sim/travel/`, `server/internal/durable/discovery/`, `client/Assets/Scripts/UI/Discovery/`, `client/Assets/Tests/PlayMode/DiscoveryPresentation/`]
+owned_paths: [`server/internal/sim/discovery/`, `server/internal/sim/travel/`, `server/internal/durable/discovery/`, `server/internal/sim/world/interact.go`, `client/Assets/Scripts/UI/Discovery/`, `client/Assets/Tests/PlayMode/DiscoveryPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [first-discovery/progression source event, character state, operation ID]
 contract_outputs: [once-only durable progress/reward result and client discovery event]
@@ -1919,6 +1920,7 @@ Implement 24 character first-discovery rewards and progression-source operation 
 - Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - 0.8% discovery budget/act (safe-anchor 0.2% + three FIELD 0.2% each) and retry tests pass.
 - travel to an undiscovered destination returns `NOT_DISCOVERED` and charges nothing; the tier fee is charged exactly once per `operation_id`; a successful travel starts the transfer flow and yields one 116.
+- the `travel` service is admitted through the bounded `interact.go` grant (`../10_implementation/repository_layout.md` § Ownership Rules): IMP-020 adds only its `travel` service-id constant and `RegisterService` line in `NewInteractDispatcher`; the dispatcher type and mechanics stay IMP-018-owned.
 
 ## Tests
 - `server/internal/sim/discovery/discovery_test.go`: TestTwentyFourFirstDiscoveryEvents, TestProgressionSourceOperationIDs, TestIdempotentDiscoveryGrants.
@@ -2187,6 +2189,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - `KINDLE` consumes one `item.material.cui_lua_trai` at an inactive bonfire per `world_rules.md`.
 - `COOK` of any `recipe.food.*` yields the dish plus 1 `item.material.cui_lua_trai`.
 - `BONFIRE_REST` ticks rest EXP and Linh Thú bond per `world_rules.md`.
+- bonfire-rest bond grants are emitted as `sim.beast_settlement` intents (REWARD / JournalRewardCommand kind BEAST, `../06_data/save_rules.md` § Closed Durable Queue Producer Registry) per completed 300 s active-rest interval; `character_beasts`/`character_beast_bond_daily` writes are applied by the owning `durable/beasts` consumer (IMP-057) — IMP-059 never writes beast tables directly.
 - No shop faucet for kindling.
 
 ## Tests
@@ -2437,6 +2440,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - 18 `item.beast_eq.*` equip/unequip without an account item vault.
 - Feeding any owned beast applies `gain = min(food_bond, 20 - daily_gained, 100 - bond_points)` per unit with food values from `item_catalog.md` (+5/+8/+10), consuming clamped units; beast equipment requires `beast_level >= required_level`; the deactivate form of 410 leaves zero active beasts; level-up consumes the catalog cost and is rejected above `character_level` or 60; P2 payloads are exactly the fixed legal payloads of `spirit_beasts.md` and resonance ICD = `max(45s, 0.90 x authored)`.
 - ADR-0060: level-up consumes exactly the next-level cost, rejects above character level (`LEVEL_TOO_LOW`) or 60 (`CAPACITY_FULL`); deactivate leaves no active beast; the food counter is per `(character_id, utc_date)` shared by all beasts.
+- `durable/beasts` registers the `sim.beast_settlement` consumer for non-beast producers' bond grants (bonfire rest, `../06_data/data_model.md` § Spirit Beasts): each intent credits `character_beasts.bond_points` (0..100) and bumps `character_beast_bond_daily.bonfire_points_gained` (<= 6 per `character_id + beast_id + utc_date`, `../02_world/world_rules.md` § Linh Thú Bonding) atomically in one transaction.
 
 ## Tests
 - `server/internal/sim/beasts/beasts_test.go`: Unit: composite PK uniqueness; second grant of the same `beast_id` is idempotent.
