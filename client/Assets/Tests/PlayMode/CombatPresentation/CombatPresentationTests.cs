@@ -3,7 +3,7 @@ using NUnit.Framework;
 using ThinhThan.Net;
 using ThinhThan.Protocol.V1;
 using ThinhThan.Systems.Combat;
-using CombatPresentation = ThinhThan.Systems.Combat.CombatPresentation;
+using CombatPres = ThinhThan.Systems.Combat.CombatPresentation;
 
 namespace ThinhThan.Tests.PlayMode.CombatPresentation
 {
@@ -52,7 +52,7 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
         public void ActionStartPresentsFromAuthoritativeStarted()
         {
             var applier = new CombatApplier(Self);
-            var pres = new CombatPresentation(applier.State);
+            var pres = new CombatPres(applier.State);
 
             applier.Apply(Frame(CombatApplier.S2CActionStarted,
                 Started(1)));
@@ -72,7 +72,7 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
         public void ActionRejectPresentsOnlyCombatRequests()
         {
             var applier = new CombatApplier(Self);
-            var pres = new CombatPresentation(applier.State);
+            var pres = new CombatPres(applier.State);
 
             // A world-owned request id must not touch combat state.
             applier.Apply(Frame(CombatApplier.S2CActionRejected,
@@ -107,7 +107,7 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
         public void InterruptAndJustGuardPresentOnDamage()
         {
             var applier = new CombatApplier(Self);
-            var pres = new CombatPresentation(applier.State);
+            var pres = new CombatPres(applier.State);
             applier.Apply(Frame(CombatApplier.S2CActionStarted,
                 Started(2)));
 
@@ -165,7 +165,7 @@ namespace ThinhThan.Tests.PlayMode.CombatPresentation
         public void DeathPresentsTerminalStateAndRespawnFloor()
         {
             var applier = new CombatApplier(Self);
-            var pres = new CombatPresentation(applier.State);
+            var pres = new CombatPres(applier.State);
             applier.Apply(Frame(CombatApplier.S2CActionStarted,
                 Started(3)));
 
