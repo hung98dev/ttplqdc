@@ -286,11 +286,13 @@ The PRIMARY KEY `(account_entitlement_id, character_id, reward_tier_id)` is the 
 Secrets store only verifier/hash material required by security specs.
 
 # Character
-Root includes character_id, account_id, display/normalized name, class_id, lifecycle, appearance (fixed class default at creation), `created_at`, and `updated_at`. Both timestamps are server-owned `timestamptz`; `updated_at` starts at creation and advances on every committed update to the `characters` row. Changes only to child/projection rows do not advance it. When migration `000003` is implemented, existing rows receive its transaction timestamp because their earlier edit times cannot be reconstructed.
+Root includes character_id, account_id, display/normalized name, class_id, lifecycle, appearance (fixed class default at creation), `created_at`, and `updated_at`. Both timestamps are server-owned `timestamptz`; `updated_at` starts at creation and advances on every committed update to the `characters` row. Changes only to child/projection rows do not advance it. The column is part of the baseline schema `000001` (ADR-0048 amendment); the retired `000003` migration and its existing-row backfill rule no longer apply.
 
-Owned projections include progression, potential allocation, skills, currencies, progression flags, discoveries/first-clears, checkpoint, cosmetic selection, fishing UTC-date catch count (`world_rules.md` daily cap 50), and chivalry lifetime plus utc-day counters (`character_chivalry`, § Social / Party).
+Owned projections include progression, potential allocation, skills, currencies, progression flags, discoveries/first-clears, checkpoint, cosmetic selection, fishing UTC-date catch count (`world_rules.md` daily cap 50), bonfire rest-EXP UTC-day tick count (`character_rest_daily`, `world_rules.md` § Passive Rest EXP cap 180), and chivalry lifetime plus utc-day counters (`character_chivalry`, § Social / Party).
 
 `characters.progression_revision BIGINT NOT NULL DEFAULT 0` (migration pair `000002_*`, `physical_schema_contract.md` §6) is the aggregate revision carried by `S2C_PROGRESSION_STATE` (515). Every committed transaction that mutates the 515 projection — level/`current_exp`, `unspent_skill_points`, `unspent_potential_points`, `character_skill_levels`, `character_potential_allocations`, or the persisted skill loadout — increments it by exactly 1 under the character lock in the same transaction. It is a staleness-detection revision (`save_rules.md` § Revisions / Conflicts), not a +1-per-push sequence.
+
+`characters.claims_revision BIGINT NOT NULL DEFAULT 0` (migration pair `000004_*`, `physical_schema_contract.md` §6) is the aggregate revision carried by `S2C_REWARD_CLAIM_DELTA` (441). Every committed transaction that mutates the character's claims projection — claim creation, consolidation/aggregate merge, `CLAIMING`/`CLAIMED`/`EXPIRED` transitions, and the expiry sweep — increments it by exactly 1 under the character lock in the same transaction, so a client's revision gap is always +1 (`../05_network/messages.md` § Reward claims). It is not derivable from `reward_claims.revision`: claim creation inserts a revision-0 row and a merge bumps several rows at once, so a `SUM`-style aggregate cannot produce the +1-exact sequence.
 
 ### character_activity
 ```text
@@ -310,6 +312,16 @@ character_attach_events
   INDEX (character_id, attached_at)
 ```
 First attach in one session epoch writes this immutable event with the activity projection; reattach in that epoch does not overwrite it. The cycle-cutoff query uses events before the cutoff, not the latest mutable activity row. Retention is 180 days on anonymized character identity.
+
+```text
+character_rest_daily                -- bonfire rest-EXP daily tick counter (migration pair 000006_*;
+                                    -- world_rules.md § Passive Rest EXP)
+  character_id       UUID NOT NULL REFERENCES characters(character_id)
+  utc_date           DATE NOT NULL
+  rest_ticks_gained  SMALLINT NOT NULL DEFAULT 0 CHECK (rest_ticks_gained >= 0 AND rest_ticks_gained <= 180)
+  PRIMARY KEY (character_id, utc_date)
+```
+Each `sim.rest_settlement` intent (REWARD / JournalRewardCommand kind REST, `save_rules.md` § Closed Durable Queue Producer Registry) grants `rest_exp` for one completed 10 s bonfire-rest tick and bumps `rest_ticks_gained` in the same transaction; a tick arriving at the cap grants nothing.
 
 ### character_currencies
 ```text
@@ -419,10 +431,11 @@ Persist owned Linh Thú, level, bond_points, active state, and 3 equipment slot 
 ~~~
 character_beasts PK (character_id, beast_id) plus level, bond_points, is_active, updated_at
 character_beast_food_daily PK (character_id, utc_date) plus food_points_gained (0..20; shared by all beasts, spirit_beasts.md)
+character_beast_bond_daily PK (character_id, beast_id, utc_date) plus bonfire_points_gained (0..6; separate from the food counter, ../02_world/world_rules.md § Linh Thú Bonding; migration pair 000005_*)
 beast_equipment_locations PK (character_id, beast_id, slot_id) plus item_instance_id
 FK beast_equipment_locations -> character_beasts
 ~~~
-Constraints enforce at most one active beast per character, beast level <= character level, exactly 3 valid slot IDs (`vong_co`, `ao_giap`, `linh_chau`), and one beast equipment item in at most one beast slot. Unequipped BEAST_EQUIPMENT lives in CHARACTER_INVENTORY; equipped uses BEAST_EQUIPMENT_SLOT.
+Constraints enforce at most one active beast per character, beast level <= character level, exactly 3 valid slot IDs (`vong_co`, `ao_giap`, `linh_chau`), and one beast equipment item in at most one beast slot. Unequipped BEAST_EQUIPMENT lives in CHARACTER_INVENTORY; equipped uses BEAST_EQUIPMENT_SLOT. Bonfire-rest bond grants (`../02_world/world_rules.md` § Linh Thú Bonding) are emitted by the bonfire runtime as `sim.beast_settlement` intents (REWARD / JournalRewardCommand kind BEAST, `save_rules.md` § Closed Durable Queue Producer Registry); the owning `durable/beasts` consumer applies the `bond_points` credit and the `character_beast_bond_daily` counter in one transaction — non-beast producers never write `character_beasts` or `character_beast_bond_daily` directly.
 # Quests / Progression
 Persist active/completed quest state, daily window/choice keys, story progression, map discovery, first-clear flags, bonus book flags (`progression.book.potential.<level>`, `progression.book.skill.<level>`) and one-time reward operation references.
 
