@@ -1746,7 +1746,7 @@ blocked_by: ""
 specs: [`../04_architecture/client_experience_contract.md`, `../04_architecture/client.md`, `../04_architecture/client_performance.md`, `../04_architecture/client_localization.md`, `../07_security/auth.md`, `../07_security/session.md`]
 adrs: [`0015-unity-localization.md`, `0051-first-party-username-password-login.md`, `0052-single-launch-world.md`, `0056-volumetric-art-direction-and-2d-lighting.md`, `0059-client-smoothness-by-construction-and-machine-enforced-code-quality.md`, `0066-measurable-client-gates-forced-cap-worst-case-drain-and-ops-stack.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0070-durable-restart-relic-expiry-erasure-ledger-and-entity-budgets.md`, `0071-client-presentation-contract-reconciliation.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-064, IMP-065, IMP-066, IMP-095]
-owned_paths: [`client/Assets/Scripts/UI/Screens/`, `client/Assets/Tests/PlayMode/Screens/`]
+owned_paths: [`client/Assets/Scripts/UI/Screens/`, `client/Assets/Tests/PlayMode/Screens/`, `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.en_us.asset`, `client/Assets/AddressableAssetsData/AssetGroups/localization.strings.vi_vn.asset`, `client/Assets/AddressableAssetsData/AssetGroups/localization.shared.asset`]
 forbidden_paths: [`server/`]
 contract_inputs: [auth/session results, quality preset API, localization tables]
 contract_outputs: [login/register, login-queue, loading/transfer progress, settings and credits screens]
@@ -1760,6 +1760,7 @@ Implement login/register (password and federated), login-queue position with `re
 - `AUTH_INVALID` is shown generically; `SERVER_OVERLOADED` with `queue_position` enters `LOGIN_QUEUED` (`../04_architecture/client_experience_contract.md` §1, ADR-0066), shows the position, retries after `retry_after_ms`, and Cancel returns to `AUTH_TITLE`,
 - settings persist preset and battery saver through IMP-095; every string is a localization key in vi-VN and en-US.
 - PERF-015: loading screens switch `FrameBudget` to 12 ms mode and `Application.backgroundLoadingPriority` to High, run `GC.Collect` once before closing, and restore 2 ms / Low for gameplay.
+- the `loc.screens.*` StringTable collection is authored at `client/Assets/Localization/Tables/Screens/` (implicitly owned per `repository_layout.md` § Ownership Rules) and registered by appending only its `Screens`/`Screens Shared Data`/`Screens_<locale>` entries to the granted `localization.*` group files — no `Tables/Core/` writes and no edits to other packets' table data.
 
 ## Tests
 - `client/Assets/Tests/PlayMode/Screens/ScreensTests.cs`: TestLoginRegisterFlow, TestLoginQueueDisplay, TestLoginQueueCancelReturnsToTitle, TestSettingsPresetAndBatterySaver, TestCreditsKeyResolves.
