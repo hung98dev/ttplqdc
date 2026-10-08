@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "task_id": "IMP-020",
-  "source_tree_hash": "d9d06f6847bcff34baaedb2ff3d1b1259d3e8d37d044c90047229c7d41c2a6c2",
+  "source_tree_hash": "e102fb98e59354bb1b36798d38f1fe3ddc214ec10531eb7b6a63c4fabdf20112",
   "toolchain": {
     "go": "1.27.1",
     "unity": "6000.6.1f1",
@@ -19,7 +19,7 @@
         "-Drift"
       ],
       "exit_code": 0,
-      "wall_seconds": 1.696173662
+      "wall_seconds": 2.869525955
     },
     {
       "argv": [
@@ -39,7 +39,7 @@
         "./internal/global/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 11.406312301
+      "wall_seconds": 12.008014664
     },
     {
       "argv": [
@@ -54,7 +54,7 @@
         "./internal/global/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 39.348224439
+      "wall_seconds": 41.209227133
     },
     {
       "argv": [
@@ -65,7 +65,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 2.354428836
+      "wall_seconds": 2.480371817
     },
     {
       "argv": [
@@ -77,7 +77,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 32.210266458
+      "wall_seconds": 32.408609987
     },
     {
       "argv": [
@@ -85,7 +85,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 6.299610787
+      "wall_seconds": 6.779798766
     },
     {
       "argv": [
@@ -94,7 +94,7 @@
         "server/"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.12669363
+      "wall_seconds": 0.134329388
     },
     {
       "argv": [
@@ -105,7 +105,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 0.702995138
+      "wall_seconds": 0.722768206
     },
     {
       "argv": [
@@ -114,7 +114,7 @@
         "./internal/config/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 0.046637798
+      "wall_seconds": 0.049187068
     },
     {
       "argv": [
@@ -125,24 +125,54 @@
         "/home/runner/work/ttplqdc/ttplqdc/content_compile_report.json"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.092396742
+      "wall_seconds": 0.090410839
     }
   ],
   "test_summary": {
-    "total": 979,
-    "passed": 970,
+    "total": 661,
+    "passed": 659,
     "failed": 0,
-    "skipped": 9
+    "skipped": 2
   },
   "skipped_reasons": [
+    {
+      "id": "Q1.unity.editor",
+      "reason": "no-client-change",
+      "allowed": true
+    },
+    {
+      "id": "Q3.unity.compile",
+      "reason": "no-client-change",
+      "allowed": true
+    },
+    {
+      "id": "Q3.unity.editmode",
+      "reason": "no-client-change",
+      "allowed": true
+    },
     {
       "id": "Q3.unity.loadgraphics",
       "reason": "owner-not-done",
       "allowed": true
+    },
+    {
+      "id": "Q3.unity.performance",
+      "reason": "no-client-change",
+      "allowed": true
+    },
+    {
+      "id": "Q3.unity.playmode",
+      "reason": "no-client-change",
+      "allowed": true
+    },
+    {
+      "id": "Q3.unity.visualreview",
+      "reason": "no-client-change",
+      "allowed": true
     }
   ],
   "content_revision": "6286b944d6ee1d55d1e0fafcd1c30ac1370e96706abb0870bc0d9382cc445938",
-  "ci_run_id": "37777615507",
+  "ci_run_id": "37784009757",
   "run_attempt": "1",
   "jobs": [
     {
@@ -383,7 +413,8 @@
       "id": "Q1.unity.editor",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "PASS"
+      "result": "SKIP",
+      "reason": "no-client-change"
     },
     {
       "id": "Q2.codegen",
@@ -413,13 +444,15 @@
       "id": "Q3.unity.compile",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "PASS"
+      "result": "SKIP",
+      "reason": "no-client-change"
     },
     {
       "id": "Q3.unity.editmode",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "PASS"
+      "result": "SKIP",
+      "reason": "no-client-change"
     },
     {
       "id": "Q3.unity.loadgraphics",
@@ -432,19 +465,22 @@
       "id": "Q3.unity.performance",
       "os": "windows",
       "owner": "IMP-095",
-      "result": "PASS"
+      "result": "SKIP",
+      "reason": "no-client-change"
     },
     {
       "id": "Q3.unity.playmode",
       "os": "windows",
       "owner": "IMP-065",
-      "result": "PASS"
+      "result": "SKIP",
+      "reason": "no-client-change"
     },
     {
       "id": "Q3.unity.visualreview",
       "os": "windows",
       "owner": "IMP-070",
-      "result": "PASS"
+      "result": "SKIP",
+      "reason": "no-client-change"
     },
     {
       "id": "Q4.api_fence",
