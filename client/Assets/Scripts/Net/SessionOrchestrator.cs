@@ -108,6 +108,81 @@ namespace ThinhThan.Net
             set;
         }
 
+        /// <summary>Reward-claim frames land here (409, 434, 440, 441) —
+        /// Systems/Rewards (IMP-010).</summary>
+        public IRewardClaimSink? RewardClaims
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Loadout/equipment frames land here (403) —
+        /// Systems/Equipment (IMP-012).</summary>
+        public IEquipmentSink? Equipment
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Combat action/status frames land here
+        /// (203, 204, 205, 304) — Systems/Combat (IMP-014).
+        /// 204 is shared with World.</summary>
+        public ICombatSink? Combat
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Interact-result frames land here (116) —
+        /// Systems/Discovery (IMP-020). 116 is shared with World.</summary>
+        public IDiscoverySink? Discovery
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Trade frames land here (701, 704, 706, 709, 710) —
+        /// Systems/Trade (IMP-029).</summary>
+        public ITradeSink? Trade
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Auction frames land here
+        /// (731, 733, 735, 736, 739, 741, 743, 744) —
+        /// Systems/Auction (IMP-030).</summary>
+        public IAuctionSink? Auction
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Social frames land here
+        /// (601, 612, 616, 619, 633, 654, 655) —
+        /// Systems/Social (IMP-034).</summary>
+        public ISocialSink? Social
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Party frames land here (603, 607, 636, 653) —
+        /// Systems/Party (IMP-035).</summary>
+        public IPartySink? Party
+        {
+            get;
+            set;
+        }
+
+        /// <summary>Interact-result frames land here (116) —
+        /// Systems/Cooking (IMP-059). 116 is shared with World.</summary>
+        public ICookingSink? Cooking
+        {
+            get;
+            set;
+        }
+
         /// <summary>Latest CHARACTER_LIST snapshot (REPLACEABLE_STATE).</summary>
         public S2CCharacterList? CharacterList
         {
@@ -585,9 +660,62 @@ namespace ThinhThan.Net
                     Replication?.Apply(frame);
                     break;
                 case WireIds.S2CChannelSwitchResult:
+                    World?.Apply(frame);
+                    break;
                 case WireIds.S2CInteractResult:
+                    World?.Apply(frame);
+                    Discovery?.Apply(frame);
+                    Cooking?.Apply(frame);
+                    break;
                 case WireIds.S2CActionRejected:
                     World?.Apply(frame);
+                    Combat?.Apply(frame);
+                    break;
+                case WireIds.S2CActionStarted:
+                case WireIds.S2CStatusEvent:
+                case WireIds.S2CCombatEvent:
+                    Combat?.Apply(frame);
+                    break;
+                case WireIds.S2CLoadoutResult:
+                    Equipment?.Apply(frame);
+                    break;
+                case WireIds.S2CRewardClaimResult:
+                case WireIds.S2CRewardClaimsState:
+                case WireIds.S2CRewardClaimListResult:
+                case WireIds.S2CRewardClaimDelta:
+                    RewardClaims?.Apply(frame);
+                    break;
+                case WireIds.S2CChatMessage:
+                case WireIds.S2CFriendRequest:
+                case WireIds.S2CFriendState:
+                case WireIds.S2CBlockState:
+                case WireIds.S2CReportPlayerResult:
+                case WireIds.S2CSocialResult:
+                case WireIds.S2CChatSendResult:
+                    Social?.Apply(frame);
+                    break;
+                case WireIds.S2CPartyInvite:
+                case WireIds.S2CPartyState:
+                case WireIds.S2CPartyBoardState:
+                case WireIds.S2CPartyResult:
+                    Party?.Apply(frame);
+                    break;
+                case WireIds.S2CTradeInvite:
+                case WireIds.S2CTradeCancelled:
+                case WireIds.S2CTradeOfferState:
+                case WireIds.S2CTradeResult:
+                case WireIds.S2CTradeRequestResult:
+                    Trade?.Apply(frame);
+                    break;
+                case WireIds.S2CAuctionListResult:
+                case WireIds.S2CAuctionBuyResult:
+                case WireIds.S2CAuctionCancelResult:
+                case WireIds.S2CAuctionSold:
+                case WireIds.S2CAuctionSearchResult:
+                case WireIds.S2CAuctionReclaimResult:
+                case WireIds.S2CAuctionProceedsResult:
+                case WireIds.S2CAuctionMyState:
+                    Auction?.Apply(frame);
                     break;
                 case WireIds.S2CInventoryResult:
                 case WireIds.S2CEntitlementClaimResult:
