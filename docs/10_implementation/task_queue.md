@@ -42,7 +42,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-015` | Skill Runtime / Geometry | `NOT_STARTED` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-016` | Effects / Status / Shield Pipeline | `NOT_STARTED` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
-| `IMP-018` | Map / Transfer / Checkpoint Runtime | `IN_PROGRESS` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
+| `IMP-018` | Map / Transfer / Checkpoint Runtime | `DONE` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
 | `IMP-019` | Spawn Runtime / Monster AI | `NOT_STARTED` | IMP-003, IMP-016, IMP-018 | `../02_world/spawning.md`, `../02_world/monsters.md` |
 | `IMP-020` | Discovery / Progression Source Events | `NOT_STARTED` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
 | `IMP-021` | Quest Runtime | `NOT_STARTED` | IMP-010, IMP-011, IMP-018, IMP-019 | `../02_world/quests.md`, `../07_content/quest_catalog.md` |
@@ -1807,7 +1807,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-096/"
 
 ## `IMP-018` — Map / Transfer / Checkpoint Runtime
 id: IMP-018
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-018"
 branch: "imp/IMP-018-map-transfer-runtime"
 claimed_at: "2026-10-07T18:20:00Z"
