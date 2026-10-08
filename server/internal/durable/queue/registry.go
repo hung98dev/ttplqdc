@@ -140,7 +140,7 @@ var clientFamiliesExact = map[string]struct{}{
 var rewardKinds = map[string]struct{}{
 	"kill": {}, "boss": {}, "dungeon": {}, "event": {},
 	"quest": {}, "discovery": {}, "atlas": {}, "feat": {}, "chivalry": {},
-	"soul": {}, "beast": {}, "cosmetic": {}, "guild_stone": {},
+	"soul": {}, "beast": {}, "cosmetic": {}, "guild_stone": {}, "rest": {},
 }
 
 // jobTargetOwner maps the closed JOB target to its required owner kind
