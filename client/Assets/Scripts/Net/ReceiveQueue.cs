@@ -31,8 +31,14 @@ namespace ThinhThan.Net
                 WireIds.S2CCharacterList,
                 WireIds.S2CWalletState,
                 WireIds.S2CInventoryState,
+                WireIds.S2CRewardClaimsState,
                 WireIds.S2CEntitlementPanelState,
                 WireIds.S2CProgressionState,
+                WireIds.S2CPartyState,
+                WireIds.S2CBlockState,
+                WireIds.S2CPartyBoardState,
+                WireIds.S2CTradeOfferState,
+                WireIds.S2CAuctionMyState,
             };
 
         /// <summary>Message ids that advance the barrier ordinal.</summary>
