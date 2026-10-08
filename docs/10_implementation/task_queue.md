@@ -34,7 +34,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-007` | Currency Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
 | `IMP-009` | Inventory / IAP Entitlement Panel | `DONE` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
-| `IMP-010` | Reward Claims | `IN_PROGRESS` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
+| `IMP-010` | Reward Claims | `DONE` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
 | `IMP-011` | Character Progression / Stats | `DONE` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `IN_PROGRESS` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
@@ -44,7 +44,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-018` | Map / Transfer / Checkpoint Runtime | `DONE` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
 | `IMP-019` | Spawn Runtime / Monster AI | `NOT_STARTED` | IMP-003, IMP-016, IMP-018 | `../02_world/spawning.md`, `../02_world/monsters.md` |
-| `IMP-020` | Discovery / Progression Source Events | `IN_PROGRESS` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
+| `IMP-020` | Discovery / Progression Source Events | `DONE` | IMP-005, IMP-011, IMP-018 | `../01_gameplay/README.md`, `../01_gameplay/core_loop.md` |
 | `IMP-021` | Quest Runtime | `NOT_STARTED` | IMP-010, IMP-011, IMP-018, IMP-019 | `../02_world/quests.md`, `../07_content/quest_catalog.md` |
 | `IMP-022` | Boss Runtime / WorldConsequence | `NOT_STARTED` | IMP-005, IMP-010, IMP-016, IMP-019, IMP-080 | `../02_world/bosses.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-023` | Dungeon Runtime | `NOT_STARTED` | IMP-010, IMP-018, IMP-019, IMP-021, IMP-022 | `../02_world/dungeons.md`, `../04_architecture/physics_geometry_contract.md` |
@@ -54,7 +54,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-027` | Crafting / Enhancement | `NOT_STARTED` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
 | `IMP-028` | NPC Services / Shops | `NOT_STARTED` | IMP-007, IMP-009, IMP-018, IMP-027 | `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md` |
 | `IMP-029` | Direct Trade | `IN_PROGRESS` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
-| `IMP-030` | Auction House | `IN_PROGRESS` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
+| `IMP-030` | Auction House | `DONE` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
 | `IMP-031` | Soul Contracts | `NOT_STARTED` | IMP-010, IMP-012, IMP-016 | `../03_systems/soul_contracts.md`, `../07_content/soul_catalog.md` |
 | `IMP-032` | Spirit Meridian | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/spirit_meridian.md`, `../07_content/build_catalog.md` |
 | `IMP-033` | Formations | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/formations.md`, `../07_content/build_catalog.md` |
@@ -1229,7 +1229,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-009/"
 
 ## `IMP-010` — Reward Claims
 id: IMP-010
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-010"
 branch: "imp/IMP-010-reward-claims"
 claimed_at: "2026-10-08T05:37:26Z"
@@ -1898,7 +1898,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-019/"
 
 ## `IMP-020` — Discovery / Progression Source Events
 id: IMP-020
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-020"
 branch: "imp/IMP-020-discovery-events"
 claimed_at: "2026-10-08T05:37:26Z"
@@ -2685,7 +2685,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-029/"
 
 ## `IMP-030` — Auction House
 id: IMP-030
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-030"
 branch: "imp/IMP-030-auction-house"
 claimed_at: "2026-10-08T05:37:26Z"

@@ -278,9 +278,22 @@ func wsEnv(t *testing.T, c *websocket.Conn, msgID uint32, epoch, seq uint64, m p
 	}
 }
 
+// wsReadTimeout bounds a single envelope read. The durable write path
+// (queue enqueue → executor tx → commit → mailbox push of 514/515) can
+// exceed 10 s under `go test -race` on a loaded CI runner; 30 s keeps a
+// true hang detectable while tolerating worst-case durable latency.
+//
+// It also deflakes the downstream ack family: a read deadline expiring
+// mid-commit used to run t.Cleanup while the handler's run() was still
+// inside Submit → AwaitClientOutcome → Ack — the cancelled listener ctx
+// surfaced as `idempotency: ack: timeout: context already done`. Every
+// wire wait in this package funnels through wsRead, so this const is the
+// single bound for the whole read+ack timeout family.
+const wsReadTimeout = 30 * time.Second
+
 func wsRead(t *testing.T, c *websocket.Conn) *protocolv1.Envelope {
 	t.Helper()
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), wsReadTimeout)
 	defer cancel()
 	typ, data, err := c.Read(ctx)
 	if err != nil {
