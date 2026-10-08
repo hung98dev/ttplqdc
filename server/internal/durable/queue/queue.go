@@ -575,13 +575,29 @@ func (q *Queue) requeueLocked(st *recordState) {
 	if l := q.lanes[st.agg]; l != nil {
 		l.running = false
 	}
-	time.AfterFunc(delay, func() {
+	// The pump is not guaranteed to land: pumpLanesLocked returns early
+	// when the work channel is full, which would strand this record at
+	// its lane head with nothing queued behind it to re-trigger a pump.
+	// Re-arm while the record stays an undispatched queued head — a full
+	// channel only costs one poll tick, never a lost dispatch.
+	var pump func()
+	pump = func() {
 		q.mu.Lock()
-		if _, ok := q.records[st.key]; ok && st.refs&refQueued != 0 {
-			q.pumpLanesLocked()
+		defer q.mu.Unlock()
+		if q.closed {
+			return
 		}
-		q.mu.Unlock()
-	})
+		if _, ok := q.records[st.key]; !ok || st.refs&refQueued == 0 {
+			return
+		}
+		q.pumpLanesLocked()
+		if l := q.lanes[st.agg]; l != nil && !l.running &&
+			len(l.queue) > 0 && l.queue[0] == st &&
+			!st.retryNotBefore.After(time.Now()) {
+			time.AfterFunc(awaitPoll, pump)
+		}
+	}
+	time.AfterFunc(delay, pump)
 }
 
 var errNoExecutor = errors.New("queue: no executor registered for producer kind")
