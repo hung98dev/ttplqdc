@@ -189,7 +189,7 @@ func CheckMigrations(ctx context.Context, srv *pgtest.Server, repoRoot string) (
 	return details, false
 }
 
-// CheckSchema is the Q5.schema evaluator: applies all migrations on a scratch
+// CheckSchema is the Q5.schema evaluator: applies the baseline on a scratch
 // database and asserts the parsed per-constraint catalog — every table,
 // column, primary/unique key, CHECK expression, foreign key and index
 // (including partial-index predicates) — exists in the live pg_catalog.
@@ -197,9 +197,9 @@ func CheckSchema(ctx context.Context, srv *pgtest.Server, repoRoot string) (deta
 	if srv == nil {
 		return nil, true
 	}
-	cat, err := ParseMigrationsDir(MigrationsDir(repoRoot))
+	cat, err := ParseMigration(filepath.Join(MigrationsDir(repoRoot), "000001_baseline_schema.up.sql"))
 	if err != nil {
-		return []string{fmt.Sprintf("parse migrations: %v", err)}, false
+		return []string{fmt.Sprintf("parse migration: %v", err)}, false
 	}
 	scratch := "q5_schema_" + randSuffix()
 	dsn, cleanup, err := srv.NewDB(ctx, scratch)
@@ -263,27 +263,6 @@ func ParseMigration(path string) (*Catalog, error) {
 		}
 	}
 	return c, nil
-}
-
-// ParseMigrationsDir unions the parsed catalogs of every numbered
-// NNNNNN_*.up.sql pair in dir. Statements the parser does not model
-// (ALTER TABLE, DROP TABLE) contribute no entries, matching
-// ParseMigration's CREATE TABLE / CREATE INDEX scope.
-func ParseMigrationsDir(dir string) (*Catalog, error) {
-	files, err := filepath.Glob(filepath.Join(dir, "??????_*.up.sql"))
-	if err != nil {
-		return nil, err
-	}
-	sort.Strings(files)
-	merged := &Catalog{}
-	for _, f := range files {
-		c, err := ParseMigration(f)
-		if err != nil {
-			return nil, err
-		}
-		merged.Entries = append(merged.Entries, c.Entries...)
-	}
-	return merged, nil
 }
 
 func splitStatements(sqlText string) []string {
