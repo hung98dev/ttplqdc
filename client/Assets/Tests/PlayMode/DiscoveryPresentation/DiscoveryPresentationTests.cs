@@ -33,7 +33,8 @@ namespace ThinhThan.Tests.PlayMode.DiscoveryPresentation
 
             Assert.IsTrue(presenter.Apply(DiscoveryEvent("map.lang_da.dinh_lang", 7700, 2)));
             Assert.AreEqual(1, panel.Count);
-            var shown = panel.Current.Value;
+            Assert.IsTrue(panel.Current.HasValue);
+            var shown = panel.Current.GetValueOrDefault();
             Assert.AreEqual("map.lang_da.dinh_lang", shown.MapId);
             Assert.AreEqual(7700, shown.Exp);
             Assert.AreEqual(2, shown.LevelAfter);
