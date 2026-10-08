@@ -2,6 +2,7 @@ package runtime
 
 import (
 	"context"
+	"sync/atomic"
 	"time"
 
 	"thinhthan/internal/core/id"
@@ -145,9 +146,9 @@ type Partition struct {
 	systems [12][]func(*Partition, *TickContext)
 	tc      TickContext
 
-	tickN   uint64
+	tickN   atomic.Uint64
 	simTime time.Duration
-	started bool
+	started atomic.Bool
 
 	nextBaseline uint64
 
@@ -207,13 +208,13 @@ func NewPartition(cfg PartitionConfig, ports Ports) (*Partition, error) {
 }
 
 // TickN reports the number of completed ticks.
-func (p *Partition) TickN() uint64 { return p.tickN }
+func (p *Partition) TickN() uint64 { return p.tickN.Load() }
 
 // SimTime reports the partition's stepped simulation clock.
 func (p *Partition) SimTime() time.Duration { return p.simTime }
 
 // Started reports whether the durable start gate has completed.
-func (p *Partition) Started() bool { return p.started }
+func (p *Partition) Started() bool { return p.started.Load() }
 
 // TickID exposes the deterministic runtime id for tests.
 func (p *Partition) Grid() *aoi.Grid { return p.grid }
@@ -253,7 +254,7 @@ var procStart = time.Now()
 // Start runs the durable start gate: world_consequence rows for this
 // (map, channel) are loaded before the partition admits or ticks.
 func (p *Partition) Start(ctx context.Context) error {
-	if p.started {
+	if p.started.Load() {
 		return nil
 	}
 	if p.ports.Loader != nil {
@@ -263,7 +264,7 @@ func (p *Partition) Start(ctx context.Context) error {
 		}
 		p.applyLoaded(&st)
 	}
-	p.started = true
+	p.started.Store(true)
 	return nil
 }
 
@@ -345,9 +346,9 @@ func (p *Partition) tick() {
 	}
 drained:
 
-	p.tickN++
+	p.tickN.Add(1)
 	p.simTime += Step
-	p.tc.Tick, p.tc.SimTime, p.tc.Now = p.tickN, p.simTime, start
+	p.tc.Tick, p.tc.SimTime, p.tc.Now = p.tickN.Load(), p.simTime, start
 	for ph := PhaseID(0); ph < phaseCount; ph++ {
 		p.runBuiltin(ph, &p.tc)
 		for _, fn := range p.systems[ph] {
