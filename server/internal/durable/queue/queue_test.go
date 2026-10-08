@@ -451,6 +451,11 @@ func TestClosedProducerAdmission(t *testing.T) {
 			r.Command = &journalv1.DurableCommandRecord_Reward{
 				Reward: &journalv1.JournalRewardCommand{Kind: "COSMETIC"}}
 		}),
+		// save_rules.md § Closed Registry: BONFIRE_REST tick -> kind REST.
+		with(mk("sim.rest_settlement", char, JR), func(r *journalv1.DurableCommandRecord) {
+			r.Command = &journalv1.DurableCommandRecord_Reward{
+				Reward: &journalv1.JournalRewardCommand{Kind: "REST"}}
+		}),
 		with(mk("world.consequence", world, JW), func(r *journalv1.DurableCommandRecord) {
 			r.Command = &journalv1.DurableCommandRecord_WorldConsequence{
 				WorldConsequence: &journalv1.JournalWorldConsequence{MapId: "m"}}
