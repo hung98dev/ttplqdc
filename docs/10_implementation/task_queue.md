@@ -123,7 +123,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
 | `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
 | `IMP-098` | Observability Core | `DONE` | IMP-001, IMP-068 | `../08_scale_ops/observability.md`, `../04_architecture/backend.md` |
-| `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `NOT_STARTED` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
+| `IMP-099` | Client Screens: Login, Queue, Loading, Settings, Credits | `IN_PROGRESS` | IMP-064, IMP-065, IMP-066, IMP-095 | `../04_architecture/client_experience_contract.md`, `../04_architecture/client.md` |
 | `IMP-100` | Character Lifecycle | `DONE` | IMP-006 | `../01_gameplay/character.md`, `../06_data/data_model.md` |
 | `IMP-101` | URP 2D Rendering & Lighting Setup | `DONE` | IMP-000 | `../04_architecture/client.md`, `../04_architecture/client_assets.md` |
 | `IMP-102` | Entitlement Claims & Store Client | `NOT_STARTED` | IMP-010, IMP-053, IMP-066 | `../03_systems/account_storage.md`, `../03_systems/monetization.md` |
@@ -1737,10 +1737,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-095/"
 
 ## `IMP-099` — Client Screens: Login, Queue, Loading, Settings, Credits
 id: IMP-099
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-099"
+branch: "imp/IMP-099-client-screens"
+claimed_at: "2026-10-08T05:25:54Z"
 blocked_by: ""
 
 specs: [`../04_architecture/client_experience_contract.md`, `../04_architecture/client.md`, `../04_architecture/client_performance.md`, `../04_architecture/client_localization.md`, `../07_security/auth.md`, `../07_security/session.md`]
