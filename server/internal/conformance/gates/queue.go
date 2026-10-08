@@ -171,7 +171,7 @@ func OwnerOf(idx PacketIndex, path string) *Packet {
 	sort.Strings(ids) // deterministic longest-prefix resolution
 	for _, id := range ids {
 		p := idx[id]
-		for _, own := range p.OwnedPaths {
+		for _, own := range p.effectiveOwnedPaths() {
 			if covers(own, path) && len(own) > bestLen {
 				bestLen = len(own)
 				best = p
@@ -179,4 +179,47 @@ func OwnerOf(idx PacketIndex, path string) *Packet {
 		}
 	}
 	return best
+}
+
+// effectiveOwnedPaths is a packet's owned_paths plus the implicit grants the
+// layout gives it (repository_layout.md § Ownership Rules).
+func (p *Packet) effectiveOwnedPaths() []string {
+	grants := implicitTablesGrants(p.OwnedPaths)
+	if len(grants) == 0 {
+		return p.OwnedPaths
+	}
+	out := make([]string, 0, len(p.OwnedPaths)+len(grants))
+	return append(append(out, p.OwnedPaths...), grants...)
+}
+
+// implicitTablesGrants implements the implicit feature-table grant: a packet
+// owning the directory `client/Assets/Scripts/{Systems|UI}/<Feature>/`
+// implicitly owns `client/Assets/Localization/Tables/<Feature>/` (its
+// collection assets and, through them, the directory .meta markers). Only
+// exact feature-dir grants — one path segment below Systems/ or UI/ — count;
+// a deeper or exact-file grant owns no feature table.
+func implicitTablesGrants(owned []string) []string {
+	const (
+		uiPrefix      = "client/Assets/Scripts/UI/"
+		systemsPrefix = "client/Assets/Scripts/Systems/"
+		tablesPrefix  = "client/Assets/Localization/Tables/"
+	)
+	var grants []string
+	for _, o := range owned {
+		if !strings.HasSuffix(o, "/") {
+			continue
+		}
+		for _, pre := range []string{uiPrefix, systemsPrefix} {
+			if !strings.HasPrefix(o, pre) {
+				continue
+			}
+			feat := strings.TrimSuffix(strings.TrimPrefix(o, pre), "/")
+			if feat == "" || strings.Contains(feat, "/") {
+				continue
+			}
+			grants = append(grants, tablesPrefix+feat+"/")
+			break
+		}
+	}
+	return grants
 }
