@@ -51,11 +51,13 @@ namespace ThinhThan.Systems.Auction
             }
         }
 
+        private string _nextSearchCursor = "";
+
         public string NextSearchCursor
         {
-            get;
-            private set;
-        } = "";
+            get { return _nextSearchCursor; }
+            private set { _nextSearchCursor = value; }
+        }
 
         /// <summary>Replace the whole my-state projection (744).</summary>
         public void Replace(S2CAuctionMyState state)

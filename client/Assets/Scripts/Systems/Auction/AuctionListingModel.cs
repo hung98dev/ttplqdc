@@ -11,21 +11,4 @@ namespace ThinhThan.Systems.Auction
         public AuctionListingState State;
         public long ExpiresAtUnixMs;
     }
-
-    /// <summary>One escrowed-asset row (740 reclaim target).</summary>
-    public struct AuctionEscrowModel
-    {
-        public byte[] EscrowAssetId;
-        public string ItemId;
-        public AuctionEscrowReason Reason;
-        public long AutoClaimAtUnixMs;
-    }
-
-    /// <summary>One seller-proceeds row (742 claim target).</summary>
-    public struct AuctionProceedsModel
-    {
-        public byte[] ProceedsId;
-        public long AmountCommon;
-        public AuctionProceedsState State;
-    }
 }
