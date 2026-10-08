@@ -298,12 +298,12 @@ func TestBaselineApplyDownApply(t *testing.T) {
 	}
 }
 
-// TestPerConstraintSnapshot: the authored DDL parses into the full catalog
-// expectation set and every derived expectation holds on the live catalog.
+// TestPerConstraintSnapshot: the authored DDL of every committed migration
+// pair parses into the full catalog expectation set and every derived
+// expectation holds on the live catalog.
 func TestPerConstraintSnapshot(t *testing.T) {
 	live := liveCatalog(t)
-	parsed, err := ParseMigration(filepath.Join(
-		MigrationsDir(testRepoRoot()), "000001_baseline_schema.up.sql"))
+	parsed, err := ParseMigrationsDir(MigrationsDir(testRepoRoot()))
 	if err != nil {
 		t.Fatalf("parse: %v", err)
 	}
