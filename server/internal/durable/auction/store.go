@@ -75,19 +75,19 @@ type Listing struct {
 
 // Proceeds is one auction_proceeds row (seller settlement escrow).
 type Proceeds struct {
-	ProceedsID         id.UUID
-	SettledAt          time.Time
-	SellerCharacterID  id.UUID
-	SellerAccountID    id.UUID
-	BuyerCharacterID   id.UUID
-	BuyerAccountID     id.UUID
-	ProceedsAmount     int64
-	ItemID             string
-	Quantity           int64
-	ListingID          id.UUID
-	State              ProceedsState
-	ClaimedAt          *time.Time
-	ClaimOperationID   *id.UUID
+	ProceedsID        id.UUID
+	SettledAt         time.Time
+	SellerCharacterID id.UUID
+	SellerAccountID   id.UUID
+	BuyerCharacterID  id.UUID
+	BuyerAccountID    id.UUID
+	ProceedsAmount    int64
+	ItemID            string
+	Quantity          int64
+	ListingID         id.UUID
+	State             ProceedsState
+	ClaimedAt         *time.Time
+	ClaimOperationID  *id.UUID
 }
 
 // characterGate loads level/age under the characters row lock and applies
