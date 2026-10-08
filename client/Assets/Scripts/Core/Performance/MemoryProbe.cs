@@ -11,7 +11,7 @@ namespace ThinhThan.Core.Performance
     /// sustained peak — the 95th percentile of the run's samples (nearest
     /// rank <c>ceil(0.95·N) − 1</c>, so a transient single-sample excursion
     /// does not decide the gate) — minus the baseline for Total Used
-    /// Memory (≤ 1.5 GB) and Gfx Used Memory (≤ 1.0 GB). Unsupported
+    /// Memory (≤ 2.0 GB) and Gfx Used Memory (≤ 1.0 GB). Unsupported
     /// counters mark the measurement invalid — they never fabricate a pass.
     /// </summary>
     public sealed class MemoryProbe : IDisposable

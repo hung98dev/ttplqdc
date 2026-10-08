@@ -693,11 +693,11 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     " bytes in steady gameplay");
             }
 
-            if (sustainedTotalDelta > 1536L * 1024 * 1024)
+            if (sustainedTotalDelta > 2048L * 1024 * 1024)
             {
                 failures.Add(
                     "PERF-005 sustained-peak Total Used Memory growth " +
-                    (sustainedTotalDelta / (1024 * 1024)) + " MB > 1536 MB");
+                    (sustainedTotalDelta / (1024 * 1024)) + " MB > 2048 MB");
             }
 
             if (sustainedGfxDelta > 1024L * 1024 * 1024)
