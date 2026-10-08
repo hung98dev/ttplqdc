@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "task_id": "IMP-012",
-  "source_tree_hash": "43aa0027071087f30ac53b5afae46b1a629055fd66931a6c0a197ed13cf0a148",
+  "task_id": "none",
+  "source_tree_hash": "d9d06f6847bcff34baaedb2ff3d1b1259d3e8d37d044c90047229c7d41c2a6c2",
   "toolchain": {
     "go": "1.27.1",
     "unity": "6000.6.1f1",
@@ -19,7 +19,7 @@
         "-Drift"
       ],
       "exit_code": 0,
-      "wall_seconds": 2.630590968
+      "wall_seconds": 3.733119282
     },
     {
       "argv": [
@@ -39,7 +39,7 @@
         "./internal/global/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 10.084453862
+      "wall_seconds": 15.111186666
     },
     {
       "argv": [
@@ -54,7 +54,7 @@
         "./internal/global/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 37.44134736
+      "wall_seconds": 51.123368051
     },
     {
       "argv": [
@@ -65,7 +65,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 2.286887617
+      "wall_seconds": 3.3207589410000002
     },
     {
       "argv": [
@@ -77,7 +77,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 32.486391988
+      "wall_seconds": 36.819338116
     },
     {
       "argv": [
@@ -85,7 +85,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 5.966967255
+      "wall_seconds": 9.594114107
     },
     {
       "argv": [
@@ -94,7 +94,7 @@
         "server/"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.112650975
+      "wall_seconds": 0.286815939
     },
     {
       "argv": [
@@ -105,7 +105,7 @@
         "./..."
       ],
       "exit_code": 0,
-      "wall_seconds": 0.653127303
+      "wall_seconds": 1.076725701
     },
     {
       "argv": [
@@ -114,7 +114,7 @@
         "./internal/config/..."
       ],
       "exit_code": 0,
-      "wall_seconds": 0.046970897
+      "wall_seconds": 0.063358611
     },
     {
       "argv": [
@@ -125,12 +125,12 @@
         "/home/runner/work/ttplqdc/ttplqdc/content_compile_report.json"
       ],
       "exit_code": 0,
-      "wall_seconds": 0.087397296
+      "wall_seconds": 0.13853279
     }
   ],
   "test_summary": {
-    "total": 965,
-    "passed": 956,
+    "total": 979,
+    "passed": 970,
     "failed": 0,
     "skipped": 9
   },
@@ -141,19 +141,19 @@
       "allowed": true
     }
   ],
-  "content_revision": "6286b944d6ee1d55d1e0fafcd1c30ac1370e96706abb0870bc0d9382cc445938",
-  "ci_run_id": "37773649286",
-  "run_attempt": "1",
+  "content_revision": "none",
+  "ci_run_id": "",
+  "run_attempt": "",
   "jobs": [
     {
       "name": "Q0-Q6 verify (Linux)",
       "os": "linux",
-      "result": "PASSED"
+      "result": "FAILED"
     },
     {
       "name": "Q0-Q6 verify (Windows)",
       "os": "windows",
-      "result": "PASSED"
+      "result": "FAILED"
     }
   ],
   "gates": [
@@ -317,7 +317,8 @@
       "id": "Q6.evidence",
       "os": "linux",
       "owner": "IMP-000",
-      "result": "PASS"
+      "result": "FAIL",
+      "reason": "docs/10_implementation/evidence/IMP-012/manifest.json: source_tree_hash != head tree hash"
     },
     {
       "id": "Q6.ratchet",
@@ -522,7 +523,8 @@
       "id": "Q6.evidence",
       "os": "windows",
       "owner": "IMP-000",
-      "result": "PASS"
+      "result": "FAIL",
+      "reason": "docs/10_implementation/evidence/IMP-012/manifest.json: source_tree_hash != head tree hash"
     },
     {
       "id": "Q6.ratchet",
@@ -532,6 +534,6 @@
     }
   ],
   "codegen_drift": [],
-  "worktree_clean": true,
-  "result": "PASSED"
+  "worktree_clean": false,
+  "result": "FAILED"
 }
