@@ -109,7 +109,7 @@ namespace ThinhThan.Systems.Auction
             {
                 return;
             }
-            foreach (AuctionListingView v in result.Rows)
+            foreach (AuctionSearchRow v in result.Rows)
             {
                 _searchRows.Add(ToModel(v));
             }
@@ -153,6 +153,18 @@ namespace ThinhThan.Systems.Auction
                 ItemId = v.Item != null ? v.Item.ItemId : "",
                 PriceCommon = v.PriceCommon,
                 State = v.State,
+                ExpiresAtUnixMs = v.ExpiresAt,
+            };
+        }
+
+        private static AuctionListingModel ToModel(AuctionSearchRow v)
+        {
+            return new AuctionListingModel
+            {
+                ListingId = v.ListingId.ToByteArray(),
+                ItemId = v.Item != null ? v.Item.ItemId : "",
+                PriceCommon = v.PriceCommon,
+                State = AuctionListingState.Active,
                 ExpiresAtUnixMs = v.ExpiresAt,
             };
         }
