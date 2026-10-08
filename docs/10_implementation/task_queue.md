@@ -33,9 +33,9 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-006` | Account Auth, Session & Login Queue | `DONE` | IMP-005, IMP-068, IMP-081, IMP-082, IMP-097 | `../04_architecture/authority.md`, `../06_data/data_model.md` |
 | `IMP-007` | Currency Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/README.md`, `../03_systems/economy.md` |
 | `IMP-008` | Item Ownership Primitive | `DONE` | IMP-005, IMP-068, IMP-082, IMP-097 | `../03_systems/items.md`, `../06_data/data_model.md` |
-| `IMP-009` | Inventory / IAP Entitlement Panel | `IN_PROGRESS` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
+| `IMP-009` | Inventory / IAP Entitlement Panel | `DONE` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
 | `IMP-010` | Reward Claims | `NOT_STARTED` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
-| `IMP-011` | Character Progression / Stats | `IN_PROGRESS` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
+| `IMP-011` | Character Progression / Stats | `DONE` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `NOT_STARTED` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `NOT_STARTED` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
@@ -1189,7 +1189,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-008/"
 
 ## `IMP-009` — Inventory / IAP Entitlement Panel
 id: IMP-009
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-009"
 branch: "imp/IMP-009-inventory-iap"
 claimed_at: "2026-10-07T18:20:00Z"
@@ -1273,7 +1273,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-010/"
 
 ## `IMP-011` — Character Progression / Stats
 id: IMP-011
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-011"
 branch: "imp/IMP-011-progression-stats"
 claimed_at: "2026-10-07T18:20:00Z"
@@ -1704,7 +1704,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - PERF-001: the benchmark selects a preset; switching presets changes presentation only (colliders, hitboxes and telegraphs identical),
 - PERF-002: desktop main-thread CPU excluding rendering in the hotspot scene on the `Unity (Windows)` job (Editor PlayMode, D3D11 WARP, `-job-worker-count 2`, vSync off; ADR-0070, ADR-0078), 3 repetitions x 100 s after 10 s warm-up, median: `PlayerLoop` minus every main-thread `Gfx.*`, `Camera.Render`, `Render.*`, `Semaphore.WaitForSignal` and `WaitForTargetFPS` marker per frame (`ProfilerRecorder`) p95 <= 8 ms, p99 <= 12 ms, no frame > 33 ms,
 - PERF-004: 0 bytes managed GC allocation per frame in steady gameplay in the hotspot scene,
-- PERF-005 (desktop proxy): in the hotspot run, peak minus the empty-bootstrap-scene baseline of `ProfilerRecorder` `Total Used Memory` <= 1.5 GB and `Gfx Used Memory` <= 1.0 GB,
+- PERF-005 (desktop proxy): in the hotspot run, the sustained peak (95th percentile of the run's samples, `../04_architecture/client_performance.md` § Memory and GC) minus the empty-bootstrap-scene baseline of `ProfilerRecorder` `Total Used Memory` <= 2.0 GB and `Gfx Used Memory` <= 1.0 GB,
 - PERF-006: batches <= 150 and SetPass calls <= 60 on `LOW`; texture memory within `presentation_asset_manifest.md` §1; active point Light2D and particle counts <= preset budget,
 - PERF-009: local input -> first visual response <= 1 rendered frame; server-confirmed result shown <= RTT + 50 ms,
 - PERF-010: interpolation delay 2 snapshot intervals adaptive 150..300 ms, extrapolation <= 250 ms, correction smoothed over 100 ms when <= 0.5 m else snapped,

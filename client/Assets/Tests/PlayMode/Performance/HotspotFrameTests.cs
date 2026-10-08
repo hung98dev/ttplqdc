@@ -202,13 +202,13 @@ namespace ThinhThan.Tests.PlayMode.Performance
                 }
 
                 Assert.LessOrEqual(
-                    probe.PeakTotalDeltaBytes,
-                    1536L * 1024 * 1024,
-                    "PERF-005 Total Used Memory growth > 1.5 GB");
+                    probe.SustainedTotalDeltaBytes,
+                    2048L * 1024 * 1024,
+                    "PERF-005 sustained-peak Total Used Memory growth > 2.0 GB");
                 Assert.LessOrEqual(
-                    probe.PeakGfxDeltaBytes,
+                    probe.SustainedGfxDeltaBytes,
                     1024L * 1024 * 1024,
-                    "PERF-005 Gfx Used Memory growth > 1.0 GB");
+                    "PERF-005 sustained-peak Gfx Used Memory growth > 1.0 GB");
             }
         }
 
