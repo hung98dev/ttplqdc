@@ -55,8 +55,14 @@ namespace ThinhThan.Systems.Auction
 
         public string NextSearchCursor
         {
-            get { return _nextSearchCursor; }
-            private set { _nextSearchCursor = value; }
+            get
+            {
+                return _nextSearchCursor;
+            }
+            private set
+            {
+                _nextSearchCursor = value;
+            }
         }
 
         /// <summary>Replace the whole my-state projection (744).</summary>
