@@ -46,6 +46,10 @@ namespace ThinhThan.UI.Discovery
         }
 
         /// <summary>Suppress-count for tests/diagnostics.</summary>
-        public int Suppressed { get; private set; }
+        public int Suppressed
+        {
+            get;
+            private set;
+        }
     }
 }

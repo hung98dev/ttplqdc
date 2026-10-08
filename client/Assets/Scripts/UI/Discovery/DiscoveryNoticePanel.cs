@@ -15,13 +15,19 @@ namespace ThinhThan.UI.Discovery
         /// <summary>All committed notices, oldest first.</summary>
         public IReadOnlyList<DiscoveryNoticeModel> Notices
         {
-            get { return _notices; }
+            get
+            {
+                return _notices;
+            }
         }
 
         /// <summary>The notice currently presented; empty when none.</summary>
         public DiscoveryNoticeModel? Current
         {
-            get { return _shownIndex >= 0 ? _notices[_shownIndex] : (DiscoveryNoticeModel?)null; }
+            get
+            {
+                return _shownIndex >= 0 ? _notices[_shownIndex] : (DiscoveryNoticeModel?)null;
+            }
         }
 
         /// <summary>Records a granted discovery and presents it.</summary>
@@ -34,7 +40,10 @@ namespace ThinhThan.UI.Discovery
         /// <summary>Total notices presented (dedupe check in tests).</summary>
         public int Count
         {
-            get { return _notices.Count; }
+            get
+            {
+                return _notices.Count;
+            }
         }
     }
 }

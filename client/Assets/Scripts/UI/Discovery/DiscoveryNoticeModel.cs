@@ -15,12 +15,24 @@ namespace ThinhThan.UI.Discovery
             ServerTimeMs = serverTimeMs;
         }
 
-        public string MapId { get; }
+        public string MapId
+        {
+            get;
+        }
 
-        public long Exp { get; }
+        public long Exp
+        {
+            get;
+        }
 
-        public int LevelAfter { get; }
+        public int LevelAfter
+        {
+            get;
+        }
 
-        public long ServerTimeMs { get; }
+        public long ServerTimeMs
+        {
+            get;
+        }
     }
 }
