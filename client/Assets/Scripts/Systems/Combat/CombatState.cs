@@ -15,6 +15,7 @@ namespace ThinhThan.Systems.Combat
         private ulong _activeEndsAtTick;
         private ulong _motionEndsAtTick;
         private ulong _cooldownEndsAtTick;
+        private CombatActionState _resumeState = CombatActionState.Idle;
         private ErrorCode _lastReject = ErrorCode.Unspecified;
         private ulong _lastRejectSeq;
         private bool _inCombat;
@@ -171,6 +172,10 @@ namespace ThinhThan.Systems.Combat
                 }
                 if (m.HpDamage > 0)
                 {
+                    if (_state != CombatActionState.HitReaction)
+                    {
+                        _resumeState = _state;
+                    }
                     _state = CombatActionState.HitReaction;
                 }
             }
@@ -199,7 +204,7 @@ namespace ThinhThan.Systems.Combat
         {
             if (_state == CombatActionState.HitReaction)
             {
-                _state = CombatActionState.Idle;
+                _state = _resumeState;
             }
         }
 
