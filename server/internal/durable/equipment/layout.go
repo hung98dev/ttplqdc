@@ -26,16 +26,6 @@ var loadoutIDs = [loadoutCount]string{
 // isSlot reports whether slotID is one of the 14 canonical slots.
 func isSlot(slotID string) bool { return slots[slotID] }
 
-// loadoutIndex resolves a wire loadout_id to its 1-based loadout_index.
-func loadoutIndex(loadoutID string) (int, bool) {
-	for i, id := range loadoutIDs {
-		if id == loadoutID {
-			return i + 1, true
-		}
-	}
-	return 0, false
-}
-
 // loadoutID maps a 1-based index to the wire id (1..3 only).
 func loadoutID(index int) (string, bool) {
 	if index < 1 || index > loadoutCount {
