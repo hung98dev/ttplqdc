@@ -14,10 +14,12 @@ import (
 	journalv1 "thinhthan/internal/durable/journal/v1"
 )
 
-// awaitPoll bounds the receipt re-read delay for terminal transitions the
-// queue never signals internally — cancel/fence terminalization lands
-// after the record's resolved flag, and ReconcileOrphans terminalizes
-// outside any record at all.
+// awaitPoll bounds the re-check delay for transitions the queue can never
+// deliver reliably through the cap-1 notify broadcast: terminalizations
+// the queue never signals internally (cancel/fence lands after the
+// resolved flag; ReconcileOrphans works outside any record) and any
+// signal a concurrent waiter's consume steals — a dropped or stolen
+// wakeup turns into one poll tick instead of an indefinite sleep.
 const awaitPoll = 50 * time.Millisecond
 
 // AwaitClientOutcome is the declared client-outcome await seam
@@ -50,6 +52,7 @@ func (q *Queue) AwaitClientOutcome(ctx context.Context, family string,
 		}
 		select {
 		case <-q.notify:
+		case <-time.After(awaitPoll):
 		case <-ctx.Done():
 			return nil, ctx.Err()
 		}
