@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ThinhThan.UI.Screens
 {
@@ -19,14 +19,14 @@ namespace ThinhThan.UI.Screens
             AuthTitle,
         }
 
-        private readonly Func<CancellationToken, Task<bool>> _catalogCheck;
+        private readonly Func<CancellationToken, Awaitable<bool>> _catalogCheck;
         private readonly Action<Outcome> _done;
         private bool _busy;
 
         /// <param name="catalogCheck">Version/catalog step; true = update available.</param>
         /// <param name="done">Receives the chosen next state.</param>
         public BootPresenter(
-            Func<CancellationToken, Task<bool>> catalogCheck,
+            Func<CancellationToken, Awaitable<bool>> catalogCheck,
             Action<Outcome> done)
         {
             _catalogCheck = catalogCheck ??
@@ -35,7 +35,7 @@ namespace ThinhThan.UI.Screens
         }
 
         /// <summary>Runs the boot sequence once.</summary>
-        public async Task RunAsync(CancellationToken cancel)
+        public async Awaitable RunAsync(CancellationToken cancel)
         {
             if (_busy)
             {
@@ -43,7 +43,7 @@ namespace ThinhThan.UI.Screens
             }
 
             _busy = true;
-            bool needsUpdate = await _catalogCheck(cancel).ConfigureAwait(false);
+            bool needsUpdate = await _catalogCheck(cancel);
             _done(needsUpdate ? Outcome.PatchingUpdate : Outcome.AuthTitle);
         }
     }

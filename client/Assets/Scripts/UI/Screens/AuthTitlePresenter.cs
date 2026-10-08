@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 using ThinhThan.Core.Session;
+using UnityEngine;
 
 namespace ThinhThan.UI.Screens
 {
@@ -43,7 +43,7 @@ namespace ThinhThan.UI.Screens
         }
 
         /// <summary>Đăng nhập: username + password.</summary>
-        public Task LoginAsync(
+        public Awaitable LoginAsync(
             string username, string password, CancellationToken cancel)
         {
             return RunAsync(
@@ -51,7 +51,7 @@ namespace ThinhThan.UI.Screens
         }
 
         /// <summary>Đăng ký: username + password + email (ADR-0051).</summary>
-        public Task RegisterAsync(
+        public Awaitable RegisterAsync(
             string username, string password, string email,
             CancellationToken cancel)
         {
@@ -60,7 +60,7 @@ namespace ThinhThan.UI.Screens
         }
 
         /// <summary>Federated provider button.</summary>
-        public Task LoginProviderAsync(
+        public Awaitable LoginProviderAsync(
             AuthFlow.Provider provider, CancellationToken cancel)
         {
             return RunAsync(
@@ -74,7 +74,7 @@ namespace ThinhThan.UI.Screens
             Emit();
         }
 
-        private async Task RunAsync(Func<Task<Result<bool>>> call)
+        private async Awaitable RunAsync(Func<Awaitable<Result<bool>>> call)
         {
             if (_busy)
             {
@@ -86,7 +86,7 @@ namespace ThinhThan.UI.Screens
             Emit();
             try
             {
-                Result<bool> result = await call().ConfigureAwait(false);
+                Result<bool> result = await call();
                 if (!result.Ok)
                 {
                     MessageKey = AuthErrorMap.MessageKey(result.ErrorCode);

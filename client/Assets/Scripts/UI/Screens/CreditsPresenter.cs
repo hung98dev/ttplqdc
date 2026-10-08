@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace ThinhThan.UI.Screens
 {
@@ -16,12 +16,12 @@ namespace ThinhThan.UI.Screens
         /// <summary>Canonical addressables key (client_assets.md §118).</summary>
         public const string CreditsKey = "asset.ui.credits.text";
 
-        private readonly Func<string, CancellationToken, Task<string>> _loadText;
+        private readonly Func<string, CancellationToken, Awaitable<string>> _loadText;
         private bool _busy;
 
         /// <param name="loadText">(addressablesKey, cancel) → asset text.</param>
         public CreditsPresenter(
-            Func<string, CancellationToken, Task<string>> loadText)
+            Func<string, CancellationToken, Awaitable<string>> loadText)
         {
             _loadText = loadText ?? throw new ArgumentNullException(nameof(loadText));
             Text = string.Empty;
@@ -45,7 +45,7 @@ namespace ThinhThan.UI.Screens
         }
 
         /// <summary>Resolves the credits TextAsset.</summary>
-        public async Task LoadAsync(CancellationToken cancel)
+        public async Awaitable LoadAsync(CancellationToken cancel)
         {
             if (_busy)
             {
@@ -55,7 +55,7 @@ namespace ThinhThan.UI.Screens
             _busy = true;
             try
             {
-                Text = await _loadText(CreditsKey, cancel).ConfigureAwait(false);
+                Text = await _loadText(CreditsKey, cancel);
                 Unavailable = string.IsNullOrEmpty(Text);
             }
             catch (OperationCanceledException)

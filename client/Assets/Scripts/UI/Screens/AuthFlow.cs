@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 using ThinhThan.Core.Session;
 using ThinhThan.Net;
+using UnityEngine;
 
 namespace ThinhThan.UI.Screens
 {
@@ -30,8 +30,8 @@ namespace ThinhThan.UI.Screens
         private readonly AuthClient _auth;
         private readonly SessionCredentials _credentials;
         private readonly SessionStore _store;
-        private readonly Func<CancellationToken, Task<Result<bool>>> _connect;
-        private readonly Func<Provider, SessionCredentials, CancellationToken, Task<Result<TokenResponseDto>>> _federatedLogin;
+        private readonly Func<CancellationToken, Awaitable<Result<bool>>> _connect;
+        private readonly Func<Provider, SessionCredentials, CancellationToken, Awaitable<Result<TokenResponseDto>>> _federatedLogin;
 
         /// <param name="connect">Bound to SessionOrchestrator.ConnectWithTicketAsync.</param>
         /// <param name="federatedLogin">Provider → token seam; composition binds the
@@ -40,8 +40,8 @@ namespace ThinhThan.UI.Screens
             AuthClient auth,
             SessionCredentials credentials,
             SessionStore store,
-            Func<CancellationToken, Task<Result<bool>>> connect,
-            Func<Provider, SessionCredentials, CancellationToken, Task<Result<TokenResponseDto>>> federatedLogin)
+            Func<CancellationToken, Awaitable<Result<bool>>> connect,
+            Func<Provider, SessionCredentials, CancellationToken, Awaitable<Result<TokenResponseDto>>> federatedLogin)
         {
             _auth = auth ?? throw new ArgumentNullException(nameof(auth));
             _credentials = credentials ??
@@ -53,51 +53,49 @@ namespace ThinhThan.UI.Screens
         }
 
         /// <summary>POST password login → store → ticket connect.</summary>
-        public async Task<Result<bool>> LoginPasswordAsync(
+        public async Awaitable<Result<bool>> LoginPasswordAsync(
             string username, string password, CancellationToken cancel)
         {
             Result<TokenResponseDto> token = await _auth
-                .LoginPasswordAsync(username, password, _credentials, cancel)
-                .ConfigureAwait(false);
+                .LoginPasswordAsync(username, password, _credentials, cancel);
             if (!token.Ok)
             {
                 return Result<bool>.Failure(token.ErrorCode, token.RetryAfterMs);
             }
 
             ApplyToken(token.Value);
-            return await _connect(cancel).ConfigureAwait(false);
+            return await _connect(cancel);
         }
 
         /// <summary>POST password register → store → ticket connect.</summary>
-        public async Task<Result<bool>> RegisterPasswordAsync(
+        public async Awaitable<Result<bool>> RegisterPasswordAsync(
             string username, string password, string email,
             CancellationToken cancel)
         {
             Result<TokenResponseDto> token = await _auth
-                .RegisterPasswordAsync(username, password, email, _credentials, cancel)
-                .ConfigureAwait(false);
+                .RegisterPasswordAsync(username, password, email, _credentials, cancel);
             if (!token.Ok)
             {
                 return Result<bool>.Failure(token.ErrorCode, token.RetryAfterMs);
             }
 
             ApplyToken(token.Value);
-            return await _connect(cancel).ConfigureAwait(false);
+            return await _connect(cancel);
         }
 
         /// <summary>Federated provider login → store → ticket connect.</summary>
-        public async Task<Result<bool>> LoginFederatedAsync(
+        public async Awaitable<Result<bool>> LoginFederatedAsync(
             Provider provider, CancellationToken cancel)
         {
             Result<TokenResponseDto> token = await _federatedLogin(
-                provider, _credentials, cancel).ConfigureAwait(false);
+                provider, _credentials, cancel);
             if (!token.Ok)
             {
                 return Result<bool>.Failure(token.ErrorCode, token.RetryAfterMs);
             }
 
             ApplyToken(token.Value);
-            return await _connect(cancel).ConfigureAwait(false);
+            return await _connect(cancel);
         }
 
         /// <summary>Applies token fields onto credentials + persists.</summary>

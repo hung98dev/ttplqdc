@@ -66,6 +66,14 @@ namespace ThinhThan.Tests.PlayMode.Screens
             }
         }
 
+
+        private static Awaitable<T> Completed<T>(T value)
+        {
+            var src = new AwaitableCompletionSource<T>();
+            src.SetResult(value);
+            return src.Awaitable;
+        }
+
         private const string TokenBody =
             "{\"account_id\":\"acc-1\",\"access_token\":\"at\",\"refresh_token\":\"rt\"," +
             "\"access_expires_at\":\"2030-01-01T00:00:00Z\"," +
@@ -91,10 +99,10 @@ namespace ThinhThan.Tests.PlayMode.Screens
                 delegate(CancellationToken c)
                 {
                     connects++;
-                    return Task.FromResult(Result<bool>.Success(true));
+                    return Completed(Result<bool>.Success(true));
                 },
                 (provider, creds, c) =>
-                    Task.FromResult(Result<TokenResponseDto>.Success(
+                    Completed(Result<TokenResponseDto>.Success(
                         new TokenResponseDto())));
             var presenter = new AuthTitlePresenter(flow);
 
@@ -117,9 +125,9 @@ namespace ThinhThan.Tests.PlayMode.Screens
                     "{\"error_code\":\"AUTH_INVALID\"}"));
             var failFlow = new AuthFlow(
                 failAuth, new SessionCredentials(), store,
-                c => Task.FromResult(Result<bool>.Success(true)),
+                c => Completed(Result<bool>.Success(true)),
                 (provider, creds, c) =>
-                    Task.FromResult(Result<TokenResponseDto>.Failure("AUTH_INVALID")));
+                    Completed(Result<TokenResponseDto>.Failure("AUTH_INVALID")));
             var failPresenter = new AuthTitlePresenter(failFlow);
             await failPresenter.LoginAsync("player1", "wrong", CancellationToken.None);
             Assert.AreEqual(ScreensLoc.AuthInvalid, failPresenter.MessageKey);
@@ -217,7 +225,7 @@ namespace ThinhThan.Tests.PlayMode.Screens
                 (key, c) =>
                 {
                     requested = key;
-                    return Task.FromResult("# Credits\nasset");
+                    return Completed("# Credits\nasset");
                 });
 
             await presenter.LoadAsync(CancellationToken.None);
@@ -226,7 +234,7 @@ namespace ThinhThan.Tests.PlayMode.Screens
             Assert.IsFalse(presenter.Unavailable);
 
             var failing = new CreditsPresenter(
-                (key, c) => Task.FromResult(string.Empty));
+                (key, c) => Completed(string.Empty));
             await failing.LoadAsync(CancellationToken.None);
             Assert.IsTrue(failing.Unavailable);
         }

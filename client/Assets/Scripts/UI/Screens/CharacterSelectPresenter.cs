@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using ThinhThan.Core.Session;
 using ThinhThan.Net;
 using ThinhThan.Protocol.V1;
+using UnityEngine;
 
 namespace ThinhThan.UI.Screens
 {
@@ -21,13 +21,13 @@ namespace ThinhThan.UI.Screens
         public const int MaxSlots = 3;
 
         private readonly CharacterSessionController _controller;
-        private readonly Func<CancellationToken, Task> _logout;
+        private readonly Func<CancellationToken, Awaitable> _logout;
         private bool _busy;
 
         /// <param name="logout">Bound to SessionOrchestrator.LogoutAsync.</param>
         public CharacterSelectPresenter(
             CharacterSessionController controller,
-            Func<CancellationToken, Task> logout)
+            Func<CancellationToken, Awaitable> logout)
         {
             _controller = controller ??
                 throw new ArgumentNullException(nameof(controller));
@@ -70,7 +70,7 @@ namespace ThinhThan.UI.Screens
         }
 
         /// <summary>Chọn nhân vật: attach → TRANSFERRING_MAP → IN_WORLD.</summary>
-        public async Task SelectAsync(
+        public async Awaitable SelectAsync(
             CharacterSummary character, CancellationToken cancel)
         {
             if (_busy)
@@ -81,11 +81,11 @@ namespace ThinhThan.UI.Screens
             await RunAsync(
                 () => _controller.AttachAsync(
                     character.CharacterId.ToByteArray(), cancel))
-                .ConfigureAwait(false);
+                ;
         }
 
         /// <summary>Tạo nhân vật mới (name + class; selection follows).</summary>
-        public async Task CreateAsync(
+        public async Awaitable CreateAsync(
             string characterName, string classId, CancellationToken cancel)
         {
             if (_busy)
@@ -95,11 +95,11 @@ namespace ThinhThan.UI.Screens
 
             await RunAsync(
                 () => _controller.CreateAsync(characterName, classId, cancel))
-                .ConfigureAwait(false);
+                ;
         }
 
         /// <summary>Đăng xuất → AUTH_TITLE.</summary>
-        public async Task LogoutAsync(CancellationToken cancel)
+        public async Awaitable LogoutAsync(CancellationToken cancel)
         {
             if (_busy)
             {
@@ -111,7 +111,7 @@ namespace ThinhThan.UI.Screens
             Emit();
             try
             {
-                await _logout(cancel).ConfigureAwait(false);
+                await _logout(cancel);
             }
             finally
             {
@@ -120,14 +120,14 @@ namespace ThinhThan.UI.Screens
             }
         }
 
-        private async Task RunAsync<T>(Func<Task<Result<T>>> call)
+        private async Awaitable RunAsync<T>(Func<Awaitable<Result<T>>> call)
         {
             _busy = true;
             MessageKey = string.Empty;
             Emit();
             try
             {
-                Result<T> result = await call().ConfigureAwait(false);
+                Result<T> result = await call();
                 if (!result.Ok)
                 {
                     MessageKey = AuthErrorMap.MessageKey(result.ErrorCode);
