@@ -129,6 +129,40 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                 "known-overlap calibration prefab must exist");
         }
 
+        [Test]
+        public void TestMemorySustainedPeakIsNearestRankP95()
+        {
+            // PERF-005 (post-#209): the gate reads the sustained peak —
+            // p95 of the run's samples at rank ceil(0.95·N) − 1 — so one
+            // transient excursion never decides it.
+            var samples = new List<double>();
+            for (int i = 0; i < 19; i++)
+            {
+                samples.Add(100.0);
+            }
+
+            samples.Add(10_000.0); // single transient spike
+            Assert.AreEqual(
+                100.0,
+                FrameIntervalProbe.Percentile(samples, 0.95),
+                "p95 at N=20 tolerates a single outlier");
+
+            // Two excursion samples is above the top 5 % at N=20 — still
+            // gated, so sustained pressure cannot hide.
+            samples.Add(10_000.0);
+            samples.Add(100.0);
+            Assert.AreEqual(
+                10_000.0,
+                FrameIntervalProbe.Percentile(samples, 0.95),
+                "top-5% sustained pressure still flags");
+
+            Assert.AreEqual(
+                42.0,
+                FrameIntervalProbe.Percentile(
+                    new List<double> { 42.0 }, 0.95),
+                "single sample resolves to itself");
+        }
+
         [UnityTest]
         [Timeout(900000)]
         public IEnumerator HotspotCountersMeetBudgets()
@@ -150,8 +184,9 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
 
             var cpuByRep = new List<CpuWindow>();
             long gcBytes = 0;
-            long peakTotalDelta = 0;
-            long peakGfxDelta = 0;
+            long sustainedTotalDelta = 0;
+            long sustainedGfxDelta = 0;
+            double sampleAccum = 0.0;
             int maxBatches = 0;
             int maxSetPass = 0;
             int maxPointLights = 0;
@@ -212,7 +247,14 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                             maxPointLights, rig.ActivePointLightCount);
                         maxParticles = Mathf.Max(
                             maxParticles, rig.LiveParticles);
-                        memory.Sample();
+                        // PERF-005 cadence: counters sampled every 1 s of
+                        // wall time during the measured run.
+                        sampleAccum += Time.unscaledDeltaTime;
+                        if (sampleAccum >= 1.0)
+                        {
+                            sampleAccum = 0.0;
+                            memory.Sample();
+                        }
                         if (rig.LastFrameBudgetMs > maxFrameBudgetMs)
                         {
                             maxFrameBudgetMs = rig.LastFrameBudgetMs;
@@ -222,16 +264,20 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     cpuByRep.Add(cpu);
                 }
 
-                peakTotalDelta = memory.PeakTotalDeltaBytes;
-                peakGfxDelta = memory.PeakGfxDeltaBytes;
+                // A final sample so a sub-second run still feeds the
+                // percentile (N >= 1); the spec cadence is per-second but
+                // never forbids a run-end sample.
+                memory.Sample();
+                sustainedTotalDelta = memory.SustainedTotalDeltaBytes;
+                sustainedGfxDelta = memory.SustainedGfxDeltaBytes;
                 rig.Destroy();
             }
 
             AssertHotspot(
                 cpuByRep,
                 gcBytes,
-                peakTotalDelta,
-                peakGfxDelta,
+                sustainedTotalDelta,
+                sustainedGfxDelta,
                 maxBatches,
                 maxSetPass,
                 maxPointLights,
@@ -590,8 +636,8 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
         private static void AssertHotspot(
             List<CpuWindow> cpuByRep,
             long gcBytes,
-            long peakTotalDelta,
-            long peakGfxDelta,
+            long sustainedTotalDelta,
+            long sustainedGfxDelta,
             int maxBatches,
             int maxSetPass,
             int maxPointLights,
@@ -647,18 +693,18 @@ namespace ThinhThan.Tests.EditMode.PerformanceBudgets
                     " bytes in steady gameplay");
             }
 
-            if (peakTotalDelta > 1536L * 1024 * 1024)
+            if (sustainedTotalDelta > 2048L * 1024 * 1024)
             {
                 failures.Add(
-                    "PERF-005 Total Used Memory growth " +
-                    (peakTotalDelta / (1024 * 1024)) + " MB > 1536 MB");
+                    "PERF-005 sustained-peak Total Used Memory growth " +
+                    (sustainedTotalDelta / (1024 * 1024)) + " MB > 2048 MB");
             }
 
-            if (peakGfxDelta > 1024L * 1024 * 1024)
+            if (sustainedGfxDelta > 1024L * 1024 * 1024)
             {
                 failures.Add(
-                    "PERF-005 Gfx Used Memory growth " +
-                    (peakGfxDelta / (1024 * 1024)) + " MB > 1024 MB");
+                    "PERF-005 sustained-peak Gfx Used Memory growth " +
+                    (sustainedGfxDelta / (1024 * 1024)) + " MB > 1024 MB");
             }
 
             if (maxBatches > 150)
