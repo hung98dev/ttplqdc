@@ -349,6 +349,17 @@ CREATE TABLE public.character_attach_events (
 );
 
 
+-- Name: character_beast_bond_daily; Type: TABLE; Schema: public; Owner: -
+
+CREATE TABLE public.character_beast_bond_daily (
+    character_id uuid NOT NULL,
+    beast_id character varying(64) NOT NULL,
+    utc_date date NOT NULL,
+    bonfire_points_gained smallint DEFAULT 0 NOT NULL,
+    CONSTRAINT character_beast_bond_daily_bonfire_points_gained_check CHECK (((bonfire_points_gained >= 0) AND (bonfire_points_gained <= 6)))
+);
+
+
 -- Name: character_beast_food_daily; Type: TABLE; Schema: public; Owner: -
 
 CREATE TABLE public.character_beast_food_daily (
@@ -528,6 +539,16 @@ CREATE TABLE public.character_quests (
 );
 
 
+-- Name: character_rest_daily; Type: TABLE; Schema: public; Owner: -
+
+CREATE TABLE public.character_rest_daily (
+    character_id uuid NOT NULL,
+    utc_date date NOT NULL,
+    rest_ticks_gained smallint DEFAULT 0 NOT NULL,
+    CONSTRAINT character_rest_daily_rest_ticks_gained_check CHECK (((rest_ticks_gained >= 0) AND (rest_ticks_gained <= 180)))
+);
+
+
 -- Name: character_skill_levels; Type: TABLE; Schema: public; Owner: -
 
 CREATE TABLE public.character_skill_levels (
@@ -592,6 +613,7 @@ CREATE TABLE public.characters (
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     progression_revision bigint DEFAULT 0 NOT NULL,
+    claims_revision bigint DEFAULT 0 NOT NULL,
     CONSTRAINT characters_class_id_check CHECK (((class_id)::text = ANY ((ARRAY['class.kim'::character varying, 'class.moc'::character varying, 'class.thuy'::character varying, 'class.hoa'::character varying, 'class.tho'::character varying])::text[]))),
     CONSTRAINT characters_current_exp_check CHECK (((current_exp >= 0) AND (current_exp <= 702100000))),
     CONSTRAINT characters_fishing_catch_count_check CHECK ((fishing_catch_count >= 0)),
@@ -1611,6 +1633,12 @@ ALTER TABLE ONLY public.character_attach_events
     ADD CONSTRAINT character_attach_events_pkey PRIMARY KEY (character_id, session_epoch);
 
 
+-- Name: character_beast_bond_daily character_beast_bond_daily_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+
+ALTER TABLE ONLY public.character_beast_bond_daily
+    ADD CONSTRAINT character_beast_bond_daily_pkey PRIMARY KEY (character_id, beast_id, utc_date);
+
+
 -- Name: character_beast_food_daily character_beast_food_daily_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 
 ALTER TABLE ONLY public.character_beast_food_daily
@@ -1705,6 +1733,12 @@ ALTER TABLE ONLY public.character_progression_flags
 
 ALTER TABLE ONLY public.character_quests
     ADD CONSTRAINT character_quests_pkey PRIMARY KEY (character_id, quest_id);
+
+
+-- Name: character_rest_daily character_rest_daily_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+
+ALTER TABLE ONLY public.character_rest_daily
+    ADD CONSTRAINT character_rest_daily_pkey PRIMARY KEY (character_id, utc_date);
 
 
 -- Name: character_skill_levels character_skill_levels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
@@ -2646,6 +2680,12 @@ ALTER TABLE ONLY public.character_attach_events
     ADD CONSTRAINT character_attach_events_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(character_id) ON DELETE RESTRICT;
 
 
+-- Name: character_beast_bond_daily character_beast_bond_daily_character_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+
+ALTER TABLE ONLY public.character_beast_bond_daily
+    ADD CONSTRAINT character_beast_bond_daily_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(character_id) ON DELETE RESTRICT;
+
+
 -- Name: character_beast_food_daily character_beast_food_daily_character_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 
 ALTER TABLE ONLY public.character_beast_food_daily
@@ -2740,6 +2780,12 @@ ALTER TABLE ONLY public.character_progression_flags
 
 ALTER TABLE ONLY public.character_quests
     ADD CONSTRAINT character_quests_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(character_id) ON DELETE RESTRICT;
+
+
+-- Name: character_rest_daily character_rest_daily_character_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+
+ALTER TABLE ONLY public.character_rest_daily
+    ADD CONSTRAINT character_rest_daily_character_id_fkey FOREIGN KEY (character_id) REFERENCES public.characters(character_id) ON DELETE RESTRICT;
 
 
 -- Name: character_skill_levels character_skill_levels_character_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
