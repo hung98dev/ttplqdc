@@ -27,7 +27,16 @@ issue: <ops-blocked issue URL>                       (OPS only)
 
 ## Open Blockers
 
+
 ## Resolved Blockers
+
+### `BLK-004` — `reward_claims.claim_kind VARCHAR(16)` cannot hold the canonical aggregate kind values — RESOLVED
+opened_by: devin-imp-010 (IMP-010)   opened_at: 2026-10-01T10:20:00Z
+resolved_by: spec-owner spec-change (chosen option a)   resolved_at: 2026-10-08
+resolution: `docs/06_data/data_model.md` § Reward Claims widened to `claim_kind VARCHAR(24)` (CHECK unchanged); the immutable baseline column is corrected by a new migration pair `000007_*` (`ALTER COLUMN claim_kind TYPE VARCHAR(24)`), routed gatefix to the IMP-005 migrations owner. Option (b) rejected: the enum names are canonical wire/spec vocabulary used by `reward_claims.md` and every producer/consumer.
+evidence: `server/migrations/000001_baseline_schema.up.sql:533` `claim_kind VARCHAR(16) NOT NULL CHECK (claim_kind IN ('SINGLE','ITEM_CONSOLIDATED','CURRENCY_AGGREGATE'))`; `docs/06_data/data_model.md:473` repeats `VARCHAR(16)` with the same CHECK. `'ITEM_CONSOLIDATED'` = 17 chars, `'CURRENCY_AGGREGATE'` = 18 chars — every aggregate insert fails `value too long for type character varying(16)` (SQLSTATE 22001). Reproduced in `internal/durable/reward` tests (TestConsolidationUniquePendingKey, TestCompatibleCurrencyAggregation, cap tests).
+owning spec / system: `docs/06_data/data_model.md` § Reward Claims + `server/migrations/` (immutable — correction is a new numbered pair per `14-sql-migrations` rule)
+blocks: IMP-010
 
 ### `OPS-001` — post-merge guard froze auto-merge on a cancelled verify job (infra flake); verifier nil-queue panic on ops/ diffs — RESOLVED
 opened_by: coordinator   opened_at: 2026-10-05T21:10:00Z
