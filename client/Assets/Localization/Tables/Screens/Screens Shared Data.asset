@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Screens Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Screens
+  m_TableCollectionNameGuidString: 013db0745776b2c50858d28fb75cb549
+  m_Entries:
+  - m_Id: 3100000000
+    m_Key: loc.screens.boot.checking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000001
+    m_Key: loc.screens.patching.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000002
+    m_Key: loc.screens.title.login
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000003
+    m_Key: loc.screens.title.register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000004
+    m_Key: loc.screens.title.providers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000005
+    m_Key: loc.screens.auth.invalid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000006
+    m_Key: loc.screens.auth.update_required
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000007
+    m_Key: loc.screens.auth.rate_limited
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000008
+    m_Key: loc.screens.auth.banned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000009
+    m_Key: loc.screens.register.username_taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000010
+    m_Key: loc.screens.register.email_taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000011
+    m_Key: loc.screens.register.username_invalid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000012
+    m_Key: loc.screens.register.email_invalid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000013
+    m_Key: loc.screens.register.password_invalid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000014
+    m_Key: loc.screens.queue.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000015
+    m_Key: loc.screens.queue.position
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000016
+    m_Key: loc.screens.queue.retrying
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000017
+    m_Key: loc.screens.queue.cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000018
+    m_Key: loc.screens.select.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000019
+    m_Key: loc.screens.select.create
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000020
+    m_Key: loc.screens.select.logout
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000021
+    m_Key: loc.screens.select.empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000022
+    m_Key: loc.screens.transfer.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000023
+    m_Key: loc.screens.transfer.waiting_placement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000024
+    m_Key: loc.screens.transfer.failed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000025
+    m_Key: loc.screens.settings.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000026
+    m_Key: loc.screens.settings.quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000027
+    m_Key: loc.screens.settings.battery_saver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000028
+    m_Key: loc.screens.settings.locale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000029
+    m_Key: loc.screens.credits.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000030
+    m_Key: loc.screens.credits.unavailable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000031
+    m_Key: loc.screens.disconnected.title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000032
+    m_Key: loc.screens.disconnected.retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000033
+    m_Key: loc.screens.disconnected.exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000034
+    m_Key: loc.screens.session_replaced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000035
+    m_Key: loc.screens.modal.ok
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2532333649706614900
+  references:
+    version: 2
+    RefIds:
+    - rid: 2532333649706614900
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1790883811246

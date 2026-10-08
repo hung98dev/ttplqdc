@@ -3,9 +3,10 @@ namespace ThinhThan.UI.Screens
     /// <summary>
     /// Localization keys carried by the IMP-099 screens
     /// (client_localization.md § Keys). Every user-visible string resolves
-    /// through <see cref="ThinhThan.Core.Localization.Loc"/> against the Core
-    /// table; both vi-VN and en-US entries ship in
-    /// <c>ScreensLocalizationSeed</c>.
+    /// through <see cref="ThinhThan.Core.Localization.Loc"/>; both vi-VN and
+    /// en-US entries ship in the committed <c>Tables/Screens</c> collection
+    /// (<c>Screens.asset</c>, shared data + per-locale tables under
+    /// <c>Assets/Localization/Tables/Screens/</c>).
     /// </summary>
     public static class ScreensLoc
     {
