@@ -242,6 +242,7 @@ func (q *Queue) Ack(ctx context.Context, family string, owner idempotency.Owner,
 		q.mu.Unlock()
 		select {
 		case <-q.notify:
+		case <-time.After(awaitPoll):
 		case <-ctx.Done():
 			return ctx.Err()
 		}
