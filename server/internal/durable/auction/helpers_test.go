@@ -167,7 +167,20 @@ func testLookup() Lookup {
 
 func testStore(t *testing.T) *Store {
 	t.Helper()
-	return New(pool(t), items.New(pool(t)), testLookup())
+	return New(pool(t), items.New(pool(t)), testLookup()).
+		WithNow(nonWindowNow)
+}
+
+// nonWindowNow keeps tax-asserting tests deterministic: the Morning
+// Market window (06:00-08:00 HCM) would otherwise give 3% instead of
+// 5% for two hours each day. Window behavior itself is covered by
+// TestMorningMarketThreePercentCeiling, which pins WithNow explicitly.
+func nonWindowNow() time.Time {
+	n := time.Now()
+	if h := n.In(hcm).Hour(); h >= 6 && h < 8 {
+		n = n.Add(time.Duration(8-h) * time.Hour)
+	}
+	return n
 }
 
 // eligible is a level-20 character older than 24 h with a funded wallet.
