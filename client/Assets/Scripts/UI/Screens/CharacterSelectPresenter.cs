@@ -79,7 +79,7 @@ namespace ThinhThan.UI.Screens
             }
 
             await RunAsync(
-                () => _controller.AttachAsync(
+                async () => await _controller.AttachAsync(
                     character.CharacterId.ToByteArray(), cancel))
                 ;
         }
@@ -94,7 +94,8 @@ namespace ThinhThan.UI.Screens
             }
 
             await RunAsync(
-                () => _controller.CreateAsync(characterName, classId, cancel))
+                async () => await _controller.CreateAsync(
+                    characterName, classId, cancel))
                 ;
         }
 
