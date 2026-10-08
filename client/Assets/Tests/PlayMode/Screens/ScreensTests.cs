@@ -24,7 +24,7 @@ namespace ThinhThan.Tests.PlayMode.Screens
     {
         private sealed class FakeClock : IClock
         {
-            public double UnscaledDeltaSeconds
+            public float UnscaledDeltaSeconds
             {
                 get;
                 set;
