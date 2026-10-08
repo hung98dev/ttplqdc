@@ -1,26 +1,29 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using ThinhThan.Core.Localization;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 
-namespace ThinhThan.UI.Screens.EditorTools
+namespace ThinhThan.UI.Screens
 {
     /// <summary>
-    /// Seeds the IMP-099 screen keys into the Core string-table collection at
-    /// editor launch, mirroring LocalizationProvisioner's upsert semantics so
-    /// every screen string is a localization key in vi-VN and en-US
-    /// (packet § Acceptance). Runs after LocalizationProvisioner via
-    /// delayCall ordering — both are idempotent upserts, so ordering does not
-    /// matter beyond the tables existing.
+    /// Seeds the IMP-099 screen keys into the Screens string-table collection
+    /// at editor launch, mirroring LocalizationProvisioner's upsert
+    /// semantics so every screen string is a localization key in vi-VN and
+    /// en-US (packet § Acceptance). Touches only
+    /// <c>Assets/Localization/Tables/Screens/</c> (IMP-099 grant) — the
+    /// IMP-063 assets provisioner then rehomes the collection's entries into
+    /// the canonical <c>localization.*</c> groups (ADR-0074).
     /// </summary>
     public static class ScreensLocalizationSeed
     {
-        private const string TablesDir = "Assets/Localization/Tables/Core";
+        private const string TablesDir = "Assets/Localization/Tables/Screens";
 
-        private const string CollectionName = "Core";
+        private const string CollectionName = "Screens";
+
+        private const string LocalesDir = "Assets/Localization/Settings";
 
         private static readonly (string Key, string ViVn, string EnUs)[] _entries =
         {
@@ -68,14 +71,30 @@ namespace ThinhThan.UI.Screens.EditorTools
             EditorApplication.delayCall += Seed;
         }
 
-        /// <summary>Idempotent upsert of every screen key into both tables.</summary>
+        /// <summary>
+        /// Idempotent upsert of every screen key into the Screens collection;
+        /// creates the collection when the asset does not exist yet.
+        /// </summary>
         public static void Seed()
         {
-            var collection = AssetDatabase.LoadAssetAtPath<StringTableCollection>(
+            var collection = LoadAsset<StringTableCollection>(
                 TablesDir + "/" + CollectionName + ".asset");
+            var changed = false;
             if (collection == null)
             {
-                return;
+                var locales = LoadLocales();
+                if (locales.Count == 0)
+                {
+                    return;
+                }
+
+                EnsureFolder("Assets/Localization");
+                EnsureFolder("Assets/Localization/Tables");
+                EnsureFolder(TablesDir);
+                collection = UnityEngine.Localization.Settings
+                    .LocalizationEditorSettings.CreateStringTableCollection(
+                        CollectionName, TablesDir, locales);
+                changed = true;
             }
 
             var viTable = collection.GetTable(
@@ -87,7 +106,6 @@ namespace ThinhThan.UI.Screens.EditorTools
                 return;
             }
 
-            var changed = false;
             foreach (var (key, viVn, enUs) in _entries)
             {
                 changed |= Upsert(viTable, key, viVn);
@@ -96,6 +114,7 @@ namespace ThinhThan.UI.Screens.EditorTools
 
             if (changed)
             {
+                EditorUtility.SetDirty(collection);
                 EditorUtility.SetDirty(viTable);
                 EditorUtility.SetDirty(enTable);
                 if (viTable.SharedData != null)
@@ -105,6 +124,62 @@ namespace ThinhThan.UI.Screens.EditorTools
 
                 AssetDatabase.SaveAssets();
             }
+        }
+
+        private static List<Locale> LoadLocales()
+        {
+            var locales = new List<Locale>(2);
+            foreach (var code in new[]
+            {
+                ThinhThanLocale.VietnameseCode, ThinhThanLocale.EnglishCode,
+            })
+            {
+                var locale = LoadAsset<Locale>(
+                    LocalesDir + "/Locale " + code + ".asset");
+                if (locale != null)
+                {
+                    locales.Add(locale);
+                }
+            }
+
+            return locales;
+        }
+
+        /// <summary>
+        /// Load an asset; when it is committed on disk but not yet imported
+        /// (delayCall can beat the first import pass) force a synchronous
+        /// refresh instead of recreating (IMP-063 lesson).
+        /// </summary>
+        private static T? LoadAsset<T>(string assetPath) where T : Object
+        {
+            var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+            if (asset == null
+                && System.IO.File.Exists(
+                    System.IO.Path.Combine(ProjectRoot(), assetPath)))
+            {
+                AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+                asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+            }
+
+            return asset;
+        }
+
+        private static string ProjectRoot()
+        {
+            return System.IO.Path.GetFullPath(
+                System.IO.Path.Combine(Application.dataPath, ".."));
+        }
+
+        private static void EnsureFolder(string path)
+        {
+            if (AssetDatabase.IsValidFolder(path))
+            {
+                return;
+            }
+
+            var parent = System.IO.Path.GetDirectoryName(path)!.Replace('\\', '/');
+            var leaf = System.IO.Path.GetFileName(path);
+            AssetDatabase.CreateFolder(parent, leaf);
         }
 
         private static bool Upsert(StringTable table, string key, string value)
@@ -128,3 +203,4 @@ namespace ThinhThan.UI.Screens.EditorTools
         }
     }
 }
+#endif

@@ -24,6 +24,7 @@ namespace ThinhThan.UI.Screens
             Func<string, CancellationToken, Task<string>> loadText)
         {
             _loadText = loadText ?? throw new ArgumentNullException(nameof(loadText));
+            Text = string.Empty;
         }
 
         /// <summary>Raised when Text or the error state changes.</summary>
@@ -34,7 +35,7 @@ namespace ThinhThan.UI.Screens
         {
             get;
             private set;
-        } = string.Empty;
+        }
 
         /// <summary>Load failed — show loc.screens.credits.unavailable.</summary>
         public bool Unavailable

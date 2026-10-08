@@ -32,6 +32,7 @@ namespace ThinhThan.UI.Screens
             _controller = controller ??
                 throw new ArgumentNullException(nameof(controller));
             _logout = logout ?? throw new ArgumentNullException(nameof(logout));
+            MessageKey = string.Empty;
         }
 
         /// <summary>Raised when slots or Busy change.</summary>
@@ -51,7 +52,7 @@ namespace ThinhThan.UI.Screens
         {
             get;
             private set;
-        } = string.Empty;
+        }
 
         /// <summary>Existing characters (at most <see cref="MaxSlots"/>).</summary>
         public IReadOnlyList<CharacterSummary> Slots
@@ -77,11 +78,10 @@ namespace ThinhThan.UI.Screens
                 return;
             }
 
-            await RunAsync(delegate
-            {
-                return _controller.AttachAsync(
-                    character.CharacterId.ToByteArray(), cancel);
-            }).ConfigureAwait(false);
+            await RunAsync(
+                () => _controller.AttachAsync(
+                    character.CharacterId.ToByteArray(), cancel))
+                .ConfigureAwait(false);
         }
 
         /// <summary>Tạo nhân vật mới (name + class; selection follows).</summary>
@@ -93,10 +93,9 @@ namespace ThinhThan.UI.Screens
                 return;
             }
 
-            await RunAsync(delegate
-            {
-                return _controller.CreateAsync(characterName, classId, cancel);
-            }).ConfigureAwait(false);
+            await RunAsync(
+                () => _controller.CreateAsync(characterName, classId, cancel))
+                .ConfigureAwait(false);
         }
 
         /// <summary>Đăng xuất → AUTH_TITLE.</summary>

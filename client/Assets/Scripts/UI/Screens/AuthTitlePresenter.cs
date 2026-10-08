@@ -20,6 +20,7 @@ namespace ThinhThan.UI.Screens
         public AuthTitlePresenter(AuthFlow flow)
         {
             _flow = flow ?? throw new ArgumentNullException(nameof(flow));
+            MessageKey = string.Empty;
         }
 
         /// <summary>Raised when Busy or the displayed message key changes.</summary>
@@ -39,7 +40,7 @@ namespace ThinhThan.UI.Screens
         {
             get;
             private set;
-        } = string.Empty;
+        }
 
         /// <summary>Đăng nhập: username + password.</summary>
         public Task LoginAsync(
