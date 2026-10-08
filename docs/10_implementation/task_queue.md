@@ -38,7 +38,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-011` | Character Progression / Stats | `DONE` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
 | `IMP-012` | Equipment / Loadout Core | `IN_PROGRESS` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
-| `IMP-014` | Combat Action State Machine | `IN_PROGRESS` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
+| `IMP-014` | Combat Action State Machine | `DONE` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
 | `IMP-015` | Skill Runtime / Geometry | `NOT_STARTED` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-016` | Effects / Status / Shield Pipeline | `NOT_STARTED` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
@@ -1442,7 +1442,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-013/"
 
 ## `IMP-014` — Combat Action State Machine
 id: IMP-014
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-014"
 branch: "imp/IMP-014-combat-action-fsm"
 claimed_at: "2026-10-08T05:37:26Z"
