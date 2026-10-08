@@ -470,7 +470,9 @@ reward_claims
   source_type          VARCHAR(32) NOT NULL   -- CHECK IN the reward_claims.md § Claim Creation enum
   source_reference     VARCHAR(160) NOT NULL
   reward_slot          VARCHAR(64) NOT NULL
-  claim_kind           VARCHAR(16) NOT NULL   -- CHECK IN ('SINGLE','ITEM_CONSOLIDATED','CURRENCY_AGGREGATE')
+  claim_kind           VARCHAR(24) NOT NULL   -- CHECK IN ('SINGLE','ITEM_CONSOLIDATED','CURRENCY_AGGREGATE');
+                                             -- baseline 000001 declared VARCHAR(16), which cannot hold the
+                                             -- 17/18-char aggregate kinds (BLK-004); widened via pair 000007_*
   consolidation_key    VARCHAR(192) NULL      -- '<item_id>|<effective_binding>' or '<currency_id>:<source_family>'; NULL for SINGLE
   state                VARCHAR(16) NOT NULL   -- CHECK IN ('PENDING','CLAIMING','CLAIMED','EXPIRED')
   created_at           TIMESTAMPTZ NOT NULL

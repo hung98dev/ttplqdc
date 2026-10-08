@@ -1389,7 +1389,7 @@ CREATE TABLE public.reward_claims (
     source_type character varying(32) NOT NULL,
     source_reference character varying(160) NOT NULL,
     reward_slot character varying(64) NOT NULL,
-    claim_kind character varying(16) NOT NULL,
+    claim_kind character varying(24) NOT NULL,
     consolidation_key character varying(192),
     state character varying(16) NOT NULL,
     created_at timestamp with time zone NOT NULL,
@@ -1398,7 +1398,7 @@ CREATE TABLE public.reward_claims (
     claim_operation_id uuid,
     revision bigint NOT NULL,
     CONSTRAINT reward_claims_check CHECK ((((claim_kind)::text = 'SINGLE'::text) = (consolidation_key IS NULL))),
-    CONSTRAINT reward_claims_claim_kind_check CHECK (((claim_kind)::text = ANY ((ARRAY['SINGLE'::character varying, 'ITEM_CONSOLIDATED'::character varying, 'CURRENCY_AGGREGATE'::character varying])::text[]))),
+    CONSTRAINT reward_claims_claim_kind_check CHECK (((claim_kind)::text = ANY (ARRAY[('SINGLE'::character varying)::text, ('ITEM_CONSOLIDATED'::character varying)::text, ('CURRENCY_AGGREGATE'::character varying)::text]))),
     CONSTRAINT reward_claims_source_type_check CHECK (((source_type)::text = ANY ((ARRAY['MONSTER'::character varying, 'BOSS'::character varying, 'BOSS_CHEST'::character varying, 'DUNGEON'::character varying, 'QUEST'::character varying, 'WORLD_EVENT'::character varying, 'ATLAS'::character varying, 'FEAT'::character varying, 'LEVEL_MILESTONE'::character varying, 'PVP'::character varying, 'GUILD_WAR'::character varying, 'GUILD'::character varying, 'FISHING'::character varying, 'HIDDEN_CHEST'::character varying, 'AUCTION_ESCROW_EXPIRY'::character varying, 'ADMIN_COMPENSATION'::character varying])::text[]))),
     CONSTRAINT reward_claims_state_check CHECK (((state)::text = ANY ((ARRAY['PENDING'::character varying, 'CLAIMING'::character varying, 'CLAIMED'::character varying, 'EXPIRED'::character varying])::text[])))
 );
