@@ -110,8 +110,9 @@ namespace ThinhThan.Tests.PlayMode.Screens
             Assert.AreEqual(1, connects);
             Assert.AreEqual(string.Empty, presenter.MessageKey);
             Assert.AreEqual("at", credentials.AccessToken);
-            Assert.IsTrue(storage.TryGet("session.access_token", out string? saved));
-            Assert.AreEqual("at", saved);
+            Assert.IsTrue(
+                storage.TryGet(SessionStore.RefreshTokenKey, out string? saved));
+            Assert.AreEqual("rt", saved);
 
             await presenter.RegisterAsync(
                 "player2", "secretpw", "p2@example.com", CancellationToken.None);

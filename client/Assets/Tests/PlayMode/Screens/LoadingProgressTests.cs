@@ -108,7 +108,9 @@ namespace ThinhThan.Tests.PlayMode.Screens
             var loader = new IncrementalLoader(budget);
 
             const int items = 10;
-            const double stepSeconds = 0.006;
+            // 6.5 ms per step: the second item's end (13 ms) clears the 12 ms
+            // deadline by a wide FP-safe margin — exactly 2 items per tick.
+            const double stepSeconds = 0.0065;
             var executed = 0;
             for (var i = 0; i < items; i++)
             {
@@ -123,7 +125,7 @@ namespace ThinhThan.Tests.PlayMode.Screens
             var frameIndex = 0L;
             clock.NowSeconds = 0.0;
             TickBudget(budget, clock, frameIndex++);
-            // 6 ms per step under a 12 ms deadline => at most 2 items per tick.
+            // 6.5 ms per step under a 12 ms deadline => at most 2 items per tick.
             Assert.LessOrEqual(executed, 2);
 
             var beforeTick = executed;
