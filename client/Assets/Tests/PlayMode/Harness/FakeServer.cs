@@ -299,6 +299,19 @@ namespace ThinhThan.Tests.PlayMode.Harness
             return socket.SendAsync(8, replaced);
         }
 
+        /// <summary>Sends an arbitrary S2C frame on the latest socket —
+        /// generic emitter for wave-14+ inbound bindings.</summary>
+        public Task SendFrameAsync(uint messageId, IMessage payload)
+        {
+            FakeServerSocket? socket = Latest;
+            if (socket == null)
+            {
+                return Task.CompletedTask;
+            }
+
+            return socket.SendAsync(messageId, payload);
+        }
+
         /// <summary>Sends S2C_SERVER_DRAINING on the latest socket.</summary>
         public Task SendServerDrainingAsync(uint retryAfterMs)
         {

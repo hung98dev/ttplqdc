@@ -375,6 +375,69 @@ func TestQ0AbsentPathsMetaAndSharedCoverage(t *testing.T) {
 	}
 }
 
+func TestImplicitTablesGrant(t *testing.T) {
+	// repository_layout.md § Ownership Rules: owning
+	// client/Assets/Scripts/{Systems|UI}/<Feature>/ implicitly owns
+	// client/Assets/Localization/Tables/<Feature>/ — assets, their .meta
+	// companions and the directory .meta markers above them.
+	idx := PacketIndex{
+		"IMP-099": &Packet{ID: "IMP-099", Status: "IN_PROGRESS", OwnedPaths: []string{
+			"client/Assets/Scripts/UI/Screens/",
+		}},
+		"IMP-102": &Packet{ID: "IMP-102", Status: "DONE", OwnedPaths: []string{
+			"client/Assets/Scripts/Systems/Inventory/",
+		}},
+	}
+	tracked := []string{
+		"client/Assets/Localization/Tables/Screens/screens-shared.asset",
+		"client/Assets/Localization/Tables/Screens/screens-shared.asset.meta",
+		"client/Assets/Localization/Tables/Screens.meta",
+		"client/Assets/Localization/Tables.meta",
+		"client/Assets/Localization/Tables/Inventory/inventory-shared.asset",
+	}
+	if errs := CheckAbsentPaths(idx, tracked); len(errs) != 0 {
+		t.Fatalf("implicitly-owned feature tables must pass: %v", errs)
+	}
+	// A feature whose Scripts dir is not owned stays unowned.
+	errs := CheckAbsentPaths(idx, []string{"client/Assets/Localization/Tables/Other/x.asset"})
+	if len(errs) != 1 || !strings.Contains(errs[0], "unowned path") {
+		t.Fatalf("non-matching table dir must be unowned: %v", errs)
+	}
+	// An exact-file grant under UI/<Feature>/ owns no feature table.
+	fileOnly := PacketIndex{
+		"IMP-099": &Packet{ID: "IMP-099", Status: "IN_PROGRESS", OwnedPaths: []string{
+			"client/Assets/Scripts/UI/Screens/Login.cs",
+		}},
+	}
+	errs = CheckAbsentPaths(fileOnly, []string{"client/Assets/Localization/Tables/Screens/x.asset"})
+	if len(errs) != 1 || !strings.Contains(errs[0], "unowned path") {
+		t.Fatalf("exact-file grant must not imply the feature table: %v", errs)
+	}
+	// A dir grant deeper than <Feature>/ does not imply the table either.
+	nested := PacketIndex{
+		"IMP-099": &Packet{ID: "IMP-099", Status: "IN_PROGRESS", OwnedPaths: []string{
+			"client/Assets/Scripts/UI/Screens/Login/",
+		}},
+	}
+	errs = CheckAbsentPaths(nested, []string{"client/Assets/Localization/Tables/Screens/x.asset"})
+	if len(errs) != 1 || !strings.Contains(errs[0], "unowned path") {
+		t.Fatalf("nested dir grant must not imply the feature table: %v", errs)
+	}
+	// Tables/Core/ stays with IMP-064 — an implicit grant never overrides the
+	// explicit owner (longest-prefix on equal coverage picks either; liveness
+	// comes from the live packet).
+	coreIdx := PacketIndex{
+		"IMP-064": &Packet{ID: "IMP-064", Status: "DONE", OwnedPaths: []string{
+			"client/Assets/Localization/Tables/Core/",
+		}},
+		"IMP-099": idx["IMP-099"],
+	}
+	errs = CheckAbsentPaths(coreIdx, []string{"client/Assets/Localization/Tables/Core/core.asset"})
+	if len(errs) != 0 {
+		t.Fatalf("Tables/Core with live IMP-064 must pass: %v", errs)
+	}
+}
+
 func TestQ1PinsMutationFails(t *testing.T) {
 	root := fixtureRepo(t)
 	writeFile(t, root, "server/go.mod",
