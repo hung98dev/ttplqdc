@@ -288,7 +288,7 @@ Secrets store only verifier/hash material required by security specs.
 # Character
 Root includes character_id, account_id, display/normalized name, class_id, lifecycle, appearance (fixed class default at creation), `created_at`, and `updated_at`. Both timestamps are server-owned `timestamptz`; `updated_at` starts at creation and advances on every committed update to the `characters` row. Changes only to child/projection rows do not advance it. The column is part of the baseline schema `000001` (ADR-0048 amendment); the retired `000003` migration and its existing-row backfill rule no longer apply.
 
-Owned projections include progression, potential allocation, skills, currencies, progression flags, discoveries/first-clears, checkpoint, cosmetic selection, fishing UTC-date catch count (`world_rules.md` daily cap 50), and chivalry lifetime plus utc-day counters (`character_chivalry`, § Social / Party).
+Owned projections include progression, potential allocation, skills, currencies, progression flags, discoveries/first-clears, checkpoint, cosmetic selection, fishing UTC-date catch count (`world_rules.md` daily cap 50), bonfire rest-EXP UTC-day tick count (`character_rest_daily`, `world_rules.md` § Passive Rest EXP cap 180), and chivalry lifetime plus utc-day counters (`character_chivalry`, § Social / Party).
 
 `characters.progression_revision BIGINT NOT NULL DEFAULT 0` (migration pair `000002_*`, `physical_schema_contract.md` §6) is the aggregate revision carried by `S2C_PROGRESSION_STATE` (515). Every committed transaction that mutates the 515 projection — level/`current_exp`, `unspent_skill_points`, `unspent_potential_points`, `character_skill_levels`, `character_potential_allocations`, or the persisted skill loadout — increments it by exactly 1 under the character lock in the same transaction. It is a staleness-detection revision (`save_rules.md` § Revisions / Conflicts), not a +1-per-push sequence.
 
@@ -312,6 +312,16 @@ character_attach_events
   INDEX (character_id, attached_at)
 ```
 First attach in one session epoch writes this immutable event with the activity projection; reattach in that epoch does not overwrite it. The cycle-cutoff query uses events before the cutoff, not the latest mutable activity row. Retention is 180 days on anonymized character identity.
+
+```text
+character_rest_daily                -- bonfire rest-EXP daily tick counter (migration pair 000006_*;
+                                    -- world_rules.md § Passive Rest EXP)
+  character_id       UUID NOT NULL REFERENCES characters(character_id)
+  utc_date           DATE NOT NULL
+  rest_ticks_gained  SMALLINT NOT NULL DEFAULT 0 CHECK (rest_ticks_gained >= 0 AND rest_ticks_gained <= 180)
+  PRIMARY KEY (character_id, utc_date)
+```
+Each `sim.rest_settlement` intent (REWARD / JournalRewardCommand kind REST, `save_rules.md` § Closed Durable Queue Producer Registry) grants `rest_exp` for one completed 10 s bonfire-rest tick and bumps `rest_ticks_gained` in the same transaction; a tick arriving at the cap grants nothing.
 
 ### character_currencies
 ```text

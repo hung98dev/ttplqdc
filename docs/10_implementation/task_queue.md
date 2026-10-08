@@ -1253,6 +1253,7 @@ Implement persistent overflow/recovery claims and compatible currency aggregatio
 - Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - ADR-0064 reward-claim paging: 434 sends `total_count` and the 50 oldest PENDING claims only after attach; `C2S_REWARD_CLAIM_LIST_REQUEST` (439, offset, limit 1..50) returns 440 in the same order; every committed change emits `S2C_REWARD_CLAIM_DELTA` (441) with `claims_revision` + 1; no frame exceeds the outbound limit at any claim count.
 - `claims_revision` reads `characters.claims_revision` (`../06_data/data_model.md` § Character, migration pair `000004_*` from the routed schema gatefix): exactly +1 per committed transaction mutating the character's claims projection under the character lock — never `SUM(reward_claims.revision)`.
+- `durable/reward` registers the `sim.rest_settlement` consumer (REWARD / JournalRewardCommand kind REST, `../06_data/save_rules.md` § Closed Durable Queue Producer Registry): each bonfire-rest tick intent grants `rest_exp` and bumps `character_rest_daily.rest_ticks_gained` atomically under the character lock; a tick at the 180/day cap grants nothing (`../02_world/world_rules.md` § Passive Rest EXP).
 - independent reward slots settle without sibling rollback/reroll.
 - at the 100-claim cap an item claim consolidates per `owner_character_id + item_id + effective_binding` (never per-instance state); preventable sources reject with `CLAIM_CAP_REACHED` and consume nothing; non-preventable sources exceed the cap; no reward is deleted (ADR-0063).
 - ADR-0060: unknown `source_type` is rejected; 409 returns granted lines; 434 lists every PENDING claim with `cap = 100`.
@@ -1905,7 +1906,7 @@ blocked_by: ""
 specs: [`../01_gameplay/README.md`, `../01_gameplay/core_loop.md`, `../07_content/world_route_catalog.md`, `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md`, `../05_network/messages.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
 adrs: [`0025-peak-moments-and-progression-books.md`, `0068-implementation-packet-readiness-corrections.md`, `0060-wire-and-durable-contract-completion.md`, `0061-world-lifecycle-and-content-reconciliation.md`, `0062-world-and-systems-regression-fixes.md`, `0064-session-handshake-wire-types-and-result-contract.md`, `0069-session-continuity-auth-hardening-and-wire-corrections.md`, `0079-readiness-contract-closure.md`]
 depends_on: [IMP-005, IMP-011, IMP-018]
-owned_paths: [`server/internal/sim/discovery/`, `server/internal/sim/travel/`, `server/internal/durable/discovery/`, `server/internal/sim/world/interact.go`, `client/Assets/Scripts/UI/Discovery/`, `client/Assets/Tests/PlayMode/DiscoveryPresentation/`]
+owned_paths: [`server/internal/sim/discovery/`, `server/internal/sim/travel/`, `server/internal/durable/discovery/`, `client/Assets/Scripts/UI/Discovery/`, `client/Assets/Tests/PlayMode/DiscoveryPresentation/`]
 forbidden_paths: [`server/migrations/`]
 contract_inputs: [first-discovery/progression source event, character state, operation ID]
 contract_outputs: [once-only durable progress/reward result and client discovery event]
@@ -1920,7 +1921,7 @@ Implement 24 character first-discovery rewards and progression-source operation 
 - Every Durable-bound command uses the owning family/source/finalized outputs in ../06_data/save_rules.md § Closed Durable Queue Producer Registry and ../05_network/protobuf_conventions.md §7; do not enqueue opaque/unregistered data, reroll frozen outputs or replace a client operation UUID with a server job UUID.
 - 0.8% discovery budget/act (safe-anchor 0.2% + three FIELD 0.2% each) and retry tests pass.
 - travel to an undiscovered destination returns `NOT_DISCOVERED` and charges nothing; the tier fee is charged exactly once per `operation_id`; a successful travel starts the transfer flow and yields one 116.
-- the `travel` service is admitted through the bounded `interact.go` grant (`../10_implementation/repository_layout.md` § Ownership Rules): IMP-020 adds only its `travel` service-id constant and `RegisterService` line in `NewInteractDispatcher`; the dispatcher type and mechanics stay IMP-018-owned.
+- the `travel` service registers through the exported post-construction seam (`repository_layout.md` § Ownership Rules): `sim/travel` exports the `travel` service-id constant and handler; the production `Runtime.Dispatcher().RegisterService(travel.<id>)` call is IMP-069's composition wiring (it depends on IMP-020, so the ordering holds); `sim/world/interact.go` stays IMP-018-only — IMP-020's tests register `travel` on a locally constructed `NewInteractDispatcher`.
 
 ## Tests
 - `server/internal/sim/discovery/discovery_test.go`: TestTwentyFourFirstDiscoveryEvents, TestProgressionSourceOperationIDs, TestIdempotentDiscoveryGrants.
@@ -2189,6 +2190,7 @@ consumers_checked: [docs/10_implementation/milestones.md, docs/10_implementation
 - `KINDLE` consumes one `item.material.cui_lua_trai` at an inactive bonfire per `world_rules.md`.
 - `COOK` of any `recipe.food.*` yields the dish plus 1 `item.material.cui_lua_trai`.
 - `BONFIRE_REST` ticks rest EXP and Linh Thú bond per `world_rules.md`.
+- rest EXP is emitted as `sim.rest_settlement` intents (REWARD / JournalRewardCommand kind REST, `../06_data/save_rules.md` § Closed Durable Queue Producer Registry) per completed 10 s tick; `characters` EXP and `character_rest_daily` writes are applied by the owning `durable/reward` consumer (IMP-010) — IMP-059 never writes them directly.
 - bonfire-rest bond grants are emitted as `sim.beast_settlement` intents (REWARD / JournalRewardCommand kind BEAST, `../06_data/save_rules.md` § Closed Durable Queue Producer Registry) per completed 300 s active-rest interval; `character_beasts`/`character_beast_bond_daily` writes are applied by the owning `durable/beasts` consumer (IMP-057) — IMP-059 never writes beast tables directly.
 - No shop faucet for kindling.
 
@@ -2674,7 +2676,7 @@ Implement same-map/range two-player atomic trade.
 - `server/internal/sim/trade/trade_lock_test.go`: TestSameAccountTradeForbidden, TestTwelveEntriesPerSide, TestRestartReleasesTradeLocks.
 - `server/internal/sim/trade/trade_test.go`: TestTradeLockInPlace, TestTradeRestartCancelsSessions, TestTradeSameAccountForbidden (ADR-0060).
 - `server/internal/sim/trade/partial_lock_test.go`: TestPartialStackLocksOfferedQuantity, TestRemainderUsableLockedQuantityProtected, TestMergeIntoLockedStackRejected, TestSessionCancelledOnParticipantTransferOrDeath (ADR-0062).
-- `server/internal/durable/trade/fees_test.go`: TestDirectTradeCurrencyFeeTenPercentCeiling, TestCurrencyFeeChargedOnlyToOfferingSide, TestFeeFailureRollsBackBothSides.
+- `server/internal/durable/trade/fees_test.go`: TestDirectTradeCurrencyFeeFivePercentCeiling, TestCurrencyFeeChargedOnlyToOfferingSide, TestFeeFailureRollsBackBothSides.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -2717,7 +2719,7 @@ Implement listing escrow, fixed-price purchase, fee/tax, pending seller proceeds
 - `server/internal/durable/auction/auction_gates_test.go`: TestAuctionLevel15GateAllOperations, TestListingAgeGate, TestListingFloorPerUnitTimesQuantity, TestSameAccountPurchaseForbidden.
 - `server/internal/durable/auction/auction_test.go`: TestAuctionPriceFloorCode, TestAuctionSameAccountBuy, TestAuctionExpectedPrice (ADR-0060).
 - `server/internal/durable/auction/ended_at_test.go`: `TestEndedAtSetOnEveryTerminalTransition` (ADR-0070).
-- `server/internal/durable/auction/fees_test.go`: TestAuctionTaxFifteenPercentCeiling, TestMorningMarketFivePercentCeiling, TestSaleFeeAndProceedsAtomic.
+- `server/internal/durable/auction/fees_test.go`: TestAuctionTaxFivePercentCeiling, TestMorningMarketThreePercentCeiling, TestSaleFeeAndProceedsAtomic.
 
 generated_artifacts: []
 cleanup_obligations: [Ensure zero orphaned files or test fixtures.]
@@ -3593,6 +3595,7 @@ Wire Edge, Sim, Durable, and Global into one production Go process through expli
 - full-process restart restores checkpoint-backed state while ordinary parties are intentionally not restored,
 - Edge refuses new player admission while the IMP-022 `WorldConsequence` recovery readiness signal is false (ADR-0068),
 - the composition root wires the boss, dungeon, Spirit Surge and bonfire completion events to `guild.EventSink` and the IMP-042 registration state to `guild.WarRegistrationGuard` (ADR-0068),
+- the composition root admits `NPC_SERVICE` services post-construction via `Runtime.Dispatcher().RegisterService(...)`, starting with IMP-020's `travel` service-id — `sim/world/interact.go` is never edited outside IMP-018 (`repository_layout.md` § Ownership Rules),
 - subsystem calls remain in-process typed calls or bounded queues; no internal network RPC, Redis, Kafka, NATS, or leader lease is introduced.
 - Durable outbox journal (`../08_scale_ops/deployment.md` § Durable Outbox Journal, ADR-0070): on `SHUTDOWN_FLUSH_MAX` expiry every queued or unacknowledged durable command is written to `DURABLE_OUTBOX_DIR/<boot_id>.journal` (length + protobuf `DurableCommandRecord` + CRC32C), fsync, rename to `.ready`, exit 1; at start the `.ready` files replay through the normal idempotent handlers before PUBLIC boss schedule load, chest settlement, WorldConsequence loads and readiness; a bad CRC or unknown command type stops startup.
 
