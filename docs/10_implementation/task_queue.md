@@ -36,7 +36,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-009` | Inventory / IAP Entitlement Panel | `DONE` | IMP-007, IMP-008, IMP-066 | `../03_systems/inventory.md`, `../03_systems/account_storage.md` |
 | `IMP-010` | Reward Claims | `IN_PROGRESS` | IMP-005, IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/reward_claims.md`, `../06_data/data_model.md` |
 | `IMP-011` | Character Progression / Stats | `DONE` | IMP-007, IMP-066, IMP-100 | `../01_gameplay/progression.md`, `../01_gameplay/stats.md` |
-| `IMP-012` | Equipment / Loadout Core | `NOT_STARTED` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
+| `IMP-012` | Equipment / Loadout Core | `IN_PROGRESS` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `IN_PROGRESS` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
 | `IMP-015` | Skill Runtime / Geometry | `NOT_STARTED` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
@@ -59,7 +59,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-032` | Spirit Meridian | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/spirit_meridian.md`, `../07_content/build_catalog.md` |
 | `IMP-033` | Formations | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/formations.md`, `../07_content/build_catalog.md` |
 | `IMP-034` | Friends / Block / Chat | `IN_PROGRESS` | IMP-018, IMP-080, IMP-100 | `../03_systems/social.md`, `../05_network/messages.md` |
-| `IMP-035` | Party | `NOT_STARTED` | IMP-018, IMP-080, IMP-100 | `../03_systems/party.md`, `../05_network/messages.md` |
+| `IMP-035` | Party | `IN_PROGRESS` | IMP-018, IMP-080, IMP-100 | `../03_systems/party.md`, `../05_network/messages.md` |
 | `IMP-036` | Guild Core / Progression | `NOT_STARTED` | IMP-007, IMP-034, IMP-100 | `../03_systems/guild.md`, `../03_systems/guild_progression.md` |
 | `IMP-037` | Guild Storage | `NOT_STARTED` | IMP-008, IMP-009, IMP-036 | `../03_systems/guild_storage.md`, `../06_data/data_model.md` |
 | `IMP-038` | Cosmetics | `NOT_STARTED` | IMP-007, IMP-008, IMP-036, IMP-100 | `../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md` |
@@ -1313,10 +1313,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-011/"
 
 ## `IMP-012` — Equipment / Loadout Core
 id: IMP-012
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-012"
+branch: "imp/IMP-012-equipment-loadout"
+claimed_at: "2026-10-08T06:09:19Z"
 blocked_by: ""
 
 specs: [`../03_systems/equipment.md`, `../07_content/equipment_catalog.md`, `../05_network/messages.md`, `../06_data/data_model.md`]
@@ -2914,10 +2914,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-094/"
 
 ## `IMP-035` — Party
 id: IMP-035
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-035"
+branch: "imp/IMP-035-party"
+claimed_at: "2026-10-08T06:09:19Z"
 blocked_by: ""
 
 specs: [`../03_systems/party.md`, `../05_network/messages.md`]
