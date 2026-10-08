@@ -286,7 +286,7 @@ The PRIMARY KEY `(account_entitlement_id, character_id, reward_tier_id)` is the 
 Secrets store only verifier/hash material required by security specs.
 
 # Character
-Root includes character_id, account_id, display/normalized name, class_id, lifecycle, appearance (fixed class default at creation), `created_at`, and `updated_at`. Both timestamps are server-owned `timestamptz`; `updated_at` starts at creation and advances on every committed update to the `characters` row. Changes only to child/projection rows do not advance it. When migration `000003` is implemented, existing rows receive its transaction timestamp because their earlier edit times cannot be reconstructed.
+Root includes character_id, account_id, display/normalized name, class_id, lifecycle, appearance (fixed class default at creation), `created_at`, and `updated_at`. Both timestamps are server-owned `timestamptz`; `updated_at` starts at creation and advances on every committed update to the `characters` row. Changes only to child/projection rows do not advance it. The column is part of the baseline schema `000001` (ADR-0048 amendment); the retired `000003` migration and its existing-row backfill rule no longer apply.
 
 Owned projections include progression, potential allocation, skills, currencies, progression flags, discoveries/first-clears, checkpoint, cosmetic selection, fishing UTC-date catch count (`world_rules.md` daily cap 50), and chivalry lifetime plus utc-day counters (`character_chivalry`, § Social / Party).
 
@@ -421,7 +421,7 @@ Persist owned Linh Thú, level, bond_points, active state, and 3 equipment slot 
 ~~~
 character_beasts PK (character_id, beast_id) plus level, bond_points, is_active, updated_at
 character_beast_food_daily PK (character_id, utc_date) plus food_points_gained (0..20; shared by all beasts, spirit_beasts.md)
-character_beast_bond_daily PK (character_id, beast_id, utc_date) plus bonfire_points_gained (0..6; separate from the food counter, ../02_world/world_rules.md § Linh Thú Bonding; migration pair 000004_*)
+character_beast_bond_daily PK (character_id, beast_id, utc_date) plus bonfire_points_gained (0..6; separate from the food counter, ../02_world/world_rules.md § Linh Thú Bonding; migration pair 000005_*)
 beast_equipment_locations PK (character_id, beast_id, slot_id) plus item_instance_id
 FK beast_equipment_locations -> character_beasts
 ~~~
