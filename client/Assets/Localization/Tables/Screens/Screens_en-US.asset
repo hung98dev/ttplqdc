@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Screens_en-US
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 7b48aa66445f7e745ceaee85ebd44e5c, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 3000000000000000001
+    - rid: 3000000000000000003
+  m_TableData:
+  - m_Id: 3100000000
+    m_Localized: Checking version...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000001
+    m_Localized: Updating resources
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000002
+    m_Localized: Sign in
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000003
+    m_Localized: Register
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000004
+    m_Localized: Or sign in with
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000005
+    m_Localized: Invalid username or password.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000006
+    m_Localized: Update required to continue.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000007
+    m_Localized: Server busy, please retry later.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000008
+    m_Localized: Account is locked.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000009
+    m_Localized: Username is already taken.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000010
+    m_Localized: Email is already registered.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000011
+    m_Localized: Invalid username.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000012
+    m_Localized: Invalid email.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000013
+    m_Localized: Invalid password.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000014
+    m_Localized: In the login queue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000015
+    m_Localized: 'Your position: {position}'
+    m_Metadata:
+      m_Items:
+      - rid: 3000000000000000001
+  - m_Id: 3100000016
+    m_Localized: Retrying automatically...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000017
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000018
+    m_Localized: Select character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000019
+    m_Localized: Create character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000020
+    m_Localized: Sign out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000021
+    m_Localized: No characters yet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000022
+    m_Localized: Transferring...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000023
+    m_Localized: Waiting for a spot in the zone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000024
+    m_Localized: Transfer failed, returning to safe point
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000025
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000026
+    m_Localized: Graphics quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000027
+    m_Localized: Battery saver (30 FPS)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000028
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000029
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000030
+    m_Localized: Credits unavailable.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000031
+    m_Localized: Connection lost.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000032
+    m_Localized: Retrying... (Attempt {attempt}/{max})
+    m_Metadata:
+      m_Items:
+      - rid: 3000000000000000003
+  - m_Id: 3100000033
+    m_Localized: Exit to title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000034
+    m_Localized: Your account was signed in from another device.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3100000035
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 3000000000000000001
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 3100000015
+    - rid: 3000000000000000003
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 3100000032
