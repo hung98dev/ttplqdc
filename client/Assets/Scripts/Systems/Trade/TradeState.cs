@@ -3,35 +3,6 @@ using ThinhThan.Protocol.V1;
 
 namespace ThinhThan.Systems.Trade
 {
-    /// <summary>Client FSM phases for a direct-trade session.</summary>
-    public enum TradePhase
-    {
-        None = 0,
-        Invited = 1,
-        Open = 2,
-        Locked = 3,
-        Committing = 4,
-        Completed = 5,
-        Cancelled = 6,
-    }
-
-    /// <summary>One offered item instance (whole or partial stack).</summary>
-    public struct TradeOfferItemModel
-    {
-        public byte[] ItemInstanceId;
-        public string ItemId;
-        public uint Quantity;
-    }
-
-    /// <summary>One side's offer in the 706 projection.</summary>
-    public struct TradeSideModel
-    {
-        public byte[] CharacterId;
-        public List<TradeOfferItemModel> Items;
-        public long CommonAmount;
-        public bool Confirmed;
-    }
-
     /// <summary>
     /// Client-side projection of one direct-trade session: the 706
     /// offer state (wholesale replace) plus invite/cancel/result
