@@ -53,31 +53,31 @@ namespace ThinhThan.Systems.Social
             switch (frame.MessageId)
             {
                 case S2CChatMessageId:
-                    _state.AppendChat(frame.Payload as S2CChatMessage);
+                    _state.AppendChat((S2CChatMessage)frame.Payload!);
                     break;
                 case S2CFriendRequestId:
                     _state.ApplyRequestPush(
-                        frame.Payload as S2CFriendRequest);
+                        (S2CFriendRequest)frame.Payload!);
                     break;
                 case S2CFriendStateId:
                     _state.ApplyFriendState(
-                        frame.Payload as S2CFriendState);
+                        (S2CFriendState)frame.Payload!);
                     break;
                 case S2CBlockStateId:
                     _state.ApplyBlockState(
-                        frame.Payload as S2CBlockState);
+                        (S2CBlockState)frame.Payload!);
                     break;
                 case S2CReportPlayerResultId:
                     _state.LastReportResult =
-                        frame.Payload as S2CReportPlayerResult;
+                        (S2CReportPlayerResult)frame.Payload!;
                     break;
                 case S2CSocialResultId:
                     _state.LastSocialResult =
-                        frame.Payload as S2CSocialResult;
+                        (S2CSocialResult)frame.Payload!;
                     break;
                 case S2CChatSendResultId:
                     _state.LastChatResult =
-                        frame.Payload as S2CChatSendResult;
+                        (S2CChatSendResult)frame.Payload!;
                     break;
                 default:
                     return;
