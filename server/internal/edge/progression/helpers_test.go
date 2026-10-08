@@ -130,18 +130,27 @@ func newEnv(t *testing.T, capacity int, consults *fakeConsult) *env {
 
 // intentTap wraps the session intent sink so tests can drive the
 // phase transition production gets from the world baseline (300 —
-// IMP-018 has not landed): after a successful attach the conn enters
-// IN_WORLD exactly as it would once the baseline is delivered.
+// IMP-018 has not landed): the conn enters IN_WORLD on attach exactly
+// as it would once the baseline is delivered.
+//
+// The phase must flip BEFORE the attach is dispatched, not after it
+// returns: r.attach only offers S2C_CHARACTER_ATTACH_OK to the outbound
+// queue, so the write loop can flush the 7 and the client can fire its
+// next intent while this goroutine is still between the Enqueue return
+// and SetPhase. The read loop validates that intent concurrently — a
+// post-Enqueue flip leaves a window where the conn still reads
+// CHARACTER_SELECT and a legal in-world op (511/512/513) is rejected
+// MESSAGE_NOT_ALLOWED_IN_STATE. Flipping first matches production's
+// ordering (real transitions latch at Send offer-time, before the wire).
 type intentTap struct {
 	inner listener.IntentSink
 }
 
 func (it *intentTap) Enqueue(ctx context.Context, c *listener.Conn, f listener.Inbound) error {
-	err := it.inner.Enqueue(ctx, c, f)
-	if err == nil && f.MessageID == 6 {
+	if f.MessageID == 6 {
 		c.SetPhase(listener.PhaseInWorld)
 	}
-	return err
+	return it.inner.Enqueue(ctx, c, f)
 }
 
 type testTimer struct{ *time.Timer }
