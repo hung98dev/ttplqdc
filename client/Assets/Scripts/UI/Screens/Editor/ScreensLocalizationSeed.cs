@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Tables;
 
-namespace ThinhThan.UI.Screens
+namespace ThinhThan.UI.Screens.Editor
 {
     /// <summary>
     /// Seeds the IMP-099 screen keys into the Screens string-table collection
