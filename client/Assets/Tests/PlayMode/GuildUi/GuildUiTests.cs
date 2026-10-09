@@ -232,7 +232,7 @@ namespace ThinhThan.Tests.PlayMode.GuildUi
                 {
                     OperationId =
                         Google.Protobuf.ByteString.CopyFrom(Id16(1)),
-                    Status = ResultStatus.ResultStatusSuccess,
+                    Status = ResultStatus.Success,
                 },
             };
             a.Apply(Frame(GuildApplier.S2CGuildResult, res));
