@@ -157,12 +157,13 @@ func buildSnapshot(t *testing.T) *config.CandidateSnapshot {
 	}
 	for _, id := range RollPool {
 		if stat, ok := flatStats[id]; ok {
+			// flat defs emit {stat, kind:FLAT, range_kind:FLAT_UNIT} —
+			// bounds ride the flat_roll_ranges parameter, not the record
 			rolls.Put([]config.Value{config.VStr(id)}, map[string]config.Value{
-				"stat_id":     config.VStr(id),
-				"stat":        config.VStr(stat),
-				"kind":        config.VStr("FLAT"),
-				"stage":       config.VStr(""),
-				"tier_ranges": config.VList(flatRanges()...),
+				"stat_id":    config.VStr(id),
+				"stat":       config.VStr(stat),
+				"kind":       config.VStr("FLAT"),
+				"range_kind": config.VStr("FLAT_UNIT"),
 			})
 			continue
 		}
@@ -241,6 +242,23 @@ func buildSnapshot(t *testing.T) *config.CandidateSnapshot {
 		})
 	}
 	putParamFamily(params, prio)
+	flatRanges := config.NewFamily("flat_roll_ranges", "pool")
+	ranges := make([]config.Value, 0, 4)
+	for stat, unit := range map[string]string{
+		"ATTACK": "A", "DEFENSE": "D", "MAX_HP": "H", "MAX_MP": "M",
+	} {
+		ranges = append(ranges, config.VRec(map[string]config.Value{
+			"stat":       config.VStr(stat),
+			"lo_coef":    vrat(1, 2),
+			"unit":       config.VStr(unit),
+			"hi_coef":    vrat(1, 1),
+			"range_kind": config.VStr("FLAT_UNIT"),
+		}))
+	}
+	flatRanges.Put([]config.Value{config.VStr("secondary_pool")}, map[string]config.Value{
+		"ranges": config.VList(ranges...),
+	})
+	putParamFamily(params, flatRanges)
 
 	return &config.CandidateSnapshot{
 		Definitions:          defs,
@@ -262,18 +280,6 @@ func putParamFamily(params, f *config.Family) {
 		"key_columns": config.VStrs(f.KeyColumns...),
 		"records":     config.VList(recs...),
 	})
-}
-
-func flatRanges() []config.Value {
-	out := make([]config.Value, 0, len(TierNames))
-	for _, tier := range TierNames {
-		b := fixtureBudgets[tier]
-		out = append(out, config.VRec(map[string]config.Value{
-			"tier":  config.VStr(tier),
-			"range": config.VList(vrat(b[0]/2, 1), vrat(b[0], 1)),
-		}))
-	}
-	return out
 }
 
 func utilRanges() []config.Value {
@@ -431,9 +437,14 @@ func TestSecondaryRollThresholds(t *testing.T) {
 		if rd == nil {
 			t.Fatalf("missing roll %s", id)
 		}
-		if len(rd.TierRanges) != 6 {
-			t.Errorf("roll %s covers %d tiers, want 6", id, len(rd.TierRanges))
+		if _, flat := FlatRollStats[id]; !flat {
+			if len(rd.TierRanges) != 6 {
+				t.Errorf("utility roll %s covers %d tiers, want 6", id, len(rd.TierRanges))
+			}
 		}
+	}
+	if len(cat.FlatRanges) != 4 {
+		t.Errorf("flat_roll_ranges = %d entries, want 4", len(cat.FlatRanges))
 	}
 	for _, id := range cat.ItemIDs {
 		it := cat.Items[id]

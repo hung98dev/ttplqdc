@@ -31,6 +31,7 @@ func Check(c *config.CandidateSnapshot) config.Diagnostics {
 	checkExpansion(c, cat, &d)
 	checkItems(cat, &d)
 	checkRollPool(cat, &d)
+	checkFlatRollRanges(cat, &d)
 	checkSets(cat, &d)
 	checkAcquisition(c, cat, &d)
 	checkEnhancementBase(cat, &d)
@@ -190,8 +191,10 @@ func checkFixedStats(it *ItemDef, d *config.Diagnostics) {
 }
 
 // checkRollPool verifies the closed 12-ID pool: every pool member
-// emitted exactly once, flat rolls unit-ranged, utility rolls FLAT_ADD
-// with floored inclusive T1..T6 bounds.
+// emitted exactly once, flat rolls carrying `FLAT`/`FLAT_UNIT` (their
+// coefficient bounds live in the flat_roll_ranges parameter, verified
+// by checkFlatRollRanges), utility rolls FLAT_ADD with floored
+// inclusive T1..T6 bounds.
 func checkRollPool(cat *Catalog, d *config.Diagnostics) {
 	if len(cat.Rolls) != len(RollPool) {
 		d.Addf(config.DiagValueOutOfBounds, "roll_def", 0,
@@ -207,10 +210,12 @@ func checkRollPool(cat *Catalog, d *config.Diagnostics) {
 		stat, flat := FlatRollStats[id]
 		switch {
 		case flat:
-			if rd.Kind != "FLAT" || rd.Stat != stat {
+			if rd.Kind != "FLAT" || rd.RangeKind != "FLAT_UNIT" || rd.Stat != stat {
 				d.Addf(config.DiagValueOutOfBounds, "roll_def", 0,
-					"flat roll %s emitted kind %s stat %s, want FLAT %s", id, rd.Kind, rd.Stat, stat)
+					"flat roll %s emitted kind %s/%s stat %s, want FLAT/FLAT_UNIT %s",
+					id, rd.Kind, rd.RangeKind, rd.Stat, stat)
 			}
+			continue
 		default:
 			if rd.Kind != "UTILITY" || rd.Stage != "FLAT_ADD" {
 				d.Addf(config.DiagValueOutOfBounds, "roll_def", 0,
@@ -244,6 +249,51 @@ func checkRollPool(cat *Catalog, d *config.Diagnostics) {
 		if !found {
 			d.Addf(config.DiagValueOutOfBounds, "roll_def", 0,
 				"roll %s outside the closed 12-ID pool", id)
+		}
+	}
+}
+
+// checkFlatRollRanges verifies the `flat_roll_ranges` parameter: one
+// FLAT_UNIT bound per flat stat with a tier-unit selector and
+// non-degenerate floored inclusive coefficients (0 < lo <= hi).
+func checkFlatRollRanges(cat *Catalog, d *config.Diagnostics) {
+	wantStats := map[string]bool{}
+	for _, s := range FlatRollStats {
+		wantStats[s] = true
+	}
+	seen := map[string]bool{}
+	for _, fr := range cat.FlatRanges {
+		if !wantStats[fr.Stat] {
+			d.Addf(config.DiagValueOutOfBounds, "flat_roll_ranges", 0,
+				"flat range entry for non-flat stat %s", fr.Stat)
+			continue
+		}
+		if seen[fr.Stat] {
+			d.Addf(config.DiagValueOutOfBounds, "flat_roll_ranges", 0,
+				"duplicate flat range entry for %s", fr.Stat)
+		}
+		seen[fr.Stat] = true
+		if fr.RangeKind != "FLAT_UNIT" {
+			d.Addf(config.DiagValueOutOfBounds, "flat_roll_ranges", 0,
+				"flat range %s range_kind %s, want FLAT_UNIT", fr.Stat, fr.RangeKind)
+		}
+		switch fr.Unit {
+		case "A", "D", "H", "M":
+		default:
+			d.Addf(config.DiagValueOutOfBounds, "flat_roll_ranges", 0,
+				"flat range %s unit %s not a tier unit (A/D/H/M)", fr.Stat, fr.Unit)
+		}
+		lo, hi := fr.Lo, fr.Hi
+		if lo.Den <= 0 || hi.Den <= 0 || lo.Num <= 0 || lo.Num*hi.Den > hi.Num*lo.Den {
+			d.Addf(config.DiagValueOutOfBounds, "flat_roll_ranges", 0,
+				"flat range %s [%v, %v] not a positive floored inclusive bound",
+				fr.Stat, lo, hi)
+		}
+	}
+	for s := range wantStats {
+		if !seen[s] {
+			d.Addf(config.DiagValueOutOfBounds, "flat_roll_ranges", 0,
+				"flat range missing stat %s", s)
 		}
 	}
 }

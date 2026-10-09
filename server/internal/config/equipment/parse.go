@@ -67,7 +67,19 @@ type RollDef struct {
 	Stat       string
 	Kind       string // FLAT or UTILITY
 	Stage      string // utility rolls: FLAT_ADD
+	RangeKind  string // flat rolls: FLAT_UNIT
 	TierRanges map[string][2]config.Rat
+}
+
+// FlatRollRange is one entry of the `flat_roll_ranges` validation
+// parameter: a floored inclusive coefficient bound resolved against a
+// tier unit (§ flat-range fence).
+type FlatRollRange struct {
+	Stat      string
+	Unit      string // A, D, H or M
+	Lo        config.Rat
+	Hi        config.Rat
+	RangeKind string // FLAT_UNIT
 }
 
 // TierBudget is one Tier Budget row's authoring units.
@@ -206,6 +218,7 @@ func parseRollDef(rec config.Record) *RollDef {
 		Stat:       strField(rec, "stat"),
 		Kind:       strField(rec, "kind"),
 		Stage:      strField(rec, "stage"),
+		RangeKind:  strField(rec, "range_kind"),
 		TierRanges: map[string][2]config.Rat{},
 	}
 	if v, ok := rec.Fields["tier_ranges"]; ok && v.Kind == config.KindList {

@@ -10,13 +10,14 @@ import (
 // resolves to; maps are keyed by the emitted identities, ItemIDs is the
 // deterministic sorted expansion order.
 type Catalog struct {
-	Items   map[string]*ItemDef          // item_id
-	Sets    map[string]*SetDef           // set_key
-	Rolls   map[string]*RollDef          // roll.* id
-	Budgets map[string]*TierBudget       // T1..T6
-	Layouts map[string]map[string]string // layout -> slot -> element
-	EnhBase map[string]*EnhancementBase  // tier
-	ItemIDs []string
+	Items      map[string]*ItemDef          // item_id
+	Sets       map[string]*SetDef           // set_key
+	Rolls      map[string]*RollDef          // roll.* id
+	FlatRanges []*FlatRollRange             // flat_roll_ranges param
+	Budgets    map[string]*TierBudget       // T1..T6
+	Layouts    map[string]map[string]string // layout -> slot -> element
+	EnhBase    map[string]*EnhancementBase  // tier
+	ItemIDs    []string
 }
 
 // Load parses every equipment-domain family of the snapshot into the
@@ -106,6 +107,33 @@ func Load(c *config.CandidateSnapshot) (*Catalog, config.Diagnostics) {
 	for _, pr := range paramRecs(c, "support_priority") {
 		if s, ok := cat.Sets[paramKey(pr, 0)]; ok && s.Support != nil {
 			s.Support.Priority = paramInt(pr, "priority")
+		}
+	}
+	// flat roll bounds ride the flat_roll_ranges sub-family (one
+	// `secondary_pool` record whose `ranges` list carries {stat, lo_coef,
+	// unit, hi_coef, range_kind} entries).
+	for _, pr := range paramRecs(c, "flat_roll_ranges") {
+		f, ok := pr.Rec["fields"]
+		if !ok {
+			continue
+		}
+		ranges, ok := f.Rec["ranges"]
+		if !ok || ranges.Kind != config.KindList {
+			continue
+		}
+		for _, rv := range ranges.Elems {
+			fr := &FlatRollRange{
+				Stat:      rv.Rec["stat"].Str,
+				Unit:      rv.Rec["unit"].Str,
+				RangeKind: rv.Rec["range_kind"].Str,
+			}
+			if lo, ok := rv.Rec["lo_coef"]; ok {
+				fr.Lo, _ = ratField(lo)
+			}
+			if hi, ok := rv.Rec["hi_coef"]; ok {
+				fr.Hi, _ = ratField(hi)
+			}
+			cat.FlatRanges = append(cat.FlatRanges, fr)
 		}
 	}
 	return cat, d
