@@ -11,9 +11,10 @@ import (
 )
 
 // applyInteract is the post-commit world effect of a durable 103: TALK
-// opens the gameplay-capable session; NPC_SERVICE refreshes it. The
-// durable write itself (set_checkpoint) already committed — the
-// partition effect is session bookkeeping only (ADR-0083).
+// opens the gameplay-capable session; NPC_SERVICE refreshes it; CAST and
+// HOOK route to the channel's fishing delegates (inert until IMP-058
+// binds them). The durable write itself (set_checkpoint) already
+// committed — the partition effect is domain dispatch only (ADR-0083).
 func (h *ChannelHost) applyInteract(cmd *Command, p *runtime.Partition, tc *runtime.TickContext) {
 	switch protocolv1.InteractKind(cmd.InteractKind) {
 	case protocolv1.InteractKind_INTERACT_KIND_TALK:
@@ -22,6 +23,10 @@ func (h *ChannelHost) applyInteract(cmd *Command, p *runtime.Partition, tc *runt
 		}
 	case protocolv1.InteractKind_INTERACT_KIND_NPC_SERVICE:
 		h.sessions.Touch(cmd.TargetID, cmd.CharacterID, tc.Tick)
+	case protocolv1.InteractKind_INTERACT_KIND_CAST:
+		h.fishing.Cast(cmd, p, tc)
+	case protocolv1.InteractKind_INTERACT_KIND_HOOK:
+		h.fishing.Hook(cmd, p, tc)
 	}
 }
 

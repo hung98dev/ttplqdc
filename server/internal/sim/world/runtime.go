@@ -63,6 +63,7 @@ type Runtime struct {
 	hosts            map[chanKey]*ChannelHost
 	admits           map[chanKey][]*Command // TransferStart queued while starting
 	dispatcher       *InteractDispatcher
+	fishingFactory   FishingHandlerFactory
 	hooks            []StartupHook
 	checkpointLedger *checkpointWrites
 
@@ -101,6 +102,15 @@ func (w *Runtime) Director() *Director { return w.director }
 
 // Dispatcher exposes the service registry (edge wires IMP-020's travel).
 func (w *Runtime) Dispatcher() *InteractDispatcher { return w.dispatcher }
+
+// SetFishingFactory binds the factory that produces each channel's
+// CAST/HOOK delegates at host construction (IMP-058 sim/fishing); a nil
+// factory leaves every channel on the inert default pair.
+func (w *Runtime) SetFishingFactory(fn FishingHandlerFactory) {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	w.fishingFactory = fn
+}
 
 // SetEmitPort installs the partition durable surface post-construction:
 // the emit adapter references the runtime (checkpoint payload ledger),

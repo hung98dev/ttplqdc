@@ -148,7 +148,19 @@ func (w *Runtime) newHost(mapID string, ch uint32) (*ChannelHost, error) {
 		players:   make(map[id.UUID]*worldPlayer),
 		npcs:      make(map[uint64]*npcInst),
 		sessions:  newNpcSessions(),
+		fishing:   fishingNoops,
 		respawned: make(map[[16]byte]*protocolv1.S2CRespawn),
+	}
+	if w.fishingFactory != nil {
+		if fh := w.fishingFactory(mapID, ch); fh != nil {
+			h.fishing = fh
+			if h.fishing.Cast == nil {
+				h.fishing.Cast = fishingNoops.Cast
+			}
+			if h.fishing.Hook == nil {
+				h.fishing.Hook = fishingNoops.Hook
+			}
+		}
 	}
 	pcfg := runtime.PartitionConfig{
 		MapID:           mapID,

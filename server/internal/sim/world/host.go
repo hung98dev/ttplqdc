@@ -47,6 +47,7 @@ type ChannelHost struct {
 	players   map[id.UUID]*worldPlayer
 	npcs      map[uint64]*npcInst
 	sessions  *npcSessions
+	fishing   *FishingHandlers                    // CAST/HOOK delegates (inert default until IMP-058 binds)
 	respawned map[[16]byte]*protocolv1.S2CRespawn // committed 207 by operation_id
 
 	pendingDurable atomic.Int64
