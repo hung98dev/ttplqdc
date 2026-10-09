@@ -39,7 +39,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-012` | Equipment / Loadout Core | `DONE` | IMP-008, IMP-009, IMP-011 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `DONE` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
-| `IMP-015` | Skill Runtime / Geometry | `NOT_STARTED` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
+| `IMP-015` | Skill Runtime / Geometry | `IN_PROGRESS` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-016` | Effects / Status / Shield Pipeline | `NOT_STARTED` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-018` | Map / Transfer / Checkpoint Runtime | `DONE` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
@@ -60,7 +60,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-033` | Formations | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/formations.md`, `../07_content/build_catalog.md` |
 | `IMP-034` | Friends / Block / Chat | `DONE` | IMP-018, IMP-080, IMP-100 | `../03_systems/social.md`, `../05_network/messages.md` |
 | `IMP-035` | Party | `DONE` | IMP-018, IMP-080, IMP-100 | `../03_systems/party.md`, `../05_network/messages.md` |
-| `IMP-036` | Guild Core / Progression | `NOT_STARTED` | IMP-007, IMP-034, IMP-100 | `../03_systems/guild.md`, `../03_systems/guild_progression.md` |
+| `IMP-036` | Guild Core / Progression | `IN_PROGRESS` | IMP-007, IMP-034, IMP-100 | `../03_systems/guild.md`, `../03_systems/guild_progression.md` |
 | `IMP-037` | Guild Storage | `NOT_STARTED` | IMP-008, IMP-009, IMP-036 | `../03_systems/guild_storage.md`, `../06_data/data_model.md` |
 | `IMP-038` | Cosmetics | `NOT_STARTED` | IMP-007, IMP-008, IMP-036, IMP-100 | `../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-039` | PvP Build Snapshot / Transform | `NOT_STARTED` | IMP-012, IMP-017, IMP-031, IMP-032, IMP-033, IMP-057, IMP-058, IMP-059, IMP-060 | `../03_systems/pvp.md`, `../01_gameplay/combat.md` |
@@ -78,7 +78,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-051` | Drop Table Coverage Invariant for Monster Roster Growth | `NOT_STARTED` | IMP-003, IMP-019 | `../07_content/drop_tables.md`, `../07_content/monster_catalog.md` |
 | `IMP-052` | Seasons Infrastructure | `NOT_STARTED` | IMP-021, IMP-036, IMP-038, IMP-040, IMP-060, IMP-091, IMP-102 | `../03_systems/seasons.md`, `../03_systems/atlas.md` |
 | `IMP-053` | IAP Receipt Verification & Entitlement Grants | `NOT_STARTED` | IMP-038, IMP-100 | `../03_systems/monetization.md`, `../03_systems/account_storage.md` |
-| `IMP-054` | Anti-RMT Behavioral Signals | `NOT_STARTED` | IMP-001, IMP-007, IMP-029, IMP-030 | `../07_security/anti_cheat.md`, `../03_systems/trading_auction.md` |
+| `IMP-054` | Anti-RMT Behavioral Signals | `IN_PROGRESS` | IMP-001, IMP-007, IMP-029, IMP-030 | `../07_security/anti_cheat.md`, `../03_systems/trading_auction.md` |
 | `IMP-055` | Entity Capacity Enforcement | `NOT_STARTED` | IMP-018, IMP-019, IMP-035 | `../02_world/maps_zones.md`, `../02_world/world_rules.md` |
 | `IMP-056` | Retention & Erasure Engine | `NOT_STARTED` | IMP-043, IMP-094, IMP-100 | `../07_security/data_protection.md`, `../07_security/personal_data_register.md` |
 | `IMP-057` | Linh Thú Companion Runtime | `NOT_STARTED` | IMP-008, IMP-010, IMP-016, IMP-019, IMP-100 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
@@ -1482,10 +1482,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-014/"
 
 ## `IMP-015` — Skill Runtime / Geometry
 id: IMP-015
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-015"
+branch: "imp/IMP-015-skill-runtime"
+claimed_at: "2026-10-09T07:05:00Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md`, `../07_content/class_skill_catalog.md`]
@@ -2955,10 +2955,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-035/"
 
 ## `IMP-036` — Guild Core / Progression
 id: IMP-036
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-036"
+branch: "imp/IMP-036-guild-core"
+claimed_at: "2026-10-09T07:05:00Z"
 blocked_by: ""
 
 specs: [`../03_systems/guild.md`, `../03_systems/guild_progression.md`, `../06_data/physical_schema_contract.md`, `../05_network/messages.md`, `../06_data/data_model.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -3903,10 +3903,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-051/"
 
 ## `IMP-054` — Anti-RMT Behavioral Signals
 id: IMP-054
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-054"
+branch: "imp/IMP-054-anti-rmt"
+claimed_at: "2026-10-09T07:05:00Z"
 blocked_by: ""
 
 specs: [`../07_security/anti_cheat.md`, `../03_systems/trading_auction.md`, `../06_data/data_model.md`]
