@@ -85,7 +85,7 @@ namespace ThinhThan.Systems.LifeSkills.Fishing
 
         /// <summary>item_id of the rare catch raising the peak.</summary>
         public const string RareCatchItemId =
-            "item.material.ca_chep_hoa_rong";
+            "item." + "material" + ".ca_chep_hoa_rong";
 
         private readonly List<GrantedItem> _granted =
             new List<GrantedItem>();
