@@ -1,0 +1,264 @@
+revision: imp-049-local
+class_id: KIM | tier: T1 | level: 10
+  reference ATTACK=126 DEFENSE=63 MAX_HP=1017 CRIT=0.0545 ATTACK_SPEED=0.000
+  NORMAL TTK 2.21s | ELITE TTK 8.97s | boss solo 65.18s | boss 5p 41.71s | boss boss.quy_nhap_trang
+  heavy-hit HP ratio 0.0954
+class_id: MOC | tier: T1 | level: 10
+  reference ATTACK=119 DEFENSE=64 MAX_HP=1053 CRIT=0.0545 ATTACK_SPEED=0.000
+  NORMAL TTK 3.67s | ELITE TTK 14.85s | boss solo 108.72s | boss 5p 69.58s | boss boss.quy_nhap_trang
+  heavy-hit HP ratio 0.0921
+class_id: THUY | tier: T1 | level: 10
+  reference ATTACK=121 DEFENSE=62 MAX_HP=1017 CRIT=0.0545 ATTACK_SPEED=0.000
+  NORMAL TTK 3.25s | ELITE TTK 13.12s | boss solo 95.86s | boss 5p 61.35s | boss boss.quy_nhap_trang
+  heavy-hit HP ratio 0.0954
+class_id: HOA | tier: T1 | level: 10
+  reference ATTACK=126 DEFENSE=61 MAX_HP=999 CRIT=0.0545 ATTACK_SPEED=0.000
+  NORMAL TTK 3.75s | ELITE TTK 15.14s | boss solo 110.19s | boss 5p 70.52s | boss boss.quy_nhap_trang
+  heavy-hit HP ratio 0.0981
+class_id: THO | tier: T1 | level: 10
+  reference ATTACK=116 DEFENSE=72 MAX_HP=1125 CRIT=0.0545 ATTACK_SPEED=0.000
+  NORMAL TTK 4.38s | ELITE TTK 17.65s | boss solo 129.63s | boss 5p 82.96s | boss boss.quy_nhap_trang
+  heavy-hit HP ratio 0.0844
+class_id: KIM | tier: T2 | level: 20
+  reference ATTACK=216 DEFENSE=106 MAX_HP=1523 CRIT=0.0595 ATTACK_SPEED=0.000
+  NORMAL TTK 2.34s | ELITE TTK 9.50s | boss solo 57.73s | boss 5p 36.95s | boss boss.moc_tinh_da
+  heavy-hit HP ratio 0.1018
+class_id: MOC | tier: T2 | level: 20
+  reference ATTACK=202 DEFENSE=109 MAX_HP=1599 CRIT=0.0595 ATTACK_SPEED=0.000
+  NORMAL TTK 3.91s | ELITE TTK 15.91s | boss solo 96.20s | boss 5p 61.57s | boss boss.moc_tinh_da
+  heavy-hit HP ratio 0.0969
+class_id: THUY | tier: T2 | level: 20
+  reference ATTACK=206 DEFENSE=104 MAX_HP=1523 CRIT=0.0595 ATTACK_SPEED=0.000
+  NORMAL TTK 3.49s | ELITE TTK 14.10s | boss solo 85.65s | boss 5p 54.81s | boss boss.moc_tinh_da
+  heavy-hit HP ratio 0.1024
+class_id: HOA | tier: T2 | level: 20
+  reference ATTACK=216 DEFENSE=102 MAX_HP=1485 CRIT=0.0595 ATTACK_SPEED=0.000
+  NORMAL TTK 3.94s | ELITE TTK 16.00s | boss solo 96.86s | boss 5p 61.99s | boss boss.moc_tinh_da
+  heavy-hit HP ratio 0.1051
+class_id: THO | tier: T2 | level: 20
+  reference ATTACK=195 DEFENSE=125 MAX_HP=1751 CRIT=0.0595 ATTACK_SPEED=0.000
+  NORMAL TTK 4.70s | ELITE TTK 19.10s | boss solo 115.65s | boss 5p 74.02s | boss boss.moc_tinh_da
+  heavy-hit HP ratio 0.0862
+class_id: KIM | tier: T3 | level: 30
+  reference ATTACK=327 DEFENSE=158 MAX_HP=2092 CRIT=0.0670 ATTACK_SPEED=0.000
+  NORMAL TTK 2.38s | ELITE TTK 9.67s | boss solo 56.42s | boss 5p 36.11s | boss boss.thuong_luong
+  heavy-hit HP ratio 0.1009
+class_id: MOC | tier: T3 | level: 30
+  reference ATTACK=307 DEFENSE=163 MAX_HP=2208 CRIT=0.0670 ATTACK_SPEED=0.000
+  NORMAL TTK 3.95s | ELITE TTK 15.99s | boss solo 93.52s | boss 5p 59.85s | boss boss.thuong_luong
+  heavy-hit HP ratio 0.0951
+class_id: THUY | tier: T3 | level: 30
+  reference ATTACK=313 DEFENSE=155 MAX_HP=2092 CRIT=0.0670 ATTACK_SPEED=0.000
+  NORMAL TTK 3.52s | ELITE TTK 14.30s | boss solo 83.50s | boss 5p 53.44s | boss boss.thuong_luong
+  heavy-hit HP ratio 0.1013
+class_id: HOA | tier: T3 | level: 30
+  reference ATTACK=327 DEFENSE=152 MAX_HP=2034 CRIT=0.0670 ATTACK_SPEED=0.000
+  NORMAL TTK 4.01s | ELITE TTK 16.27s | boss solo 95.09s | boss 5p 60.86s | boss boss.thuong_luong
+  heavy-hit HP ratio 0.1042
+class_id: THO | tier: T3 | level: 30
+  reference ATTACK=295 DEFENSE=187 MAX_HP=2440 CRIT=0.0670 ATTACK_SPEED=0.000
+  NORMAL TTK 4.78s | ELITE TTK 19.39s | boss solo 113.32s | boss 5p 72.53s | boss boss.thuong_luong
+  heavy-hit HP ratio 0.0836
+class_id: KIM | tier: T4 | level: 40
+  reference ATTACK=442 DEFENSE=212 MAX_HP=2687 CRIT=0.0745 ATTACK_SPEED=0.000
+  NORMAL TTK 2.48s | ELITE TTK 10.05s | boss solo 58.91s | boss 5p 37.70s | boss boss.ho_tinh
+  heavy-hit HP ratio 0.0990
+class_id: MOC | tier: T4 | level: 40
+  reference ATTACK=414 DEFENSE=219 MAX_HP=2843 CRIT=0.0745 ATTACK_SPEED=0.000
+  NORMAL TTK 4.13s | ELITE TTK 16.75s | boss solo 98.29s | boss 5p 62.91s | boss boss.ho_tinh
+  heavy-hit HP ratio 0.0929
+class_id: THUY | tier: T4 | level: 40
+  reference ATTACK=422 DEFENSE=208 MAX_HP=2687 CRIT=0.0745 ATTACK_SPEED=0.000
+  NORMAL TTK 3.67s | ELITE TTK 14.92s | boss solo 87.40s | boss 5p 55.94s | boss boss.ho_tinh
+  heavy-hit HP ratio 0.0994
+class_id: HOA | tier: T4 | level: 40
+  reference ATTACK=442 DEFENSE=204 MAX_HP=2609 CRIT=0.0745 ATTACK_SPEED=0.000
+  NORMAL TTK 4.19s | ELITE TTK 16.97s | boss solo 99.69s | boss 5p 63.80s | boss boss.ho_tinh
+  heavy-hit HP ratio 0.1027
+class_id: THO | tier: T4 | level: 40
+  reference ATTACK=399 DEFENSE=251 MAX_HP=3155 CRIT=0.0745 ATTACK_SPEED=0.000
+  NORMAL TTK 4.99s | ELITE TTK 20.20s | boss solo 118.38s | boss 5p 75.76s | boss boss.ho_tinh
+  heavy-hit HP ratio 0.0815
+class_id: KIM | tier: T5 | level: 50
+  reference ATTACK=575 DEFENSE=285 MAX_HP=3368 CRIT=0.0845 ATTACK_SPEED=0.000
+  NORMAL TTK 2.53s | ELITE TTK 10.27s | boss solo 61.44s | boss 5p 39.32s | boss boss.ho_tinh_chin_duoi
+  heavy-hit HP ratio 0.0938
+class_id: MOC | tier: T5 | level: 50
+  reference ATTACK=540 DEFENSE=294 MAX_HP=3564 CRIT=0.0845 ATTACK_SPEED=0.000
+  NORMAL TTK 4.20s | ELITE TTK 17.04s | boss solo 101.79s | boss 5p 65.15s | boss boss.ho_tinh_chin_duoi
+  heavy-hit HP ratio 0.0881
+class_id: THUY | tier: T5 | level: 50
+  reference ATTACK=550 DEFENSE=280 MAX_HP=3368 CRIT=0.0845 ATTACK_SPEED=0.000
+  NORMAL TTK 3.74s | ELITE TTK 15.16s | boss solo 90.86s | boss 5p 58.15s | boss boss.ho_tinh_chin_duoi
+  heavy-hit HP ratio 0.0944
+class_id: HOA | tier: T5 | level: 50
+  reference ATTACK=575 DEFENSE=275 MAX_HP=3270 CRIT=0.0845 ATTACK_SPEED=0.000
+  NORMAL TTK 4.27s | ELITE TTK 17.29s | boss solo 103.59s | boss 5p 66.29s | boss boss.ho_tinh_chin_duoi
+  heavy-hit HP ratio 0.0976
+class_id: THO | tier: T5 | level: 50
+  reference ATTACK=521 DEFENSE=334 MAX_HP=3956 CRIT=0.0845 ATTACK_SPEED=0.000
+  NORMAL TTK 5.06s | ELITE TTK 20.50s | boss solo 122.76s | boss 5p 78.57s | boss boss.ho_tinh_chin_duoi
+  heavy-hit HP ratio 0.0774
+class_id: KIM | tier: T6 | level: 60
+  reference ATTACK=724 DEFENSE=367 MAX_HP=4086 CRIT=0.0945 ATTACK_SPEED=0.000
+  NORMAL TTK 2.57s | ELITE TTK 10.42s | boss solo 63.88s | boss 5p 40.88s | boss boss.than_trung
+  heavy-hit HP ratio 0.0891
+class_id: MOC | tier: T6 | level: 60
+  reference ATTACK=682 DEFENSE=378 MAX_HP=4322 CRIT=0.0945 ATTACK_SPEED=0.000
+  NORMAL TTK 4.25s | ELITE TTK 17.23s | boss solo 105.87s | boss 5p 67.75s | boss boss.than_trung
+  heavy-hit HP ratio 0.0838
+class_id: THUY | tier: T6 | level: 60
+  reference ATTACK=694 DEFENSE=361 MAX_HP=4086 CRIT=0.0945 ATTACK_SPEED=0.000
+  NORMAL TTK 3.79s | ELITE TTK 15.37s | boss solo 94.31s | boss 5p 60.36s | boss boss.than_trung
+  heavy-hit HP ratio 0.0896
+class_id: HOA | tier: T6 | level: 60
+  reference ATTACK=724 DEFENSE=355 MAX_HP=3968 CRIT=0.0945 ATTACK_SPEED=0.000
+  NORMAL TTK 4.33s | ELITE TTK 17.56s | boss solo 107.84s | boss 5p 69.02s | boss boss.than_trung
+  heavy-hit HP ratio 0.0925
+class_id: THO | tier: T6 | level: 60
+  reference ATTACK=659 DEFENSE=426 MAX_HP=4794 CRIT=0.0945 ATTACK_SPEED=0.000
+  NORMAL TTK 5.11s | ELITE TTK 20.73s | boss solo 127.26s | boss 5p 81.45s | boss boss.than_trung
+  heavy-hit HP ratio 0.0734
+rotation TTK KIM vs boss.than_trung: solo 46.20s | five-player 29.57s
+rotation TTK MOC vs boss.than_trung: solo 79.60s | five-player 50.94s
+rotation TTK THUY vs boss.than_trung: solo 69.10s | five-player 44.22s
+rotation TTK HOA vs boss.than_trung: solo 67.10s | five-player 42.94s
+rotation TTK THO vs boss.than_trung: solo 79.05s | five-player 50.59s
+LIFESTEAL expected magnitude T6: 3/500
+REFLECT expected magnitude T6: 1/100
+ABSORB expected magnitude T6: 7/1000
+HEAL_REDUCTION expected magnitude T6: 37/2000
+secondary-roll pool expected power delta vs pre-change baseline: +30.41%
+lifesteal+regen sustain vs boss average DPS ratio: 0.6903
+skill geometry rows 45 pass 45
+  skill.hoa.active.boc_bo | DASH_LINE | outer 4200mm | active | PASS
+  skill.hoa.active.cuu_hoa_lien | AREA_POSITION | outer 11000mm | active | PASS
+  skill.hoa.active.hoa_giap | SELF | outer 0mm | active | PASS
+  skill.hoa.active.hoa_vuc | AREA_POSITION | outer 10000mm | active | PASS
+  skill.hoa.active.lien_bao | AREA_POSITION | outer 9800mm | active | PASS
+  skill.hoa.basic.hoa_phu | PROJECTILE | outer 7750mm | basic | PASS
+  skill.hoa.basic.hoa_xa | PROJECTILE | outer 8420mm | basic | PASS
+  skill.hoa.basic.lua_tao_quan | PROJECTILE | outer 8260mm | basic | PASS
+  skill.hoa.basic.viem_dan | PROJECTILE | outer 8080mm | basic | PASS
+  skill.kim.active.hoi_kiem | AREA_SELF | outer 2800mm | active | PASS
+  skill.kim.active.kiem_tran | AREA_SELF | outer 3200mm | active | PASS
+  skill.kim.active.nhat_kiem_dinh_hon | SINGLE_TARGET_RANGE | outer 2600mm | active | PASS
+  skill.kim.active.pha_giap | MELEE_BOX | outer 2500mm | active | PASS
+  skill.kim.active.xuyen_phong | DASH_LINE | outer 4200mm | active | PASS
+  skill.kim.basic.kiem_thuc | MELEE_BOX | outer 1900mm | basic | PASS
+  skill.kim.basic.pha_khong_kiem | DIRECTION_BOX | outer 3200mm | basic | PASS
+  skill.kim.basic.truy_phong_kiem | DASH_LINE | outer 2400mm | basic | PASS
+  skill.kim.basic.vo_song_kiem | MELEE_BOX | outer 2400mm | basic | PASS
+  skill.moc.active.hoi_xuan | SINGLE_TARGET_RANGE | outer 7500mm | active | PASS
+  skill.moc.active.moc_bo | AREA_POSITION | outer 9500mm | active | PASS
+  skill.moc.active.thanh_dang | AREA_POSITION | outer 10000mm | active | PASS
+  skill.moc.active.van_doc | AREA_POSITION | outer 10300mm | active | PASS
+  skill.moc.active.van_moc_hoi_sinh | AREA_POSITION | outer 10500mm | active | PASS
+  skill.moc.basic.co_thu_kich | PROJECTILE | outer 8300mm | basic | PASS
+  skill.moc.basic.linh_diep | PROJECTILE | outer 7750mm | basic | PASS
+  skill.moc.basic.thao_kich | PROJECTILE | outer 8250mm | basic | PASS
+  skill.moc.basic.truc_phi_tieu | PROJECTILE | outer 8720mm | basic | PASS
+  skill.tho.active.dia_chan | AREA_SELF | outer 3200mm | active | PASS
+  skill.tho.active.son_bich | BARRIER_POSITION | outer 6500mm | active | PASS
+  skill.tho.active.thach_kich | MELEE_BOX | outer 2400mm | active | PASS
+  skill.tho.active.thien_son_tran | AREA_SELF | outer 3800mm | active | PASS
+  skill.tho.active.tho_giap | AREA_SELF | outer 3000mm | active | PASS
+  skill.tho.basic.dia_liet_kich | DIRECTION_BOX | outer 3000mm | basic | PASS
+  skill.tho.basic.kim_cang_quyen | MELEE_BOX | outer 2300mm | basic | PASS
+  skill.tho.basic.pha_thach_kich | MELEE_BOX | outer 2200mm | basic | PASS
+  skill.tho.basic.tran_quyen | MELEE_BOX | outer 2000mm | basic | PASS
+  skill.thuy.active.han_trieu | DIRECTION_BOX | outer 5500mm | active | PASS
+  skill.thuy.active.luu_bo | MOVE_CONTACT_LINE | outer 4500mm | active | PASS
+  skill.thuy.active.thien_ha | AREA_POSITION | outer 11000mm | active | PASS
+  skill.thuy.active.thuy_kinh | SELF | outer 0mm | active | PASS
+  skill.thuy.active.trieu_quyen | AREA_POSITION | outer 9600mm | active | PASS
+  skill.thuy.basic.am_luu | PROJECTILE | outer 7800mm | basic | PASS
+  skill.thuy.basic.bang_phien | PROJECTILE | outer 8440mm | basic | PASS
+  skill.thuy.basic.huyen_bang_kich | PROJECTILE | outer 8750mm | basic | PASS
+  skill.thuy.basic.thuy_tien | PROJECTILE | outer 8230mm | basic | PASS
+reach separation ratio 2.8846
+max outer reach 11000mm | camera margin 1800mm
+hurtbox fixture BOSS_LARGE: PASS
+hurtbox fixture CHARACTER: PASS
+hurtbox fixture MONSTER_ELITE: PASS
+hurtbox fixture MONSTER_MEDIUM: PASS
+hurtbox fixture MONSTER_SMALL: PASS
+hurtbox fixture WORLD_BOSS: PASS
+fixture-B violations 77
+  balance.ttk_normal: B-max/roll.attack_flat: KIM Lv10 1.53s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_flat: KIM Lv10 6.18s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_flat: KIM vs boss.quy_nhap_trang 45.34s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_flat: KIM vs boss.quy_nhap_trang 29.02s outside 35..85
+  balance.ttk_normal: B-max/roll.attack_speed: KIM Lv10 1.99s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_speed: KIM Lv10 8.08s outside 8.5..24
+  balance.ttk_elite: B-max/roll.crit_chance: KIM Lv10 8.47s outside 8.5..24
+  balance.ttk_normal: B-max/roll.attack_flat: KIM Lv20 1.61s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_flat: KIM Lv20 6.53s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_flat: KIM vs boss.moc_tinh_da 39.58s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_flat: KIM vs boss.moc_tinh_da 25.33s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.attack_speed: KIM vs boss.moc_tinh_da 51.96s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_speed: KIM vs boss.moc_tinh_da 33.25s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.crit_chance: KIM vs boss.moc_tinh_da 54.11s outside 55..130
+  balance.ttk_boss_party: B-max/roll.crit_chance: KIM vs boss.moc_tinh_da 34.63s outside 35..85
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.ma_da_chua 54.93s outside 55..130
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.thuong_luong 54.93s outside 55..130
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.ma_da_chua 54.75s outside 55..130
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.thuong_luong 54.75s outside 55..130
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.ma_da_chua 54.58s outside 55..130
+  balance.ttk_boss_party: B/roll.attack_flat: KIM vs boss.ma_da_chua 34.93s outside 35..85
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.thuong_luong 54.58s outside 55..130
+  balance.ttk_boss_party: B/roll.attack_flat: KIM vs boss.thuong_luong 34.93s outside 35..85
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.ma_da_chua 54.40s outside 55..130
+  balance.ttk_boss_party: B/roll.attack_flat: KIM vs boss.ma_da_chua 34.81s outside 35..85
+  balance.ttk_boss_solo: B/roll.attack_flat: KIM vs boss.thuong_luong 54.40s outside 55..130
+  balance.ttk_boss_party: B/roll.attack_flat: KIM vs boss.thuong_luong 34.81s outside 35..85
+  balance.ttk_normal: B-max/roll.attack_flat: KIM Lv30 1.61s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_flat: KIM Lv30 6.56s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_flat: KIM vs boss.ma_da_chua 38.22s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_flat: KIM vs boss.ma_da_chua 24.46s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.attack_flat: KIM vs boss.thuong_luong 38.22s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_flat: KIM vs boss.thuong_luong 24.46s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.attack_speed: KIM vs boss.ma_da_chua 50.78s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_speed: KIM vs boss.ma_da_chua 32.50s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.attack_speed: KIM vs boss.thuong_luong 50.78s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_speed: KIM vs boss.thuong_luong 32.50s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.crit_chance: KIM vs boss.ma_da_chua 52.02s outside 55..130
+  balance.ttk_boss_party: B-max/roll.crit_chance: KIM vs boss.ma_da_chua 33.30s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.crit_chance: KIM vs boss.thuong_luong 52.02s outside 55..130
+  balance.ttk_boss_party: B-max/roll.crit_chance: KIM vs boss.thuong_luong 33.30s outside 35..85
+  balance.heavy_hit: B-max/roll.max_hp_flat: THO vs boss.ma_da_chua 0.0585 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: THO vs boss.thuong_luong 0.0585 of MAX_HP outside 0.06..0.18
+  balance.ttk_normal: B-max/roll.attack_flat: KIM Lv40 1.65s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_flat: KIM Lv40 6.68s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_flat: KIM vs boss.ho_tinh 39.14s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_flat: KIM vs boss.ho_tinh 25.05s outside 35..85
+  balance.ttk_normal: B-max/roll.attack_speed: KIM Lv40 1.98s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_speed: KIM Lv40 8.04s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_speed: KIM vs boss.ho_tinh 47.13s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_speed: KIM vs boss.ho_tinh 30.16s outside 35..85
+  balance.ttk_boss_solo: B-max/roll.crit_chance: KIM vs boss.ho_tinh 53.85s outside 55..130
+  balance.ttk_boss_party: B-max/roll.crit_chance: KIM vs boss.ho_tinh 34.46s outside 35..85
+  balance.heavy_hit: B-max/roll.max_hp_flat: THO vs boss.ho_tinh 0.0556 of MAX_HP outside 0.06..0.18
+  balance.ttk_normal: B-max/roll.attack_flat: KIM Lv50 1.65s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_flat: KIM Lv50 6.69s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_flat: KIM vs boss.ho_tinh_chin_duoi 40.02s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_flat: KIM vs boss.ho_tinh_chin_duoi 25.62s outside 35..85
+  balance.ttk_elite: B-max/roll.attack_speed: KIM Lv50 8.22s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_speed: KIM vs boss.ho_tinh_chin_duoi 49.15s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_speed: KIM vs boss.ho_tinh_chin_duoi 31.46s outside 35..85
+  balance.heavy_hit: B-max/roll.max_hp_flat: KIM vs boss.ho_tinh_chin_duoi 0.0593 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: MOC vs boss.ho_tinh_chin_duoi 0.0568 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: THUY vs boss.ho_tinh_chin_duoi 0.0597 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: THO vs boss.ho_tinh_chin_duoi 0.0517 of MAX_HP outside 0.06..0.18
+  balance.ttk_normal: B-max/roll.attack_flat: KIM Lv60 1.64s outside 2.0..6.0
+  balance.ttk_elite: B-max/roll.attack_flat: KIM Lv60 6.67s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_flat: KIM vs boss.than_trung 40.92s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_flat: KIM vs boss.than_trung 26.19s outside 35..85
+  balance.ttk_elite: B-max/roll.attack_speed: KIM Lv60 8.34s outside 8.5..24
+  balance.ttk_boss_solo: B-max/roll.attack_speed: KIM vs boss.than_trung 51.10s outside 55..130
+  balance.ttk_boss_party: B-max/roll.attack_speed: KIM vs boss.than_trung 32.71s outside 35..85
+  balance.heavy_hit: B-max/roll.max_hp_flat: KIM vs boss.than_trung 0.0551 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: MOC vs boss.than_trung 0.0529 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: THUY vs boss.than_trung 0.0554 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: HOA vs boss.than_trung 0.0566 of MAX_HP outside 0.06..0.18
+  balance.heavy_hit: B-max/roll.max_hp_flat: THO vs boss.than_trung 0.0481 of MAX_HP outside 0.06..0.18
