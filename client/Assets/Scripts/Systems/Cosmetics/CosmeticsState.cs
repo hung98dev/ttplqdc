@@ -29,6 +29,13 @@ namespace ThinhThan.Systems.Cosmetics
             new Dictionary<int, string>();
         private readonly List<string> _guildOwned = new List<string>();
 
+        public CosmeticsState()
+        {
+            GuildShrine = "";
+            GuildBanner = "";
+            GuildCrest = "";
+        }
+
         public IReadOnlyList<OwnedRow> Owned
         {
             get
@@ -68,19 +75,19 @@ namespace ThinhThan.Systems.Cosmetics
         {
             get;
             private set;
-        } = "";
+        }
 
         public string GuildBanner
         {
             get;
             private set;
-        } = "";
+        }
 
         public string GuildCrest
         {
             get;
             private set;
-        } = "";
+        }
 
         public ulong GuildCosmeticRevision
         {
