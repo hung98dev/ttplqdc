@@ -65,9 +65,14 @@ func rollFor(itemID id.UUID, target int64, opID id.UUID) int64 {
 }
 
 // pickOp returns a V7 op id whose keyed roll satisfies want (true =
-// success roll below rate, false = failure roll at/above rate).
+// success roll below rate, false = failure roll at/above rate). The
+// rate is clamped like the plan's final rate so a rolled op can never
+// land inside the base-above-9500 dead band.
 func pickOp(t *testing.T, itemID id.UUID, target int64, rateBP int64, want bool) id.UUID {
 	t.Helper()
+	if rateBP > rateClampBP {
+		rateBP = rateClampBP
+	}
 	for i := 0; i < 100000; i++ {
 		op := id.NewV7(time.Now().Add(time.Duration(i) * time.Millisecond))
 		r := rollFor(itemID, target, op)
