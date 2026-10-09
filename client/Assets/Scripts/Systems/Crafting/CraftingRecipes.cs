@@ -44,11 +44,26 @@ namespace ThinhThan.Systems.Crafting
                 Common = common;
             }
 
-            public string Key { get; }
-            public int MinLevel { get; }
-            public string MaterialId { get; }
-            public uint Material { get; }
-            public long Common { get; }
+            public string Key
+            {
+                get;
+            }
+            public int MinLevel
+            {
+                get;
+            }
+            public string MaterialId
+            {
+                get;
+            }
+            public uint Material
+            {
+                get;
+            }
+            public long Common
+            {
+                get;
+            }
         }
 
         // material-tier item ids escape the dot: the no-runtime-material
@@ -90,10 +105,25 @@ namespace ThinhThan.Systems.Crafting
                 Slot = slot;
             }
 
-            public string RecipeId { get; }
-            public string OutputItemId { get; }
-            public Tier Tier { get; }
-            public string Slot { get; }
+            public string RecipeId
+
+            {
+
+                get;
+
+            }
+            public string OutputItemId
+            {
+                get;
+            }
+            public Tier Tier
+            {
+                get;
+            }
+            public string Slot
+            {
+                get;
+            }
 
             /// <summary>Material quantity for one craft (tier base x slot weight).</summary>
             public ulong InputQuantity
@@ -226,11 +256,20 @@ namespace ThinhThan.Systems.Crafting
                 MaxCurrent = maxCurrent;
             }
 
-            public string Key { get; }
-            public int BonusBP { get; }
+            public string Key
+            {
+                get;
+            }
+            public int BonusBP
+            {
+                get;
+            }
 
             /// <summary>Eligible when current level &lt; MaxCurrent.</summary>
-            public int MaxCurrent { get; }
+            public int MaxCurrent
+            {
+                get;
+            }
         }
 
         /// <summary>Lucky charm item-id prefix.</summary>
