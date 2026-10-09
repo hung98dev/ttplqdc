@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"math/big"
 	"os"
 	"testing"
 	"time"
@@ -251,7 +250,5 @@ func outcomeOf(t *testing.T, o idempotency.Outcome) *journalv1.JournalOutcome {
 	}
 	return out
 }
-
-func big1() *big.Int { return big.NewInt(1) }
 
 func strPtr(s string) *string { return &s }

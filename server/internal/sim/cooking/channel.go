@@ -89,9 +89,9 @@ func New(mapID string, anchors []geometry.Anchor, em *Emission) *Channel {
 	}
 	for _, a := range anchors {
 		switch a.ID {
-		case "bonfire." + mapID:
+		case bonfireAnchorID(mapID):
 			c.bonfire = a
-		case "cooking_hearth." + mapID:
+		case hearthAnchorID(mapID):
 			c.hearth = a
 		}
 	}

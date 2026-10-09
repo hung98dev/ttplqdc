@@ -51,11 +51,12 @@ var testAnchors = []geometry.Anchor{
 // and the cooking channel registered on PhaseTimersStatus (settlements
 // queue before PhaseDurable flushes them the same tick).
 type rig struct {
-	p   *runtime.Partition
-	clk *testClock
-	cap *captureDurable
-	c   *Channel
-	em  *Emission
+	p    *runtime.Partition
+	clk  *testClock
+	cap  *captureDurable
+	c    *Channel
+	em   *Emission
+	done atomic.Uint64 // last fully-completed tick (PhaseCleanup barrier)
 
 	charID id.UUID
 	eid    uint64
@@ -81,6 +82,14 @@ func newRig(t *testing.T) *rig {
 	em := NewEmission()
 	c := New("map.lang_da.dinh_lang", testAnchors, em)
 	p.RegisterSystem(runtime.PhaseTimersStatus, c.Tick)
+	r := &rig{p: p, clk: clk, cap: cap, c: c, em: em}
+	// tickN increments before phases run, so run() cannot use it as a
+	// completion barrier — the last tick's phase body would still race
+	// entity mutations below. PhaseCleanup runs last; when it records a
+	// tick, that tick is fully done.
+	p.RegisterSystem(runtime.PhaseCleanup, func(_ *runtime.Partition, tc *runtime.TickContext) {
+		r.done.Store(tc.Tick)
+	})
 	eid, err := p.Admit(runtime.ClassPlayer)
 	if err != nil {
 		t.Fatalf("admit: %v", err)
@@ -107,8 +116,8 @@ func newRig(t *testing.T) *rig {
 		}
 		time.Sleep(time.Millisecond)
 	}
-	return &rig{p: p, clk: clk, cap: cap, c: c, em: em,
-		charID: charID, eid: eid, cancel: cancel}
+	r.charID, r.eid, r.cancel = charID, eid, cancel
+	return r
 }
 
 // run advances the sim clock n ticks and waits for the partition to
@@ -118,7 +127,7 @@ func newRig(t *testing.T) *rig {
 func (r *rig) run(n uint64) {
 	target := r.p.TickN() + n
 	deadline := time.Now().Add(60 * time.Second)
-	for r.p.TickN() < target {
+	for r.done.Load() < target {
 		if time.Now().After(deadline) {
 			panic("rig: tick deadline")
 		}
