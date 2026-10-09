@@ -36,11 +36,12 @@ const maxChatGraphemes = 240
 // ADR-0081 seam through the queue; C2S_CHAT_SEND is the non-durable
 // fanout (ephemeral runtime per service_boundaries.md).
 type Service struct {
-	q       *queue.Queue
-	store   *sociald.Store
-	hub     Hub
-	limiter *limiter
-	now     func() time.Time
+	q          *queue.Queue
+	store      *sociald.Store
+	hub        Hub
+	moderation Moderation
+	limiter    *limiter
+	now        func() time.Time
 }
 
 // Option configures a Service.
@@ -49,6 +50,13 @@ type Option func(*Service)
 // WithClock overrides the admission/rate-limit timestamp source (tests).
 func WithClock(now func() time.Time) Option {
 	return func(s *Service) { s.now = now }
+}
+
+// WithModeration binds the communication-restriction consult checked
+// at send admission (social.md § Moderation). Nil (default) admits
+// every send until IMP-094 binds the real implementation.
+func WithModeration(m Moderation) Option {
+	return func(s *Service) { s.moderation = m }
 }
 
 // New builds the service. hub may be nil — pushes then no-op and
