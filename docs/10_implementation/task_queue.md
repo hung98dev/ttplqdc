@@ -40,7 +40,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `DONE` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
 | `IMP-015` | Skill Runtime / Geometry | `DONE` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
-| `IMP-016` | Effects / Status / Shield Pipeline | `IN_PROGRESS` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
+| `IMP-016` | Effects / Status / Shield Pipeline | `DONE` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-018` | Map / Transfer / Checkpoint Runtime | `DONE` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
 | `IMP-019` | Spawn Runtime / Monster AI | `NOT_STARTED` | IMP-003, IMP-016, IMP-018 | `../02_world/spawning.md`, `../02_world/monsters.md` |
@@ -1523,7 +1523,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-015/"
 
 ## `IMP-016` — Effects / Status / Shield Pipeline
 id: IMP-016
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-016"
 branch: "imp/IMP-016-effects-shield-pipeline"
 claimed_at: "2026-10-09T20:27:46Z"
