@@ -12,13 +12,13 @@ namespace ThinhThan.UI.LifeSkills.Fishing
     /// </summary>
     public sealed class FishingPanel : MonoBehaviour
     {
-        [SerializeField] private Text _promptText;
-        [SerializeField] private Text _windowText;
-        [SerializeField] private Text _counterText;
-        [SerializeField] private Text _errorText;
-        [SerializeField] private RectTransform _catchRoot;
-        [SerializeField] private Text _catchRowPrefab;
-        [SerializeField] private GameObject _peakBanner;
+        [SerializeField] private Text? _promptText;
+        [SerializeField] private Text? _windowText;
+        [SerializeField] private Text? _counterText;
+        [SerializeField] private Text? _errorText;
+        [SerializeField] private RectTransform? _catchRoot;
+        [SerializeField] private Text? _catchRowPrefab;
+        [SerializeField] private GameObject? _peakBanner;
 
         private readonly List<Text> _rows = new List<Text>();
         private int _liveRows;
@@ -65,7 +65,11 @@ namespace ThinhThan.UI.LifeSkills.Fishing
 
         private void RenderRows(IReadOnlyList<FishingPanelModel.CatchRow> rows)
         {
-            int want = rows?.Count ?? 0;
+            if (rows == null)
+            {
+                return;
+            }
+            int want = rows.Count;
             while (_rows.Count < want)
             {
                 if (_catchRowPrefab == null || _catchRoot == null)
