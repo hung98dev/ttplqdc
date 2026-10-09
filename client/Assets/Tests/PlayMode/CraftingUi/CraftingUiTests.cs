@@ -58,7 +58,10 @@ namespace ThinhThan.Tests.PlayMode.CraftingUi
             applier.Apply(Frame(WireIds.S2CCraftResult,
                 new S2CCraftResult
                 {
-                    Result = ResultStatus.Success,
+                    Result = new OperationResult
+                    {
+                        Status = ResultStatus.Success,
+                    },
                     RecipeId = "recipe.eq.t1.dinh_lang.weapon",
                     BatchQuantity = 2,
                     Consumed =
@@ -108,7 +111,10 @@ namespace ThinhThan.Tests.PlayMode.CraftingUi
             applier.Apply(Frame(WireIds.S2CEnhanceResult,
                 new S2CEnhanceResult
                 {
-                    Result = ResultStatus.Success,
+                    Result = new OperationResult
+                    {
+                        Status = ResultStatus.Success,
+                    },
                     ItemInstanceId = ByteString.CopyFrom(Id16(3)),
                     Success = false,
                     LevelBefore = 12,
@@ -178,7 +184,10 @@ namespace ThinhThan.Tests.PlayMode.CraftingUi
             applier.Apply(Frame(WireIds.S2CCraftResult,
                 new S2CCraftResult
                 {
-                    Result = ResultStatus.Success,
+                    Result = new OperationResult
+                    {
+                        Status = ResultStatus.Success,
+                    },
                     RecipeId = "recipe.eq.t1.dinh_lang.weapon",
                     BatchQuantity = 1,
                 }));
@@ -190,7 +199,10 @@ namespace ThinhThan.Tests.PlayMode.CraftingUi
             applier.Apply(Frame(WireIds.S2CEnhanceResult,
                 new S2CEnhanceResult
                 {
-                    Result = ResultStatus.Success,
+                    Result = new OperationResult
+                    {
+                        Status = ResultStatus.Success,
+                    },
                     Success = true,
                     LevelBefore = 0,
                     LevelAfter = 1,
