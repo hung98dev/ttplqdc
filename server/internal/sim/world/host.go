@@ -37,12 +37,11 @@ type ChannelHost struct {
 	mapID string
 	ch    uint32
 
-	part    *runtime.Partition
-	mb      *Mailbox
-	ctx     context.Context
-	cancel  context.CancelFunc
-	done    chan struct{} // closed when the partition loop exits
-	inDrain atomic.Bool   // set while drainMailbox runs on the partition goroutine
+	part   *runtime.Partition
+	mb     *Mailbox
+	ctx    context.Context
+	cancel context.CancelFunc
+	done   chan struct{} // closed when the partition loop exits
 
 	players   map[id.UUID]*worldPlayer
 	npcs      map[uint64]*npcInst
@@ -61,8 +60,6 @@ func (h *ChannelHost) Partition() *runtime.Partition { return h.part }
 // drainMailbox is the PhaseExternalResults system: pulls every queued
 // entry in FIFO order and applies it inside the partition tick.
 func (h *ChannelHost) drainMailbox(p *runtime.Partition, tc *runtime.TickContext) {
-	h.inDrain.Store(true)
-	defer h.inDrain.Store(false)
 	for {
 		e, ok := h.mb.Take()
 		if !ok {

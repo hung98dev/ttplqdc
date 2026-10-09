@@ -105,13 +105,10 @@ func (w *Runtime) respawnAt(characterID id.UUID, opID [16]byte, res PlacementRes
 }
 
 // removeMemberKeepLedgerQueued despawns the member inside this channel's
-// tick — callers on the runtime goroutine post through the mailbox so
-// partition state never mutates off-goroutine; drain callers run inline.
+// tick — callers run outside the partition goroutine, so the mutation
+// always goes through the mailbox; in-drain callers (which already hold
+// the partition) call removeMemberKeepLedger directly.
 func (h *ChannelHost) removeMemberKeepLedgerQueued(characterID id.UUID) {
-	if h.inDrain.Load() {
-		h.removeMemberKeepLedger(characterID, h.part)
-		return
-	}
 	_ = h.mb.Post(Entry{Fn: func(p *runtime.Partition, _ *runtime.TickContext) {
 		h.removeMemberKeepLedger(characterID, p)
 	}})
