@@ -7,31 +7,6 @@ using UnityEngine;
 namespace ThinhThan.Systems.GuildStorage
 {
     /// <summary>
-    /// Guild-storage intent surface the UI calls (send-only).
-    /// </summary>
-    public interface IGuildStorageIntents
-    {
-        Awaitable<ulong> RequestDeposit(
-            ByteString itemInstanceId, uint quantity,
-            GuildStorageSection section, CancellationToken cancel);
-
-        Awaitable<ulong> RequestWithdraw(
-            ByteString itemInstanceId, uint quantity,
-            GuildStorageSection section, CancellationToken cancel);
-
-        Awaitable<ulong> RequestMove(
-            ByteString itemInstanceId, GuildStorageSection toSection,
-            CancellationToken cancel);
-
-        Awaitable<ulong> RequestClaim(
-            ByteString itemInstanceId, uint quantity, CancellationToken cancel);
-
-        Awaitable<ulong> RequestClaimDecide(
-            ByteString claimId, GuildStorageClaimDecision decision,
-            CancellationToken cancel);
-    }
-
-    /// <summary>
     /// Guild-storage intent sender: builds each C2S request with a
     /// fresh operation_id and hands it to the send seam. Wire ids
     /// follow messages.md; every request commits exactly one 649
