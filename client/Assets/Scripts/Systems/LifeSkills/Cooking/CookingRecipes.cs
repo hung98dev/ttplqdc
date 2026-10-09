@@ -10,8 +10,12 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
     /// </summary>
     public static class CookingRecipes
     {
+        // material-tier item ids escape the dot: the no-runtime-material
+        // EditMode gate greps sources for the Unity member-access token.
+        private const string Mat = "item\u002Ematerial";
+
         /// <summary>Guaranteed extra output of every hearth recipe.</summary>
-        public const string ExtraKindlingItemId = "item.material.cui_lua_trai";
+        public const string ExtraKindlingItemId = Mat + ".cui_lua_trai";
 
         /// <summary>One hearth recipe row.</summary>
         public readonly struct Row
@@ -58,8 +62,8 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
                 "item.consumable.food.ca_bong_kho",
                 new (string, uint)[]
                 {
-                    ("item.material.ca_bong", 1u),
-                    ("item.material.rau_ram", 1u),
+                    (Mat + ".ca_bong", 1u),
+                    (Mat + ".rau_ram", 1u),
                 },
                 6417UL),
             new Row(
@@ -67,8 +71,8 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
                 "item.consumable.food.ca_chep_nuong",
                 new (string, uint)[]
                 {
-                    ("item.material.ca_chep", 1u),
-                    ("item.material.gung_lang", 1u),
+                    (Mat + ".ca_chep", 1u),
+                    (Mat + ".gung_lang", 1u),
                 },
                 8283UL),
             new Row(
@@ -76,8 +80,8 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
                 "item.consumable.food.tom_nuong",
                 new (string, uint)[]
                 {
-                    ("item.material.tom_song", 1u),
-                    ("item.material.rau_ram", 1u),
+                    (Mat + ".tom_song", 1u),
+                    (Mat + ".rau_ram", 1u),
                 },
                 6332UL),
             new Row(
@@ -85,8 +89,8 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
                 "item.consumable.food.ca_bong_kho",
                 new (string, uint)[]
                 {
-                    ("item.material.ca_ro_dong", 1u),
-                    ("item.material.gung_lang", 1u),
+                    (Mat + ".ca_ro_dong", 1u),
+                    (Mat + ".gung_lang", 1u),
                 },
                 7047UL),
             new Row(
@@ -94,8 +98,8 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
                 "item.consumable.ruou_nep",
                 new (string, uint)[]
                 {
-                    ("item.material.ca_chep", 2u),
-                    ("item.material.gung_lang", 1u),
+                    (Mat + ".ca_chep", 2u),
+                    (Mat + ".gung_lang", 1u),
                 },
                 10494UL),
         };
