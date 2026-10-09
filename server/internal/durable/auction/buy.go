@@ -3,6 +3,7 @@ package auction
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/jackc/pgx/v5"
 
@@ -96,6 +97,14 @@ func (s *Store) Buy(ctx context.Context, tx pgx.Tx, in BuyIn) (*BuyOut, error) {
 		l.SellerAccountID.String(), in.CharacterID.String(), buyerAccount,
 		out.Amount, l.ItemID, l.Quantity, l.ListingID.String()); err != nil {
 		return nil, fmt.Errorf("auction: insert proceeds: %w", err)
+	}
+	buyerAcct, err := id.ParseUUID(buyerAccount)
+	if err != nil {
+		return nil, fmt.Errorf("auction: buyer account id: %w", err)
+	}
+	day := now.UTC().Truncate(24 * time.Hour)
+	if err := s.rollups(ctx, tx, l, in.CharacterID, buyerAcct, out, day, now); err != nil {
+		return nil, err
 	}
 	if err := s.transition(ctx, tx, l.ListingID, StateSold, &in.CharacterID, now); err != nil {
 		return nil, err
