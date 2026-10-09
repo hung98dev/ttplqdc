@@ -58,7 +58,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-031` | Soul Contracts | `NOT_STARTED` | IMP-010, IMP-012, IMP-016 | `../03_systems/soul_contracts.md`, `../07_content/soul_catalog.md` |
 | `IMP-032` | Spirit Meridian | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/spirit_meridian.md`, `../07_content/build_catalog.md` |
 | `IMP-033` | Formations | `NOT_STARTED` | IMP-016, IMP-026 | `../03_systems/formations.md`, `../07_content/build_catalog.md` |
-| `IMP-034` | Friends / Block / Chat | `IN_PROGRESS` | IMP-018, IMP-080, IMP-100 | `../03_systems/social.md`, `../05_network/messages.md` |
+| `IMP-034` | Friends / Block / Chat | `DONE` | IMP-018, IMP-080, IMP-100 | `../03_systems/social.md`, `../05_network/messages.md` |
 | `IMP-035` | Party | `IN_PROGRESS` | IMP-018, IMP-080, IMP-100 | `../03_systems/party.md`, `../05_network/messages.md` |
 | `IMP-036` | Guild Core / Progression | `NOT_STARTED` | IMP-007, IMP-034, IMP-100 | `../03_systems/guild.md`, `../03_systems/guild_progression.md` |
 | `IMP-037` | Guild Storage | `NOT_STARTED` | IMP-008, IMP-009, IMP-036 | `../03_systems/guild_storage.md`, `../06_data/data_model.md` |
@@ -2838,7 +2838,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-033/"
 
 ## `IMP-034` — Friends / Block / Chat
 id: IMP-034
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-034"
 branch: "imp/IMP-034-friends-block-chat"
 claimed_at: "2026-10-08T05:37:26Z"
