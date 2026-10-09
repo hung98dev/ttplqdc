@@ -151,7 +151,10 @@ namespace ThinhThan.Systems.Guild
             {
                 _members.Add(new GuildMemberModel(v));
             }
-            _progression.Replace(s.Progression);
+            if (s.Progression != null)
+            {
+                _progression.Replace(s.Progression);
+            }
             _ownedCosmeticIds.Clear();
             _ownedCosmeticIds.AddRange(s.OwnedGuildCosmeticIds);
             CosmeticRevision = s.CosmeticRevision;
