@@ -148,7 +148,7 @@ namespace ThinhThan.Tests.PlayMode.CraftingUi
             Assert.IsTrue(CraftingRecipes.TryFind(
                 "recipe.eq.t6.nui_thieng.weapon",
                 out CraftingRecipes.Row row));
-            Assert.AreEqual(5ul, row.InputQuantity);
+            Assert.AreEqual(50ul, row.InputQuantity);
             Assert.AreEqual(17500L, row.CommonCost);
             Assert.AreEqual(51, row.Tier.MinLevel);
             // Charm eligibility: so_cap lucky rejects at +8+; cao_cap
