@@ -10,14 +10,6 @@ import (
 
 var t0 = time.Unix(1_700_000_000, 0)
 
-func newSvc(online func(id.UUID) bool) *Service {
-	clock := t0
-	return New(Options{
-		Now:    func() time.Time { return clock },
-		Online: online,
-	})
-}
-
 func op() id.UUID { return id.NewV4() }
 
 func TestMaxFivePartyMembership(t *testing.T) {
@@ -27,7 +19,6 @@ func TestMaxFivePartyMembership(t *testing.T) {
 		Online: func(c id.UUID) bool { return online[c] },
 	})
 	leader := id.NewV4()
-	var members []id.UUID
 	for i := 0; i < MaxMembers-1; i++ {
 		target := id.NewV4()
 		online[target] = true
@@ -38,7 +29,6 @@ func TestMaxFivePartyMembership(t *testing.T) {
 		if r := svc.Accept(op(), target, p.ID, leader); r.Status != v1.ResultStatus_RESULT_STATUS_SUCCESS {
 			t.Fatalf("accept %d: %v", i, r.ErrorCode)
 		}
-		members = append(members, target)
 	}
 	p := svc.Party(leader)
 	if len(p.Members) != MaxMembers {

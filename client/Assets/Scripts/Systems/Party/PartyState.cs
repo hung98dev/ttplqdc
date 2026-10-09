@@ -11,12 +11,16 @@ namespace ThinhThan.Systems.Party
     {
         private readonly List<PartyMemberModel> _members =
             new List<PartyMemberModel>();
+        private byte[] _partyId = new byte[0];
+        private byte[] _leaderCharacterId = new byte[0];
 
         public byte[] PartyId
         {
-            get;
-            private set;
-        } = new byte[0];
+            get
+            {
+                return _partyId;
+            }
+        }
 
         public ulong PartyRevision
         {
@@ -26,9 +30,11 @@ namespace ThinhThan.Systems.Party
 
         public byte[] LeaderCharacterId
         {
-            get;
-            private set;
-        } = new byte[0];
+            get
+            {
+                return _leaderCharacterId;
+            }
+        }
 
         public bool InParty
         {
@@ -46,10 +52,10 @@ namespace ThinhThan.Systems.Party
 
         public void Replace(S2CPartyState s)
         {
-            PartyId = s.PartyId.ToByteArray();
+            _partyId = s.PartyId.ToByteArray();
             PartyRevision = s.PartyRevision;
-            LeaderCharacterId = s.LeaderCharacterId.ToByteArray();
-            InParty = PartyId.Length == 16;
+            _leaderCharacterId = s.LeaderCharacterId.ToByteArray();
+            InParty = _partyId.Length == 16;
             _members.Clear();
             foreach (PartyMemberView v in s.Members)
             {

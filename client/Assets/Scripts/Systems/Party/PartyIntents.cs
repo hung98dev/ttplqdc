@@ -31,103 +31,107 @@ namespace ThinhThan.Systems.Party
             _sender = sender;
         }
 
-        public Awaitable<ulong> RequestInvite(
+        public async Awaitable<ulong> RequestInvite(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return _sender.SendAsync(C2SPartyInvite, new C2SPartyInvite
+            var req = new C2SPartyInvite
             {
                 OperationId = OpId(),
                 TargetCharacterId = ByteString.CopyFrom(targetCharacterId),
-            }, cancel);
+            };
+            return await _sender.SendAsync(C2SPartyInvite, req, cancel);
         }
 
-        public Awaitable<ulong> RequestAccept(
+        public async Awaitable<ulong> RequestAccept(
             byte[] partyId, byte[] inviterCharacterId,
             CancellationToken cancel)
         {
-            return _sender.SendAsync(C2SPartyAccept, new C2SPartyAccept
+            var req = new C2SPartyAccept
             {
                 OperationId = OpId(),
                 PartyId = ByteString.CopyFrom(partyId),
                 InviterCharacterId = ByteString.CopyFrom(inviterCharacterId),
-            }, cancel);
+            };
+            return await _sender.SendAsync(C2SPartyAccept, req, cancel);
         }
 
-        public Awaitable<ulong> RequestDecline(
+        public async Awaitable<ulong> RequestDecline(
             byte[] partyId, byte[] inviterCharacterId,
             CancellationToken cancel)
         {
-            return _sender.SendAsync(C2SPartyDecline, new C2SPartyDecline
+            var req = new C2SPartyDecline
             {
                 OperationId = OpId(),
                 PartyId = ByteString.CopyFrom(partyId),
                 InviterCharacterId = ByteString.CopyFrom(inviterCharacterId),
-            }, cancel);
+            };
+            return await _sender.SendAsync(C2SPartyDecline, req, cancel);
         }
 
-        public Awaitable<ulong> RequestLeave(CancellationToken cancel)
+        public async Awaitable<ulong> RequestLeave(CancellationToken cancel)
         {
-            return _sender.SendAsync(C2SPartyLeave, new C2SPartyLeave
+            var req = new C2SPartyLeave
             {
                 OperationId = OpId(),
-            }, cancel);
+            };
+            return await _sender.SendAsync(C2SPartyLeave, req, cancel);
         }
 
-        public Awaitable<ulong> RequestKick(
+        public async Awaitable<ulong> RequestKick(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return _sender.SendAsync(C2SPartyKick, new C2SPartyKick
+            var req = new C2SPartyKick
             {
                 OperationId = OpId(),
                 TargetCharacterId = ByteString.CopyFrom(targetCharacterId),
-            }, cancel);
+            };
+            return await _sender.SendAsync(C2SPartyKick, req, cancel);
         }
 
-        public Awaitable<ulong> RequestInviteCancel(
+        public async Awaitable<ulong> RequestInviteCancel(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return _sender.SendAsync(
-                C2SPartyInviteCancel, new C2SPartyInviteCancel
-                {
-                    OperationId = OpId(),
-                    TargetCharacterId =
-                        ByteString.CopyFrom(targetCharacterId),
-                }, cancel);
+            var req = new C2SPartyInviteCancel
+            {
+                OperationId = OpId(),
+                TargetCharacterId = ByteString.CopyFrom(targetCharacterId),
+            };
+            return await _sender.SendAsync(C2SPartyInviteCancel, req, cancel);
         }
 
-        public Awaitable<ulong> RequestLeaderTransfer(
+        public async Awaitable<ulong> RequestLeaderTransfer(
             byte[] targetCharacterId, CancellationToken cancel)
         {
-            return _sender.SendAsync(
-                C2SPartyLeaderTransfer, new C2SPartyLeaderTransfer
-                {
-                    OperationId = OpId(),
-                    TargetCharacterId =
-                        ByteString.CopyFrom(targetCharacterId),
-                }, cancel);
+            var req = new C2SPartyLeaderTransfer
+            {
+                OperationId = OpId(),
+                TargetCharacterId = ByteString.CopyFrom(targetCharacterId),
+            };
+            return await _sender.SendAsync(C2SPartyLeaderTransfer, req, cancel);
         }
 
-        public Awaitable<ulong> RequestBoardPost(
+        public async Awaitable<ulong> RequestBoardPost(
             string dungeonId, uint desiredSize, string note,
             CancellationToken cancel)
         {
-            return _sender.SendAsync(
-                C2SPartyBoardPost, new C2SPartyBoardPost
-                {
-                    OperationId = OpId(),
-                    DungeonId = dungeonId,
-                    DesiredSize = desiredSize,
-                    Note = note ?? string.Empty,
-                }, cancel);
+            var req = new C2SPartyBoardPost
+            {
+                OperationId = OpId(),
+                DungeonId = dungeonId,
+                DesiredSize = desiredSize,
+                Note = note ?? string.Empty,
+            };
+            return await _sender.SendAsync(C2SPartyBoardPost, req, cancel);
         }
 
-        public Awaitable<ulong> RequestBoardCancel(CancellationToken cancel)
+        public async Awaitable<ulong> RequestBoardCancel(
+            CancellationToken cancel)
         {
-            return _sender.SendAsync(
-                C2SPartyBoardCancel, new C2SPartyBoardCancel
-                {
-                    OperationId = OpId(),
-                }, cancel);
+            var req = new C2SPartyBoardCancel
+            {
+                OperationId = OpId(),
+            };
+            return await _sender.SendAsync(C2SPartyBoardCancel, req, cancel);
         }
 
         private static ByteString OpId()
