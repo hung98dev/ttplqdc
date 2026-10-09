@@ -50,7 +50,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-023` | Dungeon Runtime | `NOT_STARTED` | IMP-010, IMP-018, IMP-019, IMP-021, IMP-022 | `../02_world/dungeons.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-024` | ENDGAME_L60 Variants | `NOT_STARTED` | IMP-023 | `../02_world/dungeons.md`, `../07_content/dungeon_catalog.md` |
 | `IMP-025` | Spirit Surge | `NOT_STARTED` | IMP-010, IMP-019, IMP-021, IMP-080 | `../02_world/world_rules.md`, `../07_content/world_event_catalog.md` |
-| `IMP-026` | Equipment Catalog Runtime Expansion | `IN_PROGRESS` | IMP-003, IMP-012 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
+| `IMP-026` | Equipment Catalog Runtime Expansion | `DONE` | IMP-003, IMP-012 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-027` | Crafting / Enhancement | `NOT_STARTED` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
 | `IMP-028` | NPC Services / Shops | `NOT_STARTED` | IMP-007, IMP-009, IMP-018, IMP-027 | `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md` |
 | `IMP-029` | Direct Trade | `DONE` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
@@ -78,13 +78,13 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-051` | Drop Table Coverage Invariant for Monster Roster Growth | `NOT_STARTED` | IMP-003, IMP-019 | `../07_content/drop_tables.md`, `../07_content/monster_catalog.md` |
 | `IMP-052` | Seasons Infrastructure | `NOT_STARTED` | IMP-021, IMP-036, IMP-038, IMP-040, IMP-060, IMP-091, IMP-102 | `../03_systems/seasons.md`, `../03_systems/atlas.md` |
 | `IMP-053` | IAP Receipt Verification & Entitlement Grants | `NOT_STARTED` | IMP-038, IMP-100 | `../03_systems/monetization.md`, `../03_systems/account_storage.md` |
-| `IMP-054` | Anti-RMT Behavioral Signals | `IN_PROGRESS` | IMP-001, IMP-007, IMP-029, IMP-030 | `../07_security/anti_cheat.md`, `../03_systems/trading_auction.md` |
+| `IMP-054` | Anti-RMT Behavioral Signals | `DONE` | IMP-001, IMP-007, IMP-029, IMP-030 | `../07_security/anti_cheat.md`, `../03_systems/trading_auction.md` |
 | `IMP-055` | Entity Capacity Enforcement | `NOT_STARTED` | IMP-018, IMP-019, IMP-035 | `../02_world/maps_zones.md`, `../02_world/world_rules.md` |
 | `IMP-056` | Retention & Erasure Engine | `NOT_STARTED` | IMP-043, IMP-094, IMP-100 | `../07_security/data_protection.md`, `../07_security/personal_data_register.md` |
 | `IMP-057` | Linh Thú Companion Runtime | `NOT_STARTED` | IMP-008, IMP-010, IMP-016, IMP-019, IMP-100 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
-| `IMP-058` | Folk Fishing Runtime | `IN_PROGRESS` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
+| `IMP-058` | Folk Fishing Runtime | `DONE` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `DONE` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
-| `IMP-060` | Atlas Journal Runtime | `IN_PROGRESS` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
+| `IMP-060` | Atlas Journal Runtime | `DONE` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
 | `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `DONE` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
@@ -2127,7 +2127,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-055/"
 
 ## `IMP-058` — Folk Fishing Runtime
 id: IMP-058
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-058"
 branch: "imp/IMP-058-folk-fishing"
 claimed_at: "2026-10-09T06:40:00Z"
@@ -2459,7 +2459,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-057/"
 
 ## `IMP-060` — Atlas Journal Runtime
 id: IMP-060
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-060"
 branch: "imp/IMP-060-atlas-journal"
 claimed_at: "2026-10-09T06:40:00Z"
@@ -2501,7 +2501,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-060/"
 
 ## `IMP-026` — Equipment Catalog Runtime Expansion
 id: IMP-026
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-026"
 branch: "imp/IMP-026-equipment-catalog"
 claimed_at: "2026-10-09T06:40:00Z"
@@ -3903,7 +3903,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-051/"
 
 ## `IMP-054` — Anti-RMT Behavioral Signals
 id: IMP-054
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-054"
 branch: "imp/IMP-054-anti-rmt"
 claimed_at: "2026-10-09T07:05:00Z"
