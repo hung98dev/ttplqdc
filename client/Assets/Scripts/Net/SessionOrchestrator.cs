@@ -178,14 +178,14 @@ namespace ThinhThan.Net
         /// <summary>Interact-result frames land here (116) —
         /// Systems/Cooking (IMP-059). 116 is shared with World.</summary>
         public ICookingSink? Cooking
-
-        /// <summary>Craft/enhance result frames land here (405, 407) —
-        /// Systems/Crafting (IMP-027).</summary>
-        public ICraftingSink? Crafting
         {
             get;
             set;
         }
+
+        /// <summary>Craft/enhance result frames land here (405, 407) —
+        /// Systems/Crafting (IMP-027).</summary>
+        public ICraftingSink? Crafting
         {
             get;
             set;
