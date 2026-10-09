@@ -133,7 +133,7 @@ namespace ThinhThan.UI.Crafting
                 status = string.Format("craft {0} x{1}: {2}",
                     state.LastCraftResult.RecipeId,
                     state.LastCraftResult.BatchQuantity,
-                    state.LastCraftResult.Result);
+                    state.LastCraftResult.Result.Status);
             }
             if (state.LastEnhanceResult != null)
             {
