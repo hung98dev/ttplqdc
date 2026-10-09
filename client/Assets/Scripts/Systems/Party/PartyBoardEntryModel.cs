@@ -48,4 +48,3 @@ namespace ThinhThan.Systems.Party
     }
 
 }
-}
