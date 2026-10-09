@@ -71,17 +71,14 @@ func populationRaw(ctx context.Context, tx pgx.Tx,
 		return fmt.Errorf("anti_rmt: population trade: %w", err)
 	}
 	defer rows.Close()
-	type liveRow struct{ init, cpart string }
-	var live []liveRow
 	for rows.Next() {
-		var l liveRow
+		var init, cpart string
 		var initSent, cpartSent int64
-		if err := rows.Scan(&l.init, &l.cpart, &initSent, &cpartSent); err != nil {
+		if err := rows.Scan(&init, &cpart, &initSent, &cpartSent); err != nil {
 			return err
 		}
-		nets[l.init] += initSent - (cpartSent - feeOf(cpartSent))
-		nets[l.cpart] += cpartSent - (initSent - feeOf(initSent))
-		live = append(live, l)
+		nets[init] += initSent - (cpartSent - feeOf(cpartSent))
+		nets[cpart] += cpartSent - (initSent - feeOf(initSent))
 	}
 	if err := rows.Err(); err != nil {
 		return err
