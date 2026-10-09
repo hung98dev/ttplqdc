@@ -93,7 +93,7 @@ namespace ThinhThan.Tests.PlayMode.CraftingUi
             Assert.AreEqual(1ul, applier.Version);
             Assert.NotNull(applier.LastCraftResult);
             Assert.AreEqual(ResultStatus.Success,
-                applier.LastCraftResult!.Result);
+                applier.LastCraftResult!.Result.Status);
             Assert.AreEqual(1, applier.LastCraftResult.Granted.Count);
             Assert.AreEqual(-500L,
                 applier.LastCraftResult.CurrencyDelta[0].Amount);
