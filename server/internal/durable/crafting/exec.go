@@ -406,6 +406,14 @@ func invSlot(n int64) string { return fmt.Sprintf("inv.%d", n) }
 // the commit atomically.
 func consumeFrozen(ctx context.Context, tx pgx.Tx, charID id.UUID,
 	sel []*journalv1.JournalConsumedItem) error {
+	// Verify the whole frozen selection first (FOR UPDATE): a stale
+	// row anywhere rejects before any row is mutated — zero consume.
+	type pick struct {
+		instID id.UUID
+		qty    int64
+		take   int64
+	}
+	picks := make([]pick, 0, len(sel))
 	for _, c := range sel {
 		var instID id.UUID
 		copy(instID[:], c.GetItemInstanceId())
@@ -423,20 +431,24 @@ func consumeFrozen(ctx context.Context, tx pgx.Tx, charID id.UUID,
 		if owner != charID || qty < int64(c.GetQuantity()) {
 			return fmt.Errorf("%w: %s", ErrInsufficientItems, instID)
 		}
-		if qty == int64(c.GetQuantity()) {
+		picks = append(picks, pick{instID: instID, qty: qty,
+			take: int64(c.GetQuantity())})
+	}
+	for _, pk := range picks {
+		if pk.take == pk.qty {
 			if _, err := tx.Exec(ctx,
-				`DELETE FROM item_locations WHERE item_instance_id = $1`, instID); err != nil {
+				`DELETE FROM item_locations WHERE item_instance_id = $1`, pk.instID); err != nil {
 				return err
 			}
 			if _, err := tx.Exec(ctx,
-				`DELETE FROM item_instances WHERE item_instance_id = $1`, instID); err != nil {
+				`DELETE FROM item_instances WHERE item_instance_id = $1`, pk.instID); err != nil {
 				return err
 			}
 			continue
 		}
 		if _, err := tx.Exec(ctx,
 			`UPDATE item_instances SET quantity = quantity - $2 WHERE item_instance_id = $1`,
-			instID, c.GetQuantity()); err != nil {
+			pk.instID, pk.take); err != nil {
 			return err
 		}
 	}
