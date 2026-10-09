@@ -73,7 +73,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-046` | Load / Capacity Suite | `NOT_STARTED` | IMP-018, IMP-019, IMP-034, IMP-035, IMP-041, IMP-042, IMP-055, IMP-069 | `../08_scale_ops/capacity.md`, `../09_testing/load.md` |
 | `IMP-047` | Migration / Backup / Restore Rehearsal | `NOT_STARTED` | IMP-005, IMP-043 | `../08_scale_ops/backup_recovery.md`, `../08_scale_ops/deployment.md` |
 | `IMP-048` | Launch Candidate Gate | `NOT_STARTED` | IMP-044, IMP-045, IMP-046, IMP-047, IMP-096 | `definition_of_done.md`, `milestones.md` |
-| `IMP-049` | TTK, Survivability, and Skill-Reach Re-verification | `IN_PROGRESS` | IMP-004, IMP-026 | `../07_content/balance_validation.md`, `../07_content/class_skill_catalog.md` |
+| `IMP-049` | TTK, Survivability, and Skill-Reach Re-verification | `DONE` | IMP-004, IMP-026 | `../07_content/balance_validation.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-050` | Spirit Beast Passive Budget Compile Validation | `DONE` | IMP-003, IMP-004 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
 | `IMP-051` | Drop Table Coverage Invariant for Monster Roster Growth | `NOT_STARTED` | IMP-003, IMP-019 | `../07_content/drop_tables.md`, `../07_content/monster_catalog.md` |
 | `IMP-052` | Seasons Infrastructure | `NOT_STARTED` | IMP-021, IMP-036, IMP-038, IMP-040, IMP-060, IMP-091, IMP-102 | `../03_systems/seasons.md`, `../03_systems/atlas.md` |
@@ -3793,7 +3793,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-048/"
 
 ## `IMP-049` — TTK, Survivability, and Skill-Reach Re-verification
 id: IMP-049
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-049"
 branch: "imp/IMP-049-balance-reach-validation"
 claimed_at: "2026-10-09T19:51:58Z"
