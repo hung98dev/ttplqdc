@@ -13,14 +13,14 @@ namespace ThinhThan.Systems.Effects
     public sealed class EffectPresentation
     {
         private readonly EffectState _state;
-        private readonly EffectPools _pools;
-        private readonly Dictionary<ulong, List<EffectPools.IconPresenter>> _liveIcons =
-            new Dictionary<ulong, List<EffectPools.IconPresenter>>();
-        private readonly Dictionary<ulong, List<EffectPools.BarPresenter>> _liveBars =
-            new Dictionary<ulong, List<EffectPools.BarPresenter>>();
+        private readonly EffectPresenters _pools;
+        private readonly Dictionary<ulong, List<EffectPresenters.IconPresenter>> _liveIcons =
+            new Dictionary<ulong, List<EffectPresenters.IconPresenter>>();
+        private readonly Dictionary<ulong, List<EffectPresenters.BarPresenter>> _liveBars =
+            new Dictionary<ulong, List<EffectPresenters.BarPresenter>>();
         private ulong _seenVersion;
 
-        public EffectPresentation(EffectState state, EffectPools pools)
+        public EffectPresentation(EffectState state, EffectPresenters pools)
         {
             _state = state;
             _pools = pools;
@@ -144,11 +144,11 @@ namespace ThinhThan.Systems.Effects
         {
             if (!_liveIcons.ContainsKey(entityId))
             {
-                _liveIcons[entityId] = new List<EffectPools.IconPresenter>();
+                _liveIcons[entityId] = new List<EffectPresenters.IconPresenter>();
             }
             if (!_liveBars.ContainsKey(entityId))
             {
-                _liveBars[entityId] = new List<EffectPools.BarPresenter>();
+                _liveBars[entityId] = new List<EffectPresenters.BarPresenter>();
             }
         }
 
@@ -223,8 +223,8 @@ namespace ThinhThan.Systems.Effects
             return false;
         }
 
-        private static EffectPools.IconPresenter? FindIcon(
-            List<EffectPools.IconPresenter> icons, string effectId)
+        private static EffectPresenters.IconPresenter? FindIcon(
+            List<EffectPresenters.IconPresenter> icons, string effectId)
         {
             foreach (var p in icons)
             {
@@ -236,8 +236,8 @@ namespace ThinhThan.Systems.Effects
             return null;
         }
 
-        private static EffectPools.BarPresenter? FindBar(
-            List<EffectPools.BarPresenter> bars, string effectId)
+        private static EffectPresenters.BarPresenter? FindBar(
+            List<EffectPresenters.BarPresenter> bars, string effectId)
         {
             foreach (var p in bars)
             {

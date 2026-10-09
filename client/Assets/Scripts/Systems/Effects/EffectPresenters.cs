@@ -10,7 +10,7 @@ namespace ThinhThan.Systems.Effects
     /// binds them; nothing here touches UnityEngine or allocates per
     /// frame.
     /// </summary>
-    public sealed class EffectPools
+    public sealed class EffectPresenters
     {
         /// <summary>Icon presenter: one live status's icon view.</summary>
         public sealed class IconPresenter

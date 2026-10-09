@@ -95,7 +95,7 @@ namespace ThinhThan.Tests.PlayMode.EffectPresentation
         public void PresentationReconcilesPooledPresenters()
         {
             var state = new EffectState();
-            var pools = new EffectPools();
+            var pools = new EffectPresenters();
             var pres = new global::ThinhThan.Systems.Effects.EffectPresentation(state, pools);
 
             state.ApplyEvent(Event(Foe, "effect.basic.burn_3s",
@@ -140,7 +140,7 @@ namespace ThinhThan.Tests.PlayMode.EffectPresentation
         public void EvaluateAdvancesBarsFromAuthoritativeTick()
         {
             var state = new EffectState();
-            var pools = new EffectPools();
+            var pools = new EffectPresenters();
             var pres = new global::ThinhThan.Systems.Effects.EffectPresentation(state, pools);
 
             state.ApplyEvent(Event(Foe, "effect.basic.slow_20_3s",
