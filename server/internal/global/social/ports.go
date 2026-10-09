@@ -44,3 +44,16 @@ type Hub interface {
 	Fanout(ctx context.Context, channel protocolv1.ChatChannel,
 		senderID, targetID id.UUID) ([]id.UUID, error)
 }
+
+// Moderation is the communication-restriction consult the composition
+// root binds in production (social.md § Moderation; send admission
+// requires "moderation restrictions pass"). IMP-094 implements the
+// real consult against global/moderation; a nil consult admits every
+// send. CheckSend returns ok=false plus the wire error to fail the
+// send with when the sender or message is restricted (e.g. MUTED on
+// this channel or a rejected content filter).
+type Moderation interface {
+	CheckSend(ctx context.Context, senderID id.UUID,
+		channel protocolv1.ChatChannel, targetID id.UUID,
+		text string) (protocolv1.ErrorCode, bool)
+}
