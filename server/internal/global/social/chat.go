@@ -75,6 +75,12 @@ func (s *Service) chatSend(ctx context.Context, v router.View, r router.Route) e
 		}
 	}
 
+	if s.moderation != nil {
+		if code, ok := s.moderation.CheckSend(ctx, sender, channel, target, text); !ok {
+			return fail(code)
+		}
+	}
+
 	if !s.limiter.allowChat(channel, sender, target, s.now()) {
 		return fail(protocolv1.ErrorCode_ERROR_CODE_RATE_LIMITED)
 	}
