@@ -118,7 +118,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-091` | Di Tích Relics & Boss Chest Ceremony | `NOT_STARTED` | IMP-010, IMP-022, IMP-023 | `../02_world/bosses.md`, `../06_data/data_model.md` |
 | `IMP-092` | MA_AM Status | `NOT_STARTED` | IMP-016, IMP-022, IMP-057 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-093` | Guild Stone | `NOT_STARTED` | IMP-036, IMP-052, IMP-060 | `../03_systems/guild.md`, `../03_systems/seasons.md` |
-| `IMP-094` | Chat Moderation & chat_messages | `IN_PROGRESS` | IMP-034, IMP-080 | `../03_systems/social.md`, `../06_data/data_model.md` |
+| `IMP-094` | Chat Moderation & chat_messages | `DONE` | IMP-034, IMP-080 | `../03_systems/social.md`, `../06_data/data_model.md` |
 | `IMP-095` | Client Performance Budgets & Quality Presets (every PR) | `DONE` | IMP-063, IMP-065, IMP-066, IMP-101 | `../04_architecture/client_performance.md`, `../04_architecture/client.md` |
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
 | `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
@@ -2878,7 +2878,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-034/"
 
 ## `IMP-094` — Chat Moderation & chat_messages
 id: IMP-094
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-094"
 branch: "imp/IMP-094-chat-moderation"
 claimed_at: "2026-10-09T06:40:00Z"
