@@ -50,7 +50,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-023` | Dungeon Runtime | `NOT_STARTED` | IMP-010, IMP-018, IMP-019, IMP-021, IMP-022 | `../02_world/dungeons.md`, `../04_architecture/physics_geometry_contract.md` |
 | `IMP-024` | ENDGAME_L60 Variants | `NOT_STARTED` | IMP-023 | `../02_world/dungeons.md`, `../07_content/dungeon_catalog.md` |
 | `IMP-025` | Spirit Surge | `NOT_STARTED` | IMP-010, IMP-019, IMP-021, IMP-080 | `../02_world/world_rules.md`, `../07_content/world_event_catalog.md` |
-| `IMP-026` | Equipment Catalog Runtime Expansion | `NOT_STARTED` | IMP-003, IMP-012 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
+| `IMP-026` | Equipment Catalog Runtime Expansion | `IN_PROGRESS` | IMP-003, IMP-012 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
 | `IMP-027` | Crafting / Enhancement | `NOT_STARTED` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
 | `IMP-028` | NPC Services / Shops | `NOT_STARTED` | IMP-007, IMP-009, IMP-018, IMP-027 | `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md` |
 | `IMP-029` | Direct Trade | `DONE` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
@@ -82,9 +82,9 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-055` | Entity Capacity Enforcement | `NOT_STARTED` | IMP-018, IMP-019, IMP-035 | `../02_world/maps_zones.md`, `../02_world/world_rules.md` |
 | `IMP-056` | Retention & Erasure Engine | `NOT_STARTED` | IMP-043, IMP-094, IMP-100 | `../07_security/data_protection.md`, `../07_security/personal_data_register.md` |
 | `IMP-057` | Linh Thú Companion Runtime | `NOT_STARTED` | IMP-008, IMP-010, IMP-016, IMP-019, IMP-100 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
-| `IMP-058` | Folk Fishing Runtime | `NOT_STARTED` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
+| `IMP-058` | Folk Fishing Runtime | `IN_PROGRESS` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `DONE` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
-| `IMP-060` | Atlas Journal Runtime | `NOT_STARTED` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
+| `IMP-060` | Atlas Journal Runtime | `IN_PROGRESS` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
 | `IMP-062` | Unity Geometry Exporter & Map Geometry Parity | `DONE` | IMP-078, IMP-079 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-063` | Addressables Asset Pipeline & Catalog Delivery | `DONE` | IMP-000 | `../04_architecture/client_assets.md`, `../04_architecture/client.md` |
@@ -118,7 +118,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-091` | Di Tích Relics & Boss Chest Ceremony | `NOT_STARTED` | IMP-010, IMP-022, IMP-023 | `../02_world/bosses.md`, `../06_data/data_model.md` |
 | `IMP-092` | MA_AM Status | `NOT_STARTED` | IMP-016, IMP-022, IMP-057 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-093` | Guild Stone | `NOT_STARTED` | IMP-036, IMP-052, IMP-060 | `../03_systems/guild.md`, `../03_systems/seasons.md` |
-| `IMP-094` | Chat Moderation & chat_messages | `NOT_STARTED` | IMP-034, IMP-080 | `../03_systems/social.md`, `../06_data/data_model.md` |
+| `IMP-094` | Chat Moderation & chat_messages | `IN_PROGRESS` | IMP-034, IMP-080 | `../03_systems/social.md`, `../06_data/data_model.md` |
 | `IMP-095` | Client Performance Budgets & Quality Presets (every PR) | `DONE` | IMP-063, IMP-065, IMP-066, IMP-101 | `../04_architecture/client_performance.md`, `../04_architecture/client.md` |
 | `IMP-096` | Android Device Performance on Firebase Test Lab | `NOT_STARTED` | IMP-067, IMP-095 | `../04_architecture/client_performance.md`, `audit_gates.md` |
 | `IMP-097` | Aggregate Lock-Order Helper | `DONE` | IMP-005, IMP-068, IMP-098 | `../06_data/database.md`, `../06_data/data_model.md` |
@@ -2127,10 +2127,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-055/"
 
 ## `IMP-058` — Folk Fishing Runtime
 id: IMP-058
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-058"
+branch: "imp/IMP-058-folk-fishing"
+claimed_at: "2026-10-09T06:40:00Z"
 blocked_by: ""
 
 specs: [`../02_world/world_rules.md`, `../07_content/economy_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -2459,10 +2459,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-057/"
 
 ## `IMP-060` — Atlas Journal Runtime
 id: IMP-060
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-060"
+branch: "imp/IMP-060-atlas-journal"
+claimed_at: "2026-10-09T06:40:00Z"
 blocked_by: ""
 
 specs: [`../03_systems/atlas.md`, `../07_content/atlas_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -2501,10 +2501,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-060/"
 
 ## `IMP-026` — Equipment Catalog Runtime Expansion
 id: IMP-026
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-026"
+branch: "imp/IMP-026-equipment-catalog"
+claimed_at: "2026-10-09T06:40:00Z"
 blocked_by: ""
 
 specs: [`../03_systems/equipment.md`, `../07_content/equipment_catalog.md`]
@@ -2878,10 +2878,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-034/"
 
 ## `IMP-094` — Chat Moderation & chat_messages
 id: IMP-094
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-094"
+branch: "imp/IMP-094-chat-moderation"
+claimed_at: "2026-10-09T06:40:00Z"
 blocked_by: ""
 
 specs: [`../03_systems/social.md`, `../06_data/data_model.md`, `../07_security/data_protection.md`, `../07_security/personal_data_register.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
