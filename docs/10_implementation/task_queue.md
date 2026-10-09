@@ -82,7 +82,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-055` | Entity Capacity Enforcement | `NOT_STARTED` | IMP-018, IMP-019, IMP-035 | `../02_world/maps_zones.md`, `../02_world/world_rules.md` |
 | `IMP-056` | Retention & Erasure Engine | `NOT_STARTED` | IMP-043, IMP-094, IMP-100 | `../07_security/data_protection.md`, `../07_security/personal_data_register.md` |
 | `IMP-057` | Linh Thú Companion Runtime | `NOT_STARTED` | IMP-008, IMP-010, IMP-016, IMP-019, IMP-100 | `../03_systems/spirit_beasts.md`, `../07_content/spirit_beast_catalog.md` |
-| `IMP-058` | Folk Fishing Runtime | `IN_PROGRESS` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
+| `IMP-058` | Folk Fishing Runtime | `DONE` | IMP-002, IMP-008, IMP-010, IMP-018 | `../02_world/world_rules.md`, `../07_content/economy_catalog.md` |
 | `IMP-059` | Hearth / Cooking / Bonfire Runtime | `DONE` | IMP-003, IMP-007, IMP-008, IMP-018 | `../02_world/world_rules.md`, `../07_content/crafting_catalog.md` |
 | `IMP-060` | Atlas Journal Runtime | `DONE` | IMP-005, IMP-010, IMP-011, IMP-018 | `../03_systems/atlas.md`, `../07_content/atlas_catalog.md` |
 | `IMP-061` | Protocol Buffers Schema & Multi-Language Codegen Harness | `DONE` | IMP-000 | `../05_network/protocol.md`, `../05_network/messages.md` |
@@ -2127,7 +2127,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-055/"
 
 ## `IMP-058` — Folk Fishing Runtime
 id: IMP-058
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-058"
 branch: "imp/IMP-058-folk-fishing"
 claimed_at: "2026-10-09T06:40:00Z"
