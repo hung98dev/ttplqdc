@@ -29,7 +29,11 @@ namespace ThinhThan.UI.Party
             return row;
         }
 
-        public PartyApplier? Applier;
+        public PartyApplier? Applier
+        {
+            get;
+            set;
+        }
         public Transform? RowContainer;
         public GameObject? InviteBanner;
         public TMP_Text? InviteText;
