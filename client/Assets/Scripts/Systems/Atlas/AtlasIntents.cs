@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Google.Protobuf;
 using ThinhThan.Protocol.V1;
+using UnityEngine;
 
 namespace ThinhThan.Systems.Atlas
 {
