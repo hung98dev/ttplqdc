@@ -92,7 +92,7 @@ namespace ThinhThan.Tests.PlayMode.CosmeticsUi
             IReadOnlyList<CosmeticsWardrobePresenter.CosmeticRow> rows =
                 presenter.WardrobeRows();
             Assert.AreEqual(2, rows.Count);
-            Assert.AreEqual("TITLE", rows[0].EquippedSlot);
+            Assert.AreEqual("Title", rows[0].EquippedSlot);
             Assert.AreEqual(CosmeticScope.Account, rows[1].Scope);
             Assert.IsFalse(rows[1].Equipped);
         }
