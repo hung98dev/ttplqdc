@@ -118,8 +118,8 @@ namespace ThinhThan.Tests.PlayMode.PartyUi
             panel.RowContainer = go.transform;
             panel.FlushRendered();
 
-            PartyMemberRowView row0 = panel.RowAt(0);
-            PartyMemberRowView row1 = panel.RowAt(1);
+            PartyMemberRowView? row0 = panel.RowAt(0);
+            PartyMemberRowView? row1 = panel.RowAt(1);
             Assert.IsNotNull(row0);
             Assert.IsNotNull(row1);
             Assert.IsFalse(row0!.LeaderMark!.activeSelf);
