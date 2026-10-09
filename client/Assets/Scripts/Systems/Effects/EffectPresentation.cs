@@ -110,9 +110,10 @@ namespace ThinhThan.Systems.Effects
 
         /// <summary>Notifies presentation that an entity's model
         /// changed (called by the sink wiring for entities whose
-        /// versions moved).</summary>
+        /// versions moved). Each notify batch replaces the cue list.</summary>
         public void NotifyEntity(ulong entityId, ulong serverTick)
         {
+            _cues.Clear();
             EnsureLists(entityId);
             Reconcile(entityId, serverTick);
         }
