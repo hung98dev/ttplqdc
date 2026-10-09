@@ -78,7 +78,7 @@ func requirePool(t *testing.T) *pgxpool.Pool {
 func wipe(t *testing.T) {
 	t.Helper()
 	pool := requirePool(t)
-	for _, table := range []string{"chat_messages", "characters"} {
+	for _, table := range []string{"player_reports", "chat_messages", "characters"} {
 		if _, err := pool.Exec(context.Background(),
 			"DELETE FROM "+table); err != nil {
 			t.Fatalf("wipe %s: %v", table, err)
@@ -126,4 +126,25 @@ func apply(t *testing.T, s *Store, rec *journalv1.DurableCommandRecord) {
 	if err := tx.Commit(context.Background()); err != nil {
 		t.Fatalf("commit: %v", err)
 	}
+}
+
+// mkReport inserts one OPEN player_reports row the way the
+// durable/social C2S_REPORT_PLAYER exec writes it (the insert path is
+// owned there; this package reads case state only).
+func mkReport(t *testing.T, accountID, reporter, target id.UUID,
+	reason string, chatMessageID *id.UUID, notes *string,
+	createdAt time.Time) id.UUID {
+	t.Helper()
+	reportID, opID := id.NewV4(), id.NewV4()
+	if _, err := sharedPool.Exec(context.Background(),
+		`INSERT INTO player_reports
+		    (report_id, operation_id, reporter_account_id,
+		     reporter_character_id, target_character_id, reason,
+		     chat_message_id, reporter_notes, created_at, status)
+		 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,'OPEN')`,
+		reportID[:], opID[:], accountID[:], reporter[:], target[:],
+		reason, chatMessageID, notes, createdAt); err != nil {
+		t.Fatalf("report: %v", err)
+	}
+	return reportID
 }

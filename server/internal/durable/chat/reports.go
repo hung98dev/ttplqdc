@@ -1,4 +1,4 @@
-package moderation
+package chat
 
 import (
 	"context"
