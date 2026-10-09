@@ -70,12 +70,12 @@ namespace ThinhThan.Systems.Crafting
         public static readonly Dictionary<string, string[]> Sets =
             new Dictionary<string, string[]>
             {
-                ["t1"] = { "dinh_lang", "ben_da" },
-                ["t2"] = { "u_minh", "dom_lua_rung" },
-                ["t3"] = { "ben_nuoc", "xom_chim" },
-                ["t4"] = { "deo_may", "dau_ho" },
-                ["t5"] = { "thanh_co", "trong_tran" },
-                ["t6"] = { "nui_thieng", "dau_cu" },
+                ["t1"] = new string[] { "dinh_lang", "ben_da" },
+                ["t2"] = new string[] { "u_minh", "dom_lua_rung" },
+                ["t3"] = new string[] { "ben_nuoc", "xom_chim" },
+                ["t4"] = new string[] { "deo_may", "dau_ho" },
+                ["t5"] = new string[] { "thanh_co", "trong_tran" },
+                ["t6"] = new string[] { "nui_thieng", "dau_cu" },
             };
 
         /// <summary>One flattened recipe row (one per equipment item).</summary>
