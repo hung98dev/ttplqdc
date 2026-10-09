@@ -52,6 +52,8 @@ namespace ThinhThan.Net
         public const uint S2CBaselineResyncResult = 308;
         public const uint S2CInventoryResult = 401;
         public const uint S2CLoadoutResult = 403;
+        public const uint S2CCraftResult = 405;
+        public const uint S2CEnhanceResult = 407;
         public const uint S2CRewardClaimResult = 409;
         public const uint S2CEntitlementClaimResult = 419;
         public const uint S2CInventoryExpandResult = 429;

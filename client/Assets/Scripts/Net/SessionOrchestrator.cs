@@ -178,6 +178,14 @@ namespace ThinhThan.Net
         /// <summary>Interact-result frames land here (116) —
         /// Systems/Cooking (IMP-059). 116 is shared with World.</summary>
         public ICookingSink? Cooking
+
+        /// <summary>Craft/enhance result frames land here (405, 407) —
+        /// Systems/Crafting (IMP-027).</summary>
+        public ICraftingSink? Crafting
+        {
+            get;
+            set;
+        }
         {
             get;
             set;
@@ -675,6 +683,10 @@ namespace ThinhThan.Net
                 case WireIds.S2CStatusEvent:
                 case WireIds.S2CCombatEvent:
                     Combat?.Apply(frame);
+                    break;
+                case WireIds.S2CCraftResult:
+                case WireIds.S2CEnhanceResult:
+                    Crafting?.Apply(frame);
                     break;
                 case WireIds.S2CLoadoutResult:
                     Equipment?.Apply(frame);
