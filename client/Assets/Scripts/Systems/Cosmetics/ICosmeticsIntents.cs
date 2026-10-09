@@ -1,4 +1,5 @@
 using System.Threading;
+using ThinhThan.Protocol.V1;
 using UnityEngine;
 
 namespace ThinhThan.Systems.Cosmetics
