@@ -40,7 +40,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-013` | Movement / Collision / C2S_MOVEMENT_EDGE | `DONE` | IMP-065, IMP-078, IMP-079, IMP-100 | `../01_gameplay/movement.md`, `../04_architecture/realtime_loop.md` |
 | `IMP-014` | Combat Action State Machine | `DONE` | IMP-011, IMP-013, IMP-081 | `../01_gameplay/combat.md`, `../01_gameplay/skills.md` |
 | `IMP-015` | Skill Runtime / Geometry | `DONE` | IMP-003, IMP-014 | `../01_gameplay/skills.md`, `../04_architecture/physics_geometry_contract.md` |
-| `IMP-016` | Effects / Status / Shield Pipeline | `NOT_STARTED` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
+| `IMP-016` | Effects / Status / Shield Pipeline | `IN_PROGRESS` | IMP-014, IMP-015 | `../01_gameplay/status_effects.md`, `../01_gameplay/combat.md` |
 | `IMP-017` | Class Skills / Skill Levels | `NOT_STARTED` | IMP-015, IMP-016 | `../01_gameplay/classes.md`, `../07_content/class_skill_catalog.md` |
 | `IMP-018` | Map / Transfer / Checkpoint Runtime | `DONE` | IMP-013, IMP-062, IMP-066, IMP-100 | `../02_world/README.md`, `../02_world/maps_zones.md` |
 | `IMP-019` | Spawn Runtime / Monster AI | `NOT_STARTED` | IMP-003, IMP-016, IMP-018 | `../02_world/spawning.md`, `../02_world/monsters.md` |
@@ -51,7 +51,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-024` | ENDGAME_L60 Variants | `NOT_STARTED` | IMP-023 | `../02_world/dungeons.md`, `../07_content/dungeon_catalog.md` |
 | `IMP-025` | Spirit Surge | `NOT_STARTED` | IMP-010, IMP-019, IMP-021, IMP-080 | `../02_world/world_rules.md`, `../07_content/world_event_catalog.md` |
 | `IMP-026` | Equipment Catalog Runtime Expansion | `DONE` | IMP-003, IMP-012 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
-| `IMP-027` | Crafting / Enhancement | `NOT_STARTED` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
+| `IMP-027` | Crafting / Enhancement | `IN_PROGRESS` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
 | `IMP-028` | NPC Services / Shops | `NOT_STARTED` | IMP-007, IMP-009, IMP-018, IMP-027 | `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md` |
 | `IMP-029` | Direct Trade | `DONE` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
 | `IMP-030` | Auction House | `DONE` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
@@ -62,7 +62,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-035` | Party | `DONE` | IMP-018, IMP-080, IMP-100 | `../03_systems/party.md`, `../05_network/messages.md` |
 | `IMP-036` | Guild Core / Progression | `DONE` | IMP-007, IMP-034, IMP-100 | `../03_systems/guild.md`, `../03_systems/guild_progression.md` |
 | `IMP-037` | Guild Storage | `NOT_STARTED` | IMP-008, IMP-009, IMP-036 | `../03_systems/guild_storage.md`, `../06_data/data_model.md` |
-| `IMP-038` | Cosmetics | `NOT_STARTED` | IMP-007, IMP-008, IMP-036, IMP-100 | `../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md` |
+| `IMP-038` | Cosmetics | `IN_PROGRESS` | IMP-007, IMP-008, IMP-036, IMP-100 | `../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-039` | PvP Build Snapshot / Transform | `NOT_STARTED` | IMP-012, IMP-017, IMP-031, IMP-032, IMP-033, IMP-057, IMP-058, IMP-059, IMP-060 | `../03_systems/pvp.md`, `../01_gameplay/combat.md` |
 | `IMP-040` | Duel / Ranked Duel | `NOT_STARTED` | IMP-010, IMP-034, IMP-039 | `../03_systems/pvp.md`, `../05_network/messages.md` |
 | `IMP-041` | Five Element Arena | `NOT_STARTED` | IMP-035, IMP-039, IMP-040 | `../03_systems/pvp.md`, `../05_network/messages.md` |
@@ -1523,10 +1523,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-015/"
 
 ## `IMP-016` — Effects / Status / Shield Pipeline
 id: IMP-016
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-016"
+branch: "imp/IMP-016-effects-shield-pipeline"
+claimed_at: "2026-10-09T20:27:46Z"
 blocked_by: ""
 
 specs: [`../01_gameplay/status_effects.md`, `../01_gameplay/combat.md`, `../07_content/class_skill_catalog.md`, `../09_testing/gameplay.md`]
@@ -2563,10 +2563,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-088/"
 
 ## `IMP-027` — Crafting / Enhancement
 id: IMP-027
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-027"
+branch: "imp/IMP-027-crafting-enhancement"
+claimed_at: "2026-10-09T20:27:46Z"
 blocked_by: ""
 
 specs: [`../03_systems/crafting.md`, `../07_content/crafting_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
@@ -3040,10 +3040,10 @@ evidence_location: "docs/10_implementation/evidence/IMP-037/"
 
 ## `IMP-038` — Cosmetics
 id: IMP-038
-status: NOT_STARTED
-claimed_by: ""
-branch: ""
-claimed_at: ""
+status: IN_PROGRESS
+claimed_by: "devin-imp-038"
+branch: "imp/IMP-038-cosmetics"
+claimed_at: "2026-10-09T21:04:22Z"
 blocked_by: ""
 
 specs: [`../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md`, `../06_data/save_rules.md`, `../05_network/protobuf_conventions.md`]
