@@ -254,8 +254,9 @@ func TestRollDeterminismAndReplay(t *testing.T) {
 	}
 	char := id.NewV4()
 	key := rollKey(char, "2026-10-01", 7)
-	if Roll(table, key) != Roll(table, key) {
-		t.Fatal("same key rerolled")
+	first := Roll(table, key)
+	if second := Roll(table, key); first != second {
+		t.Fatalf("same key rerolled: %s != %s", first, second)
 	}
 	// A different sequence rolls a different stream.
 	seen := map[string]bool{}

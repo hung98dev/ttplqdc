@@ -28,7 +28,8 @@ namespace ThinhThan.UI.LifeSkills.Fishing
         {
             get;
             private set;
-        } = new FishingPanelModel();
+        }
+        = new FishingPanelModel();
 
         /// <summary>Renders one panel model.</summary>
         public void Render(FishingPanelModel model)

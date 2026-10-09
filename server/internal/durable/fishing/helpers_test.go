@@ -203,21 +203,6 @@ func newDeps(t *testing.T) Deps {
 	}
 }
 
-// tx runs fn in one committed test transaction.
-func tx(t *testing.T, fn func(ctx context.Context, tx pgx.Tx)) {
-	t.Helper()
-	ctx := context.Background()
-	txx, err := pool(t).Begin(ctx)
-	if err != nil {
-		t.Fatalf("begin: %v", err)
-	}
-	defer txx.Rollback(ctx)
-	fn(ctx, txx)
-	if err := txx.Commit(ctx); err != nil {
-		t.Fatalf("commit: %v", err)
-	}
-}
-
 func newOp() id.UUID { return id.NewV7(time.Now()) }
 
 // interactRecord builds a committed-shape fishing client record.
