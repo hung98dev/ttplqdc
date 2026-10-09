@@ -40,10 +40,16 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
             }
 
             /// <summary>item_id of the grant.</summary>
-            public string ItemId { get; }
+            public string ItemId
+            {
+                get;
+            }
 
             /// <summary>Granted quantity.</summary>
-            public uint Quantity { get; }
+            public uint Quantity
+            {
+                get;
+            }
         }
 
         private readonly List<GrantedItem> _granted = new List<GrantedItem>();

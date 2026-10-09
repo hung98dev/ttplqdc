@@ -63,8 +63,11 @@ namespace ThinhThan.Tests.PlayMode.CookingBonfirePresentation
         public void IntentsSendInteractKinds()
         {
             var sender = new FakeSender();
-            var intents = new CookingIntents(
-                sender, () => new byte[16] { 9, 8, 7 });
+            var op = new byte[16];
+            op[0] = 9;
+            op[1] = 8;
+            op[2] = 7;
+            var intents = new CookingIntents(sender, () => op);
 
             _ = intents.RequestKindle("bonfire", CancellationToken.None);
             _ = intents.RequestCook("hearth", "recipe.food.tom_nuong",

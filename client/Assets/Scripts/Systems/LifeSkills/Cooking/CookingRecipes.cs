@@ -26,16 +26,28 @@ namespace ThinhThan.Systems.LifeSkills.Cooking
             }
 
             /// <summary>recipe.food.* catalog id.</summary>
-            public string RecipeId { get; }
+            public string RecipeId
+            {
+                get;
+            }
 
             /// <summary>Guaranteed food/consumable output item id.</summary>
-            public string OutputItemId { get; }
+            public string OutputItemId
+            {
+                get;
+            }
 
             /// <summary>Required input items (item_id, quantity).</summary>
-            public (string ItemId, uint Quantity)[] Inputs { get; }
+            public (string ItemId, uint Quantity)[] Inputs
+            {
+                get;
+            }
 
             /// <summary>Authored LIFE_SKILL EXP for one act.</summary>
-            public ulong LifeSkillExp { get; }
+            public ulong LifeSkillExp
+            {
+                get;
+            }
         }
 
         /// <summary>All five hearth recipes, catalog order.</summary>

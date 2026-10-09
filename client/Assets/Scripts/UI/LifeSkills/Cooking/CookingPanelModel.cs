@@ -23,35 +23,46 @@ namespace ThinhThan.UI.LifeSkills.Cooking
             }
 
             /// <summary>recipe.food.* catalog id.</summary>
-            public string RecipeId { get; }
+            public string RecipeId
+            {
+                get;
+            }
 
             /// <summary>Guaranteed output item id.</summary>
-            public string OutputItemId { get; }
+            public string OutputItemId
+            {
+                get;
+            }
 
             /// <summary>Input units the inventory is short (0 = met).</summary>
-            public uint MissingCount { get; }
+            public uint MissingCount
+            {
+                get;
+            }
 
             /// <summary>All inputs present — the row may fire COOK.</summary>
-            public bool Craftable { get; }
+            public bool Craftable
+            {
+                get;
+            }
         }
 
         /// <summary>Recipe rows in catalog order.</summary>
-        public IReadOnlyList<RecipeRow> Rows { get; set; } =
-            new List<RecipeRow>();
+        public IReadOnlyList<RecipeRow> Rows = new List<RecipeRow>();
 
         /// <summary>Channel bonfire active (KINDLE state).</summary>
-        public bool BonfireActive { get; set; }
+        public bool BonfireActive;
 
         /// <summary>Local rest-session flag.</summary>
-        public bool Resting { get; set; }
+        public bool Resting;
 
         /// <summary>Rượu Nếp buff (+5% ATTACK) active.</summary>
-        public bool BuffActive { get; set; }
+        public bool BuffActive;
 
         /// <summary>Buff ticks remaining at last apply.</summary>
-        public ulong BuffRemainingTicks { get; set; }
+        public ulong BuffRemainingTicks;
 
         /// <summary>Latest failed interact error (Unspecified = none).</summary>
-        public string ErrorKey { get; set; } = "";
+        public string ErrorKey = "";
     }
 }
