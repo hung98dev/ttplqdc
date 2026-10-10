@@ -75,10 +75,10 @@ namespace ThinhThan.Tests.PlayMode.GuildStorageUi
             var go = new GameObject("StoragePanel", typeof(GuildStoragePanel));
             var p = go.GetComponent<GuildStoragePanel>();
             p.Applier = a;
-            p.CommonText = new GameObject("Common").AddComponent<TMP_Text>();
-            p.ReserveText = new GameObject("Reserve").AddComponent<TMP_Text>();
-            p.ClaimsText = new GameObject("Claims").AddComponent<TMP_Text>();
-            p.ResultText = new GameObject("Result").AddComponent<TMP_Text>();
+            p.CommonText = new GameObject("Common").AddComponent<TextMeshProUGUI>();
+            p.ReserveText = new GameObject("Reserve").AddComponent<TextMeshProUGUI>();
+            p.ClaimsText = new GameObject("Claims").AddComponent<TextMeshProUGUI>();
+            p.ResultText = new GameObject("Result").AddComponent<TextMeshProUGUI>();
             return p;
         }
 
