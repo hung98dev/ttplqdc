@@ -116,6 +116,8 @@ namespace ThinhThan.Net
                 [WireIds.S2CBaselineResyncResult] = S2CBaselineResyncResult.Parser,
                 [WireIds.S2CInventoryResult] = S2CInventoryResult.Parser,
                 [WireIds.S2CLoadoutResult] = S2CLoadoutResult.Parser,
+                [WireIds.S2CCraftResult] = S2CCraftResult.Parser,
+                [WireIds.S2CEnhanceResult] = S2CEnhanceResult.Parser,
                 [WireIds.S2CRewardClaimResult] = S2CRewardClaimResult.Parser,
                 [WireIds.S2CEntitlementClaimResult] = S2CEntitlementClaimResult.Parser,
                 [WireIds.S2CInventoryExpandResult] = S2CInventoryExpandResult.Parser,
