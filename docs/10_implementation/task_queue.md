@@ -51,7 +51,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-024` | ENDGAME_L60 Variants | `NOT_STARTED` | IMP-023 | `../02_world/dungeons.md`, `../07_content/dungeon_catalog.md` |
 | `IMP-025` | Spirit Surge | `NOT_STARTED` | IMP-010, IMP-019, IMP-021, IMP-080 | `../02_world/world_rules.md`, `../07_content/world_event_catalog.md` |
 | `IMP-026` | Equipment Catalog Runtime Expansion | `DONE` | IMP-003, IMP-012 | `../03_systems/equipment.md`, `../07_content/equipment_catalog.md` |
-| `IMP-027` | Crafting / Enhancement | `IN_PROGRESS` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
+| `IMP-027` | Crafting / Enhancement | `DONE` | IMP-007, IMP-008, IMP-009, IMP-026 | `../03_systems/crafting.md`, `../07_content/crafting_catalog.md` |
 | `IMP-028` | NPC Services / Shops | `NOT_STARTED` | IMP-007, IMP-009, IMP-018, IMP-027 | `../02_world/npcs.md`, `../07_content/npc_shop_catalog.md` |
 | `IMP-029` | Direct Trade | `DONE` | IMP-007, IMP-008, IMP-009, IMP-011 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
 | `IMP-030` | Auction House | `DONE` | IMP-005, IMP-007, IMP-008, IMP-009 | `../03_systems/trading_auction.md`, `../06_data/data_model.md` |
@@ -2563,7 +2563,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-088/"
 
 ## `IMP-027` — Crafting / Enhancement
 id: IMP-027
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-027"
 branch: "imp/IMP-027-crafting-enhancement"
 claimed_at: "2026-10-09T20:27:46Z"
