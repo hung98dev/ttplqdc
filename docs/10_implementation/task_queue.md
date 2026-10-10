@@ -61,7 +61,7 @@ Packets follow `../templates/task.md`; claim fields are written only by the coor
 | `IMP-034` | Friends / Block / Chat | `DONE` | IMP-018, IMP-080, IMP-100 | `../03_systems/social.md`, `../05_network/messages.md` |
 | `IMP-035` | Party | `DONE` | IMP-018, IMP-080, IMP-100 | `../03_systems/party.md`, `../05_network/messages.md` |
 | `IMP-036` | Guild Core / Progression | `DONE` | IMP-007, IMP-034, IMP-100 | `../03_systems/guild.md`, `../03_systems/guild_progression.md` |
-| `IMP-037` | Guild Storage | `IN_PROGRESS` | IMP-008, IMP-009, IMP-036 | `../03_systems/guild_storage.md`, `../06_data/data_model.md` |
+| `IMP-037` | Guild Storage | `DONE` | IMP-008, IMP-009, IMP-036 | `../03_systems/guild_storage.md`, `../06_data/data_model.md` |
 | `IMP-038` | Cosmetics | `IN_PROGRESS` | IMP-007, IMP-008, IMP-036, IMP-100 | `../03_systems/cosmetics.md`, `../07_content/cosmetic_catalog.md` |
 | `IMP-039` | PvP Build Snapshot / Transform | `NOT_STARTED` | IMP-012, IMP-017, IMP-031, IMP-032, IMP-033, IMP-057, IMP-058, IMP-059, IMP-060 | `../03_systems/pvp.md`, `../01_gameplay/combat.md` |
 | `IMP-040` | Duel / Ranked Duel | `NOT_STARTED` | IMP-010, IMP-034, IMP-039 | `../03_systems/pvp.md`, `../05_network/messages.md` |
@@ -3001,7 +3001,7 @@ evidence_location: "docs/10_implementation/evidence/IMP-036/"
 
 ## `IMP-037` — Guild Storage
 id: IMP-037
-status: IN_PROGRESS
+status: DONE
 claimed_by: "devin-imp-037"
 branch: "imp/IMP-037-guild-storage"
 claimed_at: "2026-10-09T21:25:58Z"
