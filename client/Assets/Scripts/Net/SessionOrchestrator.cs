@@ -183,6 +183,14 @@ namespace ThinhThan.Net
             set;
         }
 
+        /// <summary>Craft/enhance result frames land here (405, 407) —
+        /// Systems/Crafting (IMP-027).</summary>
+        public ICraftingSink? Crafting
+        {
+            get;
+            set;
+        }
+
         /// <summary>Latest CHARACTER_LIST snapshot (REPLACEABLE_STATE).</summary>
         public S2CCharacterList? CharacterList
         {
@@ -675,6 +683,10 @@ namespace ThinhThan.Net
                 case WireIds.S2CStatusEvent:
                 case WireIds.S2CCombatEvent:
                     Combat?.Apply(frame);
+                    break;
+                case WireIds.S2CCraftResult:
+                case WireIds.S2CEnhanceResult:
+                    Crafting?.Apply(frame);
                     break;
                 case WireIds.S2CLoadoutResult:
                     Equipment?.Apply(frame);
